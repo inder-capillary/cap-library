@@ -68,7 +68,9 @@ module.exports = {
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../components/{{properCase name}}/_{{camelCase name}}.scss'
+      path: '../../components/{{properCase name}}/_{{camelCase name}}.scss',
+      templateFile: './component/styles.hbs',
+      abortOnFail: true,
     },
     {
       type: 'modify',
