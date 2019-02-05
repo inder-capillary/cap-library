@@ -44,6 +44,7 @@ function createPackageFile() {
     .then((data) => JSON.parse(data))
     .then((packageData) => {
       const {
+        name,
         author,
         version,
         description,
@@ -57,7 +58,7 @@ function createPackageFile() {
       } = packageData;
 
       const minimalPackage = {
-        "name": '@capillarytech/cap-react-ui-library-v2',
+        name,
         author,
         version,
         description,
