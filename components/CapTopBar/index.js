@@ -10,7 +10,7 @@ import classNames from 'classnames';
 import { Select } from './Select';
 import './_capTopBar.scss';
 
-import SettingsIcon from '../../assets/icons/settings.svg';
+import SettingsIcon from '../assets/icons/settings.svg';
 
 const { Header } = Layout;
 
