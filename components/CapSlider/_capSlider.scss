@@ -1,0 +1,37 @@
+@import "~@capillarytech/cap-style-guide/styles/main";
+@import "../styles/_variables.scss";
+
+
+// .ant-slider-handle.ant-tooltip-open{
+//     background-color:map-get($CAP_PRIMARY, hover) !important;
+//     color:map-get($CAP_PRIMARY, disabled);
+// }
+.ant-slider-handle{
+    border-color:map-get($CAP_PRIMARY, base);
+    background-color:map-get($CAP_PRIMARY, base) !important;
+    color:map-get($CAP_PRIMARY, base);
+    
+}
+
+// ::selection {
+//     background: map-get($CAP_PRIMARY, base) !important;
+//     color:map-get($CAP_PRIMARY, hover) !important;
+// }
+
+.ant-slider-rail{
+    background-color:map-get($CAP_PRIMARY, disabled) !important;
+}
+
+.ant-slider-disabled{
+   color:map-get($CAP_PRIMARY, disabled);
+   border-color:map-get($CAP_PRIMARY, disabled) !important;
+}
+
+.ant-slider-step{
+    height:2px;
+}
+
+.ant-slider{
+    width:240px;
+    margin:40px;
+}
