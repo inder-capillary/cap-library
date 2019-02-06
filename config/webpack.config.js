@@ -457,7 +457,8 @@ module.exports = function(webpackEnv) {
                 {loader: require.resolve("css-loader")},
                 {loader: require.resolve("less-loader"),
                   options: {
-                    modifyVars: themeVariables
+                    modifyVars: themeVariables,
+                    javascriptEnabled: true
                   }
                 }
               ]
