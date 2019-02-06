@@ -34,6 +34,9 @@ const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
 // Check if TypeScript is setup
 const useTypeScript = fs.existsSync(paths.appTsConfig);
 
+const lessToJs = require('less-vars-to-js');
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, '../components/styles/ant_theme_vars.less'), 'utf8'));
+
 // style files regexes
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -347,6 +350,7 @@ module.exports = function(webpackEnv) {
                       },
                     },
                   ],
+                  ['import', { libraryName: "antd", style: true }]
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -446,6 +450,18 @@ module.exports = function(webpackEnv) {
                 'sass-loader'
               ),
             },
+            {
+              test: /\.less$/,
+              use: [
+                {loader: require.resolve("style-loader")},
+                {loader: require.resolve("css-loader")},
+                {loader: require.resolve("less-loader"),
+                  options: {
+                    modifyVars: themeVariables
+                  }
+                }
+              ]
+            },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
             // In production, they would get copied to the `build` folder.
@@ -465,7 +481,7 @@ module.exports = function(webpackEnv) {
             // ** STOP ** Are you adding a new loader?
             // Make sure to add the new loader(s) before the "file" loader.
           ],
-        },
+        }
       ],
     },
     plugins: [
