@@ -64,7 +64,7 @@ class CapButtonDoc extends Component {
           <div style={{margin: 'auto'}}><CapButton disabled>Primary</CapButton></div>
           <div style={{margin: 'auto'}}><CapButton type="secondary">Secondary</CapButton></div>
           <div style={{margin: 'auto'}}><CapButton type="secondary" disabled>Secondary</CapButton></div>
-          <div style={{margin: 'auto'}}><CapButton type="flat">Flat</CapButton></div>
+          <div style={{margin: 'auto'}}><CapButton type="flat" isAddBtn>Flat</CapButton></div>
           <div style={{margin: 'auto'}}><CapButton type="flat" disabled>Flat</CapButton></div>
           <div style={{margin: 'auto'}}><CapButton type="dashed">Dashed</CapButton></div>
           <div style={{margin: 'auto'}}><CapButton type="dashed" disabled>Dashed</CapButton></div>

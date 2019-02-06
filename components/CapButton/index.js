@@ -3,7 +3,7 @@
 */
 import React from "react";
 import PropTypes from 'prop-types';
-import { Button } from "antd";
+import { Button, Icon } from "antd";
 import classnames from 'classnames';
 import "./_capButton.scss";
 
@@ -21,14 +21,19 @@ const CapButton = (props) => {
     className,
     children,
     type,
+    isAddBtn,
     ...rest
   } = props;
   return (
     <Button
       {...rest}
       type={type}
-      className={classnames(classPrefix, btnTypeClassMapping[type])}
+      className={classnames(classPrefix, btnTypeClassMapping[type], {'add-btn': isAddBtn})}
     >
+      {isAddBtn
+        ? <Icon type="plus" className={classnames(`${classPrefix}-prefix-icon`)} />
+        : null
+      }
       {React.Children.toArray(children)}
     </Button>
   );
