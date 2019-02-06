@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { Tabs } from "antd";
 // import styled from 'styled-components';
 
-const TabPane = Tabs.TabPane;
+const { TabPane } = Tabs;
 
 class CapTab extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {

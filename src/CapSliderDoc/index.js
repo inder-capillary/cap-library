@@ -134,7 +134,7 @@ export default class CapSliderDoc extends Component { // eslint-disable-line rea
       <div className="cap-slider-info">
         <div className="cap-slider-showcase">
           {/* <div style={{margin: 'auto'}}><CapSlider></CapSlider></div> */}
-          <div style={{margin: 'auto'}}><CapSlider type="ratio" defaultValue={40} disabled={true}></CapSlider></div>
+          <div style={{margin: 'auto'}}><CapSlider type="ratio" defaultValue={40} disabled></CapSlider></div>
           <div style={{margin: 'auto'}}><CapSlider type="ratio" defaultValue={40} disabled={false}>Ratio Slider</CapSlider></div>
         </div>
         <PropertyTable data={infoData} />
