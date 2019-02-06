@@ -22,19 +22,25 @@ const CapButton = (props) => {
     children,
     type,
     isAddBtn,
+    prefix,
+    suffix,
     ...rest
   } = props;
   return (
     <Button
       {...rest}
       type={type}
-      className={classnames(classPrefix, btnTypeClassMapping[type], {'add-btn': isAddBtn})}
+      className={classnames(
+        classPrefix,
+        btnTypeClassMapping[type],
+        {'add-btn': isAddBtn},
+        {'has-icon': isAddBtn || suffix || prefix}
+      )}
     >
-      {isAddBtn
-        ? <Icon type="plus" className={classnames(`${classPrefix}-prefix-icon`)} />
-        : null
-      }
+      {isAddBtn && <Icon type="plus" className={classnames(`${classPrefix}-prefix`)} />}
+      {prefix && <span className={classnames(`${classPrefix}-prefix`)}>{prefix}</span>}
       {React.Children.toArray(children)}
+      {suffix && <span className={classnames(`${classPrefix}-suffix`)}>{suffix}</span>}
     </Button>
   );
 };

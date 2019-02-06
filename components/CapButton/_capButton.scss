@@ -4,8 +4,13 @@
     color: $FONT_COLOR_01;
     font-weight: $FONT_WEIGHT_MEDIUM;
     font-size: $FONT_SIZE_M;
+    padding: 0 $CAP_SPACE_24;
 
-    & > .cap-button-prefix-icon + span, & > span + .cap-button-suffix-icon {
+    &.has-icon {
+        padding: 0 $CAP_SPACE_12 0 $CAP_SPACE_08;
+    }
+
+    & > .cap-button-prefix + span, & > span + .cap-button-suffix {
         margin-left: 4px;
     }
 
