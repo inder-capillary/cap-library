@@ -52,6 +52,11 @@ $menuSearch: menu-search;
       color: #2e89df;
     }
   }
+  .#{$menuSearch}-ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
   .content {
     min-height: 192px;
     font-size: 12px;
@@ -83,11 +88,6 @@ $menuSearch: menu-search;
       }
     }
     .link-items {
-      span {
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-      }
       height: 32px;
       display: flex;
       align-items: center;

@@ -20,11 +20,13 @@ export class MenuSearch extends Component {
   }
 
   handleSearch = (e) => {
+    const state = {};
     const { value } = e.target;
-    this.setState({ searchText: value });
+    state.searchText = value;
     if (value) {
-      this.setState({ visible: true });
+      state.visible = true;
     }
+    this.setState(state);
   }
 
   onVisibleChange = (visible) => {
@@ -57,10 +59,12 @@ export class MenuSearch extends Component {
     const miniWords = text.split(splitPattern);
     const html = [];
     miniWords.forEach((miniWord, index) => {
-      if (searchText && miniWord.toLowerCase() === searchText.toLowerCase()) {
-        html.push(<span key={index} data-value={text} className="highlighted-item"><strong data-value={text}>{miniWord}</strong></span>);
-      } else {
-        html.push(<span key={index} data-value={text}>{miniWord}</span>);
+      if (miniWord) {
+        if (searchText && miniWord.toLowerCase() === searchText.toLowerCase()) {
+          html.push(<span key={index} data-value={text} className="highlighted-item"><strong data-value={text}>{miniWord}</strong></span>);
+        } else {
+          html.push(<span key={index} data-value={text}>{miniWord}</span>);
+        }
       }
     });
     return <span data-value={text}>{html}</span>;
@@ -89,7 +93,7 @@ export class MenuSearch extends Component {
     }
     return (
       <div className="link-items" key={`item-${item.key}`}>
-        <a {...linkProps}>{this.generateHighlightedText(item.title)}</a>
+        <a {...linkProps} className={classNames(`${clsPrefix}-ellipsis`)}>{this.generateHighlightedText(item.title)}</a>
         <a {...newTabLinkProps}>
           <div className="new-tab-link-wrapper"><img src={NewTabIcon} alt="" /></div>
         </a>
@@ -105,14 +109,14 @@ export class MenuSearch extends Component {
       if (data.category && !data.subCategory) {
         const childrenHtml = data.children.map((childItem) => this.renderItem(childItem, `childItem-${childItem.key}`));
         return (
-          <div key={`item-group-${data.key}`} className="links-group">
+          <div key={`item-group-${data.category}`} className="links-group">
             <div className="group-heading">{data.category}</div>
             <div className="group-children">{childrenHtml}</div>
           </div>);
       } if (data.category && data.subCategory) {
         const childrenHtml = data.children.map((childItem) => this.renderItem(childItem, `childItem-${childItem.key}`));
         return (
-          <div key={`item-group-${data.key}`} className="links-group">
+          <div key={`item-group-${data.subCategory}`} className="links-group">
             <div className="group-heading">{`${data.category} > ${data.subCategory}`}</div>
             <div className="group-children">{childrenHtml}</div>
           </div>);

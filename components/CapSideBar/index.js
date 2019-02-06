@@ -58,14 +58,14 @@ export default class CapSideBar extends React.Component {
   }
 
   getTreeNodes = (data) => {
-    const { selectedMenuItem } = this.props;
+    const { selectedMenuItem, defaultActiveKey } = this.props;
     return data.map((item) => {
       const title = <span title={item.title}>{item.title}</span>;
       if (item.children) {
         return (
           <Panel header={title} key={item.key}>
             <Collapse
-              defaultActiveKey={[selectedMenuItem]}
+              defaultActiveKey={defaultActiveKey}
               className={classNames(`${clsPrefix}-accordian-submenu`)}
               bordered={false}
               accordion
