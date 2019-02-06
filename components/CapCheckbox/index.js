@@ -11,14 +11,15 @@ const classNames = require('classnames');
 
 class CapCheckbox extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
+    const {className, children, errorMessage, ...rest} = this.props;
     return (
-      <div className={classNames("cap-checkbox", this.props.className )}>
-        <Checkbox {...this.props}>
-          { this.props.children }
+      <div className={classNames("cap-checkbox", className)}>
+        <Checkbox {...rest}>
+          { children }
         </Checkbox>
         {
-          this.props.className && this.props.className.indexOf('error') > -1 && this.props.errorMessage
-          && <div className="error-message">{ this.props.errorMessage }</div>
+          className && className.indexOf('error') > -1 && errorMessage
+          && <div className="error-message">{ errorMessage }</div>
         }
       </div>
     );
