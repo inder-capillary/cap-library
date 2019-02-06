@@ -16,8 +16,6 @@ const CapButton = (props) => {
   };
 
   const {
-    addonBefore,
-    addonAfter,
     className,
     children,
     type,
@@ -49,12 +47,14 @@ CapButton.propTypes = {
   children: PropTypes.any,
   type: PropTypes.string,
   className: PropTypes.string,
-  addonAfter: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  addonBefore: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  isAddBtn: PropTypes.bool,
+  prefix: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  suffix: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 CapButton.defaultProps = {
   type: 'primary',
+  isAddBtn: false,
 };
 
 export default CapButton;
