@@ -10,8 +10,6 @@ import CapTabDoc from '../src/CapTabDoc';
 //imported for docs
 
 
-
-
 class ComponentSwitcher extends Component {
   render() {
     const { type } = this.props;
@@ -28,9 +26,7 @@ class ComponentSwitcher extends Component {
         return <CapCheckboxDoc />;
       case 'capTab':
         return <CapTabDoc />;
-      //components for docs
-
-
+        //components for docs
 
 
       default:
