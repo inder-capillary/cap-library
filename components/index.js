@@ -16,11 +16,3 @@ export { default as CapHeading3 } from './CapHeading3';
 export { default as CapHeading4 } from './CapHeading4';
 export { default as CapHeading5 } from './CapHeading5';
 //export components
-
-
-
-
-
-
-
-

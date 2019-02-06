@@ -63,8 +63,10 @@ export default class CapSideBarDoc extends Component { // eslint-disable-line re
       <div className="cap-side-bar-info">
         <div className="cap-side-bar-showcase">
           <CapSideBar
+            searchSupportPortalUrl="http://support.capillarytech.com/support/search/solutions?term={{searchText}}"
             sidebarItems={sidebarItems}
             selectedMenuItem="exports"
+            defaultActiveKey="data_exports"
           />
         </div>
         <PropertyTable data={infoData} />

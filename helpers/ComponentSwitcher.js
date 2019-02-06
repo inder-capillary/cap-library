@@ -16,14 +16,6 @@ import CapHeading5Doc from '../src/CapHeading5Doc';
 //imported for docs
 
 
-
-
-
-
-
-
-
-
 class ComponentSwitcher extends Component {
   render() {
     const { type } = this.props;
@@ -52,17 +44,6 @@ class ComponentSwitcher extends Component {
         return <CapHeading4Doc />;
       case 'capHeading5':
         return <CapHeading5Doc />;
-      //components for docs
-
-
-
-
-
-
-
-
-
-
       default:
         return null;
     }
