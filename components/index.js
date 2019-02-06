@@ -9,10 +9,6 @@ export { default as CapTreeNode } from './CapTreeNode';
 export { default as CapInputSearch } from './CapInputSearch';
 
 export { default as CapTab } from './CapTab';
-export { default as CapHeading0 } from './CapHeading0';
-export { default as CapHeading1 } from './CapHeading1';
-export { default as CapHeading2 } from './CapHeading2';
-export { default as CapHeading3 } from './CapHeading3';
-export { default as CapHeading4 } from './CapHeading4';
-export { default as CapHeading5 } from './CapHeading5';
+export { default as CapHeading } from './CapHeading';
+
 //export components
