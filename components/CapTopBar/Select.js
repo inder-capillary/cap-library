@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Input, Icon, Popover } from "antd";
 import classNames from 'classnames';
 import findIndex from 'lodash/findIndex';
-import WarningIcon from '../../assets/icons/warning.svg';
-import DropDownIcon from '../../assets/icons/chevron-down.svg';
+import WarningIcon from '../assets/icons/warning.svg';
+import DropDownIcon from '../assets/icons/chevron-down.svg';
 
 const clsPrefix = 'cap-select';
 

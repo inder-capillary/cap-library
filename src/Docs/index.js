@@ -2,7 +2,7 @@ import React from 'react';
 import { Menu, Layout } from 'antd';
 // import {CapPageHeader} from '../../../src/index';
 import ComponentSwitcher from '../../helpers/ComponentSwitcher';
-const logo = require('../../assets/images/capillary_dark.png');
+const logo = require('../../components/assets/images/capillary_dark.png');
 const { Content, Footer, Sider } = Layout;
 const MenuItem = Menu.Item;
 
