@@ -7,35 +7,6 @@ $sidebar: cap-sidebar;
   background-color: $CAP_G10;
 }
 
-.#{$sidebar}-search {
-  margin-top: 16px;
-  padding-right: 8px;
-  .anticon-search {
-    left: 10px;
-  }
-  input {
-    height: 40px;
-    padding: 4px 30px;
-  }
-}
-
-.#{$sidebar}-search {
-  position: relative;
-  margin-bottom: 20px;
-  .anticon-close {
-    position: absolute;
-    right: 25px;
-    top: 30%;
-    color: $CAP_ICON;
-  }
-  .anticon-search {
-    left: 25px;
-    position: absolute;
-    top: 30%;
-    color: $CAP_ICON;
-  }
-}
-
 .#{$sidebar}-accordian {
   position: relative;
   .ant-collapse-item {
