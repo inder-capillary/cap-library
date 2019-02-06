@@ -61,13 +61,13 @@ class CapButtonDoc extends Component {
       <div className="cap-button-info">
         <div style={{display: 'flex', marginTop: 20}} className="cap-button-showcase">
           <div style={{margin: 'auto'}}><CapButton>Primary</CapButton></div>
-          <div style={{margin: 'auto'}}><CapButton addonAfter={<span>+</span>}>addonAfter</CapButton></div>
-          <div style={{margin: 'auto'}}><CapButton addonBefore={<span className="anticon anticon-right"></span>}>addonBefore</CapButton></div>
+          <div style={{margin: 'auto'}}><CapButton disabled>Primary</CapButton></div>
           <div style={{margin: 'auto'}}><CapButton type="secondary">Secondary</CapButton></div>
-          <div style={{margin: 'auto'}}><CapButton type="secondary">Secondary</CapButton></div>
-          <div style={{margin: 'auto'}}><CapButton type="cancel">Cancel</CapButton></div>
+          <div style={{margin: 'auto'}}><CapButton type="secondary" disabled>Secondary</CapButton></div>
+          <div style={{margin: 'auto'}}><CapButton type="flat">Flat</CapButton></div>
+          <div style={{margin: 'auto'}}><CapButton type="flat" disabled>Flat</CapButton></div>
           <div style={{margin: 'auto'}}><CapButton type="dashed">Dashed</CapButton></div>
-          <div style={{margin: 'auto'}}><CapButton disabled>disabled</CapButton></div>
+          <div style={{margin: 'auto'}}><CapButton type="dashed" disabled>Dashed</CapButton></div>
         </div>
         <PropertyTable data={api} />
       </div>

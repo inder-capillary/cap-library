@@ -4,57 +4,35 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { Button } from "antd";
+import classnames from 'classnames';
 import "./_capButton.scss";
 
-export default class CapButton extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  translateType(type) {
-    let antdType = 'primary';
-    switch (type) {
-      case 'secondary':
-        antdType = 'ghost';
-        break;
-      case 'cancel':
-        antdType = 'danger';
-        break;
-      case 'dashed':
-        antdType = 'dashed';
-        break;
-      default:
-        antdType = 'primary';
-    }
-    return antdType;
-  }
+const classPrefix = 'cap-button';
 
-  render() {
-    const type = this.translateType(this.props.type);
-    const {addonBefore, addonAfter, ...rest} = this.props;
-    return (
-      <Button
-        {...rest}
-        className={this.props.className ? `cap-button ${this.props.className}` : "cap-button"}
-        type={type}
-      >
-        {addonBefore
-          && (
-            <span className="before-button">
-              {' '}
-              {addonBefore}
-            </span>
-          )
-        }
-        {React.Children.toArray(this.props.children)}
-        {addonAfter
-          && (
-            <span className="after-button">
-              {' '}
-              {addonAfter}
-            </span>
-          )
-        }
-      </Button>
-    );
-  }
-}
+const CapButton = (props) => {
+  const btnTypeClassMapping = {
+    secondary: 'secondary-btn',
+    flat: 'flat-btn',
+  };
+
+  const {
+    addonBefore,
+    addonAfter,
+    className,
+    children,
+    type,
+    ...rest
+  } = props;
+  return (
+    <Button
+      {...rest}
+      type={type}
+      className={classnames(classPrefix, btnTypeClassMapping[type])}
+    >
+      {React.Children.toArray(children)}
+    </Button>
+  );
+};
 
 CapButton.propTypes = {
   children: PropTypes.any,
@@ -63,3 +41,9 @@ CapButton.propTypes = {
   addonAfter: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   addonBefore: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
+
+CapButton.defaultProps = {
+  type: 'primary',
+};
+
+export default CapButton;
