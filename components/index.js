@@ -8,4 +8,5 @@ export { default as CapModal } from './CapModal';
 export { default as CapTreeNode } from './CapTreeNode';
 export { default as CapInputSearch } from './CapInputSearch';
 
+export { default as CapTab } from './CapTab';
 //export components
