@@ -10,6 +10,7 @@ import CapTabDoc from '../src/CapTabDoc';
 import CapSlideBoxDoc from '../src/CapSlideBoxDoc';
 import CapHeadingDoc from '../src/CapHeadingDoc';
 import CapSwitchDoc from '../src/CapSwitchDoc';
+import CapInputDoc from '../src/CapInputDoc';
 //imported for docs
 
 class ComponentSwitcher extends Component {
@@ -34,6 +35,8 @@ class ComponentSwitcher extends Component {
         return <CapHeadingDoc />;
       case 'capSwitch':
         return <CapSwitchDoc />;
+      case 'capInput':
+        return <CapInputDoc />;
       default:
         return null;
     }
