@@ -38,7 +38,7 @@ export default class CapSlideBox extends Component {
   }
 
   render() {
-    const { size, className, show, header, handleClose, footer, content } = this.props;
+    const { size, show, header, handleClose, footer, content } = this.props;
     const { showShadow } = this.state;
     return (
       show && (
@@ -70,7 +70,6 @@ CapSlideBox.defaultProps = {
 };
 
 CapSlideBox.propTypes = {
-  className: PropTypes.string,
   header: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.string,
