@@ -459,6 +459,7 @@ module.exports = function(webpackEnv) {
                   options: {
                     modifyVars: themeVariables,
                     javascriptEnabled: true
+
                   }
                 }
               ]
