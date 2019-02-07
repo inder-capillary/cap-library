@@ -108,7 +108,12 @@ class CapInput extends Component {
           {
             label
             && (
-              <StyledCapHeading type={type} labelPosition={labelPosition} disabled={this.props.disabled}>
+              <StyledCapHeading
+                type={type}
+                labelPosition={labelPosition}
+                disabled={this.props.disabled}
+                className={classnames(`${classPrefix}-label`)}
+              >
                 {label}
                 {isRequired && <Sup className="requied-indicator">*</Sup>}
               </StyledCapHeading>
@@ -116,7 +121,7 @@ class CapInput extends Component {
           }
           {inductiveText && labelPosition === 'top'
             && (
-              <InductiveText>{inductiveText}</InductiveText>
+              <InductiveText className={classnames(`${classPrefix}-inductive-text`)}>{inductiveText}</InductiveText>
             )
           }
           <Input
