@@ -23,7 +23,7 @@ describe('<CapSwitch />', () => {
     const props = {
       size: 'small',
     };
-    const sliderInputComponent = mount(<CapSwitch {...props} />);
-    expect(sliderInputComponent.prop('size')).toEqual('small');
+    const CapSwitchComponent = mount(<CapSwitch {...props} />);
+    expect(CapSwitchComponent.prop('size')).toEqual('small');
   });
 });
