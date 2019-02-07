@@ -66,11 +66,19 @@ const orgsList = [
   { label: 'Metro', value: 'metro' },
 ];
 
+const productsList = [
+  { label: 'Dashboard', value: 'Dashboard' },
+  { label: 'Campaign manager', value: 'Campaign manager' },
+  { label: 'Membercare', value: 'Membercare' },
+  { label: 'Loyalty manager', value: 'Loyalty manager' },
+  { label: 'Essential insights', value: 'Essential insights' },
+];
 export default class CapSelectDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
     this.state = {
       selectedOrg: "",
+      selectedProduct: "Campaign manager",
     };
   }
 
@@ -78,19 +86,37 @@ export default class CapSelectDoc extends Component { // eslint-disable-line rea
     this.setState({ selectedOrg: value });
   }
 
+  handleProductChange = (value) => {
+    this.setState({ selectedProduct: value });
+  }
+
+
   render() {
-    const { selectedOrg } = this.state;
+    const { selectedOrg, selectedProduct } = this.state;
     return (
       <div className="cap-select-info">
         <div className="cap-select-showcase">
-          <CapSelect
-            width="250px"
-            selectPlaceholder="Select organizations"
-            showSearch
-            items={orgsList}
-            selectedItem={selectedOrg}
-            handleItemChange={this.handleOrgChange}
-          />
+          <div style={{ marginRight: '20px' }}>
+            <div>With Search</div>
+            <CapSelect
+              width="250px"
+              selectPlaceholder="Select organizations"
+              showSearch
+              items={orgsList}
+              selectedItem={selectedOrg}
+              handleItemChange={this.handleOrgChange}
+            />
+          </div>
+          <div>
+            <div>Without Search</div>
+            <CapSelect
+              width="250px"
+              selectPlaceholder="Select product"
+              items={productsList}
+              selectedItem={selectedProduct}
+              handleItemChange={this.handleProductChange}
+            />
+          </div>
         </div>
         <PropertyTable data={infoData} />
       </div>
