@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import CapHeading2 from '../index';
+// import CapHeading from '../index';
 
-describe('<CapHeading2 />', () => {
+describe('<CapHeading />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });
