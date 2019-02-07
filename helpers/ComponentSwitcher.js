@@ -8,8 +8,8 @@ import CapTopBarDoc from '../src/CapTopBarDoc';
 import CapCheckboxDoc from '../src/CapCheckboxDoc';
 import CapTabDoc from '../src/CapTabDoc';
 import CapHeadingDoc from '../src/CapHeadingDoc';
+import CapSwitchDoc from '../src/CapSwitchDoc';
 //imported for docs
-
 
 class ComponentSwitcher extends Component {
   render() {
@@ -29,6 +29,8 @@ class ComponentSwitcher extends Component {
         return <CapTabDoc />;
       case 'capHeading':
         return <CapHeadingDoc />;
+      case 'capSwitch':
+        return <CapSwitchDoc />;
       default:
         return null;
     }

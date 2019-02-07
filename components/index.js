@@ -11,4 +11,5 @@ export { default as CapInputSearch } from './CapInputSearch';
 export { default as CapTab } from './CapTab';
 export { default as CapHeading } from './CapHeading';
 
+export { default as CapSwitch } from './CapSwitch';
 //export components
