@@ -6,7 +6,6 @@
 
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 const headings = {
   h1: {
@@ -41,23 +40,11 @@ const headings = {
   },
 };
 
-const Heading = styled.div`
+const CapHeading = styled.div`
     font-size: ${[(props) => headings[props.type]["font-size"]]};
     font-weight: ${[(props) => headings[props.type]["font-weight"]]};
     color: ${[(props) => headings[props.type].color]};
     `;
-
-class CapHeading extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  render() {
-    const { type, children, ...rest } = this.props;
-    return (
-      <Heading type={type} {...rest}>
-        {' '}
-        { children }
-      </Heading>
-    );
-  }
-}
 
 CapHeading.propTypes = {
   type: PropTypes.string,
