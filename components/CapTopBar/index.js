@@ -18,9 +18,7 @@ const clsPrefix = 'cap-navbar';
 
 class CapTopBar extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const {
-      primarySelectProps, secondarySelectProps, menuProps, userName, onSettingsClick,
-    } = this.props;
+    const { primarySelectProps, secondarySelectProps, menuProps, userName, onSettingsClick } = this.props;
     return (
       <React.Fragment>
         <Layout className={classNames(`${clsPrefix}-layout`)}>

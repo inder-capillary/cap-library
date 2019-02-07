@@ -1,19 +1,20 @@
-// Color Palette - Primary Colors
+/* Color Palette */
+//========================
 
+// Primary colors
 $CAP_PRIMARY: (
   base: #47af46,
   hover: #1f9a1d,
   disabled: #a1d8a0
 );
 
-// Color Palette - Secondary Colors
-
+// Secondary colors
 $CAP_SECONDARY: (
   base: #2466ea,
   light: rgba(#2466ea, 0.1)
 );
 
-// Color Palette - Custom Colors
+// Custom colors
 $CAP_ORANGE: #f87d23;
 $CAP_YELLOW: #fec52e;
 $CAP_BLUE: #23cccc;
@@ -22,7 +23,7 @@ $CAP_PINK: #e51fa3;
 $CAP_RED: #ea213a;
 $CAP_ICON: #7a869a;
 
-// Color Palette - GREYS
+// Grey colors
 $CAP_G01: #091e42;
 $CAP_G02: #253858;
 $CAP_G03: #42526e;
@@ -33,22 +34,49 @@ $CAP_G07: #dfe2e7;
 $CAP_G08: #ebecf0;
 $CAP_G09: #f4f5f7;
 $CAP_G10: #fafbfc;
+$CAP_G11: #7a869a;
 
-// Fonts
-$FONT_FAMILY: "Roboto", sans-serif;
+$CAP_WHITE: #ffffff;
+
+/* Fonts */
+// ==============
+$FONT_FAMILY: "Roboto", sans-serif; //arial
 $FONT_WEIGHT_REGULAR: 400;
 $FONT_WEIGHT_MEDIUM: 500;
 
-// Sizes & Spacings (1em converts to 16px on desktop)
 
-$CAP_SS_VS: 0.5em;
-$CAP_SS_S: 1em;
-$CAP_SS_R: 1.5em;
-$CAP_SS_L: 2em;
-$CAP_SS_VL: 2.5em;
-$CAP_NSS_S1: -0.5rem;
-$CAP_SS_S2: 0.625rem; //10px
-$CAP_SS_S3: 0.875rem; //14px
-$CAP_SS_R1: 1.25rem; //20px
-$CAP_SS_R3: 1.75rem; //28px
-$CAP_SS_L2: 2.25rem; //36px
+// Font colors
+$FONT_COLOR_01: #091E42;
+$FONT_COLOR_02: #5E6C84;
+$FONT_COLOR_03: #97A0AF;
+$FONT_COLOR_04: #B3BAC5;
+$FONT_COLOR_05: #2466EA;
+$FONT_COLOR_06: #FFFFFF;
+
+// Font sizes
+$FONT_SIZE_VL: 24px;
+$FONT_SIZE_L: 16px;
+$FONT_SIZE_M: 14px;
+$FONT_SIZE_S: 12px;
+$FONT_SIZE_VS: 10px;
+
+
+// Icon sizes
+$ICON_SIZE_S: 16px;
+$ICON_SIZE_M: 24px;
+$ICON_SIZE_L: 32px;
+
+// Sizes & Spacings (1rem === 14px as base font size of root is 14px)
+
+$CAP_SPACE_04: 0.285rem;
+$CAP_SPACE_08: 0.571rem;
+$CAP_SPACE_12: 0.857rem;
+$CAP_SPACE_16: 1.142rem;
+$CAP_SPACE_20: 1.428rem;
+$CAP_SPACE_24: 1.714rem;
+$CAP_SPACE_28: 2rem;
+$CAP_SPACE_32: 2.285rem;
+$CAP_SPACE_36: 2.571rem;
+$CAP_SPACE_40: 2.857rem;
+$CAP_SPACE_44: 3.142rem;
+$CAP_SPACE_48: 3.428rem;
