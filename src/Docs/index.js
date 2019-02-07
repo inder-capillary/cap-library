@@ -10,7 +10,7 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
   constructor(props) {
     super(props);
     this.state = {
-      menuSelected: "capButton",
+      menuSelected: "capSlideBox",
     };
     this.onMenuItemClick = this.onMenuItemClick.bind(this);
   }
@@ -36,6 +36,7 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             <MenuItem key="capTopBar"><span>CapTopBar</span></MenuItem>
             <MenuItem key="capCheckbox"><span>CapCheckbox</span></MenuItem>
             <MenuItem key="capTab"><span>CapTab</span></MenuItem>
+            <MenuItem key="capSlideBox"><span>CapSlideBox</span></MenuItem>
             <MenuItem key="capHeading"><span>CapHeading</span></MenuItem>
             {/*Menu items for components*/}
           </Menu>
