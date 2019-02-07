@@ -154,6 +154,7 @@ CapInput.defaultProps = {
   errorMessage: '',
   isVerified: false,
   size: 'large',
+  inductiveText: '',
 };
 
 export default CapInput;

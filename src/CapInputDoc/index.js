@@ -10,10 +10,52 @@ import "./info.scss";
 const infoData = [
   {
     key: 1,
-    property: "-",
-    description: "-",
-    type: "-",
-    default: "-",
+    property: "size",
+    description: "size of the CapInput. Possible values: `large`, `default`, `small`",
+    type: "string",
+    default: "large",
+  },
+  {
+    key: 2,
+    property: "label",
+    description: "Input label",
+    type: "string",
+    default: "",
+  },
+  {
+    key: 3,
+    property: "labelPosition",
+    description: "Position of input lable. Possible values: `top`, `left`",
+    type: "string",
+    default: "top",
+  },
+  {
+    key: 4,
+    property: "isRequired",
+    description: "Whether to show required indication i.e '*' or not at the end of label",
+    type: "boolean",
+    default: "false",
+  },
+  {
+    key: 5,
+    property: "errorMessage",
+    description: "Message to show as error below input field",
+    type: "string | Node",
+    default: "",
+  },
+  {
+    key: 6,
+    property: "isVerified",
+    description: "Whether to show confirmed icon as suffix to input or not",
+    type: "boolean",
+    default: "false",
+  },
+  {
+    key: 7,
+    property: "inductiveText",
+    description: "Inductive text to show below input lable",
+    type: "string | Node",
+    default: "",
   },
 ];
 
@@ -74,6 +116,12 @@ const CapInputDoc = () => (
       </Row>
     </div>
     <PropertyTable data={infoData} />
+    <div style={{marginTop: '24px'}}>
+      <b>NOTE: </b>
+        This component is the extended version of ant design
+      <a href="https://ant.design/components/input/#header"> Button </a>
+        component. Please refer their component for detailed explaination of component and supported props.
+    </div>
   </div>
 );
 
