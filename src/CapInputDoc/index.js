@@ -20,6 +20,7 @@ const infoData = [
 const CapInputDoc = () => (
   <div className="cap-input-info">
     <div className="cap-input-showcase">
+      <p style={{margin: '16px 0'}}>Input with left label</p>
       <Row span={24}>
         <Col span={11}>
           <CapInput labelPosition="left" label="Input field" />
@@ -36,15 +37,8 @@ const CapInputDoc = () => (
           <CapInput labelPosition="left" label="Input with error" errorMessage="Testing error message" />
         </Col>
       </Row>
-      <Row span={24} style={{marginTop: '24px'}}>
-        <Col span={11}>
-          <CapInput labelPosition="top" label="Top label Input field" />
-        </Col>
-        <Col span={11} offset={1}>
-          <CapInput labelPosition="top" label="Required Input" isRequired />
-        </Col>
-      </Row>
       <Row span={24} style={{marginTop: '16px'}}>
+        <p style={{margin: '16px 0'}}>Input with top label</p>
         <Col span={11}>
           <CapInput labelPosition="top" label="Input confirmation" isVerified />
         </Col>
@@ -63,7 +57,6 @@ const CapInputDoc = () => (
           />
         </Col>
         <Col span={11} offset={1}>
-
           <CapInput
             labelPosition="top"
             label="Input disabled with suffix"
@@ -71,6 +64,12 @@ const CapInputDoc = () => (
             inductiveText="Sample inductive text for demo"
             suffix={<Icon type="check-circle" />}
           />
+        </Col>
+      </Row>
+      <Row span={24} style={{marginTop: '16px'}}>
+        <p style={{margin: '16px 0'}}>Input without label</p>
+        <Col span={11}>
+          <CapInput labelPosition="left" isVerified placeholder="Input without label" />
         </Col>
       </Row>
     </div>

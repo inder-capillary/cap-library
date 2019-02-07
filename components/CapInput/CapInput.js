@@ -12,6 +12,9 @@ const CapInputStyled = styled.div`
   &.cap-input {
     cursor: ${(props) => props.disabled && 'not-allowed'};
     input {
+      &::-webkit-input-placeholder {
+        font-size: 14px;
+      }
       &:focus {
         border-color: ${styledVars.CAP_G01};
         box-shadow: none;
