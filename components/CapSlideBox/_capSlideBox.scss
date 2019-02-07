@@ -37,7 +37,7 @@ $slideBox: "cap-slide-box";
 }
 
 .#{$slideBox}-close-icon {
-  font-size: 20px;
+  font-size: $ICON_SIZE_S;
 }
 
 .#{$slideBox}-container {
@@ -50,18 +50,9 @@ $slideBox: "cap-slide-box";
     justify-content: space-between;
     align-items: center;
     display: flex;
-    border-bottom: 1px solid #dfe2e7;
-    .header {
-      font-family: Roboto;
-      font-size: $FONT_SIZE_VL;
-      font-weight: 500;
-      line-height: 1.17;
-      color: #091e42;
-    }
   }
   .slidebox-footer {
     padding: $CAP_SPACE_32 $CAP_SPACE_32 $CAP_SPACE_32 $CAP_SPACE_48;
-    border-top: 1px solid #dfe2e7;
     position: absolute;
     bottom: 0;
     width: 100%;

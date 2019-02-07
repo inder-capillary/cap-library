@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { Icon } from 'antd';
 import classNames from 'classnames';
 import { throttle } from 'lodash';
+import { CapHeading } from '../index';
 
 import './_capSlideBox.scss';
 
@@ -45,7 +46,7 @@ export default class CapSlideBox extends Component {
         <div className={classNames(`${clsPrefix}`, { 'show-slidebox': show, 'hide-slidebox': !show, 'show-shadow': showShadow })}>
           <div className={classNames(`${clsPrefix}-container ${size}`)}>
             <div className="slidebox-header">
-              <div className="header">{header}</div>
+              <CapHeading type="h1">{header}</CapHeading>
               <Icon onClick={handleClose} className={classNames(`${clsPrefix}-close-icon`)} type="close" />
             </div>
             <div onScroll={this.throttleScroll} className={classNames('slidebox-content-container', { 'has-footer': footer })} ref={(node) => { this.slideBoxContainer = node; }}>
