@@ -28,17 +28,17 @@ export default class CapHeadingDoc extends Component { // eslint-disable-line re
     return (
       <div className="cap-heading0-info">
         <div className="cap-heading0-showcase">
-          <CapHeading type="h1" data="heading 1"></CapHeading>
+          <CapHeading type="h1">heading 1</CapHeading>
           <br />
-          <CapHeading type="h2" data="heading 2"></CapHeading>
+          <CapHeading type="h2">heading 2</CapHeading>
           <br />
-          <CapHeading type="h3" data="heading 3"></CapHeading>
+          <CapHeading type="h3">heading 3</CapHeading>
           <br />
-          <CapHeading type="h4" data="heading 4"></CapHeading>
+          <CapHeading type="h4">heading 4</CapHeading>
           <br />
-          <CapHeading type="h5" data="heading 5"></CapHeading>
+          <CapHeading type="h5">heading 5</CapHeading>
           <br />
-          <CapHeading type="h6" data="heading 6"></CapHeading>
+          <CapHeading type="h6">heading 6</CapHeading>
           <br />
 
         </div>

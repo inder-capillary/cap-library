@@ -1,10 +1,9 @@
+// import React from 'react';
+// import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 import React from 'react'; // eslint-disable-line no-unused-vars
-import {mount, configure} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import {mount} from 'enzyme';
 import CapCheckbox from '../index';
-
-configure({ adapter: new Adapter() });
 
 describe('<CapCheckbox />', () => {
   it('CapCheckbox renders correctly', () => {

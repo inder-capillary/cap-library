@@ -58,8 +58,8 @@ export default class CapCheckboxDoc extends Component { // eslint-disable-line r
         <div className="cap-checkbox-showcase">
           <CapCheckbox value={3} indeterminate> indeterminate </CapCheckbox>
           <CapCheckbox checked={1}>checked</CapCheckbox>
-          <CapCheckbox disabled={1} defaultChecked={1} value={2}> Disabled and defaultChecked</CapCheckbox>
-          <CapCheckbox autoFocus={1}>autoFocus</CapCheckbox>
+          <CapCheckbox disabled defaultChecked={1} value={2}> Disabled and defaultChecked</CapCheckbox>
+          <CapCheckbox autoFocus>autoFocus</CapCheckbox>
         </div>
         <PropertyTable data={infoData} />
       </div>

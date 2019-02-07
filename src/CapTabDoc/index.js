@@ -131,10 +131,14 @@ const infoData = [
 export default class CapTabDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const panes = [{content: 'conatiner 1', title: 'tab 1'}, {content: 'conatiner 2', title: 'tab 2'}, {content: 'conatiner 3', title: 'tab 3'}];
+    const panes1 = [{content: 'conatiner 1', title: 'tab 1', disabled: 'true'}, {content: 'conatiner 2', title: 'tab 2', disabled: 'true'}, {content: 'conatiner 3', title: 'tab 3', disabled: 'true'}];
+
     return (
       <div className="cap-tab-info">
         <div className="cap-tab-showcase">
           <CapTab panes={panes} />
+          <CapTab panes={panes1} disabled />
+
         </div>
         <PropertyTable data={infoData} />
       </div>

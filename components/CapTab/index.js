@@ -30,10 +30,11 @@ class CapTab extends React.Component { // eslint-disable-line react/prefer-state
       <div className={this.props.className}>
         {panes ? (
           <Tabs
+            animated
             onChange={this.onChange}
             activeKey={this.state.activeKey}
             {...rest}>
-            { panes.map((pane, i) => <TabPane tab={pane.title} key={`${pane.title}_${i}`} closable={pane.closable}>{pane.content}</TabPane>)}
+            { panes.map((pane, i) => <TabPane tab={pane.title} key={`${pane.title}_${i}`} disabled={pane.disabled} animated>{pane.content}</TabPane>)}
           </Tabs>
         ) : <div></div>}
 

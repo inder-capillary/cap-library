@@ -2,7 +2,7 @@ import renderer from 'react-test-renderer';
 import React from 'react'; // eslint-disable-line no-unused-vars
 import {mount, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import CapSwitch from '../index.js';
+import CapSwitch from '../index';
 
 configure({ adapter: new Adapter() });
 describe('<CapSwitch />', () => {

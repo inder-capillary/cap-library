@@ -64,15 +64,19 @@ const Heading = styled.div`
 
 class CapHeading extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { type, data, ...rest } = this.props;
+    const { type, children, ...rest } = this.props;
     return (
-      <Heading type={type} {...rest}>{data}</Heading>
+      <Heading type={type} {...rest}>
+        {' '}
+        { children }
+      </Heading>
     );
   }
 }
 
 CapHeading.propTypes = {
   type: PropTypes.string,
+  children: PropTypes.any,
 };
 
 CapHeading.defaultProps = {

@@ -14,7 +14,7 @@ class CapSlider extends React.Component { // eslint-disable-line react/prefer-st
     let tipFormatter = null;
     switch (type) {
       case 'ratio':
-        tipFormatter = (value) => `${value}|${100 - value}`;
+        tipFormatter = (value) => `${value} | ${100 - value}`;
         break;
       default:
         tipFormatter = null;
