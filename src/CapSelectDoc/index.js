@@ -1,7 +1,7 @@
 /**
 * CapSelectDoc
 */
-import React, { Component } from "react";
+import React, { useState } from "react";
 import PropertyTable from '../../helpers/PropertyTable';
 import { CapSelect } from "../../components";
 import "./info.scss";
@@ -73,53 +73,39 @@ const productsList = [
   { label: 'Loyalty manager', value: 'Loyalty manager' },
   { label: 'Essential insights', value: 'Essential insights' },
 ];
-export default class CapSelectDoc extends Component { // eslint-disable-line react/prefer-stateless-function
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedOrg: "",
-      selectedProduct: "Campaign manager",
-    };
-  }
-
-  handleOrgChange = (value) => {
-    this.setState({ selectedOrg: value });
-  }
-
-  handleProductChange = (value) => {
-    this.setState({ selectedProduct: value });
-  }
 
 
-  render() {
-    const { selectedOrg, selectedProduct } = this.state;
-    return (
-      <div className="cap-select-info">
-        <div className="cap-select-showcase">
-          <div style={{ marginRight: '20px' }}>
-            <div>With Search</div>
-            <CapSelect
-              width="250px"
-              selectPlaceholder="Select organizations"
-              showSearch
-              items={orgsList}
-              selectedItem={selectedOrg}
-              handleItemChange={this.handleOrgChange}
-            />
-          </div>
-          <div>
-            <div>Without Search</div>
-            <CapSelect
-              width="250px"
-              selectPlaceholder="Select product"
-              items={productsList}
-              selectedItem={selectedProduct}
-              handleItemChange={this.handleProductChange}
-            />
-          </div>
+function CapSelectDoc() {
+  const [selectedOrg, handleOrgChange] = useState("");
+  const [selectedProduct, handleProductChange] = useState("Campaign manager");
+  return (
+    <div className="cap-select-info">
+      <div className="cap-select-showcase">
+        <div style={{ marginRight: '20px' }}>
+          <div>With Search</div>
+          <CapSelect
+            width="250px"
+            selectPlaceholder="Select organizations"
+            showSearch
+            items={orgsList}
+            selectedItem={selectedOrg}
+            handleItemChange={handleOrgChange}
+          />
         </div>
-        <PropertyTable data={infoData} />
+        <div>
+          <div>Without Search</div>
+          <CapSelect
+            width="250px"
+            selectPlaceholder="Select product"
+            items={productsList}
+            selectedItem={selectedProduct}
+            handleItemChange={handleProductChange}
+          />
+        </div>
       </div>
-    );
-  }
+      <PropertyTable data={infoData} />
+    </div>
+  );
 }
+
+export default CapSelectDoc;
