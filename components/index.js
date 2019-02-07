@@ -7,8 +7,8 @@ export { default as CapSpin } from './CapSpin';
 export { default as CapModal } from './CapModal';
 export { default as CapTreeNode } from './CapTreeNode';
 export { default as CapInputSearch } from './CapInputSearch';
-
 export { default as CapTab } from './CapTab';
+export { default as CapSlideBox } from './CapSlideBox';
 export { default as CapHeading } from './CapHeading';
 
 export { default as CapSwitch } from './CapSwitch';

@@ -7,6 +7,7 @@ import CapSideBarDoc from '../src/CapSideBarDoc';
 import CapTopBarDoc from '../src/CapTopBarDoc';
 import CapCheckboxDoc from '../src/CapCheckboxDoc';
 import CapTabDoc from '../src/CapTabDoc';
+import CapSlideBoxDoc from '../src/CapSlideBoxDoc';
 import CapHeadingDoc from '../src/CapHeadingDoc';
 import CapSwitchDoc from '../src/CapSwitchDoc';
 //imported for docs
@@ -27,6 +28,8 @@ class ComponentSwitcher extends Component {
         return <CapCheckboxDoc />;
       case 'capTab':
         return <CapTabDoc />;
+      case 'capSlideBox':
+        return <CapSlideBoxDoc />;
       case 'capHeading':
         return <CapHeadingDoc />;
       case 'capSwitch':
