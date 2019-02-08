@@ -11,7 +11,9 @@ import CapSlideBoxDoc from '../src/CapSlideBoxDoc';
 import CapHeadingDoc from '../src/CapHeadingDoc';
 import CapSwitchDoc from '../src/CapSwitchDoc';
 import CapInputDoc from '../src/CapInputDoc';
+import CapSelectDoc from '../src/CapSelectDoc';
 //imported for docs
+
 
 class ComponentSwitcher extends Component {
   render() {
@@ -37,6 +39,8 @@ class ComponentSwitcher extends Component {
         return <CapSwitchDoc />;
       case 'capInput':
         return <CapInputDoc />;
+      case 'capSelect':
+        return <CapSelectDoc />;
       default:
         return null;
     }
