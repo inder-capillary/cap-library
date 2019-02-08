@@ -1,13 +1,5 @@
-@import "../styles/_variables";
+@import "~@capillarytech/cap-style-guide/styles/main";
 
-.cap-table {
-    table {
-        border: 1px solid $CAP_G07;
-    }
-    .ant-table-thead {
-        & > tr > th > div {
-            font-size: $FONT_SIZE_S;
-            color: $FONT_COLOR_02;
-        }
-    }
+.cap-table{
+
 }

@@ -1,0 +1,10 @@
+@import "../styles/_variables.scss";
+
+$datePicker: cap-date-range-picker;
+
+.#{$datePicker}-dropdown {
+  .ant-calendar-date {
+    border-radius: 50%;
+    font-size: $FONT_SIZE_S;
+  }
+}
