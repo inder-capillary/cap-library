@@ -50,6 +50,12 @@ export default class CapTableDoc extends Component { // eslint-disable-line reac
           <CapTable columns={columns} dataSource={dataSource} />
         </div>
         <PropertyTable data={infoData} />
+        <div style={{marginTop: '24px'}}>
+          <b>NOTE: </b>
+          This component is the extended version of ant design
+          <a href="https://ant.design/components/table/#header"> Table </a>
+          component. Please refer their component for detailed explaination of component and supported props.
+        </div>
       </div>
     );
   }
