@@ -9,6 +9,13 @@ $sidebar: cap-sidebar;
 
 .#{$sidebar}-accordian {
   position: relative;
+  a,
+  a:hover,
+  a:visited,
+  a:focus {
+    text-decoration: none;
+    color: $CAP_G01;
+  }
   .ant-collapse-item {
     border: none;
   }
@@ -60,11 +67,4 @@ $sidebar: cap-sidebar;
     cursor: pointer;
     color: $CAP_G01;
   }
-}
-a,
-a:hover,
-a:visited,
-a:focus {
-  text-decoration: none;
-  color: $CAP_G01;
 }
