@@ -119,7 +119,7 @@ const CapInputDoc = () => (
     <div style={{marginTop: '24px'}}>
       <b>NOTE: </b>
         This component is the extended version of ant design
-      <a href="https://ant.design/components/input/#header"> Button </a>
+      <a href="https://ant.design/components/input/#header"> Input </a>
         component. Please refer their component for detailed explaination of component and supported props.
     </div>
   </div>
