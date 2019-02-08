@@ -1,61 +1,103 @@
-@import "~@capillarytech/cap-style-guide/styles/main";
+@import "../styles/_variables.scss";
 
-.cap-select{
-  height: $CAP_SS_VL;
-  padding: $CAP_SS_VS 0;
-  border: 0;
-  border-bottom: 1px solid $CAP_SC04;
-  width: 100%;
-  font-size: $CAP_SS_S3;
-  font-family: $BODY_FONT;
-  line-height: $CAP_SS_R;
-  &.ant-select-open {
-    border-bottom: 1px solid $CAP_PR02;
+$selectPrefix: cap-select;
+
+.#{$selectPrefix}-selection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0px 0px 0px 8px;
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  border: 1px solid $CAP_G06;
+  &:hover {
+    border: 1px solid $CAP_G11;
   }
-  .ant-select-selection__rendered{
-    margin: 0;
+  &.open {
+    border: 1px solid $CAP_G01;
   }
-  .ant-select-arrow {
-    &::before {
-      content: "\E606";
-      color: #707070;
-      font-size: 14px;
+}
+
+.#{$selectPrefix}-selected-value {
+  font-size: 16px;
+  font-weight: $FONT_WEIGHT_MEDIUM;
+  display: flex;
+  align-items: center;
+}
+
+.#{$selectPrefix}-header {
+  padding: 0 16px 20px 16px;
+  font-size: 14px;
+  font-weight: $FONT_WEIGHT_MEDIUM;
+}
+
+.#{$selectPrefix}-select-item {
+  padding: 8px 8px 8px 24px;
+  cursor: pointer;
+  &:hover {
+    background-color: map-get($CAP_SECONDARY, light);
+  }
+  &.selected {
+    color: map-get($CAP_SECONDARY, base);
+    position: relative;
+    &:before {
+      content: " ";
+      width: 2px;
+      height: 100%;
+      left: 0;
+      top: 0;
+      position: absolute;
+      background-color: map-get($CAP_SECONDARY, base);
     }
   }
 }
-.cap-select.ant-select-open .ant-select-arrow {
-  &::before {
-    transform: none;
-    color: #2E89DF;
+
+.#{$selectPrefix}-no-results {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .#{$selectPrefix}-no-results-text {
+    margin-top: 8px;
+    text-align: center;
+    color: $CAP_G05;
+    font-size: 12px;
   }
 }
-.ant-select-dropdown {
-  .ant-select-dropdown-menu{
-    max-height: 192px;
-    overflow-y: auto;
-    margin-top: $CAP_SS_VS;
-    .ant-select-dropdown-menu-item{
-      font-size: $CAP_SS_S3;
-      font-family: $BODY_FONT;
-      line-height: $CAP_SS_R;
-      padding: 4px 0 0 $CAP_SS_S;
-      cursor: pointer;
-      text-decoration: none;
-      color: $CAP_CU04;
-      height: $CAP_SS_L;
-      justify-content: center;
-    }
-    .ant-select-dropdown-menu-item-active, .ant-select-dropdown-menu-item:hover{
-      background-color: $CAP_SC05;
-    }
-    .ant-select-dropdown-menu-item-selected{
-      background-color: $CAP_SC07;
-      color: $CAP_PR02;
-    }
-    .ant-select-dropdown-menu-item-disabled{
-      color: $CAP_WARN;
-      line-height: $CAP_SS_S;
-      font-size: $CAP_SS_S2;
-    }
+
+.#{$selectPrefix}-popover {
+  padding-top: 0;
+  .ant-popover-inner-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .ant-popover-arrow {
+    display: none;
+  }
+}
+
+.#{$selectPrefix}-search {
+  position: relative;
+  margin-bottom: 20px;
+  .anticon-close {
+    position: absolute;
+    right: 25px;
+    top: 30%;
+    color: $CAP_ICON;
+  }
+  .anticon-search {
+    left: 25px;
+    position: absolute;
+    top: 30%;
+    color: $CAP_ICON;
+  }
+}
+
+.#{$selectPrefix}-search {
+  padding: 0 16px;
+  input {
+    padding: 4px 25px;
+    height: 40px;
   }
 }

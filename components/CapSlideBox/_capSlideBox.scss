@@ -1,0 +1,85 @@
+@import "../styles/_variables.scss";
+
+$slideBox: "cap-slide-box";
+
+.#{$slideBox}.show-shadow {
+  .slidebox-header {
+    -webkit-box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.12);
+  }
+  .slidebox-footer {
+    -webkit-box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.#{$slideBox} {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.56);
+  z-index: 10002;
+
+  &.hide-slidebox {
+    visibility: hidden;
+    opacity: 0;
+    transition-delay: 0s;
+  }
+  &.show-slidebox {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1s linear 0.33s, opacity 0.33s linear;
+  }
+}
+
+.#{$slideBox}-close-icon {
+  font-size: $ICON_SIZE_S;
+}
+
+.#{$slideBox}-container {
+  position: relative;
+  height: 100vh;
+  background: rgba(255, 255, 255, 1);
+  overflow-y: auto;
+  .slidebox-header {
+    padding: $CAP_SPACE_32 $CAP_SPACE_32 $CAP_SPACE_32 $CAP_SPACE_48;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+  }
+  .slidebox-footer {
+    padding: $CAP_SPACE_32 $CAP_SPACE_32 $CAP_SPACE_32 $CAP_SPACE_48;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .slidebox-content-container {
+    padding: 0 $CAP_SPACE_08 0 $CAP_SPACE_48;
+    overflow-y: auto;
+    height: calc(100vh - (#{$CAP_SPACE_32} * 2) - #{$FONT_SIZE_VL} - 0.5rem);
+    &.has-footer {
+      height: calc(100vh - (#{$CAP_SPACE_32} * 4) - (#{$FONT_SIZE_VL} * 2) - 1rem);
+    }
+  }
+}
+
+.#{$slideBox}-container.size-r {
+  left: 50vw;
+  width: 50vw;
+}
+.#{$slideBox}-container.size-s {
+  left: 60vw;
+  width: 40vw;
+}
+.#{$slideBox}-container.size-l {
+  left: 40vw;
+  width: 60vw;
+}
+.#{$slideBox}-container.size-vl {
+  left: 30vw;
+  width: 70vw;
+}

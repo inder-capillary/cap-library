@@ -6,7 +6,7 @@ import findIndex from 'lodash/findIndex';
 import WarningIcon from '../assets/icons/warning.svg';
 import DropDownIcon from '../assets/icons/chevron-down.svg';
 
-const clsPrefix = 'cap-select';
+const clsPrefix = 'top-bar-select';
 
 export class Select extends Component {
   constructor(props) {

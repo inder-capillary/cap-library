@@ -1,65 +1,83 @@
-@import "~@capillarytech/cap-style-guide/styles/main";
-@import "../styles/_variables.scss";
+@import '../styles/_variables.scss';
 
-.cap-button{
-  height: $CAP_SS_L;
-  padding: 0 $CAP_SS_S;
-  font-family: $BODY_FONT;
-  font-style: normal;
-  font-weight: $FONT_WEIGHT_SEMIBOLD;
-  border-radius: 6px;
-  font-size: $CAP_SS_S3;
-  min-width: 5rem;
+.ant-btn.cap-button {
+    color: $FONT_COLOR_01;
+    font-weight: $FONT_WEIGHT_MEDIUM;
+    font-size: $FONT_SIZE_M;
+    padding: 0 $CAP_SPACE_24;
 
-  &.ant-btn-primary {
-    background-color: map-get($CAP_PRIMARY, base);
-    color: $CAP_SC07;
-    border: none;
-
-    &:hover {
-      background-color: map-get($CAP_PRIMARY, hover);
-    }
-  }
-
-  &.ant-btn-ghost {
-    border-color: map-get($CAP_PRIMARY, base);
-    color: map-get($CAP_PRIMARY, base);
-
-    &:hover {
-      background-color: map-get($CAP_PRIMARY, hover);
-      color: $CAP_SC07;
+    &.has-icon {
+        padding: 0 $CAP_SPACE_12 0 $CAP_SPACE_08;
     }
 
-    &[disabled], &[disabled]:hover {
-      background-color: transparent;
-      border-color: $CAP_SC03;
-      color: $CAP_SC03;
+    & > .cap-button-prefix + span, & > span + .cap-button-suffix {
+        margin-left: 4px;
     }
-  }
 
-  &.ant-btn-danger {
-    color: #2e89df;
-    background-color: $CAP_SC07 !important;
-    border-color: $CAP_SC07 !important;
+    &.ant-btn-primary {
+        color: $FONT_COLOR_06;
 
-    &:hover {
-      background-color: $CAP_PR01 !important;
-      color: $CAP_SC07;
-      border-color: $CAP_SC07 !important;
+        &:hover {
+            background-color: map-get($CAP_PRIMARY, hover);
+            border-color: map-get($CAP_PRIMARY, hover);
+        }
+        &[disabled] {
+            background-color: map-get($CAP_PRIMARY, disabled);
+            border-color: map-get($CAP_PRIMARY, disabled);
+
+            &:hover {
+                color: $FONT_COLOR_06;
+            }
+        }
     }
-  }
 
-  &[disabled]:not(.ant-btn-ghost), &[disabled]:hover:not(.ant-btn-ghost) {
-    background-color: $CAP_SC03;
-    border-color: $CAP_SC03;
-    color: $CAP_SC07;
-  }
+    &.secondary-btn {
+        background-color: $CAP_G08;
+        border-color: $CAP_G08;
 
-  .before-button{
-    margin-right: $CAP_SS_VS;
-  }
+        &:hover {
+            background-color: $CAP_G07;
+            border-color: $CAP_G07;
+        }
+        &[disabled] {
+            background-color: $CAP_G09;
+            border-color: $CAP_G09;
+            color: $FONT_COLOR_04;
+        }
+    }
 
-  .after-button{
-    margin: 0 0 0 $CAP_SS_VS;
-  }
+    &.ant-btn-dashed {
+        color: $FONT_COLOR_02;
+        background-color: $CAP_G10;
+        border-color: $CAP_G06;
+
+        &:hover {
+            color: $FONT_COLOR_01;
+            background-color: $CAP_G10;
+            border-color: $CAP_G06;
+        }
+        &[disabled] {
+            background-color: $CAP_G10;
+            border-color: $CAP_G06;
+            color: $FONT_COLOR_04;
+        }
+    }
+
+    &.flat-btn {
+        background-color: $CAP_WHITE;
+        border-color: $CAP_WHITE;
+        &.add-btn {
+            color: $FONT_COLOR_05;
+        }
+        &:hover {
+            background-color: $CAP_G09;
+            border-color: $CAP_G09;
+        }
+        &[disabled] {
+            background-color: $CAP_WHITE;
+            border-color: $CAP_WHITE;
+            color: $FONT_COLOR_04;
+        }
+    }
+    
 }

@@ -14,7 +14,7 @@ class CapSlider extends React.Component { // eslint-disable-line react/prefer-st
     let tipFormatter = null;
     switch (type) {
       case 'ratio':
-        tipFormatter = (value) => `${value}|${100 - value}`;
+        tipFormatter = (value) => `${value} | ${100 - value}`;
         break;
       default:
         tipFormatter = null;
@@ -23,12 +23,12 @@ class CapSlider extends React.Component { // eslint-disable-line react/prefer-st
   }
 
   render() {
-    const {type, ...rest} = this.props;
+    const {type, children, className, ...rest} = this.props;
     const formatter = this.translateType(type);
     return (
       <div>
-        <Slider tipFormatter={formatter} {...rest} className={classNames("cap-slider", this.props.className)}>
-          {React.Children.toArray(this.props.children)}
+        <Slider tipFormatter={formatter} {...rest} className={classNames("cap-slider", className)}>
+          {React.Children.toArray(children)}
         </Slider>
       </div>
     );

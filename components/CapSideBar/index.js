@@ -1,38 +1,72 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Icon, Collapse } from 'antd';
+import { Icon, Collapse } from 'antd';
+import debounce from 'lodash/debounce';
 import classNames from 'classnames';
+
+import { MenuSearch } from './MenuSearch';
+
+import './_capSideBar.scss';
 
 const { Panel } = Collapse;
 
 const clsPrefix = 'cap-sidebar';
-
 export default class CapSideBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchText: '',
+      showSearchLoader: false,
+      allSearchResults: [],
     };
+    this.onSearch = debounce(this.getSearchResults, 200);
   }
 
-  handleSearch = (e) => {
-    const { value } = e.target;
-    this.setState({ searchText: value });
+  debouncedSearch = (searchText) => {
+    this.setState({ showSearchLoader: true });
+    this.onSearch(searchText);
   }
 
-  clearSearch = () => {
-    this.setState({ searchText: '' });
+  getSearchResults = (searchText) => {
+    const { sidebarItems } = this.props;
+    const categorizedResults = [];
+    const nonCategorizedResults = [];
+    sidebarItems.forEach((item) => {
+      if (item.children) {
+        const obj = { category: item.title, children: [] };
+        item.children.forEach((child) => {
+          if (!child.children && child.title.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
+            obj.children.push(child);
+          } else if (child.children) {
+            const subCategory = { category: item.title, children: [], subCategory: child.title };
+            child.children.forEach((child2) => {
+              if (child2.title.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
+                subCategory.children.push(child2);
+              }
+            });
+            if (subCategory.children.length > 0) {
+              categorizedResults.push(subCategory);
+            }
+          }
+        });
+        if (obj.children.length > 0) {
+          categorizedResults.push(obj);
+        }
+      } else if (item.title.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
+        nonCategorizedResults.push(item);
+      }
+    });
+    this.setState({ allSearchResults: nonCategorizedResults.concat(categorizedResults), showSearchLoader: false });
   }
 
   getTreeNodes = (data) => {
-    const { selectedMenuItem } = this.props;
+    const { selectedMenuItem, defaultActiveKey } = this.props;
     return data.map((item) => {
       const title = <span title={item.title}>{item.title}</span>;
       if (item.children) {
         return (
           <Panel header={title} key={item.key}>
             <Collapse
-              defaultActiveKey={[selectedMenuItem]}
+              defaultActiveKey={defaultActiveKey}
               className={classNames(`${clsPrefix}-accordian-submenu`)}
               bordered={false}
               accordion
@@ -55,19 +89,18 @@ export default class CapSideBar extends React.Component {
   }
 
   render() {
-    const { sidebarItems, defaultActiveKey } = this.props;
-    const { searchText } = this.state;
+    const { showSearchLoader, allSearchResults } = this.state;
+    const {
+      sidebarItems, defaultActiveKey, searchSupportPortalUrl, searchData, handleSearch,
+    } = this.props;
     return (
       <div className={classNames(`${clsPrefix}`)}>
-        <div className={classNames(`${clsPrefix}-search`)}>
-          <Input
-            placeholder="Search"
-            onChange={this.handleSearch}
-            value={searchText}
-          />
-          <Icon type="search" />
-          <Icon onClick={this.clearSearch} type="close" />
-        </div>
+        <MenuSearch
+          searchSupportPortalUrl={searchSupportPortalUrl}
+          searchData={searchData || allSearchResults}
+          onSearch={handleSearch || this.debouncedSearch}
+          isLoading={showSearchLoader}
+        />
         <Collapse
           defaultActiveKey={defaultActiveKey}
           className={classNames(`${clsPrefix}-accordian`)}
@@ -87,4 +120,6 @@ CapSideBar.propTypes = {
   defaultActiveKey: PropTypes.string,
   selectedMenuItem: PropTypes.string,
   searchData: PropTypes.array,
+  handleSearch: PropTypes.func,
+  searchSupportPortalUrl: PropTypes.string,
 };
