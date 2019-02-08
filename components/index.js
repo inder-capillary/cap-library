@@ -13,4 +13,6 @@ export { default as CapHeading } from './CapHeading';
 
 export { default as CapSwitch } from './CapSwitch';
 export { default as CapSelect } from './CapSelect';
+export { default as CapDatePicker } from './CapDatePicker';
+export { default as CapDateRangePicker } from './CapDateRangePicker';
 //export components
