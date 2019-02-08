@@ -31,6 +31,7 @@ const CapButton = (props) => {
       className={classnames(
         classPrefix,
         btnTypeClassMapping[type],
+        className,
         {'add-btn': isAddBtn},
         {'has-icon': isAddBtn || suffix || prefix}
       )}
