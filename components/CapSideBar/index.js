@@ -6,10 +6,11 @@ import classNames from 'classnames';
 
 import { MenuSearch } from './MenuSearch';
 
+import './_capSideBar.scss';
+
 const { Panel } = Collapse;
 
 const clsPrefix = 'cap-sidebar';
-
 export default class CapSideBar extends React.Component {
   constructor(props) {
     super(props);
