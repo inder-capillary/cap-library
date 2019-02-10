@@ -12,7 +12,7 @@ import CapRow from '../CapRow';
 // import styled from 'styled-components';
 
 
-function CapCard(props) {
+export function CapCard(props) {
   return (
     <div className="cap-card">
       <CapRow>
@@ -50,7 +50,7 @@ CapCard.propTypes = {
   options: propTypes.node,
 };
 
-function CapCardGrid(props) {
+export function CapCardGrid(props) {
   return (
     <div className="cap-card-grid">
       {props.cardDataList.map((cardData) => <CapCard {...cardData} />)}

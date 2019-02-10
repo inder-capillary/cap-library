@@ -4,8 +4,9 @@
   width: 420px;
   border-radius: 4px;
   border: 0.5px solid $CAP_G07;
+  max-height: 152px;
   .cap-card-title-icon{
-    margin: $CAP_SPACE_20;
+    margin: $CAP_SPACE_20 $CAP_SPACE_20 0 $CAP_SPACE_20;
     display: inline-block;
   }
   .cap-card-title{
@@ -21,6 +22,12 @@
   .cap-card-content{
     font-size: $FONT_SIZE_S;
     margin-bottom: $CAP_SPACE_20;
+    max-height: 60px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .cap-card-option-icon{
     cursor: pointer;
