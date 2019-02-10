@@ -88,6 +88,9 @@ export default class NavigationBarDoc extends Component { // eslint-disable-line
 
   }
 
+  onLogoutClick = () => {
+  }
+
   onMenuItemClick = (key) => {
     this.setState({ selectedMenuItem: key });
   }
@@ -114,6 +117,7 @@ export default class NavigationBarDoc extends Component { // eslint-disable-line
             }}
             userName="Jagrati"
             onSettingsClick={this.onSettingsClick}
+            onLogoutClick={this.onLogoutClick}
           />
         </div>
         <PropertyTable data={infoData} />

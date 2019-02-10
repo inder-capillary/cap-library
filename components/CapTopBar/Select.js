@@ -28,10 +28,10 @@ export class Select extends Component {
       }
     }
 
-    handleChange = (value) => {
+    handleChange = (item) => {
       const { handleItemChange } = this.props;
       this.setState({ visible: false });
-      handleItemChange(value);
+      handleItemChange(item.value, item);
     }
 
     getItems = () => {
@@ -42,7 +42,7 @@ export class Select extends Component {
           acc.push(
             <div
               key={item.value}
-              onClick={() => this.handleChange(item.value)}
+              onClick={() => this.handleChange(item)}
               className={classNames(`${clsPrefix}-select-item`, { selected: selectedItem === item.value })}
             >
               {item.label}
@@ -58,14 +58,12 @@ export class Select extends Component {
     }
 
     render() {
-      const {
-        items, selectedItem, showSearch, showHeader,
-      } = this.props;
+      const { items, selectedItem, showSearch, showHeader, selectPlaceholder } = this.props;
       const { visible, searchText } = this.state;
       const itemsHtml = this.getItems();
       const selectedItemIndex = findIndex(items, (item) => item.value === selectedItem);
       const showSelectedIcon = selectedItemIndex !== -1;
-      let selectedItemLabel = "Select Organizations";
+      let selectedItemLabel = selectPlaceholder;
       if (selectedItemIndex !== -1) {
         selectedItemLabel = items[selectedItemIndex].label;
       }
@@ -91,7 +89,7 @@ export class Select extends Component {
                   <Icon onClick={this.clearSearch} type="close" />
                 </div>
               )}
-              {itemsHtml.length > 0 ? itemsHtml
+              {itemsHtml.length > 0 ? <div className={classNames(`${clsPrefix}-items-wrapper`)}>{itemsHtml}</div>
                 : (
                   <div className={classNames(`${clsPrefix}-no-results`)}>
                     <img src={WarningIcon} alt="no-results" />
@@ -104,6 +102,9 @@ export class Select extends Component {
         >
           <div className={classNames(`${clsPrefix}-selection`, { open: !!visible })}>
             <div className={(`${clsPrefix}-selected-value`)}>
+              {
+
+              }
               {showSelectedIcon && (
                 <div className={(`${clsPrefix}-selected-icon`)}>
                   {selectedItemLabel[0]}
@@ -119,10 +120,19 @@ export class Select extends Component {
     }
 }
 
+Select.defaultProps = {
+  selectPlaceholder: 'Select',
+};
+
 Select.propTypes = {
   handleItemChange: PropTypes.func,
   showSearch: PropTypes.bool,
   showHeader: PropTypes.bool,
-  selectedItem: PropTypes.string,
+  selectedItem: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   items: PropTypes.array,
+  showCapillaryIcon: PropTypes.bool,
+  selectPlaceholder: PropTypes.string,
 };
