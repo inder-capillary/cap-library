@@ -47,8 +47,6 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             {/*Menu items for components*/}
 
 
-
-
           </Menu>
         </Sider>
         <Layout style={{ marginLeft: 200 }}>

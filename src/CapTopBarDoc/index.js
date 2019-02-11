@@ -110,6 +110,7 @@ export default class NavigationBarDoc extends Component { // eslint-disable-line
               items: productsList,
               selectedItem: selectedProduct,
               handleItemChange: this.handleProductChange,
+              showCapillaryIcon: true,
             }}
             menuProps={{
               items: menuItems,
