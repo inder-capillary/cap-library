@@ -18,4 +18,7 @@ export { default as CapDatePicker } from './CapDatePicker';
 export { default as CapDateRangePicker } from './CapDateRangePicker';
 export { default as CapHeader } from './CapHeader';
 export { default as CapCard } from './CapCard';
+export { default as CapCheckbox } from './CapCheckbox';
+export { default as CapSlider } from './CapSlider';
+
 //export components
