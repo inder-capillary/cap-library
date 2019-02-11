@@ -3,12 +3,15 @@
 $sidebar: cap-sidebar;
 
 .#{$sidebar} {
+  margin-left: $CAP_SPACE_16;
   max-width: 200px;
   background-color: $CAP_G10;
 }
 
 .#{$sidebar}-accordian {
   position: relative;
+  overflow-y: auto;
+  height: calc(100vh - 152px);
   a,
   a:hover,
   a:visited,

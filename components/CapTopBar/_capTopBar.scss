@@ -33,7 +33,7 @@ $orgSelectPrefix: top-bar-select;
   justify-content: space-between;
   cursor: pointer;
   padding: 0px 0px 0px 8px;
-  margin-right: 8px;
+  margin: 0 8px 0 20px;
   height: 48px;
   border: 1px solid transparent;
   &.open {
@@ -72,7 +72,8 @@ $orgSelectPrefix: top-bar-select;
   cursor: pointer;
 }
 .#{$clsPrefix}-user {
-  margin-left: 60px;
+  margin: 0 8px 0 60px;
+  cursor: pointer;
 }
 
 .#{$clsPrefix}-user,
@@ -128,7 +129,8 @@ $orgSelectPrefix: top-bar-select;
   }
 }
 
-.#{$orgSelectPrefix}-popover {
+.#{$orgSelectPrefix}-popover,
+.#{$clsPrefix}-user-popover {
   padding-top: 0;
   width: 260px;
   .ant-popover-inner-content {
@@ -162,5 +164,26 @@ $orgSelectPrefix: top-bar-select;
   input {
     padding: 4px 25px;
     height: 40px;
+  }
+}
+
+.#{$orgSelectPrefix}-items-wrapper {
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.#{$orgSelectPrefix}-arrow {
+  margin-right: 12px;
+}
+
+.#{$clsPrefix}-user-popover {
+  width: 260px;
+}
+
+.#{$clsPrefix}-user-popover-item {
+  padding: 8px 8px 8px 24px;
+  cursor: pointer;
+  &:hover {
+    background-color: $CAP_G07;
   }
 }

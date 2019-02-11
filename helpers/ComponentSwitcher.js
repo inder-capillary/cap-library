@@ -19,8 +19,6 @@ import CapCardDoc from '../src/CapCardDoc';
 //imported for docs
 
 
-
-
 class ComponentSwitcher extends Component {
   render() {
     const { type } = this.props;
@@ -55,8 +53,7 @@ class ComponentSwitcher extends Component {
         return <CapHeaderDoc />;
       case 'capCard':
         return <CapCardDoc />;
-      //components for docs
-
+        //components for docs
 
 
       default:

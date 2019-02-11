@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-import { Layout, Menu, Divider } from 'antd';
+import { Layout, Menu, Divider, Popover } from 'antd';
 import classNames from 'classnames';
 import { Select } from './Select';
 import './_capTopBar.scss';
@@ -17,8 +17,24 @@ const { Header } = Layout;
 const clsPrefix = 'cap-navbar';
 
 class CapTopBar extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super(props);
+    this.state = {
+      showUserPopover: false,
+    };
+  }
+
+  showUserPopover = () => {
+    this.setState({ showUserPopover: true });
+  }
+
+  onUserPopoverVisibleChange = (visible) => {
+    this.setState({ showUserPopover: visible });
+  }
+
   render() {
-    const { primarySelectProps, secondarySelectProps, menuProps, userName, onSettingsClick } = this.props;
+    const { primarySelectProps, secondarySelectProps, menuProps, userName, onSettingsClick, onLogoutClick } = this.props;
+    const { showUserPopover } = this.state;
     return (
       <React.Fragment>
         <Layout className={classNames(`${clsPrefix}-layout`)}>
@@ -33,7 +49,11 @@ class CapTopBar extends React.Component { // eslint-disable-line react/prefer-st
               )}
               {secondarySelectProps && <Divider type="vertical" className={classNames(`${clsPrefix}-divider`)} />}
               {secondarySelectProps
-                && <Select {...secondarySelectProps} />}
+                && (
+                  <Select
+                    showCapillaryIcon
+                    {...secondarySelectProps} />
+                )}
             </div>
             {menuProps
               && (
@@ -59,9 +79,20 @@ class CapTopBar extends React.Component { // eslint-disable-line react/prefer-st
             {
               userName
               && (
-                <div className={classNames(`${clsPrefix}-user`)}>
-                  {userName[0]}
-                </div>
+                <Popover
+                  trigger="click"
+                  getPopupContainer={(trigger) => trigger.parentNode}
+                  placement="bottomLeft"
+                  visible={showUserPopover}
+                  overlayClassName={classNames(`${clsPrefix}-user-popover`)}
+                  onVisibleChange={this.onUserPopoverVisibleChange}
+                  content={(
+                    <div onClick={onLogoutClick} className={classNames(`${clsPrefix}-user-popover-item`)}>Logout</div>
+                  )}>
+                  <div onClick={this.showUserPopover} className={classNames(`${clsPrefix}-user`)}>
+                    {userName[0]}
+                  </div>
+                </Popover>
               )
             }
             {onSettingsClick
