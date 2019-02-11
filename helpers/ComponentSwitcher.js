@@ -14,6 +14,8 @@ import CapInputDoc from '../src/CapInputDoc';
 import CapSelectDoc from '../src/CapSelectDoc';
 import CapDateRangePickerDoc from '../src/CapDateRangePickerDoc';
 import CapDatePickerDoc from '../src/CapDatePickerDoc';
+import CapHeaderDoc from '../src/CapHeaderDoc';
+import CapCardDoc from '../src/CapCardDoc';
 //imported for docs
 
 
@@ -47,7 +49,12 @@ class ComponentSwitcher extends Component {
         return <CapDatePickerDoc />;
       case 'capDateRangePicker':
         return <CapDateRangePickerDoc />;
+      case 'capHeader':
+        return <CapHeaderDoc />;
+      case 'capCard':
+        return <CapCardDoc />;
         //components for docs
+
 
       default:
         return null;
