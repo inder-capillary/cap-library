@@ -74,14 +74,14 @@ export default class CapCardDoc extends Component { // eslint-disable-line react
       {
         icon: <MessageIcon />,
         title: "Title - 1",
-        content: "message content 1",
+        content: "Get YLG's Beauty Secrets Card & avail 2x beauty services for half the price across YLG Salon. Visit Nearest YLG Salon to know more. t {{optout}}",
         options: <ViewIcon />,
         key: 'prop - 1',
       },
       {
         icon: <MessageIcon />,
         title: "Title - 2",
-        content: "message content 2",
+        content: "Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British ",
         options: <ViewIcon />,
         key: 'prop - 2',
       },

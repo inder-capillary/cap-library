@@ -22,6 +22,7 @@ class CapTab extends React.Component { // eslint-disable-line react/prefer-state
 
   onChange = (activeKey) => {
     this.setState({ activeKey });
+    this.props.onTabChange && this.props.onTabChange(this.props);
   }
 
   render() {
