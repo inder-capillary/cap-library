@@ -4,6 +4,7 @@
 import React, { Component } from "react";
 import PropertyTable from '../../helpers/PropertyTable';
 import { CapTab } from "../../components";
+import { CapCard } from '../../components/CapCard';
 import "./info.scss";
 
 const infoData = [
@@ -130,7 +131,14 @@ const infoData = [
 
 export default class CapTabDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const panes = [{content: 'conatiner 1', title: 'tab 1'}, {content: 'conatiner 2', title: 'tab 2'}, {content: 'conatiner 3', title: 'tab 3'}];
+    const cardProps = {
+      icon: <span></span>,
+      title: "Title",
+      content: "message content",
+      options: <span></span>,
+      key: 'card',
+    };
+    const panes = [{content: <CapCard {...cardProps} />, title: 'tab 1'}, {content: 'conatiner 2', title: 'tab 2'}, {content: 'conatiner 3', title: 'tab 3'}];
     const panes1 = [{content: 'conatiner 1', title: 'tab 1', disabled: 'true'}, {content: 'conatiner 2', title: 'tab 2', disabled: 'true'}, {content: 'conatiner 3', title: 'tab 3', disabled: 'true'}];
 
     return (
