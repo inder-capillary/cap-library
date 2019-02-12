@@ -27,7 +27,7 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             overflow: 'auto', height: '100vh', position: 'fixed', left: 0,
           }}>
           <div className="cap-logo-container">
-            <img className="cap-logo" style={{ width: "180px", margin: "10px" }} src={logo} alt="Capillary Technologies" />
+            <img className="cap-logo" style={{ width: "150px", margin: "10px" }} src={logo} alt="Capillary Technologies" />
           </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.state.menuSelected]} onClick={this.onMenuItemClick}>
             <MenuItem key="capButton"><span className="nav-text">CapButton</span></MenuItem>

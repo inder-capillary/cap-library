@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Input, Icon, Popover } from "antd";
+import { Input, Popover } from "antd";
 import classNames from 'classnames';
 import findIndex from 'lodash/findIndex';
 import WarningIcon from '../assets/icons/warning.svg';
 import DropDownIcon from '../assets/icons/chevron-down.svg';
 import CapillaryLogo from '../assets/icons/capillary_logo.svg';
+import SearchIcon from '../assets/icons/search.svg';
+import CloseIcon from '../assets/icons/close.svg';
 
 const clsPrefix = 'top-bar-select';
 
@@ -86,8 +88,8 @@ export class Select extends Component {
                   onChange={this.handleSearch}
                   value={searchText}
                 />
-                <Icon type="search" />
-                <Icon onClick={this.clearSearch} type="close" />
+                <img className="icon-search" src={SearchIcon} alt="" />
+                {searchText && <span onClick={this.clearSearch}><img className="icon-close" src={CloseIcon} alt="" /></span>}
               </div>
             )}
             {itemsHtml.length > 0 ? <div className={classNames(`${clsPrefix}-items-wrapper`)}>{itemsHtml}</div>
@@ -114,7 +116,6 @@ export class Select extends Component {
             <span className={(`${clsPrefix}-selected-value-label`)}>{selectedItemLabel}</span>
           </div>
           <img src={DropDownIcon} alt="down-icon" className={classNames(`${clsPrefix}-arrow`)} />
-          {/* <Icon className={classNames(`${clsPrefix}-arrow`)} type="down" /> */}
         </div>
       </Popover>
     );

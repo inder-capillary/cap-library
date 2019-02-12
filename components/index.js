@@ -1,5 +1,5 @@
 import * as CapIcons from './assets/icons';
-export {CapIcons};
+export { CapIcons };
 export { default as CapButton } from './CapButton';
 export { default as CapListLayout } from './CapListLayout';
 export { default as CapSideBar } from './CapSideBar';
@@ -18,7 +18,7 @@ export { default as CapDatePicker } from './CapDatePicker';
 export { default as CapDateRangePicker } from './CapDateRangePicker';
 export { default as CapHeader } from './CapHeader';
 export { default as CapCard } from './CapCard';
+export { default as CapInput } from './CapInput';
 export { default as CapCheckbox } from './CapCheckbox';
 export { default as CapSlider } from './CapSlider';
-
 //export components

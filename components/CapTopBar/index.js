@@ -5,12 +5,14 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Layout, Menu, Divider, Popover } from 'antd';
 import classNames from 'classnames';
 import { Select } from './Select';
 import './_capTopBar.scss';
 
 import SettingsIcon from '../assets/icons/settings.svg';
+import LogoutIcon from '../assets/icons/logout.svg';
 
 const { Header } = Layout;
 
@@ -33,7 +35,7 @@ class CapTopBar extends React.Component { // eslint-disable-line react/prefer-st
   }
 
   render() {
-    const { primarySelectProps, secondarySelectProps, menuProps, userName, onSettingsClick, onLogoutClick } = this.props;
+    const { primarySelectProps, secondarySelectProps, menuProps, userName, onSettingsClick, onLogoutClick, logoutText } = this.props;
     const { showUserPopover } = this.state;
     return (
       <React.Fragment>
@@ -87,7 +89,10 @@ class CapTopBar extends React.Component { // eslint-disable-line react/prefer-st
                   overlayClassName={classNames(`${clsPrefix}-user-popover`)}
                   onVisibleChange={this.onUserPopoverVisibleChange}
                   content={(
-                    <div onClick={onLogoutClick} className={classNames(`${clsPrefix}-user-popover-item`)}>Logout</div>
+                    <div onClick={onLogoutClick} className={classNames(`${clsPrefix}-user-popover-item`)}>
+                      <div>{logoutText}</div>
+                      <img src={LogoutIcon} alt="" />
+                    </div>
                   )}>
                   <div onClick={this.showUserPopover} className={classNames(`${clsPrefix}-user`)}>
                     {userName[0]}
@@ -105,8 +110,17 @@ class CapTopBar extends React.Component { // eslint-disable-line react/prefer-st
   }
 }
 
-CapTopBar.propTypes = {
+CapTopBar.defaultProps = {
+  logoutText: "Logout",
+};
 
+CapTopBar.propTypes = {
+  primarySelectProps: PropTypes.object,
+  secondarySelectProps: PropTypes.object,
+  menuProps: PropTypes.object,
+  onSettingsClick: PropTypes.func,
+  logoutText: PropTypes.string,
+  onLogoutClick: PropTypes.func,
 };
 
 export default CapTopBar;

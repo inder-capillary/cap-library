@@ -59,7 +59,7 @@ export default class CapSideBar extends React.Component {
   }
 
   getTreeNodes = (data) => {
-    const { selectedMenuItem, defaultActiveKey } = this.props;
+    const { selectedMenuItem, defaultActiveKey, onLinkClick } = this.props;
     return data.map((item) => {
       const title = <span title={item.title}>{item.title}</span>;
       if (item.children) {
@@ -82,7 +82,7 @@ export default class CapSideBar extends React.Component {
           disabled
           className={classNames(`${clsPrefix}-leaf-node`, { selected: selectedMenuItem === item.key })}
           key={item.key}
-          header={<a href={item.link}>{title}</a>}
+          header={onLinkClick ? <div className="link-item" onClick={() => { onLinkClick(item); }}>{title}</div> : <a href={item.link}>{title}</a>}
         />
       );
     });
@@ -91,7 +91,7 @@ export default class CapSideBar extends React.Component {
   render() {
     const { showSearchLoader, allSearchResults } = this.state;
     const {
-      sidebarItems, defaultActiveKey, searchSupportPortalUrl, searchData, handleSearch,
+      sidebarItems, defaultActiveKey, searchSupportPortalUrl, searchData, handleSearch, onLinkClick,
     } = this.props;
     return (
       <div className={classNames(`${clsPrefix}`)}>
@@ -100,6 +100,7 @@ export default class CapSideBar extends React.Component {
           searchData={searchData || allSearchResults}
           onSearch={handleSearch || this.debouncedSearch}
           isLoading={showSearchLoader}
+          onLinkClick={onLinkClick}
         />
         <Collapse
           defaultActiveKey={defaultActiveKey}
@@ -122,4 +123,5 @@ CapSideBar.propTypes = {
   searchData: PropTypes.array,
   handleSearch: PropTypes.func,
   searchSupportPortalUrl: PropTypes.string,
+  onLinkClick: PropTypes.func,
 };
