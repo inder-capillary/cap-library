@@ -1,0 +1,5 @@
+cap-ui-library (1.0.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- vagrant <vagrant@devint>  Wed, 13 Feb 2019 07:03:09 +0000
