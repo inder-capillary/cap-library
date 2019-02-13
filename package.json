@@ -6,6 +6,7 @@
   "author": "meharaj",
   "repository": "https://github.com/Capillary/cap-ui-library.git",
   "private": true,
+  "homepage": "/ui-library-v2/",
   "dependencies": {
     "@babel/core": "7.1.6",
     "@capillarytech/cap-style-guide": "^1.1.3",
