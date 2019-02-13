@@ -85,7 +85,6 @@ export default class NavigationBarDoc extends Component { // eslint-disable-line
   }
 
   onSettingsClick = () => {
-
   }
 
   onLogoutClick = () => {

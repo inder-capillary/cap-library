@@ -101,7 +101,10 @@ class CapTopBar extends React.Component { // eslint-disable-line react/prefer-st
               )
             }
             {onSettingsClick
-              && <div className={classNames(`${clsPrefix}-setting`)}><img src={SettingsIcon} alt="" /></div>
+              && <div onClick={onSettingsClick} className={classNames(`${clsPrefix}-setting`)}><img src={SettingsIcon} alt="" /></div>
+            }
+            {
+              this.props.children
             }
           </Header>
         </Layout>
