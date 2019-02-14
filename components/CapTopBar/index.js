@@ -53,6 +53,7 @@ class CapTopBar extends React.Component { // eslint-disable-line react/prefer-st
               {secondarySelectProps
                 && (
                   <Select
+                    className="secondary-select"
                     showCapillaryIcon
                     {...secondarySelectProps} />
                 )}

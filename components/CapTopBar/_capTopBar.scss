@@ -12,7 +12,7 @@ $orgSelectPrefix: top-bar-select;
     color: $CAP_G01;
   }
 }
-.#{$clsPrefix}-header {
+.ant-layout-header.#{$clsPrefix}-header{
   background-color: #ffffff;
   padding: 0;
   display: flex;
@@ -22,7 +22,7 @@ $orgSelectPrefix: top-bar-select;
 }
 
 .#{$clsPrefix}-divider {
-  height: 70%;
+  height: $CAP_SPACE_20;
   align-self: center;
 }
 
@@ -33,12 +33,15 @@ $orgSelectPrefix: top-bar-select;
   justify-content: space-between;
   cursor: pointer;
   padding: 0px 0px 0px 8px;
-  margin: 0 8px 0 20px;
+  margin: 0 0 0 20px;
   height: 48px;
   border: 1px solid transparent;
   &.open {
     border-radius: 4px;
     border: 1px solid $CAP_G06;
+  }
+  &.secondary-select {
+    margin-left: 0;
   }
 }
 
@@ -56,9 +59,16 @@ $orgSelectPrefix: top-bar-select;
   max-width: 120px;
 }
 
+.#{$clsPrefix}-menu {
+  margin-right: $CAP_SPACE_48;
+}
+
 .#{$clsPrefix}-menu-item {
   &.ant-menu-item {
     color: $CAP_G04;
+  }
+  &.ant-menu-item-selected {
+    font-weight: $FONT_WEIGHT_MEDIUM;
   }
   &.ant-menu-item-selected,
   &.ant-menu-item:hover {
@@ -70,9 +80,12 @@ $orgSelectPrefix: top-bar-select;
 .#{$clsPrefix}-setting {
   margin: 0 8px;
   cursor: pointer;
+  img {
+    width: $CAP_SPACE_20;
+  }
 }
 .#{$clsPrefix}-user {
-  margin: 0 8px 0 60px;
+  margin: 0 8px;
   cursor: pointer;
 }
 

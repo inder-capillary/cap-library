@@ -61,7 +61,7 @@ export class Select extends Component {
   }
 
   render() {
-    const { items, selectedItem, showSearch, showHeader, selectPlaceholder, showCapillaryIcon } = this.props;
+    const { items, selectedItem, showSearch, showHeader, selectPlaceholder, showCapillaryIcon, className } = this.props;
     const { visible, searchText } = this.state;
     const itemsHtml = this.getItems();
     const selectedItemIndex = findIndex(items, (item) => item.value === selectedItem);
@@ -103,10 +103,10 @@ export class Select extends Component {
           </Fragment>
         )}
       >
-        <div className={classNames(`${clsPrefix}-selection`, { open: !!visible })}>
+        <div className={classNames(`${clsPrefix}-selection`, { open: !!visible }, className)}>
           <div className={(`${clsPrefix}-selected-value`)}>
             {
-              showCapillaryIcon ? <img src={CapillaryLogo} alt="" />
+              showCapillaryIcon ? <img style={{ marginRight: "8px" }} src={CapillaryLogo} alt="" />
                 : showSelectedIcon && (
                   <div className={(`${clsPrefix}-selected-icon`)}>
                     {selectedItemLabel[0]}
@@ -138,4 +138,5 @@ Select.propTypes = {
   items: PropTypes.array,
   showCapillaryIcon: PropTypes.bool,
   selectPlaceholder: PropTypes.string,
+  className: PropTypes.string,
 };
