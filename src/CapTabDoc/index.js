@@ -9,6 +9,13 @@ import "./info.scss";
 
 const infoData = [
   {
+    key: "0",
+    property: "panes",
+    description: "array of object and object where each object is tabPane",
+    type: "array",
+    default: "",
+  },
+  {
     key: "1",
     property: "activeKey",
     description: "Current TabPane's key",
@@ -120,15 +127,17 @@ const infoData = [
     type: "Function",
     default: "-",
   },
+];
+
+const tabPaneData = [
   {
-    key: "17",
-    property: "panes",
-    description: "array of object and object has the property of content and title",
-    type: "array",
+    key: 'pane01',
+    property: "content",
+    description: 'Component | Container which has to be shown as tab content',
+    type: "react node",
     default: "",
   },
 ];
-
 export default class CapTabDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const cardProps = {
@@ -138,17 +147,21 @@ export default class CapTabDoc extends Component { // eslint-disable-line react/
       options: <span></span>,
       key: 'card',
     };
-    const panes = [{content: <CapCard {...cardProps} />, title: 'tab 1'}, {content: 'conatiner 2', title: 'tab 2'}, {content: 'conatiner 3', title: 'tab 3'}];
-    const panes1 = [{content: 'conatiner 1', title: 'tab 1', disabled: 'true'}, {content: 'conatiner 2', title: 'tab 2', disabled: 'true'}, {content: 'conatiner 3', title: 'tab 3', disabled: 'true'}];
+    const panes = [{content: <CapCard {...cardProps} />, tab: 'tab 1', key: 'tab01'}, {content: 'conatiner 2', tab: 'tab 2', key: 'tab02'}, {content: 'conatiner 3', tab: 'tab 3', key: 'tab03'}];
+    const panes1 = [{content: 'conatiner 1', tab: 'tab 1', disabled: 'true', key: 'tab11'}, {content: 'conatiner 2', tab: 'tab 2', disabled: 'true', key: 'tab12'}, {content: 'conatiner 3', tab: 'tab 3', disabled: 'true', key: 'tab13'}];
 
     return (
       <div className="cap-tab-info">
         <div className="cap-tab-showcase">
-          <CapTab panes={panes} />
+          <CapTab panes={panes} onChange={(selected) => { console.log(selected); }} />
           <CapTab panes={panes1} disabled />
 
         </div>
         <PropertyTable data={infoData} />
+
+        <PropertyTable data={tabPaneData} title="TabPane Props" />
+
+
       </div>
     );
   }
