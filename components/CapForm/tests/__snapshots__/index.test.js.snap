@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CapForm /> CapForm renders correctly 1`] = `
+<form
+  className="ant-form ant-form-horizontal cap-form"
+  onSubmit={[Function]}
+/>
+`;

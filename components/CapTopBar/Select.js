@@ -116,6 +116,7 @@ export class Select extends Component {
             <span className={(`${clsPrefix}-selected-value-label`)}>{selectedItemLabel}</span>
           </div>
           <img src={DropDownIcon} alt="down-icon" className={classNames(`${clsPrefix}-arrow`)} />
+          {/* <Icon className={classNames(`${clsPrefix}-arrow`)} type="down" /> */}
         </div>
       </Popover>
     );

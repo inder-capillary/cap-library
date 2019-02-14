@@ -16,8 +16,14 @@ import CapDateRangePickerDoc from '../src/CapDateRangePickerDoc';
 import CapDatePickerDoc from '../src/CapDatePickerDoc';
 import CapHeaderDoc from '../src/CapHeaderDoc';
 import CapCardDoc from '../src/CapCardDoc';
+import CapRowDoc from '../src/CapRowDoc';
+import CapColumnDoc from '../src/CapColumnDoc';
+import CapRadioDoc from '../src/CapRadioDoc';
+import CapRadioGroupDoc from '../src/CapRadioGroupDoc';
+import CapProgressDoc from '../src/CapProgressDoc';
+import CapFormDoc from '../src/CapFormDoc';
+import CapFormItemDoc from '../src/CapFormItemDoc';
 //imported for docs
-
 
 class ComponentSwitcher extends Component {
   render() {
@@ -53,9 +59,20 @@ class ComponentSwitcher extends Component {
         return <CapHeaderDoc />;
       case 'capCard':
         return <CapCardDoc />;
-        //components for docs
-
-
+      case 'capRow':
+        return <CapRowDoc />;
+      case 'capColumn':
+        return <CapColumnDoc />;
+      case 'capRadio':
+        return <CapRadioDoc />;
+      case 'capRadioGroup':
+        return <CapRadioGroupDoc />;
+      case 'capProgress':
+        return <CapProgressDoc />;
+      case 'capForm':
+        return <CapFormDoc />;
+      case 'capFormItem':
+        return <CapFormItemDoc />;
       default:
         return null;
     }

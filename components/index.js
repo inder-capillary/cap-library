@@ -25,10 +25,13 @@ export { default as CapCheckbox } from './CapCheckbox';
 export { default as CapSlider } from './CapSlider';
 export { default as CapActionBar } from './CapActionBar';
 export { default as CapFormItem } from './CapFormItem';
-export { default as CapRadioButton } from './CapRadioButton';
 export { default as CapRadioGroup } from './CapRadioGroup';
 export { default as CapRow } from './CapRow';
 export { default as CapColumn } from './CapColumn';
 export { default as CapSearchBar } from './CapSearchBar';
 export { default as CapTable } from './CapTable';
+export { default as CapForm } from './CapForm';
+export { default as CapRadio } from './CapRadio';
+export { default as CapProgress } from './CapProgress';
+export { default as CapRadioButton } from './CapRadioButton';
 //export components

@@ -44,6 +44,13 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             <MenuItem key="capDateRangePicker"><span>CapDateRangePicker</span></MenuItem>
             <MenuItem key="capHeader"><span>CapHeader</span></MenuItem>
             <MenuItem key="capCard"><span>CapCard</span></MenuItem>
+            <MenuItem key="capRow"><span>CapRow</span></MenuItem>
+            <MenuItem key="capColumn"><span>CapColumn</span></MenuItem>
+            <MenuItem key="capRadio"><span>CapRadio</span></MenuItem>
+            <MenuItem key="capRadioGroup"><span>CapRadioGroup</span></MenuItem>
+            <MenuItem key="capProgress"><span>CapProgress</span></MenuItem>
+            <MenuItem key="capForm"><span>CapForm</span></MenuItem>
+            <MenuItem key="capFormItem"><span>CapFormItem</span></MenuItem>
             {/*Menu items for components*/}
 
 
