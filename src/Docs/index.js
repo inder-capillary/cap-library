@@ -27,7 +27,7 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             overflow: 'auto', height: '100vh', position: 'fixed', left: 0,
           }}>
           <div className="cap-logo-container">
-            <img className="cap-logo" style={{ width: "180px", margin: "10px" }} src={logo} alt="Capillary Technologies" />
+            <img className="cap-logo" style={{ width: "150px", margin: "10px" }} src={logo} alt="Capillary Technologies" />
           </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.state.menuSelected]} onClick={this.onMenuItemClick}>
             <MenuItem key="capButton"><span className="nav-text">CapButton</span></MenuItem>
@@ -44,6 +44,13 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             <MenuItem key="capDateRangePicker"><span>CapDateRangePicker</span></MenuItem>
             <MenuItem key="capHeader"><span>CapHeader</span></MenuItem>
             <MenuItem key="capCard"><span>CapCard</span></MenuItem>
+            <MenuItem key="capRow"><span>CapRow</span></MenuItem>
+            <MenuItem key="capColumn"><span>CapColumn</span></MenuItem>
+            <MenuItem key="capRadio"><span>CapRadio</span></MenuItem>
+            <MenuItem key="capRadioGroup"><span>CapRadioGroup</span></MenuItem>
+            <MenuItem key="capProgress"><span>CapProgress</span></MenuItem>
+            <MenuItem key="capForm"><span>CapForm</span></MenuItem>
+            <MenuItem key="capFormItem"><span>CapFormItem</span></MenuItem>
             {/*Menu items for components*/}
 
 

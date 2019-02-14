@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {
-  Input, Icon, Popover, Spin,
+  Input, Popover, Spin,
 } from 'antd';
 
 import './_menuSearch.scss';
 import WarningIcon from '../assets/icons/warning.svg';
 import NewTabIcon from '../assets/icons/open-in-new.svg';
+import SearchIcon from '../assets/icons/search.svg';
+import CloseIcon from '../assets/icons/close.svg';
 const clsPrefix = 'menu-search';
 
 export class MenuSearch extends Component {
@@ -61,7 +63,7 @@ export class MenuSearch extends Component {
     miniWords.forEach((miniWord, index) => {
       if (miniWord) {
         if (searchText && miniWord.toLowerCase() === searchText.toLowerCase()) {
-          html.push(<span key={index} data-value={text} className="highlighted-item"><strong data-value={text}>{miniWord}</strong></span>);
+          html.push(<span key={index} data-value={text} className={classNames(`${clsPrefix}-highlighted-item`)}><span data-value={text}>{miniWord}</span></span>);
         } else {
           html.push(<span key={index} data-value={text}>{miniWord}</span>);
         }
@@ -70,30 +72,26 @@ export class MenuSearch extends Component {
     return <span data-value={text}>{html}</span>;
   }
 
+
+  onItemClick = (item) => {
+    const { onLinkClick } = this.props;
+    this.setState({ visible: false });
+    if (onLinkClick) {
+      onLinkClick(item);
+    }
+  }
+
   renderItem = (item) => {
-    const { handleItemClick } = this.props;
+    const { onLinkClick } = this.props;
     const linkProps = { href: item.link };
     const newTabLinkProps = { href: item.link, target: "_blank" };
     if (item.target) { linkProps.target = item.target; }
-    if (handleItemClick) {
-      linkProps.onClick = (e) => {
-        e.persist();
-        this.setState({
-          searchText: "",
-        }, () => item.passBackId ? handleItemClick(e, item.passBackId) : handleItemClick(e));
-      };
-      newTabLinkProps.onClick = (e) => {
-        e.persist();
-        if (item.passBackId) {
-          handleItemClick(e, item.passBackId);
-        } else {
-          handleItemClick(e);
-        }
-      };
-    }
     return (
       <div className="link-items" key={`item-${item.key}`}>
-        <a {...linkProps} className={classNames(`${clsPrefix}-ellipsis`)}>{this.generateHighlightedText(item.title)}</a>
+        {onLinkClick
+          ? <div onClick={() => { this.onItemClick(item); }} className={classNames(`${clsPrefix}-ellipsis`, `${clsPrefix}-item-link`)}>{this.generateHighlightedText(item.title)}</div>
+          : <a onClick={this.onItemClick} {...linkProps} className={classNames(`${clsPrefix}-ellipsis`)}>{this.generateHighlightedText(item.title)}</a>
+        }
         <a {...newTabLinkProps}>
           <div className="new-tab-link-wrapper"><img src={NewTabIcon} alt="" /></div>
         </a>
@@ -167,13 +165,15 @@ export class MenuSearch extends Component {
         }
       >
         <div className={classNames(`${clsPrefix}`)}>
-          <Input
-            placeholder={placeholder}
-            onChange={this.handleSearch}
-            value={searchText}
-          />
-          <Icon type="search" />
-          {searchText && <Icon onClick={this.clearSearch} type="close" />}
+          <div style={{ position: 'relative' }}>
+            <Input
+              placeholder={placeholder}
+              onChange={this.handleSearch}
+              value={searchText}
+            />
+            <img className="icon-search" src={SearchIcon} alt="" />
+            {searchText && <span onClick={this.clearSearch}><img className="icon-close" src={CloseIcon} alt="" /></span>}
+          </div>
         </div>
       </Popover>
     );
@@ -192,10 +192,10 @@ MenuSearch.propTypes = {
   fetchingMenuSearchResults: PropTypes.bool,
   placeholder: PropTypes.string,
   onSearch: PropTypes.func,
-  handleItemClick: PropTypes.func,
   noSearchResultsFoundText: PropTypes.string,
   searchSupportPortalText: PropTypes.string,
   isAdvancedSearching: PropTypes.bool,
   advancedSearchMessage: PropTypes.string,
   searchSupportPortalUrl: PropTypes.string,
+  onLinkClick: PropTypes.func,
 };

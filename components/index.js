@@ -1,5 +1,7 @@
+import './styles/ant_theme_vars.less';
 import * as CapIcons from './assets/icons';
-export {CapIcons};
+export { CapIcons };
+
 export { default as CapButton } from './CapButton';
 export { default as CapListLayout } from './CapListLayout';
 export { default as CapSideBar } from './CapSideBar';
@@ -18,4 +20,18 @@ export { default as CapDatePicker } from './CapDatePicker';
 export { default as CapDateRangePicker } from './CapDateRangePicker';
 export { default as CapHeader } from './CapHeader';
 export { default as CapCard } from './CapCard';
+export { default as CapInput } from './CapInput';
+export { default as CapCheckbox } from './CapCheckbox';
+export { default as CapSlider } from './CapSlider';
+export { default as CapActionBar } from './CapActionBar';
+export { default as CapFormItem } from './CapFormItem';
+export { default as CapRadioGroup } from './CapRadioGroup';
+export { default as CapRow } from './CapRow';
+export { default as CapColumn } from './CapColumn';
+export { default as CapSearchBar } from './CapSearchBar';
+export { default as CapTable } from './CapTable';
+export { default as CapForm } from './CapForm';
+export { default as CapRadio } from './CapRadio';
+export { default as CapProgress } from './CapProgress';
+export { default as CapRadioButton } from './CapRadioButton';
 //export components

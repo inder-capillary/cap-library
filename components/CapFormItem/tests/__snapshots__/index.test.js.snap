@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CapFormItem /> CapFormItem renders correctly 1`] = `
+<div
+  className="ant-row ant-form-item cap-form-item"
+>
+  <div
+    className="ant-form-item-control-wrapper"
+  >
+    <div
+      className="ant-form-item-control"
+    >
+      <span
+        className="ant-form-item-children"
+      />
+    </div>
+  </div>
+</div>
+`;

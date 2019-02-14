@@ -3,25 +3,37 @@
 $menuSearch: menu-search;
 
 .#{$menuSearch} {
-  position: relative;
   margin: 16px 0 20px 0;
   padding-right: 8px;
-  .anticon-close {
-    position: absolute;
-    right: 25px;
-    top: 30%;
-    color: $CAP_ICON;
-  }
-  .anticon-search {
-    left: 10px;
-    position: absolute;
-    top: 30%;
-    color: $CAP_ICON;
-  }
+  background-color: $CAP_WHITE;
   input {
+    padding: 4px 28px;
     height: 40px;
-    padding: 4px 30px;
   }
+  .icon-close {
+    position: absolute;
+    right: 8px;
+    top: 33%;
+    color: $CAP_ICON;
+    width: 18px;
+    cursor: pointer;
+  }
+  .icon-search {
+    left: 8px;
+    top: 33%;
+    position: absolute;
+    color: $CAP_ICON;
+    width: 14px;
+  }
+}
+
+.#{$menuSearch}-highlighted-item {
+  font-weight: $FONT_WEIGHT_MEDIUM;
+}
+
+.#{$menuSearch}-item-link {
+  cursor: pointer;
+  color: map-get($CAP_SECONDARY, base);
 }
 
 .#{$menuSearch}-no-results {
@@ -105,7 +117,7 @@ $menuSearch: menu-search;
       }
     }
     .link-items:hover {
-      background-color: #ebebeb;
+      background-color: $BG_01;
       .new-tab-link-wrapper {
         display: flex;
         border-left: 1px solid #fff;

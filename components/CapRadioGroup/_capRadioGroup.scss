@@ -1,7 +1,17 @@
 @import "~@capillarytech/cap-style-guide/styles/main";
+@import "../styles/_variables.scss";
 
 .cap-radio-group{
   .cap-radio:not(:last-child){
     margin-right: 24px;
   }
+}
+
+.ant-radio-checked .ant-radio-inner {
+    background-color:map-get($CAP_PRIMARY, base);
+}
+
+.ant-radio-inner:after {
+    background-color:$CAP_WHITE;
+
 }
