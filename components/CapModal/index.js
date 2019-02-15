@@ -6,22 +6,28 @@
 
 import React from 'react';
 import { Modal } from 'antd';
+import classNames from 'classnames';
 import './_capModal.scss';
-// import styled from 'styled-components';
 
+const { info, success, error, warning, confirm } = Modal;
 
-class CapModal extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  render() {
-    const { children } = this.props;
-    return (
-      <div>
-        <Modal {...this.props}>
-          {children}
-        </Modal>
-      </div>
-    );
-  }
-}
+const clsPrefix = 'cap-modal';
+
+const CapModal = (props) => {
+  const { className, wrapClassName, ...rest } = props;
+  return (
+    <Modal
+      className={classNames(clsPrefix, className)}
+      wrapClassName={classNames(`${clsPrefix}-wrap`, className)}
+      {...rest} />
+  );
+};
+
+CapModal.info = info;
+CapModal.confirm = confirm;
+CapModal.success = success;
+CapModal.error = error;
+CapModal.warning = warning;
 
 CapModal.propTypes = {
 

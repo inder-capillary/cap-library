@@ -11,6 +11,7 @@ import CapSlideBoxDoc from '../src/CapSlideBoxDoc';
 import CapHeadingDoc from '../src/CapHeadingDoc';
 import CapSwitchDoc from '../src/CapSwitchDoc';
 import CapInputDoc from '../src/CapInputDoc';
+import CapTableDoc from '../src/CapTableDoc';
 import CapSelectDoc from '../src/CapSelectDoc';
 import CapDateRangePickerDoc from '../src/CapDateRangePickerDoc';
 import CapDatePickerDoc from '../src/CapDatePickerDoc';
@@ -23,7 +24,12 @@ import CapRadioGroupDoc from '../src/CapRadioGroupDoc';
 import CapProgressDoc from '../src/CapProgressDoc';
 import CapFormDoc from '../src/CapFormDoc';
 import CapFormItemDoc from '../src/CapFormItemDoc';
+import CapMultiSelectWithTreeDoc from '../src/CapMultiSelectWithTreeDoc';
+import CapModalDoc from '../src/CapModalDoc';
+import CapSpinDoc from '../src/CapSpinDoc';
+import CapPopoverDoc from '../src/CapPopoverDoc';
 //imported for docs
+
 
 class ComponentSwitcher extends Component {
   render() {
@@ -49,6 +55,8 @@ class ComponentSwitcher extends Component {
         return <CapSwitchDoc />;
       case 'capInput':
         return <CapInputDoc />;
+      case 'capTable':
+        return <CapTableDoc />;
       case 'capSelect':
         return <CapSelectDoc />;
       case 'capDatePicker':
@@ -73,6 +81,14 @@ class ComponentSwitcher extends Component {
         return <CapFormDoc />;
       case 'capFormItem':
         return <CapFormItemDoc />;
+      case 'capMultiSelectWithTree':
+        return <CapMultiSelectWithTreeDoc />;
+      case 'capModal':
+        return <CapModalDoc />;
+      case 'capSpin':
+        return <CapSpinDoc />;
+      case 'capPopover':
+        return <CapPopoverDoc />;
       default:
         return null;
     }

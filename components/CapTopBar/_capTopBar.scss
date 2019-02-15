@@ -12,7 +12,7 @@ $orgSelectPrefix: top-bar-select;
     color: $CAP_G01;
   }
 }
-.ant-layout-header.#{$clsPrefix}-header{
+.ant-layout-header.#{$clsPrefix}-header {
   background-color: #ffffff;
   padding: 0;
   display: flex;
@@ -63,7 +63,7 @@ $orgSelectPrefix: top-bar-select;
   margin-right: $CAP_SPACE_48;
 }
 
-.#{$clsPrefix}-menu-item {
+.ant-menu-item.#{$clsPrefix}-menu-item {
   &.ant-menu-item {
     color: $CAP_G04;
   }

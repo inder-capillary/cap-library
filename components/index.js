@@ -34,4 +34,6 @@ export { default as CapForm } from './CapForm';
 export { default as CapRadio } from './CapRadio';
 export { default as CapProgress } from './CapProgress';
 export { default as CapRadioButton } from './CapRadioButton';
+export { default as CapMultiSelectWithTree } from './CapMultiSelectWithTree';
+export { default as CapPopover } from './CapPopover';
 //export components

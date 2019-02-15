@@ -2,7 +2,7 @@
 
 exports[`<CapHeading /> CapHeading renders correctly 1`] = `
 <div
-  className="sc-bdVaJa lmASSF"
+  className="sc-bdVaJa btlsTd"
   type="h5"
 />
 `;

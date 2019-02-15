@@ -17,7 +17,7 @@ class CapTab extends React.Component { // eslint-disable-line react/prefer-state
   constructor(props) {
     super(props);
     this.state = {
-      activeKey: (props.panes ? `${props.panes[0].title}_0` : 0),
+      activeKey: (props.panes ? `${props.panes[0].key}` : 0),
     };
   }
 

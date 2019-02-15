@@ -1,0 +1,132 @@
+@import "../styles/_variables.scss";
+
+$multiSelect: cap-multi-tree-select;
+
+.#{$multiSelect}-selection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 8px;
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  border: 1px solid $CAP_G06;
+  &:hover {
+    border: 1px solid $CAP_G11;
+  }
+  &.open {
+    border: 1px solid $CAP_G01;
+  }
+  &.disabled {
+    border: 1px solid $CAP_G07;
+    cursor: not-allowed;
+  }
+}
+
+.#{$multiSelect}-left-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 70%;
+  &.placeholder {
+    color: $CAP_G04;
+  }
+  &.placeholder.disabled {
+    color: $CAP_G06;
+  }
+}
+
+.ant-popover.#{$multiSelect}-popover {
+  padding-top: 0;
+  .ant-popover-arrow {
+    display: none;
+  }
+  .cancel-button {
+    margin-left: 8px;
+  }
+  .close-icon {
+    width: 20px;
+    cursor: pointer;
+  }
+  .child-node.contains-info-icon > span:nth-child(3),
+  .parent-contains-info-icon > span:nth-child(3) {
+    max-width: 85%;
+    width: 100%;
+  }
+  .ant-tree li {
+    padding-top: 16px;
+  }
+  .select-all-tree {
+    & > span:first-child {
+      visibility: hidden;
+    }
+  }
+  .options {
+    display: flex;
+    padding: $CAP_SPACE_08 $CAP_SPACE_08;
+    justify-content: space-between;
+  }
+  .ant-tree {
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 8px 0;
+    border-bottom: 1px solid #c2c2c2;
+    li {
+      padding-bottom: 0;
+      .ant-tree-node-content-wrapper:hover {
+        background-color: transparent;
+      }
+    }
+  }
+  .ant-popover-inner-content {
+    padding: 0;
+    .search-input {
+      margin: 8px 8px 0 8px;
+    }
+    .ant-input-affix-wrapper {
+      height: 40px;
+    }
+  }
+  .showing-spinner {
+    min-height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ant-tree li .ant-tree-node-content-wrapper:hover,
+  .ant-tree li .ant-tree-node-content-wrapper.ant-tree-node-selected {
+    background-color: transparent;
+  }
+  .ant-tree li .ant-tree-node-content-wrapper {
+    cursor: default;
+  }
+  .multi-select-title {
+    display: flex;
+    justify-content: space-between;
+    .info-tooltip {
+      margin-left: 16px;
+      margin-right: 8px;
+      cursor: pointer;
+    }
+    .multi-select-main-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+.#{$multiSelect}-no-results {
+  display: flex;
+  padding: 24px;
+  justify-content: center;
+  flex-direction: column;
+  .#{$multiSelect}-no-results-text {
+    margin-top: 8px;
+    text-align: center;
+    color: $CAP_G05;
+    font-size: 12px;
+  }
+}
