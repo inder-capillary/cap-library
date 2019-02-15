@@ -1,10 +1,14 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
 
-// import CapSpin from '../index';
+import React from 'react';
+import { shallow } from 'enzyme';
+import { Spin } from 'antd';
+
+import CapSpin from '../index';
 
 describe('<CapSpin />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  const wrapper = shallow(<CapSpin />);
+
+  it('Should render antd spin', () => {
+    expect(wrapper.find(Spin)).toHaveLength(1);
   });
 });

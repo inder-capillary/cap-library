@@ -24,7 +24,11 @@ import CapRadioGroupDoc from '../src/CapRadioGroupDoc';
 import CapProgressDoc from '../src/CapProgressDoc';
 import CapFormDoc from '../src/CapFormDoc';
 import CapFormItemDoc from '../src/CapFormItemDoc';
+import CapModalDoc from '../src/CapModalDoc';
+import CapSpinDoc from '../src/CapSpinDoc';
+import CapPopoverDoc from '../src/CapPopoverDoc';
 //imported for docs
+
 
 class ComponentSwitcher extends Component {
   render() {
@@ -76,6 +80,12 @@ class ComponentSwitcher extends Component {
         return <CapFormDoc />;
       case 'capFormItem':
         return <CapFormItemDoc />;
+      case 'capModal':
+        return <CapModalDoc />;
+      case 'capSpin':
+        return <CapSpinDoc />;
+      case 'capPopover':
+        return <CapPopoverDoc />;
       default:
         return null;
     }
