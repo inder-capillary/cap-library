@@ -19,7 +19,7 @@ $sidebar: cap-sidebar;
   padding-left: $CAP_SPACE_16;
 }
 
-.#{$sidebar}-accordian {
+.ant-collapse.#{$sidebar}-accordian {
   position: relative;
   overflow-y: auto;
   height: calc(100vh - 152px);

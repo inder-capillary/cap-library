@@ -24,6 +24,7 @@ import CapRadioGroupDoc from '../src/CapRadioGroupDoc';
 import CapProgressDoc from '../src/CapProgressDoc';
 import CapFormDoc from '../src/CapFormDoc';
 import CapFormItemDoc from '../src/CapFormItemDoc';
+import CapMultiSelectWithTreeDoc from '../src/CapMultiSelectWithTreeDoc';
 import CapModalDoc from '../src/CapModalDoc';
 import CapSpinDoc from '../src/CapSpinDoc';
 import CapPopoverDoc from '../src/CapPopoverDoc';
@@ -80,6 +81,8 @@ class ComponentSwitcher extends Component {
         return <CapFormDoc />;
       case 'capFormItem':
         return <CapFormItemDoc />;
+      case 'capMultiSelectWithTree':
+        return <CapMultiSelectWithTreeDoc />;
       case 'capModal':
         return <CapModalDoc />;
       case 'capSpin':
