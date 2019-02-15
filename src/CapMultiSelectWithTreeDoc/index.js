@@ -317,6 +317,7 @@ export default class CapMultiSelectWithTreeDoc extends Component { // eslint-dis
               }}
               enableDebouncedSearch
               maxValuesToSelect={5}
+              disableSelectAll
               showSelectButtonToolTip
               selectTooltipText="Only 5 values can be selected"
             />
