@@ -4,7 +4,7 @@
  */
 import React, { Component } from "react";
 import PropertyTable from '../../helpers/PropertyTable';
-import { CapCard } from "../../components";
+import { CapCard, CapButton } from "../../components";
 import "./info.scss";
 import {Message as MessageIcon, View as ViewIcon} from '../../components/assets/icons';
 const Card = CapCard.CapCard;
@@ -77,6 +77,7 @@ export default class CapCardDoc extends Component { // eslint-disable-line react
         content: "Get YLG's Beauty Secrets Card & avail 2x beauty services for half the price across YLG Salon. Visit Nearest YLG Salon to know more. t {{optout}}",
         options: <ViewIcon />,
         key: 'prop - 1',
+        hoverOption: <CapButton>Edit</CapButton>,
       },
       {
         icon: <MessageIcon />,

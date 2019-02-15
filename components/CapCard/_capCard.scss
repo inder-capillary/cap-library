@@ -5,6 +5,22 @@
   border-radius: 4px;
   border: 0.5px solid $CAP_G07;
   max-height: 152px;
+  &.cap-card-has-hover-option:hover{
+    .cap-card-content{
+      background-color: $CAP_WHITE;
+      opacity: 0.2;
+    }
+    .cap-card-hover-option{
+      display: block;
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 40%;
+    }
+  }
+  .cap-card-hover-option{
+    display: none;
+  }
   .cap-card-title-icon{
     margin: $CAP_SPACE_20 $CAP_SPACE_20 0 $CAP_SPACE_20;
     display: inline-block;
