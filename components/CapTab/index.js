@@ -7,6 +7,7 @@
 import React from 'react';
 import './_capTab.scss';
 import PropTypes from 'prop-types';
+import { find } from 'lodash';
 import { Tabs } from "antd";
 // import styled from 'styled-components';
 
@@ -16,14 +17,14 @@ class CapTab extends React.Component { // eslint-disable-line react/prefer-state
   constructor(props) {
     super(props);
     this.state = {
-      activeKey: (props.panes ? `${props.panes[0].title}_0` : 0),
+      activeKey: (props.panes ? `${props.panes[0].key}` : 0),
     };
   }
 
   onChange = (activeKey) => {
     this.setState({ activeKey });
-    if (this.props.onTabChange) {
-      this.props.onTabChange(this.props);
+    if (this.props.onChange) {
+      this.props.onChange(find(this.props.panes, {key: activeKey}));
     }
   }
 
@@ -37,7 +38,10 @@ class CapTab extends React.Component { // eslint-disable-line react/prefer-state
             onChange={this.onChange}
             activeKey={this.state.activeKey}
             {...rest}>
-            { panes.map((pane, i) => <TabPane tab={pane.title} key={`${pane.title}_${i}`} disabled={pane.disabled} animated>{pane.content}</TabPane>)}
+            { panes.map((pane) => {
+              const {content, ...paneProps} = pane;
+              return <TabPane {...paneProps}>{content}</TabPane>;
+            } )}
           </Tabs>
         ) : <div></div>}
 
