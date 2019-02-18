@@ -1,6 +1,8 @@
 @import "../styles/_variables.scss";
 
-$multiSelect: cap-multi-tree-select;
+@import "../styles/_variables.scss";
+
+$multiSelect: cap-multi-select;
 
 .#{$multiSelect}-selection {
   display: flex;
@@ -53,6 +55,9 @@ $multiSelect: cap-multi-tree-select;
 
 .ant-popover.#{$multiSelect}-popover {
   padding-top: 0;
+  .ant-tree-switcher {
+    display: none;
+  }
   .ant-popover-arrow {
     display: none;
   }
@@ -63,9 +68,12 @@ $multiSelect: cap-multi-tree-select;
     width: 20px;
     cursor: pointer;
   }
-  .child-node.contains-info-icon > span:nth-child(3),
-  .parent-contains-info-icon > span:nth-child(3) {
-    max-width: 85%;
+  .with-info-icon > span:nth-child(3) {
+    max-width: 94%;
+    width: 100%;
+  }
+  .no-info-icon > span:nth-child(3) {
+    max-width: 90%;
     width: 100%;
   }
   .ant-tree li {
@@ -74,6 +82,9 @@ $multiSelect: cap-multi-tree-select;
   .select-all-tree {
     & > span:first-child {
       visibility: hidden;
+    }
+    & > span:nth-child(2) {
+      margin-left: 20px;
     }
   }
   .options {

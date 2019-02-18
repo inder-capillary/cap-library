@@ -28,6 +28,7 @@ import CapMultiSelectWithTreeDoc from '../src/CapMultiSelectWithTreeDoc';
 import CapModalDoc from '../src/CapModalDoc';
 import CapSpinDoc from '../src/CapSpinDoc';
 import CapPopoverDoc from '../src/CapPopoverDoc';
+import CapMultiSelectDoc from '../src/CapMultiSelectDoc';
 //imported for docs
 
 
@@ -89,6 +90,8 @@ class ComponentSwitcher extends Component {
         return <CapSpinDoc />;
       case 'capPopover':
         return <CapPopoverDoc />;
+      case 'capMultiSelect':
+        return <CapMultiSelectDoc />;
       default:
         return null;
     }
