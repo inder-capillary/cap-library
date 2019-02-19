@@ -153,7 +153,7 @@ export default class CapTabDoc extends Component { // eslint-disable-line react/
     return (
       <div className="cap-tab-info">
         <div className="cap-tab-showcase">
-          <CapTab panes={panes} onChange={(selected) => { console.log(selected); }} />
+          <CapTab panes={panes} />
           <CapTab panes={panes1} disabled />
 
         </div>

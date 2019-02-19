@@ -1,11 +1,15 @@
 @import '../styles/_variables.scss';
+$progress:cap-progress;
+
 .cap-progress-showcase{
     width:150px;
 }
 
-.ant-progress-circle-path {
-    stroke: $CAP_PURPLE !important;
-}
-.ant-progress-bg{
-    background-color:$CAP_PURPLE ;
+.ant-progress.#{$progress} {
+    .ant-progress-circle-path {
+        stroke: $CAP_PURPLE !important;
+    }
+    .ant-progress-bg{
+        background-color:$CAP_PURPLE ;
+    }
 }

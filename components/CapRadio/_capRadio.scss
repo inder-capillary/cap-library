@@ -1,11 +1,14 @@
 @import "~@capillarytech/cap-style-guide/styles/main";
 @import "../styles/_variables.scss";
 
-.ant-radio-checked .ant-radio-inner {
-    background-color:map-get($CAP_PRIMARY, base);
-}
-
-.ant-radio-inner:after {
-    background-color:$CAP_WHITE;
-
+$radioButton:cap-radio-button;
+.ant-radio.#{$radioButton}{
+    .ant-radio-checked .ant-radio-inner {
+        background-color:map-get($CAP_PRIMARY, base);
+    }
+    
+    .ant-radio-inner:after {
+        background-color:$CAP_WHITE;
+    
+    }
 }
