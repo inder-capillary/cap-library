@@ -16,7 +16,7 @@ import LogoutIcon from '../assets/icons/logout.svg';
 
 const { Header } = Layout;
 
-const clsPrefix = 'cap-navbar';
+const clsPrefix = 'cap-navbar-v2';
 
 class CapTopBar extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {

@@ -14,7 +14,7 @@ import CapRow from '../CapRow';
 
 export function CapCard(props) {
   return (
-    <div className="cap-card">
+    <div className="cap-card-v2">
       <CapRow>
         <CapColumn span={4}>
           <div className="cap-card-title-icon">{props.icon}</div>

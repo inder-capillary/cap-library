@@ -27,7 +27,7 @@ class CapSlider extends React.Component { // eslint-disable-line react/prefer-st
     const formatter = this.translateType(type);
     return (
       <div>
-        <Slider tipFormatter={formatter} {...rest} className={classNames("cap-slider", className)}>
+        <Slider tipFormatter={formatter} {...rest} className={classNames("cap-slider-v2", className)}>
           {React.Children.toArray(children)}
         </Slider>
       </div>

@@ -12,7 +12,7 @@ import './_capDateRangePicker.scss';
 
 const { RangePicker } = DatePicker;
 
-const clsPrefix = 'cap-date-range-picker';
+const clsPrefix = 'cap-date-range-picker-v2';
 
 class CapDateRangePicker extends React.Component {
   render() {

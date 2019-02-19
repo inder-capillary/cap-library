@@ -34,7 +34,7 @@ class CapTab extends React.Component { // eslint-disable-line react/prefer-state
       <div className={this.props.className}>
         {panes ? (
           <Tabs
-            className={classNames("cap-tab", className)}
+            className={classNames("cap-tab-v2", className)}
             animated
             onChange={this.onChange}
             activeKey={this.state.activeKey}

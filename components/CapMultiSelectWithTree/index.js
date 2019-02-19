@@ -22,7 +22,7 @@ import './_capMultiSelectWithTree.scss';
 
 const { TreeNode } = Tree;
 
-const clsPrefix = 'cap-multi-tree-select';
+const clsPrefix = 'cap-multi-tree-select-v2';
 
 function getObject(array, key, value) {
   let o;

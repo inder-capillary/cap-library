@@ -13,7 +13,7 @@ import { CapHeading } from '../index';
 
 import './_capStepsAccordian.scss';
 
-const clsPrefix = "cap-steps-accordian";
+const clsPrefix = "cap-steps-accordian-v2";
 
 const { Panel } = Collapse;
 

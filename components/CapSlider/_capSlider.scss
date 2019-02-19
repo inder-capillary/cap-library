@@ -1,7 +1,7 @@
 @import "~@capillarytech/cap-style-guide/styles/main";
 @import "../styles/_variables.scss";
 
-$slidebar : cap-slider;
+$slidebar : cap-slider-v2;
 
 .ant-slider.#{$slidebar} {
     .ant-slider-handle.ant-tooltip-open{

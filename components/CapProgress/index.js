@@ -15,7 +15,7 @@ class CapProgress extends React.Component { // eslint-disable-line react/prefer-
   render() {
     const {className, ...rest} = this.props;
     return (
-      <Progress {...rest} className={classNames("cap-progress", className)} />
+      <Progress {...rest} className={classNames("cap-progress-v2", className)} />
     );
   }
 }

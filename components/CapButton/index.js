@@ -7,7 +7,7 @@ import { Button, Icon } from "antd";
 import classnames from 'classnames';
 import "./_capButton.scss";
 
-const classPrefix = 'cap-button';
+const classPrefix = 'cap-button-v2';
 
 const CapButton = (props) => {
   const btnTypeClassMapping = {

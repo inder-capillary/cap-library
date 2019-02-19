@@ -10,7 +10,7 @@ import classaNames from 'classnames';
 
 import './_capDatePicker.scss';
 
-const clsPrefix = 'cap-date-picker';
+const clsPrefix = 'cap-date-picker-v2';
 
 function CapDatePicker(props) {
   return (

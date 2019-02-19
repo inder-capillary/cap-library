@@ -10,7 +10,7 @@ export default class CapSelect extends React.Component { // eslint-disable-line 
   render() {
     const options = this.props.options.map((op) => <Option {...op}>{op.label}</Option>);
     return (
-      <Select {...this.props} className={this.props.className ? `cap-select ${this.props.className}` : "cap-select"}>
+      <Select {...this.props} className={this.props.className ? `cap-select-v2 ${this.props.className}` : "cap-select-v2"}>
         {options}
       </Select>
     );

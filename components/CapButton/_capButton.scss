@@ -1,6 +1,6 @@
 @import '../styles/_variables.scss';
 
-.ant-btn.cap-button {
+.ant-btn.cap-button-v2 {
     color: $FONT_COLOR_01;
     font-weight: $FONT_WEIGHT_MEDIUM;
     font-size: $FONT_SIZE_M;
@@ -10,7 +10,7 @@
         padding: 0 $CAP_SPACE_12 0 $CAP_SPACE_08;
     }
 
-    & > .cap-button-prefix + span, & > span + .cap-button-suffix {
+    & > .cap-button-v2-prefix + span, & > span + .cap-button-v2-suffix {
         margin-left: 4px;
     }
 

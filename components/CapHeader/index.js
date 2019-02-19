@@ -20,7 +20,7 @@ const Flex = styled.div`
   align-items: center;
 `;
 
-const clsPrefix = 'cap-header';
+const clsPrefix = 'cap-header-v2';
 
 function CapHeader(props) {
   const { description, inline, title, size } = props;

@@ -9,7 +9,7 @@ import CapillaryLogo from '../assets/icons/capillary_logo.svg';
 import SearchIcon from '../assets/icons/search.svg';
 import CloseIcon from '../assets/icons/close.svg';
 
-const clsPrefix = 'top-bar-select';
+const clsPrefix = 'top-bar-select-v2';
 
 export class Select extends Component {
   constructor(props) {

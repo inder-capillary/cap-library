@@ -14,7 +14,7 @@ import { CapHeading } from '../index';
 import './_capSlideBox.scss';
 
 
-const clsPrefix = 'cap-slide-box';
+const clsPrefix = 'cap-slide-box-v2';
 
 export default class CapSlideBox extends Component {
   constructor(props) {

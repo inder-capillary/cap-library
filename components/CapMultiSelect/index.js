@@ -14,7 +14,7 @@ import { DropDownIcon } from '../assets/icons';
 import './_capMultiSelect.scss';
 import { CapButton } from '../index';
 
-const clsPrefix = 'cap-multi-select';
+const clsPrefix = 'cap-multi-select-v2';
 
 const { TreeNode } = Tree;
 

@@ -10,7 +10,7 @@ import WarningIcon from '../assets/icons/warning.svg';
 import NewTabIcon from '../assets/icons/open-in-new.svg';
 import SearchIcon from '../assets/icons/search.svg';
 import CloseIcon from '../assets/icons/close.svg';
-const clsPrefix = 'menu-search';
+const clsPrefix = 'menu-search-v2';
 
 export class MenuSearch extends Component {
   constructor(props) {
