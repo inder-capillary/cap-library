@@ -5,9 +5,22 @@
     font-weight: $FONT_WEIGHT_MEDIUM;
     font-size: $FONT_SIZE_M;
     padding: 0 $CAP_SPACE_24;
+    height: $CAP_SPACE_40;
+    min-width: 80px;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
 
     &.has-icon {
+        display: inline-flex;
+        align-items: center;
         padding: 0 $CAP_SPACE_12 0 $CAP_SPACE_08;
+    }
+    & > .cap-button-prefix,
+    .cap-button-suffix {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     & > .cap-button-v2-prefix + span, & > span + .cap-button-v2-suffix {
@@ -31,7 +44,7 @@
         }
     }
 
-    &.secondary-btn {
+    &.ant-btn-secondary.secondary-btn {
         background-color: $CAP_G08;
         border-color: $CAP_G08;
 
@@ -49,8 +62,7 @@
     &.ant-btn-dashed {
         color: $FONT_COLOR_02;
         background-color: $CAP_G10;
-        border-color: $CAP_G06;
-
+        border: 1px dashed $CAP_G06;
         &:hover {
             color: $FONT_COLOR_01;
             background-color: $CAP_G10;
