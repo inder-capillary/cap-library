@@ -13,6 +13,7 @@ import './_capTopBar.scss';
 
 import SettingsIcon from '../assets/icons/settings.svg';
 import LogoutIcon from '../assets/icons/logout.svg';
+import { LogoBackground } from '../assets/icons';
 
 const { Header } = Layout;
 
@@ -73,38 +74,39 @@ class CapTopBar extends React.Component { // eslint-disable-line react/prefer-st
           )}
           {secondarySelectProps && <Divider type="vertical" className={classNames(`${clsPrefix}-divider`)} />}
           {secondarySelectProps
-                && (
-                  <Select
-                    className="secondary-select"
-                    showCapillaryIcon
-                    {...secondarySelectProps} />
-                )}
+            && (
+              <Select
+                className="secondary-select"
+                showCapillaryIcon
+                {...secondarySelectProps} />
+            )}
         </div>
         {menuProps && this.renderTopMenu()}
         {
           userName
-              && (
-                <Popover
-                  trigger="click"
-                  getPopupContainer={(trigger) => trigger.parentNode}
-                  placement="bottomLeft"
-                  visible={showUserPopover}
-                  overlayClassName={classNames(`${clsPrefix}-user-popover`)}
-                  onVisibleChange={this.onUserPopoverVisibleChange}
-                  content={(
-                    <div onClick={onLogoutClick} className={classNames(`${clsPrefix}-user-popover-item`)}>
-                      <div>{logoutText}</div>
-                      <img src={LogoutIcon} alt="" />
-                    </div>
-                  )}>
-                  <div onClick={this.showUserPopover} className={classNames(`${clsPrefix}-user`)}>
-                    {userName[0]}
-                  </div>
-                </Popover>
-              )
+          && (
+            <Popover
+              trigger="click"
+              getPopupContainer={(trigger) => trigger.parentNode}
+              placement="bottomLeft"
+              visible={showUserPopover}
+              overlayClassName={classNames(`${clsPrefix}-user-popover`)}
+              onVisibleChange={this.onUserPopoverVisibleChange}
+              content={(
+                <div onClick={onLogoutClick} className={classNames(`${clsPrefix}-user-popover-item`)}>
+                  <div>{logoutText}</div>
+                  <img src={LogoutIcon} alt="" />
+                </div>
+              )}>
+              <div onClick={this.showUserPopover} className={(`${clsPrefix}-user`)}>
+                <LogoBackground />
+                <span className="text-label">{userName[0]}</span>
+              </div>
+            </Popover>
+          )
         }
         {onSettingsClick
-              && <div onClick={onSettingsClick} className={classNames(`${clsPrefix}-setting`)}><img src={SettingsIcon} alt="" /></div>
+          && <div onClick={onSettingsClick} className={classNames(`${clsPrefix}-setting`)}><img src={SettingsIcon} alt="" /></div>
         }
         {
           this.props.children
