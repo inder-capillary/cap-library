@@ -19,6 +19,9 @@ $orgSelectPrefix: top-bar-select;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e8e8e8;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
 }
 
 .#{$clsPrefix}-divider {

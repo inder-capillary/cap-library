@@ -37,4 +37,7 @@ export { default as CapRadioButton } from './CapRadioButton';
 export { default as CapMultiSelectWithTree } from './CapMultiSelectWithTree';
 export { default as CapPopover } from './CapPopover';
 export { default as CapMultiSelect } from './CapMultiSelect';
+export { default as CapTooltip } from './CapTooltip';
+export { default as CapIcon } from './CapIcon';
+export { default as CapStepsAccordian } from './CapStepsAccordian';
 //export components

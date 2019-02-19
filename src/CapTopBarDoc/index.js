@@ -113,7 +113,8 @@ export default class NavigationBarDoc extends Component { // eslint-disable-line
             }}
             menuProps={{
               items: menuItems,
-              selectedItem: selectedMenuItem,
+              defaultSelectedKeys: [selectedMenuItem],
+              selectedKeys: [selectedMenuItem],
             }}
             userName="Jagrati"
             onSettingsClick={this.onSettingsClick}

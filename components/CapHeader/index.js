@@ -7,39 +7,54 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
+import classNames from 'classnames';
 import CapHeading from '../CapHeading';
-import CapRow from '../CapRow';
-import CapColumn from '../CapColumn';
+import './_capHeader.scss';
+
 const InlineHeading = styled(CapHeading)`
   display: inline-block;
 `;
+
+const Flex = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const clsPrefix = 'cap-header';
+
 function CapHeader(props) {
-  const CapHeadingwithDirection = props.descriptionPosition ? InlineHeading : CapHeading;
+  const { description, inline, title, size } = props;
+  const CapHeadingwithDirection = inline ? InlineHeading : CapHeading;
   return (
-    <CapRow className="cap-header">
-      {props.icon
-      && (
-        <CapColumn span={2}>
-          {props.icon}
-        </CapColumn>)
+    <Flex>
+      {
+        props.prefix
       }
-      <CapColumn span={22}>
-        <CapHeadingwithDirection type="h1" className="cap-header-titie">
-          {props.title}
+      <div>
+        <CapHeadingwithDirection type={size === 'regular' ? "h3" : "h1"} className={classNames(`${clsPrefix}-title`)}>
+          {title}
         </CapHeadingwithDirection>
-        <CapHeadingwithDirection type="h6" className="cap-header-description">
-          {props.description}
-        </CapHeadingwithDirection>
-      </CapColumn>
-    </CapRow>
+        {description && (
+          <CapHeadingwithDirection type={size === 'regular' ? "label1" : "h6"} className={classNames(`${clsPrefix}-description`, size)}>
+            {description}
+          </CapHeadingwithDirection>
+        )}
+      </div>
+    </Flex>
   );
 }
+
+CapHeader.defaultProps = {
+  inline: false,
+  size: 'large',
+};
 
 CapHeader.propTypes = {
   title: propTypes.oneOfType([propTypes.string, propTypes.node]).isRequired,
   description: propTypes.oneOfType([propTypes.string, propTypes.node]),
-  descriptionPosition: propTypes.string,
-  icon: propTypes.node,
+  inline: propTypes.bool,
+  prefix: propTypes.node,
+  size: propTypes.string,
 };
 
 export default CapHeader;

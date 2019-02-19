@@ -26,14 +26,14 @@ export class Select extends Component {
 
   onVisibleChange = (visible) => {
     this.setState({ visible });
-    if (!visible) {
-      this.setState({ visible: false, searchText: "" });
+    if (visible && this.state.searchText) {
+      this.setState({ searchText: "" });
     }
   }
 
   handleChange = (item) => {
     const { handleItemChange } = this.props;
-    this.setState({ visible: false });
+    this.onVisibleChange(false);
     handleItemChange(item.value, item);
   }
 
@@ -113,7 +113,7 @@ export class Select extends Component {
                   </div>
                 )
             }
-            <span className={(`${clsPrefix}-selected-value-label`)}>{selectedItemLabel}</span>
+            <span className={(`${clsPrefix}-selected-value-label`)} title={selectedItemLabel}>{selectedItemLabel}</span>
           </div>
           <img src={DropDownIcon} alt="down-icon" className={classNames(`${clsPrefix}-arrow`)} />
           {/* <Icon className={classNames(`${clsPrefix}-arrow`)} type="down" /> */}

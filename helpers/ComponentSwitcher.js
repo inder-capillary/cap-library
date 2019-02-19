@@ -29,6 +29,9 @@ import CapModalDoc from '../src/CapModalDoc';
 import CapSpinDoc from '../src/CapSpinDoc';
 import CapPopoverDoc from '../src/CapPopoverDoc';
 import CapMultiSelectDoc from '../src/CapMultiSelectDoc';
+import CapTooltipDoc from '../src/CapTooltipDoc';
+import CapIconDoc from '../src/CapIconDoc';
+import CapStepsAccordianDoc from '../src/CapStepsAccordianDoc';
 //imported for docs
 
 
@@ -92,6 +95,12 @@ class ComponentSwitcher extends Component {
         return <CapPopoverDoc />;
       case 'capMultiSelect':
         return <CapMultiSelectDoc />;
+      case 'capTooltip':
+        return <CapTooltipDoc />;
+      case 'capIcon':
+        return <CapIconDoc />;
+      case 'capStepsAccordian':
+        return <CapStepsAccordianDoc />;
       default:
         return null;
     }
