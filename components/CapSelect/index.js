@@ -6,16 +6,18 @@
 
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Input, Icon, Popover } from "antd";
+import { Popover } from "antd";
 import classNames from 'classnames';
 import findIndex from 'lodash/findIndex';
-import { CapHeading } from '../index';
+import { CapHeading, CapInput } from '../index';
 import WarningIcon from '../assets/icons/warning.svg';
 import DropDownIcon from '../assets/icons/chevron-down.svg';
+import SearchIcon from '../assets/icons/search.svg';
+import CloseIcon from '../assets/icons/close.svg';
 
 import './_capSelect.scss';
 
-const clsPrefix = 'cap-select';
+const clsPrefix = 'cap-select-v2';
 
 class CapSelect extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -89,16 +91,16 @@ class CapSelect extends React.Component { // eslint-disable-line react/prefer-st
           <Fragment>
             {showSearch && (
               <div className={classNames(`${clsPrefix}-search`)}>
-                <Input
+                <CapInput
                   placeholder={searchPlaceholder}
                   onChange={this.handleSearch}
                   value={searchText}
                 />
-                <Icon type="search" />
-                <Icon onClick={this.clearSearch} type="close" />
+                <img className="icon-search" src={SearchIcon} alt="" />
+                {searchText && <span onClick={this.clearSearch}><img className="icon-close" src={CloseIcon} alt="" /></span>}
               </div>
             )}
-            {itemsHtml.length > 0 ? itemsHtml
+            {itemsHtml.length > 0 ? <div className={classNames(`${clsPrefix}-items-wrapper`)}>{itemsHtml}</div>
               : (
                 <div className={classNames(`${clsPrefix}-no-results`)}>
                   <img src={WarningIcon} alt="no-results" />

@@ -10,7 +10,7 @@ export default class CapRadio extends React.Component { // eslint-disable-line r
   render() {
     const {className, children, ...rest} = this.props;
     return (
-      <Radio {...rest} className={classNames("cap-radio-button", className)}>
+      <Radio {...rest} className={classNames("cap-radio-button-v2", className)}>
         {children}
       </Radio>
     );

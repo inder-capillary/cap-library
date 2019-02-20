@@ -19,6 +19,9 @@ $orgSelectPrefix: top-bar-select;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e8e8e8;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
 }
 
 .#{$clsPrefix}-divider {
@@ -91,16 +94,14 @@ $orgSelectPrefix: top-bar-select;
 
 .#{$clsPrefix}-user,
 .#{$orgSelectPrefix}-selected-icon {
-  font-family: $FONT_FAMILY;
-  border-radius: 50%;
-  background-color: $CAP_G07;
-  padding: 0px 10px;
   margin-right: 8px;
-  font-weight: $FONT_WEIGHT_MEDIUM;
-  height: 32px;
   display: flex;
   align-items: center;
-  font-size: 16px;
+  position: relative;
+  .text-label {
+    position: absolute;
+    left: 12px;
+  }
 }
 
 .#{$orgSelectPrefix}-header {

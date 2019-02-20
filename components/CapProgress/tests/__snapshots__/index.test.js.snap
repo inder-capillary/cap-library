@@ -2,7 +2,7 @@
 
 exports[`<CapProgress /> CapProgress renders correctly 1`] = `
 <div
-  className="ant-progress ant-progress-line ant-progress-status-normal ant-progress-show-info ant-progress-default cap-progress"
+  className="ant-progress ant-progress-line ant-progress-status-normal ant-progress-show-info ant-progress-default cap-progress-v2"
 >
   <div>
     <div

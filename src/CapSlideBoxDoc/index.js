@@ -117,6 +117,7 @@ export default class CapSlideBoxDoc extends Component { // eslint-disable-line r
               size="size-r"
               header="Slide Box Example"
               content={<div>{content}</div>}
+              className="custom-class-name"
               handleClose={this.closeSlideBox}
               footer={<CapButton style={{ float: 'right' }}>Create custom dimension</CapButton>} />
           </div>

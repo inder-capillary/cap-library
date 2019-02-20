@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {
-  Input, Popover, Spin,
-} from 'antd';
+import { Popover, Spin } from 'antd';
+import { CapInput } from '../index';
 
 import './_menuSearch.scss';
 import WarningIcon from '../assets/icons/warning.svg';
 import NewTabIcon from '../assets/icons/open-in-new.svg';
 import SearchIcon from '../assets/icons/search.svg';
 import CloseIcon from '../assets/icons/close.svg';
-const clsPrefix = 'menu-search';
+const clsPrefix = 'menu-search-v2';
 
 export class MenuSearch extends Component {
   constructor(props) {
@@ -166,7 +165,7 @@ export class MenuSearch extends Component {
       >
         <div className={classNames(`${clsPrefix}`)}>
           <div style={{ position: 'relative' }}>
-            <Input
+            <CapInput
               placeholder={placeholder}
               onChange={this.handleSearch}
               value={searchText}

@@ -25,4 +25,7 @@ CapForm.propTypes = {
   className: PropTypes.string,
 };
 
-export default CapForm;
+export default {
+  create: Form.create,
+  CapForm,
+};

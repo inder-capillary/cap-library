@@ -11,7 +11,7 @@ export default class CapRadioGroup extends React.Component { // eslint-disable-l
   render() {
     const {className, children, ...rest} = this.props;
     return (
-      <RadioGroup {...rest} className={classNames("cap-radio-group", className)}>
+      <RadioGroup {...rest} className={classNames("cap-radio-group-v2", className)}>
         {children}
       </RadioGroup>
     );

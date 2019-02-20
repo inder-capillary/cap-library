@@ -2,6 +2,6 @@
 
 exports[`<CapRadioGroup /> CapRadioGroup renders correctly 1`] = `
 <div
-  className="ant-radio-group ant-radio-group-outline cap-radio-group"
+  className="ant-radio-group ant-radio-group-outline cap-radio-group-v2"
 />
 `;

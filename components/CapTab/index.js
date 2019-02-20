@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { find } from 'lodash';
 import { Tabs } from "antd";
 // import styled from 'styled-components';
-
+const classNames = require('classnames');
 const { TabPane } = Tabs;
 
 class CapTab extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -29,18 +29,19 @@ class CapTab extends React.Component { // eslint-disable-line react/prefer-state
   }
 
   render() {
-    const {panes, ...rest} = this.props;
+    const {panes, className, ...rest} = this.props;
     return (
       <div className={this.props.className}>
         {panes ? (
           <Tabs
+            className={classNames("cap-tab-v2", className)}
             animated
             onChange={this.onChange}
             activeKey={this.state.activeKey}
             {...rest}>
-            { panes.map((pane) => {
+            { panes.map((pane, i) => {
               const {content, ...paneProps} = pane;
-              return <TabPane {...paneProps}>{content}</TabPane>;
+              return <TabPane key={i} {...paneProps}>{content}</TabPane>;
             } )}
           </Tabs>
         ) : <div></div>}

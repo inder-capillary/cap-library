@@ -72,7 +72,7 @@ export default class CapFormDoc extends Component { // eslint-disable-line react
     return (
       <div className="cap-form-info">
         <div className="cap-form-showcase">
-          <CapForm />
+          <CapForm.CapForm />
         </div>
         <PropertyTable data={infoData} />
       </div>

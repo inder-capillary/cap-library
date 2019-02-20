@@ -1,10 +1,9 @@
 @import "../styles/_variables.scss";
-$sidebar: cap-sidebar;
+$sidebar: cap-sidebar-v2;
 
 .#{$sidebar} {
   margin-left: $CAP_SPACE_16;
   max-width: 200px;
-  background-color: $CAP_G10;
 }
 
 .#{$sidebar}-accordian.ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {

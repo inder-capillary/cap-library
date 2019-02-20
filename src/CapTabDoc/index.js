@@ -148,12 +148,12 @@ export default class CapTabDoc extends Component { // eslint-disable-line react/
       key: 'card',
     };
     const panes = [{content: <CapCard {...cardProps} />, tab: 'tab 1', key: 'tab01'}, {content: 'conatiner 2', tab: 'tab 2', key: 'tab02'}, {content: 'conatiner 3', tab: 'tab 3', key: 'tab03'}];
-    const panes1 = [{content: 'conatiner 1', tab: 'tab 1', disabled: 'true', key: 'tab11'}, {content: 'conatiner 2', tab: 'tab 2', disabled: 'true', key: 'tab12'}, {content: 'conatiner 3', tab: 'tab 3', disabled: 'true', key: 'tab13'}];
+    const panes1 = [{content: 'conatiner 1', tab: 'tab 1', key: 'tab11'}, {content: 'conatiner 2', tab: 'tab 2', disabled: 'true', key: 'tab12'}, {content: 'conatiner 3', tab: 'tab 3', disabled: 'true', key: 'tab13'}];
 
     return (
       <div className="cap-tab-info">
         <div className="cap-tab-showcase">
-          <CapTab panes={panes} onChange={(selected) => { console.log(selected); }} />
+          <CapTab panes={panes} />
           <CapTab panes={panes1} disabled />
 
         </div>

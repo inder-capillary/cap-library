@@ -1,6 +1,8 @@
-import React, {Component} from 'react';
-import { Row, Col, Icon } from 'antd';
+import React, { Component } from 'react';
+import { Row, Col } from 'antd';
+import styled from 'styled-components';
 import { CapButton } from '../../components';
+import { AddIcon } from '../../components/assets/icons';
 import PropertyTable from '../../helpers/PropertyTable';
 import './info.scss';
 
@@ -35,41 +37,57 @@ const api = [
   },
 ];
 
+const MarginDiv = styled.div`
+  margin-top: 8px;
+`;
+
 class CapButtonDoc extends Component {
   render() {
     return (
       <div className="cap-button-info">
-        <Row span={24} style={{display: 'flex', marginTop: 20}} className="cap-button-showcase">
+        <Row span={24} style={{ display: 'flex', marginTop: 20 }} className="cap-button-showcase">
           <Col span={5} className="button-type">
             <div className="button-type-title">Primary button</div>
+            <MarginDiv />
             <CapButton>Primary</CapButton>
+            <MarginDiv />
             <CapButton disabled>Primary</CapButton>
           </Col>
           <Col span={5} className="button-type">
             <div className="button-type-title">Secondary button</div>
+            <MarginDiv />
             <CapButton type="secondary">Secondary</CapButton>
+            <MarginDiv />
             <CapButton type="secondary" disabled>Secondary</CapButton>
           </Col>
           <Col span={5} className="button-type">
             <div className="button-type-title">Flat button</div>
             <CapButton type="flat">Flat</CapButton>
+            <MarginDiv />
             <CapButton type="flat" isAddBtn>Flat</CapButton>
+            <MarginDiv />
             <CapButton type="flat" disabled>Flat</CapButton>
           </Col>
           <Col span={5} className="button-type">
             <div className="button-type-title">Flat button with icons</div>
-            <CapButton type="flat" prefix={<Icon type="plus" />}>Prefix</CapButton>
-            <CapButton type="flat" suffix={<Icon type="plus" />}>Suffix</CapButton>
-            <CapButton type="flat" suffix={<Icon type="plus" />} disabled>Flat</CapButton>
+            <MarginDiv />
+            <CapButton type="flat" prefix={<AddIcon color="#091e42" />}>Prefix</CapButton>
+            <MarginDiv />
+            <CapButton type="flat" suffix={<AddIcon color="#091e42" />}>Suffix</CapButton>
+            <MarginDiv />
+            <CapButton type="flat" suffix={<AddIcon color="#b3bac5" />} disabled>Flat</CapButton>
+            <MarginDiv />
           </Col>
           <Col span={4} className="button-type">
             <div className="button-type-title">Dashed button</div>
+            <MarginDiv />
             <CapButton type="dashed">Dashed</CapButton>
+            <MarginDiv />
             <CapButton type="dashed" disabled>Dashed</CapButton>
           </Col>
         </Row>
         <PropertyTable data={api} />
-        <div style={{marginTop: '24px'}}>
+        <div style={{ marginTop: '24px' }}>
           <b>NOTE: </b>
           This component is the extended version of ant design
           <a href="https://ant.design/components/button/#header"> Button </a>

@@ -10,7 +10,7 @@ import './_capSideBar.scss';
 
 const { Panel } = Collapse;
 
-const clsPrefix = 'cap-sidebar';
+const clsPrefix = 'cap-sidebar-v2';
 export default class CapSideBar extends React.Component {
   constructor(props) {
     super(props);

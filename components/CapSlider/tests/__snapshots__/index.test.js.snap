@@ -3,7 +3,7 @@
 exports[`<CapSlider /> renders correctly 1`] = `
 <div>
   <div
-    className="ant-slider cap-slider"
+    className="ant-slider cap-slider-v2"
     onBlur={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}

@@ -1,0 +1,16 @@
+@import "../styles/_variables.scss";
+
+$accordian: cap-steps-accordian-v2;
+
+.ant-collapse.#{$accordian} {
+  .steps-icon {
+    background-color: #dfe2e7;
+    border-radius: 50%;
+    width: $CAP_SPACE_28;
+    height: $CAP_SPACE_28;
+    margin-right: $CAP_SPACE_16;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

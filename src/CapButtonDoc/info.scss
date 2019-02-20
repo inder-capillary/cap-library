@@ -1,32 +1,27 @@
-.cap-button-info{
-  .cap-button-showcase{
-    .ant-card-body{
-      padding: 0px!important;
+.cap-button-info {
+  .cap-button-showcase {
+    .ant-card-body {
+      padding: 0px !important;
     }
-    .btndiv{
+    .btndiv {
       padding: 10px;
     }
-    .dashed-border{
+    .dashed-border {
       border-bottom: 1px dashed;
       margin: 10px 0 10px 0;
     }
     #embed-nav {
-      display: none!important;
+      display: none !important;
     }
-    .table-row{
+    .table-row {
       border: 1px solid grey;
-      .gutter-row{
+      .gutter-row {
         border-right: 1px solid grey;
       }
     }
 
     .button-type {
       text-align: center;
-    }
-    .cap-button {
-      display: block;
-      margin: 0 auto;
-      margin-top: 12px;
     }
   }
 }

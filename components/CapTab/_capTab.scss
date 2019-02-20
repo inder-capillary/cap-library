@@ -1,36 +1,36 @@
-@import '../styles/_variables.scss';
+@import "../styles/_variables.scss";
 
-.ant-tabs-nav .ant-tabs-tab-active {
+$capTab : cap-tab-v2;
+
+.ant-tabs.#{$capTab} {
+  .ant-tabs-nav .ant-tabs-tab-active {
     color: $FONT_COLOR_01;
-}
-
-.ant-tabs-tab-active.ant-tabs-tab.ant-tabs-tab-disabled{
-    cursor: not-allowed;
-    color: rgba(0, 0, 0, 0.25);
-    font-weight:0;
-    
-}
-
-.ant-tabs-tab.ant-tabs-tab-disabled:hover{
-    cursor: not-allowed;
-    color: rgba(0, 0, 0, 0.25) !important;
-    font-weight:0;
-    
-}
-.ant-tabs-nav .ant-tabs-tab:hover {
+  }
+  .ant-tabs-nav .ant-tabs-tab {
+    margin: 0 0 0 0;
+  }
+  .ant-tabs-nav .ant-tabs-tab:hover {
     color: $FONT_COLOR_01;
     background-color: #faf9f4;
-}
+  }
 
+  .ant-tabs-tab.ant-tabs-tab-disabled {
+    &.ant-tabs-tab-active,
+    &.ant-tabs-tab-active:hover {
+      color: $FONT_COLOR_03;
+    }
+    color: $FONT_COLOR_04;
+    &:hover {
+      color: $FONT_COLOR_04;
+      background-color: inherit;
+    }
+  }
 
-.ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active {
-    
+  .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active {
     color: $FONT_COLOR_01;
+  }
+
+  .ant-tabs-ink-bar.ant-tabs-ink-bar-animated {
+    background-color: $CAP_G01;
+  }
 }
-
-.ant-tabs-ink-bar.ant-tabs-ink-bar-animated{
-    background-color:rgba(0, 0, 0, 0.25);
-}
-
-
-

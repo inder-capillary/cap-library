@@ -1,13 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Input, Popover } from "antd";
+import { Popover } from "antd";
 import classNames from 'classnames';
 import findIndex from 'lodash/findIndex';
+import { CapInput } from '../index';
 import WarningIcon from '../assets/icons/warning.svg';
 import DropDownIcon from '../assets/icons/chevron-down.svg';
 import CapillaryLogo from '../assets/icons/capillary_logo.svg';
 import SearchIcon from '../assets/icons/search.svg';
 import CloseIcon from '../assets/icons/close.svg';
+import { LogoBackground } from '../assets/icons';
 
 const clsPrefix = 'top-bar-select';
 
@@ -26,14 +28,14 @@ export class Select extends Component {
 
   onVisibleChange = (visible) => {
     this.setState({ visible });
-    if (!visible) {
-      this.setState({ visible: false, searchText: "" });
+    if (visible && this.state.searchText) {
+      this.setState({ searchText: "" });
     }
   }
 
   handleChange = (item) => {
     const { handleItemChange } = this.props;
-    this.setState({ visible: false });
+    this.onVisibleChange(false);
     handleItemChange(item.value, item);
   }
 
@@ -83,7 +85,7 @@ export class Select extends Component {
             {showHeader && <div className={classNames(`${clsPrefix}-header`)}>Select organisation</div>}
             {showSearch && (
               <div className={classNames(`${clsPrefix}-search`)}>
-                <Input
+                <CapInput
                   placeholder="Organization"
                   onChange={this.handleSearch}
                   value={searchText}
@@ -109,11 +111,12 @@ export class Select extends Component {
               showCapillaryIcon ? <img style={{ marginRight: "8px" }} src={CapillaryLogo} alt="" />
                 : showSelectedIcon && (
                   <div className={(`${clsPrefix}-selected-icon`)}>
-                    {selectedItemLabel[0]}
+                    <LogoBackground />
+                    <span className="text-label">{selectedItemLabel[0]}</span>
                   </div>
                 )
             }
-            <span className={(`${clsPrefix}-selected-value-label`)}>{selectedItemLabel}</span>
+            <span className={(`${clsPrefix}-selected-value-label`)} title={selectedItemLabel}>{selectedItemLabel}</span>
           </div>
           <img src={DropDownIcon} alt="down-icon" className={classNames(`${clsPrefix}-arrow`)} />
           {/* <Icon className={classNames(`${clsPrefix}-arrow`)} type="down" /> */}

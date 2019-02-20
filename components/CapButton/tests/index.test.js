@@ -26,7 +26,6 @@ describe('Test <CapButton />', () => {
 
     wrapper.setProps({ isAddBtn: true });
     expect(wrapper.prop('isAddBtn')).toEqual(true);
-    expect(wrapper.find('.anticon-plus')).toHaveLength(1);
 
     wrapper.setProps({ suffix: "Test prefix", isAddBtn: false });
     expect(wrapper.find('.cap-button-suffix')).toHaveLength(1);

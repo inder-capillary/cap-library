@@ -6,15 +6,15 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from 'antd';
 import classNames from 'classnames';
 import { throttle } from 'lodash';
 import { CapHeading } from '../index';
+import CloseIcon from '../assets/icons/close.svg';
 
 import './_capSlideBox.scss';
 
 
-const clsPrefix = 'cap-slide-box';
+const clsPrefix = 'cap-slide-box-v2';
 
 export default class CapSlideBox extends Component {
   constructor(props) {
@@ -39,15 +39,15 @@ export default class CapSlideBox extends Component {
   }
 
   render() {
-    const { size, show, header, handleClose, footer, content } = this.props;
+    const { size, show, header, handleClose, footer, content, className } = this.props;
     const { showShadow } = this.state;
     return (
       show && (
-        <div className={classNames(`${clsPrefix}`, { 'show-slidebox': show, 'hide-slidebox': !show, 'show-shadow': showShadow })}>
+        <div className={classNames(`${clsPrefix}`, className, { 'show-slidebox': show, 'hide-slidebox': !show, 'show-shadow': showShadow })}>
           <div className={classNames(`${clsPrefix}-container ${size}`)}>
             <div className="slidebox-header">
               <CapHeading type="h1">{header}</CapHeading>
-              <Icon onClick={handleClose} className={classNames(`${clsPrefix}-close-icon`)} type="close" />
+              {<img onClick={handleClose} src={CloseIcon} alt="" className={classNames(`${clsPrefix}-close-icon`)} />}
             </div>
             <div onScroll={this.throttleScroll} className={classNames('slidebox-content-container', { 'has-footer': footer })} ref={(node) => { this.slideBoxContainer = node; }}>
               <div ref={(node) => { this.slideBoxContent = node; }}>
@@ -83,4 +83,5 @@ CapSlideBox.propTypes = {
   show: PropTypes.bool,
   handleClose: PropTypes.func.isRequired,
   size: PropTypes.string,
+  className: PropTypes.string,
 };
