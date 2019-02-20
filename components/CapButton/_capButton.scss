@@ -32,6 +32,8 @@ $button: cap-button-v2;
 
   &.ant-btn-primary {
     color: $FONT_COLOR_06;
+    background-color: map-get($CAP_PRIMARY, base);
+    border-color: map-get($CAP_PRIMARY, base);
 
     &:hover {
       background-color: map-get($CAP_PRIMARY, hover);

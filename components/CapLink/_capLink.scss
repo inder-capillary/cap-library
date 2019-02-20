@@ -1,0 +1,16 @@
+@import '../styles/_variables.scss';
+.cap-link.ant-anchor-wrapper{
+    .a{
+        color:$CAP_G01;
+    }
+    .ant-anchor-ink{
+        height: 0px;
+    }
+    .ant-anchor-ink-active > .ant-anchor-ink-title{
+        background-color: none;
+    }
+    .ant-anchor-ink:before{
+        height: 0px;
+    }
+    background: none;
+}
