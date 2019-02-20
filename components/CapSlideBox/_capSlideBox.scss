@@ -37,7 +37,7 @@ $slideBox: "cap-slide-box-v2";
 }
 
 .#{$slideBox}-close-icon {
-  font-size: $ICON_SIZE_S;
+  cursor: pointer;
 }
 
 .#{$slideBox}-container {
@@ -46,23 +46,27 @@ $slideBox: "cap-slide-box-v2";
   background: rgba(255, 255, 255, 1);
   overflow-y: auto;
   .slidebox-header {
-    padding: $CAP_SPACE_32 $CAP_SPACE_32 $CAP_SPACE_32 $CAP_SPACE_48;
+    padding: 0 $CAP_SPACE_48;
     justify-content: space-between;
     align-items: center;
     display: flex;
+    height: 92px;
   }
   .slidebox-footer {
-    padding: $CAP_SPACE_32 $CAP_SPACE_32 $CAP_SPACE_32 $CAP_SPACE_48;
+    padding: 0 $CAP_SPACE_48;
     position: absolute;
     bottom: 0;
     width: 100%;
+    display: flex;
+    align-items: center;
+    height: 88px;
   }
   .slidebox-content-container {
     padding: 0 $CAP_SPACE_08 0 $CAP_SPACE_48;
     overflow-y: auto;
-    height: calc(100vh - (#{$CAP_SPACE_32} * 2) - #{$FONT_SIZE_VL} - 0.5rem);
+    height: calc(100vh - 92px);
     &.has-footer {
-      height: calc(100vh - (#{$CAP_SPACE_32} * 4) - (#{$FONT_SIZE_VL} * 2) - 1rem);
+      height: calc(100vh - 92px - 88px);
     }
   }
 }
