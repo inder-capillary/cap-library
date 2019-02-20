@@ -17,7 +17,7 @@ import { LogoBackground } from '../assets/icons';
 
 const { Header } = Layout;
 
-const clsPrefix = 'cap-navbar-v2';
+const clsPrefix = 'cap-navbar';
 
 class CapTopBar extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {

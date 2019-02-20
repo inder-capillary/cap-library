@@ -11,7 +11,7 @@ import SearchIcon from '../assets/icons/search.svg';
 import CloseIcon from '../assets/icons/close.svg';
 import { LogoBackground } from '../assets/icons';
 
-const clsPrefix = 'top-bar-select-v2';
+const clsPrefix = 'top-bar-select';
 
 export class Select extends Component {
   constructor(props) {
