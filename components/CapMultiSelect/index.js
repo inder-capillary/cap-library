@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { Input, Tree, Icon, Popover, Tooltip } from "antd";
+import { Tree, Icon, Popover, Tooltip } from "antd";
 import without from 'lodash/without';
 import union from 'lodash/union';
 import difference from 'lodash/difference';
@@ -12,7 +12,7 @@ import CloseIcon from '../assets/icons/close.svg';
 import { DropDownIcon } from '../assets/icons';
 
 import './_capMultiSelect.scss';
-import { CapButton } from '../index';
+import { CapButton, CapInput } from '../index';
 
 const clsPrefix = 'cap-multi-select-v2';
 
@@ -244,33 +244,33 @@ export default class CapMultiSelect extends React.Component {
           content={(
             <div>
               <div className="search-input">
-                <Input
-                  ref={(node) => {
-                    this.search = node;
-                    if (this.search) { this.search.focus(); }
-                  }}
+                <CapInput
+                  focusOnMount
+                  alwaysShowFocus
                   value={searchValue}
                   suffix={searchValue && <span onClick={this.clearSearch}><img className="close-icon" src={CloseIcon} alt="" /></span>}
                   prefix={<img src={SearchIcon} alt="" />}
                   placeholder={searchPlaceholder}
                   onChange={this.onSearch} />
               </div>
-              <Tree
-                defaultExpandAll
-                checkable
-                onCheck={this.onCheck}
-                checkedKeys={selectedKeys}
-                selectedKeys={selectedKeys}
-                multiple
-                {...newProps}
-              >
-                {treeNodes}
-              </Tree>
+              {treeNodes && treeNodes.length > 0 && (
+                <Tree
+                  defaultExpandAll
+                  checkable
+                  onCheck={this.onCheck}
+                  checkedKeys={selectedKeys}
+                  selectedKeys={selectedKeys}
+                  multiple
+                  {...newProps}
+                >
+                  {treeNodes}
+                </Tree>
+              )}
               {treeNodes && treeNodes.length > 0 && (
                 <div className="options">
                   <div>
                     {this.getSaveButton()}
-                    <CapButton className="cancel-button" type="cancel" onClick={this.hide}>{closeText}</CapButton>
+                    <CapButton className="cancel-button" type="flat" onClick={this.hide}>{closeText}</CapButton>
                   </div>
                   <div style={{ display: "flex", alignItems: 'center' }}>
                     <span style={{ fontSize: '12px', color: '#333333"' }}>{`${without(selectedKeys, "select-all-common").length} ${selectedText || "selected"}`}</span>

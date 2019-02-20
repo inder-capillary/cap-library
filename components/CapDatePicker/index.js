@@ -21,6 +21,7 @@ function CapDatePicker(props) {
   return (
     <div className={classNames(commonClsPrefix, clsPrefix)}>
       <DatePicker
+        allowClear={false}
         suffixIcon={<div><Calender width={calenderWidth} height={calenderWidth} /></div>}
         dropdownClassName={classNames(`${commonClsPrefix}-dropdown`, `${clsPrefix}-dropdown`)}
         {...props}
