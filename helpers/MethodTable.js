@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { TableHOC } from './TableHOC';
 
 const columns = [

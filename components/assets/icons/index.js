@@ -5,3 +5,4 @@ export { default as SearchIcon } from './searchIcon';
 export { default as AddIcon } from './add'
 export { default as LogoBackground } from './logoBackground';
 export { default as Calender } from './calendar';
+export { default as SelectedTick } from './selectedTick'
