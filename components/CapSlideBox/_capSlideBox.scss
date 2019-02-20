@@ -41,7 +41,7 @@ $slideBox: "cap-slide-box-v2";
 }
 
 .#{$slideBox}-container {
-  position: relative;
+  position: absolute;
   height: 100vh;
   background: rgba(255, 255, 255, 1);
   overflow-y: auto;
@@ -72,18 +72,11 @@ $slideBox: "cap-slide-box-v2";
 }
 
 .#{$slideBox}-container.size-r {
-  left: 50vw;
-  width: 50vw;
+  right: 0;
+  width: 660px;
 }
-.#{$slideBox}-container.size-s {
-  left: 60vw;
-  width: 40vw;
-}
+
 .#{$slideBox}-container.size-l {
-  left: 40vw;
-  width: 60vw;
-}
-.#{$slideBox}-container.size-vl {
-  left: 30vw;
-  width: 70vw;
+  right: 0;
+  width: 948px;
 }
