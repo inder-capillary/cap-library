@@ -17,7 +17,7 @@ const infoData = [
   {
     key: 2,
     property: "size",
-    description: "to specify the size of the slide box. value should be one of size-s, size-r, size-l, size-vl",
+    description: "to specify the size of the slide box. value should be one of size-r, size-l",
     type: "string",
     default: "size-r",
   },
@@ -110,7 +110,7 @@ export default class CapSlideBoxDoc extends Component { // eslint-disable-line r
       <div className="cap-slide-box-info">
         <div className="cap-slide-box-showcase">
           <div>
-            <CapButton onClick={this.showSlideBox}>Show SlideBox</CapButton>
+            <CapButton onClick={this.showSlideBox}>Show SlideBox with default size</CapButton>
             <CapSlideBox
               showShadow
               show={showSlideBox}
@@ -124,11 +124,11 @@ export default class CapSlideBoxDoc extends Component { // eslint-disable-line r
           <div style={{ marginTop: '16px' }}>
             <CapButton
               onClick={this.showSlideBox1}>
-              {"Show SlideBox without footer"}
+              {"Show SlideBox without footer and size-l"}
             </CapButton>
             <CapSlideBox
               show={showSlideBox1}
-              size="size-r"
+              size="size-l"
               header="Slide Box Example"
               content={<div>{content}</div>}
               handleClose={this.closeSlideBox1} />

@@ -9,7 +9,7 @@ import "./info.scss";
 
 const infoData = [
   {
-    key: 2,
+    key: 1,
     property: 'size',
     description: "Size can be `large` or `regular`. The difference is in title/description size and padding between title and description",
     type: "string",

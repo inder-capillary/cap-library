@@ -28,7 +28,7 @@ export default class CapDateRangePickerDoc extends Component { // eslint-disable
           <CapHeading type="h5">This component takes all the props that antd rangePicker allows.</CapHeading>
           <a href="https://ant.design/components/date-picker/#header">https://ant.design/components/date-picker/#header</a>
           <div style={{ marginTop: "24px" }}>
-            <CapDateRangePicker onChange={this.onChange} />
+            <CapDateRangePicker onChange={this.onChange} size="large" />
           </div>
         </div>
       </div>

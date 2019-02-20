@@ -91,6 +91,7 @@ class CapInput extends Component {
       isVerified,
       inductiveText,
       className,
+      alwaysShowFocus,
       ...rest
     } = this.props;
     const type = inductiveText ? 'h3' : 'h4';
@@ -126,9 +127,14 @@ class CapInput extends Component {
           }
           <Input
             {...rest}
-            ref={(node) => { this.input = node; }}
+            ref={(node) => {
+              this.input = node;
+              if (alwaysShowFocus && this.input) {
+                this.input.focus();
+              }
+            }}
             suffix={(errorMessage && <StyledIcon className="error-icon" type="warning" status="error" />)
-            || (isVerified && <StyledIcon type="check-circle" status="success" />) || this.props.suffix}
+              || (isVerified && <StyledIcon type="check-circle" status="success" />) || this.props.suffix}
           />
         </InputWithLabelWrapper>
         {errorMessage && <Span className="error-message" labelPosition={labelPosition}>{errorMessage}</Span>}
@@ -145,6 +151,7 @@ CapInput.propTypes = {
   isVerified: PropTypes.bool,
   size: PropTypes.string,
   inductiveText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  alwaysShowFocus: PropTypes.bool,
 };
 
 CapInput.defaultProps = {

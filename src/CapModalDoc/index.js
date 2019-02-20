@@ -83,14 +83,12 @@ export default class CapModalDoc extends Component { // eslint-disable-line reac
               Open Modal
             </CapButton>
             <CapModal
-              title="Basic Modal"
+              title="Modal title"
               visible={this.state.visible}
               onOk={this.handleOk}
               onCancel={this.handleCancel}
             >
-              <p>Some contents...</p>
-              <p>Some contents...</p>
-              <p>Some contents...</p>
+              <p>Reference site about Lorem Ipsum, giving information on its origins.</p>
             </CapModal>
             <div style={{ marginTop: "24px" }}>
               <div>

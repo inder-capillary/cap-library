@@ -1,7 +1,7 @@
 
 import React from "react";
 import PropTypes from 'prop-types';
-import { Input, Tree, Icon, Popover, Tooltip, Spin } from "antd";
+import { Tree, Icon, Popover, Tooltip, Spin } from "antd";
 import without from 'lodash/without';
 import union from 'lodash/union';
 import difference from 'lodash/difference';
@@ -12,7 +12,7 @@ import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import isEqual from 'lodash/isEqual';
 import classNames from 'classnames';
-import { CapButton } from '../index';
+import { CapButton, CapInput } from '../index';
 import SearchIcon from '../assets/icons/search.svg';
 import CloseIcon from '../assets/icons/close.svg';
 import WarningIcon from '../assets/icons/warning.svg';
@@ -482,11 +482,9 @@ export default class CapMultiSelectWithTree extends React.Component {
             showLoader ? <div className="showing-spinner"><Spin /></div> : (
               <div>
                 <div className="search-input">
-                  <Input
-                    ref={(node) => {
-                      this.search = node;
-                      if (this.search) { this.search.focus(); }
-                    }}
+                  <CapInput
+                    focusOnMount
+                    alwaysShowFocus
                     value={searchValue}
                     suffix={searchValue && <span onClick={this.clearSearch}><img className="close-icon" src={CloseIcon} alt="" /></span>}
                     prefix={<img src={SearchIcon} alt="" />}
@@ -539,7 +537,7 @@ export default class CapMultiSelectWithTree extends React.Component {
                           </CapButton>
                         )
                       }
-                      <CapButton className={classNames('cancel-button', { 'small-button': width && width < "260px" })} type="cancel" onClick={this.hide}>{closeText}</CapButton>
+                      <CapButton className={classNames('cancel-button', { 'small-button': width && width < "260px" })} type="flat" onClick={this.hide}>{closeText}</CapButton>
                     </div>
                     <div style={{ display: "flex", alignItems: 'center' }}>
                       <span style={{ fontSize: '12px', color: (formattedKeys.length > maxValuesToSelect || formattedKeys.length < minValuesToSelect) ? '#F34F56' : '#333333' }}>{`${formattedKeys && formattedKeys.length} ${selectedText}`}</span>

@@ -10,6 +10,7 @@ import { Collapse } from 'antd';
 import classNames from 'classnames';
 import styled from 'styled-components';
 import { CapHeading } from '../index';
+import { SelectedTick } from '../assets/icons';
 
 import './_capStepsAccordian.scss';
 
@@ -23,7 +24,7 @@ const Flex = styled.div`
 `;
 
 function CapStepsAccordian(props) {
-  const { items, ...collapseProps } = props;
+  const { items, showNumberSteps, ...collapseProps } = props;
   return (
     <Collapse
       accordion
@@ -32,13 +33,15 @@ function CapStepsAccordian(props) {
       {...collapseProps}
     >
       {items.map((item, index) => {
-        const { header, key, icon, ...panelProps } = item;
+        const { header, key, icon, completed, ...panelProps } = item;
         const customHeader = (
           <Flex>
             {icon || (
-              <div className="steps-icon">
-                <CapHeading type="label2">{index + 1}</CapHeading>
-              </div>
+              completed ? <SelectedTick className="steps-icon" /> : (
+                <div className="steps-icon numbers-icon">
+                  <CapHeading type="label2">{index + 1}</CapHeading>
+                </div>
+              )
             )}
             {header}
           </Flex>
@@ -47,7 +50,7 @@ function CapStepsAccordian(props) {
           <Panel
             header={customHeader}
             key={key}
-            showArrow={false}
+            showArrow={!showNumberSteps}
             {...panelProps}
           >
             {item.content}
@@ -58,7 +61,7 @@ function CapStepsAccordian(props) {
   );
 }
 
-CapStepsAccordian.defalutProps = {
+CapStepsAccordian.defaultProps = {
   showNumberSteps: true,
 };
 
