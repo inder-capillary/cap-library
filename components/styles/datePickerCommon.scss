@@ -1,0 +1,68 @@
+@import "./variables.scss";
+
+$datePicker: cap-date-picker-common-v2;
+
+.#{$datePicker} {
+  .ant-calendar-picker-input.ant-input:focus,
+  .ant-calendar-picker:hover .ant-calendar-picker-input:not(.ant-input-disabled),
+  .ant-calendar-picker:focus .ant-calendar-picker-input:not(.ant-input-disabled) {
+    border-color: #091e42;
+    box-shadow: none;
+  }
+  .ant-calendar-picker.ant-calendar-picker-large {
+    .ant-calendar-picker-icon,
+    .ant-calendar-picker-clear {
+      top: 35%;
+      width: auto;
+      height: auto;
+      right: 8px;
+    }
+    .ant-calendar-picker-clear {
+      font-size: 20px;
+      top: 40%;
+      right: 10px;
+    }
+  }
+}
+
+.ant-calendar-picker-container.#{$datePicker}-dropdown {
+  .ant-calendar-date {
+    border-radius: 50%;
+    font-size: $FONT_SIZE_S;
+  }
+  .ant-calendar-header {
+    border-bottom: none;
+  }
+  .ant-calendar-date:hover {
+    background-color: map-get($CAP_SECONDARY, light);
+  }
+  .ant-calendar-today .ant-calendar-date {
+    color: #2466ea;
+    border-color: #2466ea;
+  }
+  .ant-calendar-selected-date .ant-calendar-date,
+  .ant-calendar-selected-start-date .ant-calendar-date,
+  .ant-calendar-selected-end-date .ant-calendar-date,
+  .ant-calendar-date:active {
+    background-color: #2466ea;
+    color: #fff;
+    border: 1px solid transparent;
+  }
+  .ant-calendar-column-header {
+    font-size: 10px;
+    color: #97a0af;
+  }
+  .ant-calendar-body > .ant-calendar-table thead tr th:first-child,
+  .ant-calendar-body > .ant-calendar-table thead tr th:last-child {
+    color: #e83135;
+  }
+
+  .ant-calendar-range .ant-calendar-in-range-cell:before {
+    background-color: #f4f5f7;
+  }
+  .ant-calendar-range .ant-calendar-body,
+  .ant-calendar-range .ant-calendar-month-panel-body,
+  .ant-calendar-range .ant-calendar-year-panel-body {
+    border-top: none;
+  }
+}

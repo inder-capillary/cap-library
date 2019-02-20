@@ -4,3 +4,4 @@ export { default as DropDownIcon } from './dropdownIcon';
 export { default as SearchIcon } from './searchIcon';
 export { default as AddIcon } from './add'
 export { default as LogoBackground } from './logoBackground';
+export { default as Calender } from './calendar';

@@ -31,6 +31,7 @@ export default class CapStepsAccordianDoc extends Component { // eslint-disable-
                 />,
                 content: <div>My content</div>,
                 key: 1,
+                completed: 'true',
               },
               {
                 header: <CapHeader
