@@ -32,6 +32,7 @@ import CapMultiSelectDoc from '../src/CapMultiSelectDoc';
 import CapTooltipDoc from '../src/CapTooltipDoc';
 import CapIconDoc from '../src/CapIconDoc';
 import CapStepsAccordianDoc from '../src/CapStepsAccordianDoc';
+import CapLinkDoc from '../src/CapLinkDoc';
 //imported for docs
 
 
@@ -101,6 +102,8 @@ class ComponentSwitcher extends Component {
         return <CapIconDoc />;
       case 'capStepsAccordian':
         return <CapStepsAccordianDoc />;
+      case 'capLink':
+        return <CapLinkDoc />;
       default:
         return null;
     }
