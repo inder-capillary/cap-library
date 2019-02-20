@@ -1,3 +1,4 @@
+import React from 'react';
 const SvgBack = props => (
   <svg width={24} height={24} {...props}>
     <defs>
