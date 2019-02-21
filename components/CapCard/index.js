@@ -14,7 +14,7 @@ import CapRow from '../CapRow';
 
 export function CapCard(props) {
   return (
-    <div className="cap-card-v2">
+    <div className={`cap-card-v2 ${props.hoverOption && 'cap-card-has-hover-option'}`}>
       <CapRow>
         <CapColumn span={4}>
           <div className="cap-card-title-icon">{props.icon}</div>
@@ -36,6 +36,9 @@ export function CapCard(props) {
         <CapColumn span={12} className="cap-card-content">
           {props.content}
         </CapColumn>
+        <CapColumn span={12} className="cap-card-hover-option">
+          {props.hoverOption}
+        </CapColumn>
         <CapColumn span={4}>
         </CapColumn>
       </CapRow>
@@ -48,6 +51,7 @@ CapCard.propTypes = {
   title: propTypes.oneOfType([propTypes.string, propTypes.node]).isRequired,
   content: propTypes.oneOfType([propTypes.string, propTypes.node]),
   options: propTypes.node,
+  hoverOption: propTypes.node,
 };
 
 export function CapCardGrid(props) {
