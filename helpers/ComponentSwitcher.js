@@ -33,6 +33,7 @@ import CapTooltipDoc from '../src/CapTooltipDoc';
 import CapIconDoc from '../src/CapIconDoc';
 import CapStepsAccordianDoc from '../src/CapStepsAccordianDoc';
 import CapLinkDoc from '../src/CapLinkDoc';
+import CapRadioCardDoc from '../src/CapRadioCardDoc';
 //imported for docs
 
 
@@ -104,6 +105,8 @@ class ComponentSwitcher extends Component {
         return <CapStepsAccordianDoc />;
       case 'capLink':
         return <CapLinkDoc />;
+      case 'capRadioCard':
+        return <CapRadioCardDoc />;
       default:
         return null;
     }

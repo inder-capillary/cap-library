@@ -41,4 +41,5 @@ export { default as CapTooltip } from './CapTooltip';
 export { default as CapIcon } from './CapIcon';
 export { default as CapStepsAccordian } from './CapStepsAccordian';
 export { default as CapLink } from './CapLink';
+export { default as CapRadioCard } from './CapRadioCard';
 //export components
