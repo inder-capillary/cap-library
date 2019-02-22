@@ -1,12 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CapCard /> CapCard renders correctly 1`] = `
-<div
-  className="ant-card cap-card ant-card-bordered"
->
-  <div
-    className="ant-card-body"
-    style={Object {}}
-  />
+<div>
+  <div />
 </div>
 `;
