@@ -7,3 +7,5 @@ export { default as LogoBackground } from './logoBackground';
 export { default as Calender } from './calendar';
 export { default as SelectedTick } from './selectedTick'
 export {default as backIcon} from './back';
+export {default as SvgMore} from './more';
+export {default as CheckFilled} from './check-filled';

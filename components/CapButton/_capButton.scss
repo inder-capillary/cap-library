@@ -12,7 +12,9 @@ $button: cap-button-v2;
   border: none;
   box-shadow: none;
   text-shadow: none;
-
+  &:hover {
+    color: $CAP_G01;
+  }
   &.has-icon {
     display: inline-flex;
     align-items: center;
