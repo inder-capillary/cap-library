@@ -1,18 +1,69 @@
 @import '../styles/_variables.scss';
 
+$cap-card-sms:cap-card-SMS;
+.cap-card-v2.#{$cap-card-sms}{
+  .ant-card{
+      width: 276px;
+    height: 192px;
+    max-height: 192px;
+    float: left;
+    margin: 6px;
+  }
+  .ant-card-head{
+    height:56px;
+    border-bottom:0px;
+  }
+  .ant-card-head-title{
+    padding-top:16px;
+    font-size:14px;
+  }
+  .ant-card-body{
+    height: 135px;
+    width: 276px;
+    padding-top: 3px;
+  }
+  
+  .ant-card-meta-description{
+    max-height: 110px;
+    font-size: 12px;
+    color: #5e6c84;
+  }
+  
+  .ant-card-head-wrapper{
+    height:59px;
+  }
+ 
+ 
+  .ant-popover-open{
+    .ant-card-body{
+      background-color: #ffffff;
+      opacity: 0.2;
+    }
+  }
 
-.cap-card{
-  width: 276px;
-  height: 344px;
-  max-height: 344px;
+  .disable-hover{
+    .ant-card-body{
+      opacity: 1;
+      background:none;
+    }
+  }
 }
 
-.ant-card-cover{
-    padding-left: 20px;
-    padding-right: 20px;
-    background-color: #ECECEC;
+.ant-popover-placement-top{
+  top:140px !important;
+}
+.ant-popover-inner{
+  // background-color: #42b040;
+  width: 80px;
+  height: 40px;
+  background:none;
+  box-shadow: none;
 }
 
-.ant-card-head{
-  padding: 0 12px;
+.ant-popover-inner-content{
+  padding:0px;
+ 
+}
+.ant-popover-arrow{
+  display: none;
 }
