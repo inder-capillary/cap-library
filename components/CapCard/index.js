@@ -16,6 +16,19 @@ import { View as ViewIcon, SvgMore as MoreIcon} from "../assets/icons";
 const classNames = require('classnames');
 const {Meta} = Card;
 class CapCard extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  cardInner=(type, key, content) => (
+    <div>
+      {(() => {
+        switch (type) {
+          case 'SMS':
+            return <Meta key={key} description={content} />;
+          default:
+            return null;
+        }
+      })()}
+    </div>
+  )
+
   render() {
     const { className, cardList, type} = this.props;
     return (
@@ -33,7 +46,7 @@ class CapCard extends React.Component { // eslint-disable-line react/prefer-stat
             return (
               <CapPopover className={hover ? '' : 'disable-hover'} content={hover ? <CapButton onClick={onClick} key={i} visible={false}>Select</CapButton> : false}>
                 <Card {...rest} key={i} extra={icon}>
-                  <Meta key={i} description={content} />
+                  {this.cardInner(type, i, content)}
                 </Card>
               </CapPopover>
             );

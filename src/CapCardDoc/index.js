@@ -144,6 +144,9 @@ export default class CapCardDoc extends Component { // eslint-disable-line react
     return (
       <div className="cap-card-info">
         <div className="cap-card-showcase">
+
+        SMS Card:
+
           <CapCard cardList={cardList} type="SMS" />
         </div>
         <PropertyTable data={infoData} />
