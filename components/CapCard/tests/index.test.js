@@ -1,10 +1,10 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
-
-// import CapCard from '../index';
+import renderer from 'react-test-renderer';
+import React from 'react'; // eslint-disable-line no-unused-vars
+import CapCard from '../index';
 
 describe('<CapCard />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('CapCard renders correctly', () => {
+    const tree = renderer.create(<CapCard />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });

@@ -1,110 +1,133 @@
-
 /**
- * CapCardDoc
- */
+* CapCardDoc
+*/
 import React, { Component } from "react";
 import PropertyTable from '../../helpers/PropertyTable';
-import { CapCard, CapButton } from "../../components";
+import CapCard from "../../components/CapCard";
 import "./info.scss";
-import {Message as MessageIcon, View as ViewIcon} from '../../components/assets/icons';
-const Card = CapCard.CapCard;
-const CardGrid = CapCard.CapCardGrid;
+import { View as ViewIcon, SvgMore as MoreIcon} from '../../components/assets/icons';
 const infoData = [
   {
-    key: 0,
-    property: "key",
-    description: "-",
-    type: "string",
-    default: "-",
-    required: "true",
-  },
-  {
     key: 1,
-    property: "title",
-    description: "-",
-    type: "string | react node ",
+    property: "actions",
+    description: "The action list, shows at the bottom of the Card.",
+    type: "Array<ReactNode>",
     default: "-",
-    required: "true",
   },
   {
     key: 2,
-    property: "content",
-    description: "-",
-    type: "string | react node ",
+    property: "activeTabKey",
+    description: "Current TabPane's key",
+    type: "string",
     default: "-",
-    required: "-",
   },
   {
     key: 3,
-    property: "icon",
-    description: "-",
-    type: " react node ",
+    property: "headStyle",
+    description: "Inline style to apply to the card head",
+    type: "object",
     default: "-",
-    required: "-",
   },
   {
     key: 4,
-    property: "options",
-    description: "react component such as popover or preiview icon",
-    type: " react node ",
+    property: "bodyStyle",
+    description: "Inline style to apply to the card content",
+    type: "object",
     default: "-",
-    required: "-",
   },
-];
-const infoDataGrid = [
   {
-    key: 1,
-    property: "cardDataList",
-    description: "an array od CapGrid props",
-    type: "array of objects ",
+    key: 5,
+    property: "bordered",
+    description: "Toggles rendering of the border around the card",
+    type: "boolean",
+    default: "true",
+  },
+  {
+    key: 6,
+    property: "cover",
+    description: "Card cover",
+    type: "ReactNode",
     default: "-",
-    required: "true",
+  },
+  {
+    key: 7,
+    property: "defaultActiveTabKey",
+    description: "Initial active TabPane's key, if activeTabKey is not set.",
+    type: "string",
+    default: "-",
+  },
+  {
+    key: 8,
+    property: "extra",
+    description: "Content to render in the top-right corner of the card",
+    type: "string|ReactNode",
+    default: "-",
+  },
+  {
+    key: 9,
+    property: "hoverable",
+    description: "Lift up when hovering card",
+    type: "boolean",
+    default: "false",
+  },
+  {
+    key: 10,
+    property: "loading",
+    description: "Shows a loading indicator while the contents of the card are being fetched",
+    type: "boolean",
+    default: "false",
+  },
+  {
+    key: 11,
+    property: "tabList",
+    description: "List of TabPane's head.",
+    type: "Array<{key: string, tab: ReactNode}>",
+    default: "-",
+  },
+  {
+    key: 12,
+    property: "size",
+    description: "Size of card",
+    type: "default | small",
+    default: "default",
+  },
+  {
+    key: 13,
+    property: "title",
+    description: "Card title",
+    type: "string|ReactNode",
+    default: "-",
+  },
+  {
+    key: 14,
+    property: "type",
+    description: "Card style type, can be set to inner or not set",
+    type: "string",
+    default: "-",
+  },
+  {
+    key: 15,
+    property: "onTabChange",
+    description: "Callback when tab is switched",
+    type: "(key) => void",
+    default: "-",
   },
 ];
+
 export default class CapCardDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const cardProps = {
-      icon: <MessageIcon />,
-      title: "Title",
-      content: "message content",
-      options: <ViewIcon />,
-      key: 'card',
-    };
-    const cardGridProps = [
-      {
-        icon: <MessageIcon />,
-        title: "Title - 1",
-        content: "Get YLG's Beauty Secrets Card & avail 2x beauty services for half the price across YLG Salon. Visit Nearest YLG Salon to know more. t {{optout}}",
-        options: <ViewIcon />,
-        key: 'prop - 1',
-        hoverOption: <CapButton>Edit</CapButton>,
-      },
-      {
-        icon: <MessageIcon />,
-        title: "Title - 2",
-        content: "Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British ",
-        options: <ViewIcon />,
-        key: 'prop - 2',
-      },
-      {
-        icon: <MessageIcon />,
-        title: "Title - 3",
-        content: "message content 3",
-        options: <ViewIcon />,
-        key: 'prop - 3',
-      },
-    ];
+    const data = "20% off on footwear";
     return (
       <div className="cap-card-info">
         <div className="cap-card-showcase">
-          Card:
-          <Card {...cardProps} />
-
-          Card grid:
-          <CardGrid cardDataList={cardGridProps} />
+          <CapCard
+            extra={[<ViewIcon />, <MoreIcon />]}
+            title={data}
+            cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
+            }>
+          </CapCard>
         </div>
-        <PropertyTable data={infoData} title="Card Props" />
-        <PropertyTable data={infoDataGrid} title="Card grid Props" />
+        <PropertyTable data={infoData} />
       </div>
     );
   }

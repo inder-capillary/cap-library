@@ -1,7 +1,7 @@
 import React from "react";
 
 const SvgMessage = props => (
-  <svg width={24} height={24} {...props}>
+  <svg width={200} height={24} {...props}>
     <defs>
       <path
         id="message_svg__a"
@@ -17,6 +17,7 @@ const SvgMessage = props => (
         <path d="M0 0h24v24H0z" />
       </g>
     </g>
+    <text x="35" y="16">{props.text}</text>
   </svg>
 );
 
