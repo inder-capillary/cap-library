@@ -5,7 +5,7 @@ import React, { Component } from "react";
 
 import PropertyTable from '../../helpers/PropertyTable';
 import CapCard from "../../components/CapCard/index";
-
+import {View} from '../../components/assets/icons';
 // import CapIcon from "../../components/CapIcon";
 import "./info.scss";
 
@@ -134,6 +134,10 @@ const infoData = [
 export default class CapCardDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const cardList = [{content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
+      title: "20% off on footwear with extra",
+      hover: true,
+      extra: [<View />]},
+    {content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
       title: "20% off on footwear",
       hover: true,
       viewIcon: true}, {content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',

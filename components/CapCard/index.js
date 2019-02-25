@@ -36,7 +36,7 @@ class CapCard extends React.Component { // eslint-disable-line react/prefer-stat
         {cardList ? (
           cardList.map((c, i) => {
             const {content, viewIcon, moreIcon, onClick, hover, ...rest} = c;
-            const icon = [];
+            const icon = c.extra || [];
             if (viewIcon) {
               icon.push(<ViewIcon />);
             }
