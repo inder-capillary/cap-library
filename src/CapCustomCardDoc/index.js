@@ -90,6 +90,7 @@ export default class CapCustomCardDoc extends Component { // eslint-disable-line
         content: "Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British ",
         options: <ViewIcon />,
         key: 'prop - 2',
+        hoverOption: <CapButton>Edit</CapButton>,
       },
       {
         icon: <MessageIcon />,

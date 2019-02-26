@@ -8,10 +8,7 @@ import React from 'react';
 import './_capCard.scss';
 import PropTypes from 'prop-types';
 import { Card} from "antd";
-import CapPopover from '../CapPopover';
-import CapButton from '../CapButton';
 
-import { View as ViewIcon, SvgMore as MoreIcon} from "../assets/icons";
 // import styled from 'styled-components';
 const classNames = require('classnames');
 const {Meta} = Card;
@@ -35,20 +32,17 @@ class CapCard extends React.Component { // eslint-disable-line react/prefer-stat
       <div className={classNames(`cap-card-v2 cap-card-${type}`, className)}>
         {cardList ? (
           cardList.map((c, i) => {
-            const {content, viewIcon, moreIcon, onClick, hover, ...rest} = c;
-            const icon = c.extra || [];
-            if (viewIcon) {
-              icon.push(<ViewIcon />);
-            }
-            if (moreIcon) {
-              icon.push(<MoreIcon />);
-            }
+            const {content, hoverOption, ...rest} = c;
+            const key = c.key || i;
             return (
-              <CapPopover className={hover ? '' : 'disable-hover'} content={hover ? <CapButton onClick={onClick} key={i} visible={false}>Select</CapButton> : false}>
-                <Card {...rest} key={i} extra={icon}>
-                  {this.cardInner(type, i, content)}
+              <div className={hoverOption ? '' : 'disable-hover'}>
+                <Card {...rest} key={key}>
+                  {this.cardInner(type, key, content)}
                 </Card>
-              </CapPopover>
+                <div className="cap-card-hover-option">
+                  { hoverOption}
+                </div>
+              </div>
             );
           }) ) : <div></div>}
       </div>

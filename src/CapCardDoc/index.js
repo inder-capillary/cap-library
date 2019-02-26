@@ -6,6 +6,7 @@ import React, { Component } from "react";
 import PropertyTable from '../../helpers/PropertyTable';
 import CapCard from "../../components/CapCard/index";
 import {View} from '../../components/assets/icons';
+import CapButton from '../../components/CapButton';
 // import CapIcon from "../../components/CapIcon";
 import "./info.scss";
 
@@ -13,7 +14,7 @@ const infoData = [
   {
     key: 1,
     property: "cardList",
-    description: "Card List is array of Object which has property of title, content, viewIcon and moreIcon, hover (default as false), onClick(Hover on Click event)",
+    description: "Card List is array of Object which has property of title, content, hoverOption: <CapButton>Select</CapButton>(default as false), onClick(Hover on Click event)",
     type: "Array<object>",
     default: "-",
   },
@@ -135,16 +136,15 @@ export default class CapCardDoc extends Component { // eslint-disable-line react
   render() {
     const cardList = [{content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
       title: "20% off on footwear with extra",
-      hover: true,
+      hoverOption: <CapButton>Select</CapButton>,
       extra: [<View />]},
     {content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
+      title: "20% off on footwear"},
+    {content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
       title: "20% off on footwear",
-      hover: true,
-      viewIcon: true}, {content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
-      title: "20% off on footwear",
-      viewIcon: true}, {content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
-      title: "20% off on footwear",
-      viewIcon: true}];
+      hoverOption: <CapButton>Select</CapButton> },
+    {content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
+      title: "20% off on footwear"}];
     return (
       <div className="cap-card-info">
         <div className="cap-card-showcase">

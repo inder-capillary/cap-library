@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import CapHeading from '../CapHeading';
 import * as styledVars from '../styled/variables';
 
-const classPrefix = 'cap-input';
+const classPrefix = 'cap-input-v2';
 
 const CapInputStyled = styled.div`
   &.cap-input {
