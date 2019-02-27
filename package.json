@@ -9,7 +9,6 @@
   "homepage": "/ui-library-v2/",
   "dependencies": {
     "@babel/core": "7.1.6",
-    "@capillarytech/cap-style-guide": "^1.1.3",
     "@svgr/cli": "^4.1.0",
     "@svgr/webpack": "2.4.1",
     "antd": "^3.13.2",
