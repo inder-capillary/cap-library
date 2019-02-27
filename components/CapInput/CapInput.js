@@ -9,7 +9,7 @@ import * as styledVars from '../styled/variables';
 const classPrefix = 'cap-input-v2';
 
 const CapInputStyled = styled.div`
-  &.cap-input {
+  &.cap-input-v2 {
     cursor: ${(props) => props.disabled && 'not-allowed'};
     input {
       &::-webkit-input-placeholder {
