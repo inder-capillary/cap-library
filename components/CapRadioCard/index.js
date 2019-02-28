@@ -9,48 +9,44 @@ import './_capRadioCard.scss';
 
 import { Card, Radio } from "antd";
 import PropTypes from 'prop-types';
-import CapColumn from '../CapColumn';
-import CapRow from '../CapRow';
 import CapHeading from '../CapHeading';
-import {CheckFilled } from '../assets/icons/index';
+import { CheckFilled } from '../assets/icons/index';
 const classNames = require('classnames');
 
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 class CapRadioCard extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const {panes, className, onChange, selected} = this.props;
+    const { panes, className, selected, ...rest } = this.props;
     return (
-      <RadioGroup onChange={onChange} className={classNames("cap-radioCard-v2", className)}>
-        {panes ? (
-          panes.map((pane, i) => {
-            const {content, title, icon} = pane;
+      <RadioGroup {...rest} className={classNames("cap-radioCard-v2", className)}>
+        {panes && (
+          panes.map((pane) => {
+            const { content, title, renderIcon } = pane;
             return (
-              <RadioButton key={i} value={i}>
+              <RadioButton key={pane.value} value={pane.value}>
                 <CheckFilled className="radio-card-checked" />
-                <Card key={i}>
-                  <CapRow key={`capRow_1_${i}`}>
-                    {icon ? (
-                      <CapColumn className="radio-card-icon" key={`capCol_1_${i}`} span={6}>
-                        <div className={(selected === i ? "icons green-color" : "icons")}>
-                          <a><div className="div-icon">{icon}</div></a>
+                <Card>
+                  {renderIcon && (
+                    <div className="radio-card-icon">
+                      <div className={classNames('icon-container', { 'green-color': selected === pane.value })}>
+                        <div className="div-icon">
+                          {selected === pane.value ? renderIcon({ selected: true }) : renderIcon({ selected: false })}
                         </div>
-                      </CapColumn>
-                    ) : <div></div>}
-                    <CapColumn key={i} span={18}>
-                      <CapRow key={`capRow_2_${i}`} className="radio-card-header"><CapHeading key={i} type="h4">{title}</CapHeading></CapRow>
-                      <CapRow key={`capRow_3_${i}`} className="radio-card-content">
-                        {' '}
-                        {content}
-                      </CapRow>
-                    </CapColumn>
-
-                  </CapRow>
+                      </div>
+                    </div>
+                  )}
+                  <div>
+                    <div className="radio-card-header"><CapHeading type="h4">{title}</CapHeading></div>
+                    <div className="radio-card-content">
+                      {' '}
+                      {content}
+                    </div>
+                  </div>
                 </Card>
               </RadioButton>
-
             );
-          }) ) : <div></div>}
+          }))}
       </RadioGroup>
 
     );

@@ -1,7 +1,14 @@
 import React from "react";
 
-const SvgMessage = props => (
-  <svg width={200} height={24} {...props}>
+const SvgMessage = props => {
+  let color = '#091E42';
+  if (props.color) {
+    color = color;
+  }
+  if (props.selected) {
+    color = 'white'
+  }
+  return (<svg width={24} height={24} {...props}>
     <defs>
       <path
         id="message_svg__a"
@@ -13,12 +20,12 @@ const SvgMessage = props => (
         <use xlinkHref="#message_svg__a" />
       </mask>
       <use fill="#FFF" fillRule="nonzero" xlinkHref="#message_svg__a" />
-      <g fill={(props.color?props.color:"#091E42")} mask="url(#message_svg__b)">
+      <g fill={color} mask="url(#message_svg__b)">
         <path d="M0 0h24v24H0z" />
       </g>
     </g>
     <text x="35" y="16">{props.text}</text>
-  </svg>
-);
+  </svg>)
+};
 
 export default SvgMessage;

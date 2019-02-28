@@ -1,89 +1,81 @@
-@import '../styles/_variables.scss';
+@import "../styles/_variables.scss";
 
-$capRadioCardV2:cap-radioCard-v2;
+$capRadioCardV2: cap-radioCard-v2;
 .ant-radio-group.#{$capRadioCardV2} {
-    .ant-radio-button-wrapper{
-        width: 372px;
-      height: 120px;
-      border-radius: 4px;
-      background-color: $CAP_WHITE;
-      margin:6px;
+  .ant-radio-button-wrapper {
+    width: 372px;
+    height: 120px;
+    border-radius: 4px;
+    background-color: $CAP_WHITE;
+    margin: 6px;
+    padding: 0;
+  }
+
+  .ant-card-body {
+    display: flex;
+  }
+  .ant-card.ant-card-bordered {
+    height: 112px;
+    border: 0px;
+  }
+
+  width: 800px;
+
+  .radio-card-content,
+  .radio-card-header {
+    height: 47px;
+    font-size: $FONT_SIZE_S;
+    line-height: 1.17;
+    letter-spacing: normal;
+    color: $CAP_G04;
+  }
+
+  .radio-card-header {
+    height: 25px;
+  }
+
+  .radio-card-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin-right: $CAP_SPACE_24;
+  }
+
+  .radio-card-checked {
+    position: absolute;
+    right: -6px;
+    top: -12px;
+    display: none;
+  }
+
+  .ant-radio-button-wrapper-checked {
+    .radio-card-checked {
+      display: block;
+      z-index: 1;
     }
-    .ant-card.ant-card-bordered{
-        margin-top:3px;
-        width: 330px;
-        height: 112px;
-        border:0px;
-    }
-    
-    width:800px;
-    
-    .radio-card-content, .radio-card-header{
-        height: 47px;
-        font-family: Roboto;
-        font-size: 12px;
-        font-weight: normal;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: 1.17;
-        letter-spacing: normal;
-        color: $CAP_G04;
-    }
-    
-    .ant-card-body{
-        padding: 15px;
-    }
-    
-    .radio-card-header{
-        height: 25px;
-    }
-    
-    
-    .radio-card-icon
-     {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-      margin-right:10px;
-    }
-    
-    .radio-card-checked{
-        position: absolute;
-        right: -6px;
-        top: -12px;
-        display: none;
-    }
-    
-    .ant-radio-button-wrapper-checked{
-        .radio-card-checked{
-            display: block;
-        }
-        
-    }
-    .div-icon{
-        position: absolute;
-        top: 11px;
-        left: 11px;
-    }
-    
-    .icons{
-        margin-right: 5px;
-    }
-    .icons a {
-        height: 48px;
-        width: 48px;
-        background-color:$CAP_G07;
-        background-size: cover;
-        text-decoration: none;
-        color: $CAP_G10;
-        display: inline-block;
-        border-radius: 18px;
-        position: relative;
-        
-      }
-    
-    
-      .green-color a{
-          background-color: map-get($CAP_PRIMARY, base);
-      }
+  }
+  .div-icon {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+  }
+
+  .icon-container {
+    padding-right: 24px;
+  }
+  .icon-container {
+    height: 48px;
+    width: 48px;
+    background-color: $CAP_G07;
+    background-size: cover;
+    text-decoration: none;
+    color: $CAP_G10;
+    display: inline-block;
+    border-radius: 18px;
+    position: relative;
+  }
+
+  .green-color {
+    background-color: map-get($CAP_PRIMARY, base);
+  }
 }
