@@ -37,11 +37,18 @@ $cap-card-sms:cap-card-SMS;
   .cap-card-hover-option{
     display: none;
   }
-  .cap-card-v2.cap-card-has-hover-option:hover{
+  
+  .cap-card-v2.disable-hover:hover{
     .ant-card-meta{
-      background-color: $CAP_WHITE;
-      opacity: 0.2;
+      background-color: none;
+      opacity: 1;
     }
+  }
+  .cap-card-v2:hover{
+      .ant-card-meta{
+        background-color: $CAP_WHITE;
+        opacity: 0.2;
+      }
     .cap-card-hover-option{
       display: block;
       position: absolute;

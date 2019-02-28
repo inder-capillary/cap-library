@@ -22,7 +22,6 @@ const CapInputStyled = styled.div`
       }
       width: ${(props) => props.labelPosition === 'left' ? 'calc(100% - 140px)' : '100%'};
       border-color: ${(props) => props.errorMessage && styledVars.CAP_RED};
-      border:1px solid #D6D6D6;
     }
     .ant-input-affix-wrapper {
       width: ${(props) => props.labelPosition === 'left' ? 'calc(100% - 140px)' : '100%'};

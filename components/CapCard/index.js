@@ -29,19 +29,20 @@ class CapCard extends React.Component { // eslint-disable-line react/prefer-stat
   render() {
     const { className, cardList, type} = this.props;
     return (
-      <div className={classNames(`cap-card-v2 cap-card-${type}`, className)}>
+      <div className={classNames(`cap-card-${type}`, className)}>
         {cardList ? (
           cardList.map((c, i) => {
             const {content, hoverOption, ...rest} = c;
             const key = c.key || i;
             return (
-              <div className={hoverOption ? '' : 'disable-hover'}>
+              <div className={`cap-card-v2 ${hoverOption ? '' : 'disable-hover'}`}>
                 <Card {...rest} key={key}>
                   {this.cardInner(type, key, content)}
+                  <div className="cap-card-hover-option">
+                    { hoverOption}
+                  </div>
                 </Card>
-                <div className="cap-card-hover-option">
-                  { hoverOption}
-                </div>
+
               </div>
             );
           }) ) : <div></div>}
