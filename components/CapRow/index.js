@@ -11,7 +11,7 @@ class CapRow extends React.Component { // eslint-disable-line react/prefer-state
   render() {
     const {className, children, ...rest} = this.props;
     return (
-      <Row {...rest} className={classNames("cap-row", className)}>
+      <Row {...rest} className={classNames("cap-row-v2", className)}>
         {React.Children.toArray(children)}
       </Row>
     );

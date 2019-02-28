@@ -16,7 +16,7 @@ class CapSwitch extends React.Component { // eslint-disable-line react/prefer-st
   render() {
     const {className, children, ...rest} = this.props;
     return (
-      <Switch {...rest} className={classNames("cap-switch", className)}>
+      <Switch {...rest} className={classNames("cap-switch-v2", className)}>
         {React.Children.toArray(children)}
       </Switch>
     );

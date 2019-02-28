@@ -1,6 +1,6 @@
 @import "../styles/_variables.scss";
 
-$radioButton:cap-radio-button-v2;
+$radioButton:cap-radio-v2;
 .ant-radio.#{$radioButton}{
     .ant-radio-checked .ant-radio-inner {
         background-color:map-get($CAP_PRIMARY, base);

@@ -9,7 +9,7 @@ import classNames from 'classnames';
 import { Popover } from 'antd';
 
 import './_capPopover.scss';
-const clsPrefix = 'cap-popover';
+const clsPrefix = 'cap-popover-v2';
 
 function CapPopover(props) {
   const { overlayClassName, ...rest } = props;
