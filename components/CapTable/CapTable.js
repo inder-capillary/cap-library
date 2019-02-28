@@ -9,7 +9,7 @@ import "./_capTable.scss";
 export default class CapTable extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <Table {...this.props} className={this.props.className ? `cap-table ${this.props.className}` : "cap-table"}>
+      <Table {...this.props} className={this.props.className ? `cap-table-v2 ${this.props.className}` : "cap-table-v2"}>
         {React.Children.toArray(this.props.children)}
       </Table>
     );

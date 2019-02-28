@@ -29,7 +29,7 @@ export default class CapActionBar extends React.Component { // eslint-disable-li
   render() {
     const rowProps = this.props.row ? this.props.row.props : [];
     return (
-      <CapRow {...rowProps} className={this.props.className ? `cap-action-bar ${this.props.className}` : "cap-action-bar"}>
+      <CapRow {...rowProps} className={this.props.className ? `cap-action-bar-v2 ${this.props.className}` : "cap-action-bar-v2"}>
         { this.props.search
           && (
             <CapColumn {...this.props.search.capColumn}>

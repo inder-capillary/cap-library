@@ -16,7 +16,7 @@ export default class CapListLayout extends React.Component { // eslint-disable-l
           && <CapActionBar {...this.props.capActionBar} />
         }
         {this.props.capTable
-          && <CapTable className="cap-table" {...this.props.capTable} />
+          && <CapTable className="cap-table-v2" {...this.props.capTable} />
         }
       </div>
     );
