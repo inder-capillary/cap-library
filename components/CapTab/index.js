@@ -22,10 +22,11 @@ class CapTab extends React.Component { // eslint-disable-line react/prefer-state
   }
 
   onChange = (activeKey) => {
-    this.setState({ activeKey });
-    if (this.props.onChange) {
-      this.props.onChange(find(this.props.panes, {key: activeKey}));
-    }
+    this.setState({ activeKey }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(find(this.props.panes, {key: activeKey}));
+      }
+    });
   }
 
   render() {
