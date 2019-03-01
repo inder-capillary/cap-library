@@ -28,6 +28,9 @@ const CapInputStyled = styled.div`
         width: 100%;
       }
     }
+    .ant-input-affix-wrapper .ant-input-prefix {
+      left: 8px;
+    }
   }
 `;
 
@@ -51,7 +54,7 @@ const StyledCapHeading = styled(CapHeading)`
   }
 `;
 
-const Span = styled.span`
+const StyledSpan = styled.span`
   &.error-message {
     color: ${styledVars.CAP_RED};
     font-size: ${styledVars.FONT_SIZE_S};
@@ -70,7 +73,7 @@ const InductiveText = styled.span`
 
 
 function CapInputHOC(InputComponent) {
-  return class extends React.Component {
+  return class extends Component {
     componentDidMount() {
       if (this.props.focusOnMount && this.input) {
         this.input.focus();
@@ -79,16 +82,14 @@ function CapInputHOC(InputComponent) {
 
     render() {
       const {
-        errorMessage,
         label,
         labelPosition,
         isRequired,
-        isVerified,
         inductiveText,
         className,
-        alwaysShowFocus,
         ...rest
       } = this.props;
+      const { errorMessage } = rest;
       const type = inductiveText ? 'h3' : 'h4';
       if (rest.focusOnMount) {
         delete rest.focusOnMount;
@@ -103,30 +104,40 @@ function CapInputHOC(InputComponent) {
           <InputWithLabelWrapper labelPosition={labelPosition}>
             {
               label
-                            && (
-                              <StyledCapHeading
-                                type={type}
-                                labelPosition={labelPosition}
-                                disabled={this.props.disabled}
-                                className={classnames(`${classPrefix}-label`)}
-                              >
-                                {label}
-                                {isRequired && <Sup className="requied-indicator">*</Sup>}
-                              </StyledCapHeading>
-                            )
+              && (
+                <StyledCapHeading
+                  type={type}
+                  labelPosition={labelPosition}
+                  disabled={this.props.disabled}
+                  className={classnames(`${classPrefix}-label`)}
+                >
+                  {label}
+                  {isRequired && <Sup className="requied-indicator">*</Sup>}
+                </StyledCapHeading>
+              )
             }
             {inductiveText && labelPosition === 'top'
-                            && (
-                              <InductiveText className={classnames(`${classPrefix}-inductive-text`)}>{inductiveText}</InductiveText>
-                            )
+              && (
+                <InductiveText className={classnames(`${classPrefix}-inductive-text`)}>{inductiveText}</InductiveText>
+              )
             }
-            <InputComponent {...this.props} />
+            <InputComponent {...rest} />
           </InputWithLabelWrapper>
-          {errorMessage && <Span className="error-message" labelPosition={labelPosition}>{errorMessage}</Span>}
+          {errorMessage && <StyledSpan className="error-message" labelPosition={labelPosition}>{errorMessage}</StyledSpan>}
         </CapInputStyled>
       );
     }
   };
 }
+
+CapInputHOC.defaultProps = {
+  label: '',
+  labelPosition: 'top',
+  isRequired: false,
+  errorMessage: '',
+  isVerified: false,
+  size: 'large',
+  inductiveText: '',
+};
 
 export default CapInputHOC;

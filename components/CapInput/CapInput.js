@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Input, Icon } from 'antd';
 import styled from 'styled-components';
+import Search from './Search';
 import CapInputHOC from './CapInputHOC';
 import * as styledVars from '../styled/variables';
 
@@ -11,8 +12,10 @@ const StyledIcon = styled(Icon)`
 `;
 
 class CapInput extends Component {
+  static Search;
+
   render() {
-    const { alwaysShowFocus, errorMessage, isVerified, ...rest } = this.props;
+    const { alwaysShowFocus, errorMessage, isVerified, suffix, ...rest } = this.props;
     return (
       <Input
         {...rest}
@@ -23,7 +26,7 @@ class CapInput extends Component {
           }
         }}
         suffix={(errorMessage && <StyledIcon className="error-icon" type="warning" status="error" />)
-          || (isVerified && <StyledIcon type="check-circle" status="success" />) || this.props.suffix}
+          || (isVerified && <StyledIcon type="check-circle" status="success" />) || suffix}
       />
     );
   }
@@ -40,14 +43,7 @@ CapInput.propTypes = {
   alwaysShowFocus: PropTypes.bool,
 };
 
-CapInput.defaultProps = {
-  label: '',
-  labelPosition: 'top',
-  isRequired: false,
-  errorMessage: '',
-  isVerified: false,
-  size: 'large',
-  inductiveText: '',
-};
+const InputFinal = CapInputHOC(CapInput);
+InputFinal.Search = Search;
 
-export default CapInputHOC(CapInput);
+export default InputFinal;
