@@ -78,6 +78,45 @@ const searchInfoData = [
     default: "",
   },
 ];
+
+const textAreaInfoData = [
+  {
+    key: 1,
+    property: "maxLength",
+    description: "Max allowed Characters in text area",
+    type: "number",
+    default: "-",
+  },
+  {
+    key: 2,
+    property: "autosize",
+    description: "Height autosize feature, can be set to true|false or an object { minRows: 2, maxRows: 6 }",
+    type: "boolean|object",
+    default: false,
+  },
+  {
+    key: 3,
+    property: "defaultValue",
+    description: "The initial input content",
+    type: "string",
+    default: null,
+  },
+  {
+    key: 4,
+    property: "value",
+    description: "The input content value",
+    type: "string",
+    default: null,
+  },
+  {
+    key: 5,
+    property: "onPressEnter",
+    description: "The callback function that is triggered when Enter key is pressed.",
+    type: "function(e)",
+    default: null,
+  },
+
+];
 const CapInputDoc = () => {
   const [textAreaValue, setTextAreaValue] = useState("");
   return (
@@ -158,6 +197,7 @@ const CapInputDoc = () => {
       </div>
       <PropertyTable data={infoData} />
       <PropertyTable title="CapInput.Search" data={searchInfoData} />
+      <PropertyTable title="CapInput.TextArea" data={textAreaInfoData} />
       <div style={{ marginTop: '24px' }}>
         <b>NOTE: </b>
         This component is the extended version of ant design

@@ -23,34 +23,58 @@ const StyledTextArea = styled(AntTextArea)`
 `;
 
 class TextArea extends Component {
-  render() {
-    const { alwaysShowFocus, maxLength, ...rest } = this.props;
-    const charLength = rest.value.length;
-    return (
-      <div style={{ position: 'relative' }}>
-        <StyledTextArea
-          cols={35}
-          autosize={{ minRows: 5 }}
-          {...rest}
-          ref={(node) => {
-            this.input = node;
-            if (alwaysShowFocus && this.input) {
-              this.input.focus();
-            }
-          }}
-        />
-        {maxLength && (
-          <CharCount>
-            <CapHeading type="label1">
-              <ErrorCount showError={charLength > maxLength}>
-                {`${charLength} /${maxLength}`}
-              </ErrorCount>
-            </CapHeading>
-          </CharCount>
-        )}
-      </div>
-    );
-  }
+    state = { charLimitExeeded: false }
+
+    onKeyDown = () => {
+      const { value, maxLength } = this.props;
+      const { charLimitExeeded } = this.state;
+      if (maxLength && value.length === maxLength) {
+        this.setState({ charLimitExeeded: true });
+      } else if (charLimitExeeded) {
+        this.setState({ charLimitExeeded: false });
+      }
+    }
+
+    onKeyUp = () => {
+      const { value, maxLength } = this.props;
+      const { charLimitExeeded } = this.state;
+      if (charLimitExeeded && value.length < maxLength) {
+        this.setState({ charLimitExeeded: false });
+      }
+    }
+
+    render() {
+      const { alwaysShowFocus, maxLength, ...rest } = this.props;
+      const { charLimitExeeded } = this.state;
+      const charLength = rest.value.length;
+      return (
+        <div style={{ position: 'relative' }}>
+          <StyledTextArea
+            cols={35}
+            autosize={{ minRows: 5 }}
+            maxLength={maxLength}
+            onKeyDown={this.onKeyDown}
+            onKeyUp={this.onKeyUp}
+            {...rest}
+            ref={(node) => {
+              this.input = node;
+              if (alwaysShowFocus && this.input) {
+                this.input.focus();
+              }
+            }}
+          />
+          {maxLength && (
+            <CharCount>
+              <CapHeading type="label1">
+                <ErrorCount showError={charLimitExeeded}>
+                  {`${charLength} /${maxLength}`}
+                </ErrorCount>
+              </CapHeading>
+            </CharCount>
+          )}
+        </div>
+      );
+    }
 }
 
 TextArea.defaultProps = {
