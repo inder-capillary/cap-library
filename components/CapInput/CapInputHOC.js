@@ -10,7 +10,8 @@ const CapInputStyled = styled.div`
   &.cap-input-v2 {
     display: inline-block;
     cursor: ${(props) => props.disabled && 'not-allowed'};
-    input {
+    input,
+    textarea {
       &::-webkit-input-placeholder {
         font-size: 14px;
       }

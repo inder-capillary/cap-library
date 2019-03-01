@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Input, Icon } from 'antd';
 import styled from 'styled-components';
 import Search from './Search';
+import TextArea from './TextArea';
 import CapInputHOC from './CapInputHOC';
 import * as styledVars from '../styled/variables';
 
@@ -45,5 +46,6 @@ CapInput.propTypes = {
 
 const InputFinal = CapInputHOC(CapInput);
 InputFinal.Search = Search;
+InputFinal.TextArea = TextArea;
 
 export default InputFinal;
