@@ -13,8 +13,6 @@ const StyledIcon = styled(Icon)`
 `;
 
 class CapInput extends Component {
-  static Search;
-
   render() {
     const { alwaysShowFocus, errorMessage, isVerified, suffix, ...rest } = this.props;
     return (
