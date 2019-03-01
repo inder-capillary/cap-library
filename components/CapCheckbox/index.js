@@ -13,7 +13,7 @@ class CapCheckbox extends React.Component { // eslint-disable-line react/prefer-
   render() {
     const {className, children, errorMessage, ...rest} = this.props;
     return (
-      <div className={classNames("cap-checkbox", className)}>
+      <div className={classNames("cap-checkbox-v2", className)}>
         <Checkbox {...rest}>
           { children }
         </Checkbox>

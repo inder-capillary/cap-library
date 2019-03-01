@@ -1,7 +1,14 @@
 import React from "react";
 
-const SvgViewDark = props => (
-  <svg width={24} height={24} {...props}>
+const SvgViewDark = props => {
+  let color = '#091E42';
+  if (props.color) {
+    color = color;
+  }
+  if (props.selected) {
+    color = 'white'
+  }
+  return (<svg width={24} height={24} {...props}>
     <defs>
       <path
         id="view-dark_svg__a"
@@ -13,11 +20,11 @@ const SvgViewDark = props => (
         <use xlinkHref="#view-dark_svg__a" />
       </mask>
       <use fill="#FFF" fillRule="nonzero" xlinkHref="#view-dark_svg__a" />
-      <g fill={(props.color?props.color:"#091E42")} mask="url(#view-dark_svg__b)">
+      <g fill={color} mask="url(#view-dark_svg__b)">
         <path d="M0 0h24v24H0z" />
       </g>
     </g>
-  </svg>
-);
+  </svg>)
+};
 
 export default SvgViewDark;

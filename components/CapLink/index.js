@@ -15,7 +15,7 @@ class CapLink extends React.Component { // eslint-disable-line react/prefer-stat
   render() {
     const {className, children, ...rest} = this.props;
     return (
-      <Anchor className={classNames("cap-link", className)}>
+      <Anchor className={classNames("cap-link-v2", className)}>
         <Link {...rest}>
           { children }
         </Link>

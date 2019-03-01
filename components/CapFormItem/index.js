@@ -8,7 +8,7 @@ export default class CapFormItem extends React.Component { // eslint-disable-lin
   render() {
     const {className, children, ...rest} = this.props;
     return (
-      <FormItem {...rest} className={classNames("cap-form-item", className)}>
+      <FormItem {...rest} className={classNames("cap-form-item-v2", className)}>
         {React.Children.toArray(children)}
       </FormItem>
     );

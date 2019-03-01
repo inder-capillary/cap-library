@@ -6,10 +6,11 @@ import styled from 'styled-components';
 import CapHeading from '../CapHeading';
 import * as styledVars from '../styled/variables';
 
-const classPrefix = 'cap-input';
+const classPrefix = 'cap-input-v2';
 
 const CapInputStyled = styled.div`
-  &.cap-input {
+  &.cap-input-v2 {
+    display: inline-block;
     cursor: ${(props) => props.disabled && 'not-allowed'};
     input {
       &::-webkit-input-placeholder {

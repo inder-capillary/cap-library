@@ -1,7 +1,8 @@
 @import '../styles/_variables.scss';
 
 $cap-card-sms:cap-card-SMS;
-.cap-card-v2.#{$cap-card-sms}{
+.#{$cap-card-sms}{
+  position: relative;
   .ant-card{
       width: 276px;
     height: 192px;
@@ -32,39 +33,36 @@ $cap-card-sms:cap-card-SMS;
   .ant-card-head-wrapper{
     height:59px;
   }
- 
- 
-  .ant-popover-open{
-    .ant-card-body{
-      background-color: #ffffff;
-      opacity: 0.2;
+  
+  .cap-card-hover-option{
+    display: none;
+  }
+  
+  .cap-card-v2.disable-hover:hover{
+    .ant-card-meta{
+      background-color: none;
+      opacity: 1;
     }
   }
-
+  .cap-card-v2:hover{
+      .ant-card-meta{
+        background-color: $CAP_WHITE;
+        opacity: 0.2;
+      }
+    .cap-card-hover-option{
+      display: block;
+      position: absolute;
+      z-index: 2;
+      top: 75px;
+      left: 35%;
+    }
+  }
   .disable-hover{
     .ant-card-body{
       opacity: 1;
       background:none;
     }
   }
+  
 }
 
-
-.ant-popover{
-  top:140px !important;
-}
-.ant-popover-inner{
-  // background-color: #42b040;
-  width: 80px;
-  height: 40px;
-  background:none;
-  box-shadow: none;
-}
-
-.ant-popover-inner-content{
-  padding:0px;
- 
-}
-.ant-popover-arrow{
-  display: none;
-}

@@ -1,6 +1,9 @@
 @import '../styles/_variables.scss';
-.cap-link.ant-anchor-wrapper{
-    .a{
+.cap-link-v2.ant-anchor-wrapper{
+    a{
+        color:$CAP_G01;
+    }
+    a:hover{
         color:$CAP_G01;
     }
     .ant-anchor-ink{

@@ -11,7 +11,7 @@ export default class CapColumn extends React.Component { // eslint-disable-line 
   render() {
     const {className, children, ...rest} = this.props;
     return (
-      <Col {...rest} className={classNames("cap-column", className)}>
+      <Col {...rest} className={classNames("cap-column-v2", className)}>
         {React.Children.toArray(children)}
       </Col>
     );
