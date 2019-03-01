@@ -69,7 +69,12 @@ function createPackageFile() {
         repository,
         license,
         bugs,
-        homepage
+        homepage,
+        dependencies: {
+          "antd": "^3.13.2",
+          "react-dom": "^16.8.1",
+          "react": "^16.8.1",
+        }
       };
 
       return new Promise((resolve) => {
