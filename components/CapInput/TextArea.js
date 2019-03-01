@@ -19,6 +19,7 @@ const ErrorCount = styled.span`
 `;
 
 const StyledTextArea = styled(AntTextArea)`
+    resize: none;
 `;
 
 class TextArea extends Component {
@@ -29,7 +30,7 @@ class TextArea extends Component {
       <div style={{ position: 'relative' }}>
         <StyledTextArea
           cols={35}
-          autosize={{ maxRows: 5, minRows: 5 }}
+          autosize={{ minRows: 5 }}
           {...rest}
           ref={(node) => {
             this.input = node;
