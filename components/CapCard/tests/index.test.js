@@ -7,7 +7,7 @@ import CapCard from '../index';
 describe('<CapCard />', () => {
   const wrapper = shallow(<CapCard />);
 
-  it('Should render antd datepicker', () => {
+  it('Should render antd card', () => {
     expect(wrapper.find(Card)).toHaveLength(1);
   });
 });
