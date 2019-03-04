@@ -56,6 +56,13 @@ const infoData = [
     type: "String",
     default: "-",
   },
+  {
+    key: "8",
+    property: "suffix",
+    description: "React element to be added as suffix to header.",
+    type: "String| ReactNode",
+    default: "-",
+  },
 ];
 
 export default class CapCheckboxDoc extends Component { // eslint-disable-line react/prefer-stateless-function
