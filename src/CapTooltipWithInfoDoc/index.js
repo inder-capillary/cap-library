@@ -2,19 +2,19 @@
 * CapTooltipWithInfoDoc
 */
 import React, { Component } from "react";
-import PropertyTable from '../../helpers/PropertyTable';
+//import PropertyTable from '../../helpers/PropertyTable';
 import { CapTooltipWithInfo } from "../../components";
 import "./info.scss";
 
-const infoData = [
-  {
-    key: 1,
-    property: "-",
-    description: "-",
-    type: "-",
-    default: "-",
-  },
-];
+// const infoData = [
+//   {
+//     key: 1,
+//     property: "-",
+//     description: "-",
+//     type: "-",
+//     default: "-",
+//   },
+// ];
 
 export default class CapTooltipWithInfoDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -23,7 +23,11 @@ export default class CapTooltipWithInfoDoc extends Component { // eslint-disable
         <div className="cap-tool-tip-with-info-showcase">
           <CapTooltipWithInfo title="prompt text" />
         </div>
-        <PropertyTable data={infoData} />
+        {/* <PropertyTable data={infoData} /> */}
+        <div style={{ marginTop: '24px' }}>
+          <b>NOTE: </b>
+          All the props are same as CapTooltip component
+        </div>
       </div>
     );
   }
