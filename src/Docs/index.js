@@ -10,7 +10,7 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
   constructor(props) {
     super(props);
     this.state = {
-      menuSelected: "capButton",
+      menuSelected: "capCustomCard",
     };
     this.onMenuItemClick = this.onMenuItemClick.bind(this);
   }

@@ -36,7 +36,6 @@ export { default as CapProgress } from './CapProgress';
 export { default as CapRadioButton } from './CapRadioButton';
 export { default as CapMultiSelectWithTree } from './CapMultiSelectWithTree';
 export { default as CapPopover } from './CapPopover';
-export { default as CapCard } from './CapCard';
 export { default as CapMultiSelect } from './CapMultiSelect';
 export { default as CapTooltip } from './CapTooltip';
 export { default as CapIcon } from './CapIcon';

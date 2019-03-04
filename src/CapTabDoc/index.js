@@ -4,7 +4,6 @@
 import React, { Component } from "react";
 import PropertyTable from '../../helpers/PropertyTable';
 import { CapTab } from "../../components";
-import { CapCustomCard } from '../../components/CapCustomCard';
 import "./info.scss";
 
 const infoData = [
@@ -140,16 +139,16 @@ const tabPaneData = [
 ];
 export default class CapTabDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const cardProps = {
-      icon: <span></span>,
-      title: "Title",
-      content: "message content",
-      options: <span></span>,
-      key: 'card',
-    };
+    // const cardProps = {
+    //   icon: <span></span>,
+    //   title: "Title",
+    //   content: "message content",
+    //   options: <span></span>,
+    //   key: 'card',
+    // };
 
-    const panes = [{content: <CapCustomCard {...cardProps} />, tab: 'tab 1', key: 'tab01'}, {content: 'conatiner 2', tab: 'tab 2', key: 'tab02'}, {content: 'conatiner 3', tab: 'tab 3', key: 'tab03'}];
-    const panes1 = [{content: 'conatiner 1', tab: 'tab 1', disabled: 'true', key: 'tab11'}, {content: 'conatiner 2', tab: 'tab 2', disabled: 'true', key: 'tab12'}, {content: 'conatiner 3', tab: 'tab 3', disabled: 'true', key: 'tab13'}];
+    const panes = [{ content: 'container2', tab: 'tab 1', key: 'tab01' }, { content: 'conatiner 2', tab: 'tab 2', key: 'tab02' }, { content: 'conatiner 3', tab: 'tab 3', key: 'tab03' }];
+    const panes1 = [{ content: 'conatiner 1', tab: 'tab 1', disabled: 'true', key: 'tab11' }, { content: 'conatiner 2', tab: 'tab 2', disabled: 'true', key: 'tab12' }, { content: 'conatiner 3', tab: 'tab 3', disabled: 'true', key: 'tab13' }];
 
     return (
       <div className="cap-tab-info">
