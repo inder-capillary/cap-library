@@ -13,3 +13,4 @@ export {default as UserIcon} from './user';
 export {default as SurveyIcon} from './survey';
 export {default as DynamicIcon} from './dynamic';
 export {default as OutboundIcon} from './outbound';
+export { default as InfoIcon } from './info';
