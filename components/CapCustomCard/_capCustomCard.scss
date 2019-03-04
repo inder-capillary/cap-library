@@ -5,9 +5,8 @@ $cap-custom-card: cap-custom-card;
 
 .ant-card.#{$cap-custom-card} {
   width: 278px;
-  min-height: 192px;
-  float: left;
-  margin: 6px;
+  display: inline-block;
+  min-height: 192px;  
   .ant-card-head {
     height: 56px;
     border-bottom: 0px;
@@ -52,7 +51,9 @@ $cap-custom-card: cap-custom-card;
 }
 
 .#{$cap-custom-card-list} {
-  display: inline-block;
+  .ant-card.#{$cap-custom-card} {
+    margin: 6px;
+  }
   &.Email {
     .ant-card-body {
       background-color: #f4f5f7;

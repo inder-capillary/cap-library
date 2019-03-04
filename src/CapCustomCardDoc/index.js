@@ -3,12 +3,13 @@
 */
 import React, { Component } from "react";
 
+import styled from 'styled-components';
 import PropertyTable from '../../helpers/PropertyTable';
-import CapCustomCard from "../../components/CapCustomCard/index";
+import { CapCustomCard, CapButton, CapHeading } from "../../components";
 import { View } from '../../components/assets/icons';
-import CapButton from '../../components/CapButton';
-// import CapIcon from "../../components/CapIcon";
 import "./info.scss";
+
+const { CapCustomCardList } = CapCustomCard;
 
 const infoData = [
   {
@@ -134,6 +135,13 @@ const cardInfoData = [
     type: "(key) => void",
     default: "-",
   },
+  {
+    key: 16,
+    property: "type",
+    description: "type of card [SMS ,EMAIL, WeChat, Mpush]",
+    type: "string",
+    default: "-",
+  },
 ];
 
 const cardListSms = [
@@ -175,18 +183,28 @@ const cardListEmail = [
   },
 ];
 
+const CustomDiv = styled.div`
+margin-top: 24px;
+margin-left: 16px;
+`;
+
 export default class CapCustomCardDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div className="cap-card-info">
         <div className="cap-card-showcase">
-          SMS Card:
-          <CapCustomCard cardList={cardListSms} type="SMS" />
-          <div>
-            <CapCustomCard cardList={cardListEmail} type="Email" />
-          </div>
+          <CapHeading type="h3">Single Email Card</CapHeading>
+          <CapCustomCard {...cardListEmail[0]} type="Email" />
+          <CustomDiv>
+            <CapHeading type="h3">Sms Card  List</CapHeading>
+          </CustomDiv>
+          <CapCustomCardList cardList={cardListSms} type="SMS" />
+          <CustomDiv>
+            <CapHeading type="h3">Email Card  List</CapHeading>
+          </CustomDiv>
+          <CapCustomCardList cardList={cardListEmail} type="Email" />
         </div>
-        <PropertyTable data={infoData} />
+        <PropertyTable data={infoData} title="CapCustomCard.CapCustomCardList" />
         <PropertyTable data={cardInfoData} title="Card Props" />
       </div>
     );
