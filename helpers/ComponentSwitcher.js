@@ -111,7 +111,7 @@ class ComponentSwitcher extends Component {
         return <CapLinkDoc />;
       case 'capRadioCard':
         return <CapRadioCardDoc />;
-      case 'capNotificationDoc':
+      case 'capNotification':
         return <CapNotificationDoc />;
       default:
         return null;

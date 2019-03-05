@@ -4,19 +4,20 @@
 *
 */
 
-import React from 'react';
-// import styled from 'styled-components';
+import { notification } from 'antd';
 
+const { open, error, info, warning, warn, success, close, destroy } = notification;
 
-function CapNotification() {
-  return (
-    <div>
-    </div>
-  );
-}
+const CapNotification = {};
 
-CapNotification.propTypes = {
-
-};
+CapNotification.open = open;
+CapNotification.success = success;
+CapNotification.error = error;
+CapNotification.info = info;
+CapNotification.warning = warning;
+CapNotification.warn = warn;
+CapNotification.open = open;
+CapNotification.close = close;
+CapNotification.destroy = destroy;
 
 export default CapNotification;
