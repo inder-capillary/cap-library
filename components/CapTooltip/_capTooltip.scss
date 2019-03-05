@@ -1,11 +1,12 @@
-@import '../styles/_variables.scss';
+@import "../styles/_variables.scss";
 
 $tooltip: cap-tooltip-overlay-v2;
 
 .ant-tooltip.#{$tooltip} {
-    .ant-tooltip-inner {
-        background-color: $FONT_COLOR_01;
-        font-size: $FONT_SIZE_M;
-        font-weight: $FONT_WEIGHT_MEDIUM;
-    }
+  max-width: 324px;
+  .ant-tooltip-inner {
+    background-color: $FONT_COLOR_01;
+    font-size: $FONT_SIZE_M;
+    font-weight: $FONT_WEIGHT_MEDIUM;
+  }
 }
