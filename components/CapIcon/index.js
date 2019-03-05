@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import classNames from 'classnames';
 import * as StyledVars from '../styled/variables';
 
-import getSvgComponentFromType from '../svgIcons/component';
+import { getSvgComponentFromType } from '../assets/svgIcons/component';
 
 const clsPrefix = 'cap-icon-v2';
 
