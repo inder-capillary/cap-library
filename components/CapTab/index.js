@@ -13,46 +13,25 @@ import { Tabs } from "antd";
 const classNames = require('classnames');
 const { TabPane } = Tabs;
 
-class CapTab extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeKey: (props.panes ? `${props.panes[0].key}` : 0),
-    };
-  }
-
-  onChange = (activeKey) => {
-    this.setState({ activeKey });
-    if (this.props.onChange) {
-      this.props.onChange(find(this.props.panes, {key: activeKey}));
-    }
-  }
-
-  render() {
-    const {panes, className, ...rest} = this.props;
-    return (
-      <div className={this.props.className}>
-        {panes ? (
-          <Tabs
-            className={classNames("cap-tab-v2", className)}
-            animated
-            onChange={this.onChange}
-            activeKey={this.state.activeKey}
-            {...rest}>
-            { panes.map((pane, i) => {
-              const {content, ...paneProps} = pane;
-              return <TabPane key={i} {...paneProps}>{content}</TabPane>;
-            } )}
-          </Tabs>
-        ) : <div></div>}
-
-      </div>
-    );
-  }
+function CapTab(props) { // eslint-disable-line react/prefer-stateless-function
+  const {panes, className, ...rest} = props;
+  return (
+    <div className={classNames('cap-tab-v2-wrapper', className)}>
+      <Tabs
+        className={classNames("cap-tab-v2", className)}
+        animated
+        {...rest}>
+        { panes.map((pane) => {
+          const {content, ...paneProps} = pane;
+          return <TabPane {...paneProps}>{content}</TabPane>;
+        } )}
+      </Tabs>
+    </div>
+  );
 }
 
 CapTab.propTypes = {
-  panes: PropTypes.arrayOf(Object),
+  panes: PropTypes.arrayOf(Object).isRequired,
   className: PropTypes.string,
 };
 
