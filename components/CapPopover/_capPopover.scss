@@ -1,1 +1,7 @@
 @import '../styles/_variables.scss';
+
+$popover: cap-popover-v2;
+
+.ant-popover.#{$popover} {
+    max-width: 324px;
+}

@@ -5,12 +5,16 @@
 */
 
 import React from 'react';
+import classNames from 'classnames';
 import { Tooltip } from "antd";
+import './_capTooltip.scss';
 
+const clsPrefix = 'cap-tooltip-overlay-v2';
 
 function CapTooltip(props) {
+  const { overlayClassName, ...rest } = props;
   return (
-    <Tooltip {...props} />
+    <Tooltip overlayClassName={classNames(clsPrefix, overlayClassName)} {...rest} />
   );
 }
 

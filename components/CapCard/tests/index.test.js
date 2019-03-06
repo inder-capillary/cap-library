@@ -1,10 +1,13 @@
-import renderer from 'react-test-renderer';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
+import { shallow } from 'enzyme';
+import { Card } from 'antd';
+
 import CapCard from '../index';
 
 describe('<CapCard />', () => {
-  it('CapCard renders correctly', () => {
-    const tree = renderer.create(<CapCard />).toJSON();
-    expect(tree).toMatchSnapshot();
+  const wrapper = shallow(<CapCard />);
+
+  it('Should render antd card', () => {
+    expect(wrapper.find(Card)).toHaveLength(1);
   });
 });

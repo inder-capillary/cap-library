@@ -1,1 +1,13 @@
-@import '../styles/_variables.scss';
+@import "../styles/_variables.scss";
+
+$cap-checkbox: cap-checkbox-v2;
+
+.#{$cap-checkbox} {
+  .inductive-text {
+    padding-left: $CAP_SPACE_24;
+    padding-top: $CAP_SPACE_04;
+  }
+  .title.has-suffix {
+    margin-right: 8px;
+  }
+}
