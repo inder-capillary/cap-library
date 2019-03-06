@@ -333,6 +333,15 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
         </div>
         {`Used as:`}
         <b>{`<CapIcon type="add-media" />`}</b>
+        <br />
+        <b>Font size and color property can be changed through css for these Icons</b>
+        <pre>
+          {`
+          .cap-icon-v2-add:hover {
+            color: red;
+          }
+        `}
+        </pre>
         <PropertyTable data={infoData} />
         <div>
           <b>NOTE: </b>
