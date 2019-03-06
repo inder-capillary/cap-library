@@ -7,19 +7,26 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Checkbox } from "antd";
 import "./_capCheckbox.scss";
+import { CapHeading } from "..";
+
 const classNames = require('classnames');
 
+const { CapHeadingSpan } = CapHeading;
+
+const clsPrefix = "cap-checkbox-v2";
 class CapCheckbox extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const {className, children, errorMessage, ...rest} = this.props;
+    const { className, children, errorMessage, inductiveText, suffix, ...rest } = this.props;
     return (
-      <div className={classNames("cap-checkbox-v2", className)}>
+      <div className={classNames(clsPrefix, className)}>
         <Checkbox {...rest}>
-          { children }
+          <CapHeadingSpan className={classNames('title', { 'has-suffix': suffix })} type="h4">{children}</CapHeadingSpan>
+          {suffix}
+          {inductiveText && <CapHeading className="inductive-text" type="label3">{inductiveText}</CapHeading>}
         </Checkbox>
         {
           className && className.indexOf('error') > -1 && errorMessage
-          && <div className="error-message">{ errorMessage }</div>
+          && <div className="error-message">{errorMessage}</div>
         }
       </div>
     );
