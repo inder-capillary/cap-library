@@ -12,7 +12,7 @@
     "@svgr/cli": "^4.1.0",
     "@svgr/core": "^4.1.0",
     "@svgr/webpack": "2.4.1",
-    "antd": "^3.13.2",
+    "antd": "^3.14.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
