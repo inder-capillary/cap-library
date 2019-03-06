@@ -48,6 +48,11 @@ const headings = {
     'font-size': '12px',
     'font-weight': 'normal',
   },
+  label3: {
+    'color': '#97a0af',
+    'font-size': '12px',
+    'font-weight': 'normal',
+  },
 };
 
 const CapHeading = styled.div`
@@ -56,10 +61,18 @@ const CapHeading = styled.div`
     color: ${[(props) => headings[props.type].color]};
     `;
 
+const CapHeadingSpan = styled.span`
+font-size: ${[(props) => headings[props.type]["font-size"]]};
+font-weight: ${[(props) => headings[props.type]["font-weight"]]};
+color: ${[(props) => headings[props.type].color]};
+`;
+
 CapHeading.propTypes = {
   type: PropTypes.string,
   children: PropTypes.any,
 };
+
+CapHeading.CapHeadingSpan = CapHeadingSpan;
 
 CapHeading.defaultProps = {
   type: 'h5',

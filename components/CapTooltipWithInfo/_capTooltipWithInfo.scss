@@ -1,0 +1,7 @@
+@import "../styles/_variables.scss";
+
+$cap-tooltip-with-info: cap-tooltip-with-info;
+
+.#{$cap-tooltip-with-info}.info-icon {
+  cursor: pointer;
+}

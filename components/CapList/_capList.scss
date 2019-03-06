@@ -1,0 +1,9 @@
+@import "../styles/_variables.scss";
+
+$list: cap-list-v2;
+
+.ant-list.#{$list} {
+  &.ant-list-split .ant-list-item {
+    border-bottom: 1px solid $CAP_G07;
+  }
+}

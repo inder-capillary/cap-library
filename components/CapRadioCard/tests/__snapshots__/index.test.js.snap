@@ -5,21 +5,20 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
   className="ant-radio-group ant-radio-group-outline cap-radioCard-v2"
 >
   <label
-    className="ant-radio-button-wrapper"
+    className="ant-radio-button-wrapper ant-radio-button-wrapper-checked"
   >
     <span
-      className="ant-radio-button"
+      className="ant-radio-button ant-radio-button-checked"
       style={Object {}}
     >
       <input
-        checked={false}
+        checked={true}
         className="ant-radio-button-input"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
         type="radio"
-        value={0}
       />
       <span
         className="ant-radio-button-inner"
@@ -48,79 +47,22 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
           className="ant-card-body"
           style={Object {}}
         >
-          <div
-            className="ant-row cap-row"
-          >
+          <div>
             <div
-              className="ant-col-6 cap-column radio-card-icon"
+              className="radio-card-header"
             >
               <div
-                className="icons"
+                className="sc-bdVaJa kuwkmp"
+                type="h4"
               >
-                <a>
-                  <div
-                    className="div-icon"
-                  >
-                    <svg
-                      height={24}
-                      width={24}
-                    >
-                      <defs>
-                        <path
-                          d="M4 4h16v12H5.17L4 17.17V4zm0-2c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm2 10h12v2H6v-2zm0-3h12v2H6V9zm0-3h12v2H6V6z"
-                          id="message_svg__a"
-                        />
-                      </defs>
-                      <g
-                        fill="none"
-                        fillRule="evenodd"
-                      >
-                        <mask
-                          fill="#fff"
-                          id="message_svg__b"
-                        >
-                          <use
-                            xlinkHref="#message_svg__a"
-                          />
-                        </mask>
-                        <use
-                          fill="#FFF"
-                          fillRule="nonzero"
-                          xlinkHref="#message_svg__a"
-                        />
-                        <g
-                          fill="#091E42"
-                          mask="url(#message_svg__b)"
-                        >
-                          <path
-                            d="M0 0h24v24H0z"
-                          />
-                        </g>
-                      </g>
-                    </svg>
-                  </div>
-                </a>
+                Outbound
               </div>
             </div>
             <div
-              className="ant-col-18 cap-column"
+              className="radio-card-content"
             >
-              <div
-                className="ant-row cap-row radio-card-header"
-              >
-                <div
-                  className="sc-bdVaJa kuwkmp"
-                  type="h4"
-                >
-                  Outbound
-                </div>
-              </div>
-              <div
-                className="ant-row cap-row radio-card-content"
-              >
-                 
-                Sending an outbound message is like blasting the message or broadcasting the message to a pre-defined set of users
-              </div>
+               
+              Sending an outbound message is like blasting the message or broadcasting the message to a pre-defined set of users
             </div>
           </div>
         </div>
@@ -128,21 +70,20 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
     </span>
   </label>
   <label
-    className="ant-radio-button-wrapper"
+    className="ant-radio-button-wrapper ant-radio-button-wrapper-checked"
   >
     <span
-      className="ant-radio-button"
+      className="ant-radio-button ant-radio-button-checked"
       style={Object {}}
     >
       <input
-        checked={false}
+        checked={true}
         className="ant-radio-button-input"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
         type="radio"
-        value={1}
       />
       <span
         className="ant-radio-button-inner"
@@ -171,29 +112,22 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
           className="ant-card-body"
           style={Object {}}
         >
-          <div
-            className="ant-row cap-row"
-          >
-            <div />
+          <div>
             <div
-              className="ant-col-18 cap-column"
+              className="radio-card-header"
             >
               <div
-                className="ant-row cap-row radio-card-header"
+                className="sc-bdVaJa kuwkmp"
+                type="h4"
               >
-                <div
-                  className="sc-bdVaJa kuwkmp"
-                  type="h4"
-                >
-                  Dynamic
-                </div>
+                Dynamic
               </div>
-              <div
-                className="ant-row cap-row radio-card-content"
-              >
-                 
-                for sending messages to users based on their actions in real time
-              </div>
+            </div>
+            <div
+              className="radio-card-content"
+            >
+               
+              for sending messages to users based on their actions in real time
             </div>
           </div>
         </div>
@@ -201,21 +135,20 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
     </span>
   </label>
   <label
-    className="ant-radio-button-wrapper"
+    className="ant-radio-button-wrapper ant-radio-button-wrapper-checked"
   >
     <span
-      className="ant-radio-button"
+      className="ant-radio-button ant-radio-button-checked"
       style={Object {}}
     >
       <input
-        checked={false}
+        checked={true}
         className="ant-radio-button-input"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
         type="radio"
-        value={2}
       />
       <span
         className="ant-radio-button-inner"
@@ -244,29 +177,22 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
           className="ant-card-body"
           style={Object {}}
         >
-          <div
-            className="ant-row cap-row"
-          >
-            <div />
+          <div>
             <div
-              className="ant-col-18 cap-column"
+              className="radio-card-header"
             >
               <div
-                className="ant-row cap-row radio-card-header"
+                className="sc-bdVaJa kuwkmp"
+                type="h4"
               >
-                <div
-                  className="sc-bdVaJa kuwkmp"
-                  type="h4"
-                >
-                  Survey
-                </div>
+                Survey
               </div>
-              <div
-                className="ant-row cap-row radio-card-content"
-              >
-                 
-                for taking survey or feedback from the audience
-              </div>
+            </div>
+            <div
+              className="radio-card-content"
+            >
+               
+              for taking survey or feedback from the audience
             </div>
           </div>
         </div>
@@ -274,21 +200,20 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
     </span>
   </label>
   <label
-    className="ant-radio-button-wrapper"
+    className="ant-radio-button-wrapper ant-radio-button-wrapper-checked"
   >
     <span
-      className="ant-radio-button"
+      className="ant-radio-button ant-radio-button-checked"
       style={Object {}}
     >
       <input
-        checked={false}
+        checked={true}
         className="ant-radio-button-input"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
         type="radio"
-        value={3}
       />
       <span
         className="ant-radio-button-inner"
@@ -317,79 +242,22 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
           className="ant-card-body"
           style={Object {}}
         >
-          <div
-            className="ant-row cap-row"
-          >
+          <div>
             <div
-              className="ant-col-6 cap-column radio-card-icon"
+              className="radio-card-header"
             >
               <div
-                className="icons"
+                className="sc-bdVaJa kuwkmp"
+                type="h4"
               >
-                <a>
-                  <div
-                    className="div-icon"
-                  >
-                    <svg
-                      height={24}
-                      width={24}
-                    >
-                      <defs>
-                        <path
-                          d="M18.656 11.355c-.254-.62-.537-1.166-.828-1.575-.579-.814-1.274-1.447-2.08-1.9-1.023-.579-2.274-.88-3.743-.88-1.464 0-2.72.302-3.755.883A6.41 6.41 0 0 0 6.171 9.78c-.29.407-.573.953-.827 1.573a12.74 12.74 0 0 0-.245.649c.272.792.646 1.62 1.073 2.217.579.813 1.274 1.446 2.076 1.896 1.037.583 2.29.886 3.75.886 1.458 0 2.713-.303 3.746-.884a6.46 6.46 0 0 0 2.094-1.913c.421-.59.79-1.407 1.063-2.2a13.057 13.057 0 0 0-.245-.648zM21 12c-.136.466-.663 2.146-1.535 3.366a8.453 8.453 0 01-2.737 2.491c-1.347.758-2.94 1.143-4.73 1.143-1.793 0-3.383-.385-4.73-1.143-1.064-.596-1.98-1.431-2.725-2.48-.878-1.226-1.407-2.911-1.543-3.38.136-.465.665-2.148 1.543-3.38A8.41 8.41 0 0 1 7.27 6.14C8.62 5.383 10.212 5 12.005 5c1.8 0 3.39.383 4.727 1.14a8.344 8.344 0 0 1 2.725 2.48C20.335 9.851 20.864 11.534 21 12zm-6 0c0-.8-.312-1.553-.88-2.12A2.98 2.98 0 0 0 12 9c-.8 0-1.553.312-2.12.88A2.98 2.98 0 0 0 9 12c0 .8.312 1.553.88 2.12A2.98 2.98 0 0 0 12 15c.8 0 1.553-.312 2.12-.88A2.98 2.98 0 0 0 15 12z"
-                          id="view-dark_svg__a"
-                        />
-                      </defs>
-                      <g
-                        fill="none"
-                        fillRule="evenodd"
-                      >
-                        <mask
-                          fill="#fff"
-                          id="view-dark_svg__b"
-                        >
-                          <use
-                            xlinkHref="#view-dark_svg__a"
-                          />
-                        </mask>
-                        <use
-                          fill="#FFF"
-                          fillRule="nonzero"
-                          xlinkHref="#view-dark_svg__a"
-                        />
-                        <g
-                          fill="#091E42"
-                          mask="url(#view-dark_svg__b)"
-                        >
-                          <path
-                            d="M0 0h24v24H0z"
-                          />
-                        </g>
-                      </g>
-                    </svg>
-                  </div>
-                </a>
+                Referal
               </div>
             </div>
             <div
-              className="ant-col-18 cap-column"
+              className="radio-card-content"
             >
-              <div
-                className="ant-row cap-row radio-card-header"
-              >
-                <div
-                  className="sc-bdVaJa kuwkmp"
-                  type="h4"
-                >
-                  Referal
-                </div>
-              </div>
-              <div
-                className="ant-row cap-row radio-card-content"
-              >
-                 
-                for sending messages to acquire new users through existing customers
-              </div>
+               
+              for sending messages to acquire new users through existing customers
             </div>
           </div>
         </div>
