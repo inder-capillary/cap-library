@@ -4,17 +4,21 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import "./_capActionBar.scss";
-import CapRow from "../CapRow";
-import CapColumn from "../CapColumn";
-import CapSearchBar from "../CapSearchBar";
-import CapSelect from "../CapSelect";
-import CapButton from "../CapButton";
-import CapFormItem from "../CapFormItem";
-import CapRadioGroup from "../CapRadioGroup";
-import CapRadioButton from "../CapRadioButton";
+import CapInput from '../CapInput';
+import {
+  CapRadioButton,
+  CapRadioGroup,
+  CapFormItem,
+  CapButton,
+  CapSelect,
+  CapColumn,
+  CapRow,
+} from '../index';
+
+const { Search } = CapInput;
 
 function RadioButtonComponent(props) {
-  const {options, ...otherProps} = props;
+  const { options, ...otherProps } = props;
   return (
     <CapRadioGroup {...otherProps}>
       {
@@ -30,20 +34,20 @@ export default class CapActionBar extends React.Component { // eslint-disable-li
     const rowProps = this.props.row ? this.props.row.props : [];
     return (
       <CapRow {...rowProps} className={this.props.className ? `cap-action-bar-v2 ${this.props.className}` : "cap-action-bar-v2"}>
-        { this.props.search
+        {this.props.search
           && (
             <CapColumn {...this.props.search.capColumn}>
               <CapFormItem {...this.props.search.formItem}>
-                <CapSearchBar className="height-reset padding-zero" {...this.props.search.props} />
+                <Search className="height-reset padding-zero" {...this.props.search.props} />
               </CapFormItem>
             </CapColumn>
           )
         }
-        { this.props.filterItemOne
+        {this.props.filterItemOne
           && (
             <CapColumn {...this.props.filterItemOne.capColumn}>
               <CapFormItem {...this.props.filterItemOne.formItem}>
-                { this.props.filterItemOne.radioButton
+                {this.props.filterItemOne.radioButton
                   ? <RadioButtonComponent {...this.props.filterItemOne.props} />
                   : <CapSelect className="height-reset padding-zero" {...this.props.filterItemOne.props} />
                 }
@@ -51,7 +55,7 @@ export default class CapActionBar extends React.Component { // eslint-disable-li
             </CapColumn>
           )
         }
-        { this.props.filterItemTwo
+        {this.props.filterItemTwo
           && (
             <CapColumn {...this.props.filterItemTwo.capColumn}>
               <CapFormItem {...this.props.filterItemTwo.formItem}>
@@ -60,7 +64,7 @@ export default class CapActionBar extends React.Component { // eslint-disable-li
             </CapColumn>
           )
         }
-        { this.props.sort
+        {this.props.sort
           && (
             <CapColumn {...this.props.sort.capColumn}>
               <CapFormItem {...this.props.sort.formItem}>
@@ -69,7 +73,7 @@ export default class CapActionBar extends React.Component { // eslint-disable-li
             </CapColumn>
           )
         }
-        { this.props.actionItemOne
+        {this.props.actionItemOne
           && (
             <CapColumn {...this.props.actionItemOne.capColumn}>
               <CapButton {...this.props.actionItemOne.props}>
@@ -78,7 +82,7 @@ export default class CapActionBar extends React.Component { // eslint-disable-li
             </CapColumn>
           )
         }
-        { this.props.actionItemTwo
+        {this.props.actionItemTwo
           && (
             <CapColumn {...this.props.actionItemTwo.capColumn}>
               <CapButton {...this.props.actionItemTwo.props}>

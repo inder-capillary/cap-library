@@ -38,11 +38,13 @@ function CapIcon(props) {
   const customClassName = `${clsPrefix}-${type}`;
   const IconComponent = getSvgComponentFromType(type);
   return (
-    <AntIcon
-      className={classNames(clsPrefix, customClassName, className)}
-      component={IconComponent}
-      {...rest}
-    />
+    IconComponent ? (
+      <AntIcon
+        className={classNames(clsPrefix, customClassName, className)}
+        component={IconComponent}
+        {...rest}>
+      </AntIcon>
+    ) : <Icon {...props} />
   );
 }
 
@@ -50,5 +52,7 @@ CapIcon.propTypes = {
   type: PropTypes.string,
   className: PropTypes.string,
 };
+
+CapIcon.AntIcon = Icon;
 
 export default CapIcon;

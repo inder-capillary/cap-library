@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import { Row, Col, Icon } from 'antd';
 import PropertyTable from '../../helpers/PropertyTable';
-import CapInput from "../../components/CapInput";
+import { CapInput } from "../../components";
 import "./info.scss";
 
 const { Search, TextArea } = CapInput;
