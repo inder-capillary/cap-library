@@ -10,16 +10,11 @@ const searchIcon = (props) =>
                 <use xlinkHref="#a" />
             </mask>
             <use fill="#FFF" fillRule="nonzero" xlinkHref="#a" />
-            <g fill="#7A869A" mask="url(#b)">
+            <g fill="#b3bac5" mask="url(#b)">
                 <path d="M0 0h16v16H0z" />
             </g>
         </g>
     </svg>
-
-    )
-
-searchIcon.defaultProps = {
-
-}
+)
 
 export default searchIcon;
