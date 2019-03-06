@@ -4,7 +4,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import "./_capActionBar.scss";
-import CapInput from '../CapInput';
 import {
   CapRadioButton,
   CapRadioGroup,
@@ -13,9 +12,8 @@ import {
   CapSelect,
   CapColumn,
   CapRow,
+  CapInput
 } from '../index';
-
-const { Search } = CapInput;
 
 function RadioButtonComponent(props) {
   const { options, ...otherProps } = props;
@@ -38,7 +36,7 @@ export default class CapActionBar extends React.Component { // eslint-disable-li
           && (
             <CapColumn {...this.props.search.capColumn}>
               <CapFormItem {...this.props.search.formItem}>
-                <Search className="height-reset padding-zero" {...this.props.search.props} />
+                <CapInput.Search className="height-reset padding-zero" {...this.props.search.props} />
               </CapFormItem>
             </CapColumn>
           )
