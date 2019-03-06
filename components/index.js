@@ -42,9 +42,6 @@ export { default as CapIcon } from './CapIcon';
 export { default as CapStepsAccordian } from './CapStepsAccordian';
 export { default as CapLink } from './CapLink';
 export { default as CapRadioCard } from './CapRadioCard';
-<<<<<<< HEAD
 export { default as CapCard } from './CapCard';
-=======
 export { default as CapUploader } from './CapUploader';
->>>>>>> 1c7fc6b86d165b781539c89fecfc085abb2f8f2e
 //export components

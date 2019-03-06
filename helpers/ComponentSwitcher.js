@@ -34,11 +34,8 @@ import CapIconDoc from '../src/CapIconDoc';
 import CapStepsAccordianDoc from '../src/CapStepsAccordianDoc';
 import CapLinkDoc from '../src/CapLinkDoc';
 import CapRadioCardDoc from '../src/CapRadioCardDoc';
-<<<<<<< HEAD
 import CapCardDoc from '../src/CapCardDoc';
-=======
 import CapUploaderDoc from '../src/CapUploaderDoc';
->>>>>>> 1c7fc6b86d165b781539c89fecfc085abb2f8f2e
 //imported for docs
 
 
