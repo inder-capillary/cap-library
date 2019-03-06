@@ -2,6 +2,6 @@
 
 exports[`<CapRow /> CapRow renders correctly 1`] = `
 <div
-  className="ant-row cap-row"
+  className="ant-row cap-row-v2"
 />
 `;

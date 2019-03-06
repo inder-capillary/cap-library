@@ -2,7 +2,7 @@
 
 exports[`<CapFormItem /> CapFormItem renders correctly 1`] = `
 <div
-  className="ant-row ant-form-item cap-form-item"
+  className="ant-row ant-form-item cap-form-item-v2"
 >
   <div
     className="ant-form-item-control-wrapper"

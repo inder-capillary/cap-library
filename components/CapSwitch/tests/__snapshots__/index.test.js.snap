@@ -3,7 +3,7 @@
 exports[`<CapSwitch /> CapSwitch renders correctly 1`] = `
 <button
   aria-checked={false}
-  className="cap-switch ant-switch"
+  className="cap-switch-v2 ant-switch"
   defaultChecked={false}
   onClick={[Function]}
   onKeyDown={[Function]}

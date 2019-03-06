@@ -2,7 +2,7 @@
 
 exports[`<CapRadio /> CapRadio renders correctly 1`] = `
 <label
-  className="cap-radio-button-v2 ant-radio-wrapper"
+  className="cap-radio-v2 ant-radio-wrapper"
 >
   <span
     className="ant-radio"

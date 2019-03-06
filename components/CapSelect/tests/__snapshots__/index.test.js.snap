@@ -76,16 +76,9 @@ ShallowWrapper {
         <div
           className="cap-select-v2-search"
         >
-          <CapInput
-            errorMessage=""
-            inductiveText=""
-            isRequired={false}
-            isVerified={false}
-            label=""
-            labelPosition="top"
+          <Component
             onChange={[Function]}
             placeholder="Search"
-            size="large"
             value=""
           />
           <img
@@ -197,6 +190,35 @@ ShallowWrapper {
             "rendered": "Select organizations",
             "type": Object {
               "$$typeof": Symbol(react.forward_ref),
+              "CapHeadingSpan": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-bwzfXH",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+font-size: ",
+                    [Function],
+                    ";
+font-weight: ",
+                    [Function],
+                    ";
+color: ",
+                    [Function],
+                    ";
+",
+                  ],
+                },
+                "displayName": "styled.span",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-bwzfXH",
+                "target": "span",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              },
               "attrs": Array [],
               "componentStyle": ComponentStyle {
                 "componentId": "sc-bdVaJa",
@@ -285,16 +307,9 @@ ShallowWrapper {
           <div
             className="cap-select-v2-search"
           >
-            <CapInput
-              errorMessage=""
-              inductiveText=""
-              isRequired={false}
-              isVerified={false}
-              label=""
-              labelPosition="top"
+            <Component
               onChange={[Function]}
               placeholder="Search"
-              size="large"
               value=""
             />
             <img
@@ -406,6 +421,35 @@ ShallowWrapper {
               "rendered": "Select organizations",
               "type": Object {
                 "$$typeof": Symbol(react.forward_ref),
+                "CapHeadingSpan": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-bwzfXH",
+                    "isStatic": false,
+                    "rules": Array [
+                      "
+font-size: ",
+                      [Function],
+                      ";
+font-weight: ",
+                      [Function],
+                      ";
+color: ",
+                      [Function],
+                      ";
+",
+                    ],
+                  },
+                  "displayName": "styled.span",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-bwzfXH",
+                  "target": "span",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                },
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
                   "componentId": "sc-bdVaJa",
