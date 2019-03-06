@@ -44,4 +44,5 @@ export { default as CapLink } from './CapLink';
 export { default as CapRadioCard } from './CapRadioCard';
 export { default as CapCard } from './CapCard';
 export { default as CapUploader } from './CapUploader';
+export { default as CapAlert } from './CapAlert';
 //export components
