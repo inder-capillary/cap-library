@@ -7,7 +7,6 @@
 import React from 'react';
 import './_capTab.scss';
 import PropTypes from 'prop-types';
-import { find } from 'lodash';
 import { Tabs } from "antd";
 // import styled from 'styled-components';
 const classNames = require('classnames');

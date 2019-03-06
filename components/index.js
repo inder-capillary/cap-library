@@ -36,12 +36,12 @@ export { default as CapProgress } from './CapProgress';
 export { default as CapRadioButton } from './CapRadioButton';
 export { default as CapMultiSelectWithTree } from './CapMultiSelectWithTree';
 export { default as CapPopover } from './CapPopover';
-export { default as CapCard } from './CapCard';
 export { default as CapMultiSelect } from './CapMultiSelect';
 export { default as CapTooltip } from './CapTooltip';
 export { default as CapIcon } from './CapIcon';
 export { default as CapStepsAccordian } from './CapStepsAccordian';
 export { default as CapLink } from './CapLink';
 export { default as CapRadioCard } from './CapRadioCard';
+export { default as CapCard } from './CapCard';
 export { default as CapUploader } from './CapUploader';
 //export components

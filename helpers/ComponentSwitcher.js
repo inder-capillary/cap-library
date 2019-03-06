@@ -28,13 +28,13 @@ import CapMultiSelectWithTreeDoc from '../src/CapMultiSelectWithTreeDoc';
 import CapModalDoc from '../src/CapModalDoc';
 import CapSpinDoc from '../src/CapSpinDoc';
 import CapPopoverDoc from '../src/CapPopoverDoc';
-import CapCardDoc from '../src/CapCardDoc';
 import CapMultiSelectDoc from '../src/CapMultiSelectDoc';
 import CapTooltipDoc from '../src/CapTooltipDoc';
 import CapIconDoc from '../src/CapIconDoc';
 import CapStepsAccordianDoc from '../src/CapStepsAccordianDoc';
 import CapLinkDoc from '../src/CapLinkDoc';
 import CapRadioCardDoc from '../src/CapRadioCardDoc';
+import CapCardDoc from '../src/CapCardDoc';
 import CapUploaderDoc from '../src/CapUploaderDoc';
 //imported for docs
 
@@ -97,8 +97,6 @@ class ComponentSwitcher extends Component {
         return <CapSpinDoc />;
       case 'capPopover':
         return <CapPopoverDoc />;
-      case 'capCard':
-        return <CapCardDoc />;
       case 'capMultiSelect':
         return <CapMultiSelectDoc />;
       case 'capTooltip':
@@ -111,6 +109,8 @@ class ComponentSwitcher extends Component {
         return <CapLinkDoc />;
       case 'capRadioCard':
         return <CapRadioCardDoc />;
+      case 'capCard':
+        return <CapCardDoc />;
       case 'capUploader':
         return <CapUploaderDoc />;
         //components for docs
