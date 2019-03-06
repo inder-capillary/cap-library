@@ -8,9 +8,7 @@ const SvgCarrot = (props) => (
     fill="currentColor"
     {...props}
   >
-    <g fill="#091E42" fillRule="evenodd">
-      <path d="M7 13.5h10l-5 5zM17 10.5H7l5-5z" />
-    </g>
+    <path d="M7 13.5h10l-5 5zM17 10.5H7l5-5z" />
   </svg>
 );
 

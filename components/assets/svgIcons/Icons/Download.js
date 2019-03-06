@@ -1,6 +1,6 @@
 import React from "react";
 
-const SvgDownload = (props) => (
+const SvgDownload = props => (
   <svg
     width="1em"
     height="1em"
@@ -8,26 +8,10 @@ const SvgDownload = (props) => (
     fill="currentColor"
     {...props}
   >
-    <defs>
-      <path
-        d="M12.155 16.282l-7.183 7.183c-.423.423-1.083.45-1.473.059-.39-.39-.365-1.05.058-1.473l7.183-7.183H7.155a1 1 0 0 1 0-2h6a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-3.586zm-.222-8.365c-.362-.363-.34-.973.051-1.364.39-.39 1.001-.413 1.363-.05l7.173 7.172c.363.363.34.973-.05 1.363-.391.391-1.002.414-1.364.051l-7.173-7.172z"
-        id="download_svg__a"
-      />
-    </defs>
-    <g fill="none" fillRule="evenodd">
-      <mask id="download_svg__b" fill="#fff">
-        <use xlinkHref="#download_svg__a" />
-      </mask>
-      <use
-        fill="#FFF"
-        fillRule="nonzero"
-        transform="rotate(135 12 15.023)"
-        xlinkHref="#download_svg__a"
-      />
-      <g mask="url(#download_svg__b)" fill="#091E42">
-        <path d="M0 0h24v24H0z" />
-      </g>
-    </g>
+    <path
+      d="M11 14.241V4.083C11 3.485 11.448 3 12 3s1 .485 1 1.083v10.158l2.536-2.536a1 1 0 0 1 1.414 1.414l-4.243 4.243a.999.999 0 0 1-1.414 0L7.05 13.12a1 1 0 0 1 1.414-1.414L11 14.241zm6.072 5.76c.512 0 .928.447.928 1 0 .551-.416 1-.928 1H6.928C6.416 22 6 21.551 6 21c0-.553.416-1 .928-1h10.144z"
+      id="download_svg__a"
+    />
   </svg>
 );
 

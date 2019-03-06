@@ -67,11 +67,11 @@ const getSvgComponentFromType = (type) => {
     case 'task': return SvgIcons.Task
     case 'tick': return SvgIcons.Tick
     case 'tooltip': return SvgIcons.Tooltip
-    case 'up-arrrow-filled': return SvgIcons.UpArrrowFilled
     case 'upload': return SvgIcons.Upload
     case 'user': return SvgIcons.User
     case 'view': return SvgIcons.View
     case 'warning': return SvgIcons.Warning
+    case 'search': return SvgIcons.Search
     default: return SvgIcons.Add;
   }
 };

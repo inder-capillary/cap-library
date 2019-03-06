@@ -3,19 +3,26 @@
 */
 import React, { Component } from "react";
 import styled from 'styled-components';
-//import PropertyTable from '../../helpers/PropertyTable';
+import PropertyTable from '../../helpers/PropertyTable';
 import { CapIcon } from "../../components";
 import "./info.scss";
 
-// const infoData = [
-//   {
-//     key: 1,
-//     property: "-",
-//     description: "-",
-//     type: "-",
-//     default: "-",
-//   },
-// ];
+const infoData = [
+  {
+    key: 1,
+    property: "type",
+    description: "type of icon. This is required field. The type of icon is mentioned below each icon.",
+    type: "string",
+    default: "-",
+  },
+  {
+    key: 2,
+    property: "className",
+    description: "Custom class name",
+    type: "string",
+    default: "-",
+  },
+];
 
 const List = styled.li`
     position: relative;
@@ -23,7 +30,7 @@ const List = styled.li`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100px;
+    width: 120px;
     height: 100px;
     list-style: none;
     background-color: #fff;
@@ -303,10 +310,6 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <Text>tooltip</Text>
             </List>
             <List>
-              <CapIcon type="up-arrrow-filled" />
-              <Text>up-arrrow-filled</Text>
-            </List>
-            <List>
               <CapIcon type="upload" />
               <Text>upload</Text>
             </List>
@@ -322,9 +325,15 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="warning" />
               <Text>warning</Text>
             </List>
+            <List>
+              <CapIcon type="search" />
+              <Text>search</Text>
+            </List>
           </ul>
         </div>
-        {/* <PropertyTable data={infoData} /> */}
+        {`Used as:`}
+        <b>{`<CapIcon type="add-media" />`}</b>
+        <PropertyTable data={infoData} />
         <div>
           <b>NOTE: </b>
           This component is the extended version of ant design

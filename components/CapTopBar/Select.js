@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import { Popover } from "antd";
 import classNames from 'classnames';
 import findIndex from 'lodash/findIndex';
-import { CapInput } from '../index';
+import { CapInput, CapIcon } from '../index';
 import WarningIcon from '../assets/icons/warning.svg';
 import DropDownIcon from '../assets/icons/chevron-down.svg';
 import CapillaryLogo from '../assets/icons/capillary_logo.svg';
-import SearchIcon from '../assets/icons/search.svg';
-import CloseIcon from '../assets/icons/close.svg';
 import { LogoBackground } from '../assets/icons';
 
 const clsPrefix = 'top-bar-select';
@@ -90,8 +88,9 @@ export class Select extends Component {
                   onChange={this.handleSearch}
                   value={searchText}
                 />
-                <img className="icon-search" src={SearchIcon} alt="" />
-                {searchText && <span onClick={this.clearSearch}><img className="icon-close" src={CloseIcon} alt="" /></span>}
+                {/* <img src={SearchIcon} alt="" /> */}
+                <CapIcon size="s" type="search" className="icon-search" />
+                {searchText && <CapIcon onClick={this.clearSearch} size="s" type="close" className="icon-close" />}
               </div>
             )}
             {itemsHtml.length > 0 ? <div className={classNames(`${clsPrefix}-items-wrapper`)}>{itemsHtml}</div>

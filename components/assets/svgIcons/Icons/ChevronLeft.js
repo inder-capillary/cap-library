@@ -1,6 +1,6 @@
 import React from "react";
 
-const SvgChevronLeft = (props) => (
+const SvgChevronLeft = props => (
   <svg
     width="1em"
     height="1em"
@@ -8,25 +8,10 @@ const SvgChevronLeft = (props) => (
     fill="currentColor"
     {...props}
   >
-    <defs>
-      <path
-        d="M11.293 14.993L6.7 10.4A.99.99 0 0 1 8.1 9l3.9 3.9L15.9 9a.99.99 0 0 1 1.4 1.4l-4.593 4.593a1 1 0 0 1-1.414 0z"
-        id="chevron-left_svg__a"
-      />
-    </defs>
-    <g fill="none" fillRule="evenodd">
-      <mask id="chevron-left_svg__b" fill="#fff">
-        <use xlinkHref="#chevron-left_svg__a" />
-      </mask>
-      <use
-        fill="#FFF"
-        transform="rotate(90 12 11.998)"
-        xlinkHref="#chevron-left_svg__a"
-      />
-      <g mask="url(#chevron-left_svg__b)" fill="#091E42">
-        <path d="M0 0h24v24H0z" />
-      </g>
-    </g>
+    <path
+      d="M1.002 5.293L5.595.7a.991.991 0 0 1 1.4 1.4L3.095 6l3.9 3.9a.991.991 0 0 1-1.4 1.4L1.004 6.707a1.002 1.002 0 0 1 0-1.414"
+      id="chevron-left_svg__a"
+    />
   </svg>
 );
 

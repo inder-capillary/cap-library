@@ -1,6 +1,6 @@
 import React from "react";
 
-const SvgChevronDown = (props) => (
+const SvgChevronDown = props => (
   <svg
     width="1em"
     height="1em"

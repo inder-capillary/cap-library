@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { Icon } from 'antd';
 import styled from 'styled-components';
 import classNames from 'classnames';
+import './_capIcon.scss';
 import * as StyledVars from '../styled/variables';
 
 import { getSvgComponentFromType } from '../assets/svgIcons/component';
@@ -35,10 +36,11 @@ const AntIcon = styled(Icon)`
 function CapIcon(props) {
   const { type, className, ...rest } = props;
   const customClassName = `${clsPrefix}-${type}`;
+  const IconComponent = getSvgComponentFromType(type);
   return (
     <AntIcon
       className={classNames(clsPrefix, customClassName, className)}
-      component={getSvgComponentFromType(type)}
+      component={IconComponent}
       {...rest}
     />
   );
@@ -46,6 +48,7 @@ function CapIcon(props) {
 
 CapIcon.propTypes = {
   type: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default CapIcon;
