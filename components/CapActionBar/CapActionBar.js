@@ -12,7 +12,7 @@ import {
   CapSelect,
   CapColumn,
   CapRow,
-  CapInput
+  CapInput,
 } from '../index';
 
 function RadioButtonComponent(props) {
