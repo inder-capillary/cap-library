@@ -21,13 +21,24 @@ const Heading = styled(CapHeading)`
   padding-bottom: 8px;
 `;
 
-const openNotification = () => {
-  CapNotification.open({
-    message: 'Notification Title',
-    description: 'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
-    onClick: () => {
-    },
-  });
+const openNotification = (type) => {
+  if (type === 'error') {
+    CapNotification.error({
+      message: 'Notification Title',
+      description: 'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+      onClick: () => {
+      },
+      duration: 0,
+    });
+  } else {
+    CapNotification.open({
+      message: 'Notification Title',
+      description: 'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+      onClick: () => {
+      },
+      duration: 0,
+    });
+  }
 };
 
 export default class CapNotificationDoc extends Component { // eslint-disable-line react/prefer-stateless-function
@@ -35,7 +46,10 @@ export default class CapNotificationDoc extends Component { // eslint-disable-li
     return (
       <div className="cap-notification-info">
         <div className="cap-notification-showcase">
-          <CapButton type="primary" onClick={openNotification}>Open the notification box</CapButton>
+          <CapButton type="primary" onClick={() => openNotification()}>default notification box</CapButton>
+          <br />
+          <br />
+          <CapButton type="primary" onClick={() => openNotification('error')}>Error Notification box</CapButton>
         </div>
         {/* <PropertyTable data={infoData} /> */}
         <div style={{ marginTop: '24px' }}>
