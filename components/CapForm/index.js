@@ -13,9 +13,7 @@ class CapForm extends React.Component { // eslint-disable-line react/prefer-stat
   render() {
     const {className, children, ...rest} = this.props;
     return (
-      <Form {...rest} className={classNames("cap-form-v2", className)}>
-        {React.Children.toArray(children)}
-      </Form>
+      <Form {...rest} className={classNames("cap-form-v2", className)} />
     );
   }
 }

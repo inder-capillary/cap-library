@@ -52,7 +52,7 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
               className="radio-card-header"
             >
               <div
-                className="sc-bdVaJa kuwkmp"
+                className="sc-bdVaJa kZeOKr"
                 type="h4"
               >
                 Outbound
@@ -117,7 +117,7 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
               className="radio-card-header"
             >
               <div
-                className="sc-bdVaJa kuwkmp"
+                className="sc-bdVaJa kZeOKr"
                 type="h4"
               >
                 Dynamic
@@ -182,7 +182,7 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
               className="radio-card-header"
             >
               <div
-                className="sc-bdVaJa kuwkmp"
+                className="sc-bdVaJa kZeOKr"
                 type="h4"
               >
                 Survey
@@ -247,7 +247,7 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
               className="radio-card-header"
             >
               <div
-                className="sc-bdVaJa kuwkmp"
+                className="sc-bdVaJa kZeOKr"
                 type="h4"
               >
                 Referal
