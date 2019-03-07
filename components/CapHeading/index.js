@@ -37,6 +37,7 @@ const headings = {
     'color': '#5e6c84',
     'font-size': '14px',
     'font-weight': 'normal',
+    'line-height': '20px',
   },
   label1: {
     'color': '#5e6c84',
@@ -59,6 +60,7 @@ const CapHeading = styled.div`
     font-size: ${[(props) => headings[props.type]["font-size"]]};
     font-weight: ${[(props) => headings[props.type]["font-weight"]]};
     color: ${[(props) => headings[props.type].color]};
+    line-height: ${[(props) => headings[props.type]["line-height"] || 'auto']};
     `;
 
 const CapHeadingSpan = styled.span`
