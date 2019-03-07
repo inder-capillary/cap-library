@@ -4,14 +4,14 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
 import PropertyTable from '../../helpers/PropertyTable';
-import { CapIcon } from "../../components";
+import { CapIcon, CapHeading } from "../../components";
 import "./info.scss";
 
 const infoData = [
   {
     key: 1,
     property: "type",
-    description: "type of icon. This is required field. The type of icon is mentioned below each icon.",
+    description: "type of icon. This is required field. The type of icon is mentioned below each icon. If type of icon is not present in the mentioned list, then default Ant Icon of that type will render",
     type: "string",
     default: "-",
   },
@@ -21,6 +21,13 @@ const infoData = [
     description: "Custom class name",
     type: "string",
     default: "-",
+  },
+  {
+    key: 3,
+    property: "size",
+    description: "size of Icon  (s, m, l) `s` is 16px, `m` is 24px , `l` is 32px",
+    type: "s, m, l",
+    default: "m",
   },
 ];
 
@@ -332,14 +339,37 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
           </ul>
         </div>
         {`Used as:`}
-        <b>{`<CapIcon type="add-media" />`}</b>
+        <CapHeading type="h2">{`<CapIcon type="add-media" />`}</CapHeading>
+        <br />
+        <CapHeading type="h3">Font size and color property can be changed through css for these Icons</CapHeading>
         <PropertyTable data={infoData} />
-        <div>
+        <div style={{ marginTop: '24px' }}>
           <b>NOTE: </b>
           This component is the extended version of ant design
           <a href="https://ant.design/components/icon/"> Icons </a>
           component. Please refer their component for detailed explaination of component and supported props.
         </div>
+
+        <pre>
+          {`
+          .cap-icon-v2-add:hover {
+            color: red;
+          }
+        `}
+        </pre>
+        <pre>
+          {`Run following command for all the new Svg Icons to be added as components:
+
+@svgr/cli --icon --svg-props fill="currentColor" -d destinationDirectory SouceDirectory
+
+Running this command will add ".js" files for all svgs in destinationDirectory.
+
+These Icons then can be moved to components/assets/svgIcons/Icons folder
+
+Export the icon path in components/assets/svgIcons/index.js
+
+Add switch case of icon type  in components/assets/svgIcons/component`}
+        </pre>
       </div>
     );
   }
