@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { Input } from 'antd';
-import styled from 'styled-components';
+import { CapIcon } from '../index';
 import CapInputHOC from './CapInputHOC';
-import { SearchIcon, CloseIcon } from '../assets/icons';
-
-const InputSuffix = styled(CloseIcon)`
-  cursor: pointer;
-`;
 
 class Search extends Component {
   render() {
@@ -20,8 +15,8 @@ class Search extends Component {
             this.input.focus();
           }
         }}
-        prefix={<SearchIcon />}
-        suffix={allowClear && rest.value && <InputSuffix onClick={onClear} />}
+        prefix={<CapIcon style={{ color: "#b3bac5" }} type="search" size="s" />}
+        suffix={allowClear && rest.value && <CapIcon style={{ color: "#b3bac5" }} onClick={onClear} type="close" size="s" />}
       />
     );
   }

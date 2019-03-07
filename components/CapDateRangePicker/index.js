@@ -8,7 +8,7 @@ import React from 'react';
 import { DatePicker } from 'antd';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { Calender } from '../assets/icons';
+import { CapIcon } from '..';
 
 import './_capDateRangePicker.scss';
 import '../styles/datePickerCommon.scss';
@@ -20,12 +20,11 @@ const commonClsPrefix = 'cap-date-picker-common-v2';
 
 function CapDateRangePicker(props) {
   const { size } = props;
-  const calenderWidth = size === 'large' ? 24 : 16;
   return (
     <div className={classNames(commonClsPrefix, clsPrefix)}>
       <RangePicker
         allowClear={false}
-        suffixIcon={<div><Calender width={calenderWidth} height={calenderWidth} /></div>}
+        suffixIcon={<div><CapIcon type="calendar" size={size === 'large' ? 'm' : 's'} /></div>}
         dropdownClassName={classNames(`${commonClsPrefix}-dropdown`, `${clsPrefix}-dropdown`)}
         {...props}
       />

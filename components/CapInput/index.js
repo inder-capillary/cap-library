@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Input, Icon } from 'antd';
+import { Input } from 'antd';
 import styled from 'styled-components';
 import Search from './Search';
 import TextArea from './TextArea';
+import CapIcon from '../CapIcon';
 import CapInputHOC from './CapInputHOC';
 import * as styledVars from '../styled/variables';
 
-const StyledIcon = styled(Icon)`
+const StyledIcon = styled(CapIcon)`
   color: ${(props) => props.status === "error" && styledVars.CAP_RED};
   color: ${(props) => props.status === "success" && styledVars.CAP_PRIMARY.base};
 `;
@@ -24,7 +25,7 @@ class CapInput extends Component {
             this.input.focus();
           }
         }}
-        suffix={(errorMessage && <StyledIcon className="error-icon" type="warning" status="error" />)
+        suffix={(errorMessage && <StyledIcon type="warning" status="error" />)
                     || (isVerified && <StyledIcon type="check-circle" status="success" />) || suffix}
       />
     );

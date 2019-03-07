@@ -29,6 +29,9 @@ const CapInputStyled = styled.div`
         width: 100%;
       }
     }
+    .ant-input-affix-wrapper .ant-input-suffix {
+      right: 8px;
+    }
     .ant-input-affix-wrapper .ant-input-prefix {
       left: 8px;
     }

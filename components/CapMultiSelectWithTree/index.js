@@ -12,13 +12,11 @@ import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import isEqual from 'lodash/isEqual';
 import classNames from 'classnames';
-import { CapButton, CapInput } from '../index';
-import SearchIcon from '../assets/icons/search.svg';
-import CloseIcon from '../assets/icons/close.svg';
-import WarningIcon from '../assets/icons/warning.svg';
-import { DropDownIcon } from '../assets/icons';
+import { CapButton, CapInput, CapIcon } from '../index';
 
 import './_capMultiSelectWithTree.scss';
+
+const { Search } = CapInput;
 
 const { TreeNode } = Tree;
 
@@ -482,12 +480,11 @@ export default class CapMultiSelectWithTree extends React.Component {
             showLoader ? <div className="showing-spinner"><Spin /></div> : (
               <div>
                 <div className="search-input">
-                  <CapInput
+                  <Search
                     focusOnMount
                     alwaysShowFocus
                     value={searchValue}
-                    suffix={searchValue && <span onClick={this.clearSearch}><img className="close-icon" src={CloseIcon} alt="" /></span>}
-                    prefix={<img src={SearchIcon} alt="" />}
+                    onClear={this.clearSearch}
                     placeholder={searchPlaceholder}
                     onChange={enableDebouncedSearch ? this.onDebouncedSearch : this.onSearch} />
                 </div>
@@ -546,7 +543,7 @@ export default class CapMultiSelectWithTree extends React.Component {
                 )
                   : (
                     <div className={classNames(`${clsPrefix}-no-results`)}>
-                      <img src={WarningIcon} alt="no-results" />
+                      <CapIcon style={{ color: "#b3bac5" }} type="alert" />
                       <div className={classNames(`${clsPrefix}-no-results-text`)}>{noResultsFoundText}</div>
                     </div>
                   )
@@ -562,7 +559,7 @@ export default class CapMultiSelectWithTree extends React.Component {
             <span className={classNames(`${clsPrefix}-left-content`, { placeholder: !triggerLeftContent, disabled })} title={triggerLeftContent}>{triggerLeftContent || placeholder}</span>
             <span style={{ display: 'inline-flex', alignItems: 'center' }}>
               {triggerRightContent}
-              {disabled ? <DropDownIcon color="#b3bac5" /> : <DropDownIcon />}
+              {disabled ? <CapIcon type="chevron-down" style={{ color: "#b3bac5" }} /> : <CapIcon type="chevron-down" />}
             </span>
           </div>
         </Popover>

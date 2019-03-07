@@ -36,10 +36,6 @@ $slideBox: "cap-slide-box-v2";
   }
 }
 
-.#{$slideBox}-close-icon {
-  cursor: pointer;
-}
-
 .#{$slideBox}-container {
   position: absolute;
   height: 100vh;

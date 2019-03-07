@@ -2,9 +2,9 @@
 * CapInputDoc
 */
 import React, { useState } from "react";
-import { Row, Col, Icon } from 'antd';
+import { Row, Col } from 'antd';
 import PropertyTable from '../../helpers/PropertyTable';
-import { CapInput } from "../../components";
+import { CapInput, CapIcon } from "../../components";
 import "./info.scss";
 
 const { Search, TextArea } = CapInput;
@@ -159,7 +159,7 @@ const CapInputDoc = () => {
               label="Input with error"
               inductiveText="Sample inductive text for demo"
               errorMessage="Testing error message"
-              suffix={<Icon type="check-circle" />}
+              suffix={<CapIcon type="check-circle" size="s" />}
             />
           </Col>
           <Col span={11} offset={1}>
@@ -168,7 +168,7 @@ const CapInputDoc = () => {
               label="Input disabled with suffix"
               disabled
               inductiveText="Sample inductive text for demo"
-              suffix={<Icon type="check-circle" />}
+              suffix={<CapIcon type="check-circle" />}
             />
           </Col>
         </Row>

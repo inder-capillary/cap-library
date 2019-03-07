@@ -6,9 +6,8 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import { CapTooltip } from '../index';
+import { CapTooltip, CapIcon } from '../index';
 import './_capTooltipWithInfo.scss';
-import { InfoIcon } from '../assets/icons';
 
 const clsPrefix = 'cap-tooltip-with-info';
 
@@ -19,7 +18,7 @@ function CapTooltipWithInfo(props) {
       className={classNames(clsPrefix, className)}
       {...rest}
     >
-      <InfoIcon className="info-icon" />
+      <CapIcon size="s" type="info" className="info-icon" />
     </CapTooltip>
   );
 }

@@ -4,8 +4,6 @@ import { Popover } from "antd";
 import classNames from 'classnames';
 import findIndex from 'lodash/findIndex';
 import { CapInput, CapIcon } from '../index';
-import WarningIcon from '../assets/icons/warning.svg';
-import DropDownIcon from '../assets/icons/chevron-down.svg';
 import CapillaryLogo from '../assets/icons/capillary_logo.svg';
 import { LogoBackground } from '../assets/icons';
 
@@ -83,20 +81,18 @@ export class Select extends Component {
             {showHeader && <div className={classNames(`${clsPrefix}-header`)}>Select organisation</div>}
             {showSearch && (
               <div className={classNames(`${clsPrefix}-search`)}>
-                <CapInput
+                <CapInput.Search
                   placeholder="Organization"
                   onChange={this.handleSearch}
                   value={searchText}
+                  onClear={this.clearSearch}
                 />
-                {/* <img src={SearchIcon} alt="" /> */}
-                <CapIcon size="s" type="search" className="icon-search" />
-                {searchText && <CapIcon onClick={this.clearSearch} size="s" type="close" className="icon-close" />}
               </div>
             )}
             {itemsHtml.length > 0 ? <div className={classNames(`${clsPrefix}-items-wrapper`)}>{itemsHtml}</div>
               : (
                 <div className={classNames(`${clsPrefix}-no-results`)}>
-                  <img src={WarningIcon} alt="no-results" />
+                  <CapIcon style={{ color: "#b3bac5" }} type="alert" />
                   <div className={classNames(`${clsPrefix}-no-results-text`)}>No results found</div>
                 </div>
               )
@@ -117,8 +113,7 @@ export class Select extends Component {
             }
             <span className={(`${clsPrefix}-selected-value-label`)} title={selectedItemLabel}>{selectedItemLabel}</span>
           </div>
-          <img src={DropDownIcon} alt="down-icon" className={classNames(`${clsPrefix}-arrow`)} />
-          {/* <Icon className={classNames(`${clsPrefix}-arrow`)} type="down" /> */}
+          <CapIcon type="chevron-down" className={classNames(`${clsPrefix}-arrow`)} />
         </div>
       </Popover>
     );

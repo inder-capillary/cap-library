@@ -8,11 +8,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Layout, Menu, Divider, Popover } from 'antd';
 import classNames from 'classnames';
+import { CapIcon } from '../index';
 import { Select } from './Select';
 import './_capTopBar.scss';
-
-import SettingsIcon from '../assets/icons/settings.svg';
-import LogoutIcon from '../assets/icons/logout.svg';
 import { LogoBackground } from '../assets/icons';
 
 const { Header } = Layout;
@@ -95,7 +93,7 @@ class CapTopBar extends React.Component { // eslint-disable-line react/prefer-st
               content={(
                 <div onClick={onLogoutClick} className={classNames(`${clsPrefix}-user-popover-item`)}>
                   <div>{logoutText}</div>
-                  <img src={LogoutIcon} alt="" />
+                  <CapIcon type="logout" size="s" />
                 </div>
               )}>
               <div onClick={this.showUserPopover} className={(`${clsPrefix}-user`)}>
@@ -105,8 +103,8 @@ class CapTopBar extends React.Component { // eslint-disable-line react/prefer-st
             </Popover>
           )
         }
-        {onSettingsClick
-          && <div onClick={onSettingsClick} className={classNames(`${clsPrefix}-setting`)}><img src={SettingsIcon} alt="" /></div>
+        {
+          onSettingsClick && <CapIcon onClick={onSettingsClick} className={classNames(`${clsPrefix}-setting`)} type="settings" />
         }
         {
           this.props.children

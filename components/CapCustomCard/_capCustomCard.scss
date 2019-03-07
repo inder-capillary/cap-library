@@ -28,6 +28,9 @@ $cap-custom-card: cap-custom-card;
       float: none;
     }
   }
+  .ant-card-actions > li > span > .anticon {
+    font-size: 24px;
+  }
 
   .ant-card-meta-description {
     font-size: 12px;

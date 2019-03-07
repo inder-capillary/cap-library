@@ -6,13 +6,11 @@ import union from 'lodash/union';
 import difference from 'lodash/difference';
 import omit from 'lodash/omit';
 import classNames from 'classnames';
-import WarningIcon from '../assets/icons/warning.svg';
-import SearchIcon from '../assets/icons/search.svg';
-import CloseIcon from '../assets/icons/close.svg';
-import { DropDownIcon } from '../assets/icons';
+import { CapButton, CapInput, CapIcon } from '../index';
 
 import './_capMultiSelect.scss';
-import { CapButton, CapInput } from '../index';
+
+const { Search } = CapInput;
 
 const clsPrefix = 'cap-multi-select-v2';
 
@@ -244,12 +242,11 @@ export default class CapMultiSelect extends React.Component {
           content={(
             <div>
               <div className="search-input">
-                <CapInput
+                <Search
                   focusOnMount
                   alwaysShowFocus
                   value={searchValue}
-                  suffix={searchValue && <span onClick={this.clearSearch}><img className="close-icon" src={CloseIcon} alt="" /></span>}
-                  prefix={<img src={SearchIcon} alt="" />}
+                  onClear={this.clearSearch}
                   placeholder={searchPlaceholder}
                   onChange={this.onSearch} />
               </div>
@@ -281,7 +278,7 @@ export default class CapMultiSelect extends React.Component {
               {
                 (!treeNodes || treeNodes.length === 0) && (
                   <div className={classNames(`${clsPrefix}-no-results`)}>
-                    <img src={WarningIcon} alt="no-results" />
+                    <CapIcon style={{ color: "#b3bac5" }} type="alert" />
                     <div className={classNames(`${clsPrefix}-no-results-text`)}>{noResultsFoundText}</div>
                   </div>
                 )
@@ -296,7 +293,7 @@ export default class CapMultiSelect extends React.Component {
             <span className={classNames(`${clsPrefix}-left-content`, { placeholder: !triggerLeftContent, disabled })} title={triggerLeftContent}>{triggerLeftContent || placeholder}</span>
             <span style={{ display: 'inline-flex', alignItems: 'center' }}>
               {triggerRightContent}
-              {disabled ? <DropDownIcon color="#b3bac5" /> : <DropDownIcon />}
+              {disabled ? <CapIcon type="chevron-down" style={{ color: "#b3bac5" }} /> : <CapIcon type="chevron-down" />}
             </span>
           </div>
         </Popover>

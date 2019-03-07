@@ -8,8 +8,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { throttle } from 'lodash';
-import { CapHeading } from '../index';
-import CloseIcon from '../assets/icons/close.svg';
+import { CapHeading, CapIcon } from '../index';
 
 import './_capSlideBox.scss';
 
@@ -47,7 +46,7 @@ export default class CapSlideBox extends Component {
           <div className={classNames(`${clsPrefix}-container ${size}`)}>
             <div className="slidebox-header">
               <CapHeading type="h1">{header}</CapHeading>
-              {<img onClick={handleClose} src={CloseIcon} alt="" className={classNames(`${clsPrefix}-close-icon`)} />}
+              {<CapIcon onClick={handleClose} type="close" className={classNames(`${clsPrefix}-close-icon`)} />}
             </div>
             <div onScroll={this.throttleScroll} className={classNames('slidebox-content-container', { 'has-footer': footer })} ref={(node) => { this.slideBoxContainer = node; }}>
               <div ref={(node) => { this.slideBoxContent = node; }}>
