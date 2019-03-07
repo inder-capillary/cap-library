@@ -1,10 +1,14 @@
-import renderer from 'react-test-renderer';
-import React from 'react'; // eslint-disable-line no-unused-vars
+
+import React from 'react';
+import { shallow } from 'enzyme';
+import { Form } from 'antd';
+
 import CapForm from '../index';
 
 describe('<CapForm />', () => {
-  it('CapForm renders correctly', () => {
-    const tree = renderer.create(<CapForm />).toJSON();
-    expect(tree).toMatchSnapshot();
+  const wrapper = shallow(<CapForm.CapForm />);
+
+  it('Should render antd form', () => {
+    expect(wrapper.find(Form)).toHaveLength(1);
   });
 });

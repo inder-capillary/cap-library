@@ -11,7 +11,7 @@ exports[`<CapSlider /> renders correctly 1`] = `
       className="slidebox-header"
     >
       <div
-        className="sc-bdVaJa ccUVwc"
+        className="sc-bdVaJa cqhfaE"
         type="h1"
       >
         Slide Box Example

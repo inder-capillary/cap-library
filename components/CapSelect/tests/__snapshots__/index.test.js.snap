@@ -234,6 +234,9 @@ color: ",
     color: ",
                   [Function],
                   ";
+    line-height: ",
+                  [Function],
+                  ";
     ",
                 ],
               },
@@ -463,6 +466,9 @@ color: ",
                     [Function],
                     ";
     color: ",
+                    [Function],
+                    ";
+    line-height: ",
                     [Function],
                     ";
     ",
