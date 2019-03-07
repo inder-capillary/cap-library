@@ -51,6 +51,9 @@ $cap-custom-card: cap-custom-card;
 }
 
 .#{$cap-custom-card-list} {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
   .ant-card.#{$cap-custom-card} {
     margin: 6px;
   }
