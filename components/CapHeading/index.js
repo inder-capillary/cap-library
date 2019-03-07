@@ -12,26 +12,31 @@ const headings = {
     'font-size': '24px',
     'font-weight': '500',
     'color': '#091e42',
+    'line-height': '32px',
   },
   h2: {
     'font-size': '20px',
     'font-weight': '500',
     'color': '#091e42',
+    'line-height': '28px',
   },
   h3: {
     'font-size': '16px',
     'font-weight': '500',
     'color': '#091e42',
+    'line-height': '24px',
   },
   h4: {
     'font-size': '14px',
     'font-weight': '500',
     'color': '#091e42',
+    'line-height': '20px',
   },
   h5: {
     'font-size': '14px',
     'font-weight': 'normal',
     'color': '#091e42',
+    'line-height': '20px',
   },
   h6: {
     'color': '#5e6c84',
@@ -60,7 +65,7 @@ const CapHeading = styled.div`
     font-size: ${[(props) => headings[props.type]["font-size"]]};
     font-weight: ${[(props) => headings[props.type]["font-weight"]]};
     color: ${[(props) => headings[props.type].color]};
-    line-height: ${[(props) => headings[props.type]["line-height"] || 'auto']};
+    line-height: ${[(props) => headings[props.type]["line-height"] || 'initial']};
     `;
 
 const CapHeadingSpan = styled.span`

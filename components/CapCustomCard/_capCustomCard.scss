@@ -6,7 +6,6 @@ $cap-custom-card: cap-custom-card;
 .ant-card.#{$cap-custom-card} {
   width: 278px;
   display: inline-block;
-  min-height: 192px;  
   .ant-card-head {
     height: 56px;
     border-bottom: 0px;
@@ -15,6 +14,7 @@ $cap-custom-card: cap-custom-card;
     font-size: 14px;
   }
   .ant-card-body {
+    min-height: 111px;
     position: relative;
     padding: 3px 16px 16px 16px;
   }
