@@ -1,1 +1,32 @@
-@import '../styles/_variables.scss';
+@import "../styles/_variables.scss";
+
+.ant-notification-notice.cap-notification-v2 {
+  .ant-notification-notice-content {
+    .ant-notification-notice-with-icon {
+      .ant-notification-notice-icon {
+        .cap-icon-v2-alert.error {
+          color: $CAP_RED;
+        }
+      }
+      .ant-notification-notice-message,
+      .ant-notification-notice-description {
+        margin-left: 44px;
+      }
+    }
+  }
+  &.error::before,
+  &.success::before {
+    content: " ";
+    position: absolute;
+    width: 4px;
+    top: 0;
+    height: 100%;
+    left: 0;
+  }
+  &.error::before {
+    background-color: $CAP_RED;
+  }
+  &.success::before {
+    background-color: map-get($CAP_PRIMARY, base);
+  }
+}

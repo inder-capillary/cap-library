@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import { Row, Col, Icon } from 'antd';
 import PropertyTable from '../../helpers/PropertyTable';
-import CapInput from "../../components/CapInput";
+import { CapInput } from "../../components";
 import "./info.scss";
 
 const { Search, TextArea } = CapInput;
@@ -122,6 +122,10 @@ const CapInputDoc = () => {
   return (
     <div className="cap-input-info">
       <div className="cap-input-showcase">
+        <div style={{ marginTop: '24px' }}>
+          <b>NOTE: </b>
+          {` CapInputSearch and CapSearchBar has been Deprecated. Use { Search } = CapInput`}
+        </div>
         <p style={{ margin: '16px 0' }}>Input with left label</p>
         <Row span={24}>
           <Col span={11}>
