@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import styled from 'styled-components';
-import { CapButton } from '../../components';
-import { AddIcon } from '../../components/assets/icons';
+import { CapButton, CapIcon } from '../../components';
 import PropertyTable from '../../helpers/PropertyTable';
 import './info.scss';
 
@@ -71,11 +70,11 @@ class CapButtonDoc extends Component {
           <Col span={5} className="button-type">
             <div className="button-type-title">Flat button with icons</div>
             <MarginDiv />
-            <CapButton type="flat" prefix={<AddIcon color="#091e42" />}>Prefix</CapButton>
+            <CapButton type="flat" prefix={<CapIcon size="s" type="add" color="#091e42" />}>Prefix</CapButton>
             <MarginDiv />
-            <CapButton type="flat" suffix={<AddIcon color="#091e42" />}>Suffix</CapButton>
+            <CapButton type="flat" suffix={<CapIcon size="s" type="add" color="#091e42" />}>Suffix</CapButton>
             <MarginDiv />
-            <CapButton type="flat" suffix={<AddIcon color="#b3bac5" />} disabled>Flat</CapButton>
+            <CapButton type="flat" suffix={<CapIcon size="s" type="add" color="#b3bac5" />} disabled>Flat</CapButton>
             <MarginDiv />
           </Col>
           <Col span={4} className="button-type">

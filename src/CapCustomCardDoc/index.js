@@ -5,8 +5,7 @@ import React, { Component } from "react";
 
 import styled from 'styled-components';
 import PropertyTable from '../../helpers/PropertyTable';
-import { CapCustomCard, CapButton, CapHeading } from "../../components";
-import { View } from '../../components/assets/icons';
+import { CapCustomCard, CapButton, CapHeading, CapIcon } from "../../components";
 import "./info.scss";
 
 const { CapCustomCardList } = CapCustomCard;
@@ -149,8 +148,8 @@ const cardListSms = [
     content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
     title: "20% off on footwear with extra",
     hoverOption: <CapButton>Select</CapButton>,
-    extra: [<View />],
-    actions: [<CapButton isAddBtn type="flat">Add Incentive</CapButton>, <View />],
+    extra: [<CapIcon type="view" />],
+    actions: [<CapButton isAddBtn type="flat">Add Incentive</CapButton>, <CapIcon type="view" />],
   },
   {
     content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
@@ -170,16 +169,16 @@ const cardListSms = [
 const cardListEmail = [
   {
     url: "https://s3.amazonaws.com/test_files_cache_bkp/intouch_creative_assets/dfa5c1e2fd001b1fed8a.png",
-    actions: [<CapButton isAddBtn type="flat">Add Incentive</CapButton>, <View />],
+    actions: [<CapButton isAddBtn type="flat">Add Incentive</CapButton>, <CapIcon size="s" type="view" />],
     hoverOption: <CapButton>Select</CapButton>,
     title: "20% off on footwear",
-    extra: [<View />],
+    extra: [<CapIcon type="view" />],
   },
   {
     url: "https://s3.amazonaws.com/test_files_cache_bkp/intouch_creative_assets/dfa5c1e2fd001b1fed8a.png",
     hoverOption: <CapButton>Select</CapButton>,
     title: "20% off on footwear",
-    extra: [<View />],
+    extra: [<CapIcon type="view" />],
   },
 ];
 
