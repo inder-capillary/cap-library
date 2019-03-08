@@ -2,8 +2,9 @@
 * CapTableDoc
 */
 import React, { Component } from "react";
-// import PropertyTable from '../../helpers/PropertyTable';
+import PropertyTable from '../../helpers/PropertyTable';
 import CapTable from "../../components/CapTable";
+import CapHeader from '../../components/CapHeader';
 import "./info.scss";
 
 // const infoData = [
@@ -20,34 +21,131 @@ const dataSource = [{
   key: '1',
   name: 'Mike',
   age: 32,
+  u_user: 5,
+  m_sent: 10,
+  viewed: 2,
+  responded: 1,
   address: '10 Downing Street',
 }, {
   key: '2',
   name: 'John',
   age: 42,
-  address: '10 Downing Street',
-}];
+  u_user: 17,
+  m_sent: 3,
+  viewed: 100,
+  responded: 30,
+  address: '101 Downing Street',
+}, {
+  key: '3',
+  name: 'Mike',
+  age: 32,
+  u_user: 5,
+  m_sent: 10,
+  viewed: 2,
+  responded: 1,
+  address: '10 Downing Street' },
+];
 
 const columns = [{
-  title: 'Name',
+  title: <CapHeader size="small" title="Campaign name" />,
   dataIndex: 'name',
   key: 'name',
+  width: '30%',
+  className: "parent",
+  children: [{
+    title: <CapHeader size="small" description="Marketing objective" />,
+    dataIndex: 'u_user',
+    key: 'u_user',
+    className: "children",
+  }],
 }, {
-  title: 'Age',
-  dataIndex: 'age',
-  key: 'age',
-}, {
-  title: 'Address',
+  title: <CapHeader size="small" title="Address" />,
   dataIndex: 'address',
   key: 'address',
+  width: '30%',
+}, {
+  title: <CapHeader size="small" title="Performance" />,
+  width: '40%',
+  className: "parent",
+  children: [{
+    title: <CapHeader size="small" description="Unique users" />,
+    dataIndex: 'u_user',
+    key: 'u_user',
+    className: "children",
+  }, {
+    title: <CapHeader size="small" description="Message Sent" />,
+    dataIndex: 'm_sent',
+    key: 'm_sent',
+    className: "children",
+  },
+  {
+    title: <CapHeader size="small" description="Viewed" />,
+    dataIndex: 'viewed',
+    key: 'viewed',
+    className: "children",
+  },
+  {
+    title: <CapHeader size="small" description="Responded" />,
+    dataIndex: 'responded',
+    key: 'responded',
+    className: "children",
+  }],
 }];
-
+const infoData = [{
+  key: 1,
+  property: 'column [classname]',
+  description: "If column has children then class need to pass as parent",
+  type: "string",
+  default: "",
+  required: "-",
+},
+{
+  key: 2,
+  property: 'column [children]',
+  description: "If column has children then pass as array of children and every children should have children class",
+  type: "string",
+  default: "",
+  required: "-",
+},
+{
+  key: 3,
+  property: 'infinteScroll',
+  description: "scrolling will be manage based on the flag and pagination & setPagination props need to pass",
+  type: "boolean",
+  default: "false",
+  required: "-",
+},
+{
+  key: 4,
+  property: 'pagination',
+  description: "if infinteScroll is true, pagination needs to pass as object of {limit, offset} values",
+  type: "object",
+  default: "false",
+  required: "-",
+},
+{
+  key: 5,
+  property: 'setpagination',
+  description: "if infinteScroll is true, setpagination function needs to pass as callback function to call api",
+  type: "function",
+  default: "false",
+  required: "-",
+},
+{
+  key: 6,
+  property: 'id',
+  description: "table unique id",
+  type: "string",
+  default: "",
+  required: "yes",
+},
+];
 export default class CapTableDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div className="cap-table-info">
         <div className="cap-table-showcase">
-          <CapTable columns={columns} dataSource={dataSource} />
+          <CapTable id="capTable_1" ColumnGroup={columns} columns={columns} dataSource={dataSource} />
         </div>
         {/* <PropertyTable data={infoData} /> */}
         <div style={{marginTop: '24px'}}>
@@ -56,6 +154,7 @@ export default class CapTableDoc extends Component { // eslint-disable-line reac
           <a href="https://ant.design/components/table/#header"> Table </a>
           component. Please refer their component for detailed explaination of component and supported props.
         </div>
+        <PropertyTable data={infoData} />
       </div>
     );
   }

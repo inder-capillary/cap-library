@@ -9,6 +9,9 @@ $header: cap-header-v2;
   &.regular {
     padding-top: $CAP_SPACE_04;
   }
-    color: #97a0af;
-    margin-bottom: 6px;
+  &.small {
+    padding-top: $CAP_SPACE_06;
+    color: #5e6c84;
+  }
+  color: #97a0af;
 }
