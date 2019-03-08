@@ -1,5 +1,7 @@
 import './styles/ant_theme_vars.less';
+
 import * as CapIcons from './assets/icons';
+
 export { CapIcons };
 
 export { default as CapButton } from './CapButton';
@@ -46,4 +48,6 @@ export { default as CapTooltipWithInfo } from './CapTooltipWithInfo';
 export { default as CapCard } from './CapCard';
 export { default as CapUploader } from './CapUploader';
 export { default as CapAlert } from './CapAlert';
+export { default as CapInputSearch } from './CapInput/Search';
+export { default as CapSearchBar } from './CapInput/Search';
 //export components

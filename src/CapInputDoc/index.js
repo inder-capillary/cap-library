@@ -59,6 +59,13 @@ const infoData = [
     type: "string | Node",
     default: "",
   },
+  {
+    key: 8,
+    property: "inline",
+    description: "If true, display property of input is set to inline-block",
+    type: "boolean",
+    default: "false",
+  },
 ];
 
 
@@ -129,7 +136,7 @@ const CapInputDoc = () => {
         <p style={{ margin: '16px 0' }}>Input with left label</p>
         <Row span={24}>
           <Col span={11}>
-            <CapInput labelPosition="left" label="Input field" />
+            <CapInput inline labelPosition="left" label="Input field" />
           </Col>
           <Col span={11} offset={1}>
             <CapInput labelPosition="left" label="Required Input" isRequired />

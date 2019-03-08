@@ -41,6 +41,7 @@ CapInput.propTypes = {
   size: PropTypes.string,
   inductiveText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   alwaysShowFocus: PropTypes.bool,
+  inline: PropTypes.bool,
 };
 
 const InputFinal = CapInputHOC(CapInput);

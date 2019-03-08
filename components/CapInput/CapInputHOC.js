@@ -8,7 +8,7 @@ const classPrefix = 'cap-input-v2';
 
 const CapInputStyled = styled.div`
   &.cap-input-v2 {
-    display: inline-block;
+    display: ${(props) => props.inline ? 'inline-block' : 'block'};
     cursor: ${(props) => props.disabled && 'not-allowed'};
     input,
     textarea {
@@ -91,6 +91,7 @@ function CapInputHOC(InputComponent) {
         isRequired,
         inductiveText,
         className,
+        inline,
         ...rest
       } = this.props;
       const { errorMessage } = rest;
@@ -104,6 +105,7 @@ function CapInputHOC(InputComponent) {
           labelPosition={labelPosition}
           errorMessage={errorMessage}
           disabled={this.props.disabled}
+          inline={inline}
         >
           <InputWithLabelWrapper labelPosition={labelPosition}>
             {
