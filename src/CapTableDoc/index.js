@@ -137,7 +137,7 @@ export default class CapTableDoc extends Component { // eslint-disable-line reac
     return (
       <div className="cap-table-info">
         <div className="cap-table-showcase">
-          <CapTable ColumnGroup={columns} columns={columns} dataSource={dataSource} />
+          <CapTable id="capTable_1" ColumnGroup={columns} columns={columns} dataSource={dataSource} />
         </div>
         {/* <PropertyTable data={infoData} /> */}
         <div style={{marginTop: '24px'}}>

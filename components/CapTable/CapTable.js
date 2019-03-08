@@ -15,7 +15,7 @@ export default class CapTable extends React.Component { // eslint-disable-line r
   }
 
   addScrollEventListener = () => {
-    const listTable = document.querySelector('div.ant-table-body');
+    const listTable = document.querySelector(`#${this.props.id} div.ant-table-body`);
     if (listTable) {
       listTable.addEventListener('scroll', this.onScrollListTable);
     }
@@ -33,11 +33,11 @@ export default class CapTable extends React.Component { // eslint-disable-line r
   }
 
   render() {
-    const { className, children, ...rest} = this.props;
+    const { className, children, infinteScroll, ...rest} = this.props;
     return (
       <Table
         {...rest}
-        pagination={false}
+        pagination={!infinteScroll}
         className={classNames("cap-table-v2", className, )}>
         {React.Children.toArray(children)}
       </Table>
