@@ -131,6 +131,14 @@ const infoData = [{
   default: "false",
   required: "-",
 },
+{
+  key: 6,
+  property: 'id',
+  description: "table unique id",
+  type: "string",
+  default: "",
+  required: "yes",
+},
 ];
 export default class CapTableDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
