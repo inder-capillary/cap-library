@@ -11,7 +11,7 @@ $cap-custom-card: cap-custom-card;
     border-bottom: 0px;
   }
   .ant-card-head-title {
-    font-size: 14px;
+    font-size: $FONT_SIZE_M;
   }
   .ant-card-body {
     min-height: 111px;

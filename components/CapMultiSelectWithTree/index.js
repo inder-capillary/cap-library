@@ -12,6 +12,7 @@ import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import isEqual from 'lodash/isEqual';
 import classNames from 'classnames';
+import * as styledVars from "../styled/variables";
 import { CapButton, CapInput, CapIcon } from '../index';
 
 import './_capMultiSelectWithTree.scss';
@@ -543,7 +544,7 @@ export default class CapMultiSelectWithTree extends React.Component {
                 )
                   : (
                     <div className={classNames(`${clsPrefix}-no-results`)}>
-                      <CapIcon style={{ color: "#b3bac5" }} type="alert" />
+                      <CapIcon style={{ color: styledVars.CAP_G06 }} type="alert" />
                       <div className={classNames(`${clsPrefix}-no-results-text`)}>{noResultsFoundText}</div>
                     </div>
                   )
@@ -559,7 +560,7 @@ export default class CapMultiSelectWithTree extends React.Component {
             <span className={classNames(`${clsPrefix}-left-content`, { placeholder: !triggerLeftContent, disabled })} title={triggerLeftContent}>{triggerLeftContent || placeholder}</span>
             <span style={{ display: 'inline-flex', alignItems: 'center' }}>
               {triggerRightContent}
-              {disabled ? <CapIcon type="chevron-down" style={{ color: "#b3bac5" }} /> : <CapIcon type="chevron-down" />}
+              {disabled ? <CapIcon type="chevron-down" style={{ color: styledVars.CAP_G06 }} /> : <CapIcon type="chevron-down" />}
             </span>
           </div>
         </Popover>

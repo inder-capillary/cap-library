@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Popover, Spin } from 'antd';
 import { CapInput, CapIcon } from '../index';
+import * as styledVars from "../styled/variables";
 
 import './_menuSearch.scss';
 const clsPrefix = 'menu-search-v2';
@@ -133,7 +134,7 @@ export class MenuSearch extends Component {
     const searchResultsComponent = !!searchText && (noResults && !isAdvancedSearching
       ? (
         <div className={classNames(`${clsPrefix}-no-results content`)}>
-          <CapIcon style={{ color: "#b3bac5" }} type="alert" />
+          <CapIcon style={{ color: styledVars.CAP_G06 }} type="alert" />
           <div className={classNames(`${clsPrefix}-no-results-text`)}>{noSearchResultsFoundText}</div>
         </div>
       )

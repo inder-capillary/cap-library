@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { Popover } from "antd";
 import classNames from 'classnames';
 import findIndex from 'lodash/findIndex';
+import * as styledVars from "../styled/variables";
 import { CapHeading, CapInput, CapIcon } from '../index';
 
 import './_capSelect.scss';
@@ -96,7 +97,7 @@ class CapSelect extends React.Component { // eslint-disable-line react/prefer-st
             {itemsHtml.length > 0 ? <div className={classNames(`${clsPrefix}-items-wrapper`)}>{itemsHtml}</div>
               : (
                 <div className={classNames(`${clsPrefix}-no-results`)}>
-                  <CapIcon style={{ color: "#b3bac5" }} type="alert" />
+                  <CapIcon style={{ color: styledVars.CAP_G06 }} type="alert" />
                   <div className={classNames(`${clsPrefix}-no-results-text`)}>No results found</div>
                 </div>
               )

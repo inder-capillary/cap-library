@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Input } from 'antd';
+import * as styledVars from "../styled/variables";
 import { CapIcon } from '../index';
 import CapInputHOC from './CapInputHOC';
 
@@ -15,8 +16,8 @@ class Search extends Component {
             this.input.focus();
           }
         }}
-        prefix={<CapIcon style={{ color: "#b3bac5" }} type="search" size="s" />}
-        suffix={allowClear && rest.value && <CapIcon style={{ color: "#b3bac5" }} onClick={onClear} type="close" size="s" />}
+        prefix={<CapIcon style={{ color: styledVars.CAP_G06 }} type="search" size="s" />}
+        suffix={allowClear && rest.value && <CapIcon style={{ color: styledVars.CAP_G06 }} onClick={onClear} type="close" size="s" />}
       />
     );
   }

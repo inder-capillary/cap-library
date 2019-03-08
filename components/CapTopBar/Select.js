@@ -6,6 +6,7 @@ import findIndex from 'lodash/findIndex';
 import { CapInput, CapIcon } from '../index';
 import CapillaryLogo from '../assets/icons/capillary_logo.svg';
 import { LogoBackground } from '../assets/icons';
+import * as styledVars from "../styled/variables";
 
 const clsPrefix = 'top-bar-select';
 
@@ -92,7 +93,7 @@ export class Select extends Component {
             {itemsHtml.length > 0 ? <div className={classNames(`${clsPrefix}-items-wrapper`)}>{itemsHtml}</div>
               : (
                 <div className={classNames(`${clsPrefix}-no-results`)}>
-                  <CapIcon style={{ color: "#b3bac5" }} type="alert" />
+                  <CapIcon style={{ color: styledVars.CAP_G06 }} type="alert" />
                   <div className={classNames(`${clsPrefix}-no-results-text`)}>No results found</div>
                 </div>
               )
