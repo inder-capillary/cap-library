@@ -11,7 +11,7 @@ $cap-custom-card: cap-custom-card;
     border-bottom: 0px;
   }
   .ant-card-head-title {
-    font-size: 14px;
+    font-size: $FONT_SIZE_M;
   }
   .ant-card-body {
     min-height: 111px;
@@ -23,17 +23,17 @@ $cap-custom-card: cap-custom-card;
     align-items: center;
     background-color: #ffffff;
     li {
-      margin: 4px 0;
+      margin: $CAP_SPACE_04 0;
       border-right: none;
       float: none;
     }
   }
   .ant-card-actions > li > span > .anticon {
-    font-size: 24px;
+    font-size: $FONT_SIZE_VL;
   }
 
   .ant-card-meta-description {
-    font-size: 12px;
+    font-size: $FONT_SIZE_S;
     color: #5e6c84;
   }
   .hover-content {
@@ -63,8 +63,8 @@ $cap-custom-card: cap-custom-card;
   &.Email {
     .ant-card-body {
       background-color: #f4f5f7;
-      padding-top: 4px;
-      padding-bottom: 4px;
+      padding-top: $CAP_SPACE_04;
+      padding-bottom: $CAP_SPACE_04;
     }
   }
 }
