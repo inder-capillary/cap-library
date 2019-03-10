@@ -11,7 +11,6 @@ export { default as CapTopBar } from './CapTopBar';
 export { default as CapTree } from './CapTree';
 export { default as CapSpin } from './CapSpin';
 export { default as CapModal } from './CapModal';
-export { default as CapTreeNode } from './CapTreeNode';
 export { default as CapTab } from './CapTab';
 export { default as CapSlideBox } from './CapSlideBox';
 export { default as CapHeading } from './CapHeading';

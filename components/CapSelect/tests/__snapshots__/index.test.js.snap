@@ -66,28 +66,18 @@ ShallowWrapper {
             Select organizations
           </ForwardRef>
         </div>
-        <img
-          alt="down-icon"
+        <CapIcon
           className="cap-select-v2-arrow"
-          src="chevron-down.svg"
+          type="chevron-down"
         />
       </div>,
       "content": <React.Fragment>
-        <div
-          className="cap-select-v2-search"
-        >
-          <Component
-            onChange={[Function]}
-            placeholder="Search"
-            value=""
-          />
-          <img
-            alt=""
-            className="icon-search"
-            src="search.svg"
-          />
-          
-        </div>
+        <Component
+          onChange={[Function]}
+          onClear={[Function]}
+          placeholder="Search"
+          value=""
+        />
         <div
           className="cap-select-v2-items-wrapper"
         >
@@ -152,10 +142,9 @@ ShallowWrapper {
               Select organizations
             </ForwardRef>
           </div>,
-          <img
-            alt="down-icon"
+          <CapIcon
             className="cap-select-v2-arrow"
-            src="chevron-down.svg"
+            type="chevron-down"
           />,
         ],
         "className": "cap-select-v2-selection",
@@ -262,15 +251,14 @@ color: ",
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "function",
           "props": Object {
-            "alt": "down-icon",
             "className": "cap-select-v2-arrow",
-            "src": "chevron-down.svg",
+            "type": "chevron-down",
           },
           "ref": null,
           "rendered": null,
-          "type": "img",
+          "type": [Function],
         },
       ],
       "type": "div",
@@ -300,28 +288,18 @@ color: ",
               Select organizations
             </ForwardRef>
           </div>
-          <img
-            alt="down-icon"
+          <CapIcon
             className="cap-select-v2-arrow"
-            src="chevron-down.svg"
+            type="chevron-down"
           />
         </div>,
         "content": <React.Fragment>
-          <div
-            className="cap-select-v2-search"
-          >
-            <Component
-              onChange={[Function]}
-              placeholder="Search"
-              value=""
-            />
-            <img
-              alt=""
-              className="icon-search"
-              src="search.svg"
-            />
-            
-          </div>
+          <Component
+            onChange={[Function]}
+            onClear={[Function]}
+            placeholder="Search"
+            value=""
+          />
           <div
             className="cap-select-v2-items-wrapper"
           >
@@ -386,10 +364,9 @@ color: ",
                 Select organizations
               </ForwardRef>
             </div>,
-            <img
-              alt="down-icon"
+            <CapIcon
               className="cap-select-v2-arrow"
-              src="chevron-down.svg"
+              type="chevron-down"
             />,
           ],
           "className": "cap-select-v2-selection",
@@ -496,15 +473,14 @@ color: ",
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "host",
+            "nodeType": "function",
             "props": Object {
-              "alt": "down-icon",
               "className": "cap-select-v2-arrow",
-              "src": "chevron-down.svg",
+              "type": "chevron-down",
             },
             "ref": null,
             "rendered": null,
-            "type": "img",
+            "type": [Function],
           },
         ],
         "type": "div",
@@ -533,5 +509,6 @@ color: ",
       },
     },
   },
+  Symbol(enzyme.__childContext__): null,
 }
 `;

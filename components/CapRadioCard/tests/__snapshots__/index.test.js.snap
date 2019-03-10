@@ -25,21 +25,41 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
       />
     </span>
     <span>
-      <svg
-        className="radio-card-checked"
-        height={24}
-        viewBox="0 0 48 48"
-        width={24}
+      <i
+        className="anticon cap-icon-v2 cap-icon-v2-check-filled radio-card-checked sc-VigVT bAUjew"
       >
-        <path
-          d="M44 24c0 11.045-8.955 20-20 20S4 35.045 4 24 12.955 4 24 4s20 8.955 20 20z"
-          fill="#4caf50"
-        />
-        <path
-          d="M34.602 14.602L21 28.199l-5.602-5.598-2.797 2.797L21 33.801l16.398-16.402-2.796-2.797z"
-          fill="#ccff90"
-        />
-      </svg>
+        <svg
+          aria-hidden="true"
+          className=""
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 24 24"
+          width="1em"
+        >
+          <g
+            fill="none"
+            fillRule="evenodd"
+          >
+            <path
+              d="M0 0h24v24H0z"
+            />
+            <circle
+              cx={12}
+              cy={12}
+              fill="#42B040"
+              r={11}
+              stroke="#FFF"
+              strokeWidth={2}
+            />
+            <path
+              d="M10.5 13.086l4.293-4.293a1 1 0 0 1 1.414 1.414l-5 5a.997.997 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414l1.293 1.293z"
+              fill="#FFF"
+              fillRule="nonzero"
+            />
+          </g>
+        </svg>
+      </i>
       <div
         className="ant-card ant-card-bordered"
       >
@@ -90,21 +110,41 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
       />
     </span>
     <span>
-      <svg
-        className="radio-card-checked"
-        height={24}
-        viewBox="0 0 48 48"
-        width={24}
+      <i
+        className="anticon cap-icon-v2 cap-icon-v2-check-filled radio-card-checked sc-VigVT bAUjew"
       >
-        <path
-          d="M44 24c0 11.045-8.955 20-20 20S4 35.045 4 24 12.955 4 24 4s20 8.955 20 20z"
-          fill="#4caf50"
-        />
-        <path
-          d="M34.602 14.602L21 28.199l-5.602-5.598-2.797 2.797L21 33.801l16.398-16.402-2.796-2.797z"
-          fill="#ccff90"
-        />
-      </svg>
+        <svg
+          aria-hidden="true"
+          className=""
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 24 24"
+          width="1em"
+        >
+          <g
+            fill="none"
+            fillRule="evenodd"
+          >
+            <path
+              d="M0 0h24v24H0z"
+            />
+            <circle
+              cx={12}
+              cy={12}
+              fill="#42B040"
+              r={11}
+              stroke="#FFF"
+              strokeWidth={2}
+            />
+            <path
+              d="M10.5 13.086l4.293-4.293a1 1 0 0 1 1.414 1.414l-5 5a.997.997 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414l1.293 1.293z"
+              fill="#FFF"
+              fillRule="nonzero"
+            />
+          </g>
+        </svg>
+      </i>
       <div
         className="ant-card ant-card-bordered"
       >
@@ -155,21 +195,41 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
       />
     </span>
     <span>
-      <svg
-        className="radio-card-checked"
-        height={24}
-        viewBox="0 0 48 48"
-        width={24}
+      <i
+        className="anticon cap-icon-v2 cap-icon-v2-check-filled radio-card-checked sc-VigVT bAUjew"
       >
-        <path
-          d="M44 24c0 11.045-8.955 20-20 20S4 35.045 4 24 12.955 4 24 4s20 8.955 20 20z"
-          fill="#4caf50"
-        />
-        <path
-          d="M34.602 14.602L21 28.199l-5.602-5.598-2.797 2.797L21 33.801l16.398-16.402-2.796-2.797z"
-          fill="#ccff90"
-        />
-      </svg>
+        <svg
+          aria-hidden="true"
+          className=""
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 24 24"
+          width="1em"
+        >
+          <g
+            fill="none"
+            fillRule="evenodd"
+          >
+            <path
+              d="M0 0h24v24H0z"
+            />
+            <circle
+              cx={12}
+              cy={12}
+              fill="#42B040"
+              r={11}
+              stroke="#FFF"
+              strokeWidth={2}
+            />
+            <path
+              d="M10.5 13.086l4.293-4.293a1 1 0 0 1 1.414 1.414l-5 5a.997.997 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414l1.293 1.293z"
+              fill="#FFF"
+              fillRule="nonzero"
+            />
+          </g>
+        </svg>
+      </i>
       <div
         className="ant-card ant-card-bordered"
       >
@@ -220,21 +280,41 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
       />
     </span>
     <span>
-      <svg
-        className="radio-card-checked"
-        height={24}
-        viewBox="0 0 48 48"
-        width={24}
+      <i
+        className="anticon cap-icon-v2 cap-icon-v2-check-filled radio-card-checked sc-VigVT bAUjew"
       >
-        <path
-          d="M44 24c0 11.045-8.955 20-20 20S4 35.045 4 24 12.955 4 24 4s20 8.955 20 20z"
-          fill="#4caf50"
-        />
-        <path
-          d="M34.602 14.602L21 28.199l-5.602-5.598-2.797 2.797L21 33.801l16.398-16.402-2.796-2.797z"
-          fill="#ccff90"
-        />
-      </svg>
+        <svg
+          aria-hidden="true"
+          className=""
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 24 24"
+          width="1em"
+        >
+          <g
+            fill="none"
+            fillRule="evenodd"
+          >
+            <path
+              d="M0 0h24v24H0z"
+            />
+            <circle
+              cx={12}
+              cy={12}
+              fill="#42B040"
+              r={11}
+              stroke="#FFF"
+              strokeWidth={2}
+            />
+            <path
+              d="M10.5 13.086l4.293-4.293a1 1 0 0 1 1.414 1.414l-5 5a.997.997 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414l1.293 1.293z"
+              fill="#FFF"
+              fillRule="nonzero"
+            />
+          </g>
+        </svg>
+      </i>
       <div
         className="ant-card ant-card-bordered"
       >
