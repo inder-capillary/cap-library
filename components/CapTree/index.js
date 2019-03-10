@@ -23,8 +23,7 @@ class CapTree extends React.Component { // eslint-disable-line react/prefer-stat
   }
 }
 
-CapTree.propTypes = {
 
-};
+CapTree.CapTreeNode = Tree.TreeNode;
 
 export default CapTree;

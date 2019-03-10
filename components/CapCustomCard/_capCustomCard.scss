@@ -1,62 +1,70 @@
 @import "../styles/_variables.scss";
 
-.cap-custom-card {
-  width: 420px;
-  border-radius: 4px;
-  border: 0.5px solid $CAP_G07;
-  max-height: 152px;
-  &.cap-card-has-hover-option:hover {
-    .cap-card-content {
-      background-color: $CAP_WHITE;
-      opacity: 0.2;
-    }
-    .cap-card-hover-option {
-      display: block;
-      position: absolute;
-      z-index: 2;
-      top: 0;
-      left: 40%;
+$cap-custom-card-list: cap-custom-card-list;
+$cap-custom-card: cap-custom-card;
+
+.ant-card.#{$cap-custom-card} {
+  width: 278px;
+  display: inline-block;
+  .ant-card-head {
+    height: 56px;
+    border-bottom: 0px;
+  }
+  .ant-card-head-title {
+    font-size: $FONT_SIZE_M;
+  }
+  .ant-card-body {
+    min-height: 111px;
+    position: relative;
+    padding: 3px 16px 16px 16px;
+  }
+  .ant-card-actions {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    li {
+      margin: $CAP_SPACE_04 0;
+      border-right: none;
+      float: none;
     }
   }
-  .cap-card-hover-option {
+  .ant-card-actions > li > span > .anticon {
+    font-size: $FONT_SIZE_VL;
+  }
+
+  .ant-card-meta-description {
+    font-size: $FONT_SIZE_S;
+    color: #5e6c84;
+  }
+  .hover-content {
     display: none;
   }
-  .cap-card-title-icon {
-    margin: $CAP_SPACE_20 $CAP_SPACE_20 0 $CAP_SPACE_20;
-    display: inline-block;
-  }
-  .cap-card-title {
-    font-size: $FONT_SIZE_M;
-    font-weight: $FONT_WEIGHT_MEDIUM;
-    display: inline-block;
-    margin-top: $CAP_SPACE_20;
-  }
-  .cap-card-option {
-    margin-top: $CAP_SPACE_20;
-    margin-right: $CAP_SPACE_24;
-  }
-  .cap-card-content {
-    font-size: $FONT_SIZE_S;
-    margin-bottom: $CAP_SPACE_20;
-    max-height: 60px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .cap-card-option-icon {
-    cursor: pointer;
-    &:hover {
-      box-shadow: 0 0 11px rgba(192, 151, 151, 0.2);
-      background-color: $CAP_G09;
-      border-radius: 50%;
+
+  &.has-hover-option:hover {
+    .ant-card-meta {
+      opacity: 0.2;
+    }
+    .hover-content {
+      display: block;
+      position: absolute;
+      top: 33%;
+      left: 33%;
     }
   }
 }
-.cap-card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 420px);
-  grid-auto-rows: auto;
-  grid-gap: $CAP_SPACE_12;
+
+.#{$cap-custom-card-list} {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  .ant-card.#{$cap-custom-card} {
+    margin: 6px;
+  }
+  &.Email {
+    .ant-card-body {
+      background-color: #f4f5f7;
+      padding-top: $CAP_SPACE_04;
+      padding-bottom: $CAP_SPACE_04;
+    }
+  }
 }

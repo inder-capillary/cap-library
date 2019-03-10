@@ -1,10 +1,16 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
 
-// import CapRadioButton from '../index';
+import React from 'react';
+import { shallow } from 'enzyme';
+import { Radio } from 'antd';
+
+import CapRadioButton from '../index';
+
+const RadioButton = Radio.Button;
 
 describe('<CapRadioButton />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  const wrapper = shallow(<CapRadioButton />);
+
+  it('Should render antd radio button', () => {
+    expect(wrapper.find(RadioButton)).toHaveLength(1);
   });
 });

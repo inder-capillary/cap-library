@@ -50,7 +50,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <div
-        className="cap-select-selection"
+        className="cap-select-v2-selection"
         style={
           Object {
             "width": "250px",
@@ -58,7 +58,7 @@ ShallowWrapper {
         }
       >
         <div
-          className="cap-select-selected-value"
+          className="cap-select-v2-selected-value"
         >
           <ForwardRef
             type="h5"
@@ -68,65 +68,66 @@ ShallowWrapper {
         </div>
         <img
           alt="down-icon"
-          className="cap-select-arrow"
+          className="cap-select-v2-arrow"
           src="chevron-down.svg"
         />
       </div>,
       "content": <React.Fragment>
         <div
-          className="cap-select-search"
+          className="cap-select-v2-search"
         >
-          <Input
-            disabled={false}
+          <Component
             onChange={[Function]}
             placeholder="Search"
-            type="text"
             value=""
           />
-          <Icon
-            type="search"
+          <img
+            alt=""
+            className="icon-search"
+            src="search.svg"
           />
-          <Icon
+          
+        </div>
+        <div
+          className="cap-select-v2-items-wrapper"
+        >
+          <div
+            className="cap-select-v2-select-item"
             onClick={[Function]}
-            type="close"
-          />
-        </div>
-        <div
-          className="cap-select-select-item"
-          onClick={[Function]}
-        >
-          Purples
-        </div>
-        <div
-          className="cap-select-select-item"
-          onClick={[Function]}
-        >
-          Buckle
-        </div>
-        <div
-          className="cap-select-select-item"
-          onClick={[Function]}
-        >
-          Ski
-        </div>
-        <div
-          className="cap-select-select-item"
-          onClick={[Function]}
-        >
-          Splash
-        </div>
-        <div
-          className="cap-select-select-item"
-          onClick={[Function]}
-        >
-          Metro
+          >
+            Purples
+          </div>
+          <div
+            className="cap-select-v2-select-item"
+            onClick={[Function]}
+          >
+            Buckle
+          </div>
+          <div
+            className="cap-select-v2-select-item"
+            onClick={[Function]}
+          >
+            Ski
+          </div>
+          <div
+            className="cap-select-v2-select-item"
+            onClick={[Function]}
+          >
+            Splash
+          </div>
+          <div
+            className="cap-select-v2-select-item"
+            onClick={[Function]}
+          >
+            Metro
+          </div>
         </div>
       </React.Fragment>,
       "getPopupContainer": [Function],
       "mouseEnterDelay": 0.1,
       "mouseLeaveDelay": 0.1,
       "onVisibleChange": [Function],
-      "overlayClassName": "cap-select-popover",
+      "overlayClassName": "cap-select-v2-popover",
       "overlayStyle": Object {
         "width": "100%",
       },
@@ -143,7 +144,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <div
-            className="cap-select-selected-value"
+            className="cap-select-v2-selected-value"
           >
             <ForwardRef
               type="h5"
@@ -153,11 +154,11 @@ ShallowWrapper {
           </div>,
           <img
             alt="down-icon"
-            className="cap-select-arrow"
+            className="cap-select-v2-arrow"
             src="chevron-down.svg"
           />,
         ],
-        "className": "cap-select-selection",
+        "className": "cap-select-v2-selection",
         "style": Object {
           "width": "250px",
         },
@@ -174,7 +175,7 @@ ShallowWrapper {
             >
               Select organizations
             </ForwardRef>,
-            "className": "cap-select-selected-value",
+            "className": "cap-select-v2-selected-value",
           },
           "ref": null,
           "rendered": Object {
@@ -189,6 +190,35 @@ ShallowWrapper {
             "rendered": "Select organizations",
             "type": Object {
               "$$typeof": Symbol(react.forward_ref),
+              "CapHeadingSpan": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-bwzfXH",
+                  "isStatic": false,
+                  "rules": Array [
+                    "
+font-size: ",
+                    [Function],
+                    ";
+font-weight: ",
+                    [Function],
+                    ";
+color: ",
+                    [Function],
+                    ";
+",
+                  ],
+                },
+                "displayName": "styled.span",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-bwzfXH",
+                "target": "span",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              },
               "attrs": Array [],
               "componentStyle": ComponentStyle {
                 "componentId": "sc-bdVaJa",
@@ -202,6 +232,9 @@ ShallowWrapper {
                   [Function],
                   ";
     color: ",
+                  [Function],
+                  ";
+    line-height: ",
                   [Function],
                   ";
     ",
@@ -232,7 +265,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "alt": "down-icon",
-            "className": "cap-select-arrow",
+            "className": "cap-select-v2-arrow",
             "src": "chevron-down.svg",
           },
           "ref": null,
@@ -251,7 +284,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <div
-          className="cap-select-selection"
+          className="cap-select-v2-selection"
           style={
             Object {
               "width": "250px",
@@ -259,7 +292,7 @@ ShallowWrapper {
           }
         >
           <div
-            className="cap-select-selected-value"
+            className="cap-select-v2-selected-value"
           >
             <ForwardRef
               type="h5"
@@ -269,65 +302,66 @@ ShallowWrapper {
           </div>
           <img
             alt="down-icon"
-            className="cap-select-arrow"
+            className="cap-select-v2-arrow"
             src="chevron-down.svg"
           />
         </div>,
         "content": <React.Fragment>
           <div
-            className="cap-select-search"
+            className="cap-select-v2-search"
           >
-            <Input
-              disabled={false}
+            <Component
               onChange={[Function]}
               placeholder="Search"
-              type="text"
               value=""
             />
-            <Icon
-              type="search"
+            <img
+              alt=""
+              className="icon-search"
+              src="search.svg"
             />
-            <Icon
+            
+          </div>
+          <div
+            className="cap-select-v2-items-wrapper"
+          >
+            <div
+              className="cap-select-v2-select-item"
               onClick={[Function]}
-              type="close"
-            />
-          </div>
-          <div
-            className="cap-select-select-item"
-            onClick={[Function]}
-          >
-            Purples
-          </div>
-          <div
-            className="cap-select-select-item"
-            onClick={[Function]}
-          >
-            Buckle
-          </div>
-          <div
-            className="cap-select-select-item"
-            onClick={[Function]}
-          >
-            Ski
-          </div>
-          <div
-            className="cap-select-select-item"
-            onClick={[Function]}
-          >
-            Splash
-          </div>
-          <div
-            className="cap-select-select-item"
-            onClick={[Function]}
-          >
-            Metro
+            >
+              Purples
+            </div>
+            <div
+              className="cap-select-v2-select-item"
+              onClick={[Function]}
+            >
+              Buckle
+            </div>
+            <div
+              className="cap-select-v2-select-item"
+              onClick={[Function]}
+            >
+              Ski
+            </div>
+            <div
+              className="cap-select-v2-select-item"
+              onClick={[Function]}
+            >
+              Splash
+            </div>
+            <div
+              className="cap-select-v2-select-item"
+              onClick={[Function]}
+            >
+              Metro
+            </div>
           </div>
         </React.Fragment>,
         "getPopupContainer": [Function],
         "mouseEnterDelay": 0.1,
         "mouseLeaveDelay": 0.1,
         "onVisibleChange": [Function],
-        "overlayClassName": "cap-select-popover",
+        "overlayClassName": "cap-select-v2-popover",
         "overlayStyle": Object {
           "width": "100%",
         },
@@ -344,7 +378,7 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <div
-              className="cap-select-selected-value"
+              className="cap-select-v2-selected-value"
             >
               <ForwardRef
                 type="h5"
@@ -354,11 +388,11 @@ ShallowWrapper {
             </div>,
             <img
               alt="down-icon"
-              className="cap-select-arrow"
+              className="cap-select-v2-arrow"
               src="chevron-down.svg"
             />,
           ],
-          "className": "cap-select-selection",
+          "className": "cap-select-v2-selection",
           "style": Object {
             "width": "250px",
           },
@@ -375,7 +409,7 @@ ShallowWrapper {
               >
                 Select organizations
               </ForwardRef>,
-              "className": "cap-select-selected-value",
+              "className": "cap-select-v2-selected-value",
             },
             "ref": null,
             "rendered": Object {
@@ -390,6 +424,35 @@ ShallowWrapper {
               "rendered": "Select organizations",
               "type": Object {
                 "$$typeof": Symbol(react.forward_ref),
+                "CapHeadingSpan": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-bwzfXH",
+                    "isStatic": false,
+                    "rules": Array [
+                      "
+font-size: ",
+                      [Function],
+                      ";
+font-weight: ",
+                      [Function],
+                      ";
+color: ",
+                      [Function],
+                      ";
+",
+                    ],
+                  },
+                  "displayName": "styled.span",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-bwzfXH",
+                  "target": "span",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                },
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
                   "componentId": "sc-bdVaJa",
@@ -403,6 +466,9 @@ ShallowWrapper {
                     [Function],
                     ";
     color: ",
+                    [Function],
+                    ";
+    line-height: ",
                     [Function],
                     ";
     ",
@@ -433,7 +499,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "alt": "down-icon",
-              "className": "cap-select-arrow",
+              "className": "cap-select-v2-arrow",
               "src": "chevron-down.svg",
             },
             "ref": null,

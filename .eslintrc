@@ -53,6 +53,7 @@
     "newline-per-chained-call": 0,
     "no-confusing-arrow": 0,
     "no-console": 1,
+    "no-plusplus": 0,
     "no-unused-vars": 2,
     "no-use-before-define": 0,
     "prefer-template": 2,
@@ -62,6 +63,7 @@
     "jsx-a11y/aria-props": 2,
     "jsx-a11y/heading-has-content": 0,
     "jsx-a11y/label-has-for": 2,
+    "jsx-a11y/anchor-is-valid": 0,
     "jsx-a11y/mouse-events-have-key-events": 2,
     "jsx-a11y/role-has-required-aria-props": 2,
     "jsx-a11y/role-supports-aria-props": 2,
@@ -83,6 +85,5 @@
     "react/no-array-index-key": 0,
     "object-curly-newline": 0,
     "react/no-unused-prop-types": 2
-
   }
 }

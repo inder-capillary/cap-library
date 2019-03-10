@@ -3,7 +3,7 @@
 */
 import React, { Component } from "react";
 import PropertyTable from '../../helpers/PropertyTable';
-import CapCheckbox from "../../components/CapCheckbox";
+import { CapCheckbox, CapHeading } from "../../components";
 import "./info.scss";
 
 const infoData = [
@@ -49,6 +49,20 @@ const infoData = [
     type: "Function(e:Event)",
     default: "-",
   },
+  {
+    key: "7",
+    property: "inductiveText",
+    description: "String to be shown below checkbox label",
+    type: "String",
+    default: "-",
+  },
+  {
+    key: "8",
+    property: "suffix",
+    description: "React element to be added as suffix to header.",
+    type: "String| ReactNode",
+    default: "-",
+  },
 ];
 
 export default class CapCheckboxDoc extends Component { // eslint-disable-line react/prefer-stateless-function
@@ -56,7 +70,13 @@ export default class CapCheckboxDoc extends Component { // eslint-disable-line r
     return (
       <div className="cap-checkbox-info">
         <div className="cap-checkbox-showcase">
-          <CapCheckbox value={3} indeterminate> indeterminate </CapCheckbox>
+          <CapCheckbox
+            value={3}
+            indeterminate
+            suffix={<CapHeading.CapHeadingSpan type="label2">(this is my custom suffix)</CapHeading.CapHeadingSpan>}
+            inductiveText="Global campaign settings can be overridden through advanced settings">
+            Intermediate
+          </CapCheckbox>
           <CapCheckbox checked={1}>checked</CapCheckbox>
           <CapCheckbox disabled defaultChecked={1} value={2}> Disabled and defaultChecked</CapCheckbox>
           <CapCheckbox autoFocus>autoFocus</CapCheckbox>

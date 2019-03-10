@@ -1,116 +1,210 @@
-
 /**
- * CapCustomCardDoc
- */
+* CapCardDoc
+*/
 import React, { Component } from "react";
-import { Icon } from 'antd';
+
+import styled from 'styled-components';
 import PropertyTable from '../../helpers/PropertyTable';
-import { CapCustomCard, CapButton } from "../../components";
+import { CapCustomCard, CapButton, CapHeading, CapIcon } from "../../components";
 import "./info.scss";
 
-import {Message as MessageIcon, View as ViewIcon} from '../../components/assets/icons';
-const Card = CapCustomCard.CapCustomCard;
-const CardGrid = CapCustomCard.CapCustomCardGrid;
+const { CapCustomCardList } = CapCustomCard;
+
 const infoData = [
   {
-    key: 0,
-    property: "key",
-    description: "-",
-    type: "string",
-    default: "-",
-    required: "true",
-  },
-  {
     key: 1,
-    property: "title",
-    description: "-",
-    type: "string | react node ",
+    property: "cardList",
+    description: "Card List is array of Object which has property of title, content, hoverOption: <CapButton>Select</CapButton>(default as false), onClick(Hover on Click event)",
+    type: "Array<object>",
     default: "-",
-    required: "true",
   },
   {
     key: 2,
-    property: "content",
-    description: "-",
-    type: "string | react node ",
+    property: "type",
+    description: "type of card [SMS ,EMAIL, WeChat, Mpush]",
+    type: "string",
     default: "-",
-    required: "-",
+  },
+];
+
+
+const cardInfoData = [
+  {
+    key: 1,
+    property: "actions",
+    description: "The action list, shows at the bottom of the Card.",
+    type: "Array<ReactNode>",
+    default: "-",
+  },
+  {
+    key: 2,
+    property: "activeTabKey",
+    description: "Current TabPane's key",
+    type: "string",
+    default: "-",
   },
   {
     key: 3,
-    property: "icon",
-    description: "-",
-    type: " react node ",
+    property: "headStyle",
+    description: "Inline style to apply to the card head",
+    type: "object",
     default: "-",
-    required: "-",
   },
   {
     key: 4,
-    property: "options",
-    description: "react component such as popover or preiview icon",
-    type: " react node ",
+    property: "bodyStyle",
+    description: "Inline style to apply to the card content",
+    type: "object",
     default: "-",
-    required: "-",
   },
-];
-const infoDataGrid = [
   {
-    key: 1,
-    property: "cardDataList",
-    description: "an array od CapGrid props",
-    type: "array of objects ",
+    key: 5,
+    property: "bordered",
+    description: "Toggles rendering of the border around the card",
+    type: "boolean",
+    default: "true",
+  },
+  {
+    key: 6,
+    property: "cover",
+    description: "Card cover",
+    type: "ReactNode",
     default: "-",
-    required: "true",
+  },
+  {
+    key: 7,
+    property: "defaultActiveTabKey",
+    description: "Initial active TabPane's key, if activeTabKey is not set.",
+    type: "string",
+    default: "-",
+  },
+  {
+    key: 8,
+    property: "extra",
+    description: "Content to render in the top-right corner of the card",
+    type: "string|ReactNode",
+    default: "-",
+  },
+  {
+    key: 9,
+    property: "hoverable",
+    description: "Lift up when hovering card",
+    type: "boolean",
+    default: "false",
+  },
+  {
+    key: 10,
+    property: "loading",
+    description: "Shows a loading indicator while the contents of the card are being fetched",
+    type: "boolean",
+    default: "false",
+  },
+  {
+    key: 11,
+    property: "tabList",
+    description: "List of TabPane's head.",
+    type: "Array<{key: string, tab: ReactNode}>",
+    default: "-",
+  },
+  {
+    key: 12,
+    property: "size",
+    description: "Size of card",
+    type: "default | small",
+    default: "default",
+  },
+  {
+    key: 13,
+    property: "title",
+    description: "Card title",
+    type: "string|ReactNode",
+    default: "-",
+  },
+  {
+    key: 14,
+    property: "type",
+    description: "Card style type, can be set to inner or not set",
+    type: "string",
+    default: "-",
+  },
+  {
+    key: 15,
+    property: "onTabChange",
+    description: "Callback when tab is switched",
+    type: "(key) => void",
+    default: "-",
+  },
+  {
+    key: 16,
+    property: "type",
+    description: "type of card [SMS ,EMAIL, WeChat, Mpush]",
+    type: "string",
+    default: "-",
   },
 ];
+
+const cardListSms = [
+  {
+    content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
+    title: "20% off on footwear with extra",
+    hoverOption: <CapButton>Select</CapButton>,
+    extra: [<CapIcon type="view" />],
+    actions: [<CapButton isAddBtn type="flat">Add Incentive</CapButton>, <CapIcon type="view" />],
+  },
+  {
+    content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
+    title: "20% off on footwear",
+  },
+  {
+    content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
+    title: "20% off on footwear",
+    hoverOption: <CapButton>Select</CapButton>,
+  },
+  {
+    content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
+    title: "20% off on footwear",
+  },
+];
+
+const cardListEmail = [
+  {
+    url: "https://s3.amazonaws.com/test_files_cache_bkp/intouch_creative_assets/dfa5c1e2fd001b1fed8a.png",
+    actions: [<CapButton isAddBtn type="flat">Add Incentive</CapButton>, <CapIcon size="s" type="view" />],
+    hoverOption: <CapButton>Select</CapButton>,
+    title: "20% off on footwear",
+    extra: [<CapIcon type="view" />],
+  },
+  {
+    url: "https://s3.amazonaws.com/test_files_cache_bkp/intouch_creative_assets/dfa5c1e2fd001b1fed8a.png",
+    hoverOption: <CapButton>Select</CapButton>,
+    title: "20% off on footwear",
+    extra: [<CapIcon type="view" />],
+  },
+];
+
+const CustomDiv = styled.div`
+margin-top: 24px;
+margin-left: 16px;
+`;
+
 export default class CapCustomCardDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const actions = [<Icon type="setting" />];
-    const cardProps = {
-      icon: <MessageIcon />,
-      title: "Title",
-      content: "message content",
-      options: <ViewIcon />,
-      key: 'card',
-      actions,
-    };
-    const cardGridProps = [
-      {
-        icon: <MessageIcon />,
-        title: "Title - 1",
-        content: "Get YLG's Beauty Secrets Card & avail 2x beauty services for half the price across YLG Salon. Visit Nearest YLG Salon to know more. t {{optout}}",
-        options: <ViewIcon />,
-        key: 'prop - 1',
-        hoverOption: <CapButton>Edit</CapButton>,
-
-      },
-      {
-        icon: <MessageIcon />,
-        title: "Title - 2",
-        content: "Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British Design. Up to 75%OFF at the F&F Summer Sale. Don't miss out on the best styles. Better quality, Better Price , British ",
-        options: <ViewIcon />,
-        key: 'prop - 2',
-        hoverOption: <CapButton>Edit</CapButton>,
-      },
-      {
-        icon: <MessageIcon />,
-        title: "Title - 3",
-        content: "message content 3",
-        options: <ViewIcon />,
-        key: 'prop - 3',
-      },
-    ];
     return (
       <div className="cap-card-info">
         <div className="cap-card-showcase">
-          Card:
-          <Card {...cardProps} />
-
-          Card grid:
-          <CardGrid cardDataList={cardGridProps} />
+          <CapHeading type="h3">Single Email Card</CapHeading>
+          <CapCustomCard {...cardListEmail[0]} type="Email" />
+          <CustomDiv>
+            <CapHeading type="h3">Sms Card  List</CapHeading>
+          </CustomDiv>
+          <CapCustomCardList cardList={cardListSms} type="SMS" />
+          <CustomDiv>
+            <CapHeading type="h3">Email Card  List</CapHeading>
+          </CustomDiv>
+          <CapCustomCardList cardList={cardListEmail} type="Email" />
         </div>
-        <PropertyTable data={infoData} title="Card Props" />
-        <PropertyTable data={infoDataGrid} title="Card grid Props" />
+        <PropertyTable data={infoData} title="CapCustomCard.CapCustomCardList" />
+        <PropertyTable data={cardInfoData} title="Card Props" />
       </div>
     );
   }

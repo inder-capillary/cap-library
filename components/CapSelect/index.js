@@ -9,11 +9,8 @@ import PropTypes from 'prop-types';
 import { Popover } from "antd";
 import classNames from 'classnames';
 import findIndex from 'lodash/findIndex';
-import { CapHeading, CapInput } from '../index';
-import WarningIcon from '../assets/icons/warning.svg';
-import DropDownIcon from '../assets/icons/chevron-down.svg';
-import SearchIcon from '../assets/icons/search.svg';
-import CloseIcon from '../assets/icons/close.svg';
+import * as styledVars from "../styled/variables";
+import { CapHeading, CapInput, CapIcon } from '../index';
 
 import './_capSelect.scss';
 
@@ -90,20 +87,17 @@ class CapSelect extends React.Component { // eslint-disable-line react/prefer-st
         content={(
           <Fragment>
             {showSearch && (
-              <div className={classNames(`${clsPrefix}-search`)}>
-                <CapInput
-                  placeholder={searchPlaceholder}
-                  onChange={this.handleSearch}
-                  value={searchText}
-                />
-                <img className="icon-search" src={SearchIcon} alt="" />
-                {searchText && <span onClick={this.clearSearch}><img className="icon-close" src={CloseIcon} alt="" /></span>}
-              </div>
+              <CapInput.Search
+                placeholder={searchPlaceholder}
+                onChange={this.handleSearch}
+                value={searchText}
+                onClear={this.clearSearch}
+              />
             )}
             {itemsHtml.length > 0 ? <div className={classNames(`${clsPrefix}-items-wrapper`)}>{itemsHtml}</div>
               : (
                 <div className={classNames(`${clsPrefix}-no-results`)}>
-                  <img src={WarningIcon} alt="no-results" />
+                  <CapIcon style={{ color: styledVars.CAP_G06 }} type="alert" />
                   <div className={classNames(`${clsPrefix}-no-results-text`)}>No results found</div>
                 </div>
               )
@@ -115,7 +109,7 @@ class CapSelect extends React.Component { // eslint-disable-line react/prefer-st
           <div className={(`${clsPrefix}-selected-value`)}>
             <CapHeading type={selectedItem ? 'h5' : 'h6'}>{selectedItemLabel || selectPlaceholder}</CapHeading>
           </div>
-          <img src={DropDownIcon} alt="down-icon" className={classNames(`${clsPrefix}-arrow`)} />
+          <CapIcon type="chevron-down" className={classNames(`${clsPrefix}-arrow`)} />
         </div>
       </Popover>
     );

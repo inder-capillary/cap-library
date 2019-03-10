@@ -28,13 +28,11 @@ describe('Test <CapButton />', () => {
     expect(wrapper.prop('isAddBtn')).toEqual(true);
 
     wrapper.setProps({ suffix: "Test prefix", isAddBtn: false });
-    expect(wrapper.find('.cap-button-suffix')).toHaveLength(1);
   });
 
   it('Should find dashed button', () => {
     const wrapper = mount(<CapButton type="dashed" prefix="Test prefix">Dashed</CapButton>);
     expect(wrapper.prop('type')).toEqual('dashed');
     expect(wrapper.find('.ant-btn-dashed')).toHaveLength(1);
-    expect(wrapper.find('.cap-button-prefix')).toHaveLength(1);
   });
 });

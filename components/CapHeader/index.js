@@ -22,6 +22,26 @@ const Flex = styled.div`
 
 const clsPrefix = 'cap-header-v2';
 
+const titleSize = (size) => {
+  switch (size) {
+    case "regular":
+      return "h3";
+    case "small":
+      return "label2";
+    default:
+      return "h1";
+  }
+};
+const titleDesc = (size) => {
+  switch (size) {
+    case "regular":
+      return "label1";
+    case "small":
+      return "label1";
+    default:
+      return "h6";
+  }
+};
 function CapHeader(props) {
   const { description, inline, title, size } = props;
   const CapHeadingwithDirection = inline ? InlineHeading : CapHeading;
@@ -31,11 +51,11 @@ function CapHeader(props) {
         props.prefix
       }
       <div>
-        <CapHeadingwithDirection type={size === 'regular' ? "h3" : "h1"} className={classNames(`${clsPrefix}-title`)}>
+        <CapHeadingwithDirection type={titleSize(size)} className={classNames(`${clsPrefix}-title`)}>
           {title}
         </CapHeadingwithDirection>
         {description && (
-          <CapHeadingwithDirection type={size === 'regular' ? "label1" : "h6"} className={classNames(`${clsPrefix}-description`, size)}>
+          <CapHeadingwithDirection type={titleDesc(size)} className={classNames(`${clsPrefix}-description`, size)}>
             {description}
           </CapHeadingwithDirection>
         )}
@@ -50,7 +70,7 @@ CapHeader.defaultProps = {
 };
 
 CapHeader.propTypes = {
-  title: propTypes.oneOfType([propTypes.string, propTypes.node]).isRequired,
+  title: propTypes.oneOfType([propTypes.string, propTypes.node]),
   description: propTypes.oneOfType([propTypes.string, propTypes.node]),
   inline: propTypes.bool,
   prefix: propTypes.node,

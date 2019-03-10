@@ -104,6 +104,20 @@ export default class CapHeaderDoc extends Component { // eslint-disable-line rea
                   keyboard_backspace
                 </i>
               )} />
+
+
+          </Container>
+          <Container>
+            <div>small size header</div>
+            <CapHeader
+              description="Description"
+              size="small"
+              title="Title"
+              prefix={(
+                <i className="material-icons">
+                  keyboard_backspace
+                </i>
+              )} />
           </Container>
         </Flex>
         <PropertyTable data={infoData} />

@@ -2,6 +2,6 @@
 
 exports[`<CapColumn /> CapColumn renders correctly 1`] = `
 <div
-  className="cap-column"
+  className="cap-column-v2"
 />
 `;

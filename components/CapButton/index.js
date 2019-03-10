@@ -5,7 +5,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Button } from "antd";
 import classnames from 'classnames';
-import { AddIcon } from '../assets/icons';
+import { CapIcon } from "..";
 import "./_capButton.scss";
 
 const classPrefix = 'cap-button-v2';
@@ -37,7 +37,7 @@ const CapButton = (props) => {
         { 'has-icon': isAddBtn || suffix || prefix }
       )}
     >
-      {isAddBtn && <div className={classnames(`${classPrefix}-prefix`)}>{<AddIcon />}</div>}
+      {isAddBtn && <div className={classnames(`${classPrefix}-prefix`)}>{<CapIcon size="s" type="add" />}</div>}
       {prefix && <span className={classnames(`${classPrefix}-prefix`)}>{prefix}</span>}
       {children}
       {suffix && <span className={classnames(`${classPrefix}-suffix`)}>{suffix}</span>}

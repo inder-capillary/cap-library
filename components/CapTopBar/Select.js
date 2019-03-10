@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import { Popover } from "antd";
 import classNames from 'classnames';
 import findIndex from 'lodash/findIndex';
-import { CapInput } from '../index';
-import WarningIcon from '../assets/icons/warning.svg';
-import DropDownIcon from '../assets/icons/chevron-down.svg';
+import { CapInput, CapIcon } from '../index';
 import CapillaryLogo from '../assets/icons/capillary_logo.svg';
-import SearchIcon from '../assets/icons/search.svg';
-import CloseIcon from '../assets/icons/close.svg';
 import { LogoBackground } from '../assets/icons';
+import * as styledVars from "../styled/variables";
 
 const clsPrefix = 'top-bar-select';
 
@@ -85,19 +82,18 @@ export class Select extends Component {
             {showHeader && <div className={classNames(`${clsPrefix}-header`)}>Select organisation</div>}
             {showSearch && (
               <div className={classNames(`${clsPrefix}-search`)}>
-                <CapInput
+                <CapInput.Search
                   placeholder="Organization"
                   onChange={this.handleSearch}
                   value={searchText}
+                  onClear={this.clearSearch}
                 />
-                <img className="icon-search" src={SearchIcon} alt="" />
-                {searchText && <span onClick={this.clearSearch}><img className="icon-close" src={CloseIcon} alt="" /></span>}
               </div>
             )}
             {itemsHtml.length > 0 ? <div className={classNames(`${clsPrefix}-items-wrapper`)}>{itemsHtml}</div>
               : (
                 <div className={classNames(`${clsPrefix}-no-results`)}>
-                  <img src={WarningIcon} alt="no-results" />
+                  <CapIcon style={{ color: styledVars.CAP_G06 }} type="alert" />
                   <div className={classNames(`${clsPrefix}-no-results-text`)}>No results found</div>
                 </div>
               )
@@ -118,8 +114,7 @@ export class Select extends Component {
             }
             <span className={(`${clsPrefix}-selected-value-label`)} title={selectedItemLabel}>{selectedItemLabel}</span>
           </div>
-          <img src={DropDownIcon} alt="down-icon" className={classNames(`${clsPrefix}-arrow`)} />
-          {/* <Icon className={classNames(`${clsPrefix}-arrow`)} type="down" /> */}
+          <CapIcon type="chevron-down" className={classNames(`${clsPrefix}-arrow`)} />
         </div>
       </Popover>
     );

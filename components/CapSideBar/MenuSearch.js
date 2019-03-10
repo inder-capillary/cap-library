@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Popover, Spin } from 'antd';
-import { CapInput } from '../index';
+import { CapInput, CapIcon } from '../index';
+import * as styledVars from "../styled/variables";
 
 import './_menuSearch.scss';
-import WarningIcon from '../assets/icons/warning.svg';
-import NewTabIcon from '../assets/icons/open-in-new.svg';
-import SearchIcon from '../assets/icons/search.svg';
-import CloseIcon from '../assets/icons/close.svg';
 const clsPrefix = 'menu-search-v2';
 
 export class MenuSearch extends Component {
@@ -92,7 +89,7 @@ export class MenuSearch extends Component {
           : <a onClick={this.onItemClick} {...linkProps} className={classNames(`${clsPrefix}-ellipsis`)}>{this.generateHighlightedText(item.title)}</a>
         }
         <a {...newTabLinkProps}>
-          <div className="new-tab-link-wrapper"><img src={NewTabIcon} alt="" /></div>
+          <CapIcon className="new-tab-link-wrapper" type="open-in-new" size="s" />
         </a>
       </div>
     );
@@ -137,7 +134,7 @@ export class MenuSearch extends Component {
     const searchResultsComponent = !!searchText && (noResults && !isAdvancedSearching
       ? (
         <div className={classNames(`${clsPrefix}-no-results content`)}>
-          <img src={WarningIcon} alt="no-results" />
+          <CapIcon style={{ color: styledVars.CAP_G06 }} type="alert" />
           <div className={classNames(`${clsPrefix}-no-results-text`)}>{noSearchResultsFoundText}</div>
         </div>
       )
@@ -165,13 +162,12 @@ export class MenuSearch extends Component {
       >
         <div className={classNames(`${clsPrefix}`)}>
           <div style={{ position: 'relative' }}>
-            <CapInput
+            <CapInput.Search
               placeholder={placeholder}
               onChange={this.handleSearch}
               value={searchText}
+              onClear={this.clearSearch}
             />
-            <img className="icon-search" src={SearchIcon} alt="" />
-            {searchText && <span onClick={this.clearSearch}><img className="icon-close" src={CloseIcon} alt="" /></span>}
           </div>
         </div>
       </Popover>

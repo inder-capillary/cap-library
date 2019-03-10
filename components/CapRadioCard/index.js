@@ -9,8 +9,7 @@ import './_capRadioCard.scss';
 
 import { Card, Radio } from "antd";
 import PropTypes from 'prop-types';
-import CapHeading from '../CapHeading';
-import { CheckFilled } from '../assets/icons/index';
+import { CapHeading, CapIcon } from '..';
 const classNames = require('classnames');
 
 const RadioButton = Radio.Button;
@@ -25,7 +24,7 @@ class CapRadioCard extends React.Component { // eslint-disable-line react/prefer
             const { content, title, renderIcon } = pane;
             return (
               <RadioButton key={pane.value} value={pane.value}>
-                <CheckFilled className="radio-card-checked" />
+                <CapIcon type="check-filled" className="radio-card-checked" />
                 <Card>
                   {renderIcon && (
                     <div className="radio-card-icon">

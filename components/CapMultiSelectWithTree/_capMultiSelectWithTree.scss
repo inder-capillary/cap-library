@@ -96,6 +96,9 @@ $multiSelect: cap-multi-tree-select-v2;
   .ant-popover-inner-content {
     padding: 0;
     .search-input {
+      .cap-input-v2 {
+        width: 100%;
+      }
       margin: $CAP_SPACE_16 $CAP_SPACE_16 0 $CAP_SPACE_16;
       .ant-input-affix-wrapper .ant-input-prefix {
         left: 8px;

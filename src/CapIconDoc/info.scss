@@ -1,0 +1,19 @@
+.cap-icon-info {
+  .cap-icon-showcase {
+    ul.cap-icons-list {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 10px 0;
+      overflow: hidden;
+      list-style: none;
+      transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+    ul.cap-icons-list li:hover {
+      color: #fff;
+      background-color: #1890ff;
+      .cap-icon-v2 {
+        font-size: 32px;
+      }
+    }
+  }
+}

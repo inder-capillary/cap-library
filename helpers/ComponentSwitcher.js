@@ -28,14 +28,20 @@ import CapMultiSelectWithTreeDoc from '../src/CapMultiSelectWithTreeDoc';
 import CapModalDoc from '../src/CapModalDoc';
 import CapSpinDoc from '../src/CapSpinDoc';
 import CapPopoverDoc from '../src/CapPopoverDoc';
-import CapCardDoc from '../src/CapCardDoc';
 import CapMultiSelectDoc from '../src/CapMultiSelectDoc';
 import CapTooltipDoc from '../src/CapTooltipDoc';
 import CapIconDoc from '../src/CapIconDoc';
 import CapStepsAccordianDoc from '../src/CapStepsAccordianDoc';
 import CapLinkDoc from '../src/CapLinkDoc';
 import CapRadioCardDoc from '../src/CapRadioCardDoc';
+import CapNotificationDoc from '../src/CapNotificationDoc';
+import CapListDoc from '../src/CapListDoc';
+import CapTooltipWithInfoDoc from '../src/CapTooltipWithInfoDoc';
+import CapCardDoc from '../src/CapCardDoc';
+import CapUploaderDoc from '../src/CapUploaderDoc';
+import CapAlertDoc from '../src/CapAlertDoc';
 //imported for docs
+
 
 class ComponentSwitcher extends Component {
   render() {
@@ -95,8 +101,6 @@ class ComponentSwitcher extends Component {
         return <CapSpinDoc />;
       case 'capPopover':
         return <CapPopoverDoc />;
-      case 'capCard':
-        return <CapCardDoc />;
       case 'capMultiSelect':
         return <CapMultiSelectDoc />;
       case 'capTooltip':
@@ -109,6 +113,21 @@ class ComponentSwitcher extends Component {
         return <CapLinkDoc />;
       case 'capRadioCard':
         return <CapRadioCardDoc />;
+      case 'capNotification':
+        return <CapNotificationDoc />;
+      case 'capList':
+        return <CapListDoc />;
+      case 'capTooltipWithInfo':
+        return <CapTooltipWithInfoDoc />;
+      case 'capCard':
+        return <CapCardDoc />;
+      case 'capUploader':
+        return <CapUploaderDoc />;
+      case 'capAlert':
+        return <CapAlertDoc />;
+        //components for docs
+
+
       default:
         return null;
     }

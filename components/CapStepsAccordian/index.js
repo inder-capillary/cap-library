@@ -9,8 +9,7 @@ import PropTypes from 'prop-types';
 import { Collapse } from 'antd';
 import classNames from 'classnames';
 import styled from 'styled-components';
-import { CapHeading } from '../index';
-import { SelectedTick } from '../assets/icons';
+import { CapHeading, CapIcon } from '../index';
 
 import './_capStepsAccordian.scss';
 
@@ -37,7 +36,7 @@ function CapStepsAccordian(props) {
         const customHeader = (
           <Flex>
             {icon || (
-              completed ? <SelectedTick className="steps-icon" /> : (
+              completed ? <CapIcon type="check-filled" size="l" className="steps-icon" /> : (
                 <div className="steps-icon numbers-icon">
                   <CapHeading type="label2">{index + 1}</CapHeading>
                 </div>
