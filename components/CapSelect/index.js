@@ -88,6 +88,7 @@ class CapSelect extends React.Component { // eslint-disable-line react/prefer-st
           <Fragment>
             {showSearch && (
               <CapInput.Search
+                className={classNames(`${clsPrefix}-search`)}
                 placeholder={searchPlaceholder}
                 onChange={this.handleSearch}
                 value={searchText}

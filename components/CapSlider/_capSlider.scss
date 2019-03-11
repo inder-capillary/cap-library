@@ -10,18 +10,17 @@ $slidebar : cap-slider-v2;
     .ant-slider-handle{
         background-color:map-get($CAP_PRIMARY, base);
         border: 0px !important;
-        box-shadow: 0px 0px 0px 7px map-get($CAP_PRIMARY, disabled);
+        box-shadow: 0px 0px 0px 7px rgba(map-get($CAP_PRIMARY, base), 0.15);
         margin-left: -7px !important;
         margin-top: -3px !important;
         width:9px;
         height: 9px;
     }
     
-    .ant-slider-rail{
-        background-color:map-get($CAP_PRIMARY, base);
-    }
-    .ant-slider-track{
-        background-color:map-get($CAP_PRIMARY, base);
+    .ant-slider-rail,
+    .ant-slider-track {
+        height: 2px;
+        background-color:map-get($CAP_PRIMARY, disabled);
     }
     
     .ant-slider-step{
@@ -31,18 +30,18 @@ $slidebar : cap-slider-v2;
         margin:40px;
 }
 .ant-slider.ant-slider-disabled.#{$slidebar}{
-    .ant-slider-track{
-        background-color:$FONT_COLOR_04 !important;
-    }
     .ant-slider-handle.ant-tooltip-open{
         background-color:$FONT_COLOR_04;
     }
-    .ant-slider-rail{
-        background-color:$FONT_COLOR_04;
+    .ant-slider-rail,
+    .ant-slider-track {
+        opacity: 0.5;
+        background-color:$CAP_G06 !important;
     }
-    .ant-slider-handle{
-        background-color:$FONT_COLOR_02;
-        box-shadow:0px 0px 0px 7px $FONT_COLOR_04;
+    .ant-slider-handle {
+        opacity: 0.5;
+        background-color:$CAP_G04;
+        box-shadow:0px 0px 0px 7px rgba($CAP_G04, 0.15);
     }
     
 }

@@ -15,7 +15,11 @@ const CapInputStyled = styled.div`
       &::-webkit-input-placeholder {
         font-size: 14px;
       }
-      &:focus {
+      &.ant-input:hover {
+        border-color: ${styledVars.CAP_G11};
+        box-shadow: none;
+      }
+      &.ant-input:focus {
         border-color: ${styledVars.CAP_G01};
         box-shadow: none;
       }

@@ -88,25 +88,5 @@ $selectPrefix: cap-select-v2;
 }
 
 .#{$selectPrefix}-search {
-  position: relative;
   padding: 0 16px 20px 16px;
-  input {
-    padding: 4px 28px;
-    height: 40px;
-  }
-  .icon-close {
-    position: absolute;
-    right: 25px;
-    top: 20%;
-    color: $CAP_ICON;
-    width: 18px;
-    cursor: pointer;
-  }
-  .icon-search {
-    left: 25px;
-    top: 22%;
-    position: absolute;
-    color: $CAP_ICON;
-    width: 14px;
-  }
 }

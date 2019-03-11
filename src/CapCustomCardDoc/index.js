@@ -145,8 +145,8 @@ const cardInfoData = [
 
 const cardListSms = [
   {
-    content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
-    title: "20% off on footwear with extra",
+    content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8 Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8 Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8 Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
+    title: "20% off on footwear with extra test long log text",
     hoverOption: <CapButton>Select</CapButton>,
     extra: [<CapIcon type="view" />],
     actions: [<CapButton isAddBtn type="flat">Add Incentive</CapButton>, <CapIcon type="view" />],
@@ -171,7 +171,7 @@ const cardListEmail = [
     url: "https://s3.amazonaws.com/test_files_cache_bkp/intouch_creative_assets/dfa5c1e2fd001b1fed8a.png",
     actions: [<CapButton isAddBtn type="flat">Add Incentive</CapButton>, <CapIcon size="s" type="view" />],
     hoverOption: <CapButton>Select</CapButton>,
-    title: "20% off on footwear",
+    title: "20% off on footwear test long log text",
     extra: [<CapIcon type="view" />],
   },
   {

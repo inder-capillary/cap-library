@@ -14,14 +14,13 @@ $cap-custom-card: cap-custom-card;
     font-size: $FONT_SIZE_M;
   }
   .ant-card-body {
-    min-height: 111px;
     position: relative;
-    padding: 3px 16px 16px 16px;
   }
   .ant-card-actions {
     display: flex;
     align-items: center;
     background-color: #ffffff;
+    padding-left: 12px;
     li {
       margin: $CAP_SPACE_04 0;
       border-right: none;
@@ -53,18 +52,36 @@ $cap-custom-card: cap-custom-card;
   }
 }
 
+.ant-card.#{$cap-custom-card}.SMS {
+  .ant-card-body {
+    height: 148px;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ant-card-body {
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+  }
+}
+
+.ant-card.#{$cap-custom-card}.Email {
+  .ant-card-body {
+    padding: 3px 16px 0 16px;
+    background-color: #f4f5f7;
+    padding-top: $CAP_SPACE_04;
+    padding-bottom: $CAP_SPACE_04;
+  }
+}
+
 .#{$cap-custom-card-list} {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   .ant-card.#{$cap-custom-card} {
     margin: 6px;
-  }
-  &.Email {
-    .ant-card-body {
-      background-color: #f4f5f7;
-      padding-top: $CAP_SPACE_04;
-      padding-bottom: $CAP_SPACE_04;
-    }
   }
 }

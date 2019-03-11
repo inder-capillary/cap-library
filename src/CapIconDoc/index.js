@@ -342,14 +342,6 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
         <CapHeading type="h2">{`<CapIcon type="add-media" />`}</CapHeading>
         <br />
         <CapHeading type="h3">Font size and color property can be changed through css for these Icons</CapHeading>
-        <PropertyTable data={infoData} />
-        <div style={{ marginTop: '24px' }}>
-          <b>NOTE: </b>
-          This component is the extended version of ant design
-          <a href="https://ant.design/components/icon/"> Icons </a>
-          component. Please refer their component for detailed explaination of component and supported props.
-        </div>
-
         <pre>
           {`
           .cap-icon-v2-add:hover {
@@ -357,6 +349,13 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
           }
         `}
         </pre>
+        <PropertyTable data={infoData} />
+        <div style={{ marginTop: '24px' }}>
+          <b>NOTE: </b>
+          This component is the extended version of ant design
+          <a href="https://ant.design/components/icon/"> Icons </a>
+          component. Please refer their component for detailed explaination of component and supported props.
+        </div>
         <pre>
           {`Run following command for all the new Svg Icons to be added as components:
 

@@ -85,6 +85,7 @@ $button: cap-button-v2;
   &.flat-btn {
     background-color: $CAP_WHITE;
     border-color: $CAP_WHITE;
+    min-width: auto;
     &.add-btn {
       color: $FONT_COLOR_05;
     }

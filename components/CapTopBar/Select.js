@@ -81,14 +81,13 @@ export class Select extends Component {
           <Fragment>
             {showHeader && <div className={classNames(`${clsPrefix}-header`)}>Select organisation</div>}
             {showSearch && (
-              <div className={classNames(`${clsPrefix}-search`)}>
-                <CapInput.Search
-                  placeholder="Organization"
-                  onChange={this.handleSearch}
-                  value={searchText}
-                  onClear={this.clearSearch}
-                />
-              </div>
+              <CapInput.Search
+                placeholder="Organization"
+                onChange={this.handleSearch}
+                value={searchText}
+                onClear={this.clearSearch}
+                className={classNames(`${clsPrefix}-search`)}
+              />
             )}
             {itemsHtml.length > 0 ? <div className={classNames(`${clsPrefix}-items-wrapper`)}>{itemsHtml}</div>
               : (
