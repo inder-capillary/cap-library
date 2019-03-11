@@ -3,13 +3,16 @@
  .children{
      padding: 0px 16px 16px;
  }
- .table-children:not(:first-child):not(:last-child){
-    > div:first-child{
-        border-right: 1px solid #97a0af; 
-    }    
+ .ant-table-thead{
+    .table-children:not(:last-child){
+        > div:first-child{
+            border-right: 1px solid #97a0af; 
+        }    
+     }
+     .table-parent{
+        padding-bottom: 0px;
+    
+    }   
  }
- .table-parent{
-    padding-bottom: 0px;
-
-}   
+ 
 }
