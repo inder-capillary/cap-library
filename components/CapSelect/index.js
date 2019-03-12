@@ -50,13 +50,14 @@ class CapSelect extends React.Component { // eslint-disable-line react/prefer-st
     return options.reduce((acc, item) => {
       if (searchText === "" || item.label.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
         acc.push(
-          <div
+          <CapHeading
+            type="h6"
             key={item.value}
             onClick={() => this.handleChange(item)}
             className={classNames(`${clsPrefix}-select-item`, { selected: value === item.value })}
           >
             {item.label}
-          </div>
+          </CapHeading>
         );
       }
       return acc;

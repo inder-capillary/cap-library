@@ -6,8 +6,16 @@ $datePicker: cap-date-picker-common-v2;
   .ant-calendar-picker-input.ant-input:focus,
   .ant-calendar-picker:hover .ant-calendar-picker-input:not(.ant-input-disabled),
   .ant-calendar-picker:focus .ant-calendar-picker-input:not(.ant-input-disabled) {
-    border-color: #091e42;
+    border-color: $CAP_G06;
     box-shadow: none;
+  }
+  .ant-input-lg {
+    font-size: $FONT_SIZE_M;
+    line-height: $CAP_SPACE_20;
+    color: $FONT_COLOR_01;
+  }
+  &:hover {
+    color: $CAP_G11
   }
   .ant-calendar-picker.ant-calendar-picker-large {
     .ant-calendar-picker-icon,

@@ -1,13 +1,15 @@
 @import "../styles/_variables.scss";
 
-$capTab : cap-tab-v2;
+$capTab: cap-tab-v2;
 
 .ant-tabs.#{$capTab} {
-  .ant-tabs-nav .ant-tabs-tab-active {
-    color: $FONT_COLOR_01;
-  }
   .ant-tabs-nav .ant-tabs-tab {
     margin: 0 0 0 0;
+    font-weight: $FONT_WEIGHT_MEDIUM;
+    color: $FONT_COLOR_02;
+  }
+  .ant-tabs-nav .ant-tabs-tab-active {
+    color: $FONT_COLOR_01;
   }
   .ant-tabs-nav .ant-tabs-tab:hover {
     color: $FONT_COLOR_01;

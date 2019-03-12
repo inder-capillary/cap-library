@@ -22,16 +22,16 @@ class CapRadioCard extends React.Component { // eslint-disable-line react/prefer
       <RadioGroup {...rest} className={classNames("cap-radioCard-v2", className)}>
         {panes && (
           panes.map((pane) => {
-            const { content, title, renderIcon } = pane;
+            const { content, title, icon } = pane;
             return (
               <RadioButton key={pane.value} value={pane.value}>
                 <CapIcon type="check-filled" className="radio-card-checked" />
                 <Card>
-                  {renderIcon && (
+                  {icon && (
                     <div className="radio-card-icon">
                       <div className={classNames('icon-container', { 'green-color': selected === pane.value })}>
                         <div className="div-icon">
-                          {selected === pane.value ? renderIcon({ selected: true }) : renderIcon({ selected: false })}
+                          {icon}
                         </div>
                       </div>
                     </div>

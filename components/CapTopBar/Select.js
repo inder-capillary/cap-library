@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import findIndex from 'lodash/findIndex';
 import CapIcon from '../CapIcon';
 import CapInput from '../CapInput';
+import CapHeading from '../CapHeading';
 import CapillaryLogo from '../assets/icons/capillary_logo.svg';
 import { LogoBackground } from '../assets/icons';
 import * as styledVars from "../styled/variables";
@@ -43,13 +44,14 @@ export class Select extends Component {
     return items.reduce((acc, item) => {
       if (searchText === "" || item.label.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
         acc.push(
-          <div
+          <CapHeading
+            type="h6"
             key={item.value}
             onClick={() => this.handleChange(item)}
             className={classNames(`${clsPrefix}-select-item`, { selected: selectedItem === item.value })}
           >
             {item.label}
-          </div>
+          </CapHeading>
         );
       }
       return acc;

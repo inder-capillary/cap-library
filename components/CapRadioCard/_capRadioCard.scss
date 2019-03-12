@@ -62,20 +62,19 @@ $capRadioCardV2: cap-radioCard-v2;
 
   .icon-container {
     padding-right: 24px;
-  }
-  .icon-container {
     height: 48px;
     width: 48px;
     background-color: $CAP_G07;
     background-size: cover;
     text-decoration: none;
-    color: $CAP_G10;
     display: inline-block;
     border-radius: 18px;
     position: relative;
-  }
-
-  .green-color {
-    background-color: map-get($CAP_PRIMARY, base);
+    &.green-color {
+      background-color: map-get($CAP_PRIMARY, base);
+      .cap-icon-v2 {
+        color: $CAP_WHITE;
+      }
+    }
   }
 }

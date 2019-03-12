@@ -3,7 +3,7 @@
 */
 import React, { Component } from "react";
 import PropertyTable from '../../helpers/PropertyTable';
-import { CapRadioCard } from "../../components";
+import { CapRadioCard, CapIcon } from "../../components";
 import "./info.scss";
 import { Message, View } from '../../components/assets/icons/index';
 
@@ -11,23 +11,23 @@ const infoData = [
   {
     key: 1,
     property: "onChange",
-    description: "OnChange will set color and selected state",
-    type: "function",
+    description: "Callback function executed on change",
+    type: "Function(e => {})",
     default: "-",
   },
   {
     key: 2,
     property: "panes",
-    description: "array of objects, that contain title,content,renderIcon. More information is given in the table below.",
+    description: "array of objects, that contain title,content,icon. More information is given in the table below.",
     type: "array",
     default: "-",
   },
   {
     key: 3,
     property: "selected",
-    description: "-",
+    description: "selected value. Should be one of the key from array of panes.",
     type: "any",
-    default: "none",
+    default: "-",
   },
 ];
 
@@ -48,9 +48,9 @@ const panesData = [
   },
   {
     key: 3,
-    property: "renderIcon",
-    description: "Icon to be displayed on radio card (optional). Icon should be of like a render prop which will accept selected as props. Based on selected, icon should handle its change of color",
-    type: "Function. Eg: ({ selected }) => <View selected={selected} />",
+    property: "icon",
+    description: "CapIcon. On select of any radio card, the icon color will automaticaly become white.",
+    type: "ReactNode",
     default: "-",
   },
 ];
@@ -70,7 +70,7 @@ export default class CapRadioCardDoc extends Component { // eslint-disable-line 
       {
         title: "Outbound",
         content: "Sending an outbound message is like blasting the message or broadcasting the message to a pre-defined set of users",
-        renderIcon: ({ selected }) => <Message selected={selected} />,
+        icon: <CapIcon type="communication" />,
         value: 'outbound',
       },
       {
@@ -86,7 +86,7 @@ export default class CapRadioCardDoc extends Component { // eslint-disable-line 
       {
         title: "Referral",
         content: "for sending messages to acquire new users through existing customers",
-        renderIcon: ({ selected }) => <View selected={selected} />,
+        icon: <CapIcon type="view" />,
         value: 'referral',
       }];
     return (
