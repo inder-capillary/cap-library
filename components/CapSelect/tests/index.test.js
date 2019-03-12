@@ -18,9 +18,9 @@ describe('<CapSelect />', () => {
     width: "250px",
     selectPlaceholder: "Select organizations",
     showSearch: true,
-    items: orgsList,
-    selectedItem: "Ski",
-    handleItemChange: handleOrgChange,
+    options: orgsList,
+    value: "Ski",
+    onChange: handleOrgChange,
   };
   const wrapper = shallow(<CapSelect {...defaultProps} />);
 

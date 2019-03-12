@@ -39,21 +39,21 @@ class CapSelect extends React.Component { // eslint-disable-line react/prefer-st
   }
 
   handleChange = (item) => {
-    const { handleItemChange } = this.props;
+    const { onChange } = this.props;
     this.setState({ visible: false });
-    handleItemChange(item.value, item);
+    onChange(item.value, item);
   }
 
   getItems = () => {
-    const { items, selectedItem } = this.props;
+    const { options, value } = this.props;
     const { searchText } = this.state;
-    return items.reduce((acc, item) => {
+    return options.reduce((acc, item) => {
       if (searchText === "" || item.label.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
         acc.push(
           <div
             key={item.value}
             onClick={() => this.handleChange(item)}
-            className={classNames(`${clsPrefix}-select-item`, { selected: selectedItem === item.value })}
+            className={classNames(`${clsPrefix}-select-item`, { selected: value === item.value })}
           >
             {item.label}
           </div>
@@ -68,13 +68,13 @@ class CapSelect extends React.Component { // eslint-disable-line react/prefer-st
   }
 
   render() {
-    const { items, selectedItem, showSearch, searchPlaceholder, selectPlaceholder, width } = this.props;
+    const { options, value, showSearch, searchPlaceholder, selectPlaceholder, width, className, popoverClassName } = this.props;
     const { visible, searchText } = this.state;
     const itemsHtml = this.getItems();
-    const selectedItemIndex = findIndex(items, (item) => item.value === selectedItem);
+    const selectedItemIndex = findIndex(options, (item) => item.value === value);
     let selectedItemLabel = "";
     if (selectedItemIndex !== -1) {
-      selectedItemLabel = items[selectedItemIndex].label;
+      selectedItemLabel = options[selectedItemIndex].label;
     }
     const popwidth = this.node ? `${this.node.offsetWidth}px` : "100%";
     return (
@@ -82,7 +82,7 @@ class CapSelect extends React.Component { // eslint-disable-line react/prefer-st
         trigger="click"
         getPopupContainer={(trigger) => trigger.parentNode}
         placement="bottomLeft"
-        overlayClassName={classNames(`${clsPrefix}-popover`)}
+        overlayClassName={classNames(`${clsPrefix}-popover`, popoverClassName)}
         overlayStyle={{ width: popwidth }}
         visible={visible}
         onVisibleChange={this.onVisibleChange}
@@ -108,9 +108,9 @@ class CapSelect extends React.Component { // eslint-disable-line react/prefer-st
           </Fragment>
         )}
       >
-        <div ref={(node) => { this.node = node; }} style={{ width: width || "100%" }} className={classNames(`${clsPrefix}-selection`, { open: !!visible })}>
+        <div ref={(node) => { this.node = node; }} style={{ width: width || "100%" }} className={classNames(`${clsPrefix}-selection`, { open: !!visible }, className)}>
           <div className={(`${clsPrefix}-selected-value`)}>
-            <CapHeading type={selectedItem ? 'h5' : 'h6'}>{selectedItemLabel || selectPlaceholder}</CapHeading>
+            <CapHeading type={value ? 'h5' : 'h6'}>{selectedItemLabel || selectPlaceholder}</CapHeading>
           </div>
           <CapIcon type="chevron-down" className={classNames(`${clsPrefix}-arrow`)} />
         </div>
@@ -125,13 +125,18 @@ CapSelect.defaultProps = {
 };
 
 CapSelect.propTypes = {
-  selectedItem: PropTypes.string,
-  items: PropTypes.array,
-  handleItemChange: PropTypes.func,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  options: PropTypes.array,
+  onChange: PropTypes.func,
   showSearch: PropTypes.bool,
   searchPlaceholder: PropTypes.string,
   selectPlaceholder: PropTypes.string,
   width: PropTypes.string,
+  className: PropTypes.string,
+  popoverClassName: PropTypes.string,
 };
 
 export default CapSelect;

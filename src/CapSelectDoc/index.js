@@ -9,21 +9,21 @@ import "./info.scss";
 const infoData = [
   {
     key: 1,
-    property: "items",
+    property: "options",
     description: "Select Options. Note: value of select options should be unique.",
     type: "Array[{ label:String, value: String}].",
     default: "-",
   },
   {
     key: 2,
-    property: "selectedItem",
-    description: "Current selected option",
+    property: "value",
+    description: "Current selected option value",
     type: "string",
     default: "-",
   },
   {
     key: 3,
-    property: "handleItemChange",
+    property: "onChange",
     description: "Called when select option changes",
     type: "function(value, item)",
     default: "-",
@@ -56,6 +56,20 @@ const infoData = [
     type: "Eg. 200px (String)",
     default: "100%",
   },
+  {
+    key: 8,
+    property: "className",
+    description: "className of select component",
+    type: "string",
+    default: "-",
+  },
+  {
+    key: 9,
+    property: "popoverClassName",
+    description: "className of dropdown component",
+    type: "string",
+    default: "-",
+  },
 ];
 
 const orgsList = [
@@ -87,9 +101,9 @@ function CapSelectDoc() {
             width="250px"
             selectPlaceholder="Select organizations"
             showSearch
-            items={orgsList}
-            selectedItem={selectedOrg}
-            handleItemChange={handleOrgChange}
+            options={orgsList}
+            value={selectedOrg}
+            onChange={handleOrgChange}
           />
         </div>
         <div>
@@ -97,9 +111,11 @@ function CapSelectDoc() {
           <CapSelect
             width="250px"
             selectPlaceholder="Select product"
-            items={productsList}
-            selectedItem={selectedProduct}
-            handleItemChange={handleProductChange}
+            options={productsList}
+            value={selectedProduct}
+            onChange={handleProductChange}
+            className="test"
+            popoverClassName="my-popover"
           />
         </div>
       </div>

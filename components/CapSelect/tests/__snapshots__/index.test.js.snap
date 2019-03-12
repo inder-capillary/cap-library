@@ -4,8 +4,8 @@ exports[`<CapSelect /> render capSelect 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <CapSelect
-    handleItemChange={[MockFunction]}
-    items={
+    onChange={[MockFunction]}
+    options={
       Array [
         Object {
           "label": "Purples",
@@ -31,8 +31,8 @@ ShallowWrapper {
     }
     searchPlaceholder="Search"
     selectPlaceholder="Select organizations"
-    selectedItem="Ski"
     showSearch={true}
+    value="Ski"
     width="250px"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -73,6 +73,7 @@ ShallowWrapper {
       </div>,
       "content": <React.Fragment>
         <Component
+          className="cap-select-v2-search"
           onChange={[Function]}
           onClear={[Function]}
           placeholder="Search"
@@ -295,6 +296,7 @@ color: ",
         </div>,
         "content": <React.Fragment>
           <Component
+            className="cap-select-v2-search"
             onChange={[Function]}
             onClear={[Function]}
             placeholder="Search"
@@ -509,6 +511,5 @@ color: ",
       },
     },
   },
-  Symbol(enzyme.__childContext__): null,
 }
 `;
