@@ -72,7 +72,7 @@ const getSvgComponentFromType = (type) => {
     case 'view': return SvgIcons.View
     case 'warning': return SvgIcons.Warning
     case 'search': return SvgIcons.Search
-    default: null;
+    default: return null;
   }
 };
 
