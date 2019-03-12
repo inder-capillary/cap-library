@@ -5,7 +5,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Button } from "antd";
 import classnames from 'classnames';
-import { CapIcon } from "../index";
+import CapIcon from "../CapIcon";
 import "./_capButton.scss";
 
 const classPrefix = 'cap-button-v2';
