@@ -8,7 +8,7 @@ import React from 'react';
 import { Modal } from 'antd';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { CapButton } from '../index';
+import CapButton from '../CapButton';
 import './_capModal.scss';
 
 const { info, success, error, warning, confirm } = Modal;

@@ -6,7 +6,8 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import { CapTooltip, CapIcon } from '../index';
+import CapTooltip from '../CapTooltip';
+import CapIcon from '../CapIcon';
 import './_capTooltipWithInfo.scss';
 
 const clsPrefix = 'cap-tooltip-with-info';

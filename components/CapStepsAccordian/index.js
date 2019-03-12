@@ -9,7 +9,8 @@ import PropTypes from 'prop-types';
 import { Collapse } from 'antd';
 import classNames from 'classnames';
 import styled from 'styled-components';
-import { CapHeading, CapIcon } from '../index';
+import CapHeading from '../CapHeading';
+import CapIcon from '../CapIcon';
 
 import './_capStepsAccordian.scss';
 

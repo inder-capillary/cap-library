@@ -13,7 +13,9 @@ import isEmpty from 'lodash/isEmpty';
 import isEqual from 'lodash/isEqual';
 import classNames from 'classnames';
 import * as styledVars from "../styled/variables";
-import { CapButton, CapInput, CapIcon } from '../index';
+import CapButton from '../CapButton';
+import CapInput from '../CapInput';
+import CapIcon from '../CapIcon';
 
 import './_capMultiSelectWithTree.scss';
 

@@ -8,7 +8,7 @@ import React from 'react';
 import { DatePicker } from 'antd';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { CapIcon } from '../index';
+import CapIcon from '../CapIcon';
 
 import './_capDateRangePicker.scss';
 import '../styles/datePickerCommon.scss';

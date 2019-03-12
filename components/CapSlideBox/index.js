@@ -8,7 +8,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { throttle } from 'lodash';
-import { CapHeading, CapIcon } from '../index';
+import CapHeading from '../CapHeading';
+import CapIcon from '../CapIcon';
 
 import './_capSlideBox.scss';
 

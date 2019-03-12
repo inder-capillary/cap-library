@@ -7,7 +7,9 @@ import difference from 'lodash/difference';
 import omit from 'lodash/omit';
 import classNames from 'classnames';
 import * as styledVars from "../styled/variables";
-import { CapButton, CapInput, CapIcon } from '../index';
+import CapButton from '../CapButton';
+import CapInput from '../CapInput';
+import CapIcon from '../CapIcon';
 
 import './_capMultiSelect.scss';
 

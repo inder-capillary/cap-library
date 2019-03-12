@@ -7,7 +7,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Checkbox } from "antd";
 import "./_capCheckbox.scss";
-import { CapHeading } from "../index";
+import CapHeading from '../CapHeading';
 
 const classNames = require('classnames');
 
