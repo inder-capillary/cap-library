@@ -51,12 +51,12 @@ const columns = [{
   dataIndex: 'name',
   key: 'name',
   width: '30%',
-  className: "parent",
+  className: "table-parent",
   children: [{
     title: <CapHeader size="small" description="Marketing objective" />,
     dataIndex: 'u_user',
     key: 'u_user',
-    className: "children",
+    className: "table-children",
   }],
 }, {
   title: <CapHeader size="small" title="Address" />,
@@ -66,43 +66,43 @@ const columns = [{
 }, {
   title: <CapHeader size="small" title="Performance" />,
   width: '40%',
-  className: "parent",
+  className: "table-parent",
   children: [{
     title: <CapHeader size="small" description="Unique users" />,
     dataIndex: 'u_user',
     key: 'u_user',
-    className: "children",
+    className: "table-children",
   }, {
     title: <CapHeader size="small" description="Message Sent" />,
     dataIndex: 'm_sent',
     key: 'm_sent',
-    className: "children",
+    className: "table-children",
   },
   {
     title: <CapHeader size="small" description="Viewed" />,
     dataIndex: 'viewed',
     key: 'viewed',
-    className: "children",
+    className: "table-children",
   },
   {
     title: <CapHeader size="small" description="Responded" />,
     dataIndex: 'responded',
     key: 'responded',
-    className: "children",
+    className: "table-children",
   }],
 }];
 const infoData = [{
   key: 1,
   property: 'column [classname]',
-  description: "If column has children then class need to pass as parent",
+  description: "If column has children then class need to pass as table-parent",
   type: "string",
   default: "",
   required: "-",
 },
 {
   key: 2,
-  property: 'column [children]',
-  description: "If column has children then pass as array of children and every children should have children class",
+  property: 'column [table-children]',
+  description: "If column has children then pass as array of children and every children should have table-children class",
   type: "string",
   default: "",
   required: "-",
@@ -139,13 +139,21 @@ const infoData = [{
   default: "",
   required: "yes",
 },
+{
+  key: 7,
+  property: 'showLoader',
+  description: "This is for loading on pagination",
+  type: "boolean",
+  default: "false",
+  required: "",
+},
 ];
 export default class CapTableDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div className="cap-table-info">
         <div className="cap-table-showcase">
-          <CapTable id="capTable_1" ColumnGroup={columns} columns={columns} dataSource={dataSource} />
+          <CapTable id="capTable_1" ColumnGroup={columns} columns={columns} dataSource={dataSource} infinteScroll />
         </div>
         {/* <PropertyTable data={infoData} /> */}
         <div style={{marginTop: '24px'}}>

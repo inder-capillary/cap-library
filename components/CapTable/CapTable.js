@@ -14,6 +14,13 @@ export default class CapTable extends React.Component { // eslint-disable-line r
     }
   }
 
+  componentWillUnmount() {
+    const listTable = document.querySelector(`#${this.props.id} div.ant-table-body`);
+    if (listTable) {
+      listTable.removeEventListener('scroll', this.onScrollListTable);
+    }
+  }
+
   addScrollEventListener = () => {
     const listTable = document.querySelector(`#${this.props.id} div.ant-table-body`);
     if (listTable) {
@@ -26,9 +33,9 @@ export default class CapTable extends React.Component { // eslint-disable-line r
     const maxScroll = event.target.scrollHeight - event.target.clientHeight;
     const currentScroll = event.target.scrollTop;
     if (currentScroll === maxScroll) {
-      const pagination = Object.assign(this.props.pagination);
-      pagination.offset += 10;
-      this.props.setPagination(pagination);
+      const offsetLimit = Object.assign(this.props.offset_limit);
+      offsetLimit.offset += offsetLimit.limit;
+      this.props.setPagination(offsetLimit);
     }
   }
 
@@ -37,8 +44,8 @@ export default class CapTable extends React.Component { // eslint-disable-line r
     return (
       <Table
         {...rest}
-        pagination={!infinteScroll}
-        className={classNames("cap-table-v2", className, )}>
+        pagination={infinteScroll ? false : this.props.pagination}
+        className={classNames('cap-table-v2', className, {'show-loader': this.props.showLoader})}>
         {React.Children.toArray(children)}
       </Table>
     );
