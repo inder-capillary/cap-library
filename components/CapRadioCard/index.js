@@ -9,7 +9,7 @@ import './_capRadioCard.scss';
 
 import { Card, Radio } from "antd";
 import PropTypes from 'prop-types';
-import { CapHeading, CapIcon } from '..';
+import { CapHeading, CapIcon } from '../index';
 const classNames = require('classnames');
 
 const RadioButton = Radio.Button;
