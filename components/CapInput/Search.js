@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Input } from 'antd';
 import * as styledVars from "../styled/variables";
-import { CapIcon } from '../index';
+import CapIcon from '../CapIcon';
 import CapInputHOC from './CapInputHOC';
 
 class Search extends Component {

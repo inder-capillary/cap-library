@@ -8,7 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Layout, Menu, Divider, Popover } from 'antd';
 import classNames from 'classnames';
-import { CapIcon } from '../index';
+import CapIcon from '../CapIcon';
 import { Select } from './Select';
 import './_capTopBar.scss';
 import { LogoBackground } from '../assets/icons';

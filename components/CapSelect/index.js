@@ -10,7 +10,9 @@ import { Popover } from "antd";
 import classNames from 'classnames';
 import findIndex from 'lodash/findIndex';
 import * as styledVars from "../styled/variables";
-import { CapHeading, CapInput, CapIcon } from '../index';
+import CapHeading from '../CapHeading';
+import CapIcon from '../CapIcon';
+import CapInput from '../CapInput';
 
 import './_capSelect.scss';
 

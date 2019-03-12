@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Popover, Spin } from 'antd';
-import { CapInput, CapIcon } from '../index';
+import CapInput from '../CapInput';
+import CapIcon from '../CapIcon';
 import * as styledVars from "../styled/variables";
 
 import './_menuSearch.scss';

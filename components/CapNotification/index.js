@@ -6,7 +6,8 @@
 import React from 'react';
 import { notification } from 'antd';
 import classNames from 'classnames';
-import { CapHeading, CapIcon } from '../index';
+import CapHeading from '../CapHeading';
+import CapIcon from '../CapIcon';
 
 import './_capNotification.scss';
 

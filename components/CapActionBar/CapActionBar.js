@@ -4,16 +4,14 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import "./_capActionBar.scss";
-import {
-  CapRadioButton,
-  CapRadioGroup,
-  CapFormItem,
-  CapButton,
-  CapSelect,
-  CapColumn,
-  CapRow,
-  CapInput,
-} from '../index';
+import CapRadioButton from '../CapRadioButton';
+import CapRadioGroup from '../CapRadioGroup';
+import CapColumn from '../CapColumn';
+import CapSelect from '../CapSelect';
+import CapFormItem from '../CapFormItem';
+import CapButton from '../CapButton';
+import CapRow from '../CapRow';
+import CapInput from '../CapInput';
 
 function RadioButtonComponent(props) {
   const { options, ...otherProps } = props;
