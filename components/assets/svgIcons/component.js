@@ -72,6 +72,13 @@ const getSvgComponentFromType = (type) => {
     case 'view': return SvgIcons.View
     case 'warning': return SvgIcons.Warning
     case 'search': return SvgIcons.Search
+    case 'chart': return SvgIcons.Chart
+    case 'lab': return SvgIcons.Lab
+    case 'megaphone-filled': return SvgIcons.MegaphoneFilled
+    case 'message-filled': return SvgIcons.MessageFilled
+    case 'send': return SvgIcons.Send
+    case 'sort': return SvgIcons.Sort
+    case 'eye': return SvgIcons.Eye
     default: return null;
   }
 };
