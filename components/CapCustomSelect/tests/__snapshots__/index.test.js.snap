@@ -3,7 +3,7 @@
 exports[`<CapSelect /> render capSelect 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <CapSelect
+  Symbol(enzyme.__unrendered__): <CapCustomSelect
     onChange={[MockFunction]}
     options={
       Array [
@@ -50,7 +50,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <div
-        className="cap-select-v2-selection"
+        className="cap-custom-select-selection"
         style={
           Object {
             "width": "250px",
@@ -58,67 +58,73 @@ ShallowWrapper {
         }
       >
         <div
-          className="cap-select-v2-selected-value"
+          className="cap-custom-select-selected-value"
         >
           <ForwardRef
+            title=""
             type="h5"
           >
             Select organizations
           </ForwardRef>
         </div>
         <CapIcon
-          className="cap-select-v2-arrow"
+          className="cap-custom-select-arrow"
           type="chevron-down"
         />
       </div>,
       "content": <React.Fragment>
         <Component
-          className="cap-select-v2-search"
+          className="cap-custom-select-search"
           onChange={[Function]}
           onClear={[Function]}
           placeholder="Search"
           value=""
         />
         <div
-          className="cap-select-v2-items-wrapper"
+          className="cap-custom-select-items-wrapper"
         >
-          <div
-            className="cap-select-v2-select-item"
+          <ForwardRef
+            className="cap-custom-select-select-item"
             onClick={[Function]}
+            type="h6"
           >
             Purples
-          </div>
-          <div
-            className="cap-select-v2-select-item"
+          </ForwardRef>
+          <ForwardRef
+            className="cap-custom-select-select-item"
             onClick={[Function]}
+            type="h6"
           >
             Buckle
-          </div>
-          <div
-            className="cap-select-v2-select-item"
+          </ForwardRef>
+          <ForwardRef
+            className="cap-custom-select-select-item"
             onClick={[Function]}
+            type="h6"
           >
             Ski
-          </div>
-          <div
-            className="cap-select-v2-select-item"
+          </ForwardRef>
+          <ForwardRef
+            className="cap-custom-select-select-item"
             onClick={[Function]}
+            type="h6"
           >
             Splash
-          </div>
-          <div
-            className="cap-select-v2-select-item"
+          </ForwardRef>
+          <ForwardRef
+            className="cap-custom-select-select-item"
             onClick={[Function]}
+            type="h6"
           >
             Metro
-          </div>
+          </ForwardRef>
         </div>
       </React.Fragment>,
       "getPopupContainer": [Function],
       "mouseEnterDelay": 0.1,
       "mouseLeaveDelay": 0.1,
       "onVisibleChange": [Function],
-      "overlayClassName": "cap-select-v2-popover",
+      "overlayClassName": "cap-custom-select-popover",
       "overlayStyle": Object {
         "width": "100%",
       },
@@ -135,20 +141,21 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <div
-            className="cap-select-v2-selected-value"
+            className="cap-custom-select-selected-value"
           >
             <ForwardRef
+              title=""
               type="h5"
             >
               Select organizations
             </ForwardRef>
           </div>,
           <CapIcon
-            className="cap-select-v2-arrow"
+            className="cap-custom-select-arrow"
             type="chevron-down"
           />,
         ],
-        "className": "cap-select-v2-selection",
+        "className": "cap-custom-select-selection",
         "style": Object {
           "width": "250px",
         },
@@ -161,11 +168,12 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": <ForwardRef
+              title=""
               type="h5"
             >
               Select organizations
             </ForwardRef>,
-            "className": "cap-select-v2-selected-value",
+            "className": "cap-custom-select-selected-value",
           },
           "ref": null,
           "rendered": Object {
@@ -174,6 +182,7 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": "Select organizations",
+              "title": "",
               "type": "h5",
             },
             "ref": null,
@@ -211,7 +220,7 @@ color: ",
               },
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-bdVaJa",
+                "componentId": "sc-VigVT",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -228,19 +237,26 @@ color: ",
                   [Function],
                   ";
     ",
+                  "
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+",
                 ],
               },
               "defaultProps": Object {
                 "type": "h5",
               },
-              "displayName": "styled.div",
-              "foldedComponentIds": Array [],
+              "displayName": "Styled(styled.div)",
+              "foldedComponentIds": Array [
+                "sc-bdVaJa",
+              ],
               "propTypes": Object {
                 "children": [Function],
                 "type": [Function],
               },
               "render": [Function],
-              "styledComponentId": "sc-bdVaJa",
+              "styledComponentId": "sc-VigVT",
               "target": "div",
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -254,7 +270,7 @@ color: ",
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "className": "cap-select-v2-arrow",
+            "className": "cap-custom-select-arrow",
             "type": "chevron-down",
           },
           "ref": null,
@@ -273,7 +289,7 @@ color: ",
       "nodeType": "class",
       "props": Object {
         "children": <div
-          className="cap-select-v2-selection"
+          className="cap-custom-select-selection"
           style={
             Object {
               "width": "250px",
@@ -281,67 +297,73 @@ color: ",
           }
         >
           <div
-            className="cap-select-v2-selected-value"
+            className="cap-custom-select-selected-value"
           >
             <ForwardRef
+              title=""
               type="h5"
             >
               Select organizations
             </ForwardRef>
           </div>
           <CapIcon
-            className="cap-select-v2-arrow"
+            className="cap-custom-select-arrow"
             type="chevron-down"
           />
         </div>,
         "content": <React.Fragment>
           <Component
-            className="cap-select-v2-search"
+            className="cap-custom-select-search"
             onChange={[Function]}
             onClear={[Function]}
             placeholder="Search"
             value=""
           />
           <div
-            className="cap-select-v2-items-wrapper"
+            className="cap-custom-select-items-wrapper"
           >
-            <div
-              className="cap-select-v2-select-item"
+            <ForwardRef
+              className="cap-custom-select-select-item"
               onClick={[Function]}
+              type="h6"
             >
               Purples
-            </div>
-            <div
-              className="cap-select-v2-select-item"
+            </ForwardRef>
+            <ForwardRef
+              className="cap-custom-select-select-item"
               onClick={[Function]}
+              type="h6"
             >
               Buckle
-            </div>
-            <div
-              className="cap-select-v2-select-item"
+            </ForwardRef>
+            <ForwardRef
+              className="cap-custom-select-select-item"
               onClick={[Function]}
+              type="h6"
             >
               Ski
-            </div>
-            <div
-              className="cap-select-v2-select-item"
+            </ForwardRef>
+            <ForwardRef
+              className="cap-custom-select-select-item"
               onClick={[Function]}
+              type="h6"
             >
               Splash
-            </div>
-            <div
-              className="cap-select-v2-select-item"
+            </ForwardRef>
+            <ForwardRef
+              className="cap-custom-select-select-item"
               onClick={[Function]}
+              type="h6"
             >
               Metro
-            </div>
+            </ForwardRef>
           </div>
         </React.Fragment>,
         "getPopupContainer": [Function],
         "mouseEnterDelay": 0.1,
         "mouseLeaveDelay": 0.1,
         "onVisibleChange": [Function],
-        "overlayClassName": "cap-select-v2-popover",
+        "overlayClassName": "cap-custom-select-popover",
         "overlayStyle": Object {
           "width": "100%",
         },
@@ -358,20 +380,21 @@ color: ",
         "props": Object {
           "children": Array [
             <div
-              className="cap-select-v2-selected-value"
+              className="cap-custom-select-selected-value"
             >
               <ForwardRef
+                title=""
                 type="h5"
               >
                 Select organizations
               </ForwardRef>
             </div>,
             <CapIcon
-              className="cap-select-v2-arrow"
+              className="cap-custom-select-arrow"
               type="chevron-down"
             />,
           ],
-          "className": "cap-select-v2-selection",
+          "className": "cap-custom-select-selection",
           "style": Object {
             "width": "250px",
           },
@@ -384,11 +407,12 @@ color: ",
             "nodeType": "host",
             "props": Object {
               "children": <ForwardRef
+                title=""
                 type="h5"
               >
                 Select organizations
               </ForwardRef>,
-              "className": "cap-select-v2-selected-value",
+              "className": "cap-custom-select-selected-value",
             },
             "ref": null,
             "rendered": Object {
@@ -397,6 +421,7 @@ color: ",
               "nodeType": "function",
               "props": Object {
                 "children": "Select organizations",
+                "title": "",
                 "type": "h5",
               },
               "ref": null,
@@ -434,7 +459,7 @@ color: ",
                 },
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-bdVaJa",
+                  "componentId": "sc-VigVT",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -451,19 +476,26 @@ color: ",
                     [Function],
                     ";
     ",
+                    "
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+",
                   ],
                 },
                 "defaultProps": Object {
                   "type": "h5",
                 },
-                "displayName": "styled.div",
-                "foldedComponentIds": Array [],
+                "displayName": "Styled(styled.div)",
+                "foldedComponentIds": Array [
+                  "sc-bdVaJa",
+                ],
                 "propTypes": Object {
                   "children": [Function],
                   "type": [Function],
                 },
                 "render": [Function],
-                "styledComponentId": "sc-bdVaJa",
+                "styledComponentId": "sc-VigVT",
                 "target": "div",
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -477,7 +509,7 @@ color: ",
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "className": "cap-select-v2-arrow",
+              "className": "cap-custom-select-arrow",
               "type": "chevron-down",
             },
             "ref": null,
@@ -511,5 +543,6 @@ color: ",
       },
     },
   },
+  Symbol(enzyme.__childContext__): null,
 }
 `;

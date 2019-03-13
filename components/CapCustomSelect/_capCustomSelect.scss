@@ -1,0 +1,92 @@
+@import "../styles/_variables.scss";
+
+$selectPrefix: cap-custom-select;
+
+.#{$selectPrefix}-selection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0px 0px 0px 8px;
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  border: 1px solid $CAP_G06;
+  &:hover {
+    border: 1px solid $CAP_G11;
+  }
+  &.open {
+    border: 1px solid $CAP_G01;
+  }
+}
+
+.#{$selectPrefix}-selected-value {
+  font-size: 16px;
+  font-weight: $FONT_WEIGHT_MEDIUM;
+  overflow: hidden;
+}
+
+.#{$selectPrefix}-header {
+  padding: 0 16px 20px 16px;
+  font-size: 14px;
+  font-weight: $FONT_WEIGHT_MEDIUM;
+}
+
+.#{$selectPrefix}-select-item {
+  padding: 8px 8px 8px 24px;
+  cursor: pointer;
+  &:hover {
+    background-color: $BG_01;
+  }
+  &.selected {
+    font-weight: $FONT_WEIGHT_MEDIUM;
+    color: map-get($CAP_SECONDARY, base);
+    position: relative;
+    background-color: map-get($CAP_SECONDARY, light);
+    &:before {
+      content: " ";
+      width: 2px;
+      height: 100%;
+      left: 0;
+      top: 0;
+      position: absolute;
+      background-color: map-get($CAP_SECONDARY, base);
+    }
+  }
+}
+
+.#{$selectPrefix}-no-results {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .#{$selectPrefix}-no-results-text {
+    margin-top: 8px;
+    text-align: center;
+    color: $CAP_G05;
+    font-size: 12px;
+  }
+}
+
+.#{$selectPrefix}-popover {
+  padding-top: 0;
+  .ant-popover-inner-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .ant-popover-arrow {
+    display: none;
+  }
+}
+
+.#{$selectPrefix}-items-wrapper {
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.#{$selectPrefix}-arrow {
+  margin-right: 12px;
+}
+
+.#{$selectPrefix}-search {
+  padding: 0 16px 16px 16px;
+}

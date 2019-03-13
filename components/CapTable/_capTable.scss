@@ -1,3 +1,5 @@
+@import "../styles/_variables.scss";
+
 .cap-table-v2{
     .ant-table-thead{
        .table-children{
@@ -25,5 +27,8 @@
             font-size: 16px;
             color: gray;
         }   
+   }
+   a {
+    color:$CAP_G01;
    }
 }
