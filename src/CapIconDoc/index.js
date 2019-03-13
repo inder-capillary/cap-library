@@ -336,6 +336,30 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="search" />
               <Text>search</Text>
             </List>
+            <List>
+              <CapIcon type="chart" />
+              <Text>chart</Text>
+            </List>
+            <List>
+              <CapIcon type="megaphone-filled" />
+              <Text>megaphone-filled</Text>
+            </List>
+            <List>
+              <CapIcon type="message-filled" />
+              <Text>message-filled</Text>
+            </List>
+            <List>
+              <CapIcon type="send" />
+              <Text>send</Text>
+            </List>
+            <List>
+              <CapIcon type="sort" />
+              <Text>sort</Text>
+            </List>
+            <List>
+              <CapIcon type="eye" />
+              <Text>eye</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}
@@ -359,7 +383,7 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
         <pre>
           {`Run following command for all the new Svg Icons to be added as components:
 
-@svgr/cli --icon --svg-props fill="currentColor" -d destinationDirectory SouceDirectory
+npx @svgr/cli --icon --svg-props fill="currentColor" -d destinationDirectory SouceDirectory
 
 Running this command will add ".js" files for all svgs in destinationDirectory.
 
