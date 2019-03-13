@@ -5,7 +5,6 @@ import React, { Component } from "react";
 import PropertyTable from '../../helpers/PropertyTable';
 import { CapRadioCard, CapIcon } from "../../components";
 import "./info.scss";
-import { Message, View } from '../../components/assets/icons/index';
 
 const infoData = [
   {
