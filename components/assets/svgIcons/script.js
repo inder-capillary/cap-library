@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const iconsPath = path.resolve(__dirname, './test');
+const iconsPath = path.resolve(__dirname, './testIcons');
 
 
 const convertToType = (string) => {
