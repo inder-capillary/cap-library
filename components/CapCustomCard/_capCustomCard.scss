@@ -54,7 +54,9 @@ $cap-custom-card: cap-custom-card;
 
 .ant-card.#{$cap-custom-card}.SMS {
   .ant-card-body {
-    height: 148px;
+    padding-bottom: 0;
+    padding-top: 4px;
+    height: 129px;
     display: block;
     display: -webkit-box;
     -webkit-line-clamp: 7;
