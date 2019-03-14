@@ -69,10 +69,14 @@ $slideBox: "cap-slide-box-v2";
 
 .#{$slideBox}-container.size-r {
   right: 0;
-  width: 660px;
+  min-width: 660px;
+  max-width: 800px;
+  width: 50vw;
 }
 
 .#{$slideBox}-container.size-l {
   right: 0;
-  width: 948px;
+  min-width: 948px;
+  max-width: 1140px;
+  width: 75vw;
 }

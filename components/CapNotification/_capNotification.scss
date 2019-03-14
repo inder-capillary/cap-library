@@ -14,6 +14,9 @@
       }
     }
   }
+  .ant-notification-close-icon {
+    color: $CAP_G01;
+  }
   &.error::before,
   &.success::before {
     content: " ";

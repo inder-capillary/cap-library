@@ -7,16 +7,6 @@ import CapTable from "../../components/CapTable";
 import CapHeader from '../../components/CapHeader';
 import "./info.scss";
 
-// const infoData = [
-//   {
-//     key: 1,
-//     property: "-",
-//     description: "-",
-//     type: "-",
-//     default: "-",
-//   },
-// ];
-
 const dataSource = [{
   key: '1',
   name: 'Mike',
@@ -43,7 +33,8 @@ const dataSource = [{
   m_sent: 10,
   viewed: 2,
   responded: 1,
-  address: '10 Downing Street' },
+  address: '10 Downing Street',
+},
 ];
 
 const columns = [{
@@ -55,7 +46,7 @@ const columns = [{
   children: [{
     title: <CapHeader size="small" description="Marketing objective" />,
     dataIndex: 'u_user',
-    key: 'u_user',
+    key: 'u_user_1',
     className: "table-children",
   }],
 }, {
@@ -70,7 +61,7 @@ const columns = [{
   children: [{
     title: <CapHeader size="small" description="Unique users" />,
     dataIndex: 'u_user',
-    key: 'u_user',
+    key: 'u_user_2',
     className: "table-children",
   }, {
     title: <CapHeader size="small" description="Message Sent" />,
@@ -149,14 +140,49 @@ const infoData = [{
 },
 ];
 export default class CapTableDoc extends Component { // eslint-disable-line react/prefer-stateless-function
+  getTableData2 = () => ({
+    columns: [{
+      title: 'Name',
+      dataIndex: 'name',
+      sorter: (a, b) => a.name.length - b.name.length,
+      sortDirections: ['descend', 'ascend'],
+    }, {
+      title: 'Age',
+      dataIndex: 'age',
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => a.age - b.age,
+    }, {
+      title: 'Address',
+      dataIndex: 'address',
+      sorter: (a, b) => a.address.length - b.address.length,
+      sortDirections: ['descend', 'ascend'],
+    }],
+    dataSource: [{
+      key: '1',
+      name: 'John Brown',
+      age: 32,
+      address: 'New York No. 1 Lake Park',
+    }, {
+      key: '2',
+      name: 'Jim Green',
+      age: 42,
+      address: 'London No. 1 Lake Park',
+    }],
+  })
+
+
   render() {
+    const tableData2 = this.getTableData2();
     return (
       <div className="cap-table-info">
         <div className="cap-table-showcase">
           <CapTable id="capTable_1" ColumnGroup={columns} columns={columns} dataSource={dataSource} infinteScroll />
         </div>
+        <div style={{ marginTop: '24px' }}>
+          <CapTable dataSource={tableData2.dataSource} columns={tableData2.columns} />
+        </div>
         {/* <PropertyTable data={infoData} /> */}
-        <div style={{marginTop: '24px'}}>
+        <div style={{ marginTop: '24px' }}>
           <b>NOTE: </b>
           This component is the extended version of ant design
           <a href="https://ant.design/components/table/#header"> Table </a>

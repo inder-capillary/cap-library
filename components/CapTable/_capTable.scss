@@ -1,34 +1,69 @@
 @import "../styles/_variables.scss";
 
-.cap-table-v2{
-    .ant-table-thead{
-       .table-children{
-           padding: 0px 16px 16px;
-       }
-       .table-children:not(:last-child){
-           > div:first-child{
-               border-right: 1px solid #97a0af; 
-           }    
-        }
-        .table-parent{
-           padding-bottom: 0px;
-       
-       }   
+$table: cap-table-v2;
+
+.#{$table} {
+  .ant-table {
+    border-left: 1px solid $CAP_G07;
+    border-right: 1px solid $CAP_G07;
+    border-top: 1px solid $CAP_G07;
+    .ant-table-thead > tr > th {
+      color: $FONT_COLOR_01;
+      font-size: $FONT_SIZE_S;
+      line-height: $CAP_SPACE_16;
+      background-color: $CAP_G10;
     }
-    &.show-loader{
-        .ant-table-body tbody::after {
-            content: 'Loading more data...';
-            display: flex;
-            position: absolute;
-            left: 40%;
-            align-items: center;
-            height: 60px;
-            text-align: center;
-            font-size: 16px;
-            color: gray;
-        }   
-   }
-   a {
-    color:$CAP_G01;
-   }
+    .ant-table-thead > tr > th,
+    .ant-table-tbody > tr > td {
+      padding-left: $CAP_SPACE_24;
+    }
+    .ant-table-tbody > tr > td {
+      border-bottom: 1px solid $CAP_G07;
+      padding: $CAP_SPACE_16 $CAP_SPACE_24;
+    }
+    .ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
+    .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
+    .ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td,
+    .ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td {
+      background-color: $BG_01;
+    }
+    .ant-table-thead > tr > th .ant-table-column-sorter-up,
+    .ant-table-thead > tr > th .ant-table-column-sorter-down {
+      &.on {
+        color: $CAP_G01;
+      }
+      &.off {
+        color: $CAP_G06;
+      }
+    }
+    .ant-table-thead {
+      .table-children {
+        padding: 0px 16px 16px;
+      }
+      .table-children:not(:last-child) {
+        > div:first-child {
+          border-right: 1px solid #97a0af;
+        }
+      }
+      .table-parent {
+        padding-bottom: 0px;
+      }
+    }
+  }
+  &.show-loader {
+    .ant-table-body tbody::after {
+      content: "Loading more data...";
+      display: flex;
+      position: absolute;
+      left: 40%;
+      align-items: center;
+      height: 60px;
+      text-align: center;
+      font-size: 16px;
+      color: gray;
+    }
+  }
+  a {
+    color: $CAP_G01;
+  }
 }

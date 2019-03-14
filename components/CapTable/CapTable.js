@@ -40,14 +40,12 @@ export default class CapTable extends React.Component { // eslint-disable-line r
   }
 
   render() {
-    const { className, children, infinteScroll, ...rest} = this.props;
+    const { className, children, infinteScroll, pagination, ...rest } = this.props;
     return (
       <Table
         {...rest}
-        pagination={infinteScroll ? false : this.props.pagination}
-        className={classNames('cap-table-v2', className, {'show-loader': this.props.showLoader})}>
-        {React.Children.toArray(children)}
-      </Table>
+        pagination={infinteScroll ? false : pagination}
+        className={classNames('cap-table-v2', className, { 'show-loader': this.props.showLoader })} />
     );
   }
 }
