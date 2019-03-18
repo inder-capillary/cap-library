@@ -49,4 +49,6 @@ export { default as CapUploader } from './CapUploader';
 export { default as CapAlert } from './CapAlert';
 export { default as CapInputSearch } from './CapInput/Search';
 export { default as CapSearchBar } from './CapInput/Search';
+export { default as CapMenu } from './CapMenu';
+export { default as CapDropdown } from './CapDropdown';
 //export components

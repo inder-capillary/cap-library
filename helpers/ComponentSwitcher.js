@@ -40,6 +40,8 @@ import CapTooltipWithInfoDoc from '../src/CapTooltipWithInfoDoc';
 import CapCardDoc from '../src/CapCardDoc';
 import CapUploaderDoc from '../src/CapUploaderDoc';
 import CapAlertDoc from '../src/CapAlertDoc';
+import CapMenuDoc from '../src/CapMenuDoc';
+import CapDropdownDoc from '../src/CapDropdownDoc';
 //imported for docs
 
 
@@ -125,6 +127,10 @@ class ComponentSwitcher extends Component {
         return <CapUploaderDoc />;
       case 'capAlert':
         return <CapAlertDoc />;
+      case 'capMenu':
+        return <CapMenuDoc />;
+      case 'capDropdown':
+        return <CapDropdownDoc />;
         //components for docs
 
 
