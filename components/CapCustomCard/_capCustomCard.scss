@@ -4,11 +4,16 @@ $cap-custom-card-list: cap-custom-card-list;
 $cap-custom-card: cap-custom-card;
 
 .ant-card.#{$cap-custom-card} {
-  width: 278px;
+  max-width: 340px;
+  min-width: 276px;
   display: inline-block;
   .ant-card-head {
     height: 56px;
-    border-bottom: 0px;
+    border-bottom: none;
+  }
+  .ant-card-extra {
+    padding: 0;
+    line-height: 16px;
   }
   .ant-card-head-title {
     font-size: $FONT_SIZE_M;
@@ -77,13 +82,19 @@ $cap-custom-card: cap-custom-card;
     padding-top: $CAP_SPACE_04;
     padding-bottom: $CAP_SPACE_04;
   }
+  .ant-card-meta-description {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .#{$cap-custom-card-list} {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
   .ant-card.#{$cap-custom-card} {
-    margin: 6px;
+    display: block;
+  }
+  .#{$cap-custom-card-list}-row {
+    .#{$cap-custom-card-list}-col {
+      margin-top: 8px;
+    }
   }
 }

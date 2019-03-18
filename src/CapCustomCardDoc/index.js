@@ -149,7 +149,6 @@ const cardListSms = [
     title: "20% off on footwear with extra test long log text",
     hoverOption: <CapButton>Select</CapButton>,
     extra: [<CapIcon type="eye" />],
-    actions: [<CapButton isAddBtn type="flat">Add Incentive</CapButton>, <CapIcon type="eye" />],
   },
   {
     content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
@@ -163,6 +162,11 @@ const cardListSms = [
   {
     content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
     title: "20% off on footwear",
+  },
+  {
+    content: 'Hi Sakshi Shop and Share! “FAMILY & FRIENDS” offer is back. 30% off on Clothings, 50% off on shoes. BOGO on accesories. Show the voucher at the time of purchase to avail benefits until 8t Show the voucher at the time of purchase to avail benefits until 8 Show the voucher at the time of purchase to avail benefits until 8',
+    title: "20% off on footwear",
+    hoverOption: <CapButton>Select</CapButton>,
   },
 ];
 
