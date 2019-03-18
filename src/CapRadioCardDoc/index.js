@@ -52,6 +52,13 @@ const panesData = [
     type: "ReactNode",
     default: "-",
   },
+  {
+    key: 4,
+    property: "cardHeight",
+    description: "Fixed height of each radio card.",
+    type: "string",
+    default: "120px",
+  },
 ];
 
 export default class CapRadioCardDoc extends Component { // eslint-disable-line react/prefer-stateless-function
@@ -67,10 +74,11 @@ export default class CapRadioCardDoc extends Component { // eslint-disable-line 
     const { selectedValue } = this.state;
     const panes = [
       {
-        title: "Outbound",
+        title: "Outbound (I am disabled)",
         content: "Sending an outbound message is like blasting the message or broadcasting the message to a pre-defined set of users",
         icon: <CapIcon type="communication" />,
         value: 'outbound',
+        disabled: true,
       },
       {
         title: "Dynamic",
@@ -91,10 +99,20 @@ export default class CapRadioCardDoc extends Component { // eslint-disable-line 
     return (
       <div className="cap-radio-card-info">
         <div className="cap-radio-card-showcase">
-          <CapRadioCard panes={panes} onChange={this.onChange} selected={selectedValue} />
+          <CapRadioCard
+            panes={panes}
+            onChange={this.onChange}
+            selected={selectedValue}
+          />
         </div>
         <PropertyTable data={infoData} />
         <PropertyTable title="Panes Object properties" data={panesData} />
+        <div style={{ marginTop: '24px' }}>
+          <b>NOTE: </b>
+          Each pane object supports all the props that antd radio button supports
+          <a href="https://ant.design/components/radio/#header"> Radio </a>
+          component. Please refer their component for detailed explaination of component and supported props.
+        </div>
       </div>
     );
   }

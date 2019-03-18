@@ -8,7 +8,6 @@ $cap-custom-card: cap-custom-card;
   min-width: 276px;
   display: inline-block;
   .ant-card-head {
-    height: 56px;
     border-bottom: none;
   }
   .ant-card-extra {
@@ -17,23 +16,28 @@ $cap-custom-card: cap-custom-card;
   }
   .ant-card-head-title {
     font-size: $FONT_SIZE_M;
-  }
-  .ant-card-body {
-    position: relative;
+    margin-right: $CAP_SPACE_08;
   }
   .ant-card-actions {
     display: flex;
     align-items: center;
-    background-color: #ffffff;
-    padding-left: 12px;
+    background-color: $CAP_WHITE;
+    padding-left: $CAP_SPACE_12;
+    padding-right: $CAP_SPACE_12;
     li {
       margin: $CAP_SPACE_04 0;
       border-right: none;
       float: none;
     }
   }
-  .ant-card-actions > li > span > .anticon {
-    font-size: $FONT_SIZE_VL;
+  .ant-card-actions > li > span {
+    display: block;
+    & > .anticon {
+      font-size: $FONT_SIZE_VL;
+    }
+    &:hover {
+      color: inherit;
+    }
   }
 
   .ant-card-meta-description {
@@ -51,8 +55,9 @@ $cap-custom-card: cap-custom-card;
     .hover-content {
       display: block;
       position: absolute;
-      top: 33%;
-      left: 33%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -40%);
     }
   }
 }
@@ -94,7 +99,7 @@ $cap-custom-card: cap-custom-card;
   }
   .#{$cap-custom-card-list}-row {
     .#{$cap-custom-card-list}-col {
-      margin-top: 8px;
+      margin-top: $CAP_SPACE_08;
     }
   }
 }

@@ -17,19 +17,19 @@ const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 class CapRadioCard extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { panes, className, selected, ...rest } = this.props;
+    const { panes, className, selected, cardHeight, ...rest } = this.props;
     return (
       <RadioGroup {...rest} className={classNames("cap-radioCard-v2", className)}>
         {panes && (
           panes.map((pane) => {
-            const { content, title, icon } = pane;
+            const { content, title, icon, value, ...restParams } = pane;
             return (
-              <RadioButton key={pane.value} value={pane.value}>
+              <RadioButton style={{ height: cardHeight || '120px' }} key={value} value={value} {...restParams}>
                 <CapIcon type="check-filled" className="radio-card-checked" />
                 <Card>
                   {icon && (
                     <div className="radio-card-icon">
-                      <div className={classNames('icon-container', { 'green-color': selected === pane.value })}>
+                      <div className={classNames('icon-container', { 'green-color': selected === value })}>
                         <div className="div-icon">
                           {icon}
                         </div>
@@ -58,6 +58,7 @@ CapRadioCard.propTypes = {
   className: PropTypes.string,
   onChange: PropTypes.func,
   selected: PropTypes.any,
+  cardHeight: PropTypes.number,
 };
 
 export default CapRadioCard;

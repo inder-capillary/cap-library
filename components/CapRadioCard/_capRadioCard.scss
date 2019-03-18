@@ -2,25 +2,23 @@
 
 $capRadioCardV2: cap-radioCard-v2;
 .ant-radio-group.#{$capRadioCardV2} {
+  width: 800px;
   .ant-radio-button-wrapper {
     width: 372px;
     height: 120px;
-    border-radius: 4px;
     background-color: $CAP_WHITE;
     margin: 6px;
     padding: 0;
+    border-top-width: 1px;
   }
 
   .ant-card-body {
     display: flex;
   }
   .ant-card.ant-card-bordered {
-    height: 112px;
-    border: 0px;
+    height: 100%;
+    border: none;
   }
-
-  width: 800px;
-
   .radio-card-content,
   .radio-card-header {
     height: 47px;
@@ -49,10 +47,14 @@ $capRadioCardV2: cap-radioCard-v2;
   }
 
   .ant-radio-button-wrapper-checked {
+    border-radius: 4px;
     .radio-card-checked {
       display: block;
       z-index: 1;
     }
+  }
+  .ant-radio-button-wrapper-disabled {
+    opacity: 0.5;
   }
   .div-icon {
     position: absolute;

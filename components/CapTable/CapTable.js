@@ -32,7 +32,7 @@ export default class CapTable extends React.Component { // eslint-disable-line r
   onScrollListTable = (event) => {
     const maxScroll = event.target.scrollHeight - event.target.clientHeight;
     const currentScroll = event.target.scrollTop;
-    if (currentScroll === maxScroll  && !this.props.showLoader) {
+    if (currentScroll === maxScroll && !this.props.showLoader) {
       const offsetLimit = Object.assign(this.props.offset_limit);
       offsetLimit.offset += offsetLimit.limit;
       this.props.setPagination(offsetLimit);
