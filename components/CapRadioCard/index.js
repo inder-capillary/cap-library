@@ -29,7 +29,7 @@ class CapRadioCard extends React.Component { // eslint-disable-line react/prefer
                 <Card>
                   {icon && (
                     <div className="radio-card-icon">
-                      <div className={classNames('icon-container', { 'green-color': selected === value })}>
+                      <div className={classNames('icon-container', { 'green-color': selected === value || rest.defaultValue === value })}>
                         <div className="div-icon">
                           {icon}
                         </div>

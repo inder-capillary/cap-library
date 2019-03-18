@@ -3,7 +3,7 @@
 */
 import React, { Component } from "react";
 import PropertyTable from '../../helpers/PropertyTable';
-import { CapStepsAccordian, CapHeader } from "../../components";
+import { CapStepsAccordian, CapHeader, CapHeading } from "../../components";
 import "./info.scss";
 
 const infoData = [
@@ -62,6 +62,13 @@ const infoData = [
     description: "Destroy Inactive Panel",
     type: "boolean",
     default: "false",
+  },
+  {
+    key: 9,
+    property: "showNumberSteps",
+    description: "Show numbers as icon insted of caret",
+    type: "boolean",
+    default: "true",
   },
 ];
 
@@ -129,7 +136,35 @@ export default class CapStepsAccordianDoc extends Component { // eslint-disable-
     return (
       <div className="cap-steps-accordian-info">
         <div className="cap-steps-accordian-showcase">
+          <CapHeading type="h3">Default accordian with prop showNumberSteps as true </CapHeading>
           <CapStepsAccordian
+            items={[
+              {
+                header: <CapHeader
+                  size="regular"
+                  description="Selcting the right audience goes a long way in attributing the ROI"
+                  title="Audience"
+                />,
+                content: <div>My content</div>,
+                key: 1,
+                completed: true,
+              },
+              {
+                header: <CapHeader
+                  size="regular"
+                  description="Choose the time when message is sent"
+                  title="Schedule"
+                />,
+                content: <div>My content 2</div>,
+                key: 2,
+              },
+            ]}
+          />
+          <div style={{ marginTop: '24px' }}>
+            <CapHeading type="h3">Accordian with prop showNumberSteps as false </CapHeading>
+          </div>
+          <CapStepsAccordian
+            showNumberSteps={false}
             items={[
               {
                 header: <CapHeader

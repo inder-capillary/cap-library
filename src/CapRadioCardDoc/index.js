@@ -74,16 +74,16 @@ export default class CapRadioCardDoc extends Component { // eslint-disable-line 
     const { selectedValue } = this.state;
     const panes = [
       {
-        title: "Outbound (I am disabled)",
+        title: "Outbound",
         content: "Sending an outbound message is like blasting the message or broadcasting the message to a pre-defined set of users",
         icon: <CapIcon type="communication" />,
         value: 'outbound',
-        disabled: true,
       },
       {
-        title: "Dynamic",
+        title: "Dynamic  (I am disabled)",
         content: "for sending messages to users based on their actions in real time",
         value: 'dynamic',
+        disabled: true,
       },
       {
         title: "Survey",
@@ -100,6 +100,7 @@ export default class CapRadioCardDoc extends Component { // eslint-disable-line 
       <div className="cap-radio-card-info">
         <div className="cap-radio-card-showcase">
           <CapRadioCard
+            defaultValue="referral"
             panes={panes}
             onChange={this.onChange}
             selected={selectedValue}
