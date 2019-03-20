@@ -8,11 +8,11 @@ $header: cap-header-v2;
   }
   &.regular {
     padding-top: $CAP_SPACE_04;
-    color: $FONT_COLOR_02;
   }
   &.small {
     padding-top: $CAP_SPACE_06;
-    color: $FONT_COLOR_02;
   }
-  color: $FONT_COLOR_03;
+  &.hidden.small {
+    height: 14px;
+  }
 }

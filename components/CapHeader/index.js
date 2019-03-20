@@ -43,7 +43,7 @@ const titleDesc = (size) => {
   }
 };
 function CapHeader(props) {
-  const { description, inline, title, size } = props;
+  const { description, inline, title, size, withHiddenDescription } = props;
   const CapHeadingwithDirection = inline ? InlineHeading : CapHeading;
   return (
     <Flex>
@@ -54,8 +54,8 @@ function CapHeader(props) {
         <CapHeadingwithDirection type={titleSize(size)} className={classNames(`${clsPrefix}-title`)}>
           {title}
         </CapHeadingwithDirection>
-        {description && (
-          <CapHeadingwithDirection type={titleDesc(size)} className={classNames(`${clsPrefix}-description`, size)}>
+        {(description || withHiddenDescription) && (
+          <CapHeadingwithDirection type={titleDesc(size)} className={classNames(`${clsPrefix}-description`, size, {hidden: withHiddenDescription})}>
             {description}
           </CapHeadingwithDirection>
         )}
@@ -75,6 +75,7 @@ CapHeader.propTypes = {
   inline: propTypes.bool,
   prefix: propTypes.node,
   size: propTypes.string,
+  withHiddenDescription: propTypes.bool,
 };
 
 export default CapHeader;

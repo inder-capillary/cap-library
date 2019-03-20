@@ -39,14 +39,20 @@ $table: cap-table-v2;
     .ant-table-thead {
       .table-children {
         padding: 0px 16px 16px;
-      }
-      .table-children:not(:last-child) {
-        > div:first-child {
-          border-right: 1px solid #97a0af;
-        }
+        position: relative;
       }
       .table-parent {
-        padding-bottom: 0px;
+        padding-bottom: 0;
+        padding-left: 16px;
+      }
+      .table-children:not(:last-child)::after {
+        content: " ";
+        height: 8px;
+        width: 1px;
+        right: 0;
+        top: 30%;
+        background-color: $CAP_G07;
+        position: absolute;
       }
     }
   }

@@ -38,19 +38,12 @@ const dataSource = [{
 ];
 
 const columns = [{
-  title: <CapHeader size="small" title="Campaign name" />,
+  title: <CapHeader size="small" title="Campaign name" description="Marketing objective" />,
   dataIndex: 'name',
   key: 'name',
   width: '30%',
-  className: "table-parent",
-  children: [{
-    title: <CapHeader size="small" description="Marketing objective" />,
-    dataIndex: 'u_user',
-    key: 'u_user_1',
-    className: "table-children",
-  }],
 }, {
-  title: <CapHeader size="small" title="Address" />,
+  title: <CapHeader size="small" title="Address" withHiddenDescription />,
   dataIndex: 'address',
   key: 'address',
   width: '30%',

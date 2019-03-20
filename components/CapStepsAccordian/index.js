@@ -28,7 +28,7 @@ function CapStepsAccordian(props) {
   return (
     <Collapse
       accordion
-      className={classNames(clsPrefix)}
+      className={classNames(clsPrefix, { 'with-steps': showNumberSteps })}
       bordered={false}
       expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
       {...collapseProps}

@@ -15,4 +15,12 @@ $accordian: cap-steps-accordian-v2;
     justify-content: center;
     align-items: center;
   }
+  .ant-collapse-content-active .ant-collapse-content-box {
+    padding-left: 40px;
+  }
+  &.with-steps {
+    .ant-collapse-content-active .ant-collapse-content-box {
+      padding-left: 60px;
+    }
+  }
 }
