@@ -1,10 +1,12 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
-
-// import CapDropdown from '../index';
+import React from 'react';
+import { shallow } from 'enzyme';
+import { Dropdown } from 'antd';
+import CapDropdown from '../index';
 
 describe('<CapDropdown />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(false).toEqual(false);
+  const wrapper = shallow(<CapDropdown />);
+
+  it('Should render antd tooltip', () => {
+    expect(wrapper.find(Dropdown)).toHaveLength(1);
   });
 });

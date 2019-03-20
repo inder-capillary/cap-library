@@ -7,15 +7,19 @@
 import React from 'react';
 import { Dropdown } from 'antd';
 import classNames from 'classnames';
+import './_capDropdown.scss';
 
 const { Button } = Dropdown;
 
 const clsPrefix = 'cap-dropdown-v2';
 
 function CapDropdown(props) {
-  const { className, ...rest } = props;
+  const { className, overlayClassName, ...rest } = props;
   return (
-    <Dropdown className={classNames(clsPrefix, className)} {...rest} />
+    <Dropdown
+      className={classNames(clsPrefix, className)}
+      overlayClassName={classNames(`${clsPrefix}-overlay`, overlayClassName)}
+      {...rest} />
   );
 }
 

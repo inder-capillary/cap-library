@@ -30,7 +30,9 @@ export default class CapDropdownDoc extends Component { // eslint-disable-line r
             <a href="https://ant.design/components/dropdown/#header"> Dropdown </a>
             component. Please refer their component for detailed explaination of component and supported props.
           </div>
-          <CapDropdown overlay={menu} placement="bottomLeft">
+          <CapDropdown
+            overlay={menu}
+            placement="bottomLeft">
             <CapButton>bottomLeft</CapButton>
           </CapDropdown>
         </div>

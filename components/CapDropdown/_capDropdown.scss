@@ -1,1 +1,16 @@
 @import '../styles/_variables.scss';
+
+$dropdown: cap-dropdown-v2;
+
+.ant-dropdown.#{$dropdown}-overlay {
+    min-width: 200px;
+    .ant-dropdown-menu.cap-menu-v2 {
+        .ant-dropdown-menu-item {
+            padding: 12px 24px;
+        }
+        .ant-dropdown-menu-item:hover,
+        .ant-dropdown-menu-submenu-title:hover {
+            background-color: $BG_01;
+        }
+    }
+}
