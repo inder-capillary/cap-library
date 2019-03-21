@@ -30,7 +30,7 @@ $orgSelectPrefix: top-bar-select;
 }
 
 .#{$orgSelectPrefix}-selection {
-  width: 200px;
+  width: 240px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -59,7 +59,7 @@ $orgSelectPrefix: top-bar-select;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 120px;
+  max-width: 150px;
 }
 
 .ant-menu.ant-menu-horizontal.#{$clsPrefix}-menu {

@@ -15,7 +15,11 @@ $datePicker: cap-date-picker-common-v2;
     color: $FONT_COLOR_01;
   }
   &:hover {
-    color: $CAP_G11
+    color: $CAP_G11;
+  }
+  .ant-calendar-range-picker-separator {
+    vertical-align: middle;
+    min-width: initial;
   }
   .ant-calendar-picker.ant-calendar-picker-large {
     .ant-calendar-picker-icon,
@@ -45,19 +49,26 @@ $datePicker: cap-date-picker-common-v2;
     background-color: map-get($CAP_SECONDARY, light);
   }
   .ant-calendar-today .ant-calendar-date {
-    color: #2466ea;
-    border-color: #2466ea;
+    color: $FONT_COLOR_05;
+    border-color: map-get($CAP_SECONDARY, base);
+    background-color: $CAP_WHITE;
   }
   .ant-calendar-selected-date .ant-calendar-date,
   .ant-calendar-selected-start-date .ant-calendar-date,
   .ant-calendar-selected-end-date .ant-calendar-date,
   .ant-calendar-date:active {
-    background-color: #2466ea;
+    background-color: map-get($CAP_SECONDARY, base);
     color: #fff;
     border: 1px solid transparent;
+    font-weight: 500;
+  }
+  .ant-calendar-today.ant-calendar-selected-date .ant-calendar-date {
+    color: $FONT_COLOR_05;
+    border-color: map-get($CAP_SECONDARY, base);
+    background-color: $CAP_WHITE;
   }
   .ant-calendar-column-header {
-    font-size: 10px;
+    font-size: $FONT_SIZE_VS;
     color: #97a0af;
   }
   .ant-calendar-body > .ant-calendar-table thead tr th:first-child,

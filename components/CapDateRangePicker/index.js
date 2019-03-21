@@ -23,6 +23,7 @@ function CapDateRangePicker(props) {
   return (
     <div className={classNames(commonClsPrefix, clsPrefix)}>
       <RangePicker
+        separator="-"
         allowClear={false}
         suffixIcon={<div><CapIcon type="calendar" size={size === 'large' ? 'm' : 's'} /></div>}
         dropdownClassName={classNames(`${commonClsPrefix}-dropdown`, `${clsPrefix}-dropdown`)}
