@@ -21,7 +21,6 @@ function CapSelect(props) {
   const items = options.map((op) => <Option {...op}>{op.label}</Option>);
   return (
     <Select
-      size="large"
       removeIcon={<CapIcon type="close" size="s" />}
       suffixIcon={<CapIcon type="chevron-down" />}
       menuItemSelectedIcon={<CapIcon type="tick" />}
@@ -33,9 +32,14 @@ function CapSelect(props) {
   );
 }
 
+CapSelect.defaultProps = {
+  size: 'large',
+};
+
 CapSelect.propTypes = {
   className: PropTypes.string,
   options: PropTypes.array.isRequired,
+  size: PropTypes.string,
 };
 
 CapSelect.CapCustomSelect = CapCustomSelect;
