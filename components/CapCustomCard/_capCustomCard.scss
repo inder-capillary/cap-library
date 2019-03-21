@@ -24,6 +24,7 @@ $cap-custom-card: cap-custom-card;
     background-color: $CAP_WHITE;
     padding-left: $CAP_SPACE_12;
     padding-right: $CAP_SPACE_12;
+    min-height: 49px;
     li {
       margin: $CAP_SPACE_04 0;
       border-right: none;

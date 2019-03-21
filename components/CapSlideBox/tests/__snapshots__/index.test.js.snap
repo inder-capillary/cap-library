@@ -17,7 +17,7 @@ exports[`<CapSlider /> renders correctly 1`] = `
         Slide Box Example
       </div>
       <i
-        className="anticon cap-icon-v2 cap-icon-v2-close cap-slide-box-v2-close-icon sc-VigVT bAUjew"
+        className="anticon cap-icon-v2 cap-icon-v2-close cap-slide-box-v2-close-icon sc-htpNat glVoOZ"
         onClick={[MockFunction]}
         tabIndex={-1}
       >

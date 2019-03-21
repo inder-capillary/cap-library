@@ -125,8 +125,16 @@ function CapSelectDoc() {
             defaultValue="option4"
           />
           <CapSelect
+            mode="tags"
             options={list}
-            style={{ width: 300, marginLeft: '30px' }}
+            defaultOpen
+            style={{ width: 480, marginLeft: '16px' }}
+            placeholder="Select a person"
+            defaultValue="option4"
+          />
+          <CapSelect
+            options={list}
+            style={{ width: 300, marginLeft: '16px' }}
             placeholder="Select a person"
             disabled
           />
