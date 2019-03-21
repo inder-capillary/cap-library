@@ -4,7 +4,7 @@
 *
 */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { throttle } from 'lodash';
@@ -42,26 +42,28 @@ export default class CapSlideBox extends Component {
     const { size, show, header, handleClose, footer, content, className } = this.props;
     const { showShadow } = this.state;
     return (
-      show && (
-        <div className={classNames(`${clsPrefix}`, className, { 'show-slidebox': show, 'hide-slidebox': !show, 'show-shadow': showShadow })}>
-          <div className={classNames(`${clsPrefix}-container ${size}`)}>
-            <div className="slidebox-header">
-              <CapHeading type="h1">{header}</CapHeading>
-              {<CapIcon onClick={handleClose} type="close" className={classNames(`${clsPrefix}-close-icon`)} />}
-            </div>
-            <div onScroll={this.throttleScroll} className={classNames('slidebox-content-container', { 'has-footer': footer })} ref={(node) => { this.slideBoxContainer = node; }}>
-              <div ref={(node) => { this.slideBoxContent = node; }}>
-                {content}
+      <Fragment>
+        {show ? (
+          <div className={classNames(`${clsPrefix}`, className, { 'show-slidebox': show, 'hide-slidebox': !show, 'show-shadow': showShadow })}>
+            <div className={classNames(`${clsPrefix}-container ${size}`)}>
+              <div className="slidebox-header">
+                <CapHeading type="h1">{header}</CapHeading>
+                {<CapIcon onClick={handleClose} type="close" className={classNames(`${clsPrefix}-close-icon`)} />}
               </div>
-            </div>
-            {footer && (
-              <div className="slidebox-footer">
-                {footer}
+              <div onScroll={this.throttleScroll} className={classNames('slidebox-content-container', { 'has-footer': footer })} ref={(node) => { this.slideBoxContainer = node; }}>
+                <div ref={(node) => { this.slideBoxContent = node; }}>
+                  {content}
+                </div>
               </div>
-            )}
+              {footer && (
+                <div className="slidebox-footer">
+                  {footer}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      )
+        ) : null}
+      </Fragment>
     );
   }
 }
