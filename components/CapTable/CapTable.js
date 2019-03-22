@@ -23,7 +23,7 @@ export default class CapTable extends React.Component { // eslint-disable-line r
   }
 
   componentDidUpdate() {
-    if (!this.overflowCalled && this.props.infinteScroll) {
+    if (!this.setPaginationCalled && this.props.infinteScroll) {
       this.callSetPaginationIfNotOverflow();
     }
   }
