@@ -1,0 +1,18 @@
+@import "../styles/_variables.scss";
+
+$carousel: cap-carousel-v2;
+
+.#{$carousel}-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .switcher-icons {
+    display: flex;
+    margin-bottom: 16px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 220px;
+    width: 100%;
+    align-self: center;
+  }
+}
