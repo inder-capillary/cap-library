@@ -34,13 +34,13 @@ const AntIcon = styled(Icon)`
 `;
 
 function CapIcon(props) {
-  const { type, className, ...rest } = props;
+  const { type, className, disabled, ...rest } = props;
   const customClassName = `${clsPrefix}-${type}`;
   const IconComponent = getSvgComponentFromType(type);
   return (
     IconComponent ? (
       <AntIcon
-        className={classNames(clsPrefix, customClassName, className)}
+        className={classNames(clsPrefix, customClassName, className, {disabled})}
         component={IconComponent}
         {...rest}>
       </AntIcon>
