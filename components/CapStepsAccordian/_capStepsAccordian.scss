@@ -4,7 +4,7 @@ $accordian: cap-steps-accordian-v2;
 
 .ant-collapse.#{$accordian} {
   .steps-icon {
-    margin-right: $CAP_SPACE_16;
+    margin-right: 14px;
   }
   .numbers-icon {
     background-color: #dfe2e7;
@@ -14,13 +14,14 @@ $accordian: cap-steps-accordian-v2;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 18px;
   }
   .ant-collapse-content-active .ant-collapse-content-box {
     padding-left: 40px;
   }
   &.with-steps {
     .ant-collapse-content-active .ant-collapse-content-box {
-      padding-left: 60px;
+      padding-left: 58px;
     }
   }
 }
