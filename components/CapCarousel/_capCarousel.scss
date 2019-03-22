@@ -8,7 +8,7 @@ $carousel: cap-carousel-v2;
   justify-content: center;
   .switcher-icons {
     display: flex;
-    margin-bottom: 16px;
+    margin-bottom: $CAP_SPACE_16;
     align-items: center;
     justify-content: space-between;
     max-width: 220px;
