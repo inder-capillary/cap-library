@@ -45,13 +45,15 @@ export default class CapCarousel extends React.Component {
     if (showTopSwitcher) {
       carouselProps.beforeChange = this.beforeChange;
     }
+    const leftDisabled = currentIndex === 0;
+    const rightDisabled = currentIndex === (data.length - 1);
     return (
       <div style={{ width: width || "100%" }} className={classNames(`${clsPrefix}-wrapper`, wrapperClassName)}>
         {showTopSwitcher && (
           <div className="switcher-icons">
-            <CapIcon type="chevron-left" onClick={this.previous} />
+            <CapIcon type="chevron-left" disabled={leftDisabled} onClick={!leftDisabled ? this.previous : null} />
             <div className="heading">{data[currentIndex].name}</div>
-            <CapIcon type="chevron-right" onClick={this.next} />
+            <CapIcon type="chevron-right" disabled={rightDisabled} onClick={!rightDisabled ? this.next : null} />
           </div>
         )}
         <Carousel {...carouselProps}>
@@ -72,4 +74,5 @@ CapCarousel.defaultProps = {
 CapCarousel.propTypes = {
   showTopSwitcher: PropTypes.bool,
   dots: PropTypes.bool,
+  data: PropTypes.array.isRequired,
 };

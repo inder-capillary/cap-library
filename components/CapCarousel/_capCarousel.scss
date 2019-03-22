@@ -14,5 +14,10 @@ $carousel: cap-carousel-v2;
     max-width: 220px;
     width: 100%;
     align-self: center;
+    .cap-icon-v2-chevron-left.disabled,
+    .cap-icon-v2-chevron-right.disabled {
+      cursor: not-allowed;
+      color: $CAP_G06;
+    }
   }
 }
