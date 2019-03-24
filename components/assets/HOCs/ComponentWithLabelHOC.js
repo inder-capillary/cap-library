@@ -1,50 +1,49 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import styled from 'styled-components';
-import CapHeading from '../CapHeading';
-import * as styledVars from '../styled/variables';
+import CapHeading from '../../CapHeading';
+import * as styledVars from '../../styled/variables';
 
-const classPrefix = 'cap-input-v2';
+const classPrefix = 'component-with-label';
 
-const CapInputStyled = styled.div`
-  &.cap-input-v2 {
+const CapComponentStyled = styled.div`
+  &.component-with-label {
     display: ${(props) => props.inline ? 'inline-block' : 'block'};
     cursor: ${(props) => props.disabled && 'not-allowed'};
-    input,
-    textarea {
-      &::-webkit-input-placeholder {
-        font-size: 14px;
-      }
-      &.ant-input:hover {
-        border-color: ${styledVars.CAP_G11};
-        box-shadow: none;
-      }
-      &.ant-input:focus {
-        border-color: ${styledVars.CAP_G01};
-        box-shadow: none;
-      }
-      width: ${(props) => props.labelPosition === 'left' ? 'calc(100% - 140px)' : '100%'};
-      border-color: ${(props) => props.errorMessage && styledVars.CAP_RED};
-    }
-    .ant-input-affix-wrapper {
-      width: ${(props) => props.labelPosition === 'left' ? 'calc(100% - 140px)' : '100%'};
-
-      & > input {
-        width: 100%;
-      }
-    }
-    .ant-input-affix-wrapper .ant-input-suffix {
-      right: 8px;
-    }
-    .ant-input-affix-wrapper .ant-input-prefix {
-      left: 8px;
-    }
-  }
 `;
 
-const InputWithLabelWrapper = styled.div`
+const ComponentWithLabelWrapper = styled.div`
   display: ${(props) => props.labelPosition === 'left' && 'flex'};
   align-items: center;
+  input,
+  textarea {
+    &::-webkit-input-placeholder {
+      font-size: 14px;
+    }
+    &.ant-input:hover {
+      border-color: ${styledVars.CAP_G11};
+      box-shadow: none;
+    }
+    &.ant-input:focus {
+      border-color: ${styledVars.CAP_G01};
+      box-shadow: none;
+    }
+    width: ${(props) => props.labelPosition === 'left' ? 'calc(100% - 140px)' : 'auto'};
+    border-color: ${(props) => props.errorMessage && styledVars.CAP_RED};
+  }
+  .ant-input-affix-wrapper {
+    width: ${(props) => props.labelPosition === 'left' ? 'calc(100% - 140px)' : 'auto'};
+
+    & > input {
+      width: 100%;
+    }
+  }
+  .ant-input-affix-wrapper .ant-input-suffix {
+    right: 8px;
+  }
+  .ant-input-affix-wrapper .ant-input-prefix {
+    left: 8px;
+  }
 `;
 
 const Sup = styled.sup`
@@ -80,8 +79,8 @@ const InductiveText = styled.span`
 `;
 
 
-function CapInputHOC(InputComponent) {
-  return class extends Component {
+function ComponentWithLabelHOC(Component) {
+  return class extends React.Component {
     static defaultProps = {
       labelPosition: 'top',
     }
@@ -108,14 +107,14 @@ function CapInputHOC(InputComponent) {
         delete rest.focusOnMount;
       }
       return (
-        <CapInputStyled
+        <CapComponentStyled
           className={classnames(`${classPrefix}`, className)}
           labelPosition={labelPosition}
           errorMessage={errorMessage}
           disabled={this.props.disabled}
           inline={inline}
         >
-          <InputWithLabelWrapper labelPosition={labelPosition}>
+          <ComponentWithLabelWrapper labelPosition={labelPosition}>
             {
               label
               && (
@@ -135,13 +134,13 @@ function CapInputHOC(InputComponent) {
                 <InductiveText className={classnames(`${classPrefix}-inductive-text`)}>{inductiveText}</InductiveText>
               )
             }
-            <InputComponent {...rest} />
-          </InputWithLabelWrapper>
+            <Component {...rest} />
+          </ComponentWithLabelWrapper>
           {errorMessage && <StyledSpan className="error-message" labelPosition={labelPosition}>{errorMessage}</StyledSpan>}
-        </CapInputStyled>
+        </CapComponentStyled>
       );
     }
   };
 }
 
-export default CapInputHOC;
+export default ComponentWithLabelHOC;

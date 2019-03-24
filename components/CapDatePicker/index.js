@@ -8,6 +8,8 @@ import React from 'react';
 import { DatePicker } from 'antd';
 import classNames from 'classnames';
 import CapIcon from '../CapIcon';
+import * as styledVars from "../styled/variables";
+import ComponentWithLabelHOC from '../assets/HOCs/ComponentWithLabelHOC';
 
 import './_capDatePicker.scss';
 import '../styles/datePickerCommon.scss';
@@ -21,7 +23,7 @@ function CapDatePicker(props) {
     <div className={classNames(commonClsPrefix, clsPrefix)}>
       <DatePicker
         allowClear={false}
-        suffixIcon={<div><CapIcon type="calendar" size={size === 'large' ? 'm' : 's'} /></div>}
+        suffixIcon={<div><CapIcon type="calendar" style={{color: styledVars.CAP_G01}} size={size === 'large' ? 'm' : 's'} /></div>}
         dropdownClassName={classNames(`${commonClsPrefix}-dropdown`, `${clsPrefix}-dropdown`)}
         {...props}
       />
@@ -30,7 +32,7 @@ function CapDatePicker(props) {
 }
 
 CapDatePicker.defaultProps = {
-
+  size: 'large',
 };
 
-export default CapDatePicker;
+export default ComponentWithLabelHOC(CapDatePicker);

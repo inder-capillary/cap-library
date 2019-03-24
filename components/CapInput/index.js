@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Search from './Search';
 import TextArea from './TextArea';
 import CapIcon from '../CapIcon';
-import CapInputHOC from './CapInputHOC';
+import ComponentWithLabelHOC from '../assets/HOCs/ComponentWithLabelHOC';
 import * as styledVars from '../styled/variables';
 
 const StyledIcon = styled(CapIcon)`
@@ -48,7 +48,7 @@ CapInput.defaultProps = {
   size: 'large',
 };
 
-const InputFinal = CapInputHOC(CapInput);
+const InputFinal = ComponentWithLabelHOC(CapInput);
 InputFinal.Search = Search;
 InputFinal.TextArea = TextArea;
 

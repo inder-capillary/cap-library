@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Input } from 'antd';
 import styled from 'styled-components';
 import CapHeading from '../CapHeading';
-import CapInputHOC from './CapInputHOC';
+import ComponentWithLabelHOC from '../assets/HOCs/ComponentWithLabelHOC';
 
 const { TextArea: AntTextArea } = Input;
 
@@ -81,4 +81,4 @@ TextArea.defaultProps = {
   size: 'large',
 };
 
-export default CapInputHOC(TextArea);
+export default ComponentWithLabelHOC(TextArea);

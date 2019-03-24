@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Input } from 'antd';
 import * as styledVars from "../styled/variables";
 import CapIcon from '../CapIcon';
-import CapInputHOC from './CapInputHOC';
+import ComponentWithLabelHOC from '../assets/HOCs/ComponentWithLabelHOC';
 
 class Search extends Component {
   render() {
@@ -28,4 +28,4 @@ Search.defaultProps = {
   size: 'large',
 };
 
-export default CapInputHOC(Search);
+export default ComponentWithLabelHOC(Search);

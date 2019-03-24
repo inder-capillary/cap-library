@@ -30,6 +30,13 @@ export default class CapDateRangePickerDoc extends Component { // eslint-disable
           <div style={{ marginTop: "24px" }}>
             <CapDateRangePicker onChange={this.onChange} size="large" />
           </div>
+          <div style={{ marginTop: "24px" }}>
+            <CapDateRangePicker
+              onChange={this.onChange}
+              label="Date Picker with label"
+              inductiveText="Date picker with inductive text"
+            />
+          </div>
         </div>
       </div>
     );

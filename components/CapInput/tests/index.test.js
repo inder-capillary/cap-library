@@ -6,7 +6,7 @@ import CapInput from '../index';
 describe('<CapInput />', () => {
   const wrapper = mount(<CapInput labelPosition="left" label="Input field" />);
   it('Should render label', () => {
-    expect(wrapper.find('.cap-input-v2-label')).toHaveLength(3);
+    expect(wrapper.find('.component-with-label-label')).toHaveLength(3);
   });
 
   it('Should find error message button', () => {
@@ -16,7 +16,7 @@ describe('<CapInput />', () => {
 
   it("Should have prefix, suffix icons", () => {
     wrapper.setProps({ label: '', prefix: 'test prefix', isVerified: true, errorMessage: ''});
-    expect(wrapper.find('.cap-input-v2-label')).toHaveLength(0);
+    expect(wrapper.find('.component-with-label-label')).toHaveLength(0);
     expect(wrapper.find('span.ant-input-prefix')).toHaveLength(1);
     expect(wrapper.find('span.ant-input-suffix')).toHaveLength(1);
     expect(wrapper.find('i.anticon-check-circle')).toHaveLength(1);

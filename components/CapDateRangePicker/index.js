@@ -8,6 +8,8 @@ import React from 'react';
 import { DatePicker } from 'antd';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import * as styledVars from "../styled/variables";
+import ComponentWithLabelHOC from '../assets/HOCs/ComponentWithLabelHOC';
 import CapIcon from '../CapIcon';
 
 import './_capDateRangePicker.scss';
@@ -25,7 +27,7 @@ function CapDateRangePicker(props) {
       <RangePicker
         separator="-"
         allowClear={false}
-        suffixIcon={<div><CapIcon type="calendar" size={size === 'large' ? 'm' : 's'} /></div>}
+        suffixIcon={<div><CapIcon type="calendar" style={{color: styledVars.CAP_G01}} size={size === 'large' ? 'm' : 's'} /></div>}
         dropdownClassName={classNames(`${commonClsPrefix}-dropdown`, `${clsPrefix}-dropdown`)}
         {...props}
       />
@@ -34,11 +36,11 @@ function CapDateRangePicker(props) {
 }
 
 CapDateRangePicker.defaultProps = {
-
+  size: 'large',
 };
 
 CapDateRangePicker.propTypes = {
   size: PropTypes.string,
 };
 
-export default CapDateRangePicker;
+export default ComponentWithLabelHOC(CapDateRangePicker);

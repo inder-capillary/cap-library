@@ -107,7 +107,7 @@ $multiSelect: cap-multi-select-v2;
   .ant-popover-inner-content {
     padding: 0;
     .search-input {
-      .cap-input-v2 {
+      .component-with-label {
         width: 100%;
       }
       margin: $CAP_SPACE_16 $CAP_SPACE_16 0 $CAP_SPACE_16;
