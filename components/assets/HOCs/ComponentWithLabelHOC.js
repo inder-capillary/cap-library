@@ -28,11 +28,13 @@ const ComponentWithLabelWrapper = styled.div`
       border-color: ${styledVars.CAP_G01};
       box-shadow: none;
     }
-    width: ${(props) => props.labelPosition === 'left' ? 'calc(100% - 140px)' : 'auto'};
+    &:not(.ant-calendar-range-picker-input) {
+      width: ${(props) => props.labelPosition === 'left' ? 'calc(100% - 140px)' : '100%'};
+    }
     border-color: ${(props) => props.errorMessage && styledVars.CAP_RED};
   }
   .ant-input-affix-wrapper {
-    width: ${(props) => props.labelPosition === 'left' ? 'calc(100% - 140px)' : 'auto'};
+    width: ${(props) => props.labelPosition === 'left' ? 'calc(100% - 140px)' : '100%'};
 
     & > input {
       width: 100%;
