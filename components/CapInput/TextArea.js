@@ -78,6 +78,7 @@ class TextArea extends Component {
 }
 
 TextArea.defaultProps = {
+  size: 'large',
 };
 
 export default CapInputHOC(TextArea);

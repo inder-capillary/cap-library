@@ -44,6 +44,10 @@ CapInput.propTypes = {
   inline: PropTypes.bool,
 };
 
+CapInput.defaultProps = {
+  size: 'large',
+};
+
 const InputFinal = CapInputHOC(CapInput);
 InputFinal.Search = Search;
 InputFinal.TextArea = TextArea;

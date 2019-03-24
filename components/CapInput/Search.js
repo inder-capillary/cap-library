@@ -25,6 +25,7 @@ class Search extends Component {
 
 Search.defaultProps = {
   allowClear: true,
+  size: 'large',
 };
 
 export default CapInputHOC(Search);
