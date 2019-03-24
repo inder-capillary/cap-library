@@ -44,6 +44,16 @@ CapInput.propTypes = {
   inline: PropTypes.bool,
 };
 
+CapInput.defaultProps = {
+  label: '',
+  labelPosition: 'top',
+  isRequired: false,
+  errorMessage: '',
+  isVerified: false,
+  size: 'large',
+  inductiveText: '',
+};
+
 const InputFinal = CapInputHOC(CapInput);
 InputFinal.Search = Search;
 InputFinal.TextArea = TextArea;

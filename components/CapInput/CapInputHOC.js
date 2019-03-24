@@ -140,14 +140,4 @@ function CapInputHOC(InputComponent) {
   };
 }
 
-CapInputHOC.defaultProps = {
-  label: '',
-  labelPosition: 'top',
-  isRequired: false,
-  errorMessage: '',
-  isVerified: false,
-  size: 'large',
-  inductiveText: '',
-};
-
 export default CapInputHOC;
