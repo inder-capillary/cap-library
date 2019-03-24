@@ -82,6 +82,10 @@ const InductiveText = styled.span`
 
 function CapInputHOC(InputComponent) {
   return class extends Component {
+    static defaultProps = {
+      labelPosition: 'top',
+    }
+
     componentDidMount() {
       if (this.props.focusOnMount && this.input) {
         this.input.focus();

@@ -78,13 +78,7 @@ class TextArea extends Component {
 }
 
 TextArea.defaultProps = {
-  label: '',
-  labelPosition: 'top',
-  isRequired: false,
-  errorMessage: '',
-  isVerified: false,
   size: 'large',
-  inductiveText: '',
 };
 
 export default CapInputHOC(TextArea);

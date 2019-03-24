@@ -45,13 +45,7 @@ CapInput.propTypes = {
 };
 
 CapInput.defaultProps = {
-  label: '',
-  labelPosition: 'top',
-  isRequired: false,
-  errorMessage: '',
-  isVerified: false,
   size: 'large',
-  inductiveText: '',
 };
 
 const InputFinal = CapInputHOC(CapInput);

@@ -25,13 +25,7 @@ class Search extends Component {
 
 Search.defaultProps = {
   allowClear: true,
-  label: '',
-  labelPosition: 'top',
-  isRequired: false,
-  errorMessage: '',
-  isVerified: false,
   size: 'large',
-  inductiveText: '',
 };
 
 export default CapInputHOC(Search);
