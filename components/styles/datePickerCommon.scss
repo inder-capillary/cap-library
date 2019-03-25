@@ -41,6 +41,9 @@ $rangePicker: cap-date-range-picker-v2;
 .ant-calendar-picker-container.#{$datePicker}-dropdown {
   .ant-calendar-cell:not(.ant-calendar-disabled-cell) .ant-calendar-date {
     border-radius: 50%;
+  }
+
+  .ant-calendar-date {
     font-size: $FONT_SIZE_S;
   }
 
