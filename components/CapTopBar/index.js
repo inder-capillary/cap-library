@@ -6,8 +6,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Menu, Divider, Popover } from 'antd';
+import { Layout, Menu, Divider } from 'antd';
 import classNames from 'classnames';
+import CapDropdown from '../CapDropdown';
+import CapMenu from '../CapMenu';
 import CapIcon from '../CapIcon';
 import { Select } from './Select';
 import './_capTopBar.scss';
@@ -17,22 +19,7 @@ const { Header } = Layout;
 
 const clsPrefix = 'cap-navbar';
 
-class CapTopBar extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  constructor(props) {
-    super(props);
-    this.state = {
-      showUserPopover: false,
-    };
-  }
-
-  showUserPopover = () => {
-    this.setState({ showUserPopover: true });
-  }
-
-  onUserPopoverVisibleChange = (visible) => {
-    this.setState({ showUserPopover: visible });
-  }
-
+class CapTopBar extends React.Component {
   renderTopMenu = () => {
     const { menuProps } = this.props;
     const { onMenuItemClick, items, ...restMenuProps } = menuProps;
@@ -59,7 +46,6 @@ class CapTopBar extends React.Component { // eslint-disable-line react/prefer-st
 
   render() {
     const { primarySelectProps, secondarySelectProps, menuProps, userName, onSettingsClick, onLogoutClick, logoutText } = this.props;
-    const { showUserPopover } = this.state;
     return (
       <Header className={classNames(`${clsPrefix}-header`)}>
         <div style={{ display: "flex", flexGrow: '1' }}>
@@ -83,24 +69,24 @@ class CapTopBar extends React.Component { // eslint-disable-line react/prefer-st
         {
           userName
           && (
-            <Popover
-              trigger="click"
-              getPopupContainer={(trigger) => trigger.parentNode}
-              placement="bottomLeft"
-              visible={showUserPopover}
-              overlayClassName={classNames(`${clsPrefix}-user-popover`)}
-              onVisibleChange={this.onUserPopoverVisibleChange}
-              content={(
-                <div onClick={onLogoutClick} className={classNames(`${clsPrefix}-user-popover-item`)}>
-                  <div>{logoutText}</div>
-                  <CapIcon type="logout" size="s" />
-                </div>
-              )}>
+            <CapDropdown
+              trigger={["click"]}
+              overlay={(
+                <CapMenu>
+                  <CapMenu.Item>
+                    <div onClick={onLogoutClick} className={classNames(`${clsPrefix}-user-popover-item`)}>
+                      <div>{logoutText}</div>
+                      <CapIcon type="logout" size="s" />
+                    </div>
+                  </CapMenu.Item>
+                </CapMenu>
+              )}
+              placement="bottomLeft">
               <div onClick={this.showUserPopover} className={(`${clsPrefix}-user`)}>
                 <LogoBackground />
                 <span className="text-label">{userName[0]}</span>
               </div>
-            </Popover>
+            </CapDropdown>
           )
         }
         {

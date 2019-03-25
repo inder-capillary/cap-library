@@ -1,6 +1,7 @@
 @import "./variables.scss";
 
 $datePicker: cap-date-picker-common-v2;
+$rangePicker: cap-date-range-picker-v2;
 
 .#{$datePicker} {
   .ant-calendar-picker-input.ant-input:focus,
@@ -38,35 +39,51 @@ $datePicker: cap-date-picker-common-v2;
 }
 
 .ant-calendar-picker-container.#{$datePicker}-dropdown {
-  .ant-calendar-date {
+  .ant-calendar-cell:not(.ant-calendar-disabled-cell) .ant-calendar-date {
     border-radius: 50%;
     font-size: $FONT_SIZE_S;
   }
-  .ant-calendar-header {
-    border-bottom: none;
+
+  .ant-calendar-range .ant-calendar-body,
+  .ant-calendar-range .ant-calendar-month-panel-body,
+  .ant-calendar-range .ant-calendar-year-panel-body {
+    border-top: none;
   }
-  .ant-calendar-date:hover {
-    background-color: map-get($CAP_SECONDARY, light);
+  .ant-calendar-date {
+    transition: none;
   }
-  .ant-calendar-today .ant-calendar-date {
+  .ant-calendar-cell:not(.ant-calendar-disabled-cell):not(.ant-calendar-in-range-cell) {
+    .ant-calendar-date {
+      &:hover {
+        background-color: map-get($CAP_SECONDARY, light);
+      }
+    }
+    &.ant-calendar-selected-date .ant-calendar-date:hover,
+    &.ant-calendar-selected-start-date .ant-calendar-date:hover,
+    &.ant-calendar-selected-end-date .ant-calendar-date:hover,
+    &.ant-calendar-selected-date .ant-calendar-date,
+    &.ant-calendar-selected-start-date .ant-calendar-date,
+    &.ant-calendar-selected-end-date .ant-calendar-date {
+      background-color: map-get($CAP_SECONDARY, base);
+      font-weight: 500;
+      color: $CAP_WHITE;
+    }
+  }
+
+  .ant-calendar-range {
+    .ant-calendar-in-range-cell:before,
+    .ant-calendar-date:hover {
+      background-color: #f4f5f7;
+    }
+  }
+
+  .ant-calendar-cell.ant-calendar-today:not(.ant-calendar-disabled-cell) .ant-calendar-date,
+  &.#{$rangePicker}-dropdown .ant-calendar-cell.ant-calendar-today.ant-calendar-selected-date:not(.ant-calendar-disabled-cell) .ant-calendar-date {
     color: $FONT_COLOR_05;
     border-color: map-get($CAP_SECONDARY, base);
     background-color: $CAP_WHITE;
   }
-  .ant-calendar-selected-date .ant-calendar-date,
-  .ant-calendar-selected-start-date .ant-calendar-date,
-  .ant-calendar-selected-end-date .ant-calendar-date,
-  .ant-calendar-date:active {
-    background-color: map-get($CAP_SECONDARY, base);
-    color: #fff;
-    border: 1px solid transparent;
-    font-weight: 500;
-  }
-  .ant-calendar-today.ant-calendar-selected-date .ant-calendar-date {
-    color: $FONT_COLOR_05;
-    border-color: map-get($CAP_SECONDARY, base);
-    background-color: $CAP_WHITE;
-  }
+
   .ant-calendar-column-header {
     font-size: $FONT_SIZE_VS;
     color: #97a0af;
@@ -74,14 +91,5 @@ $datePicker: cap-date-picker-common-v2;
   .ant-calendar-body > .ant-calendar-table thead tr th:first-child,
   .ant-calendar-body > .ant-calendar-table thead tr th:last-child {
     color: #e83135;
-  }
-
-  .ant-calendar-range .ant-calendar-in-range-cell:before {
-    background-color: #f4f5f7;
-  }
-  .ant-calendar-range .ant-calendar-body,
-  .ant-calendar-range .ant-calendar-month-panel-body,
-  .ant-calendar-range .ant-calendar-year-panel-body {
-    border-top: none;
   }
 }
