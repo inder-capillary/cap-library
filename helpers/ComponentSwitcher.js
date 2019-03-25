@@ -43,6 +43,7 @@ import CapAlertDoc from '../src/CapAlertDoc';
 import CapMenuDoc from '../src/CapMenuDoc';
 import CapDropdownDoc from '../src/CapDropdownDoc';
 import CapCarouselDoc from '../src/CapCarouselDoc';
+import CapTagDoc from '../src/CapTagDoc';
 //imported for docs
 
 
@@ -134,6 +135,8 @@ class ComponentSwitcher extends Component {
         return <CapDropdownDoc />;
       case 'capCarousel':
         return <CapCarouselDoc />;
+      case 'capTag':
+        return <CapTagDoc />;
         //components for docs
 
 

@@ -1,0 +1,27 @@
+@import "../styles/_variables.scss";
+
+$tag: cap-tag-v2;
+
+.ant-tag.#{$tag} {
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  background-color: $CAP_G08;
+  .anticon-close {
+    font-size: $FONT_SIZE_L;
+    color: #b3bac5;
+  }
+  &.static {
+    cursor: default;
+    pointer-events: none;
+  }
+  &.disabled {
+    background-color: $CAP_G09;
+    cursor: not-allowed;
+  }
+  &.outline {
+    background-color: $CAP_WHITE;
+    border: solid 1px $CAP_G01;
+  }
+}

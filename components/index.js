@@ -52,4 +52,5 @@ export { default as CapSearchBar } from './CapInput/Search';
 export { default as CapMenu } from './CapMenu';
 export { default as CapDropdown } from './CapDropdown';
 export { default as CapCarousel } from './CapCarousel';
+export { default as CapTag } from './CapTag';
 //export components
