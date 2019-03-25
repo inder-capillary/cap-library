@@ -34,7 +34,6 @@ const openErrorNotification = () => {
 const openSuccessNotification = () => {
   CapNotification.success({
     message: 'Notification Title',
-    description: 'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
     onClick: () => {
     },
     duration: 0,
