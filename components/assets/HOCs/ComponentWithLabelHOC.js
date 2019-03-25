@@ -10,42 +10,42 @@ const CapComponentStyled = styled.div`
   &.component-with-label {
     display: ${(props) => props.inline ? 'inline-block' : 'block'};
     cursor: ${(props) => props.disabled && 'not-allowed'};
+    input,
+    textarea {
+      &::-webkit-input-placeholder {
+        font-size: 14px;
+      }
+      &.ant-input:hover {
+        border-color: ${styledVars.CAP_G11};
+        box-shadow: none;
+      }
+      &.ant-input:focus {
+        border-color: ${styledVars.CAP_G01};
+        box-shadow: none;
+      }
+      &:not(.ant-calendar-range-picker-input) {
+        width: ${(props) => props.labelPosition === 'left' ? 'calc(100% - 140px)' : '100%'};
+      }
+      border-color: ${(props) => props.errorMessage && styledVars.CAP_RED};
+    }
+    .ant-input-affix-wrapper {
+      width: ${(props) => props.labelPosition === 'left' ? 'calc(100% - 140px)' : '100%'};
+
+      & > input {
+        width: 100%;
+      }
+    }
+    .ant-input-affix-wrapper .ant-input-suffix {
+      right: 8px;
+    }
+    .ant-input-affix-wrapper .ant-input-prefix {
+      left: 8px;
+    }
 `;
 
 const ComponentWithLabelWrapper = styled.div`
   display: ${(props) => props.labelPosition === 'left' && 'flex'};
   align-items: center;
-  input,
-  textarea {
-    &::-webkit-input-placeholder {
-      font-size: 14px;
-    }
-    &.ant-input:hover {
-      border-color: ${styledVars.CAP_G11};
-      box-shadow: none;
-    }
-    &.ant-input:focus {
-      border-color: ${styledVars.CAP_G01};
-      box-shadow: none;
-    }
-    &:not(.ant-calendar-range-picker-input) {
-      width: ${(props) => props.labelPosition === 'left' ? 'calc(100% - 140px)' : '100%'};
-    }
-    border-color: ${(props) => props.errorMessage && styledVars.CAP_RED};
-  }
-  .ant-input-affix-wrapper {
-    width: ${(props) => props.labelPosition === 'left' ? 'calc(100% - 140px)' : '100%'};
-
-    & > input {
-      width: 100%;
-    }
-  }
-  .ant-input-affix-wrapper .ant-input-suffix {
-    right: 8px;
-  }
-  .ant-input-affix-wrapper .ant-input-prefix {
-    left: 8px;
-  }
 `;
 
 const Sup = styled.sup`
