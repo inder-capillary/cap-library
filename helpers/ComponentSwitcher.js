@@ -145,6 +145,7 @@ class ComponentSwitcher extends Component {
         return <CapLabelDoc />;
         //components for docs
 
+
       default:
         return null;
     }

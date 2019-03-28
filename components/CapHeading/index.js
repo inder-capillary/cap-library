@@ -48,16 +48,19 @@ const headings = {
     'color': '#5e6c84',
     'font-size': '12px',
     'font-weight': 'normal',
+    'line-height': '20px',
   },
   label2: {
     'color': '#091e42',
     'font-size': '12px',
     'font-weight': 'normal',
+    'line-height': '20px',
   },
   label3: {
     'color': '#97a0af',
     'font-size': '12px',
     'font-weight': 'normal',
+    'line-height': '20px',
   },
 };
 

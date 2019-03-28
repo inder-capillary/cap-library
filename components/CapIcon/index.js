@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import classNames from 'classnames';
 import './_capIcon.scss';
 import * as StyledVars from '../styled/variables';
+import CapIconWithBackground from './CapIconWithBackground';
 
 import { getSvgComponentFromType } from '../assets/svgIcons/component';
 
@@ -34,23 +35,29 @@ const AntIcon = styled(Icon)`
 `;
 
 function CapIcon(props) {
-  const { type, className, disabled, ...rest } = props;
+  const { type, className, disabled, backgroundProps, withBackground, ...rest } = props;
   const customClassName = `${clsPrefix}-${type}`;
   const IconComponent = getSvgComponentFromType(type);
+  const BaseIcon = IconComponent ? (
+    <AntIcon
+      className={classNames(clsPrefix, customClassName, className, { disabled })}
+      component={IconComponent}
+      {...rest}>
+    </AntIcon>
+  ) : <Icon {...props} />;
   return (
-    IconComponent ? (
-      <AntIcon
-        className={classNames(clsPrefix, customClassName, className, {disabled})}
-        component={IconComponent}
-        {...rest}>
-      </AntIcon>
-    ) : <Icon {...props} />
+    withBackground
+      ? (
+        <CapIconWithBackground {...backgroundProps} icon={BaseIcon} />
+      )
+      : BaseIcon
   );
 }
 
 CapIcon.propTypes = {
   type: PropTypes.string,
   className: PropTypes.string,
+  withBackground: PropTypes.bool,
 };
 
 CapIcon.AntIcon = Icon;

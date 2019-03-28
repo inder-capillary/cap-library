@@ -7,6 +7,8 @@ import PropertyTable from '../../helpers/PropertyTable';
 import { CapIcon, CapHeading } from "../../components";
 import "./info.scss";
 
+const { CapHeadingSpan } = CapHeading;
+
 const infoData = [
   {
     key: 1,
@@ -28,6 +30,20 @@ const infoData = [
     description: "size of Icon  (s, m, l) `s` is 16px, `m` is 24px , `l` is 32px",
     type: "s, m, l",
     default: "m",
+  },
+  {
+    key: 4,
+    property: "withbackground",
+    description: "If this prop is true, then icon shows on a grey background by default",
+    type: "boolean",
+    default: "false",
+  },
+  {
+    key: 5,
+    property: "backgroundProps",
+    description: "className and style can be passed in background props to override default background style Eg: backgroundProps={{ style={backgroundColor: 'green', className='my-background-icon'}}}",
+    type: "object",
+    default: "-",
   },
 ];
 
@@ -55,7 +71,16 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
     return (
       <div className="cap-icon-info">
         <div className="cap-icon-showcase">
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <CapHeadingSpan type="h5">
+              {`Icon with `}
+              <CapHeadingSpan style={{ color: 'green' }} type="h3">withBackground</CapHeadingSpan>
+              {` prop as true:`}
+            </CapHeadingSpan>
+            <CapIcon style={{ color: 'white' }} backgroundProps={{ style: { backgroundColor: 'green', marginLeft: "16px" } }} type="eye" withBackground />
+          </div>
           <ul className="cap-icons-list">
+
             <List>
               <CapIcon type="add" />
               <Text>add</Text>
