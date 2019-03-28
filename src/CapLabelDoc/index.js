@@ -31,11 +31,11 @@ export default class CapLabelDoc extends Component { // eslint-disable-line reac
           <br />
           <CapLabelInline type="label3">Inline label wrapped in span</CapLabelInline>
           <br />
+          <CapDivider />
           <CapHeading style={{ marginTop: '24px' }}>
             {'Use label wrapped in span with : '}
             <CapHeading style={{ marginTop: '16px' }} type="h3">{`{ CapLabelInline } = CapLabel`}</CapHeading>
           </CapHeading>
-
         </div>
         <PropertyTable data={infoData} />
       </div>

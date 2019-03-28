@@ -1,10 +1,10 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
-
-// import CapLabel from '../index';
+import React from 'react';
+import renderer from 'react-test-renderer';
+import CapLabel from '../index';
 
 describe('<CapLabel />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('CapLabel renders correctly', () => {
+    const tree = renderer.create(<CapLabel />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
