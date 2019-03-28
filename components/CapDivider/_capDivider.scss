@@ -1,0 +1,20 @@
+@import "../styles/_variables.scss";
+
+$divider: cap-divider-v2;
+
+.ant-divider.#{$divider} {
+  background: $CAP_G07;
+  &.ant-divider-horizontal.ant-divider-with-text,
+  &.ant-divider-horizontal.ant-divider-with-text-left,
+  &.ant-divider-horizontal.ant-divider-with-text-right {
+    background: transparent;
+  }
+  &.ant-divider-horizontal.ant-divider-with-text::before,
+  &.ant-divider-horizontal.ant-divider-with-text-left::before,
+  &.ant-divider-horizontal.ant-divider-with-text-right::before,
+  &.ant-divider-horizontal.ant-divider-with-text::after,
+  &.ant-divider-horizontal.ant-divider-with-text-left::after,
+  &.ant-divider-horizontal.ant-divider-with-text-right::after {
+    border-color: $CAP_G07;
+  }
+}
