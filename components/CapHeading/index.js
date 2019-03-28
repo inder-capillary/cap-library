@@ -1,6 +1,6 @@
 /**
 *
-* CapHeading0
+* CapHeading
 *
 */
 

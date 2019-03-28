@@ -1,1 +1,7 @@
-@import '../styles/_variables.scss';
+@import "../styles/_variables.scss";
+
+$card: cap-card-v2;
+
+.ant-card.#{$card} {
+  border-radius: 4px;
+}

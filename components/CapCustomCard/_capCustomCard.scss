@@ -4,6 +4,7 @@ $cap-custom-card-list: cap-custom-card-list;
 $cap-custom-card: cap-custom-card;
 
 .ant-card.#{$cap-custom-card} {
+  border-radius: 4px;
   max-width: 340px;
   min-width: 276px;
   display: inline-block;
