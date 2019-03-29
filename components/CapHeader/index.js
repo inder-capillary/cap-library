@@ -9,9 +9,14 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import classNames from 'classnames';
 import CapHeading from '../CapHeading';
+import CapLabel from '../CapLabel';
 import './_capHeader.scss';
 
 const InlineHeading = styled(CapHeading)`
+  display: inline-block;
+`;
+
+const InlineLabel = styled(CapLabel)`
   display: inline-block;
 `;
 
@@ -22,43 +27,62 @@ const Flex = styled.div`
 
 const clsPrefix = 'cap-header-v2';
 
-const titleSize = (size) => {
-  switch (size) {
-    case "regular":
-      return "h3";
-    case "small":
-      return "label2";
-    default:
-      return "h1";
-  }
-};
-const titleDesc = (size) => {
-  switch (size) {
-    case "regular":
-      return "label1";
-    case "small":
-      return "label1";
-    default:
-      return "h6";
-  }
-};
 function CapHeader(props) {
   const { description, inline, title, size, withHiddenDescription } = props;
   const CapHeadingwithDirection = inline ? InlineHeading : CapHeading;
+  const CapLabelwithDirection = inline ? InlineLabel : CapLabel;
+  const descriptionClassName = classNames(`${clsPrefix}-description`, size, { hidden: withHiddenDescription });
+  const titleClassName = classNames(`${clsPrefix}-title`);
+
+  const titleDesc = () => {
+    switch (size) {
+      case "regular":
+      case "small":
+        return (
+          <CapLabelwithDirection type="label1" className={descriptionClassName}>
+            {description}
+          </CapLabelwithDirection>
+        );
+      default:
+        return (
+          <CapHeadingwithDirection type="h6" className={descriptionClassName}>
+            {description}
+          </CapHeadingwithDirection>
+        );
+    }
+  };
+
+  const getTitleComponent = () => {
+    switch (size) {
+      case "regular":
+        return (
+          <CapHeadingwithDirection type="h3" className={titleClassName}>
+            {title}
+          </CapHeadingwithDirection>
+        );
+      case "small":
+        return (
+          <CapLabelwithDirection type="label2" className={titleClassName}>
+            {title}
+          </CapLabelwithDirection>
+        );
+      default:
+        return (
+          <CapHeadingwithDirection type="h1" className={titleClassName}>
+            {title}
+          </CapHeadingwithDirection>
+        );
+    }
+  };
+
   return (
     <Flex>
       {
         props.prefix
       }
       <div>
-        <CapHeadingwithDirection type={titleSize(size)} className={classNames(`${clsPrefix}-title`)}>
-          {title}
-        </CapHeadingwithDirection>
-        {(description || withHiddenDescription) && (
-          <CapHeadingwithDirection type={titleDesc(size)} className={classNames(`${clsPrefix}-description`, size, {hidden: withHiddenDescription})}>
-            {description}
-          </CapHeadingwithDirection>
-        )}
+        {getTitleComponent()}
+        {(description || withHiddenDescription) && titleDesc()}
       </div>
     </Flex>
   );
