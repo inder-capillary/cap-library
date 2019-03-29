@@ -7,6 +7,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Card } from 'antd';
+import './_capCard.scss';
 
 const clsPrefix = 'cap-card-v2';
 

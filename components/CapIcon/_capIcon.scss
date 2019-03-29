@@ -1,5 +1,21 @@
-@import '../styles/_variables.scss';
+@import "../styles/_variables.scss";
 
 .cap-icon-v2 {
-    
+}
+
+.cap-icon-container {
+  padding-right: 24px;
+  height: 48px;
+  width: 48px;
+  background-color: $CAP_G07;
+  background-size: cover;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 18px;
+  position: relative;
+  .div-icon {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+  }
 }
