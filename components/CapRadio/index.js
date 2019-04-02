@@ -11,7 +11,7 @@ import "./_capRadio.scss";
 const { CapHeadingSpan } = CapHeading;
 
 const classNames = require('classnames');
-export default class CapRadio extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class CapRadio extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const {className, children, errorMessage, inductiveText, suffix, ...rest} = this.props;
     return (
@@ -30,7 +30,8 @@ export default class CapRadio extends React.Component { // eslint-disable-line r
     );
   }
 }
-
+CapRadio.CapRadioGroup = Radio.Group;
+export default CapRadio;
 CapRadio.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,

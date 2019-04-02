@@ -59,7 +59,16 @@ const infoData = [
   },
 ];
 
+const {CapRadioGroup} = CapRadio;
+
 export default class CapRadioDoc extends Component { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super(props);
+    this.state = {
+      radioValue: 'radio1',
+    };
+  }
+
   render() {
     return (
       <div className="cap-radio-button-info">
@@ -69,12 +78,30 @@ export default class CapRadioDoc extends Component { // eslint-disable-line reac
           <CapRadio defaultChecked>defaultChecked</CapRadio>
           <CapRadio disabled>disabled</CapRadio>
           <CapRadio value={10}>value</CapRadio>
+<<<<<<< HEAD
           <CapRadio
             value={3}
             indeterminate
             suffix={<CapHeading.CapHeadingSpan type="label2">(this is my custom suffix)</CapHeading.CapHeadingSpan>}
             inductiveText="Global campaign settings can be overridden through advanced settings">
           </CapRadio>
+=======
+          <CapRadioGroup value={this.state.radioValue} onChange={(e) => { this.setState({radioValue: e.target.value}); }}>
+            <CapRadio
+              value="radio1"
+              suffix={<CapHeading.CapHeadingSpan type="label2">(this is my custom suffix)</CapHeading.CapHeadingSpan>}
+              inductiveText="Global campaign settings can be overridden through advanced settings">
+              Radio1
+            </CapRadio>
+            <CapRadio
+              value="radio2"
+              suffix={<CapHeading.CapHeadingSpan type="label2">(this is my custom suffix)</CapHeading.CapHeadingSpan>}
+              inductiveText="Global campaign settings can be overridden through advanced settings">
+              Radio2
+            </CapRadio>
+          </CapRadioGroup>
+
+>>>>>>> e9d97d7c44bc619126b0189e777cab4ab87bee45
         </div>
         <PropertyTable data={infoData} />
       </div>
