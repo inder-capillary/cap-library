@@ -34,4 +34,7 @@ export default class CapRadio extends React.Component { // eslint-disable-line r
 CapRadio.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
+  inductiveText: PropTypes.string,
+  errorMessage: PropTypes.string,
+  suffix: PropTypes.node,
 };

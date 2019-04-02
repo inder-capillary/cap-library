@@ -74,7 +74,6 @@ export default class CapRadioDoc extends Component { // eslint-disable-line reac
             indeterminate
             suffix={<CapHeading.CapHeadingSpan type="label2">(this is my custom suffix)</CapHeading.CapHeadingSpan>}
             inductiveText="Global campaign settings can be overridden through advanced settings">
-            Intermediate
           </CapRadio>
         </div>
         <PropertyTable data={infoData} />

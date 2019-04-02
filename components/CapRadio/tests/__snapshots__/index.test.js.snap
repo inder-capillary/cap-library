@@ -1,24 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CapRadio /> CapRadio renders correctly 1`] = `
-<label
-  className="cap-radio-v2 ant-radio-wrapper"
+<div
+  className="cap-radio-v2"
 >
-  <span
-    className="ant-radio"
-    style={Object {}}
+  <label
+    className="ant-radio-wrapper"
   >
-    <input
-      checked={false}
-      className="ant-radio-input"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      type="radio"
-    />
     <span
-      className="ant-radio-inner"
-    />
-  </span>
-</label>
+      className="ant-radio"
+      style={Object {}}
+    >
+      <input
+        checked={false}
+        className="ant-radio-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="radio"
+      />
+      <span
+        className="ant-radio-inner"
+      />
+    </span>
+    <span>
+      <span
+        className="title sc-bwzfXH dtxtTd"
+        type="h4"
+      />
+    </span>
+  </label>
+</div>
 `;
