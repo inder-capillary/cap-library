@@ -1,13 +1,22 @@
 @import "../styles/_variables.scss";
 
 $radioButton:cap-radio-v2;
-.ant-radio.#{$radioButton}{
-    .ant-radio-checked .ant-radio-inner {
-        background-color:map-get($CAP_PRIMARY, base);
+.#{$radioButton}{
+    .ant-radio {
+        .ant-radio-checked .ant-radio-inner {
+            background-color:map-get($CAP_PRIMARY, base);
+        }
+        
+        .ant-radio-inner:after {
+            background-color:$CAP_WHITE;
+        
+        }
     }
-    
-    .ant-radio-inner:after {
-        background-color:$CAP_WHITE;
-    
-    }
+    .inductive-text {
+        padding-left: $CAP_SPACE_24;
+        padding-top: $CAP_SPACE_04;
+      }
+      .title.has-suffix {
+        margin-right: 8px;
+      }
 }

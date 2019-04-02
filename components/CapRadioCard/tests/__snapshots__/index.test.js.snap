@@ -76,7 +76,7 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
             className="radio-card-icon"
           >
             <div
-              className="icon-container green-color"
+              className="icon-container"
             >
               <div
                 className="div-icon"
@@ -399,7 +399,7 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
             className="radio-card-icon"
           >
             <div
-              className="icon-container green-color"
+              className="icon-container"
             >
               <div
                 className="div-icon"
