@@ -27,15 +27,13 @@ export default class CapSlideBox extends Component {
 
   componentDidMount() {
     const { show } = this.props;
-    const body = document.getElementsByTagName('body')[0];
     if (show) {
-      body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
     }
   }
 
   componentWillUnmount() {
-    const body = document.getElementsByTagName('body')[0];
-    body.style.overflow = null;
+    document.body.style.overflow = null;
   }
 
   onScroll() {
