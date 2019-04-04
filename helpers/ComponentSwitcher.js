@@ -46,8 +46,8 @@ import CapCarouselDoc from '../src/CapCarouselDoc';
 import CapTagDoc from '../src/CapTagDoc';
 import CapDividerDoc from '../src/CapDividerDoc';
 import CapLabelDoc from '../src/CapLabelDoc';
+import CapTimePickerDoc from '../src/CapTimePickerDoc';
 //imported for docs
-
 
 class ComponentSwitcher extends Component {
   render() {
@@ -143,6 +143,8 @@ class ComponentSwitcher extends Component {
         return <CapDividerDoc />;
       case 'capLabel':
         return <CapLabelDoc />;
+      case 'capTimePicker':
+        return <CapTimePickerDoc />;
         //components for docs
 
 

@@ -55,4 +55,5 @@ export { default as CapCarousel } from './CapCarousel';
 export { default as CapTag } from './CapTag';
 export { default as CapDivider } from './CapDivider';
 export { default as CapLabel } from './CapLabel';
+export { default as CapTimePicker } from './CapTimePicker';
 //export components

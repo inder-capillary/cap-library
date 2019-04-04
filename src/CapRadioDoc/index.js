@@ -78,14 +78,6 @@ export default class CapRadioDoc extends Component { // eslint-disable-line reac
           <CapRadio defaultChecked>defaultChecked</CapRadio>
           <CapRadio disabled>disabled</CapRadio>
           <CapRadio value={10}>value</CapRadio>
-<<<<<<< HEAD
-          <CapRadio
-            value={3}
-            indeterminate
-            suffix={<CapHeading.CapHeadingSpan type="label2">(this is my custom suffix)</CapHeading.CapHeadingSpan>}
-            inductiveText="Global campaign settings can be overridden through advanced settings">
-          </CapRadio>
-=======
           <CapRadioGroup value={this.state.radioValue} onChange={(e) => { this.setState({radioValue: e.target.value}); }}>
             <CapRadio
               value="radio1"
@@ -101,7 +93,6 @@ export default class CapRadioDoc extends Component { // eslint-disable-line reac
             </CapRadio>
           </CapRadioGroup>
 
->>>>>>> e9d97d7c44bc619126b0189e777cab4ab87bee45
         </div>
         <PropertyTable data={infoData} />
       </div>
