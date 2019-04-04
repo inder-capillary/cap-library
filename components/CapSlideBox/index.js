@@ -4,7 +4,7 @@
 *
 */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { throttle } from 'lodash';
@@ -25,6 +25,19 @@ export default class CapSlideBox extends Component {
     this.throttleScroll = throttle(this.onScroll.bind(this), 300);
   }
 
+  componentDidMount() {
+    const { show } = this.props;
+    const body = document.getElementsByTagName('body')[0];
+    if (show) {
+      body.style.overflow = 'hidden';
+    }
+  }
+
+  componentWillUnmount() {
+    const body = document.getElementsByTagName('body')[0];
+    body.style.overflow = null;
+  }
+
   onScroll() {
     const { showShadow } = this.state;
     if (this.slideBoxContent && this.slideBoxContainer && this.slideBoxContent.clientHeight > this.slideBoxContainer.clientHeight) {
@@ -42,28 +55,26 @@ export default class CapSlideBox extends Component {
     const { size, show, header, handleClose, footer, content, className } = this.props;
     const { showShadow } = this.state;
     return (
-      <Fragment>
-        {show ? (
-          <div className={classNames(`${clsPrefix}`, className, { 'show-slidebox': show, 'hide-slidebox': !show, 'show-shadow': showShadow })}>
-            <div className={classNames(`${clsPrefix}-container ${size}`)}>
-              <div className="slidebox-header">
-                <CapHeading type="h1">{header}</CapHeading>
-                {<CapIcon onClick={handleClose} type="close" className={classNames(`${clsPrefix}-close-icon`)} />}
-              </div>
-              <div onScroll={this.throttleScroll} className={classNames('slidebox-content-container', { 'has-footer': footer })} ref={(node) => { this.slideBoxContainer = node; }}>
-                <div ref={(node) => { this.slideBoxContent = node; }}>
-                  {content}
-                </div>
-              </div>
-              {footer && (
-                <div className="slidebox-footer">
-                  {footer}
-                </div>
-              )}
+      show ? (
+        <div className={classNames(`${clsPrefix}`, className, { 'show-slidebox': show, 'hide-slidebox': !show, 'show-shadow': showShadow })}>
+          <div className={classNames(`${clsPrefix}-container ${size}`)}>
+            <div className="slidebox-header">
+              <CapHeading type="h1">{header}</CapHeading>
+              {<CapIcon onClick={handleClose} type="close" className={classNames(`${clsPrefix}-close-icon`)} />}
             </div>
+            <div onScroll={this.throttleScroll} className={classNames('slidebox-content-container', { 'has-footer': footer })} ref={(node) => { this.slideBoxContainer = node; }}>
+              <div ref={(node) => { this.slideBoxContent = node; }}>
+                {content}
+              </div>
+            </div>
+            {footer && (
+              <div className="slidebox-footer">
+                {footer}
+              </div>
+            )}
           </div>
-        ) : null}
-      </Fragment>
+        </div>
+      ) : null
     );
   }
 }
