@@ -12,14 +12,18 @@ import { Card } from "antd";
 const { Meta } = Card;
 
 const clsPrefix = "cap-custom-card";
-
+const channels = {
+  sms: 'SMS',
+  email: 'EMAIL',
+};
 class CapCustomCard extends React.Component {
     getCardContent = () => {
-      const { type, content, url, width, height } = this.props;
+      const { content, url, width, height } = this.props;
+      const type = this.props.type.toUpperCase();
       switch (type) {
-        case 'SMS':
+        case channels.sms:
           return <Meta description={content} />;
-        case 'Email':
+        case channels.email:
           return <Meta description={<img width={width || 244} height={height || 279} src={url} alt={url} />} />;
         default:
           return null;
