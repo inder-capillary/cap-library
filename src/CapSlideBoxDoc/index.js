@@ -111,27 +111,31 @@ export default class CapSlideBoxDoc extends Component { // eslint-disable-line r
         <div className="cap-slide-box-showcase">
           <div>
             <CapButton onClick={this.showSlideBox}>Show SlideBox with default size</CapButton>
-            <CapSlideBox
-              showShadow
-              show={showSlideBox}
-              size="size-r"
-              header="Slide Box Example"
-              content={<div>{content}</div>}
-              className="custom-class-name"
-              handleClose={this.closeSlideBox}
-              footer={<CapButton style={{ float: 'right' }}>Create custom dimension</CapButton>} />
+            {showSlideBox && (
+              <CapSlideBox
+                showShadow
+                show={showSlideBox}
+                size="size-r"
+                header="Slide Box Example"
+                content={<div>{content}</div>}
+                className="custom-class-name"
+                handleClose={this.closeSlideBox}
+                footer={<CapButton style={{ float: 'right' }}>Create custom dimension</CapButton>} />
+            )}
           </div>
           <div style={{ marginTop: '16px' }}>
             <CapButton
               onClick={this.showSlideBox1}>
               {"Show SlideBox without footer and size-l"}
             </CapButton>
-            <CapSlideBox
-              show={showSlideBox1}
-              size="size-l"
-              header="Slide Box Example"
-              content={<div>{content}</div>}
-              handleClose={this.closeSlideBox1} />
+            {showSlideBox1 && (
+              <CapSlideBox
+                show={showSlideBox1}
+                size="size-l"
+                header="Slide Box Example"
+                content={<div>{content}</div>}
+                handleClose={this.closeSlideBox1} />
+            )}
           </div>
         </div>
         <PropertyTable data={infoData} />
