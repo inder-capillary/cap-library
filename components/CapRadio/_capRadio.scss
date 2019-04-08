@@ -19,4 +19,8 @@ $radioButton:cap-radio-v2;
       .title.has-suffix {
         margin-right: 8px;
       }
+      .ant-radio-wrapper{
+        font-size: $FONT_SIZE_S;
+        font-family: $FONT_FAMILY;
+      }
 }
