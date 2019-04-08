@@ -11,7 +11,10 @@ $capRadioCardV2: cap-radioCard-v2;
     padding: 0;
     border-top-width: 1px;
   }
-
+  .ant-radio-wrapper {
+    font-size: 12px;
+    font-family: roboto;
+}
   .ant-card-body {
     display: flex;
   }
