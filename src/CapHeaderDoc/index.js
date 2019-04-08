@@ -11,7 +11,7 @@ const infoData = [
   {
     key: 1,
     property: 'size',
-    description: "Size can be `large` or `regular`. The difference is in title/description size and padding between title and description",
+    description: "Size can be `large` | `regular` | `small` | `label`. The difference is in title/description size and padding between title and description",
     type: "string",
     default: "large",
     required: "-",
@@ -118,6 +118,19 @@ export default class CapHeaderDoc extends Component { // eslint-disable-line rea
                   keyboard_backspace
                 </i>
               )} />
+          </Container>
+          <Container>
+            <div>Input label</div>
+            <CapHeader
+              size="label"
+              title="Title" />
+          </Container>
+          <Container>
+            <div>Input label</div>
+            <CapHeader
+              description="Inductive text"
+              size="label"
+              title="Title" />
           </Container>
         </Flex>
         <PropertyTable data={infoData} />

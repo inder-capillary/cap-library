@@ -61,13 +61,15 @@ $table: cap-table-v2;
     .ant-table-body tbody::after {
       content: "Loading more data...";
       display: flex;
+      justify-content: center;
       position: absolute;
-      left: 40%;
+      width: 100%;
       align-items: center;
       height: 60px;
       text-align: center;
       font-size: 16px;
       color: gray;
+      border-top: 1px solid $CAP_G07;
     }
   }
   a {

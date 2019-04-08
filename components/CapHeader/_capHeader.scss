@@ -3,16 +3,19 @@
 $header: cap-header-v2;
 
 .#{$header}-description {
-  &.large {
+  &.#{$header}-large {
     padding-top: $CAP_SPACE_08;
   }
-  &.regular {
+  &.#{$header}-regular {
     padding-top: $CAP_SPACE_04;
   }
-  &.small {
+  &.#{$header}-small {
     padding-top: $CAP_SPACE_06;
   }
-  &.hidden.small {
+  &.hidden.#{$header}-small {
     height: 14px;
+  }
+  &.#{$header}-label {
+    padding-top: $CAP_SPACE_04;
   }
 }
