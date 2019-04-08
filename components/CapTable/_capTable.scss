@@ -4,9 +4,7 @@ $table: cap-table-v2;
 
 .#{$table} {
   .ant-table {
-    border-left: 1px solid $CAP_G07;
-    border-right: 1px solid $CAP_G07;
-    border-top: 1px solid $CAP_G07;
+    border: 1px solid $CAP_G07;
     .ant-table-thead > tr > th {
       color: $FONT_COLOR_01;
       font-size: $FONT_SIZE_S;
@@ -20,6 +18,9 @@ $table: cap-table-v2;
     .ant-table-tbody > tr > td {
       border-bottom: 1px solid $CAP_G07;
       padding: $CAP_SPACE_16 $CAP_SPACE_24;
+    }
+    .ant-table-tbody > tr:last-child > td {
+        border-bottom: none;
     }
     .ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
     .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
