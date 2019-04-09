@@ -13,11 +13,10 @@ $table: cap-table-v2;
     }
     .ant-table-thead > tr > th,
     .ant-table-tbody > tr > td {
-      padding-left: $CAP_SPACE_24;
+      padding: $CAP_SPACE_16 $CAP_SPACE_24;
     }
     .ant-table-tbody > tr > td {
       border-bottom: 1px solid $CAP_G07;
-      padding: $CAP_SPACE_16 $CAP_SPACE_24;
     }
     .ant-table-tbody > tr:last-child > td {
         border-bottom: none;
