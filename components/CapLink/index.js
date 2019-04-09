@@ -12,10 +12,15 @@ const { Link } = Anchor;
 const classNames = require('classnames');
 
 class CapLink extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  handleClick=(e, link) => {
+    e.preventDefault();
+    this.props.onClick(e, link);
+  }
+
   render() {
     const {className, children, ...rest} = this.props;
     return (
-      <Anchor className={classNames("cap-link-v2", className)}>
+      <Anchor affix={false} className={classNames("cap-link-v2", className)} onClick={this.handleClick}>
         <Link {...rest}>
           { children }
         </Link>
@@ -27,6 +32,7 @@ class CapLink extends React.Component { // eslint-disable-line react/prefer-stat
 CapLink.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default CapLink;
