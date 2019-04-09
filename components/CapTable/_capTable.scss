@@ -56,6 +56,9 @@ $table: cap-table-v2;
         position: absolute;
       }
     }
+    .ant-table-thead > tr > th .ant-table-column-sorter {
+      vertical-align: unset;
+    }
   }
   &.show-loader {
     .ant-table-body tbody::after {

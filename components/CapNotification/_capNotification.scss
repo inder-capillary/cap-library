@@ -4,6 +4,7 @@
   .ant-notification-notice-content {
     .ant-notification-notice-with-icon {
       .ant-notification-notice-icon {
+        position: absolute;
         .cap-icon-v2-alert.error {
           color: $CAP_RED;
         }
@@ -11,7 +12,6 @@
       .ant-notification-notice-message,
       .ant-notification-notice-description {
         margin-left: 44px;
-        margin-top: 3px;
       }
     }
   }
