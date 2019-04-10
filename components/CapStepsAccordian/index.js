@@ -24,11 +24,11 @@ const Flex = styled.div`
 `;
 
 function CapStepsAccordian(props) {
-  const { items, showNumberSteps, ...collapseProps } = props;
+  const { items, showNumberSteps, className, ...collapseProps } = props;
   return (
     <Collapse
       accordion
-      className={classNames(clsPrefix, { 'with-steps': showNumberSteps })}
+      className={classNames(clsPrefix, className, { 'with-steps': showNumberSteps })}
       bordered={false}
       expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
       {...collapseProps}

@@ -47,6 +47,8 @@ $slideBox: "cap-slide-box-v2";
     align-items: center;
     display: flex;
     height: 92px;
+    position: relative;
+    z-index: 1;
   }
   .slidebox-footer {
     padding: 0 $CAP_SPACE_48;

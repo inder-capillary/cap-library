@@ -16,4 +16,15 @@
         height: 0px;
     }
     background: none;
+    .ant-anchor-link-title{
+        color:map-get($CAP_SECONDARY, base);
+    }
+    .ant-anchor-link-title{
+        display:inline;
+    }
+    .cap-icon-v2-chevron-right{
+        color:map-get($CAP_SECONDARY, base);
+    }
+    a:hover {
+        color:map-get($CAP_SECONDARY, base); }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@capillarytech/cap-ui-library",
-  "version": "1.0.79",
+  "version": "1.0.86",
   "description": "Cap HOCs for capillary style guid and antd components",
   "main": "index.js",
   "author": "meharaj",
@@ -12,7 +12,7 @@
     "@svgr/cli": "^4.1.0",
     "@svgr/core": "^4.1.0",
     "@svgr/webpack": "2.4.1",
-    "antd": "^3.15.0",
+    "antd": "^3.16.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",

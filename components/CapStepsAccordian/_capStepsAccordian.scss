@@ -24,4 +24,7 @@ $accordian: cap-steps-accordian-v2;
       padding-left: 58px;
     }
   }
+  &.ant-collapse-borderless > .ant-collapse-item {
+    border-bottom: 1px solid $CAP_G07;
+  }
 }

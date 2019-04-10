@@ -31,7 +31,7 @@ function CapHeader(props) {
   const { description, inline, title, size, withHiddenDescription, className } = props;
   const CapHeadingwithDirection = inline ? InlineHeading : CapHeading;
   const CapLabelwithDirection = inline ? InlineLabel : CapLabel;
-  const descriptionClassName = classNames(`${clsPrefix}-description`, size, { hidden: withHiddenDescription });
+  const descriptionClassName = classNames(`${clsPrefix}-description`, `${clsPrefix}-${size}`, { hidden: withHiddenDescription });
   const titleClassName = classNames(`${clsPrefix}-title`);
 
   const titleDesc = () => {
@@ -41,6 +41,12 @@ function CapHeader(props) {
       case "small":
         return (
           <CapLabelwithDirection style={{ marginLeft }} type="label1" className={descriptionClassName}>
+            {description}
+          </CapLabelwithDirection>
+        );
+      case "label":
+        return (
+          <CapLabelwithDirection style={{ marginLeft }} type="label3" className={descriptionClassName}>
             {description}
           </CapLabelwithDirection>
         );
@@ -67,6 +73,12 @@ function CapHeader(props) {
             {title}
           </CapLabelwithDirection>
         );
+      case "label":
+        return (
+          <CapHeadingwithDirection type={description ? 'h3' : 'h4'} className={titleClassName}>
+            {title}
+          </CapHeadingwithDirection>
+        );
       default:
         return (
           <CapHeadingwithDirection type="h1" className={titleClassName}>
@@ -77,7 +89,7 @@ function CapHeader(props) {
   };
 
   return (
-    <Flex className={className}>
+    <Flex className={classNames(clsPrefix, className)}>
       {
         props.prefix
       }
