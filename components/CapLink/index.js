@@ -10,7 +10,7 @@ import { Anchor } from 'antd';
 const { Link } = Anchor;
 // import styled from 'styled-components';
 const classNames = require('classnames');
-
+const classPrefix = 'cap-link-v2';
 class CapLink extends React.Component { // eslint-disable-line react/prefer-stateless-function
   handleClick=(e, link) => {
     e.preventDefault();
@@ -18,11 +18,13 @@ class CapLink extends React.Component { // eslint-disable-line react/prefer-stat
   }
 
   render() {
-    const {className, children, ...rest} = this.props;
+    const {className, children, suffix, prefix, ...rest} = this.props;
     return (
-      <Anchor affix={false} className={classNames("cap-link-v2", className)} onClick={this.handleClick}>
+      <Anchor affix={false} className={classNames(`${classPrefix}`, className)} onClick={this.handleClick}>
         <Link {...rest}>
+          {prefix && <span className={classNames(`${classPrefix}-prefix`)}>{prefix}</span>}
           { children }
+          {suffix && <span className={classNames(`${classPrefix}-suffix`)}>{suffix}</span>}
         </Link>
       </Anchor>
     );
