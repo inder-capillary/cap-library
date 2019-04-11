@@ -27,4 +27,9 @@ $accordian: cap-steps-accordian-v2;
   &.ant-collapse-borderless > .ant-collapse-item {
     border-bottom: 1px solid $CAP_G07;
   }
+  &.single-item {
+    .ant-collapse-item {
+      border-bottom: none;
+    }
+  }
 }

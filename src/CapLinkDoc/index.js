@@ -22,8 +22,8 @@ const infoData = [
 ];
 
 export default class CapLinkDoc extends Component { // eslint-disable-line react/prefer-stateless-function
-   handleClick = (e, link) => {
-     console.log(link);
+   handleClick = () => {
+
    };
 
    render() {

@@ -16,14 +16,22 @@ export default class CapTable extends React.Component { // eslint-disable-line r
   }
 
   componentDidMount() {
-    if (this.props.infinteScroll) {
+    // eslint-disable-next-line camelcase
+    const { infinteScroll, dataSource, offset_limit } = this.props;
+    // eslint-disable-next-line camelcase
+    const limit = offset_limit && (offset_limit.limit || 10);
+    if (infinteScroll && dataSource && dataSource.length >= limit) {
       this.addScrollEventListener();
       this.callSetPaginationIfNotOverflow();
     }
   }
 
   componentDidUpdate() {
-    if (!this.setPaginationCalled && this.props.infinteScroll) {
+    // eslint-disable-next-line camelcase
+    const { infinteScroll, dataSource, offset_limit } = this.props;
+    // eslint-disable-next-line camelcase
+    const limit = offset_limit && (offset_limit.limit || 10);
+    if (!this.setPaginationCalled && infinteScroll && dataSource && dataSource.length >= limit) {
       this.callSetPaginationIfNotOverflow();
     }
   }
