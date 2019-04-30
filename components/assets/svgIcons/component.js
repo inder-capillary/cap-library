@@ -79,6 +79,7 @@ const getSvgComponentFromType = (type) => {
     case 'send': return SvgIcons.Send
     case 'sort': return SvgIcons.Sort
     case 'eye': return SvgIcons.Eye
+    case 'sms': return SvgIcons.Sms
     default: return null;
   }
 };

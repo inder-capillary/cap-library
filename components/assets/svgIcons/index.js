@@ -74,3 +74,4 @@ export { default as MessageFilled } from './Icons/MessageFilled';
 export { default as Send } from './Icons/Send';
 export { default as Sort } from './Icons/Sort';
 export { default as Eye } from './Icons/Eye';
+export { default as Sms } from './Icons/Sms';
