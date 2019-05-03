@@ -25,6 +25,12 @@ const StyledTextArea = styled(AntTextArea)`
 class TextArea extends Component {
     state = { charLimitExeeded: false }
 
+    componentDidMount() {
+      if (this.input && this.props.setInputRef) {
+        this.props.setInputRef(this.input);
+      }
+    }
+
     onKeyDown = () => {
       const { value, maxLength } = this.props;
       const { charLimitExeeded } = this.state;
@@ -44,7 +50,7 @@ class TextArea extends Component {
     }
 
     render() {
-      const { alwaysShowFocus, maxLength, ...rest } = this.props;
+      const { alwaysShowFocus, maxLength, setInputRef, ...rest } = this.props;
       const { charLimitExeeded } = this.state;
       const charLength = rest.value.length;
       return (
