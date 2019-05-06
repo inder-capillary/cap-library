@@ -10,4 +10,7 @@ $cap-checkbox: cap-checkbox-v2;
   .title.has-suffix {
     margin-right: 8px;
   }
+  .ant-checkbox-wrapper-disabled {
+    opacity: 0.5;
+  }
 }
