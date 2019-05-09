@@ -19,6 +19,9 @@ export default class CapCustomCardList extends React.Component {
                 return (
                   <Col span={8} className={classNames(`${clsPrefix}-col`)}>
                     <CapCustomCard key={key} type={type} {...data} />
+                    {
+                      data.dataBelowCard && data.dataBelowCard
+                    }
                   </Col>
                 );
               })

@@ -20,9 +20,11 @@ export default class CapTable extends React.Component { // eslint-disable-line r
     const { infinteScroll, dataSource, offset_limit } = this.props;
     // eslint-disable-next-line camelcase
     const limit = offset_limit && (offset_limit.limit || 10);
-    if (infinteScroll && dataSource && dataSource.length >= limit) {
+    if (infinteScroll) {
       this.addScrollEventListener();
-      this.callSetPaginationIfNotOverflow();
+      if (dataSource && dataSource.length >= limit) {
+        this.callSetPaginationIfNotOverflow();
+      }
     }
   }
 

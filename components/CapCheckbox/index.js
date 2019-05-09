@@ -12,6 +12,7 @@ import CapHeading from '../CapHeading';
 const classNames = require('classnames');
 
 const { CapHeadingSpan } = CapHeading;
+const { Group: CheckboxGroup } = Checkbox;
 
 const clsPrefix = "cap-checkbox-v2";
 class CapCheckbox extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -38,5 +39,7 @@ CapCheckbox.propTypes = {
   className: PropTypes.string,
   errorMessage: PropTypes.string,
 };
+
+CapCheckbox.Group = CheckboxGroup;
 
 export default CapCheckbox;
