@@ -34,7 +34,8 @@ class TextArea extends Component {
     onKeyDown = () => {
       const { value, maxLength } = this.props;
       const { charLimitExeeded } = this.state;
-      if (maxLength && value.length === maxLength) {
+      const valueLength = value ? value.length : 0;
+      if (maxLength && valueLength === maxLength) {
         this.setState({ charLimitExeeded: true });
       } else if (charLimitExeeded) {
         this.setState({ charLimitExeeded: false });
@@ -44,7 +45,8 @@ class TextArea extends Component {
     onKeyUp = () => {
       const { value, maxLength } = this.props;
       const { charLimitExeeded } = this.state;
-      if (charLimitExeeded && value.length < maxLength) {
+      const valueLength = value ? value.length : 0;
+      if (charLimitExeeded && valueLength < maxLength) {
         this.setState({ charLimitExeeded: false });
       }
     }
@@ -52,7 +54,8 @@ class TextArea extends Component {
     render() {
       const { alwaysShowFocus, maxLength, setInputRef, ...rest } = this.props;
       const { charLimitExeeded } = this.state;
-      const charLength = rest.value.length;
+      const valueLength = rest.value ? rest.value.length : 0;
+      const charLength = valueLength;
       return (
         <div style={{ position: 'relative' }}>
           <StyledTextArea
