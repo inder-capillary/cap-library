@@ -1,6 +1,9 @@
 @import "../styles/_variables.scss";
 
 .cap-icon-v2 {
+  &.disabled {
+    cursor: not-allowed;
+  }
 }
 
 .cap-icon-container {
