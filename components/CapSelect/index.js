@@ -11,6 +11,7 @@ import { Select } from 'antd';
 import CapCustomSelect from '../CapCustomSelect';
 import CapIcon from '../CapIcon';
 import './_capSelect.scss';
+import _ from 'lodash';
 
 
 const clsPrefix = 'cap-select-v2';
