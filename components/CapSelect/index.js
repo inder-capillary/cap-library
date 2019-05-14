@@ -11,7 +11,7 @@ import { Select } from 'antd';
 import CapCustomSelect from '../CapCustomSelect';
 import CapIcon from '../CapIcon';
 import './_capSelect.scss';
-import _ from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 
 
 const clsPrefix = 'cap-select-v2';
@@ -22,7 +22,7 @@ function CapSelect(props) {
   const items = options.map((op) => <Option {...op}>{op.label}</Option>);
   return (
     <div>
-      {!_.isEmpty(props.label) && <h4>{props.label}</h4>}
+      {isEmpty(props.label) && <h4>{props.label}</h4>}
       <Select
         removeIcon={<CapIcon type="close" size="s" />}
         suffixIcon={<CapIcon type="chevron-down" />}
@@ -32,7 +32,7 @@ function CapSelect(props) {
         className={classNames(clsPrefix, className)}>
         {items}
       </Select>
-      {!_.isEmpty(props.errorMessage) && <span className="capSelect-error-message">{props.errorMessage}</span>}
+      {isEmpty(props.errorMessage) && <span className="capSelect-error-message">{props.errorMessage}</span>}
     </div>
   );
 }
