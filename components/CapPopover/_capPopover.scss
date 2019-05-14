@@ -4,4 +4,7 @@ $popover: cap-popover-v2;
 
 .ant-popover.#{$popover} {
     max-width: 324px;
+    .ant-tree li .ant-tree-node-content-wrapper:hover {
+        background-color: $BG_01;
+    }
 }
