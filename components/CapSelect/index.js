@@ -21,7 +21,7 @@ function CapSelect(props) {
   const items = options.map((op) => <Option {...op}>{op.label}</Option>);
   return (
     <div>
-      {props.label && <h4>{props.label}</h4>}
+      {!_.isEmpty(props.label) && <h4>{props.label}</h4>}
       <Select
         removeIcon={<CapIcon type="close" size="s" />}
         suffixIcon={<CapIcon type="chevron-down" />}
@@ -31,7 +31,7 @@ function CapSelect(props) {
         className={classNames(clsPrefix, className)}>
         {items}
       </Select>
-      {props.errorMessage && <span className="capSelect-error-message">{props.errorMessage}</span>}
+      {!_.isEmpty(props.errorMessage) && <span className="capSelect-error-message">{props.errorMessage}</span>}
     </div>
   );
 }
