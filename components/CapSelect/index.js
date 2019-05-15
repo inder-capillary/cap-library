@@ -22,7 +22,7 @@ function CapSelect(props) {
   const items = options.map((op) => <Option {...op}>{op.label}</Option>);
   return (
     <div>
-      {!isEmpty(props.label) && <h4>{props.label}</h4>}
+      {!isEmpty(props.label) && <h4 className='capSelect-label'>{props.label}</h4>}
       <Select
         removeIcon={<CapIcon type="close" size="s" />}
         suffixIcon={<CapIcon type="chevron-down" />}
