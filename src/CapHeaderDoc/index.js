@@ -48,6 +48,14 @@ const infoData = [
     default: "-",
     required: "-",
   },
+  {
+    key: 6,
+    property: 'suffix',
+    description: "A react node to show after title.",
+    type: "react node",
+    default: "-",
+    required: "-",
+  },
 ];
 
 const Flex = styled.div`

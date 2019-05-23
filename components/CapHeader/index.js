@@ -97,6 +97,9 @@ function CapHeader(props) {
         {getTitleComponent()}
         {(description || withHiddenDescription) && titleDesc()}
       </div>
+      {
+        props.suffix
+      }
     </Flex>
   );
 }
@@ -111,6 +114,7 @@ CapHeader.propTypes = {
   description: propTypes.oneOfType([propTypes.string, propTypes.node]),
   inline: propTypes.bool,
   prefix: propTypes.node,
+  suffix: propTypes.node,
   size: propTypes.string,
   withHiddenDescription: propTypes.bool,
   className: propTypes.string,
