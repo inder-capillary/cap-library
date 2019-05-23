@@ -75,3 +75,6 @@ export { default as Send } from './Icons/Send';
 export { default as Sort } from './Icons/Sort';
 export { default as Eye } from './Icons/Eye';
 export { default as Sms } from './Icons/Sms';
+export { default as Call } from './Icons/Call';
+export { default as Groups } from './Icons/Groups';
+

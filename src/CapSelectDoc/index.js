@@ -75,6 +75,23 @@ const infoData = [
   },
 ];
 
+const infoDataCapSelect = [
+  {
+    key: 1,
+    property: "label",
+    description: "Label of the select component.",
+    type: "String",
+    default: "-",
+  },
+  {
+    key: 2,
+    property: "errorMessage",
+    description: "Error Message",
+    type: "string",
+    default: "-",
+  },
+];
+
 const orgsList = [
   { label: 'Purples', value: 'purples' },
   { label: 'Buckle', value: 'buckle' },
@@ -123,6 +140,8 @@ function CapSelectDoc() {
             style={{ width: 200 }}
             placeholder="Select a person"
             defaultValue="option4"
+            label="Title of select"
+            errorMessage="Custom Error Message"
           />
           <CapSelect
             mode="tags"
@@ -174,6 +193,7 @@ function CapSelectDoc() {
         </div>
       </div>
       <PropertyTable data={infoData} title="CapSelect.CapCustomSelect Component Properties" />
+      <PropertyTable data={infoDataCapSelect} title="CapSelect Component Properties" />
     </div>
   );
 }

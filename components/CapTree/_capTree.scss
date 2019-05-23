@@ -1,1 +1,9 @@
 @import '../styles/_variables.scss';
+
+$tree: cap-tree-v2;
+
+.ant-tree.#{$tree} {
+    li .ant-tree-node-content-wrapper:hover {
+        background-color: $BG_01;
+    }
+}

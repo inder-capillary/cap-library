@@ -11,6 +11,7 @@ import { Select } from 'antd';
 import CapCustomSelect from '../CapCustomSelect';
 import CapIcon from '../CapIcon';
 import './_capSelect.scss';
+import isEmpty from 'lodash/isEmpty';
 
 
 const clsPrefix = 'cap-select-v2';
@@ -20,15 +21,19 @@ function CapSelect(props) {
   const { className, dropdownClassName, options, ...rest } = props;
   const items = options.map((op) => <Option {...op}>{op.label}</Option>);
   return (
-    <Select
-      removeIcon={<CapIcon type="close" size="s" />}
-      suffixIcon={<CapIcon type="chevron-down" />}
-      menuItemSelectedIcon={<CapIcon type="tick" />}
-      dropdownClassName={classNames(`${clsPrefix}-dropdown`, dropdownClassName)}
-      {...rest}
-      className={classNames(clsPrefix, className)}>
-      {items}
-    </Select>
+    <div>
+      {!isEmpty(props.label) && <h4 className='capSelect-label'>{props.label}</h4>}
+      <Select
+        removeIcon={<CapIcon type="close" size="s" />}
+        suffixIcon={<CapIcon type="chevron-down" />}
+        menuItemSelectedIcon={<CapIcon type="tick" />}
+        dropdownClassName={classNames(`${clsPrefix}-dropdown`, dropdownClassName)}
+        {...rest}
+        className={classNames(clsPrefix, className)}>
+        {items}
+      </Select>
+      {!isEmpty(props.errorMessage) && <span className="capSelect-error-message">{props.errorMessage}</span>}
+    </div>
   );
 }
 
