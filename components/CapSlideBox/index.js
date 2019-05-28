@@ -61,7 +61,7 @@ export default class CapSlideBox extends Component {
               {<CapIcon onClick={handleClose} type="close" className={classNames(`${clsPrefix}-close-icon`)} />}
             </div>
             <div onScroll={this.throttleScroll} className={classNames('slidebox-content-container', { 'has-footer': footer })} ref={(node) => { this.slideBoxContainer = node; }}>
-              <div ref={(node) => { this.slideBoxContent = node; }}>
+              <div ref={(node) => { this.slideBoxContent = node; }} style={{ height: '100%' }}>
                 {content}
               </div>
             </div>
