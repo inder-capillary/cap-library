@@ -18,9 +18,9 @@ class CapLink extends React.Component { // eslint-disable-line react/prefer-stat
   }
 
   render() {
-    const {className, children, suffix, prefix, ...rest} = this.props;
+    const {className, children, suffix, prefix, style, ...rest} = this.props;
     return (
-      <Anchor affix={false} className={classNames(`${classPrefix}`, className)} onClick={this.handleClick}>
+      <Anchor affix={false} style={style} className={classNames(`${classPrefix}`, className)} onClick={this.handleClick}>
         <Link {...rest}>
           {prefix && <span className={classNames(`${classPrefix}-prefix`)}>{prefix}</span>}
           { children }
