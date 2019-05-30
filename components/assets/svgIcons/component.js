@@ -81,6 +81,7 @@ const getSvgComponentFromType = (type) => {
     case 'eye': return SvgIcons.Eye
     case 'sms': return SvgIcons.Sms
     case 'call': return SvgIcons.Call
+    case 'groups': return SvgIcons.Groups
     default: return null;
   }
 };
