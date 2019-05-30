@@ -93,7 +93,7 @@ class CapCustomCard extends React.Component {
           const contentPreview = this.getMpushContent(content);
           const previewMpush = [
             <div className="app-name">
-              <CapHeader size="small" title={<span style={{marginLeft: '4px'}}>App name</span>} prefix={<img src="./favicon.ico"/>} />
+              <CapHeader size="small" title={<span style={{marginLeft: '4px'}}>App name</span>} prefix={<img src="./favicon.ico" alt="" />} />
             </div>,
             <Meta description={contentPreview.content} avatar={<Avatar icon="user" />} />,
           ];
