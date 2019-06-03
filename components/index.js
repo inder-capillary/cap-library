@@ -57,4 +57,5 @@ export { default as CapDivider } from './CapDivider';
 export { default as CapLabel } from './CapLabel';
 export { default as CapTimePicker } from './CapTimePicker';
 export { default as CapError } from './CapError';
+export { default as CapSecondaryTopBar } from './CapSecondaryTopBar';
 //export components
