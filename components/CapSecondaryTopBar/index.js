@@ -18,7 +18,7 @@ import CapDivider from '../CapDivider';
 import './_capSecondaryTopBar.scss';
 // import styled from 'styled-components';
 
-const clsPrefix = 'cap-secondary';
+const clsPrefix = 'cap-secondary-topbar';
 
 const MenuHeading = styled(CapHeading)`
   display: inline-block;
