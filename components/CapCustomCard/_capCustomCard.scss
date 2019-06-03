@@ -81,6 +81,63 @@ $cap-custom-card: cap-custom-card;
     -webkit-box-orient: vertical;
   }
 }
+.ant-card.#{$cap-custom-card}.MOBILEPUSH {
+  .ant-card-body {
+    padding-bottom: 0;
+    padding-top: $CAP_SPACE_04;
+    padding-left: $CAP_SPACE_16;
+    padding-right: $CAP_SPACE_16;
+    background-color: $CAP_G09;
+    height: 336px;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    .app-name{
+      font-size: $FONT_SIZE_S;
+      padding-left: $CAP_SPACE_12;
+      padding-top: $CAP_SPACE_04;
+      background-color: $CAP_WHITE;
+      margin-top: $CAP_SPACE_16;
+
+
+    }
+    .ant-card-meta {
+      background-color: $CAP_WHITE;
+      padding: $CAP_SPACE_12;
+      border-radius: 6px;
+
+    }
+    .ios-action-buttons{
+      margin-top: $CAP_SPACE_24;
+      .ios-action-label{
+        width: 100%;
+        height: $CAP_SPACE_40;
+        line-height: $CAP_SPACE_24;
+        background-color: $CAP_WHITE;
+        padding-top: $CAP_SPACE_12;
+        text-align: center;
+        &:first-child{
+          border-top-left-radius: 6px;
+          border-top-right-radius: 6px;
+          border-bottom: 1px solid $CAP_G07;
+        }
+        &:last-child{
+          border-bottom-left-radius: 6px;
+          border-bottom-right-radius: 6px;
+        }
+        
+        
+      }
+    }
+  }
+
+  .ant-card-body {
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+  }
+}
 
 .ant-card.#{$cap-custom-card}.Email {
   .ant-card-body {
