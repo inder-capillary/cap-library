@@ -394,6 +394,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <Text>call</Text>
             </List>
             <List>
+              <CapIcon type="groups" />
+              <Text>groups</Text>
+            </List>
+            <List>
               <CapIcon type="clock" />
               <Text>clock</Text>
             </List>

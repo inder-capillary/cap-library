@@ -1,0 +1,60 @@
+@import '../styles/_variables.scss';
+
+$clsPrefix: cap-secondary-topbar;
+
+.menu-basics {
+    display: flex;
+    line-height: unset;
+    align-items: center;
+    height: 64px;
+}
+.ant-static-style {
+    color: inherit;
+    border-bottom: 0;
+}
+.#{$clsPrefix}-header {
+    @extend .menu-basics;
+    border-bottom: 1px solid $CAP_G07;
+    .actions-menu {   
+        @extend .menu-basics;
+        margin-left: auto;
+        cursor: pointer;
+        .ant-menu-item {
+            padding: 0;
+            &:nth-last-child(2) {
+                padding-right: $CAP_SPACE_20;
+            }
+        }
+    }
+    .apps-icon{
+        vertical-align: baseline;
+    }
+    .primary-menu{
+        width:240px;
+        padding-left: $CAP_SPACE_24;
+    }
+    .secondary-menu{
+        width:160px;
+    }
+    .ant-menu-item {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .vertical-divider{
+        height: 100%;
+        margin: 0;
+        background: $CAP_G07;
+    }
+    &.ant-menu-horizontal, .ant-menu-horizontal {
+        > .ant-menu-item {
+            border-bottom: 0;
+            &:hover {
+                @extend .ant-static-style
+            }
+        }
+        > .ant-menu-item-active {
+            @extend .ant-static-style
+        }
+    }
+}
