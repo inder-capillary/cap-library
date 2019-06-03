@@ -36,7 +36,7 @@ class CapRadioCard extends React.Component { // eslint-disable-line react/prefer
                       </div>
                     </div>
                   )}
-                  <div>
+                  <div className="radio-card-content-container">
                     <div className="radio-card-header"><CapHeading type="h4">{title}</CapHeading></div>
                     <div className="radio-card-content">
                       {' '}
@@ -58,7 +58,10 @@ CapRadioCard.propTypes = {
   className: PropTypes.string,
   onChange: PropTypes.func,
   selected: PropTypes.any,
-  cardHeight: PropTypes.number,
+  cardHeight: PropTypes.oneOf([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
 };
 
 export default CapRadioCard;

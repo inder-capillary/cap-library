@@ -32,6 +32,11 @@ export default class CapCarousel extends React.Component {
 
   beforeChange = (from, to) => {
     this.setState({ currentIndex: to });
+
+    const { beforeChange } = this.props;
+    if (beforeChange) {
+      beforeChange({ currentIndex: to });
+    }
   }
 
   render() {
@@ -49,12 +54,14 @@ export default class CapCarousel extends React.Component {
       carouselProps.beforeChange = this.beforeChange;
     }
 
+    const heading = (data[currentIndex] || {}).name;
+
     return (
       <div style={{ width: width || "100%" }} className={classNames(`${clsPrefix}-wrapper`, wrapperClassName)}>
         {showTopSwitcher && !(leftDisabled && rightDisabled) && (
           <div className="switcher-icons">
             <CapIcon type="chevron-left" disabled={leftDisabled} onClick={!leftDisabled ? this.previous : null} />
-            <div className="heading">{data[currentIndex].name}</div>
+            <div className="heading">{heading}</div>
             <CapIcon type="chevron-right" disabled={rightDisabled} onClick={!rightDisabled ? this.next : null} />
           </div>
         )}
@@ -77,4 +84,5 @@ CapCarousel.propTypes = {
   showTopSwitcher: PropTypes.bool,
   dots: PropTypes.bool,
   data: PropTypes.array.isRequired,
+  beforeChange: PropTypes.func,
 };

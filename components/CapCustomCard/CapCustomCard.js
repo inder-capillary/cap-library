@@ -89,11 +89,11 @@ class CapCustomCard extends React.Component {
           return <Meta description={content} />;
         case channels.email:
           return <Meta description={<img width={width || 244} height={height || 279} src={url} alt={url} />} />;
-        case channels.mpush:
+        case channels.mpush: {
           const contentPreview = this.getMpushContent(content);
           const previewMpush = [
             <div className="app-name">
-              <CapHeader size="small" title={<span style={{marginLeft: '4px'}}>App name</span>} prefix={<img src="./favicon.ico" />} />
+              <CapHeader size="small" title={<span style={{marginLeft: '4px'}}>App name</span>} prefix={<img src="./favicon.ico" alt="" />} />
             </div>,
             <Meta description={contentPreview.content} avatar={<Avatar icon="user" />} />,
           ];
@@ -101,6 +101,7 @@ class CapCustomCard extends React.Component {
             previewMpush.push(contentPreview.iosButtons);
           }
           return previewMpush;
+        }
         default:
           return null;
       }

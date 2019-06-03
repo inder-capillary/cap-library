@@ -12,19 +12,31 @@ const labels = {
     'color': '#5e6c84',
     'font-size': '12px',
     'font-weight': 'normal',
-    'line-height': '20px',
+    'line-height': '18px',
   },
   label2: {
     'color': '#091e42',
     'font-size': '12px',
     'font-weight': 'normal',
-    'line-height': '20px',
+    'line-height': '18px',
   },
   label3: {
     'color': '#97a0af',
     'font-size': '12px',
     'font-weight': 'normal',
-    'line-height': '20px',
+    'line-height': '18px',
+  },
+  label4: {
+    'color': '#091e42',
+    'font-size': '12px',
+    'font-weight': '500',
+    'line-height': '18px',
+  },
+  label5: {
+    'color': '#091e42',
+    'font-size': '10px',
+    'font-weight': 'normal',
+    'line-height': '18px',
   },
 };
 
