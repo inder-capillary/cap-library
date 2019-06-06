@@ -16,11 +16,11 @@ const CapComponentStyled = styled.div`
         font-size: 14px;
       }
       &.ant-input:hover {
-        border-color: ${(props) => props.errorMessage ?  styledVars.CAP_RED : styledVars.CAP_G11};
+        border-color: ${(props) => props.errorMessage ? styledVars.CAP_RED : styledVars.CAP_G11};
         box-shadow: none;
       }
       &.ant-input:focus {
-        border-color: ${(props) => props.errorMessage ?  styledVars.CAP_RED : styledVars.CAP_G01};
+        border-color: ${(props) => props.errorMessage ? styledVars.CAP_RED : styledVars.CAP_G01};
         box-shadow: none;
       }
       &:not(.ant-calendar-range-picker-input) {
@@ -70,6 +70,7 @@ const StyledSpan = styled.span`
     margin-top: 10px;
     margin-left: ${(props) => props.labelPosition === 'left' && '140px'};
     display: block;
+    line-height: normal;
   }
 `;
 
