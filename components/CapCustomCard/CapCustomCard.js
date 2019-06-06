@@ -48,21 +48,17 @@ class CapCustomCard extends React.Component {
       }
       const preview = {};
       preview.content = (
-      <>
-
-        <CapHeader size="small" title={title} description={description} />
-        {hasImage && <img src={image} alt="mpush" />}
-        {!isEmpty(androidData)
-         && (
-           <div style={{marginTop: '8px'}}>
-             {actionText1 && <CapLink title={actionText1} style={{display: 'inline-block'}} />}
-             {actionText2 && <CapLink title={actionText2} style={{display: 'inline-block', marginLeft: '24px'}} />}
-           </div>
-         )
-
-        }
-
-      </>
+        <div>
+          <CapHeader size="small" title={title} description={description} />
+          {hasImage && <img src={image} alt="mpush" />}
+          {!isEmpty(androidData)
+          && (
+            <div style={{marginTop: '8px'}}>
+              {actionText1 && <CapLink title={actionText1} style={{display: 'inline-block'}} />}
+              {actionText2 && <CapLink title={actionText2} style={{display: 'inline-block', marginLeft: '24px'}} />}
+            </div>
+          )}
+        </div>
       );
       if (isEmpty(androidData)) {
         preview.iosButtons = (
