@@ -48,6 +48,7 @@ import CapDividerDoc from '../src/CapDividerDoc';
 import CapLabelDoc from '../src/CapLabelDoc';
 import CapTimePickerDoc from '../src/CapTimePickerDoc';
 import CapErrorDoc from '../src/CapErrorDoc';
+import CapSecondaryTopBarDoc from '../src/CapSecondaryTopBarDoc';
 //imported for docs
 
 class ComponentSwitcher extends Component {
@@ -148,9 +149,9 @@ class ComponentSwitcher extends Component {
         return <CapTimePickerDoc />;
       case 'capError':
         return <CapErrorDoc />;
+      case 'capSecondaryTopBar':
+        return <CapSecondaryTopBarDoc />;
         //components for docs
-
-
       default:
         return null;
     }

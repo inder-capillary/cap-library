@@ -8,10 +8,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Select } from 'antd';
+import isEmpty from 'lodash/isEmpty';
 import CapCustomSelect from '../CapCustomSelect';
 import CapIcon from '../CapIcon';
 import './_capSelect.scss';
-import isEmpty from 'lodash/isEmpty';
 
 
 const clsPrefix = 'cap-select-v2';
@@ -22,7 +22,7 @@ function CapSelect(props) {
   const items = options.map((op) => <Option {...op}>{op.label}</Option>);
   return (
     <div>
-      {!isEmpty(props.label) && <h4 className='capSelect-label'>{props.label}</h4>}
+      {!isEmpty(props.label) && <h4 className="cap-select-label">{props.label}</h4>}
       <Select
         removeIcon={<CapIcon type="close" size="s" />}
         suffixIcon={<CapIcon type="chevron-down" />}
