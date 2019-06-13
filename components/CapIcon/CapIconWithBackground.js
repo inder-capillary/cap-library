@@ -1,15 +1,11 @@
-import React from 'react';
-import classNames from 'classnames';
+import styled from 'styled-components';
+import { CAP_G07 } from '../styled/variables';
 
-function CapIconWithBackground(props) {
-  const { icon, className, ...rest } = props;
-  return (
-    <div {...rest} className={classNames('cap-icon-container', className)}>
-      <div className="div-icon">
-        {icon}
-      </div>
-    </div>
-  );
-}
+const CapIconWithBackground = styled.div`
+  background-color: ${CAP_G07};
+  border-radius: 18px;
+  padding: ${(props) => props.padding || '12px'};
+  display: inline-block;
+`;
 
 export default CapIconWithBackground;
