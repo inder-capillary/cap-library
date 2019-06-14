@@ -6,14 +6,6 @@ $table: cap-table-v2;
   .ant-table {
     border: 1px solid $CAP_G07;
 
-    .ant-table-header {
-      overflow: auto;
-      margin-bottom: -20px !important;
-      padding-bottom: 20px !important;
-    }
-    .ant-table-body {
-      overflow: auto !important;
-    }
     .ant-table-thead > tr > th {
       color: $FONT_COLOR_01;
       font-size: $FONT_SIZE_S;
@@ -48,14 +40,14 @@ $table: cap-table-v2;
     }
     .ant-table-thead {
       .table-children {
-        padding: 0px 16px 16px;
+        padding: 6px 16px 16px;
         position: relative;
       }
       .table-parent {
         padding-bottom: 0;
         padding-left: 16px;
       }
-      .table-children:not(:last-child)::after {
+      .table-children.show-separator:not(:last-child)::after {
         content: "";
         height: 8px;
         width: 1px;
