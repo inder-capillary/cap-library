@@ -7,7 +7,7 @@
 import React from 'react';
 import { Alert } from 'antd';
 import classNames from 'classnames';
-
+import './_capAlert.scss';
 const clsPrefix = 'cap-alert-v2';
 
 const CapAlert = (props) => {
