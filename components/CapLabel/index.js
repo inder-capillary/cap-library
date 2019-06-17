@@ -39,10 +39,10 @@ const labels = {
     'line-height': 'normal',
   },
   label6: {
-    'color': '#b3bac5',
+    'color': '#091e42',
     'font-size': '12px',
     'font-weight': 'normal',
-    'line-height': 'normal',
+    'line-height': '14px',
   },
   label7: {
     'color': '#97a0af',
@@ -55,6 +55,12 @@ const labels = {
     'font-size': '12px',
     'font-weight': 'normal',
     'line-height': '14px',
+  },
+  label9: {
+    'color': '#b3bac5',
+    'font-size': '12px',
+    'font-weight': 'normal',
+    'line-height': 'normal',
   },
 };
 
