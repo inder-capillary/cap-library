@@ -16,4 +16,16 @@ $cap-checkbox: cap-checkbox-v2;
   .ant-checkbox-wrapper-disabled {
     opacity: 0.5;
   }
+  .ant-checkbox-inner {
+    margin: $CAP_SPACE_04;
+    width: $CAP_SPACE_20;
+    height: $CAP_SPACE_20;
+    border: 2px solid $FONT_COLOR_04;
+  }
+  .ant-checkbox-checked {
+    .ant-checkbox-inner::after {
+      left: 23%;
+    }
+  }
+  
 }
