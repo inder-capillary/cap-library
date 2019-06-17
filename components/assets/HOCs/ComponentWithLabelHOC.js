@@ -76,6 +76,7 @@ const StyledSpan = styled.span`
 const InductiveText = styled.span`
   display: block;
   font-size: ${styledVars.FONT_SIZE_S};
+  line-height: ${styledVars.FONT_SIZE_M};
   color: ${styledVars.CAP_G05};
   margin-bottom: 8px;
 `;

@@ -38,6 +38,24 @@ const labels = {
     'font-weight': 'normal',
     'line-height': '18px',
   },
+  label6: {
+    'color': '#091e42',
+    'font-size': '12px',
+    'font-weight': 'normal',
+    'line-height': '14px',
+  },
+  label7: {
+    'color': '#97a0af',
+    'font-size': '12px',
+    'font-weight': 'normal',
+    'line-height': '14px',
+  },
+  label8: {
+    'color': '#5e6c84',
+    'font-size': '12px',
+    'font-weight': 'normal',
+    'line-height': '14px',
+  },
 };
 
 const CapLabel = styled.div`
