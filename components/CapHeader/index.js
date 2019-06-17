@@ -50,6 +50,18 @@ function CapHeader(props) {
             {description}
           </CapLabelwithDirection>
         );
+      case "label6":
+        return (
+          <CapLabelwithDirection style={{ marginLeft }} type="label6" className={descriptionClassName}>
+            {description}
+          </CapLabelwithDirection>
+        );
+      case "label7":
+        return (
+          <CapLabelwithDirection style={{ marginLeft }} type="label7" className={descriptionClassName}>
+            {description}
+          </CapLabelwithDirection>
+        );
       default:
         return (
           <CapHeadingwithDirection style={{ marginLeft }} type="h6" className={descriptionClassName}>
@@ -74,6 +86,7 @@ function CapHeader(props) {
           </CapLabelwithDirection>
         );
       case "label":
+      case "label7":
         return (
           <CapHeadingwithDirection type={description ? 'h3' : 'h4'} className={titleClassName}>
             {title}

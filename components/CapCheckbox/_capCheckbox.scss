@@ -3,8 +3,11 @@
 $cap-checkbox: cap-checkbox-v2;
 
 .#{$cap-checkbox} {
+  .title {
+    padding-left: $CAP_SPACE_04;
+  }
   .inductive-text {
-    padding-left: $CAP_SPACE_24;
+    padding-left: $CAP_SPACE_28;
     padding-top: $CAP_SPACE_04;
   }
   .title.has-suffix {
