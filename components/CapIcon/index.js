@@ -1,9 +1,3 @@
-/**
-*
-* CapIcon
-*
-*/
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'antd';
@@ -31,7 +25,7 @@ const getFontSizeFromProps = (size) => {
 };
 
 const AntIcon = styled(Icon)`
-  font-size: ${(props) => getFontSizeFromProps(props.size)}
+  font-size: ${(props) => getFontSizeFromProps(props.size)};
 `;
 
 function CapIcon(props) {
@@ -48,7 +42,9 @@ function CapIcon(props) {
   return (
     withBackground
       ? (
-        <CapIconWithBackground {...backgroundProps} icon={BaseIcon} />
+        <CapIconWithBackground className="cap-icon-background" {...backgroundProps}>
+          {BaseIcon}
+        </CapIconWithBackground>
       )
       : BaseIcon
   );
