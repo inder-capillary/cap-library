@@ -106,7 +106,7 @@ function CapHeader(props) {
       {
         props.prefix
       }
-      <div>
+      <div className="title-desc-container">
         {getTitleComponent()}
         {(description || withHiddenDescription) && titleDesc()}
       </div>

@@ -40,4 +40,12 @@ CapError.defaultProps = {
   type: 'error',
 };
 
+CapErrorInline.propTypes = {
+  type: PropTypes.string,
+};
+
+CapErrorInline.defaultProps = {
+  type: 'error',
+};
+
 export default CapError;
