@@ -1,1 +1,22 @@
 @import '../styles/_variables.scss';
+.cap-alert-v2{
+    &.ant-alert {
+        border: none;
+        height: $CAP_SPACE_32;
+        font-size: $FONT_SIZE_S;
+        padding-left: $CAP_SPACE_12;
+        padding-right: $CAP_SPACE_12;
+        &.ant-alert-success{
+            background-color: $CAP_COLOR_01;
+        }
+        &.ant-alert-info{
+            background-color: $CAP_COLOR_04;
+        }
+        &.ant-alert-warning{
+            background-color: $CAP_COLOR_02;
+        }
+        &.ant-alert-error{
+            background-color: $CAP_COLOR_05;
+        }
+    }
+}

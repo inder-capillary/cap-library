@@ -12,49 +12,37 @@ const labels = {
     'color': '#5e6c84',
     'font-size': '12px',
     'font-weight': 'normal',
-    'line-height': '18px',
+    'line-height': 'normal',
   },
   label2: {
     'color': '#091e42',
     'font-size': '12px',
     'font-weight': 'normal',
-    'line-height': '18px',
+    'line-height': 'normal',
   },
   label3: {
     'color': '#97a0af',
     'font-size': '12px',
     'font-weight': 'normal',
-    'line-height': '18px',
+    'line-height': 'normal',
   },
   label4: {
     'color': '#091e42',
     'font-size': '12px',
     'font-weight': '500',
-    'line-height': '18px',
+    'line-height': 'normal',
   },
   label5: {
     'color': '#091e42',
     'font-size': '10px',
     'font-weight': 'normal',
-    'line-height': '18px',
+    'line-height': 'normal',
   },
   label6: {
-    'color': '#091e42',
+    'color': '#b3bac5',
     'font-size': '12px',
     'font-weight': 'normal',
-    'line-height': '14px',
-  },
-  label7: {
-    'color': '#97a0af',
-    'font-size': '12px',
-    'font-weight': 'normal',
-    'line-height': '14px',
-  },
-  label8: {
-    'color': '#5e6c84',
-    'font-size': '12px',
-    'font-weight': 'normal',
-    'line-height': '14px',
+    'line-height': 'normal',
   },
 };
 
@@ -62,14 +50,14 @@ const CapLabel = styled.div`
     font-size: ${[(props) => labels[props.type]["font-size"]]};
     font-weight: ${[(props) => labels[props.type]["font-weight"]]};
     color: ${[(props) => labels[props.type].color]};
-    line-height: ${[(props) => labels[props.type]["line-height"] || 'initial']};
+    line-height: ${[(props) => props.lineHeight || labels[props.type]["line-height"] || 'initial']};
     `;
 
 const CapLabelInline = styled.span`
 font-size: ${[(props) => labels[props.type]["font-size"]]};
 font-weight: ${[(props) => labels[props.type]["font-weight"]]};
 color: ${[(props) => labels[props.type].color]};
-line-height: ${[(props) => labels[props.type]["line-height"] || 'initial']};
+line-height: ${[(props) => props.lineHeight || labels[props.type]["line-height"] || 'initial']};
 `;
 
 CapLabel.propTypes = {

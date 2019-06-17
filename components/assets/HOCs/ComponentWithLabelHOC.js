@@ -70,6 +70,7 @@ const StyledSpan = styled.span`
     margin-top: 10px;
     margin-left: ${(props) => props.labelPosition === 'left' && '140px'};
     display: block;
+    line-height: normal;
   }
 `;
 
