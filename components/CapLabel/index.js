@@ -39,24 +39,6 @@ const labels = {
     'line-height': 'normal',
   },
   label6: {
-    'color': '#091e42',
-    'font-size': '12px',
-    'font-weight': 'normal',
-    'line-height': '14px',
-  },
-  label7: {
-    'color': '#97a0af',
-    'font-size': '12px',
-    'font-weight': 'normal',
-    'line-height': '14px',
-  },
-  label8: {
-    'color': '#5e6c84',
-    'font-size': '12px',
-    'font-weight': 'normal',
-    'line-height': '14px',
-  },
-  label9: {
     'color': '#b3bac5',
     'font-size': '12px',
     'font-weight': 'normal',
