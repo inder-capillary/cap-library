@@ -40,12 +40,12 @@ $table: cap-table-v2;
     }
     .ant-table-thead {
       .table-children {
-        padding: 6px 16px 16px;
+        padding: 6px $CAP_SPACE_24 16px;
         position: relative;
       }
       .table-parent {
         padding-bottom: 0;
-        padding-left: 16px;
+        padding-left: $CAP_SPACE_24;
       }
       .table-children.show-separator:not(:last-child)::after {
         content: "";
