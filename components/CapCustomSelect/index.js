@@ -12,7 +12,6 @@ import findIndex from 'lodash/findIndex';
 import styled from 'styled-components';
 import * as styledVars from "../styled/variables";
 import CapHeading from '../CapHeading';
-
 import CapIcon from '../CapIcon';
 import CapInput from '../CapInput';
 
