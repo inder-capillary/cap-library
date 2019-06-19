@@ -2,21 +2,58 @@
 * CapDateRangePickerDoc
 */
 import React, { Component } from "react";
-import { CapDateRangePicker, CapHeading } from "../../components";
-import CustomDRPicker from "../../components/CapDateRangePicker/customDRPicker";
+import { CapDateRangePicker } from "../../components";
+import PropertyTable from '../../helpers/PropertyTable';
 import "./info.scss";
 
-export default class CapDateRangePickerDoc extends Component { // eslint-disable-line react/prefer-stateless-function
-  onChange = () => {
 
+const infoData = [
+  {
+    key: 1,
+    property: "size",
+    description: "Size of the date range picker",
+    type: "String (large | medium | small)",
+    default: "large",
+  },
+  {
+    key: 2,
+    property: "seperator",
+    description: "Seperator between start and end date",
+    type: "string",
+    default: "~",
+  },
+  {
+    key: 3,
+    property: "placeholder",
+    description: "Placeholder for start and end date",
+    type: "Array",
+    default: "['Start date', 'End date']",
+  },
+  {
+    key: 4,
+    property: "value",
+    description: "value for start and end date",
+    type: "Array ",
+    default: "[moment, monment]",
+  },
+  {
+    key: 5,
+    property: "format",
+    description: "format for the date",
+    type: "String",
+    default: "YYYY-MM-DD",
+  },
+];
+
+export default class CapDateRangePickerDoc extends Component { // eslint-disable-line react/prefer-stateless-function
+  onChange = (date, dateStrings) => {
+    console.log("CapDateRangePickerDoc onchange", date, dateStrings);
   }
 
   render() {
     return (
       <div className="cap-date-range-picker-info">
         <div className="cap-date-range-picker-showcase">
-          <CapHeading type="h5">This component takes all the props that antd rangePicker allows.</CapHeading>
-          <a href="https://ant.design/components/date-picker/#header">https://ant.design/components/date-picker/#header</a>
           <div style={{ marginTop: "24px" }}>
             <CapDateRangePicker onChange={this.onChange} size="large" />
           </div>
@@ -27,10 +64,8 @@ export default class CapDateRangePickerDoc extends Component { // eslint-disable
               inductiveText="Date picker with inductive text"
             />
           </div>
-          <div style={{ marginTop: "24px" }}>
-            <CustomDRPicker />
-          </div>
         </div>
+        <PropertyTable data={infoData} />
       </div>
     );
   }
