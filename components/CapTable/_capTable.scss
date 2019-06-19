@@ -60,6 +60,10 @@ $table: cap-table-v2;
     .ant-table-thead > tr > th .ant-table-column-sorter {
       vertical-align: unset;
     }
+    .ant-table-body table {
+      table-layout: fixed;
+      width: 100%;
+    }
   }
   &.show-loader {
     .ant-table-body tbody::after {
