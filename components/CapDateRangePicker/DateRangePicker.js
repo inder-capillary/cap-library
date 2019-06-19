@@ -26,17 +26,16 @@ class Picker extends React.Component {
   };
 
   onHoverChange = (hoverValue) => {
-    console.log(hoverValue);
     this.setState({ hoverValue });
   }
 
   render() {
-    const { showValue, onChange, disabledDate, value, dateInputPlaceholder, format } = this.props;
+    const { showValue, onChange, disabledDate, value, dateInputPlaceholder, format, type, open, onOpenChange, placeholder, inputClassName } = this.props;
     const calendar = (
       <RangeCalendar
         hoverValue={this.state.hoverValue}
         onHoverChange={this.onHoverChange}
-        type={this.props.type}
+        type={type}
         defaultValue={now}
         format={format}
         onChange={onChange}
@@ -47,8 +46,8 @@ class Picker extends React.Component {
       />);
     return (
       <DatePicker
-        open={this.props.open}
-        onOpenChange={this.props.onOpenChange}
+        open={open}
+        onOpenChange={onOpenChange}
         calendar={calendar}
         value={value}
         prefixCls={`${prefixCls}-picker-container`}
@@ -57,11 +56,11 @@ class Picker extends React.Component {
         {
           () => (
             <input
-              placeholder={this.props.placeholder}
+              placeholder={placeholder}
               readOnly
               // eslint-disable-next-line no-mixed-operators
               value={showValue && showValue.format(format) || ''}
-              className={this.props.inputClassName}
+              className={inputClassName}
             />
           )
         }
@@ -102,21 +101,24 @@ class DateRangePicker extends React.Component {
   }
 
   onStartChange = (value) => {
+    const { onChange } = this.props;
     this.setState({
       startValue: value[0],
+      endValue: undefined,
       startOpen: false,
       endOpen: true,
     });
-    this.props.onChange && this.props.onChange(value, this.getValueStrings(value));
+    onChange && onChange(value, this.getValueStrings(value));
   }
 
   getValueStrings = (value) => value.map((date) => date.format(this.props.format))
 
   onEndChange = (value) => {
+    const { onChange } = this.props;
     this.setState({
       endValue: value[1],
     });
-    this.props.onChange && this.props.onChange(value, this.getValueStrings(value));
+    onChange && onChange(value, this.getValueStrings(value));
   }
 
   disabledStartDate = (endValue) => {
