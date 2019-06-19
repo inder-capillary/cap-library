@@ -3,6 +3,7 @@
 */
 import React, { Component } from "react";
 import { CapDateRangePicker, CapHeading } from "../../components";
+import CustomDRPicker from "../../components/CapDateRangePicker/customDRPicker";
 import "./info.scss";
 
 export default class CapDateRangePickerDoc extends Component { // eslint-disable-line react/prefer-stateless-function
@@ -25,6 +26,9 @@ export default class CapDateRangePickerDoc extends Component { // eslint-disable
               label="Date Picker with label"
               inductiveText="Date picker with inductive text"
             />
+          </div>
+          <div style={{ marginTop: "24px" }}>
+            <CustomDRPicker />
           </div>
         </div>
       </div>
