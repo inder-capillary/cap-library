@@ -2,7 +2,7 @@
 * CapDateRangePickerDoc
 */
 import React, { Component } from "react";
-import { CapDateRangePicker } from "../../components";
+import { CapDateRangePicker, CapHeading } from "../../components";
 import PropertyTable from '../../helpers/PropertyTable';
 import "./info.scss";
 
@@ -53,6 +53,8 @@ export default class CapDateRangePickerDoc extends Component { // eslint-disable
   render() {
     return (
       <div className="cap-date-range-picker-info">
+        <CapHeading type="h5">Please refer the below documentation, for any changes in this Component</CapHeading>
+        <a href="https://github.com/react-component/calendar">https://github.com/react-component/calendar</a>
         <div className="cap-date-range-picker-showcase">
           <div style={{ marginTop: "24px" }}>
             <CapDateRangePicker onChange={this.onChange} size="large" />
