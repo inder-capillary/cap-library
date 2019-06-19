@@ -17,7 +17,7 @@ const infoData = [
   {
     key: 2,
     property: "size",
-    description: "to specify the size of the slide box. value should be one of size-r, size-l",
+    description: "to specify the size of the slide box. value should be one of size-s, size-r, size-l",
     type: "string",
     default: "size-r",
   },
@@ -96,6 +96,10 @@ export default class CapSlideBoxDoc extends Component { // eslint-disable-line r
     this.setState({ showSlideBox1: true });
   }
 
+  showSlideBox2 = () => {
+    this.setState({ showSlideBox2: true });
+  }
+
   closeSlideBox = () => {
     this.setState({ showSlideBox: false });
   }
@@ -104,8 +108,12 @@ export default class CapSlideBoxDoc extends Component { // eslint-disable-line r
     this.setState({ showSlideBox1: false });
   }
 
+  closeSlideBox2 = () => {
+    this.setState({ showSlideBox2: false });
+  }
+
   render() {
-    const { showSlideBox, showSlideBox1 } = this.state;
+    const { showSlideBox, showSlideBox1, showSlideBox2 } = this.state;
     return (
       <div className="cap-slide-box-info">
         <div className="cap-slide-box-showcase">
@@ -135,6 +143,19 @@ export default class CapSlideBoxDoc extends Component { // eslint-disable-line r
                 header="Slide Box Example"
                 content={<div>{content}</div>}
                 handleClose={this.closeSlideBox1} />
+            )}
+          </div>
+          <div style={{ marginTop: '16px' }}>
+            <CapButton onClick={this.showSlideBox2}>Show SlideBox with small size</CapButton>
+            {showSlideBox2 && (
+              <CapSlideBox
+                showShadow
+                show={showSlideBox2}
+                size="size-s"
+                header="Slide Box Example"
+                content={<div>{content}</div>}
+                className="custom-class-name"
+                handleClose={this.closeSlideBox2} />
             )}
           </div>
         </div>

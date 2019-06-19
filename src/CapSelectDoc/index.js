@@ -169,6 +169,8 @@ function CapSelectDoc() {
             <div style={{ marginRight: '20px' }}>
               <div>With Search</div>
               <CapCustomSelect
+                label="label of select"
+                errorMessage="Error Message goes here."
                 width="250px"
                 selectPlaceholder="Select organizations"
                 showSearch

@@ -16,11 +16,11 @@ const CapComponentStyled = styled.div`
         font-size: 14px;
       }
       &.ant-input:hover {
-        border-color: ${(props) => props.errorMessage ?  styledVars.CAP_RED : styledVars.CAP_G11};
+        border-color: ${(props) => props.errorMessage ? styledVars.CAP_RED : styledVars.CAP_G11};
         box-shadow: none;
       }
       &.ant-input:focus {
-        border-color: ${(props) => props.errorMessage ?  styledVars.CAP_RED : styledVars.CAP_G01};
+        border-color: ${(props) => props.errorMessage ? styledVars.CAP_RED : styledVars.CAP_G01};
         box-shadow: none;
       }
       &:not(.ant-calendar-range-picker-input) {
@@ -55,7 +55,7 @@ const Sup = styled.sup`
 const StyledCapHeading = styled(CapHeading)`
   margin-right: ${(props) => props.labelPosition === 'left' ? '12px' : ''};
   display: ${(props) => props.labelPosition === 'top' ? 'block' : 'inline-block'};
-  margin-bottom:  ${(props) => props.labelPosition === 'top' ? '6px' : ''};
+  margin-bottom:  ${(props) => props.labelPosition === 'top' ? '4px' : ''};
   width: ${(props) => props.labelPosition === 'left' ? '128px' : '100%'};
   color: ${(props) => props.disabled && styledVars.CAP_G06};
   &.requied-indicator {
@@ -70,14 +70,16 @@ const StyledSpan = styled.span`
     margin-top: 10px;
     margin-left: ${(props) => props.labelPosition === 'left' && '140px'};
     display: block;
+    line-height: normal;
   }
 `;
 
 const InductiveText = styled.span`
   display: block;
   font-size: ${styledVars.FONT_SIZE_S};
+  line-height: ${styledVars.FONT_SIZE_M};
   color: ${styledVars.CAP_G05};
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 `;
 
 

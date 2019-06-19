@@ -38,6 +38,10 @@ export const CAP_G11 = "#7a869a";
 
 export const CAP_WHITE = "#ffffff";
 
+export const CAP_COLOR_01 = '#dbefda';
+export const CAP_COLOR_02 = '#fee5d3';
+export const CAP_COLOR_03 = '#e83135';
+
 /* Fonts */
 // ==============
 export const FONT_FAMILY = '"Roboto", sans-serif'; //arial

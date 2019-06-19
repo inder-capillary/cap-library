@@ -3,9 +3,11 @@
 $cap-checkbox: cap-checkbox-v2;
 
 .#{$cap-checkbox} {
+  .title {
+    padding-left: $CAP_SPACE_04;
+  }
   .inductive-text {
-    padding-left: $CAP_SPACE_24;
-    padding-top: $CAP_SPACE_04;
+    padding-left: $CAP_SPACE_40;
   }
   .title.has-suffix {
     margin-right: 8px;
@@ -13,4 +15,16 @@ $cap-checkbox: cap-checkbox-v2;
   .ant-checkbox-wrapper-disabled {
     opacity: 0.5;
   }
+  .ant-checkbox-inner {
+    margin: $CAP_SPACE_04;
+    width: $CAP_SPACE_20;
+    height: $CAP_SPACE_20;
+    border: 2px solid $FONT_COLOR_04;
+  }
+  .ant-checkbox-checked {
+    .ant-checkbox-inner::after {
+      left: 23%;
+    }
+  }
+  
 }
