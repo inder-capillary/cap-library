@@ -89,8 +89,8 @@ class CapCustomSelect extends React.Component { // eslint-disable-line react/pre
     return (
       <Popover
         trigger="click"
-        getPopupContainer={(trigger) => trigger.parentNode}
-        placement="bottomLeft"
+        // removing it for testing purpose, if styling issue occurs, uncomment it and check
+        // getPopupContainer={(trigger) => trigger.parentNode}
         overlayClassName={classNames(`${clsPrefix}-popover`, popoverClassName)}
         overlayStyle={{ width: popwidth }}
         visible={visible}
