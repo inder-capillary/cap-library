@@ -129,13 +129,43 @@ const infoData = [
 ];
 
 export default class CapSliderDoc extends Component { // eslint-disable-line react/prefer-stateless-function
+  state = {
+    inputValue: 1,
+  }
+
+  onChange = (value) => {
+    let newVal = value;
+    if (value === 0) {
+      newVal = 1;
+    }
+    this.setState({
+      inputValue: newVal,
+    });
+  }
+
+
   render() {
+    const marks = [
+      0, 1, 2, 3, 4, 5, 6, 7];
     return (
       <div className="cap-slider-info">
         <div className="cap-slider-showcase">
           {/* <div style={{margin: 'auto'}}><CapSlider></CapSlider></div> */}
           <div style={{ marginBottom: '30px', width: '300px' }}><CapSlider type="ratio" defaultValue={40} disabled></CapSlider></div>
           <div style={{ marginBottom: '24px', width: '300px' }}><CapSlider type="ratio" defaultValue={40} disabled={false}>Ratio Slider</CapSlider></div>
+          <div style={{ marginBottom: '24px', width: '300px' }}>
+            <CapSlider
+              defaultValue={1}
+              marks={marks}
+              disabled={false}
+              max={7}
+              min={0}
+              dots={false}
+              onChange={this.onChange}
+              included={false}
+              value={typeof this.state.inputValue === 'number' ? this.state.inputValue : 0}
+            />
+          </div>
         </div>
         <PropertyTable data={infoData} />
       </div>
