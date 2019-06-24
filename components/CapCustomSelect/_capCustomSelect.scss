@@ -35,10 +35,6 @@ $selectPrefix: cap-custom-select;
   }
 }
 
-.selected-value-label-disabled{
-  color: #d0d0d0;
-}
-
 .#{$selectPrefix}-header {
   padding: 0 $FONT_SIZE_M $CAP_SPACE_20 $FONT_SIZE_M;
   font-size: $FONT_SIZE_M;
@@ -95,10 +91,4 @@ $selectPrefix: cap-custom-select;
       }
     }
   }
-}
-
-.disabled {
-  background-color: #f5f5f5;
-  color: #c2c2c2;
-  pointer-events: none;
 }
