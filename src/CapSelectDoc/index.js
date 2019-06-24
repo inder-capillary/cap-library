@@ -183,6 +183,7 @@ function CapSelectDoc() {
               <div>Without Search</div>
               <CapCustomSelect
                 width="250px"
+                disabled
                 selectPlaceholder="Select product"
                 options={productsList}
                 value={selectedProduct}
