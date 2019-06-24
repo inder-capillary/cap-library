@@ -122,9 +122,9 @@ class CapCustomSelect extends React.Component { // eslint-disable-line react/pre
           </Fragment>
         )}
       >
-        <div ref={(node) => { this.node = node; }} style={{ width: width || "100%" }} className={classNames(`${clsPrefix}-selection`, { open: !!visible }, className, { disabled: disabled === true })}>
+        <div ref={(node) => { this.node = node; }} style={{ width: width || "100%" }} className={classNames(`${clsPrefix}-selection`, { open: !!visible }, className, { 'selection-disabled': disabled })}>
           <div className={(`${clsPrefix}-selected-value`)}>
-            <StyledCapHeading type={value ? 'h5' : 'h6'} className={classNames({ 'selected-value-label-disabled': disabled === true })} title={selectedItemLabel}>{selectedItemLabel || selectPlaceholder}</StyledCapHeading>
+            <StyledCapHeading type={value ? 'h5' : 'h6'} className={classNames({ 'selected-value-label-disabled': disabled })} title={selectedItemLabel}>{selectedItemLabel || selectPlaceholder}</StyledCapHeading>
           </div>
           <CapIcon type="chevron-down" className={classNames(`${clsPrefix}-arrow`)} />
         </div>
