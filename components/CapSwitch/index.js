@@ -8,8 +8,9 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Switch } from "antd";
 import "./_capSwitch.scss";
-const classNames = require('classnames');
 // import styled from 'styled-components';
+import ComponentWithLabelHOC from '../assets/HOCs/ComponentWithLabelHOC';
+const classNames = require('classnames');
 
 
 class CapSwitch extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -28,4 +29,5 @@ CapSwitch.propTypes = {
   className: PropTypes.string,
 };
 
-export default CapSwitch;
+const CapSwitchFinal = ComponentWithLabelHOC(CapSwitch);
+export default CapSwitchFinal;
