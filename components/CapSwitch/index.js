@@ -8,7 +8,6 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Switch } from "antd";
 import "./_capSwitch.scss";
-// import styled from 'styled-components';
 import classNames from 'classnames';
 import ComponentWithLabelHOC from '../assets/HOCs/ComponentWithLabelHOC';
 

@@ -1,18 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CapSwitch /> CapSwitch renders correctly 1`] = `
-<button
-  aria-checked={false}
-  className="cap-switch-v2 ant-switch"
-  defaultChecked={false}
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  onMouseUp={[Function]}
-  role="switch"
-  type="button"
+<div
+  className="component-with-label sc-htpNat irLuXI"
 >
-  <span
-    className="ant-switch-inner"
-  />
-</button>
+  <div
+    className="sc-bxivhb kcMjfG"
+  >
+    <button
+      aria-checked={false}
+      className="cap-switch-v2 ant-switch"
+      defaultChecked={false}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onMouseUp={[Function]}
+      role="switch"
+      type="button"
+    >
+      <span
+        className="ant-switch-inner"
+      />
+    </button>
+  </div>
+</div>
 `;
