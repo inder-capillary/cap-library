@@ -56,11 +56,15 @@ const StyledCapHeading = styled(CapHeading)`
   margin-right: ${(props) => props.labelPosition === 'left' ? '12px' : ''};
   display: ${(props) => props.labelPosition === 'top' ? 'block' : 'inline-block'};
   margin-bottom:  ${(props) => props.labelPosition === 'top' ? '4px' : ''};
-  width: ${(props) => props.labelPosition === 'left' ? '128px' : '100%'};
   color: ${(props) => props.disabled && styledVars.CAP_G06};
   &.requied-indicator {
     display: inline-block;
   }
+`;
+
+const ColumnsWrapper = styled.div`
+  display: inline-block;
+  align-items: center;
 `;
 
 const StyledSpan = styled.span`
@@ -95,6 +99,60 @@ function ComponentWithLabelHOC(Component) {
       }
     }
 
+    returnRowsOfComponent = (label, labelPosition, isRequired, inductiveText, type, rest) => {
+      const rows = [];
+      if (labelPosition === 'left') {
+        rows.push(
+          <div>
+            <ColumnsWrapper>
+              <div>
+                { label && (
+                  <StyledCapHeading
+                    type={type}
+                    labelPosition={labelPosition}
+                    disabled={this.props.disabled}
+                    className={classnames(`${classPrefix}-label`)}
+                  >
+                    {label}
+                    {isRequired && <Sup className="requied-indicator">*</Sup>}
+                  </StyledCapHeading> )
+                }
+              </div>
+              <div>
+                {inductiveText
+                  && (
+                    <InductiveText className={classnames(`${classPrefix}-inductive-text`)}>{inductiveText}</InductiveText>
+                  )
+                }
+              </div>
+            </ColumnsWrapper>
+            <ColumnsWrapper>
+              <Component {...rest} />
+            </ColumnsWrapper>
+          </div>
+        );
+      } else {
+        if (label) {
+          rows.push(
+            <StyledCapHeading
+              type={type}
+              labelPosition={labelPosition}
+              disabled={this.props.disabled}
+              className={classnames(`${classPrefix}-label`)}
+            >
+              {label}
+              {isRequired && <Sup className="requied-indicator">*</Sup>}
+            </StyledCapHeading>
+          );
+        }
+        if (inductiveText) {
+          rows.push(<InductiveText className={classnames(`${classPrefix}-inductive-text`)}>{inductiveText}</InductiveText>);
+        }
+        rows.push(<Component {...rest} />);
+      }
+      return rows;
+    }
+
     render() {
       const {
         label,
@@ -110,6 +168,7 @@ function ComponentWithLabelHOC(Component) {
       if (rest.focusOnMount) {
         delete rest.focusOnMount;
       }
+      const rows = this.returnRowsOfComponent(label, labelPosition, isRequired, inductiveText, type, rest);
       return (
         <CapComponentStyled
           className={classnames(`${classPrefix}`, className)}
@@ -119,26 +178,7 @@ function ComponentWithLabelHOC(Component) {
           inline={inline}
         >
           <ComponentWithLabelWrapper labelPosition={labelPosition}>
-            {
-              label
-              && (
-                <StyledCapHeading
-                  type={type}
-                  labelPosition={labelPosition}
-                  disabled={this.props.disabled}
-                  className={classnames(`${classPrefix}-label`)}
-                >
-                  {label}
-                  {isRequired && <Sup className="requied-indicator">*</Sup>}
-                </StyledCapHeading>
-              )
-            }
-            {inductiveText && labelPosition === 'top'
-              && (
-                <InductiveText className={classnames(`${classPrefix}-inductive-text`)}>{inductiveText}</InductiveText>
-              )
-            }
-            <Component {...rest} />
+            {rows}
           </ComponentWithLabelWrapper>
           {errorMessage && <StyledSpan className="error-message" labelPosition={labelPosition}>{errorMessage}</StyledSpan>}
         </CapComponentStyled>
