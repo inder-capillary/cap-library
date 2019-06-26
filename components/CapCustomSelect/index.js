@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /**
 *
 * CapCustomSelect
@@ -77,7 +78,7 @@ class CapCustomSelect extends React.Component { // eslint-disable-line react/pre
   }
 
   render() {
-    const { options, value, showSearch, searchPlaceholder, selectPlaceholder, width, className, popoverClassName } = this.props;
+    const { options, value, showSearch, searchPlaceholder, selectPlaceholder, width, className, popoverClassName, disabled } = this.props;
     const { visible, searchText } = this.state;
     const itemsHtml = this.getItems();
     const selectedItemIndex = findIndex(options, (item) => item.value === value);
@@ -89,12 +90,16 @@ class CapCustomSelect extends React.Component { // eslint-disable-line react/pre
     return (
       <Popover
         trigger="click"
-        getPopupContainer={(trigger) => trigger.parentNode}
-        placement="bottomLeft"
+        // removing it for testing purpose, if styling issue occurs, uncomment it and check
+        // getPopupContainer={(trigger) => trigger.parentNode}
         overlayClassName={classNames(`${clsPrefix}-popover`, popoverClassName)}
         overlayStyle={{ width: popwidth }}
         visible={visible}
-        onVisibleChange={this.onVisibleChange}
+        onVisibleChange={() => {
+          if (!disabled || disabled !== true) {
+            this.onVisibleChange(!this.state.visible);
+          }
+        }}
         content={(
           <Fragment>
             {showSearch && (
@@ -117,9 +122,9 @@ class CapCustomSelect extends React.Component { // eslint-disable-line react/pre
           </Fragment>
         )}
       >
-        <div ref={(node) => { this.node = node; }} style={{ width: width || "100%" }} className={classNames(`${clsPrefix}-selection`, { open: !!visible }, className)}>
+        <div ref={(node) => { this.node = node; }} style={{ width: width || "100%" }} className={classNames(`${clsPrefix}-selection`, { open: !!visible }, className, { 'selection-disabled': disabled })}>
           <div className={(`${clsPrefix}-selected-value`)}>
-            <StyledCapHeading type={value ? 'h5' : 'h6'} title={selectedItemLabel}>{selectedItemLabel || selectPlaceholder}</StyledCapHeading>
+            <StyledCapHeading type={value ? 'h5' : 'h6'} className={classNames({ 'selected-value-label-disabled': disabled })} title={selectedItemLabel}>{selectedItemLabel || selectPlaceholder}</StyledCapHeading>
           </div>
           <CapIcon type="chevron-down" className={classNames(`${clsPrefix}-arrow`)} />
         </div>
