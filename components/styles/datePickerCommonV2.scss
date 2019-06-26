@@ -1,0 +1,94 @@
+@import "./variables.scss";
+
+$datePicker: cap-date-picker-common-v2;
+$rangePicker: cap-date-range-picker-v2;
+
+.#{$datePicker} {
+  .DateRangePickerInput {
+    height: 40px;
+    border-radius: $CAP_SPACE_04;
+    padding: 6px 11px;
+    border-color: $CAP_G06;
+    box-shadow: none;
+  }
+  .DateRangePickerInput_calendarIcon {
+    width: 24px;
+    height: 24px;
+    padding: 0px;
+  }
+  .DateRangePickerInput:focus,
+  .DateRangePicker:hover .DateRangePickerInput:not(.ant-input-disabled),
+  .DateRangePicker:focus .DateRangePickerInput:not(.ant-input-disabled) {
+    border-color: $CAP_G06;
+    box-shadow: none;
+  }
+  .DateInput_input{
+    font-size: $FONT_SIZE_M;
+    line-height: $CAP_SPACE_20;
+    color: $FONT_COLOR_01;
+    text-align: center;
+    padding: 1px;
+    height: 26px;
+    border: 0px;
+  }
+  &:hover {
+    color: $CAP_G11;
+  }
+  ::placeholder {
+    color: $CAP_G06;
+  }
+  .DateRangePickerInput_arrow {
+    vertical-align: middle;
+    min-width: initial;
+  }
+  .DateRangePicker {
+    .DateRangePicker-icon,
+    .DateRangePicker-clear {
+      top: 35%;
+      width: auto;
+      height: auto;
+      right: 8px;
+    }
+    .DateRangePicker-clear {
+      font-size: 20px;
+      top: 40%;
+      right: 10px;
+    }
+  }
+}
+
+.DateRangePicker_picker {
+  top: 40px !important;
+  .CalendarDay {
+    border: 0px;
+    font-size: $FONT_SIZE_S;
+    color: $CAP_G01;
+    height: 24px;
+  }
+  .CalendarDay__selected {
+    background-color: map-get($CAP_SECONDARY, base);
+    font-weight: $FONT_WEIGHT_MEDIUM;
+    color: $FONT_COLOR_06;
+  }
+  .CalendarDay__selected_span, .CalendarDay__hovered_span {
+    background-color: $CAP_G09;
+  }
+  .CalendarDay__blocked_out_of_range {
+    color: $FONT_COLOR_04;
+  }
+  .CalendarMonth_caption {
+    font-size: $FONT_SIZE_M;
+  }
+
+  .CalendarDay:not(.CalendarDay__blocked_out_of_range):not(.CalendarDay__selected_span):not(.CalendarDay__hovered_span) {
+    border-radius: 50%;
+  }
+  
+  .DayPicker_weekHeader_ul {
+    color: $CAP_G05
+  }
+  .DayPicker_weekHeader_ul li:first-child,
+  .DayPicker_weekHeader_ul li:last-child {
+    color: $CAP_COLOR_03;
+  }
+}

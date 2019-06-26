@@ -53,6 +53,7 @@
     "rc-calendar": "^9.15.0",
     "react": "^16.8.1",
     "react-app-polyfill": "^0.2.0",
+    "react-dates": "^20.2.4",
     "react-dev-utils": "^7.0.1",
     "react-dom": "^16.8.1",
     "react-test-renderer": "^16.7.0",

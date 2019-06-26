@@ -5,7 +5,6 @@ import React from 'react';
 import RangeCalendar from 'rc-calendar/lib/RangeCalendar';
 import classNames from 'classnames';
 import DatePicker from 'rc-calendar/lib/Picker';
-import moment from 'moment';
 import * as styledVars from "../styled/variables";
 import CapIcon from '../CapIcon';
 import 'moment/locale/zh-cn';
@@ -18,7 +17,6 @@ const clsPrefix = 'cap-date-range-picker-v2';
 const commonClsPrefix = 'cap-date-picker-common-v2';
 const prefixCls = 'ant-calendar';
 
-const now = moment();
 
 class Picker extends React.Component {
   state = {
@@ -36,7 +34,6 @@ class Picker extends React.Component {
         hoverValue={this.state.hoverValue}
         onHoverChange={this.onHoverChange}
         type={type}
-        defaultValue={now}
         format={format}
         onChange={onChange}
         disabledDate={disabledDate}
@@ -78,8 +75,8 @@ class DateRangePicker extends React.Component {
 
   static getDerivedStateFromProps(nextProps) {
     let state = null;
-    if ('value' in nextProps) {
-      const value = nextProps.value || [];
+    const { value } = nextProps;
+    if (value && Array.isArray(value)) {
       state = {
         startValue: value[0],
         endValue: value[1],
@@ -134,7 +131,7 @@ class DateRangePicker extends React.Component {
 
   render() {
     const { endOpen, endValue, startValue, startOpen } = this.state;
-    const { size, seperator, placeholder, format } = this.props;
+    const { size, seperator, placeholder, format, disabledDate } = this.props;
     const sizeInputMapping = {
       large: 'lg',
       small: 'sm',
@@ -147,6 +144,7 @@ class DateRangePicker extends React.Component {
             <Picker
               onOpenChange={this.onStartOpenChange}
               type="start"
+              disabledDate={disabledDate}
               showValue={startValue}
               open={startOpen}
               value={[startValue, endValue]}

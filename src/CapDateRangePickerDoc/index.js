@@ -3,6 +3,7 @@
 */
 import React, { Component } from "react";
 import { CapDateRangePicker, CapHeading } from "../../components";
+import DateRangePickerV2 from "../../components/CapDateRangePicker/DateRangePickerV2";
 import PropertyTable from '../../helpers/PropertyTable';
 import "./info.scss";
 
@@ -65,6 +66,11 @@ export default class CapDateRangePickerDoc extends Component { // eslint-disable
               label="Date Picker with label"
               inductiveText="Date picker with inductive text"
             />
+          </div>
+          <div style={{ marginTop: "24px" }}>
+            <DateRangePickerV2
+              label="Date Range Picker using React Dates by airbnb"
+              inductiveText="This Picker handles most of design feedback and few customization that was not supported by Antd's Range picker" />
           </div>
         </div>
         <PropertyTable data={infoData} />
