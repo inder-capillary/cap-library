@@ -86,7 +86,9 @@ $rangePicker: cap-date-range-picker-v2;
   .CalendarMonth_caption {
     font-size: $FONT_SIZE_M;
   }
-
+  .CalendarMonth_table {
+    margin-top: 4px;
+  }
   .CalendarDay:not(.CalendarDay__blocked_out_of_range):not(.CalendarDay__selected_span):not(.CalendarDay__hovered_span) .calendar-day-content span {
     border-radius: 50%;
   }
