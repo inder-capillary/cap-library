@@ -8,7 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Select } from 'antd';
-import isEmpty from 'lodash/isEmpty';
 import CapCustomSelect from '../CapCustomSelect';
 import CapIcon from '../CapIcon';
 import './_capSelect.scss';

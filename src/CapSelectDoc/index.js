@@ -156,6 +156,22 @@ function CapSelectDoc() {
             placeholder="Select a person"
             disabled
           />
+          <CapSelect
+            mode="tags"
+            options={list}
+            style={{ width: 480, marginLeft: '16px' }}
+            label="This is label"
+            inductiveText="This is inductive text for left label position"
+            labelPosition="left"
+          />
+          <CapSelect
+            mode="tags"
+            options={list}
+            style={{ width: 480 }}
+            label="This is label"
+            inductiveText="This is inductive text for top label position"
+            labelPosition="top"
+          />
         </div>
         <Divider />
         <div style={{ marginTop: '24px' }}>
@@ -183,6 +199,7 @@ function CapSelectDoc() {
               <div>Without Search</div>
               <CapCustomSelect
                 width="250px"
+                disabled
                 selectPlaceholder="Select product"
                 options={productsList}
                 value={selectedProduct}
