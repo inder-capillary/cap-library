@@ -7,7 +7,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import DateRangePickerV2 from './DateRangePickerV2';
+import DateRangePicker from './DateRangePicker';
 import ComponentWithLabelHOC from '../assets/HOCs/ComponentWithLabelHOC';
 
 import './_capDateRangePicker.scss';
@@ -20,7 +20,7 @@ const commonClsPrefix = 'cap-date-picker-common-v2';
 function CapDateRangePicker(props) {
   return (
     <div className={classNames(commonClsPrefix, clsPrefix)}>
-      <DateRangePickerV2
+      <DateRangePicker
         {...props}
       />
     </div>
