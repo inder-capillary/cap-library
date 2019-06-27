@@ -16,13 +16,16 @@ export default class CapDateRangePickerDoc extends Component { // eslint-disable
         <a href="https://github.com/airbnb/react-dates">https://github.com/airbnb/react-dates</a>
         <div className="cap-date-range-picker-showcase">
           <div key={1} style={{ marginTop: "24px" }}>
-            <CapDateRangePicker />
+            <CapDateRangePicker
+              appendToBody
+            />
           </div>
           <div key={2} style={{ marginTop: "24px" }}>
             <CapDateRangePicker
               label="Date Picker with label"
               inductiveText="Date picker with inductive text"
               initialVisibleMonth={initialVisibleMonth}
+              appendToBody
             />
           </div>
         </div>

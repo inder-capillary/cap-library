@@ -12,8 +12,8 @@ $rangePicker: cap-date-range-picker-v2;
     box-shadow: none;
   }
   .DateRangePickerInput_calendarIcon {
-    width: 24px;
-    height: 24px;
+    width: $CAP_SPACE_24;
+    height: $CAP_SPACE_24;
     padding: 0px;
   }
   .DateRangePickerInput:focus,
@@ -41,20 +41,6 @@ $rangePicker: cap-date-range-picker-v2;
     vertical-align: middle;
     min-width: initial;
   }
-  .DateRangePicker {
-    .DateRangePicker-icon,
-    .DateRangePicker-clear {
-      top: 35%;
-      width: auto;
-      height: auto;
-      right: 8px;
-    }
-    .DateRangePicker-clear {
-      font-size: 20px;
-      top: 40%;
-      right: 10px;
-    }
-  }
 }
 
 .DateRangePicker_picker {
@@ -64,7 +50,7 @@ $rangePicker: cap-date-range-picker-v2;
     padding: 0px;
     font-size: $FONT_SIZE_S;
     color: $CAP_G01;
-    height: 32px !important;
+    height: $CAP_SPACE_32 !important; //Important was required here.
   }
   .CalendarDay__default:hover {
     border-radius: 50%;
@@ -75,8 +61,8 @@ $rangePicker: cap-date-range-picker-v2;
   }
   .calendar-day-content span {
     display: block;
-    width: 28px;
-    height: 28px;
+    width: $CAP_SPACE_28;
+    height: $CAP_SPACE_28;
   }
   .CalendarDay__selected, .CalendarDay__selected_span, .CalendarDay__hovered_span {
     background-color: transparent;
@@ -128,13 +114,13 @@ $rangePicker: cap-date-range-picker-v2;
   }
   .month-nav-btn {
     position: absolute;
-    top: 20px;
+    top: $CAP_SPACE_20;
   }
   .prev-month-nav-btn {
-    left: 20px;
+    left: $CAP_SPACE_20;
   }
   .next-month-nav-btn {
-    right: 20px;
+    right: $CAP_SPACE_20;
   }
 }
 
