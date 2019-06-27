@@ -2,6 +2,7 @@
 * CapDateRangePickerDoc
 */
 import React, { Component } from "react";
+import moment from 'moment';
 import { CapDateRangePicker, CapHeading } from "../../components";
 import DateRangePickerV2 from "../../components/CapDateRangePicker/DateRangePickerV2";
 import PropertyTable from '../../helpers/PropertyTable';
@@ -46,23 +47,20 @@ const infoData = [
   },
 ];
 
-export default class CapDateRangePickerDoc extends Component { // eslint-disable-line react/prefer-stateless-function
-  onChange = (date, dateStrings) => {
-    console.log("CapDateRangePickerDoc onchange", date, dateStrings);
-  }
+const initialVisibleMonth = () => moment(1575339378000);
 
+export default class CapDateRangePickerDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div className="cap-date-range-picker-info">
         <CapHeading type="h5">Please refer the below documentation, for any changes in this Component</CapHeading>
-        <a href="https://github.com/react-component/calendar">https://github.com/react-component/calendar</a>
+        <a href="https://github.com/airbnb/react-dates">https://github.com/airbnb/react-dates</a>
         <div className="cap-date-range-picker-showcase">
           <div style={{ marginTop: "24px" }}>
-            <CapDateRangePicker onChange={this.onChange} size="large" />
+            <CapDateRangePicker size="large" />
           </div>
           <div style={{ marginTop: "24px" }}>
             <CapDateRangePicker
-              onChange={this.onChange}
               label="Date Picker with label"
               inductiveText="Date picker with inductive text"
             />
@@ -70,7 +68,9 @@ export default class CapDateRangePickerDoc extends Component { // eslint-disable
           <div style={{ marginTop: "24px" }}>
             <DateRangePickerV2
               label="Date Range Picker using React Dates by airbnb"
-              inductiveText="This Picker handles most of design feedback and few customization that was not supported by Antd's Range picker" />
+              inductiveText="This Picker handles most of design feedback and few customization that was not supported by Antd's Range picker"
+              initialVisibleMonth={initialVisibleMonth}
+            />
           </div>
         </div>
         <PropertyTable data={infoData} />

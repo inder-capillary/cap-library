@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-expressions */
 /* eslint react/no-multi-comp:0, no-console:0, react/prop-types:0 */
-
+/*
+Date range picker implemented using rc-canlendar
+Having this file as a reference. This Component is not used anywhere now.
+ */
 import React from 'react';
 import RangeCalendar from 'rc-calendar/lib/RangeCalendar';
 import classNames from 'classnames';

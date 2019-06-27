@@ -1,4 +1,7 @@
 /* eslint-disable react/default-props-match-prop-types */
+/*
+Date range picker implemented using airbnb's React dates
+*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import momentPropTypes from 'react-moment-proptypes';
@@ -16,7 +19,6 @@ import * as styledVars from "../styled/variables";
 import CapIcon from '../CapIcon';
 import 'react-dates/lib/css/_datepicker.css';
 import './_capDateRangePickerV2.scss';
-import '../styles/datePickerCommonV2.scss';
 
 const commonClsPrefix = 'cap-date-picker-common-v2';
 const clsPrefix = 'cap-date-range-picker-v2';
@@ -73,7 +75,7 @@ const defaultProps = {
   withFullScreenPortal: false,
   initialVisibleMonth: null,
   numberOfMonths: 2,
-  keepOpenOnDateSelect: false,
+  keepOpenOnDateSelect: true,
   reopenPickerOnClearDates: false,
   isRTL: false,
   daySize: 32,
@@ -127,15 +129,29 @@ class DateRangePickerV2 extends React.Component {
   }
 
   onDatesChange({ startDate, endDate }) {
-    const { stateDateWrapper } = this.props;
+    const { stateDateWrapper, onChange } = this.props;
     this.setState({
       startDate: startDate && stateDateWrapper(startDate),
       endDate: endDate && stateDateWrapper(endDate),
+    }, () => {
+      // eslint-disable-next-line no-unused-expressions
+      onChange && onChange([startDate, endDate]);
     });
   }
 
   onFocusChange(focusedInput) {
     this.setState({ focusedInput });
+  }
+
+  renderDayContents(day) {
+    const date = day.format('D');
+    return (
+      <div className="calendar-day-content"><span>{date}</span></div>
+      /*
+      *Uncomment this block if the last day of month or first day of month needs border-radius. Disabled this issue because of performance issues. Better way is to solve this using css selectors instead of adding conditions here
+      *<div className={classNames("calendar-day-content", date === "1" && "first-day-of-month", date === day.daysInMonth().toString() && "last-day-of-month")}><span>{date}</span></div>
+      */
+    );
   }
 
   render() {
@@ -152,9 +168,15 @@ class DateRangePickerV2 extends React.Component {
       'stateDateWrapper',
       'customArrowIcon',
       'customInputIcon',
+      'navNext',
+      'navPrev',
+      'renderDayContents',
+      'disabledDate',
+      'isDayBlocked',
+      'onChange',
     ]);
 
-    const { customInputIcon, customArrowIcon } = this.props;
+    const { customInputIcon, customArrowIcon, navNext, navPrev, renderDayContents, disabledDate, isDayBlocked } = this.props;
 
     return (
       <div className={classNames(commonClsPrefix, clsPrefix)}>
@@ -167,7 +189,16 @@ class DateRangePickerV2 extends React.Component {
           customInputIcon={customInputIcon || <CapIcon type="calendar" style={{color: styledVars.CAP_G01}} size="m" />
           }
           customArrowIcon={customArrowIcon || <span style={{color: styledVars.CAP_G01}}>~</span>}
+          navNext={
+            navNext || <div className="month-nav-btn next-month-nav-btn"><CapIcon type="chevron-right" style={{color: styledVars.CAP_G01}} /></div>
+          }
+          navPrev={
+            navPrev || <div className="month-nav-btn prev-month-nav-btn"><CapIcon type="chevron-left" style={{color: styledVars.CAP_G01}} /></div>
+          }
+          renderDayContents={renderDayContents || this.renderDayContents}
+          isDayBlocked={disabledDate || isDayBlocked}
           {...props}
+
         />
       </div>
     );
