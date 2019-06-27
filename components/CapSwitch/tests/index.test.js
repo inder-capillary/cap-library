@@ -33,7 +33,7 @@ describe('<CapSwitch />', () => {
     expect(CapSwitchComponent.find('.ant-switch-checked')).toHaveLength(1);
   });
 
-  it('check if ', () => {
+  it('check if label gets added when passed in props', () => {
     const props = {
       label: 'label',
     };
@@ -41,7 +41,7 @@ describe('<CapSwitch />', () => {
     expect(CapSwitchComponent.exists('.component-with-label-label')).toEqual(true);
   });
 
-  it('check if ', () => {
+  it('check if inductive text gets added when passed in props', () => {
     const props = {
       inductiveText: 'inductive text',
     };

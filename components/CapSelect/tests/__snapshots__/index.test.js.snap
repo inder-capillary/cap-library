@@ -1,5 +1,72 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<CapSelect /> CapSelect renders correctly 1`] = `
+<div
+  className="component-with-label sc-ifAKCX hakCrI"
+>
+  <div
+    className="sc-EHOje hSCZAs"
+  >
+    <div
+      className="ant-select-lg cap-select-v2 ant-select ant-select-enabled"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseOut={[Function]}
+      onMouseUp={[Function]}
+      onTouchStart={[Function]}
+    >
+      <div
+        aria-autocomplete="list"
+        aria-controls="test-uuid"
+        aria-expanded={false}
+        aria-haspopup="true"
+        className="ant-select-selection
+            ant-select-selection--single"
+        onKeyDown={[Function]}
+        role="combobox"
+        tabIndex={0}
+      >
+        <div
+          className="ant-select-selection__rendered"
+        />
+        <span
+          className="ant-select-arrow"
+          onClick={[Function]}
+          style={
+            Object {
+              "WebkitUserSelect": "none",
+              "userSelect": "none",
+            }
+          }
+          unselectable="on"
+        >
+          <i
+            className="anticon cap-icon-v2 cap-icon-v2-chevron-down ant-select-arrow-icon sc-bxivhb kZDkVS"
+          >
+            <svg
+              aria-hidden={true}
+              className=""
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 24 24"
+              width="1em"
+            >
+              <path
+                d="M11.293 14.993L6.7 10.4A.99.99 0 0 1 8.1 9l3.9 3.9L15.9 9a.99.99 0 0 1 1.4 1.4l-4.593 4.593a1 1 0 0 1-1.414 0z"
+                id="chevron-down_svg__a"
+              />
+            </svg>
+          </i>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<CapSelect /> render capSelect 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
