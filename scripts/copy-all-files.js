@@ -53,8 +53,6 @@ function createPackageFile() {
         license,
         bugs,
         homepage,
-        peerDependencies,
-        dependencies,
       } = packageData;
 
       const minimalPackage = {
@@ -70,11 +68,12 @@ function createPackageFile() {
         license,
         bugs,
         homepage,
-        dependencies: {
+        "dependencies": {
           "antd": "^3.13.2",
           "react-dom": "^16.8.1",
           "react": "^16.8.1",
-        }
+          "react-dates": "^20.2.4",
+        },
       };
 
       return new Promise((resolve) => {
