@@ -74,6 +74,7 @@ function createPackageFile() {
           "antd": "^3.13.2",
           "react-dom": "^16.8.1",
           "react": "^16.8.1",
+          "react-dates": "^20.2.4",
         }
       };
 
