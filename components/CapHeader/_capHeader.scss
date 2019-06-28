@@ -8,24 +8,7 @@ $header: cap-header-v2;
     overflow: hidden;
   }
   .#{$header}-description {
-    &.#{$header}-large {
-      padding-top: $CAP_SPACE_08;
-    }
-    &.#{$header}-regular {
-      padding-top: $CAP_SPACE_04;
-    }
-    &.#{$header}-small {
-      padding-top: $CAP_SPACE_06;
-    }
-    &.hidden.#{$header}-small {
-      height: 14px;
-    }
-    &.#{$header}-label {
-      padding-top: $CAP_SPACE_04;
-    }
-  }
-  &.#{$header}-label6 {
     padding-top: $CAP_SPACE_04;
-  }
+  }    
 }
 
