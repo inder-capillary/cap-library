@@ -85,6 +85,7 @@ const getSvgComponentFromType = (type) => {
     case 'refresh': return SvgIcons.Refresh;
     case 'delete': return SvgIcons.Delete;
     case 'drag': return SvgIcons.Drag;
+    case 'launch': return SvgIcons.Launch;
     default: return null;
   }
 };
