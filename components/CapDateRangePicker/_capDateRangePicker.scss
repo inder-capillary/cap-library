@@ -80,8 +80,9 @@ $rangePicker: cap-date-range-picker-v2;
   .CalendarDay__selected_span .calendar-day-content, .CalendarDay__hovered_span .calendar-day-content {
     background-color: $CAP_G09;
   }
-  .CalendarDay__blocked_out_of_range {
+  .CalendarDay__blocked_out_of_range, .CalendarDay__blocked_calendar {
     color: $FONT_COLOR_04;
+    background-color: $CAP_WHITE;
   }
   .CalendarMonth_caption {
     font-size: $FONT_SIZE_M;

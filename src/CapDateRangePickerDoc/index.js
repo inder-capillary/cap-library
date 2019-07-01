@@ -7,6 +7,13 @@ import { CapDateRangePicker, CapHeading } from "../../components";
 import "./info.scss";
 
 const initialVisibleMonth = () => moment(1575339378000);
+const disableDateRange = (startDate, endDate) => (current) => moment(endDate)
+  .subtract(1, 'days')
+  .endOf('day') < current
+  || current
+    < moment(startDate)
+      .subtract(1, 'days')
+      .endOf('day');
 
 export default class CapDateRangePickerDoc extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -26,6 +33,7 @@ export default class CapDateRangePickerDoc extends Component { // eslint-disable
               inductiveText="Date picker with inductive text"
               initialVisibleMonth={initialVisibleMonth}
               appendToBody
+              disabledDate={disableDateRange(1569349800000, 1572028199999)}
             />
           </div>
         </div>
