@@ -65,6 +65,10 @@ $select: cap-select-v2;
   .ant-select-selection--multiple .ant-select-selection__choice__remove > * {
     vertical-align: middle;
   }
+
+  .ant-select-selection__clear {
+    right: 6px;
+  }
 }
 .ant-select-dropdown.#{$select}-dropdown {
   .ant-select-dropdown-menu-item {

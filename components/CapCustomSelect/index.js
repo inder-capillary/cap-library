@@ -151,6 +151,7 @@ CapCustomSelect.propTypes = {
   width: PropTypes.string,
   className: PropTypes.string,
   popoverClassName: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 export default CapCustomSelect;

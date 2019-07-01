@@ -1,6 +1,6 @@
 import React from "react";
 
-const SvgDelete = props => (
+const SvgDelete = (props) => (
   <svg
     width="1em"
     height="1em"

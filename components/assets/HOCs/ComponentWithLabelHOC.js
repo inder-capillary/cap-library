@@ -55,7 +55,7 @@ const Sup = styled.sup`
 const StyledCapHeading = styled(CapHeading)`
   margin-right: ${(props) => props.labelPosition === 'left' ? '12px' : ''};
   display: ${(props) => props.labelPosition === 'top' ? 'block' : 'inline-block'};
-  margin-bottom:  ${(props) => props.labelPosition === 'top' ? '4px' : ''};
+  margin-bottom:  ${(props) => props.labelPosition === 'top' ? '6px' : ''};
   color: ${(props) => props.disabled && styledVars.CAP_G06};
   &.requied-indicator {
     display: inline-block;
