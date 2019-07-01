@@ -415,7 +415,7 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
             </List>
             <List>
               <CapIcon type="launch" />
-              <Text>drag</Text>
+              <Text>launch</Text>
             </List>
           </ul>
         </div>
