@@ -1,6 +1,6 @@
 {
   "name": "@capillarytech/cap-ui-library",
-  "version": "1.0.113",
+  "version": "1.0.138",
   "description": "Cap HOCs for capillary style guid and antd components",
   "main": "index.js",
   "author": "meharaj",
@@ -52,6 +52,7 @@
     "postcss-safe-parser": "4.0.1",
     "react": "^16.8.1",
     "react-app-polyfill": "^0.2.0",
+    "react-dates": "^20.2.4",
     "react-dev-utils": "^7.0.1",
     "react-dom": "^16.8.1",
     "react-test-renderer": "^16.7.0",

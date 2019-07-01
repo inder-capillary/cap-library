@@ -1,0 +1,13 @@
+@import '../styles/_variables.scss';
+
+.stats-card {
+    .stats-item {
+        padding-bottom: $CAP_SPACE_24;
+        .stats-text {
+            padding-bottom: $CAP_SPACE_04;
+        }
+        .stats-val {
+            padding-bottom: $CAP_SPACE_08;
+        }
+    }
+}

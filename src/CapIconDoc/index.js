@@ -405,6 +405,18 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="refresh" />
               <Text>refresh</Text>
             </List>
+            <List>
+              <CapIcon type="delete" />
+              <Text>delete</Text>
+            </List>
+            <List>
+              <CapIcon type="drag" />
+              <Text>drag</Text>
+            </List>
+            <List>
+              <CapIcon type="launch" />
+              <Text>launch</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}

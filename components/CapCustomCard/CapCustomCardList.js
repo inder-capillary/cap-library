@@ -14,11 +14,11 @@ export default class CapCustomCardList extends React.Component {
           <div className={classNames(`${clsPrefix}-row`)}>
             {
               cardList.map((data, i) => {
-                const { dataBelowCard, ...rest } = data;
+                const { dataBelowCard, cardType, ...rest } = data;
                 const key = data.key || i;
                 return (
                   <div className={classNames(`${clsPrefix}-col`)}>
-                    <CapCustomCard key={key} type={type} {...rest} />
+                    <CapCustomCard key={key} type={cardType || type} {...rest} />
                     {
                       dataBelowCard && dataBelowCard
                     }

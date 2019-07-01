@@ -5,9 +5,8 @@ $sidebar: cap-sidebar-v2;
   margin-left: $CAP_SPACE_16;
   max-width: 200px;
 }
-
 .#{$sidebar}-accordian.ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
-  left: 0;
+  left: 0px;
 }
 
 .#{$sidebar}-accordian.ant-collapse > .ant-collapse-item > .ant-collapse-header {
@@ -94,6 +93,6 @@ $sidebar: cap-sidebar-v2;
     color: $CAP_G01;
   }
   .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
-    left: 0;
+    left: 0px;
   }
 }

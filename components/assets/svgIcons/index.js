@@ -79,3 +79,6 @@ export { default as Call } from './Icons/Call';
 export { default as Groups } from './Icons/Groups';
 export { default as Clock } from './Icons/Clock';
 export { default as Refresh } from './Icons/Refresh';
+export { default as Delete } from './Icons/Delete';
+export { default as Drag } from './Icons/Drag';
+export { default as Launch } from './Icons/Launch';

@@ -5,11 +5,13 @@ $table: cap-table-v2;
 .#{$table} {
   .ant-table {
     border: 1px solid $CAP_G07;
+
     .ant-table-thead > tr > th {
       color: $FONT_COLOR_01;
       font-size: $FONT_SIZE_S;
       line-height: $CAP_SPACE_16;
       background-color: $CAP_G10;
+      text-align: left;
     }
     .ant-table-thead > tr > th,
     .ant-table-tbody > tr > td {
@@ -38,15 +40,15 @@ $table: cap-table-v2;
     }
     .ant-table-thead {
       .table-children {
-        padding: 0px 16px 16px;
+        padding: 6px $CAP_SPACE_24 16px;
         position: relative;
       }
       .table-parent {
         padding-bottom: 0;
-        padding-left: 16px;
+        padding-left: $CAP_SPACE_24;
       }
-      .table-children:not(:last-child)::after {
-        content: " ";
+      .table-children.show-separator:not(:last-child)::after {
+        content: "";
         height: 8px;
         width: 1px;
         right: 0;
@@ -57,6 +59,10 @@ $table: cap-table-v2;
     }
     .ant-table-thead > tr > th .ant-table-column-sorter {
       vertical-align: unset;
+    }
+    .ant-table-body table {
+      table-layout: fixed;
+      width: 100%;
     }
   }
   &.show-loader {

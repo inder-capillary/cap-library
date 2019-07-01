@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Select } from 'antd';
+import { shallow, mount } from 'enzyme';
+import renderer from 'react-test-renderer';
 
 import CapSelect from '../index';
 
@@ -16,11 +16,36 @@ const list = [
   { label: 'option8', value: 'option8', key: '7' },
 ];
 
-
 describe('<CapSelect />', () => {
-  const wrapper = shallow(<CapSelect options={list} />);
-
   it('Should render antd select', () => {
-    expect(wrapper.find(Select)).toHaveLength(1);
+    const CapSelectComponent = mount(<CapSelect options={list} />);
+    expect(CapSelectComponent.exists('.ant-select')).toEqual(true);
+  });
+
+  it('CapSelect renders correctly', () => {
+    const tree = renderer.create(<CapSelect options={list} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('check if label gets added when passed in props', () => {
+    const props = {
+      label: 'label',
+    };
+    const CapSelectComponent = shallow(<CapSelect {...props} />);
+    expect(CapSelectComponent.exists('.component-with-label-label')).toEqual(true);
+  });
+
+  it('check if inductive text gets added when passed in props', () => {
+    const props = {
+      inductiveText: 'inductive text',
+    };
+    const CapSelectComponent = shallow(<CapSelect {...props} />);
+    expect(CapSelectComponent.exists('.component-with-label-inductive-text')).toEqual(true);
+  });
+
+  it('verify the options count', () => {
+    const CapSelectComponent = mount(<CapSelect options={list} />);
+    CapSelectComponent.find('.ant-select').simulate('click');
+    expect(CapSelectComponent.find('.ant-select-dropdown-menu-item')).toHaveLength(8);
   });
 });
