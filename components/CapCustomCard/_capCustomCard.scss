@@ -5,8 +5,6 @@ $cap-custom-card: cap-custom-card;
 
 .ant-card.#{$cap-custom-card} {
   border-radius: 4px;
-  max-width: 340px;
-  min-width: 276px;
   display: inline-block;
   .ant-card-head {
     border-bottom: none;
@@ -157,8 +155,13 @@ $cap-custom-card: cap-custom-card;
     display: block;
   }
   .#{$cap-custom-card-list}-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
     .#{$cap-custom-card-list}-col {
       margin-top: $CAP_SPACE_08;
+      width: 276px;
+      margin-right: 12px;
     }
   }
 }
