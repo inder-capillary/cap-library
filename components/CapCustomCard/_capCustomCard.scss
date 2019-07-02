@@ -157,7 +157,11 @@ $cap-custom-card: cap-custom-card;
   .#{$cap-custom-card-list}-row {
     display: flex;
     flex-flow: row wrap;
+<<<<<<< HEAD
     justify-content: center;
+=======
+    justify-content: start;
+>>>>>>> ef2fe111fe978d827b6f303cd5c408a964678bee
     .#{$cap-custom-card-list}-col {
       margin-top: $CAP_SPACE_08;
       width: 276px;
