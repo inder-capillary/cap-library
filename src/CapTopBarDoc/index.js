@@ -3,7 +3,7 @@
 */
 import React, { Component } from "react";
 import PropertyTable from '../../helpers/PropertyTable';
-import { CapTopBar } from "../../components";
+import { CapTopBar, CapHeading } from "../../components";
 import "./info.scss";
 
 const infoData = [
@@ -96,6 +96,7 @@ export default class NavigationBarDoc extends Component { // eslint-disable-line
 
   render() {
     const { selectedOrg, selectedProduct, selectedMenuItem } = this.state;
+    const productsComps = productsList.map((pro) => <CapHeading type="h5">{pro.label}</CapHeading>);
     return (
       <div className="navigation-bar-info">
         <div className="navigation-bar-showcase">
@@ -106,10 +107,11 @@ export default class NavigationBarDoc extends Component { // eslint-disable-line
               handleItemChange: this.handleOrgChange,
             }}
             secondarySelectProps={{
-              items: productsList,
+              items: productsComps,
               selectedItem: selectedProduct,
               handleItemChange: this.handleProductChange,
               showCapillaryIcon: true,
+              slideBoxHeading: <CapHeading type="h5">Select Product</CapHeading>,
             }}
             menuProps={{
               items: menuItems,

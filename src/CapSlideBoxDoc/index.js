@@ -85,6 +85,8 @@ export default class CapSlideBoxDoc extends Component { // eslint-disable-line r
     this.state = {
       showSlideBox: false,
       showSlideBox1: false,
+      showSlideBox2: false,
+      showSlideBox3: false,
     };
   }
 
@@ -100,6 +102,10 @@ export default class CapSlideBoxDoc extends Component { // eslint-disable-line r
     this.setState({ showSlideBox2: true });
   }
 
+  showSlideBox3 = () => {
+    this.setState({ showSlideBox3: true });
+  }
+
   closeSlideBox = () => {
     this.setState({ showSlideBox: false });
   }
@@ -112,8 +118,12 @@ export default class CapSlideBoxDoc extends Component { // eslint-disable-line r
     this.setState({ showSlideBox2: false });
   }
 
+  closeSlideBox3 = () => {
+    this.setState({ showSlideBox3: false });
+  }
+
   render() {
-    const { showSlideBox, showSlideBox1, showSlideBox2 } = this.state;
+    const { showSlideBox, showSlideBox1, showSlideBox2, showSlideBox3 } = this.state;
     return (
       <div className="cap-slide-box-info">
         <div className="cap-slide-box-showcase">
@@ -156,6 +166,20 @@ export default class CapSlideBoxDoc extends Component { // eslint-disable-line r
                 content={<div>{content}</div>}
                 className="custom-class-name"
                 handleClose={this.closeSlideBox2} />
+            )}
+          </div>
+          <div style={{ marginTop: '16px' }}>
+            <CapButton onClick={this.showSlideBox3}>Show SlideBox from position left</CapButton>
+            {showSlideBox3 && (
+              <CapSlideBox
+                showShadow
+                show={showSlideBox3}
+                size="size-s"
+                header="Slide Box Example"
+                content={<div>{content}</div>}
+                className="custom-class-name"
+                handleClose={this.closeSlideBox3}
+                position="left" />
             )}
           </div>
         </div>

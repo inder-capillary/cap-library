@@ -50,12 +50,12 @@ export default class CapSlideBox extends Component {
   }
 
   render() {
-    const { size, show, header, handleClose, footer, content, className } = this.props;
+    const { size, show, header, handleClose, footer, content, className, position } = this.props;
     const { showShadow } = this.state;
     return (
       show ? (
         <div className={classNames(`${clsPrefix}`, className, { 'show-slidebox': show, 'hide-slidebox': !show, 'show-shadow': showShadow })}>
-          <div className={classNames(`${clsPrefix}-container ${size}`)}>
+          <div className={classNames(`${clsPrefix}-container ${size} ${position}`)}>
             <div className="slidebox-header">
               <CapHeading type="h1">{header}</CapHeading>
               {<CapIcon onClick={handleClose} type="close" className={classNames(`${clsPrefix}-close-icon`)} />}
@@ -79,6 +79,7 @@ export default class CapSlideBox extends Component {
 
 CapSlideBox.defaultProps = {
   size: "size-r",
+  position: "right",
 };
 
 CapSlideBox.propTypes = {
@@ -95,4 +96,5 @@ CapSlideBox.propTypes = {
   handleClose: PropTypes.func.isRequired,
   size: PropTypes.string,
   className: PropTypes.string,
+  position: PropTypes.string,
 };

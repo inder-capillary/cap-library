@@ -70,22 +70,27 @@ $slideBox: "cap-slide-box-v2";
 }
 
 .#{$slideBox}-container.size-r {
-  right: 0;
   min-width: 660px;
   max-width: 800px;
   width: 50vw;
 }
 
 .#{$slideBox}-container.size-s {
-  right: 0;
   min-width: 372px;
   max-width: 400px;
   width: 25vw;
 }
 
 .#{$slideBox}-container.size-l {
-  right: 0;
   min-width: 948px;
   max-width: 1140px;
   width: 75vw;
+}
+
+.#{$slideBox}-container.left {
+  left: 0;
+}
+
+.#{$slideBox}-container.right {
+  right: 0;
 }
