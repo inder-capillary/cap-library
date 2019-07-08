@@ -10,25 +10,6 @@ import './_capMultiSelectDatePicker.scss';
 const classNames = require('classnames');
 
 class CapMultiSelectDatePicker extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedDays: props.defaultValue || props.selected,
-    };
-  }
-
-  handleClick = (key) => {
-    const { selectedDays } = this.state;
-    const selectedList = selectedDays.indexOf(key) === -1
-      ? [...selectedDays, key]
-      : selectedDays.filter((d) => d !== key);
-    this.setState({selectedDays: selectedList}, () => {
-      if (this.props.onChange) {
-        this.props.onChange(this.state.selectedDays);
-      }
-    });
-  };
-
   getNumberOfDays = () => {
     const noOfDays = [];
     for (let i = 1; i <= 31; i++) {
@@ -45,16 +26,15 @@ class CapMultiSelectDatePicker extends React.Component {
     return noOfWeeks;
   }
 
-  renderLastDayOption = () => {
-    const { selectedDays } = this.state;
-    const { lastDayText = '' } = this.props;
+  renderLastDayOption = (selectedDays) => {
+    const { lastDayText = '', onClick } = this.props;
     const lastDayValue = -1;
     return (
       <th
         key={lastDayValue}
         colSpan="4"
         className={classNames({ "custom-selected": selectedDays.indexOf(lastDayValue) !== -1}, "custom-txt")}
-        onClick={() => this.handleClick(lastDayValue)}
+        onClick={() => onClick(lastDayValue)}
       >
         {lastDayText || 'Last day of month'}
       </th>);
@@ -63,8 +43,8 @@ class CapMultiSelectDatePicker extends React.Component {
   render() {
     const noOfDays = this.getNumberOfDays();
     const noOfWeeks = this.getNumberOfWeeks();
-    const { selectedDays } = this.state;
-    const { showLastDay } = this.props;
+    const { showLastDay, onClick, selected, defaultValue } = this.props;
+    const selectedDays = selected || defaultValue;
     return (
       <div className="multi-select-date-container">
         <table className="date-content">
@@ -75,12 +55,12 @@ class CapMultiSelectDatePicker extends React.Component {
                   <th
                     key={day}
                     className={classNames({ selected: selectedDays.indexOf(day) !== -1})}
-                    onClick={() => this.handleClick(day)}
+                    onClick={() => onClick(day)}
                   >
                     {day}
                   </th>
                 ))}
-                {(index === noOfWeeks.length - 1) && showLastDay ? this.renderLastDayOption() : null}
+                {(index === noOfWeeks.length - 1) && showLastDay ? this.renderLastDayOption(selectedDays) : null}
               </tr>
             ))
           }
@@ -95,7 +75,7 @@ CapMultiSelectDatePicker.propTypes = {
   defaultValue: PropTypes.array,
   showLastDay: PropTypes.bool,
   lastDayText: PropTypes.string,
-  onChange: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 CapMultiSelectDatePicker.defaultProps = {
