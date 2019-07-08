@@ -49,7 +49,9 @@ import CapLabelDoc from '../src/CapLabelDoc';
 import CapTimePickerDoc from '../src/CapTimePickerDoc';
 import CapErrorDoc from '../src/CapErrorDoc';
 import CapSecondaryTopBarDoc from '../src/CapSecondaryTopBarDoc';
+import CapMultiSelectDatePickerDoc from '../src/CapMultiSelectDatePickerDoc';
 //imported for docs
+
 
 class ComponentSwitcher extends Component {
   render() {
@@ -151,7 +153,10 @@ class ComponentSwitcher extends Component {
         return <CapErrorDoc />;
       case 'capSecondaryTopBar':
         return <CapSecondaryTopBarDoc />;
+      case 'capMultiSelectDatePicker':
+        return <CapMultiSelectDatePickerDoc />;
         //components for docs
+
       default:
         return null;
     }
