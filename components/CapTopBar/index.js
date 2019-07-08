@@ -6,20 +6,29 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Menu, Divider } from 'antd';
+import { Layout, Menu } from 'antd';
 import classNames from 'classnames';
 import CapDropdown from '../CapDropdown';
 import CapMenu from '../CapMenu';
 import CapIcon from '../CapIcon';
+import CapSlideBox from '../CapSlideBox';
+import CapButton from '../CapButton';
+import CapList from '../CapList';
 import { Select } from './Select';
 import './_capTopBar.scss';
-import { LogoBackground } from '../assets/icons';
 
 const { Header } = Layout;
 
 const clsPrefix = 'cap-navbar';
 
 class CapTopBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showSlideBox: false,
+    };
+  }
+
   renderTopMenu = () => {
     const { menuProps } = this.props;
     const { onMenuItemClick, items, ...restMenuProps } = menuProps;
@@ -44,28 +53,61 @@ class CapTopBar extends React.Component {
     );
   }
 
+  showSlideBox = () => {
+    this.setState({ showSlideBox: true });
+  }
+
+  closeSlideBox = () => {
+    this.setState({ showSlideBox: false });
+  }
+
   render() {
+    const { showSlideBox } = this.state;
     const { primarySelectProps, secondarySelectProps, menuProps, userName, onSettingsClick, onLogoutClick, logoutText } = this.props;
     return (
       <Header className={classNames(`${clsPrefix}-header`)}>
         <div style={{ display: "flex", flexGrow: '1' }}>
-          {primarySelectProps && (
-            <Select
-              showSearch
-              showHeader
-              {...primarySelectProps}
-            />
-          )}
-          {secondarySelectProps && <Divider type="vertical" className={classNames(`${clsPrefix}-divider`)} />}
-          {secondarySelectProps
-            && (
-              <Select
+          <div style={{ width: 240 }}>
+            {secondarySelectProps && (
+              <CapSlideBox
                 className="secondary-select"
-                showCapillaryIcon
-                {...secondarySelectProps} />
+                {...secondarySelectProps}
+                position="left" />
             )}
+            <CapButton onClick={this.showSlideBox} type="flat" prefix={<CapIcon type="more-applications" height={24} width={24}></CapIcon>}>
+              {secondarySelectProps.selectedItem}
+            </CapButton>
+            {showSlideBox && (
+              <CapSlideBox
+                showShadow
+                show={showSlideBox}
+                size="size-s"
+                header={(
+                  <div style={{ display: "flex", flexGrow: '1' }}>
+                    <CapIcon type="more-applications" height={24} width={24}></CapIcon>
+                    {secondarySelectProps.slideBoxHeading}
+                  </div>
+                )}
+                content={<CapList dataSource={secondarySelectProps.items} renderItem={(item) => (<CapList.Item>{item}</CapList.Item>)} />}
+                className="custom-class-name"
+                handleClose={this.closeSlideBox}
+                position="left" />
+            )}
+          </div>
+          <div>
+            {primarySelectProps && (
+              <Select
+                showSearch
+                showHeader
+                {...primarySelectProps}
+              />
+            )}
+          </div>
         </div>
         {menuProps && this.renderTopMenu()}
+        {
+          onSettingsClick && <CapIcon onClick={onSettingsClick} className={classNames(`${clsPrefix}-setting`)} type="settings" />
+        }
         {
           userName
           && (
@@ -83,14 +125,12 @@ class CapTopBar extends React.Component {
               )}
               placement="bottomLeft">
               <div onClick={this.showUserPopover} className={(`${clsPrefix}-user`)}>
-                <LogoBackground />
-                <span className="text-label">{userName[0]}</span>
+                {/* <LogoBackground /> */}
+                <span className="text-label oval"></span>
+                <CapIcon type="person" size="s" className={(`${clsPrefix}-person`)}></CapIcon>
               </div>
             </CapDropdown>
           )
-        }
-        {
-          onSettingsClick && <CapIcon onClick={onSettingsClick} className={classNames(`${clsPrefix}-setting`)} type="settings" />
         }
         {
           this.props.children
