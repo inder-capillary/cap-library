@@ -35,6 +35,7 @@ export const CAP_G08 = "#ebecf0";
 export const CAP_G09 = "#f4f5f7";
 export const CAP_G10 = "#fafbfc";
 export const CAP_G11 = "#7a869a";
+export const CAP_G12 = "#e8e8e8";
 
 export const CAP_WHITE = "#ffffff";
 
@@ -84,3 +85,5 @@ export const CAP_SPACE_36 = "2.571rem";
 export const CAP_SPACE_40 = "2.857rem";
 export const CAP_SPACE_44 = "3.142rem";
 export const CAP_SPACE_48 = "3.428rem";
+export const CAP_SPACE_56 = "4rem";
+export const CAP_SPACE_72 = "5.143rem";

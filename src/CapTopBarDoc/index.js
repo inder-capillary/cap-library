@@ -3,7 +3,7 @@
 */
 import React, { Component } from "react";
 import PropertyTable from '../../helpers/PropertyTable';
-import { CapTopBar, CapHeading } from "../../components";
+import { CapTopBar, CapHeading, CapLink, CapIcon } from "../../components";
 import "./info.scss";
 
 const infoData = [
@@ -72,7 +72,6 @@ export default class NavigationBarDoc extends Component { // eslint-disable-line
     this.state = {
       selectedOrg: "buckle",
       selectedProduct: "Campaign manager",
-      selectedMenuItem: 'incentive',
     };
   }
 
@@ -90,13 +89,29 @@ export default class NavigationBarDoc extends Component { // eslint-disable-line
   onLogoutClick = () => {
   }
 
-  onMenuItemClick = (key) => {
-    this.setState({ selectedMenuItem: key });
+  onMenuItemClick = () => {
   }
 
   render() {
-    const { selectedOrg, selectedProduct, selectedMenuItem } = this.state;
-    const productsComps = productsList.map((pro) => <CapHeading type="h5">{pro.label}</CapHeading>);
+    const { selectedOrg, selectedProduct } = this.state;
+    const productsComps = productsList.map((pro) => (
+      <CapLink
+        onClick={() => this.handleProductChange(pro)}
+        title={(
+          <div style={{ display: 'flex', paddingLeft: 60 }}>
+            {selectedProduct.toLowerCase() === pro.value.toLowerCase() && (
+              <CapIcon
+                type="tick"
+                height={16}
+                width={16}
+                style={{ color: '#42B040' }}
+              />
+            )}
+            <CapHeading type="h5">{pro.label}</CapHeading>
+          </div>
+        )}
+      />
+    ));
     return (
       <div className="navigation-bar-info">
         <div className="navigation-bar-showcase">
@@ -106,7 +121,7 @@ export default class NavigationBarDoc extends Component { // eslint-disable-line
               selectedItem: selectedOrg,
               handleItemChange: this.handleOrgChange,
             }}
-            secondarySelectProps={{
+            primaryListProps={{
               items: productsComps,
               selectedItem: selectedProduct,
               handleItemChange: this.handleProductChange,
@@ -115,8 +130,8 @@ export default class NavigationBarDoc extends Component { // eslint-disable-line
             }}
             menuProps={{
               items: menuItems,
-              defaultSelectedKeys: [selectedMenuItem],
-              selectedKeys: [selectedMenuItem],
+              defaultSelectedKeys: ['campaigns'],
+              onMenuItemClick: this.onMenuItemClick,
             }}
             userName="Jagrati"
             onSettingsClick={this.onSettingsClick}
