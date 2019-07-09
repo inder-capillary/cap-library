@@ -42,6 +42,9 @@ export const CAP_WHITE = "#ffffff";
 export const CAP_COLOR_01 = '#dbefda';
 export const CAP_COLOR_02 = '#fee5d3';
 export const CAP_COLOR_03 = '#e83135';
+export const CAP_COLOR_04 = '#fff4d6';
+export const CAP_COLOR_05 = '#fbd3d8';
+export const CAP_COLOR_06 = '#42B040';
 
 /* Fonts */
 // ==============
