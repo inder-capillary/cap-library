@@ -79,6 +79,15 @@ $cap-custom-card: cap-custom-card;
     -webkit-box-orient: vertical;
   }
 }
+
+.ant-card.#{$cap-custom-card}.CALL_TASK {
+  .ant-card-body {
+    padding-bottom: 0;
+    padding-top: $CAP_SPACE_04;
+    height: 129px;
+  }
+}
+
 .ant-card.#{$cap-custom-card}.MOBILEPUSH {
   .ant-card-body {
     padding-bottom: 0;

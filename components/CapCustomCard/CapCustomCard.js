@@ -20,6 +20,7 @@ const channels = {
   sms: 'SMS',
   email: 'EMAIL',
   mpush: "MOBILEPUSH",
+  call_task: 'CALL_TASK',
 };
 class CapCustomCard extends React.Component {
     getMpushContent = (templateData) => {
@@ -82,6 +83,7 @@ class CapCustomCard extends React.Component {
       const type = this.props.type.toUpperCase();
       switch (type) {
         case channels.sms:
+        case channels.call_task:
           return <Meta description={content} />;
         case channels.email:
           return <Meta description={<img width={width || 244} height={height || 279} src={url} alt={url} />} />;
