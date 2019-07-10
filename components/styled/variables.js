@@ -35,12 +35,16 @@ export const CAP_G08 = "#ebecf0";
 export const CAP_G09 = "#f4f5f7";
 export const CAP_G10 = "#fafbfc";
 export const CAP_G11 = "#7a869a";
+export const CAP_G12 = "#e8e8e8";
 
 export const CAP_WHITE = "#ffffff";
 
 export const CAP_COLOR_01 = '#dbefda';
 export const CAP_COLOR_02 = '#fee5d3';
 export const CAP_COLOR_03 = '#e83135';
+export const CAP_COLOR_04 = '#fff4d6';
+export const CAP_COLOR_05 = '#fbd3d8';
+export const CAP_COLOR_06 = '#42B040';
 
 /* Fonts */
 // ==============
@@ -84,3 +88,5 @@ export const CAP_SPACE_36 = "2.571rem";
 export const CAP_SPACE_40 = "2.857rem";
 export const CAP_SPACE_44 = "3.142rem";
 export const CAP_SPACE_48 = "3.428rem";
+export const CAP_SPACE_56 = "4rem";
+export const CAP_SPACE_72 = "5.143rem";
