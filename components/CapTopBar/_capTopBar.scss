@@ -13,15 +13,36 @@ $orgSelectPrefix: top-bar-select;
   }
 }
 .ant-layout-header.#{$clsPrefix}-header {
-  background-color: #ffffff;
+  background-color: $CAP_WHITE;
   padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid $CAP_G12;
   width: 100%;
   position: fixed;
   z-index: 100;
+  height: $CAP_SPACE_72;
+
+  .cap-list-v2 .ant-list-item {
+    border-bottom: 0;
+    padding-top: $CAP_SPACE_32;
+  }
+  .slidebox-header {
+    border-bottom: 1px solid $CAP_G07;
+    height: $CAP_SPACE_72;
+    padding: 0;
+  }
+  .cap-slide-box-v2-close-icon {
+    padding-right: $CAP_SPACE_24;
+  }
+  .cap-slide-box-v2-container {
+    min-width: 300px;
+    width: 320px;
+  }
+  .slidebox-content-container {
+    padding: 0;
+  }
 }
 
 .#{$clsPrefix}-divider {
@@ -35,12 +56,12 @@ $orgSelectPrefix: top-bar-select;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  padding: 0px 0px 0px 8px;
-  margin: 0 0 0 20px;
-  height: 48px;
+  padding: 0 0 0 $CAP_SPACE_08;
+  margin: $CAP_SPACE_12 0;
+  height: $CAP_SPACE_48;
   border: 1px solid transparent;
   &.open {
-    border-radius: 4px;
+    border-radius: $CAP_SPACE_04;
     border: 1px solid $CAP_G06;
   }
   &.secondary-select {
@@ -49,7 +70,7 @@ $orgSelectPrefix: top-bar-select;
 }
 
 .#{$orgSelectPrefix}-selected-value {
-  font-size: 16px;
+  font-size: $FONT_SIZE_L;
   font-weight: $FONT_WEIGHT_MEDIUM;
   display: flex;
   align-items: center;
@@ -81,19 +102,21 @@ $orgSelectPrefix: top-bar-select;
 }
 
 .#{$clsPrefix}-setting {
-  margin: 0 8px;
+  margin: 0 $CAP_SPACE_48;
 }
 .#{$clsPrefix}-user {
-  margin: 0 8px;
+  margin: 0 $CAP_SPACE_08;
   cursor: pointer;
 }
 
 .#{$clsPrefix}-user,
 .#{$orgSelectPrefix}-selected-icon {
-  margin-right: 8px;
+  margin-right: $CAP_SPACE_08;
   display: flex;
   align-items: center;
   position: relative;
+  height: $CAP_SPACE_32;
+  width: $CAP_SPACE_32;
   .text-label {
     position: absolute;
     right: 50%;
@@ -102,15 +125,21 @@ $orgSelectPrefix: top-bar-select;
     line-height: 14px;
   }
 }
+.oval {
+  width: $CAP_SPACE_56;
+  height: $CAP_SPACE_56;
+  background: $CAP_G08;
+  border-radius: 50%;
+}
 
 .#{$orgSelectPrefix}-header {
-  padding: 8px 16px 20px 16px;
+  padding: $CAP_SPACE_08 $CAP_SPACE_16 $CAP_SPACE_20 $CAP_SPACE_16;
   font-size: $FONT_SIZE_M;
   font-weight: $FONT_WEIGHT_MEDIUM;
 }
 
 .#{$orgSelectPrefix}-select-item {
-  padding: 8px 8px 8px 24px;
+  padding: $CAP_SPACE_08 $CAP_SPACE_08 $CAP_SPACE_08 $CAP_SPACE_24;
   cursor: pointer;
   &:hover {
     background-color: $BG_01;
@@ -140,7 +169,7 @@ $orgSelectPrefix: top-bar-select;
     margin-top: 8px;
     text-align: center;
     color: $CAP_G05;
-    font-size: 12px;
+    font-size: $FONT_SIZE_S;
   }
 }
 
@@ -158,7 +187,7 @@ $orgSelectPrefix: top-bar-select;
 }
 
 .#{$orgSelectPrefix}-search {
-  padding: 0 16px 16px 16px;
+  padding: 0 $CAP_SPACE_16 $CAP_SPACE_16 $CAP_SPACE_16;
 }
 
 .#{$orgSelectPrefix}-items-wrapper {
@@ -167,7 +196,7 @@ $orgSelectPrefix: top-bar-select;
 }
 
 .#{$orgSelectPrefix}-arrow {
-  margin-right: 12px;
+  margin-right: $CAP_SPACE_12;
 }
 
 .#{$clsPrefix}-user-popover {
@@ -179,4 +208,24 @@ $orgSelectPrefix: top-bar-select;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.#{$clsPrefix}-person {
+  z-index: 0;
+}
+
+.#{$clsPrefix}-flexDisplay {
+  display: flex;
+  flex-grow: 1;
+}
+
+.#{$clsPrefix}-more-app {
+  height: $CAP_SPACE_24;
+  width: $CAP_SPACE_24;
+  margin: $CAP_SPACE_24 $CAP_SPACE_12 $CAP_SPACE_24 $CAP_SPACE_24;
+}
+
+.#{$clsPrefix}-dimensions {
+  height: $CAP_SPACE_72;
+  width: 240px;
 }
