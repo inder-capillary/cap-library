@@ -53,7 +53,7 @@ class CapRadioCard extends React.Component { // eslint-disable-line react/prefer
         {panes && (
           panes.map((pane) => (
               <>
-                {get(pane, 'toolTipProps.title')
+                {get(pane, 'tooltipProps.title')
                   ? (
                     <CapTooltip
                       {...pane.tooltipProps}
