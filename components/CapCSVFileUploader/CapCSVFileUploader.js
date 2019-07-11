@@ -17,12 +17,22 @@ class CapCSVFileUploader extends Component {
     checkFileSize: PropTypes.bool,
     getNumberOfEntries: PropTypes.func,
     lineCount: PropTypes.number,
+    sampleCsvName: PropTypes.string,
+    chooseFileBtnTxt: PropTypes.string,
+    fileSizeExceededTxt: PropTypes.string,
+    csvFileErrorTxt: PropTypes.string,
+    csvFileNoEntryTxt: PropTypes.string,
   }
 
   static defaultProps = {
     showNumberOfEntries: true,
     checkFileSize: true,
     numberOfEntriesMessage: "entries",
+    sampleCsvName: "Sample.csv",
+    chooseFileBtnTxt: "Choose file",
+    fileSizeExceededTxt: "File size is greater than 5 MB",
+    csvFileErrorTxt: "Please upload a CSV file",
+    csvFileNoEntryTxt: "Please upload a file with atleast one entry",
   }
 
   constructor(props) {
@@ -116,7 +126,7 @@ class CapCSVFileUploader extends Component {
 
 
   render() {
-    const { errorMessage, numberOfEntriesMessage, sampleCsvFilePath, checkFileSize } = this.props;
+    const { errorMessage, numberOfEntriesMessage, sampleCsvFilePath, checkFileSize, sampleCsvName, chooseFileBtnTxt, fileSizeExceededTxt, csvFileNoEntryTxt, csvFileErrorTxt } = this.props;
     const { fileName, isCsvFile, lineCount } = this.state;
     return (
       <div className="cap-csv-file-uploader">
@@ -124,7 +134,7 @@ class CapCSVFileUploader extends Component {
           ? (
             <div className="csv-fileipload-container">
               <div className="file-upload buttonFileUpload btn ">
-                <span>Choose File</span>
+                <span>{chooseFileBtnTxt}</span>
                 <CapInput
                   type="file"
                   className="upload btn btn-secondary"
@@ -134,15 +144,14 @@ class CapCSVFileUploader extends Component {
               </div>
               {
                 sampleCsvFilePath
-                  ? (
+                  && (
                     <a
                       href={sampleCsvFilePath}
                       download
                     >
-                    Sample.csv
+                      {sampleCsvName}
                     </a>
                   )
-                  : null
               }
             </div>
           )
@@ -155,12 +164,12 @@ class CapCSVFileUploader extends Component {
         }
         <div>
           {
-            checkFileSize && this.state.fileSizeExceeded && (<span style={{color: 'red'}}>File size is greater than 5 MB</span>)
+            checkFileSize && this.state.fileSizeExceeded && (<span style={{color: 'red'}}>{fileSizeExceededTxt}</span>)
           }
           {
             !isCsvFile
-              ? <div style={{color: 'red', margin: '7px 0'}}>Please upload a CSV file</div>
-              : lineCount === 0 && fileName && (<div style={{color: 'red', margin: '7px 0'}}>Please upload a file with atleast one entry</div>)
+              ? <div style={{color: 'red', margin: '7px 0'}}>{csvFileErrorTxt}</div>
+              : lineCount === 0 && fileName && (<div style={{color: 'red', margin: '7px 0'}}>{csvFileNoEntryTxt}</div>)
           }
           {
             errorMessage && (<div style={{color: 'red'}}>{errorMessage}</div>)
