@@ -2,11 +2,15 @@
 
 exports[`<CapCustomCard /> CapCustomCard renders correctly 1`] = `
 <div
-  className="ant-card cap-custom-card ant-card-bordered"
+  className="ant-card cap-custom-card sms no-image ant-card-bordered"
 >
   <div
     className="ant-card-body"
     style={Object {}}
-  />
+  >
+    <div
+      className="ant-card-meta"
+    />
+  </div>
 </div>
 `;

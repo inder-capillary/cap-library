@@ -9,10 +9,10 @@ import React from 'react';
 import {Skeleton} from 'antd';
 
 function CapSkeleton(props) {
-  const className = `cap-skeleton ${props.className}`;
-  const capProps = {...props, className};
+  const className = `cap-skeleton-v2 ${props.className}`;
+  const skeletonProps = {...props, className};
   return (
-    <Skeleton {...capProps} />
+    <Skeleton {...skeletonProps} />
   );
 }
 

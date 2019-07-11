@@ -1,14 +1,15 @@
 @import "../styles/_variables.scss";
 
 $capRadioCardV2: cap-radioCard-v2;
+
+
 .ant-radio-group.#{$capRadioCardV2} {
-  width: 800px;
   .ant-radio-button-wrapper {
-    border-radius: 4px;
+    border-radius: $CAP_SPACE_04;
     width: 372px;
     height: 120px;
     background-color: $CAP_WHITE;
-    margin: 6px;
+    margin: $CAP_SPACE_06;
     padding: 0;
     border-top-width: 1px;
   }
@@ -65,7 +66,7 @@ $capRadioCardV2: cap-radioCard-v2;
     left: 25%;
   }
   .icon-container {
-    padding-right: 24px;
+    padding-right: $CAP_SPACE_24;
     height: 48px;
     width: 48px;
     background-color: $CAP_G07;
@@ -81,4 +82,33 @@ $capRadioCardV2: cap-radioCard-v2;
       }
     }
   }
+  &.smallRadioCard{
+    .ant-card-body{
+      padding: $CAP_SPACE_12;  
+      height: 48px;
+    }
+    .icon-container{
+      padding-right:unset;
+      background-color: unset;
+    }
+    .radio-card-icon{
+      height:$CAP_SPACE_20;
+      width:$CAP_SPACE_24;
+    }
+    .div-icon{
+      top:0%;
+      left:0%;
+    }
+    .ant-radio-button-wrapper{
+      margin:6px 12px 6px 0px;
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+    }
+  }
 }
+
+
+
+
+

@@ -86,6 +86,12 @@ const getSvgComponentFromType = (type) => {
     case 'delete': return SvgIcons.Delete;
     case 'drag': return SvgIcons.Drag;
     case 'launch': return SvgIcons.Launch;
+    case 'capture': return SvgIcons.Capture;
+    case 'dollar': return SvgIcons.Dollar;
+    case 'commentMessage': return SvgIcons.CommentMessage;
+    case 'greetings': return SvgIcons.Greetings;
+    case 'shapeCopy': return SvgIcons.ShapeCopy;
+    case 'box': return SvgIcons.Box;
     default: return null;
   }
 };
