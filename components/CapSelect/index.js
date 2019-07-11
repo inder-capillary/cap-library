@@ -17,7 +17,7 @@ const clsPrefix = 'cap-select-v2';
 const { Option } = Select;
 
 function CapSelect(props) {
-  const { className, dropdownClassName, options, ...rest } = props;
+  const { componentClassName, dropdownClassName, options, ...rest } = props;
   const items = options.map((op) => <Option {...op}>{op.label}</Option>);
   return (
     <Select
@@ -26,7 +26,7 @@ function CapSelect(props) {
       menuItemSelectedIcon={<CapIcon type="tick" />}
       dropdownClassName={classNames(`${clsPrefix}-dropdown`, dropdownClassName)}
       {...rest}
-      className={classNames(clsPrefix, className)}>
+      className={classNames(clsPrefix, componentClassName)}>
       {items}
     </Select>
   );
