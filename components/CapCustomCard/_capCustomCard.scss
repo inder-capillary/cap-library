@@ -149,9 +149,13 @@ $cap-custom-card: cap-custom-card;
 .ant-card.#{$cap-custom-card}.Email {
   .ant-card-body {
     padding: 3px 16px 0 16px;
-    background-color: #f4f5f7;
     padding-top: $CAP_SPACE_04;
     padding-bottom: $CAP_SPACE_04;
+  }
+  &:not(.no-image){
+    .ant-card-body{
+      background-color: $CAP_G09;
+    }    
   }
   .ant-card-meta-description {
     display: flex;

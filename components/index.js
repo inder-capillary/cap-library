@@ -59,5 +59,6 @@ export { default as CapTimePicker } from './CapTimePicker';
 export { default as CapError } from './CapError';
 export { default as CapSecondaryTopBar } from './CapSecondaryTopBar';
 export { default as CapStatisticCard } from './CapStatisticCard';
+export { default as CapSkeleton } from './CapSkeleton';
 export { default as CapMultiSelectDatePicker } from './CapMultiSelectDatePicker';
 //export components

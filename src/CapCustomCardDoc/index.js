@@ -197,6 +197,11 @@ const cardListEmail = [
     title: "20% off on footwear",
     extra: [<CapIcon type="eye" />],
   },
+  {
+    hoverOption: <CapButton>Select</CapButton>,
+    title: "40% off on footwear",
+    extra: [<CapIcon type="eye" />],
+  },
 ];
 
 const CustomDiv = styled.div`
@@ -218,7 +223,13 @@ export default class CapCustomCardDoc extends Component { // eslint-disable-line
           <CustomDiv>
             <CapHeading type="h3">Email Card  List</CapHeading>
           </CustomDiv>
-          <CapCustomCardList cardList={cardListEmail} type="Email" />
+          <CustomDiv>
+            <CapCustomCardList cardList={cardListEmail} type="Email" />
+          </CustomDiv>
+          <CustomDiv>
+            when there is no url image given
+            <CapCustomCard {...cardListEmail[2]} type="Email" />
+          </CustomDiv>
         </div>
         <PropertyTable data={infoData} title="CapCustomCard.CapCustomCardList" />
         <PropertyTable data={cardInfoData} title="Card Props" />

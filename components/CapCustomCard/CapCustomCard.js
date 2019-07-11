@@ -13,6 +13,7 @@ import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
 import CapHeader from "../CapHeader";
 import CapLink from "../CapLink";
+import CapSkeleton from '../CapSkeleton';
 const { Meta } = Card;
 
 const clsPrefix = "cap-custom-card";
@@ -86,7 +87,7 @@ class CapCustomCard extends React.Component {
         case channels.call_task:
           return <Meta description={content} />;
         case channels.email:
-          return <Meta description={<img width={width || 244} height={height || 279} src={url} alt={url} />} />;
+          return <Meta description={url ? <img width={width || 244} height={height || 279} src={url} alt={url} /> : <CapSkeleton loading />} />;
         case channels.mpush: {
           const contentPreview = this.getMpushContent(content);
           const previewMpush = [
@@ -109,7 +110,7 @@ class CapCustomCard extends React.Component {
       const { className, type, content, hoverOption, url, width, height, ...rest } = this.props;
       return (
         <Card
-          className={ClassNames(clsPrefix, className, type, { 'has-hover-option': hoverOption })}
+          className={ClassNames(clsPrefix, className, type, { 'has-hover-option': hoverOption, 'no-image': !url})}
           {...rest}
         >
           {this.getCardContent()}
