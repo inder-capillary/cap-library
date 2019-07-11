@@ -96,6 +96,28 @@ export default class CapRadioCardDoc extends Component { // eslint-disable-line 
         icon: <CapIcon type="view" />,
         value: 'referral',
       }];
+    const panes1 = [
+      {
+        title: "Promote specific products",
+        icon: <CapIcon type="communication" />,
+        value: 'product',
+      },
+      {
+        title: "Increase store visits",
+        icon: <CapIcon type="communication" />,
+        value: 'store',
+      },
+      {
+        title: "Winback lapsed customers",
+        icon: <CapIcon type="communication" />,
+        value: 'winback',
+      },
+      {
+        title: "Improve retention",
+        icon: <CapIcon type="communication" />,
+        value: 'retention',
+      },
+    ];
     return (
       <div className="cap-radio-card-info">
         <div className="cap-radio-card-showcase">
@@ -104,6 +126,16 @@ export default class CapRadioCardDoc extends Component { // eslint-disable-line 
             panes={panes}
             onChange={this.onChange}
             selected={selectedValue}
+          />
+        </div>
+        <div className="cap-radio-card-showcase">
+          <CapRadioCard
+            defaultValue="referral"
+            panes={panes1}
+            cardHeight="48px"
+            size="small"
+            // onChange={this.onChange}
+            // selected={selectedValue}
           />
         </div>
         <PropertyTable data={infoData} />
