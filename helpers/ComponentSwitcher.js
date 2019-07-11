@@ -51,6 +51,7 @@ import CapErrorDoc from '../src/CapErrorDoc';
 import CapSecondaryTopBarDoc from '../src/CapSecondaryTopBarDoc';
 import CapSkeletonDoc from '../src/CapSkeletonDoc';
 import CapMultiSelectDatePickerDoc from '../src/CapMultiSelectDatePickerDoc';
+import CapHierarchyComponentDoc from '../src/CapHierarchyComponentDoc';
 //imported for docs
 
 
@@ -158,6 +159,8 @@ class ComponentSwitcher extends Component {
         return <CapSkeletonDoc />;
       case 'capMultiSelectDatePicker':
         return <CapMultiSelectDatePickerDoc />;
+      case 'capHierarchyComponent':
+        return <CapHierarchyComponentDoc />;
         //components for docs
 
       default:
