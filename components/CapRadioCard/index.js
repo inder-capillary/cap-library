@@ -4,7 +4,7 @@
 *
 */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import './_capRadioCard.scss';
 
 import { Card, Radio } from "antd";
@@ -56,16 +56,16 @@ class CapRadioCard extends React.Component { // eslint-disable-line react/prefer
       <RadioGroup {...rest} className={classNames("cap-radioCard-v2", size === "small" && "smallRadioCard", className)}>
         {panes && (
           panes.map((pane) => (
-              <>
-                {get(pane, 'tooltipProps.title')
-                  ? (
-                    <CapTooltip
-                      {...pane.tooltipProps}
-                    >
-                      {this.getRadioButton(pane)}
-                    </CapTooltip>
-                  ) : this.getRadioButton(pane)}
-              </>
+            <Fragment>
+              {get(pane, 'tooltipProps.title')
+                ? (
+                  <CapTooltip
+                    {...pane.tooltipProps}
+                  >
+                    {this.getRadioButton(pane)}
+                  </CapTooltip>
+                ) : this.getRadioButton(pane)}
+            </Fragment>
           ))
         )}
       </RadioGroup>
