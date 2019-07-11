@@ -143,6 +143,10 @@ class CapTopBar extends React.Component {
 
 CapTopBar.defaultProps = {
   logoutText: "Logout",
+  primaryListProps: {},
+  menuProps: {},
+  primarySelectProps: {},
+  userName: "",
 };
 
 CapTopBar.propTypes = {
