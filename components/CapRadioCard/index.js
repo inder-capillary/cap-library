@@ -20,15 +20,15 @@ const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 class CapRadioCard extends React.Component { // eslint-disable-line react/prefer-stateless-function
   getRadioButton = (pane) => {
-    const { cardHeight, selected, defaultValue } = this.props;
-    const { content, title, icon, value, ...restParams } = pane;
+    const { cardHeight, selected, defaultValue, size } = this.props;
+    const { content, title, icon, value, infoIconDescription, ...restParams } = pane;
     return (
       <RadioButton style={{ height: cardHeight || '120px' }} key={value} value={value} {...restParams}>
         <CapIcon type="check-filled" className="radio-card-checked" />
         <Card>
           {icon && (
             <div className="radio-card-icon">
-              <div className={classNames('icon-container', { 'green-color': selected ? selected === value : defaultValue === value })}>
+              <div className={classNames('icon-container', { 'green-color': (selected ? selected === value : defaultValue === value) && (size !== "small") })}>
                 <div className="div-icon">
                   {icon}
                 </div>
@@ -42,6 +42,9 @@ class CapRadioCard extends React.Component { // eslint-disable-line react/prefer
               {content}
             </div>
           </div>
+          {infoIconDescription
+                  && <CapTooltipWithInfo title={infoIconDescription}></CapTooltipWithInfo>
+          }
         </Card>
       </RadioButton>
     );
@@ -52,37 +55,6 @@ class CapRadioCard extends React.Component { // eslint-disable-line react/prefer
     return (
       <RadioGroup {...rest} className={classNames("cap-radioCard-v2", size === "small" && "smallRadioCard", className)}>
         {panes && (
-<<<<<<< HEAD
-          panes.map((pane) => {
-            const { content, title, icon, value, infoIconDescription, ...restParams } = pane;
-            return (
-              <RadioButton style={{ height: cardHeight || '120px' }} key={value} value={value} {...restParams}>
-                <CapIcon type="check-filled" className="radio-card-checked" />
-                <Card>
-                  {icon && (
-                    <div className="radio-card-icon">
-                      <div className={classNames('icon-container', { 'green-color': (selected ? selected === value : rest.defaultValue === value) && (size !== "small") })}>
-                        <div className="div-icon">
-                          {icon}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  <div className="radio-card-content-container">
-                    <div className="radio-card-header"><CapHeading type="h4">{title}</CapHeading></div>
-                    <div className="radio-card-content">
-                      {' '}
-                      {content}
-                    </div>
-                  </div>
-                  {infoIconDescription
-                  && <CapTooltipWithInfo title={infoIconDescription}></CapTooltipWithInfo>
-                  }
-                </Card>
-              </RadioButton>
-            );
-          }))}
-=======
           panes.map((pane) => (
               <>
                 {get(pane, 'tooltipProps.title')
@@ -96,7 +68,6 @@ class CapRadioCard extends React.Component { // eslint-disable-line react/prefer
               </>
           ))
         )}
->>>>>>> feafe3d3e04a02305959e32be1fafb07705192a0
       </RadioGroup>
 
     );
