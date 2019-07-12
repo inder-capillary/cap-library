@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import last from "lodash/last";
 import CapTag from "../CapTag";
 import "./_capCSVFileUploader.scss";
-import CapInput from '../CapInput';
 
 class CapCSVFileUploader extends Component {
   static propTypes = {
@@ -135,7 +134,7 @@ class CapCSVFileUploader extends Component {
             <div className="csv-fileipload-container">
               <div className="file-upload buttonFileUpload btn ">
                 <span>{chooseFileBtnTxt}</span>
-                <CapInput
+                <input
                   type="file"
                   className="upload btn btn-secondary"
                   onChange={this.onChange}
