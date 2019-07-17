@@ -146,22 +146,20 @@ $cap-custom-card: cap-custom-card;
   }
 }
 
-.ant-card.#{$cap-custom-card}.Email {
-  .ant-card-body {
-    padding: 3px 16px 0 16px;
-    padding-top: $CAP_SPACE_04;
-    padding-bottom: $CAP_SPACE_04;
-  }
-  &:not(.no-image){
+.ant-card.#{$cap-custom-card}.EMAIL {
+  &.no-image{
     .ant-card-body{
-      background-color: $CAP_G09;
-    }    
+      padding-bottom: 0;
+      padding-top: $CAP_SPACE_04;
+      height: 129px;
+      display: block;
+      display: -webkit-box;
+      -webkit-line-clamp: 7;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }  
   }
-  .ant-card-meta-description {
-    display: flex;
-    justify-content: center;
   }
-}
 
 .#{$cap-custom-card-list} {
   .ant-card.#{$cap-custom-card} {

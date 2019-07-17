@@ -87,7 +87,7 @@ class CapCustomCard extends React.Component {
         case channels.call_task:
           return <Meta description={content} />;
         case channels.email:
-          return <Meta description={url ? <img width={width || 244} height={height || 279} src={url} alt={url} /> : <CapSkeleton loading />} />;
+          return <Meta description={url ? <img width={width || 244} height={height || 279} src={url} alt={url} /> : content || <CapSkeleton loading />} />;
         case channels.mpush: {
           const contentPreview = this.getMpushContent(content);
           const previewMpush = [
