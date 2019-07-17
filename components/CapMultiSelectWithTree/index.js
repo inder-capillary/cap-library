@@ -359,9 +359,11 @@ export default class CapMultiSelectWithTree extends React.Component {
 
   togglePopoverVisibility(visible) {
     const { appliedKeys, treeData } = this.props;
+    this.setState({
+      visible,
+    });
     if (visible) {
       this.setState({
-        visible,
         expandedKeys: appliedKeys && appliedKeys.length > 0
           ? union(getExpandedKeys(appliedKeys, treeData, this.dataList),
             ["select-all-common"]) : ["select-all-common"],

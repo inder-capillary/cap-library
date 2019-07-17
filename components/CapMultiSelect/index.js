@@ -186,9 +186,7 @@ export default class CapMultiSelect extends React.Component {
   }
 
   togglePopoverVisibility(visible) {
-    if (visible) {
-      this.setState({ visible });
-    }
+    this.setState({ visible });
   }
 
   hide() {
