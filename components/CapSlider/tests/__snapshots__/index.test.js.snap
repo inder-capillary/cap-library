@@ -35,6 +35,7 @@ exports[`<CapSlider /> renders correctly 1`] = `
       className="ant-slider-handle"
       onBlur={[Function]}
       onKeyDown={[Function]}
+      onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       role="slider"
