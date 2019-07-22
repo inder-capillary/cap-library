@@ -2,7 +2,7 @@
 
 exports[`<CapLabel /> CapLabel renders correctly 1`] = `
 <div
-  className="sc-bdVaJa fZdJKj"
+  className="sc-bdVaJa chEaHU"
   type="label1"
 />
 `;

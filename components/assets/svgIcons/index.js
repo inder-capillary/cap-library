@@ -88,3 +88,4 @@ export { default as CommentMessage } from './Icons/CommentMessage';
 export { default as Greetings } from './Icons/Greetings';
 export { default as ShapeCopy } from './Icons/ShapeCopy';
 export { default as Box } from './Icons/Box';
+export { default as GrowthGraph } from './Icons/GrowthGraph';

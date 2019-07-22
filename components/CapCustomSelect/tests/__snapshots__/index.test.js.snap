@@ -60,12 +60,13 @@ ShallowWrapper {
         <div
           className="cap-custom-select-selected-value"
         >
-          <ForwardRef
+          <ForwardRef(Styled(styled.div))
+            className=""
             title=""
             type="h5"
           >
             Select organizations
-          </ForwardRef>
+          </ForwardRef(Styled(styled.div))>
         </div>
         <CapIcon
           className="cap-custom-select-arrow"
@@ -73,8 +74,9 @@ ShallowWrapper {
         />
       </div>,
       "content": <React.Fragment>
-        <Component
+        <_class
           className="cap-custom-select-search"
+          labelPosition="top"
           onChange={[Function]}
           onClear={[Function]}
           placeholder="Search"
@@ -83,44 +85,43 @@ ShallowWrapper {
         <div
           className="cap-custom-select-items-wrapper"
         >
-          <ForwardRef
+          <ForwardRef(Styled(styled.div))
             className="cap-custom-select-select-item"
             onClick={[Function]}
             type="h6"
           >
             Purples
-          </ForwardRef>
-          <ForwardRef
+          </ForwardRef(Styled(styled.div))>
+          <ForwardRef(Styled(styled.div))
             className="cap-custom-select-select-item"
             onClick={[Function]}
             type="h6"
           >
             Buckle
-          </ForwardRef>
-          <ForwardRef
+          </ForwardRef(Styled(styled.div))>
+          <ForwardRef(Styled(styled.div))
             className="cap-custom-select-select-item"
             onClick={[Function]}
             type="h6"
           >
             Ski
-          </ForwardRef>
-          <ForwardRef
+          </ForwardRef(Styled(styled.div))>
+          <ForwardRef(Styled(styled.div))
             className="cap-custom-select-select-item"
             onClick={[Function]}
             type="h6"
           >
             Splash
-          </ForwardRef>
-          <ForwardRef
+          </ForwardRef(Styled(styled.div))>
+          <ForwardRef(Styled(styled.div))
             className="cap-custom-select-select-item"
             onClick={[Function]}
             type="h6"
           >
             Metro
-          </ForwardRef>
+          </ForwardRef(Styled(styled.div))>
         </div>
       </React.Fragment>,
-      "getPopupContainer": [Function],
       "mouseEnterDelay": 0.1,
       "mouseLeaveDelay": 0.1,
       "onVisibleChange": [Function],
@@ -128,7 +129,7 @@ ShallowWrapper {
       "overlayStyle": Object {
         "width": "100%",
       },
-      "placement": "bottomLeft",
+      "placement": "top",
       "transitionName": "zoom-big",
       "trigger": "click",
       "visible": false,
@@ -143,12 +144,13 @@ ShallowWrapper {
           <div
             className="cap-custom-select-selected-value"
           >
-            <ForwardRef
+            <ForwardRef(Styled(styled.div))
+              className=""
               title=""
               type="h5"
             >
               Select organizations
-            </ForwardRef>
+            </ForwardRef(Styled(styled.div))>
           </div>,
           <CapIcon
             className="cap-custom-select-arrow"
@@ -167,12 +169,13 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <ForwardRef
+            "children": <ForwardRef(Styled(styled.div))
+              className=""
               title=""
               type="h5"
             >
               Select organizations
-            </ForwardRef>,
+            </ForwardRef(Styled(styled.div))>,
             "className": "cap-custom-select-selected-value",
           },
           "ref": null,
@@ -182,6 +185,7 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": "Select organizations",
+              "className": "",
               "title": "",
               "type": "h5",
             },
@@ -218,9 +222,12 @@ color: ",
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               },
+              "_foldedDefaultProps": Object {
+                "type": "h5",
+              },
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-VigVT",
+                "componentId": "sc-fjdhpX",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -244,9 +251,6 @@ color: ",
 ",
                 ],
               },
-              "defaultProps": Object {
-                "type": "h5",
-              },
               "displayName": "Styled(styled.div)",
               "foldedComponentIds": Array [
                 "sc-bdVaJa",
@@ -256,7 +260,7 @@ color: ",
                 "type": [Function],
               },
               "render": [Function],
-              "styledComponentId": "sc-VigVT",
+              "styledComponentId": "sc-fjdhpX",
               "target": "div",
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -299,12 +303,13 @@ color: ",
           <div
             className="cap-custom-select-selected-value"
           >
-            <ForwardRef
+            <ForwardRef(Styled(styled.div))
+              className=""
               title=""
               type="h5"
             >
               Select organizations
-            </ForwardRef>
+            </ForwardRef(Styled(styled.div))>
           </div>
           <CapIcon
             className="cap-custom-select-arrow"
@@ -312,8 +317,9 @@ color: ",
           />
         </div>,
         "content": <React.Fragment>
-          <Component
+          <_class
             className="cap-custom-select-search"
+            labelPosition="top"
             onChange={[Function]}
             onClear={[Function]}
             placeholder="Search"
@@ -322,44 +328,43 @@ color: ",
           <div
             className="cap-custom-select-items-wrapper"
           >
-            <ForwardRef
+            <ForwardRef(Styled(styled.div))
               className="cap-custom-select-select-item"
               onClick={[Function]}
               type="h6"
             >
               Purples
-            </ForwardRef>
-            <ForwardRef
+            </ForwardRef(Styled(styled.div))>
+            <ForwardRef(Styled(styled.div))
               className="cap-custom-select-select-item"
               onClick={[Function]}
               type="h6"
             >
               Buckle
-            </ForwardRef>
-            <ForwardRef
+            </ForwardRef(Styled(styled.div))>
+            <ForwardRef(Styled(styled.div))
               className="cap-custom-select-select-item"
               onClick={[Function]}
               type="h6"
             >
               Ski
-            </ForwardRef>
-            <ForwardRef
+            </ForwardRef(Styled(styled.div))>
+            <ForwardRef(Styled(styled.div))
               className="cap-custom-select-select-item"
               onClick={[Function]}
               type="h6"
             >
               Splash
-            </ForwardRef>
-            <ForwardRef
+            </ForwardRef(Styled(styled.div))>
+            <ForwardRef(Styled(styled.div))
               className="cap-custom-select-select-item"
               onClick={[Function]}
               type="h6"
             >
               Metro
-            </ForwardRef>
+            </ForwardRef(Styled(styled.div))>
           </div>
         </React.Fragment>,
-        "getPopupContainer": [Function],
         "mouseEnterDelay": 0.1,
         "mouseLeaveDelay": 0.1,
         "onVisibleChange": [Function],
@@ -367,7 +372,7 @@ color: ",
         "overlayStyle": Object {
           "width": "100%",
         },
-        "placement": "bottomLeft",
+        "placement": "top",
         "transitionName": "zoom-big",
         "trigger": "click",
         "visible": false,
@@ -382,12 +387,13 @@ color: ",
             <div
               className="cap-custom-select-selected-value"
             >
-              <ForwardRef
+              <ForwardRef(Styled(styled.div))
+                className=""
                 title=""
                 type="h5"
               >
                 Select organizations
-              </ForwardRef>
+              </ForwardRef(Styled(styled.div))>
             </div>,
             <CapIcon
               className="cap-custom-select-arrow"
@@ -406,12 +412,13 @@ color: ",
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": <ForwardRef
+              "children": <ForwardRef(Styled(styled.div))
+                className=""
                 title=""
                 type="h5"
               >
                 Select organizations
-              </ForwardRef>,
+              </ForwardRef(Styled(styled.div))>,
               "className": "cap-custom-select-selected-value",
             },
             "ref": null,
@@ -421,6 +428,7 @@ color: ",
               "nodeType": "function",
               "props": Object {
                 "children": "Select organizations",
+                "className": "",
                 "title": "",
                 "type": "h5",
               },
@@ -457,9 +465,12 @@ color: ",
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 },
+                "_foldedDefaultProps": Object {
+                  "type": "h5",
+                },
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-VigVT",
+                  "componentId": "sc-fjdhpX",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -483,9 +494,6 @@ color: ",
 ",
                   ],
                 },
-                "defaultProps": Object {
-                  "type": "h5",
-                },
                 "displayName": "Styled(styled.div)",
                 "foldedComponentIds": Array [
                   "sc-bdVaJa",
@@ -495,7 +503,7 @@ color: ",
                   "type": [Function],
                 },
                 "render": [Function],
-                "styledComponentId": "sc-VigVT",
+                "styledComponentId": "sc-fjdhpX",
                 "target": "div",
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -534,7 +542,10 @@ color: ",
           "getChildContext": Object {
             "calledByRenderer": false,
           },
-          "getDerivedStateFromProps": true,
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
           "getSnapshotBeforeUpdate": true,
           "setState": Object {
             "skipsComponentDidUpdateOnNullish": true,
@@ -542,7 +553,9 @@ color: ",
         },
       },
     },
+    Symbol(enzyme.__providerValues__): undefined,
   },
+  Symbol(enzyme.__providerValues__): Map {},
   Symbol(enzyme.__childContext__): null,
 }
 `;

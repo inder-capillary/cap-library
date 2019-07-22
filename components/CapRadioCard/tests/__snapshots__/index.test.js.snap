@@ -31,10 +31,10 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
     </span>
     <span>
       <i
-        className="anticon cap-icon-v2 cap-icon-v2-check-filled radio-card-checked sc-htpNat glVoOZ"
+        className="anticon cap-icon-v2 cap-icon-v2-check-filled radio-card-checked sc-bxivhb kZDkVS"
       >
         <svg
-          aria-hidden="true"
+          aria-hidden={true}
           className=""
           fill="currentColor"
           focusable="false"
@@ -125,7 +125,9 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
               </div>
             </div>
           </div>
-          <div>
+          <div
+            className="radio-card-content-container"
+          >
             <div
               className="radio-card-header"
             >
@@ -174,10 +176,10 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
     </span>
     <span>
       <i
-        className="anticon cap-icon-v2 cap-icon-v2-check-filled radio-card-checked sc-htpNat glVoOZ"
+        className="anticon cap-icon-v2 cap-icon-v2-check-filled radio-card-checked sc-bxivhb kZDkVS"
       >
         <svg
-          aria-hidden="true"
+          aria-hidden={true}
           className=""
           fill="currentColor"
           focusable="false"
@@ -215,7 +217,9 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
           className="ant-card-body"
           style={Object {}}
         >
-          <div>
+          <div
+            className="radio-card-content-container"
+          >
             <div
               className="radio-card-header"
             >
@@ -264,10 +268,10 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
     </span>
     <span>
       <i
-        className="anticon cap-icon-v2 cap-icon-v2-check-filled radio-card-checked sc-htpNat glVoOZ"
+        className="anticon cap-icon-v2 cap-icon-v2-check-filled radio-card-checked sc-bxivhb kZDkVS"
       >
         <svg
-          aria-hidden="true"
+          aria-hidden={true}
           className=""
           fill="currentColor"
           focusable="false"
@@ -305,7 +309,9 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
           className="ant-card-body"
           style={Object {}}
         >
-          <div>
+          <div
+            className="radio-card-content-container"
+          >
             <div
               className="radio-card-header"
             >
@@ -354,10 +360,10 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
     </span>
     <span>
       <i
-        className="anticon cap-icon-v2 cap-icon-v2-check-filled radio-card-checked sc-htpNat glVoOZ"
+        className="anticon cap-icon-v2 cap-icon-v2-check-filled radio-card-checked sc-bxivhb kZDkVS"
       >
         <svg
-          aria-hidden="true"
+          aria-hidden={true}
           className=""
           fill="currentColor"
           focusable="false"
@@ -444,7 +450,9 @@ exports[`<CapRadioCard /> CapRadioCard tenders correctly 1`] = `
               </div>
             </div>
           </div>
-          <div>
+          <div
+            className="radio-card-content-container"
+          >
             <div
               className="radio-card-header"
             >

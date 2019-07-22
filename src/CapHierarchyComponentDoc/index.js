@@ -477,7 +477,6 @@ class CapHierarchyComponentDoc extends Component {
   }
 
   levelOne(value) {
-    console.log("caphierarchycomp", value);
     switch (value) {
       case "zone":
         this.addChild("component.childComponents", [{

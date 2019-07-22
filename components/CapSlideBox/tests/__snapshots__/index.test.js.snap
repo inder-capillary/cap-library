@@ -5,7 +5,7 @@ exports[`<CapSlider /> renders correctly 1`] = `
   className="cap-slide-box-v2 show-slidebox"
 >
   <div
-    className="cap-slide-box-v2-container size-r"
+    className="cap-slide-box-v2-container size-r right"
   >
     <div
       className="slidebox-header"
@@ -17,12 +17,12 @@ exports[`<CapSlider /> renders correctly 1`] = `
         Slide Box Example
       </div>
       <i
-        className="anticon cap-icon-v2 cap-icon-v2-close cap-slide-box-v2-close-icon sc-htpNat glVoOZ"
+        className="anticon cap-icon-v2 cap-icon-v2-close cap-slide-box-v2-close-icon sc-bxivhb kZDkVS"
         onClick={[MockFunction]}
         tabIndex={-1}
       >
         <svg
-          aria-hidden="true"
+          aria-hidden={true}
           className=""
           fill="currentColor"
           focusable="false"
@@ -40,7 +40,13 @@ exports[`<CapSlider /> renders correctly 1`] = `
       className="slidebox-content-container"
       onScroll={[Function]}
     >
-      <div>
+      <div
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
         <div />
       </div>
     </div>
