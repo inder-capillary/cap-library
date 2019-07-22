@@ -168,7 +168,7 @@ $cap-custom-card: cap-custom-card;
   .#{$cap-custom-card-list}-row {
     display: flex;
     flex-flow: row wrap;
-    justify-content: start;
+    justify-content: flex-start;
     .#{$cap-custom-card-list}-col {
       margin-top: $CAP_SPACE_08;
       width: 276px;
