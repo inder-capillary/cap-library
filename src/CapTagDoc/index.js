@@ -32,7 +32,7 @@ export default class CapTagDoc extends Component { // eslint-disable-line react/
             <b>NOTE: </b>
             This component is the extended version of ant design
             <a href="https://ant.design/components/tag/#header"> Tag </a>
-            component. Please refer their component for detailed explaination of component and supported props.
+            component. Please refer their component for detailed explanation of component and supported props.
           </div>
           <div>
             <CapTag disabled>I am disabled Tag</CapTag>

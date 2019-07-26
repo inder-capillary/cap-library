@@ -32,6 +32,7 @@ $clsPrefix: cap-secondary-topbar;
     .primary-menu{
         width:240px;
         padding-left: $CAP_SPACE_24;
+        padding-right: 0;
     }
     .secondary-menu{
         width:160px;
@@ -40,9 +41,12 @@ $clsPrefix: cap-secondary-topbar;
         height: 100%;
         display: flex;
         align-items: center;
+        .anticon {
+            font-size: $FONT_SIZE_VL;
+        }
     }
     .vertical-divider{
-        height: 100%;
+        height: $CAP_SPACE_20;
         margin: 0;
         background: $CAP_G07;
     }

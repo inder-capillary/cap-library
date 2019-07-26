@@ -32,8 +32,10 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
           <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.state.menuSelected]} onClick={this.onMenuItemClick}>
             <MenuItem key="capButton"><span className="nav-text">CapButton</span></MenuItem>
             <MenuItem key="capSlider"><span>CapSlider</span></MenuItem>
+            <MenuItem key="capDrawer"><span>CapDrawer</span></MenuItem>
             <MenuItem key="capSideBar"><span>CapSideBar</span></MenuItem>
             <MenuItem key="capTopBar"><span>CapTopBar</span></MenuItem>
+            <MenuItem key="capSecondaryTopBar"><span>CapSecondaryTopBar</span></MenuItem>
             <MenuItem key="capCheckbox"><span>CapCheckbox</span></MenuItem>
             <MenuItem key="capCarousel"><span>CapCarousel</span></MenuItem>
             <MenuItem key="capTab"><span>CapTab</span></MenuItem>
@@ -77,7 +79,6 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             <MenuItem key="capDropdown"><span>CapDropdown</span></MenuItem>
             <MenuItem key="capTag"><span>CapTag</span></MenuItem>
             <MenuItem key="capTimePicker"><span>CapTimePicker</span></MenuItem>
-            <MenuItem key="capSecondaryTopBar"><span>CapSecondaryTopBar</span></MenuItem>
             <MenuItem key="capSkeleton"><span>CapSkeleton</span></MenuItem>
             <MenuItem key="capMultiSelectDatePicker"><span>CapMultiSelectDatePicker</span></MenuItem>
             <MenuItem key="capHierarchyComponent"><span>CapHierarchyComponent</span></MenuItem>

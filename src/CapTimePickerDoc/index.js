@@ -25,7 +25,7 @@ export default class CapTimePickerDoc extends Component { // eslint-disable-line
             <b>NOTE: </b>
           This component is the extended version of ant design
             <a href="https://ant.design/components/time-picker/#header"> TimePicker </a>
-          component. Please refer their component for detailed explaination of component and supported props.
+          component. Please refer their component for detailed explanation of component and supported props.
           </div>
           <CapTimePicker use12Hours />
           <CapTimePicker use12Hours format="h:mm:ss A" />

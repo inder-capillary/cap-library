@@ -35,7 +35,7 @@ function CapIcon(props) {
   const BaseIcon = IconComponent ? (
     <AntIcon
       className={classNames(clsPrefix, customClassName, className, { disabled })}
-      component={IconComponent}
+      component={() => <IconComponent {...rest} />}
       {...rest}>
     </AntIcon>
   ) : <Icon {...props} />;

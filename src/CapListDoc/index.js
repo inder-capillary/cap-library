@@ -50,7 +50,7 @@ export default class CapListDoc extends Component { // eslint-disable-line react
           <b>NOTE: </b>
           This component is the extended version of ant design
           <a href="https://ant.design/components/list/#header"> List </a>
-          component. Please refer their component for detailed explaination of component and supported props.
+          component. Please refer their component for detailed explanation of component and supported props.
         </div>
       </div>
     );

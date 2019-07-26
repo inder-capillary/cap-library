@@ -25,7 +25,7 @@ export default class CapAlertDoc extends Component { // eslint-disable-line reac
             <b>NOTE: </b>
             This component is the extended version of ant design
             <a href="https://ant.design/components/alert/#header"> Alert </a>
-            component. Please refer their component for detailed explaination of component and supported props.
+            component. Please refer their component for detailed explanation of component and supported props.
           </div>
           <CapAlert style={{ maxWidth: '300px' }} message="Success Text" type="success" />
         </div>

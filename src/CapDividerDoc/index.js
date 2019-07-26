@@ -14,7 +14,7 @@ export default class CapDividerDoc extends Component { // eslint-disable-line re
             <b>NOTE: </b>
             This component is the extended version of ant design
             <a href="https://ant.design/components/divider/#header"> Divider </a>
-            component. Please refer their component for detailed explaination of component and supported props.
+            component. Please refer their component for detailed explanation of component and supported props.
           </div>
           <CapHeading style={{ marginBottom: '24px' }} type="h2">Divider Component Examples</CapHeading>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.</p>

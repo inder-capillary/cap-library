@@ -144,7 +144,7 @@ export default class CapRadioCardDoc extends Component { // eslint-disable-line 
           <b>NOTE: </b>
           Each pane object supports all the props that antd radio button supports
           <a href="https://ant.design/components/radio/#header"> Radio </a>
-          component. Please refer their component for detailed explaination of component and supported props.
+          component. Please refer their component for detailed explanation of component and supported props.
         </div>
       </div>
     );

@@ -179,7 +179,7 @@ export default class CapTableDoc extends Component { // eslint-disable-line reac
           <b>NOTE: </b>
           This component is the extended version of ant design
           <a href="https://ant.design/components/table/#header"> Table </a>
-          component. Please refer their component for detailed explaination of component and supported props.
+          component. Please refer their component for detailed explanation of component and supported props.
         </div>
         <PropertyTable data={infoData} />
       </div>

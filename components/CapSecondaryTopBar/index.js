@@ -35,12 +35,12 @@ const CapSecondaryTopBar = (props) => {
     >
       <CapMenu.Item key={primaryMenuItem.key || 'primaryMenu'} className="primary-menu">
         <CapIcon type="more-applications" className="apps-icon" />
-        <MenuHeading type="h5">{primaryMenuItem.label || ''}</MenuHeading>
+        <MenuHeading type="h3">{primaryMenuItem.label || ''}</MenuHeading>
         <CapDivider type="vertical" className="vertical-divider" style={{marginLeft: 'auto'}} />
       </CapMenu.Item>
       {secondaryMenuItem && (
         <CapMenu.Item key={secondaryMenuItem.key || 'secondaryMenu'} className="secondary-menu">
-          <MenuHeading type="h5">{secondaryMenuItem.label || ''}</MenuHeading>
+          <MenuHeading type="h3">{secondaryMenuItem.label || ''}</MenuHeading>
         </CapMenu.Item>
       )}
       {menuActions.length && (

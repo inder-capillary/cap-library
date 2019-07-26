@@ -194,7 +194,7 @@ export default class CapStepsAccordianDoc extends Component { // eslint-disable-
           <b>NOTE: </b>
           This component is the extended version of ant design
           <a href="https://ant.design/components/collapse/#header"> Collapse </a>
-          component. Please refer their component for detailed explaination of component and supported props.
+          component. Please refer their component for detailed explanation of component and supported props.
         </div>
       </div>
     );

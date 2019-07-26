@@ -56,6 +56,13 @@ const infoData = [
     type: "function",
     default: "",
   },
+  {
+    key: 8,
+    property: "position",
+    description: "Determines whether the slidebox will come left or right. Expected values - right, left",
+    type: "string",
+    default: "right",
+  },
 ];
 
 const content = "The standard Lorem Ipsum passage, used since the 1500s\n"
