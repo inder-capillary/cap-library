@@ -11,7 +11,7 @@ const infoData = [
     key: 1,
     property: "drawerListProps",
     description: "Props for the drawer and list components.",
-    type: "Object{ productsList: Array[{ label: String, value: String, key: String }], selectedProduct: String, handleProductChange: () => {}, other props of drawer component. }",
+    type: "Object{ productsList: Array[{ value: String, key: String, url: String }], selectedProduct: String, handleProductChange: () => {}, other props of drawer component. }",
     default: "-",
   },
   {
@@ -60,11 +60,11 @@ const orgsList = [
 ];
 
 const productsList = [
-  { label: 'Dashboard', value: 'Dashboard', key: 'Dashboard' },
-  { label: 'Campaign manager', value: 'Campaign manager', key: 'Campaign manager' },
-  { label: 'Membercare', value: 'Membercare', key: 'Membercare' },
-  { label: 'Loyalty manager', value: 'Loyalty manager', key: 'Loyalty manager' },
-  { label: 'Essential insights', value: 'Essential insights', key: 'Essential insights' },
+  { value: 'Dashboard', key: 'Dashboard' },
+  { value: 'Campaign manager', key: 'Campaign manager' },
+  { value: 'Membercare', key: 'Membercare' },
+  { value: 'Loyalty manager', key: 'Loyalty manager' },
+  { value: 'Essential insights', key: 'Essential insights' },
 ];
 
 const menuItems = [
@@ -97,8 +97,8 @@ export default class NavigationBarDoc extends Component { // eslint-disable-line
     this.setState({ selectedOrg: value });
   }
 
-  handleProductChange = (value) => {
-    this.setState({ selectedProduct: value });
+  handleProductChange = (product) => {
+    this.setState({ selectedProduct: product.value });
   }
 
   render() {

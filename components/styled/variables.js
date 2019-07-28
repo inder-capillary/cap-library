@@ -88,6 +88,7 @@ export const CAP_SPACE_36 = "2.571rem";
 export const CAP_SPACE_40 = "2.857rem";
 export const CAP_SPACE_44 = "3.142rem";
 export const CAP_SPACE_48 = "3.428rem";
+export const CAP_SPACE_52 = "3.714rem";
 export const CAP_SPACE_56 = "4rem";
 export const CAP_SPACE_60 = "4.286rem";
 export const CAP_SPACE_64 = "4.571rem";

@@ -64,7 +64,7 @@ $orgSelectPrefix: top-bar-select;
   justify-content: space-between;
   cursor: pointer;
   padding: 0 0 0 $CAP_SPACE_08;
-  margin: $CAP_SPACE_12 0;
+  margin: $CAP_SPACE_08 0;
   height: $CAP_SPACE_48;
   border: 1px solid transparent;
   &.open {
@@ -112,13 +112,16 @@ $orgSelectPrefix: top-bar-select;
   margin: 0 0 0 $CAP_SPACE_32;
 }
 .#{$clsPrefix}-user {
-  margin: 0 $CAP_SPACE_08 0 $CAP_SPACE_48;
+  margin: 0 $CAP_SPACE_24 0 $CAP_SPACE_60;
   cursor: pointer;
+}
+
+.#{$orgSelectPrefix}-selected-icon {
+  margin-right: $CAP_SPACE_08;
 }
 
 .#{$clsPrefix}-user,
 .#{$orgSelectPrefix}-selected-icon {
-  margin-right: $CAP_SPACE_08;
   display: flex;
   align-items: center;
   position: relative;
@@ -133,10 +136,11 @@ $orgSelectPrefix: top-bar-select;
   }
 }
 .oval {
-  width: $CAP_SPACE_56;
-  height: $CAP_SPACE_56;
-  background: $CAP_G08;
+  width: $CAP_SPACE_48;
+  height: $CAP_SPACE_48;
+  background: $CAP_G07;
   border-radius: 50%;
+  margin: 0 $CAP_SPACE_16 0 $CAP_SPACE_52;
 }
 
 .#{$orgSelectPrefix}-header {
@@ -239,4 +243,8 @@ $orgSelectPrefix: top-bar-select;
 
 .#{$clsPrefix}-heading {
   font-weight: $FONT_WEIGHT_MEDIUM;
+}
+
+.#{$clsPrefix}-capitalize {
+  text-transform: capitalize;
 }

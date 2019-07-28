@@ -29,6 +29,7 @@ class CapTopBar extends React.Component {
     super(props);
     this.state = {
       showDrawer: false,
+      visible: false,
     };
   }
 
@@ -70,11 +71,17 @@ class CapTopBar extends React.Component {
     );
   }
 
+  expandUserBackground = (flag) => {
+    this.setState({visible: flag});
+  }
+
   renderDropdownMenu = () => {
     const { dropdownMenuProps } = this.props;
+    const { visible } = this.state;
     return (
       <CapDropdown
         trigger={["click"]}
+        onVisibleChange={this.expandUserBackground}
         overlay={(
           <CapMenu className={classNames(`${clsPrefix}-menu`)}>
             { dropdownMenuProps.map((dropdownMenuProp) => (
@@ -87,7 +94,7 @@ class CapTopBar extends React.Component {
           </CapMenu>
         )}
         placement="bottomLeft">
-        <div onClick={this.showUserPopover} className={(`${clsPrefix}-user`)}>
+        <div className={visible ? classNames(`${clsPrefix}-user oval`) : classNames(`${clsPrefix}-user`)}>
           <LogoBackground />
           <span className="text-label"><CapIcon type="person" size="s" className={(`${clsPrefix}-person`)}></CapIcon></span>
         </div>
@@ -107,7 +114,7 @@ class CapTopBar extends React.Component {
     if (productsList && handleProductChange && selectedProduct) {
       productsComps = productsList.map((product) => (
         <CapLink
-          onClick={() => handleProductChange(product.value)}
+          onClick={() => handleProductChange(product)}
           title={(
             product && selectedProduct.toLowerCase() === (product.value || '').toLowerCase() ? (
               <div style={{ display: 'flex', paddingLeft: styledVars.CAP_SPACE_32 }}>
@@ -116,11 +123,11 @@ class CapTopBar extends React.Component {
                   size="s"
                   fill={styledVars.CAP_COLOR_06}
                 />
-                <CapHeading type="h3">{product.label || ''}</CapHeading>
+                <CapHeading type="h3" className={classNames(`${clsPrefix}-capitalize`)}>{product.value || ''}</CapHeading>
               </div>
             ) : (
               <div style={{ paddingLeft: styledVars.CAP_SPACE_60 }}>
-                <CapHeading type="h3">{product.label || ''}</CapHeading>
+                <CapHeading type="h3" className={classNames(`${clsPrefix}-capitalize`)}>{product.value || ''}</CapHeading>
               </div>
             ))}
         />
@@ -137,7 +144,7 @@ class CapTopBar extends React.Component {
       <div className={classNames(`${clsPrefix}-dimensions`)} style={{ borderRight: `1px solid ${styledVars.CAP_G07}`, marginRight: styledVars.CAP_SPACE_16 }}>
         <div onClick={this.openDrawer} className={classNames(`${clsPrefix}-flexDisplay`)} style={{ alignItems: 'center', cursor: 'pointer' }}>
           <CapIcon type="more-applications" className={classNames(`${clsPrefix}-more-app`)}></CapIcon>
-          <CapHeading type="h3">{selectedProduct || ''}</CapHeading>
+          <CapHeading type="h3" className={classNames(`${clsPrefix}-capitalize`)}>{selectedProduct || ''}</CapHeading>
         </div>
         {showDrawer && drawerListProps && (
           <CapDrawer
