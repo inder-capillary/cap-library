@@ -2,15 +2,15 @@
 $sidebar: cap-sidebar-v2;
 
 .#{$sidebar} {
-  margin-left: $CAP_SPACE_16;
-  max-width: 200px;
+  width: 240px;
 }
 .#{$sidebar}-accordian.ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
   left: 0px;
 }
 
 .#{$sidebar}-accordian.ant-collapse > .ant-collapse-item > .ant-collapse-header {
-  padding-left: $CAP_SPACE_20;
+  margin-left: $CAP_SPACE_36;
+  padding: 0;
 }
 
 .#{$sidebar}-accordian.ant-collapse > .cap-sidebar-leaf-node > .ant-collapse-header {
@@ -95,4 +95,8 @@ $sidebar: cap-sidebar-v2;
   .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
     left: 0px;
   }
+}
+
+.#{$sidebar}-page-heading {
+  margin: $CAP_SPACE_24 auto $CAP_SPACE_24 $CAP_SPACE_36; 
 }

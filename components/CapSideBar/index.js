@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { Icon, Collapse } from 'antd';
 import debounce from 'lodash/debounce';
 import classNames from 'classnames';
-
 import { MenuSearch } from './MenuSearch';
-
+import CapHeading from '../CapHeading';
 import './_capSideBar.scss';
 
 const { Panel } = Collapse;
@@ -82,7 +81,7 @@ export default class CapSideBar extends React.Component {
           disabled
           className={classNames(`${clsPrefix}-leaf-node`, { selected: selectedMenuItem === item.key })}
           key={item.key}
-          header={onLinkClick ? <div className="link-item" onClick={() => { onLinkClick(item); }}>{title}</div> : <a href={item.link}>{title}</a>}
+          header={onLinkClick ? <CapHeading type="h4" className="link-item" onClick={() => { onLinkClick(item); }}>{title}</CapHeading> : <a href={item.link}><CapHeading type="h4">{title}</CapHeading></a>}
         />
       );
     });
@@ -91,17 +90,20 @@ export default class CapSideBar extends React.Component {
   render() {
     const { showSearchLoader, allSearchResults } = this.state;
     const {
-      sidebarItems, defaultActiveKey, searchSupportPortalUrl, searchData, handleSearch, onLinkClick,
+      sidebarItems, defaultActiveKey, searchSupportPortalUrl, searchData, handleSearch, onLinkClick, showSearchbar, pageHeading,
     } = this.props;
     return (
       <div className={classNames(`${clsPrefix}`)}>
-        <MenuSearch
-          searchSupportPortalUrl={searchSupportPortalUrl}
-          searchData={searchData || allSearchResults}
-          onSearch={handleSearch || this.debouncedSearch}
-          isLoading={showSearchLoader}
-          onLinkClick={onLinkClick}
-        />
+        {pageHeading && <CapHeading type="h2" className={classNames(`${clsPrefix}-page-heading`)}>{pageHeading}</CapHeading>}
+        { showSearchbar && (
+          <MenuSearch
+            searchSupportPortalUrl={searchSupportPortalUrl}
+            searchData={searchData || allSearchResults}
+            onSearch={handleSearch || this.debouncedSearch}
+            isLoading={showSearchLoader}
+            onLinkClick={onLinkClick}
+          />
+        )}
         <Collapse
           defaultActiveKey={defaultActiveKey}
           className={classNames(`${clsPrefix}-accordian`)}
@@ -124,4 +126,6 @@ CapSideBar.propTypes = {
   handleSearch: PropTypes.func,
   searchSupportPortalUrl: PropTypes.string,
   onLinkClick: PropTypes.func,
+  pageHeading: PropTypes.string,
+  showSearchbar: PropTypes.bool,
 };

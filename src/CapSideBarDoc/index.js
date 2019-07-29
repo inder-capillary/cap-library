@@ -49,6 +49,20 @@ const infoData = [
     type: "string",
     default: "-",
   },
+  {
+    key: 7,
+    property: "showSearchbar",
+    description: "send true to show searchbar option in sidebar",
+    type: "boolean",
+    default: "false",
+  },
+  {
+    key: 8,
+    property: "pageHeading",
+    description: "page title that can be shown in the sidebar",
+    type: "string",
+    default: "-",
+  },
 ];
 
 const sidebarItems = [
