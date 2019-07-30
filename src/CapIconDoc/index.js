@@ -45,6 +45,13 @@ const infoData = [
     type: "object",
     default: "-",
   },
+  {
+    key: 6,
+    property: "svgProps",
+    description: "props that can be passed to js files of icons",
+    type: "object",
+    default: "-",
+  },
 ];
 
 const List = styled.li`
@@ -476,7 +483,9 @@ These Icons then can be moved to components/assets/svgIcons/Icons folder
 
 Export the icon path in components/assets/svgIcons/index.js
 
-Add switch case of icon type  in components/assets/svgIcons/component`}
+Add switch case of icon type  in components/assets/svgIcons/component
+
+NOTE: Once the JS file is added for the Icons, open it and remove all the other elements except for <svg> <path/> </svg>`}
         </pre>
       </div>
     );

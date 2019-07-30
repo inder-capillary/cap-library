@@ -33,6 +33,7 @@ $clsPrefix: cap-secondary-topbar;
         width:240px;
         padding-left: $CAP_SPACE_24;
         padding-right: 0;
+        pointer-events: none;
     }
     .secondary-menu{
         width:160px;
@@ -83,4 +84,5 @@ $clsPrefix: cap-secondary-topbar;
 
 .#{$clsPrefix}-secondary-menu {
     padding-left: $CAP_SPACE_24;
+    pointer-events: none;
 }

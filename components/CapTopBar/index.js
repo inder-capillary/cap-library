@@ -121,7 +121,9 @@ class CapTopBar extends React.Component {
                 <CapIcon
                   type="tick"
                   size="s"
-                  fill={styledVars.CAP_COLOR_06}
+                  svgProps={{
+                    fill: styledVars.CAP_COLOR_06,
+                  }}
                 />
                 <CapHeading type="h3" className={classNames(`${clsPrefix}-capitalize`)}>{product.value || ''}</CapHeading>
               </div>
