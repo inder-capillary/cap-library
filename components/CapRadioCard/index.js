@@ -23,7 +23,7 @@ class CapRadioCard extends React.Component { // eslint-disable-line react/prefer
     const { cardHeight, cardWidth, selected, defaultValue, size } = this.props;
     const { content, title, icon, value, infoIconDescription, ...restParams } = pane;
     return (
-      <RadioButton style={{ height: cardHeight || '120px', width: cardWidth || '372px' }} key={value} value={value} {...restParams}>
+      <RadioButton style={{ height: cardHeight || '120px', width: cardWidth }} key={value} value={value} {...restParams}>
         <CapIcon type="check-filled" className="radio-card-checked" />
         <Card>
           {icon && (
@@ -80,6 +80,10 @@ CapRadioCard.propTypes = {
   onChange: PropTypes.func,
   selected: PropTypes.any,
   cardHeight: PropTypes.oneOf([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
+  cardWidth: PropTypes.oneOf([
     PropTypes.number,
     PropTypes.string,
   ]),
