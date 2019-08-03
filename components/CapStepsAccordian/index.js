@@ -23,6 +23,10 @@ const Flex = styled.div`
   align-items: center;
 `;
 
+const HeaderDiv = styled.div`
+  width: calc(100% - 46px);
+`;
+
 function CapStepsAccordian(props) {
   const { items, showNumberSteps, className, ...collapseProps } = props;
   return (
@@ -34,17 +38,25 @@ function CapStepsAccordian(props) {
       {...collapseProps}
     >
       {items.map((item, index) => {
-        const { header, key, icon, completed, ...panelProps } = item;
+        const { header, key, icon, completed, error, ...panelProps } = item;
         const customHeader = (
           <Flex>
             {icon || (showNumberSteps && (
-              completed ? <CapIcon type="check-filled" size="l" className="steps-icon" /> : (
-                <div className="steps-icon numbers-icon">
+              <div className={classNames('steps-icon numbers-icon', { completed, error })}>
+                {completed && (
+                  <CapIcon type="tick" size="s" />
+                )}
+                {error && (
+                  <CapIcon type="close" size="s" />
+                )}
+                {!completed && !error && (
                   <CapHeading type="label2">{index + 1}</CapHeading>
-                </div>
-              )
-            ))}
-            {header}
+                )}
+
+              </div>
+            )
+            )}
+            <HeaderDiv>{header}</HeaderDiv>
           </Flex>
         );
         return (

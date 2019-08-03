@@ -56,7 +56,7 @@ class CapRadioCard extends React.Component { // eslint-disable-line react/prefer
       <RadioGroup {...rest} className={classNames("cap-radioCard-v2", size === "small" && "smallRadioCard", className)}>
         {panes && (
           panes.map((pane) => (
-            <Fragment>
+            <Fragment key={pane.value}>
               {get(pane, 'tooltipProps.title')
                 ? (
                   <CapTooltip
@@ -79,7 +79,7 @@ CapRadioCard.propTypes = {
   className: PropTypes.string,
   onChange: PropTypes.func,
   selected: PropTypes.any,
-  cardHeight: PropTypes.oneOf([
+  cardHeight: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
   ]),

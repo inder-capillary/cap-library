@@ -15,6 +15,16 @@ $accordian: cap-steps-accordian-v2;
     justify-content: center;
     align-items: center;
     margin-right: 18px;
+
+    &.completed {
+      background: map-get($CAP_PRIMARY, base);
+      color: $CAP_WHITE;
+    }
+
+    &.error {
+      background: $CAP_RED;
+      color: $CAP_WHITE;
+    }
   }
   .ant-collapse-content-active .ant-collapse-content-box {
     padding-left: 40px;
