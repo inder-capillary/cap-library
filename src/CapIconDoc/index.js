@@ -293,6 +293,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <Text>open-in-new</Text>
             </List>
             <List>
+              <CapIcon type="open-in-new-light" />
+              <Text>open-in-new-light</Text>
+            </List>
+            <List>
               <CapIcon type="pause" />
               <Text>pause</Text>
             </List>

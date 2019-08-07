@@ -33,6 +33,7 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             <MenuItem key="capButton"><span className="nav-text">CapButton</span></MenuItem>
             <MenuItem key="capSlider"><span>CapSlider</span></MenuItem>
             <MenuItem key="capDrawer"><span>CapDrawer</span></MenuItem>
+            <MenuItem key="capBanner"><span>CapBanner</span></MenuItem>
             <MenuItem key="capSideBar"><span>CapSideBar</span></MenuItem>
             <MenuItem key="capTopBar"><span>CapTopBar</span></MenuItem>
             <MenuItem key="capSecondaryTopBar"><span>CapSecondaryTopBar</span></MenuItem>
@@ -83,8 +84,6 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             <MenuItem key="capMultiSelectDatePicker"><span>CapMultiSelectDatePicker</span></MenuItem>
             <MenuItem key="capHierarchyComponent"><span>CapHierarchyComponent</span></MenuItem>
             {/*Menu items for components*/}
-
-
           </Menu>
         </Sider>
         <Layout style={{ marginLeft: 200 }}>

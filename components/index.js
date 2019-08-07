@@ -63,4 +63,5 @@ export { default as CapSkeleton } from './CapSkeleton';
 export { default as CapMultiSelectDatePicker } from './CapMultiSelectDatePicker';
 export { default as CapHierarchyComponent } from './CapHierarchyComponent';
 export { default as CapDrawer } from './CapDrawer';
+export { default as CapBanner } from './CapBanner';
 //export components

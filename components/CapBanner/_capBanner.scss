@@ -1,0 +1,31 @@
+@import '../styles/_variables.scss';
+
+$clsPrefix: cap-banner;
+
+.#{$clsPrefix} {
+    display: flex;
+    border: 1px solid $CAP_G07;
+    padding: $CAP_SPACE_24;
+    align-items: center;
+}
+
+.#{$clsPrefix}-flexDisplay {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.#{$clsPrefix}-logo {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: $CAP_SPACE_48;
+  width: $CAP_SPACE_48;
+  margin-right: $CAP_SPACE_24;
+  .text-label {
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
+  }
+}

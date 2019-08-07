@@ -53,6 +53,7 @@ const getSvgComponentFromType = (type) => {
     case 'notifications': return SvgIcons.Notifications;
     case 'offer': return SvgIcons.Offer;
     case 'open-in-new': return SvgIcons.OpenInNew;
+    case 'open-in-new-light': return SvgIcons.OpenInNewLight;
     case 'pause': return SvgIcons.Pause;
     case 'performance': return SvgIcons.Performance;
     case 'person': return SvgIcons.Person;
