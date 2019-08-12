@@ -439,7 +439,7 @@ export default class CapMultiSelectWithTree extends React.Component {
       minValuesToSelect, maxValuesToSelect, disableSelectAll, getPopupContainer, moreText, showSelectButtonToolTip, selectTooltipText } = this.props;
     const { visible, searchValue, selectedKeys, expandedKeys, autoExpandParent } = this.state;
     const { treeData, ...rest } = this.props;
-    const newProps = omit(rest, 'onSelect');
+    const newProps = omit(rest, ['onSelect', 'treeData']);
     const treeDataWithSelectAll = [{ title: searchValue ? selectAllSearchResultsText : selectAllText, key: "select-all-common", className: "select-all-tree", children: treeData }];
     const treeNodes = renderTreeNodes(treeDataWithSelectAll, searchValue, searchKey);
     let triggerLeftContent = "";
