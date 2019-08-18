@@ -21,14 +21,14 @@ const RadioGroup = Radio.Group;
 class CapRadioCard extends React.Component { // eslint-disable-line react/prefer-stateless-function
   getRadioButton = (pane) => {
     const { cardHeight, cardWidth, selected, defaultValue, size } = this.props;
-    const { content, title, icon, value, infoIconDescription, ...restParams } = pane;
+    const { content, title, icon, value, infoIconDescription, disabled, disableClass, ...restParams } = pane;
     return (
-      <RadioButton style={{ height: cardHeight || '120px', width: cardWidth }} key={value} value={value} {...restParams}>
+      <RadioButton style={{ height: cardHeight || '120px', width: cardWidth }} key={value} value={value} disabled={disabled} className={classNames({'disable-radio-button': disableClass})} {...restParams}>
         <CapIcon type="check-filled" className="radio-card-checked" />
         <Card>
           {icon && (
             <div className="radio-card-icon">
-              <div className={classNames('icon-container', { 'green-color': (selected ? selected === value : defaultValue === value) && (size !== "small") })}>
+              <div className={classNames('icon-container', { 'green-color': (selected ? selected === value : defaultValue === value) && (size !== "small") && !disabled })}>
                 <div className="div-icon">
                   {icon}
                 </div>
@@ -87,6 +87,7 @@ CapRadioCard.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ]),
+  disableClass: PropTypes.any,
 };
 
 export default CapRadioCard;
