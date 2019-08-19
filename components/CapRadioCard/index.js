@@ -87,7 +87,7 @@ CapRadioCard.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ]),
-  disableClass: PropTypes.any,
+  customDisableClass: PropTypes.any,
 };
 
 export default CapRadioCard;
