@@ -57,7 +57,7 @@ $capRadioCardV2: cap-radioCard-v2;
   }
   .ant-radio-button-wrapper-disabled {
     opacity: 0.5;
-    &.disable-radio-button{
+    &.custom-disable-radio-button{
       border:unset;
       .radio-card-checked {
         display: none;
