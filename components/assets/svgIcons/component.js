@@ -94,6 +94,7 @@ const getSvgComponentFromType = (type) => {
     case 'shapeCopy': return SvgIcons.ShapeCopy;
     case 'box': return SvgIcons.Box;
     case 'growth-graph': return SvgIcons.GrowthGraph;
+    case 'siren': return SvgIcons.Siren;
     default: return null;
   }
 };

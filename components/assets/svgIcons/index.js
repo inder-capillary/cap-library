@@ -90,3 +90,4 @@ export { default as Greetings } from './Icons/Greetings';
 export { default as ShapeCopy } from './Icons/ShapeCopy';
 export { default as Box } from './Icons/Box';
 export { default as GrowthGraph } from './Icons/GrowthGraph';
+export { default as Siren } from './Icons/Siren';

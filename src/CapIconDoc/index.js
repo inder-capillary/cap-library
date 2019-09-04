@@ -456,6 +456,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="growth-graph" />
               <Text>growth-graph</Text>
             </List>
+            <List>
+              <CapIcon type="siren" />
+              <Text>siren</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}
