@@ -41,6 +41,13 @@ const CapComponentStyled = styled.div`
     .ant-input-affix-wrapper .ant-input-prefix {
       left: 8px;
     }
+    .ant-select.cap-select-v2 {
+      &.ant-select-enabled.ant-select-focused .ant-select-selection,
+      &.ant-select-enabled .ant-select-selection,
+      &.ant-select-enabled .ant-select-selection {
+        border-color: ${(props) => props.errorMessage ? styledVars.CAP_RED : styledVars.CAP_G01};
+      }
+    }
 `;
 
 const ComponentWithLabelWrapper = styled.div`
