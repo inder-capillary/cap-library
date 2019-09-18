@@ -202,22 +202,6 @@ class CapTopBar extends React.Component {
   }
 }
 
-CapTopBar.defaultProps = {
-  drawerListProps: {
-    productsList: [],
-    selectedProduct: "",
-    closable: true,
-    title: "Select product",
-    placement: 'left',
-    width: 256,
-  },
-  menuProps: {},
-  selectProps: {},
-  dropdownMenuProps: [],
-  topbarIcons: [],
-  userName: "",
-};
-
 CapTopBar.propTypes = {
   drawerListProps: PropTypes.shape({
     productsList: PropTypes.array,

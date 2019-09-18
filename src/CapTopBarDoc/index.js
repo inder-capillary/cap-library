@@ -2,6 +2,7 @@
 * CapTopBarDoc
 */
 import React, { Component } from "react";
+import styled from 'styled-components';
 import PropertyTable from '../../helpers/PropertyTable';
 import { CapTopBar, CapHeading } from "../../components";
 import "./info.scss";
@@ -84,7 +85,11 @@ const topbarIcons = [
   { iconType: 'settings', key: 'settings' },
 ];
 
-export default class NavigationBarDoc extends Component { // eslint-disable-line react/prefer-stateless-function
+const MarginDiv = styled.div`
+  margin-top: 32px;
+`;
+
+export default class NavigationBarDoc extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -133,6 +138,17 @@ export default class NavigationBarDoc extends Component { // eslint-disable-line
             }}
             dropdownMenuProps={dropdownMenuProps}
             topbarIcons={topbarIcons}
+          />
+          <MarginDiv />
+          <CapTopBar
+            selectProps={{
+              items: orgsList,
+              selectedItem: selectedOrg,
+              handleItemChange: this.handleOrgChange,
+              showSearch: true,
+              showHeader: true,
+            }}
+            dropdownMenuProps={dropdownMenuProps}
           />
         </div>
         <PropertyTable data={infoData} />
