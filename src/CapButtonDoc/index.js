@@ -58,6 +58,8 @@ class CapButtonDoc extends Component {
             <CapButton type="secondary">Secondary</CapButton>
             <MarginDiv />
             <CapButton type="secondary" disabled>Secondary</CapButton>
+            <MarginDiv />
+            <CapButton type="oval">Oval</CapButton>
           </Col>
           <Col span={5} className="button-type">
             <div className="button-type-title">Flat button</div>

@@ -82,6 +82,25 @@ $button: cap-button-v2;
     }
   }
 
+  &.ant-btn-oval {
+    width: 97px;
+    height: 32px;
+    color: $FONT_COLOR_02;
+    background-color: $CAP_G10;
+    border-radius: 16px;
+    border: 1px solid $CAP_G06;
+    &:hover {
+      color: $FONT_COLOR_01;
+      background-color: $CAP_G10;
+      border-color: $CAP_G06;
+    }
+    &[disabled] {
+      background-color: $CAP_G10;
+      border-color: $CAP_G06;
+      color: $FONT_COLOR_04;
+    }
+  }
+
   &.flat-btn {
     background-color: $CAP_WHITE;
     border-color: $CAP_WHITE;
