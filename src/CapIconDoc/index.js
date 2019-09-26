@@ -460,6 +460,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="siren" />
               <Text>siren</Text>
             </List>
+            <List>
+              <CapIcon type="delay" />
+              <Text>Delay</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}

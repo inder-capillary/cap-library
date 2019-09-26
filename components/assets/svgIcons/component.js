@@ -95,6 +95,7 @@ const getSvgComponentFromType = (type) => {
     case 'box': return SvgIcons.Box;
     case 'growth-graph': return SvgIcons.GrowthGraph;
     case 'siren': return SvgIcons.Siren;
+    case 'delay': return SvgIcons.Delay;
     default: return null;
   }
 };
