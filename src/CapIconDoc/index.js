@@ -462,7 +462,7 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
             </List>
             <List>
               <CapIcon type="delay" />
-              <Text>Delay</Text>
+              <Text>delay</Text>
             </List>
           </ul>
         </div>
