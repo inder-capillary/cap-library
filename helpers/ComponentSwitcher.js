@@ -54,6 +54,7 @@ import CapMultiSelectDatePickerDoc from '../src/CapMultiSelectDatePickerDoc';
 import CapHierarchyComponentDoc from '../src/CapHierarchyComponentDoc';
 import CapDrawerDoc from '../src/CapDrawerDoc';
 import CapBannerDoc from '../src/CapBannerDoc';
+import CapExpressionEditorDoc from '../src/CapExpressionEditorDoc';
 //imported for docs
 
 
@@ -71,6 +72,8 @@ class ComponentSwitcher extends Component {
         return <CapTopBarDoc />;
       case 'capCheckbox':
         return <CapCheckboxDoc />;
+      case 'capExpressionEditor':
+        return <CapExpressionEditorDoc />;
       case 'capTab':
         return <CapTabDoc />;
       case 'capSlideBox':
