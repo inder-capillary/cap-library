@@ -73,6 +73,7 @@ function createPackageFile() {
           "react-dom": "^16.8.1",
           "react": "^16.8.1",
           "react-dates": "^20.2.4",
+          "rangy": "^1.3.0",
         },
       };
 
