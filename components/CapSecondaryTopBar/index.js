@@ -72,7 +72,7 @@ const CapSecondaryTopBar = (props) => {
 };
 
 CapSecondaryTopBar.propTypes = {
-  primaryMenuItem: PropTypes.object.isRequired,
+  primaryMenuItem: PropTypes.object,
   secondaryMenuItem: PropTypes.object,
   menuActions: PropTypes.array,
   menuActionHandler: PropTypes.func,
