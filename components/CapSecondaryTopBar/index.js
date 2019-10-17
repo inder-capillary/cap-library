@@ -34,7 +34,7 @@ const CapSecondaryTopBar = (props) => {
       className={classNames(`${clsPrefix}-header`)}
       selectable={false}
     >
-      { primaryMenuItem && !isEmpty(primaryMenuItem)
+      {!isEmpty(primaryMenuItem)
       && (
         <CapMenu.Item key={primaryMenuItem.key || 'primaryMenu'} className="primary-menu">
           <CapIcon type="more-applications" className="apps-icon" />
