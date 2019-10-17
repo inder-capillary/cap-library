@@ -92,3 +92,4 @@ export { default as Box } from './Icons/Box';
 export { default as GrowthGraph } from './Icons/GrowthGraph';
 export { default as Siren } from './Icons/Siren';
 export { default as Delay } from './Icons/Delay';
+export { default as Attachment } from './Icons/Attachment';

@@ -169,7 +169,7 @@ export default class CapTableDoc extends Component { // eslint-disable-line reac
     return (
       <div className="cap-table-info">
         <div className="cap-table-showcase">
-          <CapTable id="capTable_1" ColumnGroup={columns} columns={columns} dataSource={dataSource} infinteScroll />
+          <CapTable id="capTable_1" ColumnGroup={columns} columns={columns} dataSource={dataSource} infinteScroll className="hide-hover" />
         </div>
         <div style={{ marginTop: '24px' }}>
           <CapTable dataSource={tableData2.dataSource} columns={tableData2.columns} />
