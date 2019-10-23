@@ -1177,7 +1177,7 @@ var io = {
 		
 		/* Add error messages */
 		if(node.err) {
-			popup.append($("<div>").addClass("error").html(node.err.join("<br />")));
+			popup.append($("<div>").addClass("expressionError").html(node.err.join("<br />")));
 			show = true;
 		}
 		
