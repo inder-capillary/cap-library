@@ -55,6 +55,7 @@ import CapHierarchyComponentDoc from '../src/CapHierarchyComponentDoc';
 import CapDrawerDoc from '../src/CapDrawerDoc';
 import CapBannerDoc from '../src/CapBannerDoc';
 import CapExpressionEditorDoc from '../src/CapExpressionEditorDoc';
+import CapIllustrationDoc from '../src/CapIllustrationDoc';
 //imported for docs
 
 
@@ -170,7 +171,10 @@ class ComponentSwitcher extends Component {
         return <CapDrawerDoc />;
       case 'capBanner':
         return <CapBannerDoc />;
-      //components for docs
+      case 'capIllustration':
+        return <CapIllustrationDoc />;
+        //components for docs
+
       default:
         return null;
     }

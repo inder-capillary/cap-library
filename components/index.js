@@ -65,4 +65,5 @@ export { default as CapHierarchyComponent } from './CapHierarchyComponent';
 export { default as CapDrawer } from './CapDrawer';
 export { default as CapBanner } from './CapBanner';
 export { default as CapExpressionEditor } from './CapExpressionEditor';
+export { default as CapIllustration } from './CapIllustration';
 //export components

@@ -2,7 +2,7 @@ import React from 'react';
 import { Menu, Layout } from 'antd';
 // import {CapPageHeader} from '../../../src/index';
 import ComponentSwitcher from '../../helpers/ComponentSwitcher';
-const logo = require('../../components/assets/images/capillary_dark.png');
+const logo = require('../../components/assets/images/CapillaryDark.png');
 const { Content, Footer, Sider } = Layout;
 const MenuItem = Menu.Item;
 
@@ -84,7 +84,9 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             <MenuItem key="capSkeleton"><span>CapSkeleton</span></MenuItem>
             <MenuItem key="capMultiSelectDatePicker"><span>CapMultiSelectDatePicker</span></MenuItem>
             <MenuItem key="capHierarchyComponent"><span>CapHierarchyComponent</span></MenuItem>
+            <MenuItem key="capIllustration"><span>CapIllustration</span></MenuItem>
             {/*Menu items for components*/}
+
           </Menu>
         </Sider>
         <Layout style={{ marginLeft: 200 }}>
