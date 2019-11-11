@@ -97,6 +97,9 @@ const getSvgComponentFromType = (type) => {
     case 'siren': return SvgIcons.Siren;
     case 'delay': return SvgIcons.Delay;
     case 'attachment': return SvgIcons.Attachment;
+    case 'desktop': return SvgIcons.Desktop;
+    case 'tablet': return SvgIcons.Tablet;
+    case 'Mobile': return SvgIcons.Mobile;
     default: return null;
   }
 };

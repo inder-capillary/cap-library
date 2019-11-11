@@ -93,3 +93,6 @@ export { default as GrowthGraph } from './Icons/GrowthGraph';
 export { default as Siren } from './Icons/Siren';
 export { default as Delay } from './Icons/Delay';
 export { default as Attachment } from './Icons/Attachment';
+export { default as Desktop } from './Icons/Desktop';
+export { default as Tablet } from './Icons/Tablet';
+export { default as Mobile } from './Icons/Mobile';
