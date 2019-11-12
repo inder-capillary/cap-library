@@ -22,6 +22,8 @@ export const CAP_PURPLE = "#8517e5";
 export const CAP_PINK = "#e51fa3";
 export const CAP_RED = "#ea213a";
 export const CAP_ICON = "#7a869a";
+export const CAP_PALE_GREY = "#e9f0fe";
+
 
 // Grey colors
 export const CAP_G01 = "#091e42";
@@ -95,3 +97,4 @@ export const CAP_SPACE_56 = "4rem";
 export const CAP_SPACE_60 = "4.286rem";
 export const CAP_SPACE_64 = "4.571rem";
 export const CAP_SPACE_72 = "5.143rem";
+export const CAP_SPACE_80 = "5.714rem";

@@ -93,3 +93,8 @@ export { default as GrowthGraph } from './Icons/GrowthGraph';
 export { default as Siren } from './Icons/Siren';
 export { default as Delay } from './Icons/Delay';
 export { default as Attachment } from './Icons/Attachment';
+export { default as Store } from './Icons/Store';
+export { default as Footwear } from './Icons/Footwear';
+export { default as Gender } from './Icons/Gender';
+export { default as Language } from './Icons/Language';
+export { default as OfferWithColor } from './Icons/OfferWithColor';

@@ -97,6 +97,12 @@ const getSvgComponentFromType = (type) => {
     case 'siren': return SvgIcons.Siren;
     case 'delay': return SvgIcons.Delay;
     case 'attachment': return SvgIcons.Attachment;
+    case 'store': return SvgIcons.Store;
+    case 'language': return SvgIcons.Language;
+    case 'gender': return SvgIcons.Gender;
+    case 'footwear': return SvgIcons.Footwear;
+    case 'offerWithColor': return SvgIcons.OfferWithColor;
+
     default: return null;
   }
 };
