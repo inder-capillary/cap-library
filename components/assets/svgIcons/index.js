@@ -96,3 +96,8 @@ export { default as Attachment } from './Icons/Attachment';
 export { default as Desktop } from './Icons/Desktop';
 export { default as Tablet } from './Icons/Tablet';
 export { default as Mobile } from './Icons/Mobile';
+export { default as Store } from './Icons/Store';
+export { default as Footwear } from './Icons/Footwear';
+export { default as Gender } from './Icons/Gender';
+export { default as Language } from './Icons/Language';
+export { default as OfferWithColor } from './Icons/OfferWithColor';

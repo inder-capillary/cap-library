@@ -56,6 +56,7 @@ import CapDrawerDoc from '../src/CapDrawerDoc';
 import CapBannerDoc from '../src/CapBannerDoc';
 import CapExpressionEditorDoc from '../src/CapExpressionEditorDoc';
 import CapIllustrationDoc from '../src/CapIllustrationDoc';
+import CapCustomCheckboxListDoc from '../src/CapCustomCheckboxListDoc';
 //imported for docs
 
 
@@ -173,7 +174,10 @@ class ComponentSwitcher extends Component {
         return <CapBannerDoc />;
       case 'capIllustration':
         return <CapIllustrationDoc />;
+      case 'capCustomCheckbox':
+        return <CapCustomCheckboxListDoc />;
         //components for docs
+
 
       default:
         return null;

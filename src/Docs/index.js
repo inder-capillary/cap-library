@@ -85,7 +85,9 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             <MenuItem key="capMultiSelectDatePicker"><span>CapMultiSelectDatePicker</span></MenuItem>
             <MenuItem key="capHierarchyComponent"><span>CapHierarchyComponent</span></MenuItem>
             <MenuItem key="capIllustration"><span>CapIllustration</span></MenuItem>
+            <MenuItem key="capCustomCheckbox"><span>CapCustomCheckbox</span></MenuItem>
             {/*Menu items for components*/}
+
 
           </Menu>
         </Sider>
