@@ -19,7 +19,7 @@ const SvgTablet = (props) => (
         <use xlinkHref="#tablet_svg__a" />
       </mask>
       <use fill="#000" fillRule="nonzero" xlinkHref="#tablet_svg__a" />
-      <g fill="#091E42" mask="url(#tablet_svg__b)">
+      <g fill="currentColor" mask="url(#tablet_svg__b)">
         <path d="M0 0h24v24H0z" />
       </g>
     </g>

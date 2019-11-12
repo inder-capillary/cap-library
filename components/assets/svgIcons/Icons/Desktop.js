@@ -19,7 +19,7 @@ const SvgDesktop = (props) => (
         <use xlinkHref="#desktop_svg__a" />
       </mask>
       <use fill="#000" fillRule="nonzero" xlinkHref="#desktop_svg__a" />
-      <g fill="#091E42" mask="url(#desktop_svg__b)">
+      <g fill="currentColor" mask="url(#desktop_svg__b)">
         <path d="M0 0h24v24H0z" />
       </g>
     </g>
