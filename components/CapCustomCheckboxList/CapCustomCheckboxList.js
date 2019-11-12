@@ -27,12 +27,12 @@ function CapCustomCheckboxList(props) {
         return (
 
           <div className={classNames(clsPrefix, className)}>
-            <div className="divIcon">
-              <CapIcon className="customCheckboxIcon" {...iconProps} />
+            <div className="div-icon">
+              <CapIcon className="customCheckbox-icon" {...iconProps} />
             </div>
             <CapCheckbox {...rest} className="customCheckbox">
               <CapHeadingSpan type="h4">{title}</CapHeadingSpan>
-              {inductiveText && <CapHeading className="customCheckboxInductiveText" type="label3">{inductiveText}</CapHeading>}
+              {inductiveText && <CapHeading className="customCheckbox-inductive-text" type="label3">{inductiveText}</CapHeading>}
             </CapCheckbox>
           </div>
         );

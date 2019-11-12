@@ -9,19 +9,19 @@ $cap-customCheckbox: cap-customCheckboxList-v2;
     border: solid 1px $CAP_G07;
     background-color: $CAP_WHITE;
     margin-right:$CAP_SPACE_12;
-    .divIcon{
+    .div-icon{
         width: 208px;
         height: 88px;
         border-radius: 4px;
         background-color:$CAP_PALE_GREY;
-        .customCheckboxIcon{
+        .customCheckbox-Icon{
             margin:$CAP_SPACE_20 $CAP_SPACE_80;
             width: 48px;
             height: 48px;
             padding: $CAP_SPACE_08 $CAP_SPACE_04;
         }
     }
-    .customCheckboxInductiveText{
+    .customCheckbox-inductive-text{
         width:168px;
         height:48px;
     }
