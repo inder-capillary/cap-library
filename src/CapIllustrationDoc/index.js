@@ -45,22 +45,22 @@ const infoData = [
 ];
 
 export default class CapIllustrationDoc extends Component { // eslint-disable-line react/prefer-stateless-function
-   getIllustrationProps = {
-     buttonLabel: "New message",
-     onClick: () => { console.log('onClick'); },
-     illustrationImage: messageIllustration,
-     title: "Create your first message",
-     description: "There are no messages in this campaign",
-   };
+  getIllustrationProps = {
+    buttonLabel: "New message",
+    onClick: () => { },
+    illustrationImage: messageIllustration,
+    title: "Create your first message",
+    description: "There are no messages in this campaign",
+  };
 
-   render() {
-     return (
-       <div className="cap-illustration-info">
-         <div className="cap-illustration-showcase">
-           <CapIllustration {...this.getIllustrationProps} />
-         </div>
-         <PropertyTable data={infoData} />
-       </div>
-     );
-   }
+  render() {
+    return (
+      <div className="cap-illustration-info">
+        <div className="cap-illustration-showcase">
+          <CapIllustration {...this.getIllustrationProps} />
+        </div>
+        <PropertyTable data={infoData} />
+      </div>
+    );
+  }
 }
