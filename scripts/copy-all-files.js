@@ -74,6 +74,7 @@ function createPackageFile() {
           "react": "^16.8.1",
           "react-dates": "^20.2.4",
           "rangy": "^1.3.0",
+          "bizcharts": "^3.5.5",
         },
       };
 
