@@ -190,7 +190,7 @@ const cardListEmail = [
     hoverOption: <CapButton> Select </CapButton>,
     title: "20% off on footwear test long log text",
     extra: [<CapIcon type="eye" />],
-    prefix: (
+    cardTop: (
       <CapHeading
         type="h5"
         style={{ padding: '24px 16px',
@@ -199,7 +199,7 @@ const cardListEmail = [
           border: 'solid 1px #dfe2e7',
           borderBottom: 'solid 0px' }}>
             Customers who visit
-        {<CapLink title=" select store " style={{display: 'inline-block'}} />}
+        {<CapLink title="select store" style={{display: 'inline-block'}} />}
             & will buy 24 products will receive below content
       </CapHeading>),
   },
