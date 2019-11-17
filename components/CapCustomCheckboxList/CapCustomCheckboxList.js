@@ -15,13 +15,9 @@ const classNames = require('classnames');
 const { CapHeadingSpan } = CapHeading;
 const clsPrefix = "cap-customCheckboxList-v2";
 function CapCustomCheckboxList(props) {
-  const {paneList, className} = props;
-  const onChange = (val) => {
-    console.log(val);
-  };
+  const {paneList, className, ...others} = props;
   return (
-
-    <CapCheckbox.Group style={{ width: '100%', display: 'flex'}} onChange={onChange}>
+    <CapCheckbox.Group style={{ width: '100%', display: 'flex'}} {...others}>
       {paneList.map((data) => {
         const { inductiveText, iconProps, title, ...rest} = data;
         return (
@@ -32,7 +28,7 @@ function CapCustomCheckboxList(props) {
             </div>
             <CapCheckbox {...rest} className="customCheckbox">
               <CapHeadingSpan type="h4">{title}</CapHeadingSpan>
-              {inductiveText && <CapHeading className="customCheckbox-inductive-text" type="label3">{inductiveText}</CapHeading>}
+              {inductiveText && <CapHeading className="customCheckbox-inductive-text" type="label4">{inductiveText}</CapHeading>}
             </CapCheckbox>
           </div>
         );

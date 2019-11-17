@@ -5,7 +5,7 @@ import React, { Component } from "react";
 
 import styled from 'styled-components';
 import PropertyTable from '../../helpers/PropertyTable';
-import { CapCustomCard, CapButton, CapHeading, CapIcon } from "../../components";
+import { CapCustomCard, CapButton, CapHeading, CapIcon, CapLink} from "../../components";
 import "./info.scss";
 
 const { CapCustomCardList } = CapCustomCard;
@@ -187,9 +187,21 @@ const cardListEmail = [
         </div>
       </div>,
     ],
-    hoverOption: <CapButton>Select</CapButton>,
+    hoverOption: <CapButton> Select </CapButton>,
     title: "20% off on footwear test long log text",
     extra: [<CapIcon type="eye" />],
+    prefix: (
+      <CapHeading
+        type="h5"
+        style={{ padding: '24px 16px',
+          width: '276px',
+          height: '112px',
+          border: 'solid 1px #dfe2e7',
+          borderBottom: 'solid 0px' }}>
+            Customers who visit
+        {<CapLink title=" select store " style={{display: 'inline-block'}} />}
+            & will buy 24 products will receive below content
+      </CapHeading>),
   },
   {
     url: "https://s3.amazonaws.com/test_files_cache_bkp/intouch_creative_assets/dfa5c1e2fd001b1fed8a.png",

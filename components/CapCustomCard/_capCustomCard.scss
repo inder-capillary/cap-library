@@ -6,6 +6,9 @@ $cap-custom-card: cap-custom-card;
 .ant-card.#{$cap-custom-card} {
   border-radius: 4px;
   display: inline-block;
+  &.remove-border-radius{
+    border-radius: unset;
+  }
   .ant-card-head {
     border-bottom: none;
   }

@@ -9,16 +9,17 @@ export default class CapCustomCardList extends React.Component {
   render() {
     const { className, cardList, type } = this.props;
     return (
-      <div className={classNames(clsPrefix, type, className)}>
+      <div className={classNames(clsPrefix, type, className, )}>
         {cardList && (
           <div className={classNames(`${clsPrefix}-row`)}>
             {
               cardList.map((data, i) => {
-                const { dataBelowCard, cardType, ...rest } = data;
+                const { dataBelowCard, cardType, prefix, ...rest } = data;
                 const key = data.key || i;
                 return (
                   <div className={classNames(`${clsPrefix}-col`)}>
-                    <CapCustomCard key={key} type={cardType || type} {...rest} />
+                    {prefix && prefix}
+                    <CapCustomCard key={key} type={cardType || type} prefix={prefix} {...rest} />
                     {
                       dataBelowCard && dataBelowCard
                     }

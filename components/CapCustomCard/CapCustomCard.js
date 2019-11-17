@@ -107,10 +107,10 @@ class CapCustomCard extends React.Component {
     }
 
     render() {
-      const { className, type, content, hoverOption, url, width, height, ...rest } = this.props;
+      const { className, type, content, hoverOption, url, width, height, prefix, ...rest } = this.props;
       return (
         <Card
-          className={ClassNames(clsPrefix, className, type, { 'has-hover-option': hoverOption, 'no-image': !url && content})}
+          className={ClassNames(clsPrefix, className, type, { 'has-hover-option': hoverOption, 'no-image': !url && content, 'remove-border-radius': prefix})}
           {...rest}
         >
           {this.getCardContent()}
