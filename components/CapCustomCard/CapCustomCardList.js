@@ -9,7 +9,7 @@ export default class CapCustomCardList extends React.Component {
   render() {
     const { className, cardList, type } = this.props;
     return (
-      <div className={classNames(clsPrefix, type, className, )}>
+      <div className={classNames(clsPrefix, type, className)}>
         {cardList && (
           <div className={classNames(`${clsPrefix}-row`)}>
             {
