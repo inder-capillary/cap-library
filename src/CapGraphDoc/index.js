@@ -3,7 +3,7 @@
 */
 import React, { Component } from "react";
 import PropertyTable from '../../helpers/PropertyTable';
-import { CapGraph, CapHeading } from "../../components";
+import { CapGraph, CapHeading, CapButton } from "../../components";
 import { stackedData, lineData } from './data';
 import "./info.scss";
 
@@ -136,6 +136,40 @@ const scale = {
 };
 
 export default class CapGraphDoc extends Component { // eslint-disable-line react/prefer-stateless-function
+  onCopyStackedPropsClick = () => {
+    navigator.clipboard.writeText(JSON.stringify({
+      height: 400,
+      data: stackedData,
+      xAxis: "key",
+      yAxis: "value",
+      stackBy: "orderStage",
+      legend,
+      barColors,
+      graphType: "intervalStack",
+      size: 12,
+      xLabelFrequency: 4,
+      tooltipData: 'a modified version of the actual data for the tooltip',
+      containerTemplate: 'The HTML template to render the container',
+    }));
+  }
+
+  onCopyLinePropsClick = () => {
+    navigator.clipboard.writeText(JSON.stringify({
+      height: 400,
+      data: lineData,
+      scale,
+      xAxis: "date",
+      yAxis: "orders",
+      stackBy: "duration",
+      legend,
+      lineColors,
+      graphType: "line",
+      size: 4,
+      tooltipData: 'a modified version of the actual data for the tooltip',
+      containerTemplate: 'The HTML template to render the container',
+    }));
+  }
+
   render() {
     const stackedTooltipData = {};
 
@@ -167,7 +201,10 @@ export default class CapGraphDoc extends Component { // eslint-disable-line reac
     return (
       <div className="cap-graph-info">
         <div className="cap-graph-showcase">
-          <CapHeading type="h3">Stacked bar graph</CapHeading>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+            <CapHeading type="h2">Stacked bar graph</CapHeading>
+            <CapButton onClick={this.onCopyStackedPropsClick}>Copy Props to Clipboard</CapButton>
+          </div>
           <CapGraph
             height={400}
             data={stackedData}
@@ -179,12 +216,24 @@ export default class CapGraphDoc extends Component { // eslint-disable-line reac
             graphType="intervalStack"
             size={12}
             tooltipData={stackedTooltipData}
+            xLabelFrequency={4}
             containerTemplate={(ttData, index) => `<div class="g2-tooltip">Total: ${
               ttData[index] ? ttData[index].total : ''
             }<div class="g2-tooltip-title" style="margin:10px 0;"></div><ul class="g2-tooltip-list"></ul></div>`} />
         </div>
+        <CapHeading>
+          Visit this
+          {' '}
+          <a href="https://bizcharts.net/products/bizCharts/demo/detail?id=bar-stacked-column&selectedKey=%E6%9F%B1%E7%8A%B6%E5%9B%BE">link</a>
+          {' '}
+          for more detailed reference
+        </CapHeading>
+        <hr />
         <div className="cap-graph-showcase">
-          <CapHeading type="h3">Multi line graph</CapHeading>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+            <CapHeading type="h2">Multi line graph</CapHeading>
+            <CapButton onClick={this.onCopyLinePropsClick}>Copy Props to Clipboard</CapButton>
+          </div>
           <CapGraph
             height={400}
             data={lineData}
@@ -200,6 +249,13 @@ export default class CapGraphDoc extends Component { // eslint-disable-line reac
             containerTemplate={(ttData, index) => `<div class="g2-tooltip">Diff: ${
               ttData[index] ? ttData[index].diff : ''
             }<div class="g2-tooltip-title" style="margin:10px 0;"></div><ul class="g2-tooltip-list"></ul></div>`} />
+          <CapHeading>
+            Visit this
+            {' '}
+            <a href="https://bizcharts.net/products/bizCharts/demo/detail?id=line-series&selectedKey=%E6%8A%98%E7%BA%BF%E5%9B%BE">link</a>
+            {' '}
+            for more detailed reference
+          </CapHeading>
         </div>
         <PropertyTable data={infoData} />
       </div>

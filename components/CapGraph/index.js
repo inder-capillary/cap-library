@@ -46,7 +46,7 @@ class CapGraph extends React.Component {
   render() {
     const { data, xAxis, yAxis, stackBy,
       legend, barColors, g2Tooltip, g2TooltipList, g2TooltipListItem,
-      itemTemplate, graphType, size, scale, tooltipData, height } = this.props;
+      itemTemplate, graphType, size, scale, tooltipData, height, xLabelFrequency = 1 } = this.props;
     let { containerTemplate } = this.props;
     let legendType = 'circle';
     let legendPosition = 'bottom';
@@ -71,7 +71,14 @@ class CapGraph extends React.Component {
           forceFit
           scale={scale}
         >
-          <Axis name={xAxis} />
+          <Axis
+            name={xAxis}
+            label={{
+              formatter: (val, i, index) => {
+                if (index % xLabelFrequency === 0) return val;
+                return '';
+              },
+            }} />
           <Axis name={yAxis} />
           <Tooltip
             offset={50}
@@ -113,6 +120,7 @@ CapGraph.propTypes = {
   size: PropTypes.number,
   scale: PropTypes.object,
   tooltipData: PropTypes.object,
+  xLabelFrequency: PropTypes.number,
 };
 
 export default CapGraph;
