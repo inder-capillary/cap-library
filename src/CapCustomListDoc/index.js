@@ -9,10 +9,24 @@ import "./info.scss";
 const infoData = [
   {
     key: 1,
-    property: "-",
-    description: "-",
-    type: "-",
-    default: "-",
+    property: "list",
+    description: "list of all category and sub category",
+    type: "array",
+    default: "none",
+  },
+  {
+    key: 2,
+    property: "title",
+    description: "title of the list",
+    type: "string",
+    default: "none",
+  },
+  {
+    key: 3,
+    property: "className",
+    description: "class for first level",
+    type: "string",
+    default: "none",
   },
 ];
 

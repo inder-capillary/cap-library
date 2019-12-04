@@ -13,23 +13,31 @@ import CapHeader from '../CapHeader';
 import CapIcon from '../CapIcon';
 import './_capCustomList.scss';
 import CapHeading from '../CapHeading';
+import {CAP_SPACE_16, CAP_SPACE_24, CAP_G07, CAP_SPACE_08} from "../styled/variables";
 
-
+const classNames = require('classnames');
 const CapCustomSubHeader = styled(CapHeader)`
-  padding-bottom:16px;
+  padding-bottom:${CAP_SPACE_16};
 `;
 const CapCustomHeader = styled(CapHeader)`
-  margin-bottom:24px;
+  margin-bottom:${CAP_SPACE_24};
 `;
 
 const CapRectangle = styled.div`
   width: 324px;
   height: 1px;
-  background-color: #dfe2e7;
+  background-color: ${CAP_G07};
 `;
 
+
+const CapCustomButton = styled(CapButton)`
+  padding-left: 0px;
+  display: contents;
+  text-align: left;
+`;
+const clsPrefix = 'cap-customList-v2';
 function CapCustomList(props) {
-  const { list } = props;
+  const { list, className } = props;
   const [subList, loadSubList] = useState(
     {}
   );
@@ -40,14 +48,14 @@ function CapCustomList(props) {
         ? <>
           <CapCustomHeader
             size="regular"
-            title={props.title} />
+            title={props.title}
+            className={classNames(clsPrefix, className)} />
 
           {list.map((pane) => (
-            <CapButton
+            <CapCustomButton
               className="category-select-btn"
               type="flat"
               onClick={() => loadSubList({levelName: pane.levelName, subCategory: pane.subCategory, levelvalueCount: pane.levelvalueCount})}
-              style={{paddingLeft: '0px', display: 'contents'}}
             >
               <CapCustomSubHeader
                 size="label1"
@@ -60,7 +68,7 @@ function CapCustomList(props) {
                   />
                 )}
               />
-            </CapButton>
+            </CapCustomButton>
 
           ))}
 
@@ -73,7 +81,7 @@ function CapCustomList(props) {
               <CapIcon
                 type="back"
                 onClick={() => { loadSubList({}); }}
-                style={{ marginLeft: '-6px', paddingRight: '8px'}}
+                style={{ marginLeft: '-6px', paddingRight: CAP_SPACE_08}}
               />
             )}
             description={levelvalueCount}
@@ -104,6 +112,7 @@ function CapCustomList(props) {
 CapCustomList.propTypes = {
   title: PropTypes.string,
   list: PropTypes.array,
+  className: PropTypes.string,
 };
 
 export default CapCustomList;
