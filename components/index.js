@@ -68,4 +68,5 @@ export { default as CapExpressionEditor } from './CapExpressionEditor';
 export { default as CapIllustration } from './CapIllustration';
 export { default as CapCustomCheckboxList } from './CapCustomCheckboxList';
 export { default as CapGraph } from './CapGraph';
+export { default as CapCustomList } from './CapCustomList';
 //export components

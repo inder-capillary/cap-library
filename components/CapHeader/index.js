@@ -38,6 +38,7 @@ function CapHeader(props) {
     const marginLeft = inline ? '8px' : 0;
     switch (size) {
       case "regular":
+      case "label1":
       case "small":
         return (
           <CapLabelwithDirection style={{ marginLeft }} type="label1" className={descriptionClassName}>
@@ -76,6 +77,12 @@ function CapHeader(props) {
       case "label":
         return (
           <CapHeadingwithDirection type={description ? 'h3' : 'h4'} className={titleClassName}>
+            {title}
+          </CapHeadingwithDirection>
+        );
+      case "label1":
+        return (
+          <CapHeadingwithDirection type="h4" className={titleClassName}>
             {title}
           </CapHeadingwithDirection>
         );
