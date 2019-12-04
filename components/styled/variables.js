@@ -38,6 +38,7 @@ export const CAP_G09 = "#f4f5f7";
 export const CAP_G10 = "#fafbfc";
 export const CAP_G11 = "#7a869a";
 export const CAP_G12 = "#e8e8e8";
+export const CAP_G13 = "#ecece7";
 
 export const CAP_WHITE = "#ffffff";
 
