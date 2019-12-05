@@ -51,7 +51,7 @@ export default class CapCustomListDoc extends Component { // eslint-disable-line
 
   render() {
     return (
-      <>
+      <React.Fragment>
         <CapButton onClick={() => { this.setState({showCustomList: true}); }}>
         custome list
         </CapButton>
@@ -65,7 +65,7 @@ export default class CapCustomListDoc extends Component { // eslint-disable-line
         />
 
         <PropertyTable data={infoData} />
-      </>
+      </React.Fragment>
     );
   }
 }

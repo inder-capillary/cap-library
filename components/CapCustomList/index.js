@@ -43,67 +43,71 @@ function CapCustomList(props) {
   );
   const {subCategory, levelName, levelvalueCount} = subList;
   return (
-    <>
+    <React.Fragment>
       {isEmpty(subCategory)
-        ? <>
-          <CapCustomHeader
-            size="regular"
-            title={props.title}
-            className={classNames(clsPrefix, className)} />
+        ? (
+          <React.Fragment>
+            <CapCustomHeader
+              size="regular"
+              title={props.title}
+              className={classNames(clsPrefix, className)} />
 
-          {list.map((pane) => (
-            <CapCustomButton
-              className="category-select-btn"
-              type="flat"
-              onClick={() => loadSubList({levelName: pane.levelName, subCategory: pane.subCategory, levelvalueCount: pane.levelvalueCount})}
-            >
-              <CapCustomSubHeader
-                size="label1"
-                title={pane.levelName}
-                description={pane.levelvalueCount}
-                suffix={(
-                  <CapIcon
-                    className="category-select-btn-suffix"
-                    type="chevron-right"
-                  />
-                )}
-              />
-            </CapCustomButton>
-
-          ))}
-
-          </>
-        : <>
-          <CapCustomHeader
-            size="regular"
-            title={levelName}
-            prefix={(
-              <CapIcon
-                type="back"
-                onClick={() => { loadSubList({}); }}
-                style={{ marginLeft: '-6px', paddingRight: CAP_SPACE_08}}
-              />
-            )}
-            description={levelvalueCount}
-          />
-          {subCategory.map((category) => (
-            <>
-              <CapRectangle />
-              <CapHeading
-                style={{padding: '13px 0px 13px 0px'}}
-                type="label2"
+            {list.map((pane) => (
+              <CapCustomButton
+                className="category-select-btn"
+                type="flat"
+                onClick={() => loadSubList({levelName: pane.levelName, subCategory: pane.subCategory, levelvalueCount: pane.levelvalueCount})}
               >
-                {category}
+                <CapCustomSubHeader
+                  size="label1"
+                  title={pane.levelName}
+                  description={pane.levelvalueCount}
+                  suffix={(
+                    <CapIcon
+                      className="category-select-btn-suffix"
+                      type="chevron-right"
+                    />
+                  )}
+                />
+              </CapCustomButton>
 
-              </CapHeading>
+            ))}
 
-            </>
-          ))
-          }
-          <CapRectangle />
-        </>
+          </React.Fragment>
+        )
+        : (
+          <React.Fragment>
+            <CapCustomHeader
+              size="regular"
+              title={levelName}
+              prefix={(
+                <CapIcon
+                  type="back"
+                  onClick={() => { loadSubList({}); }}
+                  style={{ marginLeft: '-6px', paddingRight: CAP_SPACE_08}}
+                />
+              )}
+              description={levelvalueCount}
+            />
+            {subCategory.map((category) => (
+              <React.Fragment>
+                <CapRectangle />
+                <CapHeading
+                  style={{padding: '13px 0px 13px 0px'}}
+                  type="label2"
+                >
+                  {category}
+
+                </CapHeading>
+
+              </React.Fragment>
+            ))
+            }
+            <CapRectangle />
+          </React.Fragment>
+        )
       }
-      </>
+    </React.Fragment>
 
   );
 }
