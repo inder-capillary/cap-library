@@ -79,6 +79,18 @@ $slideBox: "cap-slide-box-v2";
   min-width: 372px;
   max-width: 400px;
   width: 25vw;
+  .slidebox-header {
+    padding: 0 $CAP_SPACE_24;
+
+  }
+  .slidebox-footer {
+    padding: 0 $CAP_SPACE_24;
+
+  }
+  .slidebox-content-container {
+    padding: 0 $CAP_SPACE_24;
+
+  }
 }
 
 .#{$slideBox}-container.size-l {
