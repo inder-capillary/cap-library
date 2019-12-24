@@ -74,6 +74,12 @@ const headings = {
     'font-weight': 'normal',
     'line-height': '24px',
   },
+  label6: {
+    'color': '#091e42',
+    'font-size': '16px',
+    'font-weight': 'normal',
+    'line-height': '24px',
+  },
 };
 
 const CapHeading = styled.div`
