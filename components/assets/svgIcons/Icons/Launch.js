@@ -15,11 +15,11 @@ const SvgLaunch = (props) => (
       />
     </defs>
     <g fill="none" fillRule="evenodd">
-      <mask id="launch_svg__b" fill="#fff">
+      <mask id="launch_svg__b" fill="currentColor">
         <use xlinkHref="#launch_svg__a" />
       </mask>
-      <use fill="#FFF" xlinkHref="#launch_svg__a" />
-      <g fill="#091E42" mask="url(#launch_svg__b)">
+      <use fill="currentColor" xlinkHref="#launch_svg__a" />
+      <g fill="currentColor" mask="url(#launch_svg__b)">
         <path d="M0 0h24v24H0z" />
       </g>
     </g>
