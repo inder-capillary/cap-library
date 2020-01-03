@@ -45,7 +45,7 @@ const CapComponentStyled = styled.div`
       &.ant-select-enabled.ant-select-focused .ant-select-selection,
       &.ant-select-enabled .ant-select-selection,
       &.ant-select-enabled .ant-select-selection {
-        border-color: ${(props) => props.errorMessage ? styledVars.CAP_RED : styledVars.CAP_G01};
+        border-color: ${(props) => props.errorMessage ? styledVars.CAP_RED : styledVars.CAP_G06};
       }
     }
 `;
