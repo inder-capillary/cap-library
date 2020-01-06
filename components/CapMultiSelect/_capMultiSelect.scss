@@ -97,6 +97,7 @@ $multiSelect: cap-multi-select-v2;
     overflow-y: auto;
     overflow-x: hidden;
     border-bottom: 1px solid #c2c2c2;
+    padding-bottom: $CAP_SPACE_16;
     li {
       padding-bottom: 0;
       .ant-tree-node-content-wrapper:hover {
@@ -106,11 +107,13 @@ $multiSelect: cap-multi-select-v2;
   }
   .ant-popover-inner-content {
     padding: 0;
+    padding-top: $CAP_SPACE_16;
     .search-input {
       .component-with-label {
         width: 100%;
       }
       margin: $CAP_SPACE_16 $CAP_SPACE_16 0 $CAP_SPACE_16;
+      margin-top: 0;
       .ant-input-affix-wrapper .ant-input-prefix {
         left: 8px;
       }
