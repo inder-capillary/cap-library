@@ -45,14 +45,15 @@ const CapComponentStyled = styled.div`
       &.ant-select-enabled.ant-select-focused .ant-select-selection,
       &.ant-select-enabled .ant-select-selection,
       &.ant-select-enabled .ant-select-selection {
-        border-color: ${(props) => props.errorMessage ? styledVars.CAP_RED : styledVars.CAP_G01};
+        border-color: ${(props) => props.errorMessage ? styledVars.CAP_RED : styledVars.CAP_G06};
       }
     }
 `;
 
-const ComponentWithLabelWrapper = styled.div`
-  display: ${(props) => props.labelPosition === 'left' && 'flex'};
-  align-items: center;
+const ComponentWithLabelWrapper = styled.div`  
+  display: ${(props) => props.labelPosition === 'left' && 'flex'};  
+  align-items: ${(props) => props.componentPosition === 'top' ? 'normal' : 'center'};  
+  justify-content: ${(props) => props.componentPosition === 'top' ? 'space-between' : 'unset'};
 `;
 
 const Sup = styled.sup`
@@ -110,7 +111,7 @@ function ComponentWithLabelHOC(Component) {
       const rows = [];
       if (labelPosition === 'left') {
         rows.push(
-          <div>
+          <React.Fragment>
             <ColumnsWrapper>
               <div>
                 { label && (
@@ -136,7 +137,7 @@ function ComponentWithLabelHOC(Component) {
             <ColumnsWrapper>
               <Component {...rest} />
             </ColumnsWrapper>
-          </div>
+          </React.Fragment>
         );
       } else {
         if (label) {
@@ -168,6 +169,7 @@ function ComponentWithLabelHOC(Component) {
         inductiveText,
         className,
         inline,
+        componentPosition,
         ...rest
       } = this.props;
       const { errorMessage } = rest;
@@ -184,7 +186,7 @@ function ComponentWithLabelHOC(Component) {
           disabled={this.props.disabled}
           inline={inline}
         >
-          <ComponentWithLabelWrapper labelPosition={labelPosition}>
+          <ComponentWithLabelWrapper labelPosition={labelPosition} componentPosition={componentPosition}>
             {rows}
           </ComponentWithLabelWrapper>
           {errorMessage && <StyledSpan className="error-message" labelPosition={labelPosition}>{errorMessage}</StyledSpan>}
