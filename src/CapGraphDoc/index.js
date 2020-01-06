@@ -10,9 +10,11 @@ import "./info.scss";
 const infoData = [
   {
     key: 0,
-    property: "graphType",
-    description: "specifies the type of graph: 'intervalstack' for stacked bar graph, 'line' for line chart etc",
-    type: "strings",
+    property: "graphList",
+    description: "type: specifies the type of graph: 'intervalstack' for stacked bar graph, 'line' for line chart, "
+                  + "stack By: specifies with respect to which key in the data object that the data is to be stacked by etc"
+                  + "barColors: An array with color codes for the stack. The number of color codes in the array must match the number of unique values for the stackBy key of data supplied ",
+    type: "Array of object",
     default: "n/a",
   },
   {
@@ -38,27 +40,13 @@ const infoData = [
   },
   {
     key: 4,
-    property: "stackBy",
-    description: "Specifies with respect to which key in the data object that the data is to be stacked by",
-    type: "string",
-    default: "n/a",
-  },
-  {
-    key: 5,
     property: "legend",
     description: "An object with two keys: 'legendType' & 'legendPosition' which lets the user customize the legend",
     type: "object",
     default: "legendType: 'circle', legendPosition: 'bottom'",
   },
   {
-    key: 6,
-    property: "barColors",
-    description: "An array with color codes for the stack. The number of color codes in the array must match the number of unique values for the stackBy key of data supplied",
-    type: "array",
-    default: "All the stacked items look same color if no array is supplied",
-  },
-  {
-    key: 7,
+    key: 5,
     property: "g2Tooltip",
     description: "The stylesheet object to customize the tooltip for the graph",
     type: "object",
@@ -142,10 +130,14 @@ export default class CapGraphDoc extends Component { // eslint-disable-line reac
       data: stackedData,
       xAxis: "key",
       yAxis: "value",
-      stackBy: "orderStage",
       legend,
-      barColors,
-      graphType: "intervalStack",
+      graphList: [
+        {
+          type: 'intervalStack',
+          barColors,
+          stackBy: 'orderStage',
+        },
+      ],
       size: 12,
       xLabelFrequency: 4,
       tooltipData: 'a modified version of the actual data for the tooltip',
@@ -160,10 +152,14 @@ export default class CapGraphDoc extends Component { // eslint-disable-line reac
       scale,
       xAxis: "date",
       yAxis: "orders",
-      stackBy: "duration",
       legend,
-      lineColors,
-      graphType: "line",
+      graphList: [
+        {
+          type: 'line',
+          barColors: lineColors,
+          stackBy: 'duration',
+        },
+      ],
       size: 4,
       tooltipData: 'a modified version of the actual data for the tooltip',
       containerTemplate: 'The HTML template to render the container',
@@ -210,10 +206,14 @@ export default class CapGraphDoc extends Component { // eslint-disable-line reac
             data={stackedData}
             xAxis="key"
             yAxis="value"
-            stackBy="orderStage"
             legend={legend}
-            barColors={barColors}
-            graphType="intervalStack"
+            graphList={[
+              {
+                type: 'intervalStack',
+                barColors,
+                stackBy: 'orderStage',
+              },
+            ]}
             size={12}
             tooltipData={stackedTooltipData}
             xLabelFrequency={4}
@@ -240,11 +240,15 @@ export default class CapGraphDoc extends Component { // eslint-disable-line reac
             scale={scale}
             xAxis="date"
             yAxis="orders"
-            stackBy="duration"
             legend={legend}
-            barColors={lineColors}
+            graphList={[
+              {
+                type: 'line',
+                barColors: lineColors,
+                stackBy: 'duration',
+              },
+            ]}
             tooltipData={lineTooltipData}
-            graphType="line"
             size={4}
             containerTemplate={(ttData, index) => `<div class="g2-tooltip">Diff: ${
               ttData[index] ? ttData[index].diff : ''
