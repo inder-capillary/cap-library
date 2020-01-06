@@ -16,7 +16,7 @@ const defaultStyles = {
     backgroundColor: '#fff',
     color: '#46af45',
     opacity: '0.8',
-    padding: '0px 0px',
+    padding: '5px 15px',
     transition: 'top 200ms,left 200ms',
   },
   g2TooltipList: {
