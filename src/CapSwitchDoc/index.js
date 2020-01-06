@@ -114,7 +114,7 @@ export default class CapSwitchDoc extends Component { // eslint-disable-line rea
             label="This is label title"
             inductiveText="This is inductive text for component position"
             labelPosition="left"
-            componetPosition="top"
+            componentPosition="top"
           />
           <br />
           <br />

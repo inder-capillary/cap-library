@@ -52,8 +52,8 @@ const CapComponentStyled = styled.div`
 
 const ComponentWithLabelWrapper = styled.div`  
   display: ${(props) => props.labelPosition === 'left' && 'flex'};  
-  align-items: ${(props) => props.componetPosition === 'top' ? 'normal' : 'center'};  
-  justify-content: ${(props) => props.componetPosition === 'top' ? 'space-between' : 'unset'};
+  align-items: ${(props) => props.componentPosition === 'top' ? 'normal' : 'center'};  
+  justify-content: ${(props) => props.componentPosition === 'top' ? 'space-between' : 'unset'};
 `;
 
 const Sup = styled.sup`
@@ -169,7 +169,7 @@ function ComponentWithLabelHOC(Component) {
         inductiveText,
         className,
         inline,
-        componetPosition,
+        componentPosition,
         ...rest
       } = this.props;
       const { errorMessage } = rest;
@@ -186,7 +186,7 @@ function ComponentWithLabelHOC(Component) {
           disabled={this.props.disabled}
           inline={inline}
         >
-          <ComponentWithLabelWrapper labelPosition={labelPosition} componetPosition={componetPosition}>
+          <ComponentWithLabelWrapper labelPosition={labelPosition} componentPosition={componentPosition}>
             {rows}
           </ComponentWithLabelWrapper>
           {errorMessage && <StyledSpan className="error-message" labelPosition={labelPosition}>{errorMessage}</StyledSpan>}
