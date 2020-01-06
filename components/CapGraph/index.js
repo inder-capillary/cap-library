@@ -7,7 +7,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Chart, Geom, Axis, Tooltip, Legend } from 'bizcharts';
-import isEmpty from 'lodash/isEmpty';
 const defaultStyles = {
   g2Tooltip: {
     position: 'absolute',
@@ -92,7 +91,7 @@ class CapGraph extends React.Component {
             g2-tooltip-list-item={g2TooltipListItem || defaultStyles.g2TooltipListItem}
           />
           <Legend marker={legendType} position={legendPosition} />
-          {!isEmpty(graphList) && graphList.map((graph) => (
+          {graphList.map((graph) => (
             <Geom
               type={graph.type}
               position={`${xAxis}*${yAxis}`}
@@ -106,7 +105,9 @@ class CapGraph extends React.Component {
     );
   }
 }
-
+CapGraph.defaultProps = {
+  graphList: [],
+};
 CapGraph.propTypes = {
   height: PropTypes.number,
   data: PropTypes.array.isRequired,
@@ -122,7 +123,7 @@ CapGraph.propTypes = {
   scale: PropTypes.object,
   tooltipData: PropTypes.object,
   xLabelFrequency: PropTypes.number,
-  graphList: PropTypes.array.isRequired,
+  graphList: PropTypes.array,
   yAxisProps: PropTypes.object,
   chartProps: PropTypes.object,
 };
