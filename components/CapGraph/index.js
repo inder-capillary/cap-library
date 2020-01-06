@@ -44,9 +44,9 @@ class CapGraph extends React.Component {
   }
 
   render() {
-    const { data, xAxis, yAxis, stackBy,
-      legend, barColors, g2Tooltip, g2TooltipList, g2TooltipListItem,
-      itemTemplate, graphType, size, scale, tooltipData, height, xLabelFrequency = 1, chartProps, yAxisProps, graphList} = this.props;
+    const { data, xAxis, yAxis,
+      legend, g2Tooltip, g2TooltipList, g2TooltipListItem,
+      itemTemplate, size, scale, tooltipData, height, xLabelFrequency = 1, chartProps, yAxisProps, graphList} = this.props;
     let { containerTemplate } = this.props;
     let legendType = 'circle';
     let legendPosition = 'bottom';
@@ -101,18 +101,6 @@ class CapGraph extends React.Component {
               tooltip={[`${xAxis}*${yAxis}`, this.updateTooltipInfo]}
             />
           ))}
-          {/* to avoid breaking on the old implementation */}
-          {graphType && (
-            <Geom
-              type={graphType}
-              position={`${xAxis}*${yAxis}`}
-              color={[stackBy, barColors]}
-              size={size || 10}
-              tooltip={[`${xAxis}*${yAxis}`, this.updateTooltipInfo]}
-            />
-          )}
-
-
         </Chart>
       </div>
     );
@@ -121,13 +109,10 @@ class CapGraph extends React.Component {
 
 CapGraph.propTypes = {
   height: PropTypes.number,
-  graphType: PropTypes.string,
   data: PropTypes.array.isRequired,
   xAxis: PropTypes.string.isRequired,
   yAxis: PropTypes.string.isRequired,
-  stackBy: PropTypes.string.isRequired,
   legend: PropTypes.object,
-  barColors: PropTypes.array,
   g2Tooltip: PropTypes.object,
   g2TooltipList: PropTypes.object,
   g2TooltipListItem: PropTypes.object,
