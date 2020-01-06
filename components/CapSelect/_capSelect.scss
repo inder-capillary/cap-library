@@ -37,6 +37,10 @@ $select: cap-select-v2;
 
   .ant-select-selection__rendered {
     font-size: $FONT_SIZE_M;
+
+    .ant-select-selection__placeholder {
+      color: $CAP_G04;
+    }
   }
 
   .ant-select-selection--multiple {
