@@ -110,6 +110,15 @@ export default class CapSwitchDoc extends Component { // eslint-disable-line rea
           <br />
           <br />
           <CapSwitch
+            style={{ marginLeft: '16px' }}
+            label="This is label title"
+            inductiveText="This is inductive text for component position"
+            labelPosition="left"
+            componentPosition="top"
+          />
+          <br />
+          <br />
+          <CapSwitch
             label="This is label title"
             inductiveText="This is inductive text for top label position"
             labelPosition="top"
