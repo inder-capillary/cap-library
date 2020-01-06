@@ -50,9 +50,10 @@ const CapComponentStyled = styled.div`
     }
 `;
 
-const ComponentWithLabelWrapper = styled.div`
-  display: ${(props) => props.labelPosition === 'left' && 'flex'};
-  align-items: center;
+const ComponentWithLabelWrapper = styled.div`  
+  display: ${(props) => props.labelPosition === 'left' && 'flex'};  
+  align-items: ${(props) => props.componetPosition === 'top' ? 'normal' : 'center'};  
+  justify-content: ${(props) => props.componetPosition === 'top' ? 'space-between' : 'unset'};
 `;
 
 const Sup = styled.sup`
@@ -110,7 +111,7 @@ function ComponentWithLabelHOC(Component) {
       const rows = [];
       if (labelPosition === 'left') {
         rows.push(
-          <div>
+          <React.Fragment>
             <ColumnsWrapper>
               <div>
                 { label && (
@@ -136,7 +137,7 @@ function ComponentWithLabelHOC(Component) {
             <ColumnsWrapper>
               <Component {...rest} />
             </ColumnsWrapper>
-          </div>
+          </React.Fragment>
         );
       } else {
         if (label) {
@@ -168,6 +169,7 @@ function ComponentWithLabelHOC(Component) {
         inductiveText,
         className,
         inline,
+        componetPosition,
         ...rest
       } = this.props;
       const { errorMessage } = rest;
@@ -184,7 +186,7 @@ function ComponentWithLabelHOC(Component) {
           disabled={this.props.disabled}
           inline={inline}
         >
-          <ComponentWithLabelWrapper labelPosition={labelPosition}>
+          <ComponentWithLabelWrapper labelPosition={labelPosition} componetPosition={componetPosition}>
             {rows}
           </ComponentWithLabelWrapper>
           {errorMessage && <StyledSpan className="error-message" labelPosition={labelPosition}>{errorMessage}</StyledSpan>}
