@@ -20,15 +20,16 @@
         height: 0px;
     }
     background: none;
-    .ant-anchor-link-title{
+    .ant-anchor-link-title, .cap-icon-v2-chevron-right, a:hover, .cap-link-v2-suffix .cap-icon-v2  {
         color:map-get($CAP_SECONDARY, base);
     }
     .ant-anchor-link-title{
         display:inline;
     }
-    .cap-icon-v2-chevron-right{
-        color:map-get($CAP_SECONDARY, base);
+    .cap-link-v2-prefix {
+        margin-right: $CAP_SPACE_04;
     }
-    a:hover {
-        color:map-get($CAP_SECONDARY, base); }
+    .cap-link-v2-suffix {
+        margin-left: $CAP_SPACE_04;
+    }
 }
