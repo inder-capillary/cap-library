@@ -82,7 +82,7 @@ export class Select extends Component {
         onVisibleChange={this.onVisibleChange}
         content={(
           <Fragment>
-            {showHeader && <div className={classNames(`${clsPrefix}-header`)}>Select organisation</div>}
+            {showHeader && <div className={classNames(`${clsPrefix}-header`)}>Select organization</div>}
             {showSearch && (
               <CapInput.Search
                 placeholder="Organization"
