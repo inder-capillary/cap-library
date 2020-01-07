@@ -66,7 +66,7 @@ $table: cap-table-v2;
     }
   }
   &.show-loader {
-    .ant-table-body tbody::after {
+    .ant-table-body > table > tbody::after {
       content: "Loading more data...";
       display: flex;
       justify-content: center;
@@ -78,6 +78,13 @@ $table: cap-table-v2;
       font-size: 16px;
       color: gray;
       border-top: 1px solid $CAP_G07;
+    }
+  }
+  &.no-pagination-loader {
+    .ant-table-body > table > tbody::after {
+      content: '';
+      height: unset;
+      display: none;
     }
   }
   &.hide-hover {

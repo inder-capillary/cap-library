@@ -17,11 +17,24 @@ const { Group: CheckboxGroup } = Checkbox;
 const clsPrefix = "cap-checkbox-v2";
 class CapCheckbox extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { className, children, errorMessage, inductiveText, suffix, ...rest } = this.props;
+    const {
+      className,
+      children,
+      errorMessage,
+      inductiveText,
+      suffix,
+      labelType,
+      ...rest
+    } = this.props;
     return (
       <div className={classNames(clsPrefix, className)}>
         <Checkbox {...rest}>
-          <CapHeadingSpan className={classNames('title', { 'has-suffix': suffix })} type="h4">{children}</CapHeadingSpan>
+          <CapHeadingSpan
+            className={classNames('title', { 'has-suffix': suffix })}
+            type={labelType}
+          >
+            {children}
+          </CapHeadingSpan>
           {suffix}
           {inductiveText && <CapHeading className="inductive-text" type="label3">{inductiveText}</CapHeading>}
         </Checkbox>
@@ -34,10 +47,15 @@ class CapCheckbox extends React.Component { // eslint-disable-line react/prefer-
   }
 }
 
+CapCheckbox.defaultProps = {
+  labelType: 'h4',
+};
+
 CapCheckbox.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
   errorMessage: PropTypes.string,
+  labelType: PropTypes.string,
 };
 
 CapCheckbox.Group = CheckboxGroup;
