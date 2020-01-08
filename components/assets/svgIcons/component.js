@@ -105,6 +105,7 @@ const getSvgComponentFromType = (type) => {
     case 'gender': return SvgIcons.Gender;
     case 'footwear': return SvgIcons.Footwear;
     case 'offerWithColor': return SvgIcons.OfferWithColor;
+    case 'minus': return SvgIcons.Minus;
 
     default: return null;
   }
