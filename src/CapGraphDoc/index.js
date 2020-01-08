@@ -12,8 +12,8 @@ const infoData = [
     key: 0,
     property: "graphList",
     description: "type: specifies the type of graph: 'intervalstack' for stacked bar graph, 'line' for line chart, "
-                  + "stack By: specifies with respect to which key in the data object that the data is to be stacked by etc"
-                  + "barColors: An array with color codes for the stack. The number of color codes in the array must match the number of unique values for the stackBy key of data supplied ",
+                  + "groupBy: specifies with respect to which key in the data object that the data is to be stacked by etc"
+                  + "colors: An array with color codes for the stack. The number of color codes in the array must match the number of unique values for the stackBy key of data supplied ",
     type: "Array of object",
     default: "n/a",
   },
