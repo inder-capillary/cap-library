@@ -95,7 +95,7 @@ class CapGraph extends React.Component {
             <Geom
               type={graph.type}
               position={`${xAxis}*${yAxis}`}
-              color={[graph.stackBy, graph.barColors]}
+              color={[graph.groupBy, graph.colors]}
               size={size || 10}
               tooltip={[`${xAxis}*${yAxis}`, this.updateTooltipInfo]}
             />
