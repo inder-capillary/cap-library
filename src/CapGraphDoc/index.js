@@ -210,8 +210,8 @@ export default class CapGraphDoc extends Component { // eslint-disable-line reac
             graphList={[
               {
                 type: 'intervalStack',
-                barColors,
-                stackBy: 'orderStage',
+                colors: barColors,
+                groupBy: 'orderStage',
               },
             ]}
             size={12}
@@ -244,8 +244,8 @@ export default class CapGraphDoc extends Component { // eslint-disable-line reac
             graphList={[
               {
                 type: 'line',
-                barColors: lineColors,
-                stackBy: 'duration',
+                colors: lineColors,
+                groupBy: 'duration',
               },
             ]}
             tooltipData={lineTooltipData}
