@@ -15,11 +15,11 @@ const SvgWarning = (props) => (
       />
     </defs>
     <g fill="none" fillRule="evenodd">
-      <mask id="WARNING_svg__b" fill="#fff">
+      <mask id="WARNING_svg__b" fill="currentColor">
         <use xlinkHref="#WARNING_svg__a" />
       </mask>
-      <use fill="#979797" fillRule="nonzero" xlinkHref="#WARNING_svg__a" />
-      <g mask="url(#WARNING_svg__b)" fill="#E83135">
+      <use fill="currentColor" fillRule="nonzero" xlinkHref="#WARNING_svg__a" />
+      <g mask="url(#WARNING_svg__b)" fill="currentColor">
         <path d="M0 0h24v24H0z" />
       </g>
     </g>

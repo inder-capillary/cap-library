@@ -236,7 +236,7 @@ export default class CapMultiSelect extends React.Component {
           onVisibleChange={this.togglePopoverVisibility}
           trigger="click"
           overlayClassName={classNames(`${clsPrefix}-popover`, popoverClassName, { 'select-all-disabled': disableSelectAll })}
-          overlayStyle={{ width: popwidth }}
+          overlayStyle={{ width: popwidth, minWidth: '285px' }}
           placement="bottom"
           onClick={this.onPopoverClick}
           getPopupContainer={getPopupContainer}
