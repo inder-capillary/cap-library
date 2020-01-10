@@ -52,6 +52,11 @@ export const CAP_COLOR_05 = '#fbd3d8';
 export const CAP_COLOR_06 = '#42B040';
 export const CAP_COLOR_07 = '#E9F0FC';
 export const CAP_COLOR_08 = '#faf9f4';
+export const CAP_COLOR_09 = '#7765d5';
+export const CAP_COLOR_10 = '#f79600';
+export const CAP_COLOR_11 = '#2388de';
+export const CAP_COLOR_12 = '#efba00';
+export const CAP_COLOR_13 = '#bcd0fa';
 
 /* Fonts */
 // ==============
