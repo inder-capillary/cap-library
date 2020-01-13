@@ -15,7 +15,7 @@ const StyledIcon = styled(CapIcon)`
 
 class CapInput extends Component {
   render() {
-    const { alwaysShowFocus, errorMessage, isVerified, suffix, ...rest } = this.props;
+    const { alwaysShowFocus, errorMessage, isVerified, suffix, noSuffix, ...rest } = this.props;
     const inputSuffix = (errorMessage && <StyledIcon type="warning" status="error" />)
       || (isVerified && <StyledIcon type="check-circle" status="success" />)
       || suffix
@@ -30,7 +30,7 @@ class CapInput extends Component {
             this.input.focus();
           }
         }}
-        suffix={inputSuffix}
+        suffix={noSuffix === true ? <span /> : inputSuffix}
       />
     );
   }
