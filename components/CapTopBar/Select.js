@@ -63,7 +63,7 @@ export class Select extends Component {
   }
 
   render() {
-    const { items, selectedItem, showSearch, showHeader, selectPlaceholder, showCapillaryIcon, className } = this.props;
+    const { fixedOrg, items, selectedItem, showSearch, showHeader, selectPlaceholder, showCapillaryIcon, className } = this.props;
     const { visible, searchText } = this.state;
     const itemsHtml = this.getItems();
     const selectedItemIndex = findIndex(items, (item) => item.value === selectedItem);
@@ -78,7 +78,7 @@ export class Select extends Component {
         getPopupContainer={(trigger) => trigger.parentNode}
         placement="bottomLeft"
         overlayClassName={classNames(`${clsPrefix}-popover`)}
-        visible={visible}
+        visible={fixedOrg ? false : visible}
         onVisibleChange={this.onVisibleChange}
         content={(
           <Fragment>
@@ -116,7 +116,7 @@ export class Select extends Component {
             }
             <span className={(`${clsPrefix}-selected-value-label`)} title={selectedItemLabel}>{selectedItemLabel}</span>
           </div>
-          <CapIcon type="chevron-down" className={classNames(`${clsPrefix}-arrow`)} />
+          {!fixedOrg && <CapIcon type="chevron-down" className={classNames(`${clsPrefix}-arrow`)} />}
         </div>
       </Popover>
     );
@@ -128,6 +128,7 @@ Select.defaultProps = {
 };
 
 Select.propTypes = {
+  fixedOrg: PropTypes.bool,
   handleItemChange: PropTypes.func,
   showSearch: PropTypes.bool,
   showHeader: PropTypes.bool,

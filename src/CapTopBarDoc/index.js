@@ -113,14 +113,14 @@ export default class NavigationBarDoc extends Component {
         <div className="navigation-bar-showcase">
           <div style={{ marginBottom: '24px' }}>
             <b>NOTE: </b>
-              This component uses CapDrawer, CapList, Select, CapInput.Search, CapMenu, CapIcons, CapDropdown components. Please refer their docs for detailed explanation and supported props.
+            This component uses CapDrawer, CapList, Select, CapInput.Search, CapMenu, CapIcons, CapDropdown components. Please refer their docs for detailed explanation and supported props.
           </div>
           <CapTopBar
             drawerListProps={{
               productsList,
               selectedProduct,
               handleProductChange: this.handleProductChange,
-              title: <CapHeading type="h5" style={{margin: "24px 0"}}>Select product</CapHeading>,
+              title: <CapHeading type="h5" style={{ margin: "24px 0" }}>Select product</CapHeading>,
               closable: false,
               placement: 'left',
               width: 320,
@@ -149,6 +149,33 @@ export default class NavigationBarDoc extends Component {
               showHeader: true,
             }}
             dropdownMenuProps={dropdownMenuProps}
+          />
+          <MarginDiv />
+          <CapTopBar
+            drawerListProps={{
+              fixedProduct: true,
+              productsList,
+              selectedProduct,
+              handleProductChange: this.handleProductChange,
+              title: <CapHeading type="h5" style={{ margin: "24px 0" }}>Select product</CapHeading>,
+              closable: false,
+              placement: 'left',
+              width: 320,
+            }}
+            selectProps={{
+              fixedOrg: true,
+              items: orgsList,
+              selectedItem: selectedOrg,
+              handleItemChange: this.handleOrgChange,
+              showSearch: true,
+              showHeader: true,
+            }}
+            menuProps={{
+              items: menuItems,
+              defaultSelectedKeys: ['campaigns'],
+            }}
+            dropdownMenuProps={dropdownMenuProps}
+            topbarIcons={topbarIcons}
           />
         </div>
         <PropertyTable data={infoData} />

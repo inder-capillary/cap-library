@@ -236,6 +236,10 @@ $orgSelectPrefix: top-bar-select;
   margin: $CAP_SPACE_20 $CAP_SPACE_12 $CAP_SPACE_20 $CAP_SPACE_24;
 }
 
+.#{$clsPrefix}-product-title {
+  margin: $CAP_SPACE_20 $CAP_SPACE_12 $CAP_SPACE_20 $CAP_SPACE_24;
+}
+
 .#{$clsPrefix}-dimensions {
   height: $CAP_SPACE_64;
   width: 240px;
