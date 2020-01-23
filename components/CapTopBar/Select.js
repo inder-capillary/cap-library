@@ -63,7 +63,7 @@ export class Select extends Component {
   }
 
   render() {
-    const { fixedOrg, items, selectedItem, showSearch, showHeader, selectPlaceholder, showCapillaryIcon, className } = this.props;
+    const { fixedOrg = false, items, selectedItem, showSearch, showHeader, selectPlaceholder, showCapillaryIcon, className } = this.props;
     const { visible, searchText } = this.state;
     const itemsHtml = this.getItems();
     const selectedItemIndex = findIndex(items, (item) => item.value === selectedItem);

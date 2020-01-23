@@ -137,7 +137,7 @@ class CapTopBar extends React.Component {
 
   renderDrawerList = () => {
     const { drawerListProps } = this.props;
-    const { fixedProduct, productsList, selectedProduct, handleProductChange, title, ...rest } = drawerListProps;
+    const { fixedProduct = false, productsList, selectedProduct, handleProductChange, title, ...rest } = drawerListProps;
     const { showDrawer } = this.state;
     return (
       <div className={classNames(`${clsPrefix}-dimensions`)} style={{ borderRight: `1px solid ${styledVars.CAP_G07}`, marginRight: styledVars.CAP_SPACE_16 }}>

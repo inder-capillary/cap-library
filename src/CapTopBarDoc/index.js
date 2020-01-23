@@ -174,8 +174,6 @@ export default class NavigationBarDoc extends Component {
               items: menuItems,
               defaultSelectedKeys: ['campaigns'],
             }}
-            dropdownMenuProps={dropdownMenuProps}
-            topbarIcons={topbarIcons}
           />
         </div>
         <PropertyTable data={infoData} />
