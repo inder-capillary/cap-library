@@ -72,7 +72,7 @@ class CapTopBar extends React.Component {
   }
 
   expandUserBackground = (flag) => {
-    this.setState({visible: flag});
+    this.setState({ visible: flag });
   }
 
   renderDropdownMenu = () => {
@@ -84,13 +84,13 @@ class CapTopBar extends React.Component {
         onVisibleChange={this.expandUserBackground}
         overlay={(
           <CapMenu className={classNames(`${clsPrefix}-menu`)}>
-            { dropdownMenuProps.map((dropdownMenuProp) => (
+            {dropdownMenuProps.map((dropdownMenuProp) => (
               <CapMenu.Item key={dropdownMenuProp.key}>
                 <div onClick={dropdownMenuProp.onClickHandler ? () => { dropdownMenuProp.onClickHandler(); } : null} className={classNames(`${clsPrefix}-user-popover-item`)}>
                   <div>{dropdownMenuProp.label || ''}</div>
                 </div>
               </CapMenu.Item>
-            )) }
+            ))}
           </CapMenu>
         )}
         placement="bottomLeft">
@@ -127,11 +127,8 @@ class CapTopBar extends React.Component {
                 />
                 <CapHeading type="h3" className={classNames(`${clsPrefix}-capitalize`)}>{product.value || ''}</CapHeading>
               </div>
-            ) : (
-              <div style={{ paddingLeft: styledVars.CAP_SPACE_60 }}>
-                <CapHeading type="h3" className={classNames(`${clsPrefix}-capitalize`)}>{product.value || ''}</CapHeading>
-              </div>
-            ))}
+            ) : (<div style={{ paddingLeft: styledVars.CAP_SPACE_60 }}><CapHeading type="h3" className={classNames(`${clsPrefix}-capitalize`)}>{product.value || ''}</CapHeading></div>))}
+
         />
       ));
     }
@@ -140,14 +137,18 @@ class CapTopBar extends React.Component {
 
   renderDrawerList = () => {
     const { drawerListProps } = this.props;
-    const { productsList, selectedProduct, handleProductChange, title, ...rest } = drawerListProps;
+    const { fixedProduct = false, productsList, selectedProduct, handleProductChange, title, ...rest } = drawerListProps;
     const { showDrawer } = this.state;
     return (
       <div className={classNames(`${clsPrefix}-dimensions`)} style={{ borderRight: `1px solid ${styledVars.CAP_G07}`, marginRight: styledVars.CAP_SPACE_16 }}>
-        <div onClick={this.openDrawer} className={classNames(`${clsPrefix}-flexDisplay`)} style={{ alignItems: 'center', cursor: 'pointer' }}>
-          <CapIcon type="more-applications" className={classNames(`${clsPrefix}-more-app`)}></CapIcon>
-          <CapHeading type="h3" className={classNames(`${clsPrefix}-capitalize`)}>{selectedProduct || ''}</CapHeading>
-        </div>
+        {fixedProduct
+          ? <div><CapHeading type="h3" className={classNames(`${clsPrefix}-product-title`)}>{selectedProduct || ''}</CapHeading></div>
+          : (
+            <div onClick={this.openDrawer} className={classNames(`${clsPrefix}-flexDisplay`)} style={{ alignItems: 'center', cursor: 'pointer' }}>
+              <CapIcon type="more-applications" className={classNames(`${clsPrefix}-more-app`)}></CapIcon>
+              <CapHeading type="h3" className={classNames(`${clsPrefix}-capitalize`)}>{selectedProduct || ''}</CapHeading>
+            </div>
+          )}
         {showDrawer && drawerListProps && (
           <CapDrawer
             visible={showDrawer}
@@ -191,12 +192,12 @@ class CapTopBar extends React.Component {
           {selectProps && this.renderOrgsSelect()}
         </div>
         {/* part 3: menu tabs */}
-        { menuProps && this.renderTopMenu() }
+        {menuProps && this.renderTopMenu()}
         {/* part 4: topbar icons */}
-        { topbarIcons && this.renderTopbarIcons() }
+        {topbarIcons && this.renderTopbarIcons()}
         {/* part 5: dropdown menu */}
-        { dropdownMenuProps && this.renderDropdownMenu() }
-        { this.props.children }
+        {dropdownMenuProps && this.renderDropdownMenu()}
+        {this.props.children}
       </Header>
     );
   }
@@ -204,6 +205,7 @@ class CapTopBar extends React.Component {
 
 CapTopBar.propTypes = {
   drawerListProps: PropTypes.shape({
+    fixedProduct: PropTypes.bool,
     productsList: PropTypes.array,
     selectedProduct: PropTypes.string,
     handleProductChange: PropTypes.func,
