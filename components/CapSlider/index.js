@@ -23,14 +23,12 @@ class CapSlider extends React.Component { // eslint-disable-line react/prefer-st
   }
 
   render() {
-    const {type, children, className, ...rest} = this.props;
+    const {type, children, className, sliderRaleColor, ...rest} = this.props;
     const formatter = this.translateType(type);
     return (
-      <div>
-        <Slider tipFormatter={formatter} {...rest} className={classNames("cap-slider-v2", className)}>
-          {React.Children.toArray(children)}
-        </Slider>
-      </div>
+      <Slider tipFormatter={formatter} {...rest} className={classNames(`cap-slider-v2 ${sliderRaleColor && 'slider-rail'}`, className)}>
+        {React.Children.toArray(children)}
+      </Slider>
     );
   }
 }
@@ -38,6 +36,7 @@ class CapSlider extends React.Component { // eslint-disable-line react/prefer-st
 CapSlider.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
+  sliderRaleColor: PropTypes.string,
 };
 
 export default CapSlider;
