@@ -42,10 +42,11 @@ class CapGraph extends React.Component {
     };
   }
 
+
   render() {
     const { data, xAxis, yAxis,
       legend, g2Tooltip, g2TooltipList, g2TooltipListItem,
-      itemTemplate, size, scale, tooltipData, height, xLabelFrequency = 1, chartProps, yAxisProps, graphList} = this.props;
+      itemTemplate, size, scale, tooltipData, height, chartProps, yAxisProps, graphList, xAxisProps} = this.props;
     let { containerTemplate } = this.props;
     let legendType = 'circle';
     let legendPosition = 'bottom';
@@ -70,17 +71,12 @@ class CapGraph extends React.Component {
           scale={scale}
           {...chartProps}
         >
+
+          <Axis name={yAxis} {...yAxisProps} />
           <Axis
             name={xAxis}
-            label={{
-              formatter: (val, i, index) => {
-                if (index % xLabelFrequency === 0) return val;
-                return '';
-              },
-            }
-            }
+            {...xAxisProps}
           />
-          <Axis name={yAxis} {...yAxisProps} />
           <Tooltip
             offset={50}
             showTitle={false}
@@ -97,7 +93,7 @@ class CapGraph extends React.Component {
               position={`${xAxis}*${yAxis}`}
               color={[graph.groupBy, graph.colors]}
               size={size || 10}
-              tooltip={[`${xAxis}*${yAxis}`, this.updateTooltipInfo]}
+              tooltip={!graph.tooltipDisable && [`${xAxis}*${yAxis}`, this.updateTooltipInfo]}
             />
           ))}
         </Chart>
@@ -107,6 +103,8 @@ class CapGraph extends React.Component {
 }
 CapGraph.defaultProps = {
   graphList: [],
+  xAxisProps: {},
+  yAxisProps: {},
 };
 CapGraph.propTypes = {
   height: PropTypes.number,
@@ -122,9 +120,9 @@ CapGraph.propTypes = {
   size: PropTypes.number,
   scale: PropTypes.object,
   tooltipData: PropTypes.object,
-  xLabelFrequency: PropTypes.number,
   graphList: PropTypes.array,
   yAxisProps: PropTypes.object,
+  xAxisProps: PropTypes.object,
   chartProps: PropTypes.object,
 };
 

@@ -108,6 +108,20 @@ const infoData = [
     type: "number",
     default: "400",
   },
+  {
+    key: 16,
+    property: "xAxisProps",
+    description: "xAxisProps Object that would get passed in xAxis",
+    type: "object",
+    default: "{}",
+  },
+  {
+    key: 17,
+    property: "yAxisProps",
+    description: "yAxisProps Object that would get passed in yAxis",
+    type: "object",
+    default: "{}",
+  },
 ];
 
 const legend = {
@@ -214,9 +228,14 @@ export default class CapGraphDoc extends Component { // eslint-disable-line reac
                 groupBy: 'orderStage',
               },
             ]}
+            xAxisProps={{label: {
+              formatter: (val, i, index) => {
+                if (index % 4 === 0) return val;
+                return '';
+              },
+            }}}
             size={12}
             tooltipData={stackedTooltipData}
-            xLabelFrequency={4}
             containerTemplate={(ttData, index) => `<div class="g2-tooltip">Total: ${
               ttData[index] ? ttData[index].total : ''
             }<div class="g2-tooltip-title" style="margin:10px 0;"></div><ul class="g2-tooltip-list"></ul></div>`} />
@@ -248,8 +267,13 @@ export default class CapGraphDoc extends Component { // eslint-disable-line reac
                 groupBy: 'duration',
               },
             ]}
+            xAxisProps={{label: {
+              formatter: (val, i, index) => {
+                if (index % 4 === 0) return val;
+                return '';
+              },
+            }}}
             tooltipData={lineTooltipData}
-            size={4}
             containerTemplate={(ttData, index) => `<div class="g2-tooltip">Diff: ${
               ttData[index] ? ttData[index].diff : ''
             }<div class="g2-tooltip-title" style="margin:10px 0;"></div><ul class="g2-tooltip-list"></ul></div>`} />
