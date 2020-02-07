@@ -8,7 +8,9 @@ const getSvgComponentFromType = (type) => {
     case 'alarm': return SvgIcons.Alarm;
     case 'alert': return SvgIcons.Alert;
     case 'android': return SvgIcons.Android;
+    case 'arrow-down': return SvgIcons.ArrowDown;
     case 'arrow-filled': return SvgIcons.ArrowFilled;
+    case 'arrow-up': return SvgIcons.ArrowUp;
     case 'back': return SvgIcons.Back;
     case 'bulb': return SvgIcons.Bulb;
     case 'calendar': return SvgIcons.Calendar;

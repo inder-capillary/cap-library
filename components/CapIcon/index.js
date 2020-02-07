@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import './_capIcon.scss';
 import * as StyledVars from '../styled/variables';
 import CapIconWithBackground from './CapIconWithBackground';
+import CapIconAvatar from './CapIconAvatar';
 
 import { getSvgComponentFromType } from '../assets/svgIcons/component';
 
@@ -57,5 +58,6 @@ CapIcon.propTypes = {
 };
 
 CapIcon.AntIcon = Icon;
+CapIcon.CapIconAvatar = CapIconAvatar;
 
 export default CapIcon;

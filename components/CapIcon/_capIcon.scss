@@ -22,3 +22,21 @@
     left: 25%;
   }
 }
+
+.cap-icon-v2-avatar{
+  margin-right: $CAP_SPACE_08;
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: $CAP_SPACE_32;
+  width: $CAP_SPACE_32;
+  .text-label {
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
+    line-height: 14px;
+    font-size: $FONT_SIZE_L;
+    font-weight: $FONT_WEIGHT_MEDIUM;
+  }
+}

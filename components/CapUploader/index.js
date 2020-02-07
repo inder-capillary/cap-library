@@ -10,7 +10,7 @@ import classNames from 'classnames';
 import { Upload } from "antd";
 
 const clsPrefix = 'cap-uploader-v2';
-
+const { Dragger } = Upload;
 const CapUploader = (props) => {
   const { className, ...rest } = props;
   return (
@@ -18,6 +18,7 @@ const CapUploader = (props) => {
   );
 };
 
+CapUploader.CapDragger = Dragger;
 CapUploader.propTypes = {
 
 };

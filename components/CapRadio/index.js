@@ -31,6 +31,7 @@ class CapRadio extends React.Component { // eslint-disable-line react/prefer-sta
   }
 }
 CapRadio.CapRadioGroup = Radio.Group;
+CapRadio.Button = Radio.Button;
 export default CapRadio;
 CapRadio.propTypes = {
   children: PropTypes.any,

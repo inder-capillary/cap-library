@@ -44,6 +44,12 @@ const headings = {
     'font-weight': 'normal',
     'line-height': '20px',
   },
+  h7: {
+    'font-size': '20px',
+    'font-weight': '500',
+    'color': '#5e6c84',
+    'line-height': '28px',
+  },
   label1: {
     'color': '#5e6c84',
     'font-size': '12px',

@@ -50,6 +50,18 @@ const labels = {
     'font-weight': '500',
     'line-height': 'normal',
   },
+  label8: {
+    'color': '#091e42',
+    'font-size': '12px',
+    'font-weight': '500',
+    'line-height': 'normal',
+  },
+  label9: {
+    'color': '#091e42',
+    'font-size': '12px',
+    'font-weight': 'normal',
+    'line-height': '16px',
+  },
 };
 
 const CapLabel = styled.div`

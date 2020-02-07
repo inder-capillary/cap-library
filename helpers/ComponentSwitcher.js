@@ -59,6 +59,7 @@ import CapIllustrationDoc from '../src/CapIllustrationDoc';
 import CapCustomCheckboxListDoc from '../src/CapCustomCheckboxListDoc';
 import CapGraphDoc from '../src/CapGraphDoc';
 import CapCustomListDoc from '../src/CapCustomListDoc';
+import CapStepsDoc from '../src/CapStepsDoc';
 //imported for docs
 
 
@@ -130,6 +131,8 @@ class ComponentSwitcher extends Component {
         return <CapIconDoc />;
       case 'capStepsAccordian':
         return <CapStepsAccordianDoc />;
+      case 'capSteps':
+        return <CapStepsDoc />;
       case 'capLink':
         return <CapLinkDoc />;
       case 'capRadioCard':
