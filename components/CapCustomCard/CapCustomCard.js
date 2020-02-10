@@ -162,7 +162,7 @@ const getCardContent = (props) => {
       return previewWeChat;
     }
     default:
-      return null;
+      return content;
   }
 };
 
