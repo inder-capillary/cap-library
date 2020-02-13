@@ -10,6 +10,7 @@ import * as styledVars from "../styled/variables";
 import CapButton from '../CapButton';
 import CapInput from '../CapInput';
 import CapIcon from '../CapIcon';
+import LocaleHoc from '../LocaleHoc';
 
 import './_capMultiSelect.scss';
 
@@ -95,7 +96,7 @@ const getParentKey = (key, tree) => {
   return parentKey;
 };
 
-export default class CapMultiSelect extends React.Component {
+class CapMultiSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -305,14 +306,6 @@ export default class CapMultiSelect extends React.Component {
 
 CapMultiSelect.defaultProps = {
   searchKey: "title",
-  noResultsFoundText: "No results found",
-  selectText: "Select",
-  closeText: "Close",
-  searchPlaceholder: "Search",
-  selectedText: "selected",
-  selectAllText: "Select all",
-  selectAllSearchResultsText: "Select all searched results",
-  moreText: "more",
   getPopupContainer: () => document.body,
   showSelectButtonToolTip: false,
 };
@@ -341,3 +334,5 @@ CapMultiSelect.propTypes = {
   selectTooltipText: PropTypes.string,
   showSelectButtonToolTip: PropTypes.bool,
 };
+
+export default LocaleHoc(CapMultiSelect, { key: 'CapMultiSelect' });

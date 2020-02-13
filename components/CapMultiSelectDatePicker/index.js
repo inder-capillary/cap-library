@@ -7,6 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './_capMultiSelectDatePicker.scss';
+import LocaleHoc from '../LocaleHoc';
 const classNames = require('classnames');
 
 class CapMultiSelectDatePicker extends React.Component {
@@ -36,7 +37,7 @@ class CapMultiSelectDatePicker extends React.Component {
         className={classNames({ "custom-selected": selectedDays.indexOf(lastDayValue) !== -1}, "custom-txt")}
         onClick={() => onClick(lastDayValue)}
       >
-        {lastDayText || 'Last day of month'}
+        {lastDayText}
       </th>);
   }
 
@@ -82,4 +83,4 @@ CapMultiSelectDatePicker.defaultProps = {
   selected: [],
 };
 
-export default CapMultiSelectDatePicker;
+export default LocaleHoc(CapMultiSelectDatePicker, { key: 'CapMultiSelectDatePicker' });
