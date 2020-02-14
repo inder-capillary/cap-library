@@ -16,6 +16,7 @@ import * as styledVars from "../styled/variables";
 import CapButton from '../CapButton';
 import CapInput from '../CapInput';
 import CapIcon from '../CapIcon';
+import LocaleHoc from '../LocaleHoc';
 
 import './_capMultiSelectWithTree.scss';
 
@@ -198,7 +199,7 @@ const getSelectedKeysFromAppliedKeys = (appliedKeys, dataListObject) => {
   return selectedKeys;
 };
 
-export default class CapMultiSelectWithTree extends React.Component {
+class CapMultiSelectWithTree extends React.Component {
   constructor(props) {
     super(props);
     this.dataList = [];
@@ -575,14 +576,6 @@ export default class CapMultiSelectWithTree extends React.Component {
 
 CapMultiSelectWithTree.defaultProps = {
   searchKey: "title",
-  noResultsFoundText: "No results found",
-  selectText: "Select",
-  closeText: "Close",
-  searchPlaceholder: "Search",
-  selectedText: "selected",
-  selectAllText: "Select all",
-  selectAllSearchResultsText: "Select all searched results",
-  moreText: "more",
   getPopupContainer: () => document.body,
   showSelectButtonToolTip: false,
 };
@@ -615,3 +608,5 @@ CapMultiSelectWithTree.propTypes = {
   selectTooltipText: PropTypes.string,
   showSelectButtonToolTip: PropTypes.bool,
 };
+
+export default LocaleHoc(CapMultiSelectWithTree, { key: 'CapMultiSelectWithTree' });
