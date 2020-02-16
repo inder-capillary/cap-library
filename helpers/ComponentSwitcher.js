@@ -63,6 +63,7 @@ import CapStepsDoc from '../src/CapStepsDoc';
 import CapReorderComponentDoc from '../src/CapReorderComponentDoc';
 import CapShapeDoc from '../src/CapShapeDoc';
 import CapImageDoc from '../src/CapImageDoc';
+import CapCardBoxDoc from '../src/CapCardBoxDoc';
 //imported for docs
 
 
@@ -194,6 +195,8 @@ class ComponentSwitcher extends Component {
         return <CapShapeDoc />;
       case 'capImage':
         return <CapImageDoc />;
+      case 'capCardBox':
+        return <CapCardBoxDoc />;
         //components for docs
 
 

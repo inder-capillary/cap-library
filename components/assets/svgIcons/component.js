@@ -129,6 +129,10 @@ const getSvgComponentFromType = (type) => {
     case 'scenery': return SvgIcons.Scenery;
     case 'errorIndicator': return SvgIcons.ErrorIndicator;
     case 'premiumColored': return SvgIcons.PremiumColored;
+    case 'union': return SvgIcons.Union;
+    case 'intersect': return SvgIcons.Intersect;
+    case 'subtractLeft': return SvgIcons.SubtractLeft;
+    case 'subtractRight': return SvgIcons.SubtractRight;
 
     default: return null;
   }
