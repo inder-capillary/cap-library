@@ -502,6 +502,26 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="minus" />
               <Text>minus</Text>
             </List>
+            <List>
+              <CapIcon type="smsFilled" />
+              <Text>smsFilled</Text>
+            </List>
+            <List>
+              <CapIcon type="emailFilled" />
+              <Text>emailFilled</Text>
+            </List>
+            <List>
+              <CapIcon type="mpushFilled" />
+              <Text>mpushFilled</Text>
+            </List>
+            <List>
+              <CapIcon type="wechatFilled" />
+              <Text>wechatFilled</Text>
+            </List>
+            <List>
+              <CapIcon type="reorder" />
+              <Text>reorder</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}

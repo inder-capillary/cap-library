@@ -51,6 +51,14 @@ const infoData = [
     type: "string",
     default: "400",
   },
+  {
+    key: 7,
+    property: "disabled",
+    description: "disabled cap link",
+    type: "string",
+    default: "false",
+  },
+
 ];
 
 const MarginDiv = styled.div`
@@ -95,6 +103,13 @@ export default class CapLinkDoc extends Component { // eslint-disable-line react
            <CapLink
              title="open in current tab"
              href="#"
+           />
+         </div>
+         <div className="cap-link-showcase">
+           <CapLink
+             title="Disabled"
+             href="www.google.com"
+             disabled
            />
          </div>
          <PropertyTable data={infoData} />

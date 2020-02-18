@@ -23,12 +23,12 @@ class CapLink extends React.Component { // eslint-disable-line react/prefer-stat
   }
 
   render() {
-    const {className, children, suffix, prefix, style, fontWeight, onClick, ...rest} = this.props;
+    const {className, children, suffix, prefix, style, fontWeight, onClick, disabled, ...rest} = this.props;
     return (
       <AntAnchor
         affix={false}
         style={style}
-        className={classNames(`${classPrefix}`, className)}
+        className={classNames(`${classPrefix}`, className, {disabled})}
         onClick={onClick ? this.handleClick : undefined}
         fontWeight={fontWeight}>
         <Link {...rest}>
@@ -45,6 +45,10 @@ CapLink.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
   onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+};
+CapLink.defaultProps = {
+  disabled: false,
 };
 
 export default CapLink;

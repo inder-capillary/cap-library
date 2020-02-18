@@ -60,6 +60,7 @@ import CapCustomCheckboxListDoc from '../src/CapCustomCheckboxListDoc';
 import CapGraphDoc from '../src/CapGraphDoc';
 import CapCustomListDoc from '../src/CapCustomListDoc';
 import CapStepsDoc from '../src/CapStepsDoc';
+import CapReorderComponentDoc from '../src/CapReorderComponentDoc';
 //imported for docs
 
 
@@ -185,6 +186,8 @@ class ComponentSwitcher extends Component {
         return <CapGraphDoc />;
       case 'capCustomList':
         return <CapCustomListDoc />;
+      case 'capReorderComponent':
+        return <CapReorderComponentDoc />;
         //components for docs
 
 
