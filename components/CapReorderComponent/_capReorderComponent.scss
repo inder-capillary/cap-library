@@ -1,0 +1,27 @@
+@import '../styles/_variables.scss';
+$capReorderComponents: cap-reorder-component-v2;
+.#{$capReorderComponents} {
+    .ant-card-body{
+        padding:12px;
+    }
+    .title-label{
+        margin: 0px 18px $CAP_SPACE_08;
+        text-align: center;
+        width: 144px;
+        height: 14px;
+    }
+    .card-component{
+        width: 180px;
+        height: 124px;
+        display: flex;
+        .component-icon{
+            padding: 20px 54px 13px;
+        }
+        .component-channel{
+            width: 111px;
+            text-align: center;
+            margin-left: 22px;
+        }
+    }
+    
+}

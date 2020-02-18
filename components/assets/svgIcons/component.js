@@ -108,6 +108,12 @@ const getSvgComponentFromType = (type) => {
     case 'footwear': return SvgIcons.Footwear;
     case 'offerWithColor': return SvgIcons.OfferWithColor;
     case 'minus': return SvgIcons.Minus;
+    case 'smsFilled': return SvgIcons.SmsFilled;
+    case 'emailFilled': return SvgIcons.EmailFilled;
+    case 'wechatFilled': return SvgIcons.WechatFilled;
+    case 'mpushFilled': return SvgIcons.MpushFilled;
+    case 'reorder': return SvgIcons.Reorder;
+
 
     default: return null;
   }

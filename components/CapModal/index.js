@@ -9,6 +9,7 @@ import { Modal } from 'antd';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import CapButton from '../CapButton';
+import LocaleHoc from '../LocaleHoc';
 import './_capModal.scss';
 
 const { info, success, error, warning, confirm } = Modal;
@@ -41,14 +42,9 @@ CapModal.success = success;
 CapModal.error = error;
 CapModal.warning = warning;
 
-CapModal.defaultProps = {
-  okText: 'Yes',
-  closeText: 'No',
-};
-
 CapModal.propTypes = {
   okText: PropTypes.string,
   closeText: PropTypes.string,
 };
 
-export default CapModal;
+export default LocaleHoc(CapModal, { key: 'CapModal' });

@@ -1,5 +1,9 @@
 @import '../styles/_variables.scss';
 .cap-link-v2.ant-anchor-wrapper{
+    &.disabled{
+        opacity: 0.3;
+        pointer-events: none;
+    }
     a{
         color:$CAP_G01;
     }

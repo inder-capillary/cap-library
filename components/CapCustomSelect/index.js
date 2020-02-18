@@ -15,6 +15,7 @@ import * as styledVars from "../styled/variables";
 import CapHeading from '../CapHeading';
 import CapIcon from '../CapIcon';
 import CapInput from '../CapInput';
+import LocaleHoc from '../LocaleHoc';
 
 import './_capCustomSelect.scss';
 
@@ -133,11 +134,6 @@ class CapCustomSelect extends React.Component { // eslint-disable-line react/pre
   }
 }
 
-CapCustomSelect.defaultProps = {
-  searchPlaceholder: 'Search',
-  selectPlaceholder: 'Select Option',
-};
-
 CapCustomSelect.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.string,
@@ -154,4 +150,4 @@ CapCustomSelect.propTypes = {
   disabled: PropTypes.bool,
 };
 
-export default CapCustomSelect;
+export default LocaleHoc(CapCustomSelect, { key: 'CapCustomSelect' });
