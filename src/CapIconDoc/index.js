@@ -522,6 +522,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="reorder" />
               <Text>reorder</Text>
             </List>
+            <List>
+              <CapIcon type="channelPriority" />
+              <Text>channelPriority</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}

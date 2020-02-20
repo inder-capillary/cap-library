@@ -109,3 +109,4 @@ export { default as MpushFilled } from './Icons/MpushFilled';
 export { default as WechatFilled } from './Icons/WechatFilled';
 export { default as Minus } from './Icons/Minus';
 export { default as Reorder } from './Icons/Reorder';
+export { default as ChannelPriority } from './Icons/ChannelPriority';

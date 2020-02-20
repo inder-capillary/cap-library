@@ -113,6 +113,7 @@ const getSvgComponentFromType = (type) => {
     case 'wechatFilled': return SvgIcons.WechatFilled;
     case 'mpushFilled': return SvgIcons.MpushFilled;
     case 'reorder': return SvgIcons.Reorder;
+    case 'channelPriority': return SvgIcons.ChannelPriority;
 
 
     default: return null;
