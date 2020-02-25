@@ -131,7 +131,7 @@ const getRichMediaPreview = (contentDetails) => {
   );
 };
 
-const getFacebookPreview = (FBDynamicComponent) => (
+const getFacebookPreview = (FBDynamicComponent = () => <></>) => (
   <div className="facebook-card-body">
     <Meta description={<CapSkeleton loading avatar paragraph={{ rows: 3, width: [36, 140, 80] }} />} />
     <div className="dynamic-content-section">
