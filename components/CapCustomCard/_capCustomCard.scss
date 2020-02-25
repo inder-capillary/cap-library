@@ -207,6 +207,46 @@ $cap-custom-card: cap-custom-card;
   }
 }
 
+.facebook-card-body {
+
+  .ant-skeleton-with-avatar {
+    .ant-skeleton-content {
+      .ant-skeleton-title {
+        border-radius: 4px;
+        margin-top: 4px;
+      }
+    }
+  }
+
+  .ant-skeleton-paragraph {
+    margin-left: -$CAP_SPACE_52;
+
+    li {
+      border-radius: 4px;
+
+      &:first-child {
+        margin: -$CAP_SPACE_12 $CAP_SPACE_52 $CAP_SPACE_20;
+      }
+    }
+  }
+
+  .dynamic-content-section {
+    width: 100%;
+    padding: 30px 44px;
+    background-color: $CAP_G09;
+    margin-top: $CAP_SPACE_08;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+
+    .centered-item {
+      max-width: 130px;
+      text-align: center;
+    }
+  }
+}
+
 .ant-card.#{$cap-custom-card}.EMAIL {
   &.no-image{
     .ant-card-body{

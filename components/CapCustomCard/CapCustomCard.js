@@ -26,6 +26,7 @@ const channels = {
   mpush: "MOBILEPUSH",
   call_task: 'CALL_TASK',
   wechat: 'WECHAT',
+  facebook: 'FACEBOOK',
 };
 
 const getMpushContent = (templateData) => {
@@ -130,8 +131,19 @@ const getRichMediaPreview = (contentDetails) => {
   );
 };
 
+const getFacebookPreview = (FBDynamicComponent) => (
+  <div className="facebook-card-body">
+    <Meta description={<CapSkeleton loading avatar paragraph={{ rows: 3, width: [36, 140, 80] }} />} />
+    <div className="dynamic-content-section">
+      <div className="centered-item">
+        <FBDynamicComponent />
+      </div>
+    </div>
+  </div>
+);
+
 const getCardContent = (props) => {
-  const { content, url, width, height } = props;
+  const { content, url, width, height, FBDynamicComponent } = props;
   const type = (props.type || "").toUpperCase();
   switch (type) {
     case channels.sms:
@@ -161,6 +173,9 @@ const getCardContent = (props) => {
       ];
       return previewWeChat;
     }
+    case channels.facebook: {
+      return getFacebookPreview(FBDynamicComponent);
+    }
     default:
       return content;
   }
@@ -187,6 +202,7 @@ CapCustomCard.propTypes = {
   className: PropTypes.string,
   cardList: PropTypes.array,
   type: PropTypes.string,
+  FBDynamicComponent: PropTypes.func,
 };
 
 CapCustomCard.getRichMediaPreview = getRichMediaPreview;
