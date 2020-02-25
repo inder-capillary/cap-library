@@ -213,7 +213,7 @@ $cap-custom-card: cap-custom-card;
     .ant-skeleton-content {
       .ant-skeleton-title {
         border-radius: 4px;
-        margin-top: 4px;
+        margin-top: $CAP_SPACE_04;
       }
     }
   }
@@ -232,7 +232,7 @@ $cap-custom-card: cap-custom-card;
 
   .dynamic-content-section {
     width: 100%;
-    padding: 30px 44px;
+    padding: $CAP_SPACE_28 $CAP_SPACE_44;
     background-color: $CAP_G09;
     margin-top: $CAP_SPACE_08;
     display: flex;
