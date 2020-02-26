@@ -114,7 +114,15 @@ const getSvgComponentFromType = (type) => {
     case 'mpushFilled': return SvgIcons.MpushFilled;
     case 'reorder': return SvgIcons.Reorder;
     case 'channelPriority': return SvgIcons.ChannelPriority;
-
+    case 'apps': return SvgIcons.Apps;
+    case 'basket': return SvgIcons.Basket;
+    case 'connect': return SvgIcons.Connect;
+    case 'funnel': return SvgIcons.Funnel;
+    case 'group-chat': return SvgIcons.GroupChat;
+    case 'pointer': return SvgIcons.Pointer;
+    case 'speaker': return SvgIcons.Speaker;
+    case 'store-traffic': return SvgIcons.StoreTraffic;
+    case 'video': return SvgIcons.Video;
 
     default: return null;
   }
