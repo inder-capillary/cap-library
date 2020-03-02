@@ -53,7 +53,7 @@ function CapHeader(props) {
         );
       default:
         return (
-          <CapHeadingwithDirection style={{ marginLeft }} type="h6" className={descriptionClassName}>
+          <CapHeadingwithDirection style={{ marginLeft }} type="label1" className={descriptionClassName}>
             {description}
           </CapHeadingwithDirection>
         );
