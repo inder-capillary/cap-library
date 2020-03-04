@@ -123,6 +123,9 @@ const getSvgComponentFromType = (type) => {
     case 'speaker': return SvgIcons.Speaker;
     case 'store-traffic': return SvgIcons.StoreTraffic;
     case 'video': return SvgIcons.Video;
+    case 'mail': return SvgIcons.Mail;
+    case 'wechat': return SvgIcons.Wechat;
+    case 'scenery': return SvgIcons.Scenery;
 
     default: return null;
   }

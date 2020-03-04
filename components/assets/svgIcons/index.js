@@ -119,3 +119,6 @@ export { default as Pointer } from './Icons/Pointer';
 export { default as Speaker } from './Icons/Speaker';
 export { default as StoreTraffic } from './Icons/StoreTraffic';
 export { default as Video } from './Icons/Video';
+export { default as Mail } from './Icons/Mail';
+export { default as Wechat } from './Icons/Wechat';
+export { default as Scenery } from './Icons/Scenery';
