@@ -63,7 +63,7 @@ export class Select extends Component {
   }
 
   render() {
-    const { fixedOrg = false, items, selectedItem, showSearch, showHeader, selectPlaceholder, showCapillaryIcon, className } = this.props;
+    const { fixedOrg = false, items, selectedItem, showSearch, showHeader, selectPlaceholder, showCapillaryIcon, className, title, placeholder, noResultText } = this.props;
     const { visible, searchText } = this.state;
     const itemsHtml = this.getItems();
     const selectedItemIndex = findIndex(items, (item) => item.value === selectedItem);
@@ -82,10 +82,10 @@ export class Select extends Component {
         onVisibleChange={this.onVisibleChange}
         content={(
           <Fragment>
-            {showHeader && <div className={classNames(`${clsPrefix}-header`)}>Select organization</div>}
+            {showHeader && <div className={classNames(`${clsPrefix}-header`)}>{title}</div>}
             {showSearch && (
               <CapInput.Search
-                placeholder="Organization"
+                placeholder={placeholder}
                 onChange={this.handleSearch}
                 value={searchText}
                 onClear={this.clearSearch}
@@ -96,7 +96,7 @@ export class Select extends Component {
               : (
                 <div className={classNames(`${clsPrefix}-no-results`)}>
                   <CapIcon style={{ color: styledVars.CAP_G06 }} type="alert" />
-                  <div className={classNames(`${clsPrefix}-no-results-text`)}>No results found</div>
+                  <div className={classNames(`${clsPrefix}-no-results-text`)}>{noResultText}</div>
                 </div>
               )
             }
@@ -140,4 +140,7 @@ Select.propTypes = {
   showCapillaryIcon: PropTypes.bool,
   selectPlaceholder: PropTypes.string,
   className: PropTypes.string,
+  title: PropTypes.string,
+  placeholder: PropTypes.string,
+  noResultText: PropTypes.string,
 };
