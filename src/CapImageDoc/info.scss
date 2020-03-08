@@ -1,0 +1,23 @@
+.cap-image-info {
+  ul.cap-image-list {
+    margin-bottom: 40px;
+
+    li {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      list-style: none;
+      height: 100%;
+      padding: 20px;
+      justify-content: space-around;
+      border: 1px solid;
+
+      .text-item {
+        padding-top: 8px;
+        font-size: 12px;
+      }
+    }
+  }
+}

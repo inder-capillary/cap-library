@@ -526,6 +526,62 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="channelPriority" />
               <Text>channelPriority</Text>
             </List>
+            <List>
+              <CapIcon type="apps" />
+              <Text>apps</Text>
+            </List>
+            <List>
+              <CapIcon type="basket" />
+              <Text>basket</Text>
+            </List>
+            <List>
+              <CapIcon type="connect" />
+              <Text>connect</Text>
+            </List>
+            <List>
+              <CapIcon type="funnel" />
+              <Text>funnel</Text>
+            </List>
+            <List>
+              <CapIcon type="group-chat" />
+              <Text>group-chat</Text>
+            </List>
+            <List>
+              <CapIcon type="pointer" />
+              <Text>pointer</Text>
+            </List>
+            <List>
+              <CapIcon type="speaker" />
+              <Text>speaker</Text>
+            </List>
+            <List>
+              <CapIcon type="store-traffic" />
+              <Text>store-traffic</Text>
+            </List>
+            <List>
+              <CapIcon type="video" />
+              <Text>video</Text>
+            </List>
+            <List>
+              <CapIcon type="global" />
+              <Text>global</Text>
+            </List>
+            <List>
+              <CapIcon type="facebook" />
+              <Text>facebook</Text>
+            </List>
+            <List>
+              <CapIcon type="mail" />
+              <Text>mail</Text>
+            </List>
+            <List>
+              <CapIcon type="wechat" />
+              <Text>wechat</Text>
+            </List>
+            <List>
+              <CapIcon type="scenery" />
+              <Text>scenery</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}

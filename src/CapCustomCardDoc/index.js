@@ -242,6 +242,10 @@ export default class CapCustomCardDoc extends Component { // eslint-disable-line
             when there is no url image given
             <CapCustomCard {...cardListEmail[2]} type="Email" />
           </CustomDiv>
+          <CustomDiv>
+            <CapHeading type="h3">Facebook Card</CapHeading>
+            <CapCustomCard type="Facebook" FBDynamicComponent={() => <>FB Content</>} />
+          </CustomDiv>
         </div>
         <PropertyTable data={infoData} title="CapCustomCard.CapCustomCardList" />
         <PropertyTable data={cardInfoData} title="Card Props" />
