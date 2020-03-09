@@ -61,6 +61,7 @@ import CapGraphDoc from '../src/CapGraphDoc';
 import CapCustomListDoc from '../src/CapCustomListDoc';
 import CapStepsDoc from '../src/CapStepsDoc';
 import CapReorderComponentDoc from '../src/CapReorderComponentDoc';
+import CapShapeDoc from '../src/CapShapeDoc';
 import CapImageDoc from '../src/CapImageDoc';
 //imported for docs
 
@@ -189,6 +190,8 @@ class ComponentSwitcher extends Component {
         return <CapCustomListDoc />;
       case 'capReorderComponent':
         return <CapReorderComponentDoc />;
+      case 'capShape':
+        return <CapShapeDoc />;
       case 'capImage':
         return <CapImageDoc />;
         //components for docs

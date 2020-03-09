@@ -71,5 +71,6 @@ export { default as CapGraph } from './CapGraph';
 export { default as CapCustomList } from './CapCustomList';
 export { default as CapSteps } from './CapSteps';
 export { default as CapReorderComponent } from './CapReorderComponent';
+export { default as CapShape } from './CapShape';
 export { default as CapImage } from './CapImage';
 //export components
