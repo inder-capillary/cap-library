@@ -128,6 +128,8 @@ const getSvgComponentFromType = (type) => {
     case 'wechat': return SvgIcons.Wechat;
     case 'scenery': return SvgIcons.Scenery;
     case 'errorIndicator': return SvgIcons.ErrorIndicator;
+    case 'premiumColored': return SvgIcons.PremiumColored;
+
     default: return null;
   }
 };
