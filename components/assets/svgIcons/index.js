@@ -122,3 +122,4 @@ export { default as Video } from './Icons/Video';
 export { default as Mail } from './Icons/Mail';
 export { default as Wechat } from './Icons/Wechat';
 export { default as Scenery } from './Icons/Scenery';
+export {default as ErrorIndicator} from './Icons/ErrorIndicator';
