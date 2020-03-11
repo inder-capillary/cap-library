@@ -114,6 +114,7 @@ const getSvgComponentFromType = (type) => {
     case 'mpushFilled': return SvgIcons.MpushFilled;
     case 'reorder': return SvgIcons.Reorder;
     case 'channelPriority': return SvgIcons.ChannelPriority;
+    case 'premium': return SvgIcons.Premium;
     case 'apps': return SvgIcons.Apps;
     case 'basket': return SvgIcons.Basket;
     case 'connect': return SvgIcons.Connect;
