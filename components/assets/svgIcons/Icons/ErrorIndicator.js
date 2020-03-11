@@ -1,6 +1,7 @@
+
 import * as React from "react";
 
-function Svg2(props) {
+function SvgErrorIndicator(props) {
   return (
     <svg
       width="1em"
@@ -17,4 +18,4 @@ function Svg2(props) {
   );
 }
 
-export default Svg2;
+export default SvgErrorIndicator;

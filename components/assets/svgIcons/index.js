@@ -110,6 +110,7 @@ export { default as WechatFilled } from './Icons/WechatFilled';
 export { default as Minus } from './Icons/Minus';
 export { default as Reorder } from './Icons/Reorder';
 export { default as ChannelPriority } from './Icons/ChannelPriority';
+export { default as Premium } from './Icons/Premium';
 export { default as Apps } from './Icons/Apps';
 export { default as Basket } from './Icons/Basket';
 export { default as Connect } from './Icons/Connect';
