@@ -127,7 +127,7 @@ const getSvgComponentFromType = (type) => {
     case 'mail': return SvgIcons.Mail;
     case 'wechat': return SvgIcons.Wechat;
     case 'scenery': return SvgIcons.Scenery;
-
+    case 'errorIndicator': return SvgIcons.ErrorIndicator;
     default: return null;
   }
 };
