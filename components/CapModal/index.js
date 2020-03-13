@@ -36,15 +36,17 @@ const CapModal = (props) => {
   );
 };
 
-CapModal.info = info;
-CapModal.confirm = confirm;
-CapModal.success = success;
-CapModal.error = error;
-CapModal.warning = warning;
-
 CapModal.propTypes = {
   okText: PropTypes.string,
   closeText: PropTypes.string,
 };
 
-export default LocaleHoc(CapModal, { key: 'CapModal' });
+const CapModalWithHoc = LocaleHoc(CapModal, { key: 'CapModal' });
+
+CapModalWithHoc.info = info;
+CapModalWithHoc.confirm = confirm;
+CapModalWithHoc.success = success;
+CapModalWithHoc.error = error;
+CapModalWithHoc.warning = warning;
+
+export default CapModalWithHoc;
