@@ -4,7 +4,7 @@
 *
 */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import './_capCustomCard.scss';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
@@ -131,7 +131,7 @@ const getRichMediaPreview = (contentDetails) => {
   );
 };
 
-const getFacebookPreview = (FBDynamicComponent = () => <></>) => (
+const getFacebookPreview = (FBDynamicComponent = () => <Fragment />) => (
   <div className="facebook-card-body">
     <Meta description={<CapSkeleton loading avatar paragraph={{ rows: 3, width: [36, 140, 80] }} />} />
     <div className="dynamic-content-section">

@@ -1,7 +1,7 @@
 /**
 * CapCardDoc
 */
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 import styled from 'styled-components';
 import PropertyTable from '../../helpers/PropertyTable';
@@ -244,7 +244,7 @@ export default class CapCustomCardDoc extends Component { // eslint-disable-line
           </CustomDiv>
           <CustomDiv>
             <CapHeading type="h3">Facebook Card</CapHeading>
-            <CapCustomCard type="Facebook" FBDynamicComponent={() => <>FB Content</>} />
+            <CapCustomCard type="Facebook" FBDynamicComponent={() => <Fragment>FB Content</Fragment>} />
           </CustomDiv>
         </div>
         <PropertyTable data={infoData} title="CapCustomCard.CapCustomCardList" />
