@@ -34,9 +34,12 @@ const CapIllustration = (props) => {
       <CapHeading type="h3" style={{ paddingTop: CAP_SPACE_12 }}>
         {title}
       </CapHeading>
-      <CapButton type="primary" style={{ marginTop: CAP_SPACE_12 }} onClick={onClick}>
-        {buttonLabel}
-      </CapButton>
+      {
+        onClick && (
+          <CapButton type="primary" style={{ marginTop: CAP_SPACE_12 }} onClick={onClick}>
+            {buttonLabel}
+          </CapButton>)
+      }
     </div>
   );
 };
