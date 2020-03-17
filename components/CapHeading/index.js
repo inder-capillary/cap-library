@@ -8,6 +8,12 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const headings = {
+  h0: {
+    'font-size': '28px',
+    'font-weight': '500',
+    'color': '#091e42',
+    'line-height': '36px',
+  },
   h1: {
     'font-size': '24px',
     'font-weight': '500',
