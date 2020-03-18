@@ -65,21 +65,6 @@ $table: cap-table-v2;
       width: 100%;
     }
   }
-  &.show-loader {
-    .ant-table-body > table > tbody::after {
-      content: "Loading more data...";
-      display: flex;
-      justify-content: center;
-      position: absolute;
-      width: 100%;
-      align-items: center;
-      height: 60px;
-      text-align: center;
-      font-size: 16px;
-      color: gray;
-      border-top: 1px solid $CAP_G07;
-    }
-  }
   &.no-pagination-loader {
     .ant-table-body > table > tbody::after {
       content: '';

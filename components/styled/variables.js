@@ -107,3 +107,8 @@ export const CAP_SPACE_60 = "4.286rem";
 export const CAP_SPACE_64 = "4.571rem";
 export const CAP_SPACE_72 = "5.143rem";
 export const CAP_SPACE_80 = "5.714rem";
+
+// Background Colors
+export const BG_01 = "#faf9f4";
+export const BG_02 = "#fefcf0";
+export const BG_03 = "#ebf8ff";

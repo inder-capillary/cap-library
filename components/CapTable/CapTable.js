@@ -6,9 +6,30 @@ import PropTypes from 'prop-types';
 import { throttle } from 'lodash';
 import { Table } from "antd";
 import "./_capTable.scss";
-const classNames = require('classnames');
+import styled from "styled-components";
+import classNames from 'classnames';
+import { CAP_G07 } from '../styled/variables';
+import LocaleHoc from '../LocaleHoc';
 
-export default class CapTable extends React.Component { // eslint-disable-line react/prefer-stateless-function
+const StyledTable = styled(Table)`
+  &.show-loader {
+    .ant-table-body > table > tbody::after {
+      content: "${(props) => props.loadMoreData}";
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      align-items: center;
+      height: 60px;
+      text-align: center;
+      font-size: 16px;
+      color: gray;
+      border-top: 1px solid ${CAP_G07};
+    }
+  }
+`;
+
+class CapTable extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
     this.onScrollThrottle = throttle(this.onScrollListTable, 50);
@@ -81,7 +102,7 @@ export default class CapTable extends React.Component { // eslint-disable-line r
   render() {
     const { className, children, infinteScroll, pagination, ...rest } = this.props;
     return (
-      <Table
+      <StyledTable
         {...rest}
         pagination={infinteScroll ? false : pagination}
         className={classNames('cap-table-v2', className, { 'show-loader': this.props.showLoader })} />
@@ -93,3 +114,5 @@ CapTable.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
 };
+
+export default LocaleHoc(CapTable, { key: 'CapTable' });

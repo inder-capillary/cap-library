@@ -30,4 +30,7 @@ export default {
   CapMultiSelectDatePicker: {
     lastDayText: '月最后一天',
   },
+  CapTable: {
+    loadMoreData: 'Loading more data...',
+  },
 };
