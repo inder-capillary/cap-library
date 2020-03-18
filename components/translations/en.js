@@ -33,4 +33,7 @@ export default {
   CapTable: {
     loadMoreData: 'Loading more data...',
   },
+  CapIllustration: {
+    accessForbiddenMsg: 'Action cannot be performed due to insufficient permission',
+  },
 };
