@@ -42,6 +42,20 @@ const infoData = [
     type: "string",
     default: "none",
   },
+  {
+    key: 5,
+    property: "hasAccess",
+    description: "has access to perform the action",
+    type: "boolean",
+    default: "true",
+  },
+  {
+    key: 6,
+    property: "accessForbiddenMsg",
+    description: "message to be displayed in case of access is not there",
+    type: "string",
+    default: "Action cannot be performed due to insufficient permission",
+  },
 ];
 
 export default class CapIllustrationDoc extends Component { // eslint-disable-line react/prefer-stateless-function

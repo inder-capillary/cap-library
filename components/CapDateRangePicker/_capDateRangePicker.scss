@@ -15,6 +15,7 @@ $rangePicker: cap-date-range-picker-v2;
     width: $CAP_SPACE_24;
     height: $CAP_SPACE_24;
     padding: 0px;
+    margin: 0;
   }
   .DateRangePickerInput:focus,
   .DateRangePicker:hover .DateRangePickerInput:not(.ant-input-disabled),

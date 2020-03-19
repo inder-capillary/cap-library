@@ -30,4 +30,10 @@ export default {
   CapMultiSelectDatePicker: {
     lastDayText: 'Last day of month',
   },
+  CapTable: {
+    loadMoreData: 'Loading more data...',
+  },
+  CapIllustration: {
+    accessForbiddenMsg: 'Action cannot be performed due to insufficient permission',
+  },
 };

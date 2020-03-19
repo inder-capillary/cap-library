@@ -30,4 +30,10 @@ export default {
   CapMultiSelectDatePicker: {
     lastDayText: '月最后一天',
   },
+  CapTable: {
+    loadMoreData: 'Loading more data...',
+  },
+  CapIllustration: {
+    accessForbiddenMsg: 'Action cannot be performed due to insufficient permission',
+  },
 };

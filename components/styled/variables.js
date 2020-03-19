@@ -17,6 +17,7 @@ export const CAP_SECONDARY = {
 // Custom colors
 export const CAP_ORANGE = "#f87d23";
 export const CAP_YELLOW = "#fec52e";
+export const CAP_YELLOW01 = "#e8bc25";
 export const CAP_BLUE = "#23cccc";
 export const CAP_PURPLE = "#8517e5";
 export const CAP_PINK = "#e51fa3";
@@ -106,3 +107,8 @@ export const CAP_SPACE_60 = "4.286rem";
 export const CAP_SPACE_64 = "4.571rem";
 export const CAP_SPACE_72 = "5.143rem";
 export const CAP_SPACE_80 = "5.714rem";
+
+// Background Colors
+export const BG_01 = "#faf9f4";
+export const BG_02 = "#fefcf0";
+export const BG_03 = "#ebf8ff";
