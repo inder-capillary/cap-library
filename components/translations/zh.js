@@ -31,9 +31,9 @@ export default {
     lastDayText: '月最后一天',
   },
   CapTable: {
-    loadMoreData: 'Loading more data...',
+    loadMoreData: '正在加载更多信息……',
   },
   CapIllustration: {
-    accessForbiddenMsg: 'Action cannot be performed due to insufficient permission',
+    accessForbiddenMsg: '由于没有足够权限，所以无法执行此操作。',
   },
 };
