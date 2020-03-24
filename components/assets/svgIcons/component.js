@@ -129,6 +129,7 @@ const getSvgComponentFromType = (type) => {
     case 'scenery': return SvgIcons.Scenery;
     case 'errorIndicator': return SvgIcons.ErrorIndicator;
     case 'premiumColored': return SvgIcons.PremiumColored;
+    case 'lock': return SvgIcons.Lock;
 
     default: return null;
   }

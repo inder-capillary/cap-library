@@ -125,3 +125,4 @@ export { default as Wechat } from './Icons/Wechat';
 export { default as Scenery } from './Icons/Scenery';
 export {default as ErrorIndicator} from './Icons/ErrorIndicator';
 export {default as PremiumColored} from './Icons/PremiumColored';
+export { default as Lock } from './Icons/Lock';
