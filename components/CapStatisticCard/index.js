@@ -20,7 +20,7 @@ function CapStatisticCard(props) {
   const { statsItems, colSpan, type } = props;
   return (
     <CapRow className="stats-card">
-      {statsItems.length && type && (
+      {!!statsItems.length && type && (
         <CapColumn span={3} className="stats-item" key="stats-heading">
           <CapRow style={{ paddingBottom: '14px' }} />
           <CapDivider style={{ marginBottom: CAP_SPACE_12, marginTop: CAP_SPACE_12 }} />
