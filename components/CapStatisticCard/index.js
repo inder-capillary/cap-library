@@ -15,9 +15,11 @@ import CapHeading from '../CapHeading';
 import './_capStatisticCard.scss';
 import {
   CAP_SPACE_12,
+  CAP_SPACE_20,
 } from '../styled/variables';
 function CapStatisticCard(props) {
   const { statsItems, colSpan, type } = props;
+
   return (
     <CapRow className="stats-card">
       {!!statsItems.length && type && (
@@ -29,14 +31,14 @@ function CapStatisticCard(props) {
         </CapColumn>
       )}
       {statsItems.map((item, index) => (
-        <CapColumn span={colSpan || 4} className="stats-item" key={`stats-${item.text}-${index}`}>
-          <CapRow className="stats-text" style={{paddingRight: '10px'}}>
-            {type ? <CapLabel type="label1" className="truncate-text" style={{textAlign: 'right'}}>{item.text}</CapLabel>
+        <CapColumn span={type && index % 2 === 0 ? 4 : colSpan || 4} className="stats-item" key={`stats-${item.text}-${index}`}>
+          <CapRow className="stats-text" style={{paddingRight: type && index % 2 === 0 ? CAP_SPACE_20 : '10px'}}>
+            {type ? <CapLabel type="label1" className="truncate-text" title={item.text} style={{textAlign: 'right'}}>{item.text}</CapLabel>
               : <CapHeading type="h6">{item.text}</CapHeading>
             }
           </CapRow>
           {type && <CapDivider style={{ marginBottom: CAP_SPACE_12, marginTop: CAP_SPACE_12 }} />}
-          <CapRow className="stats-val" style={{paddingRight: '10px'}}>
+          <CapRow className="stats-val" style={{paddingRight: type && index % 2 === 0 ? CAP_SPACE_20 : '10px'}}>
             {type ? <CapLabel type="label1" style={{float: 'right'}}>{item.value}</CapLabel>
               : <CapHeading type="h3">{item.value}</CapHeading>}
           </CapRow>
