@@ -13,6 +13,7 @@ import {
   CapLabel,
   CapTooltip,
 } from "..";
+import classNames from 'classnames';
 import {CAP_SPACE_16, CAP_SPACE_12} from '../styled/variables';
 import LocaleHoc from '../LocaleHoc';
 
@@ -20,7 +21,7 @@ const GetActionButton = (props) => {
   const { onClick, buttonLabel, hasAccess, buttonClassName } = props;
   return (
     <CapButton
-      className={buttonClassName}
+      className={classNames(buttonClassName)}
       style={{ marginTop: CAP_SPACE_12 }}
       onClick={onClick}
       disabled={!hasAccess}
