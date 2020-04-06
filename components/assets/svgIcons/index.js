@@ -126,3 +126,7 @@ export { default as Scenery } from './Icons/Scenery';
 export {default as ErrorIndicator} from './Icons/ErrorIndicator';
 export {default as PremiumColored} from './Icons/PremiumColored';
 export { default as Lock } from './Icons/Lock';
+export { default as Union } from './Icons/Union';
+export { default as Intersect } from './Icons/Intersect';
+export { default as SubtractLeft } from './Icons/SubtractLeft';
+export { default as SubtractRight } from './Icons/SubtractRight';
