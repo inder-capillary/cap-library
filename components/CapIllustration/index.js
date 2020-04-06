@@ -17,9 +17,10 @@ import {CAP_SPACE_16, CAP_SPACE_12} from '../styled/variables';
 import LocaleHoc from '../LocaleHoc';
 
 const GetActionButton = (props) => {
-  const { onClick, buttonLabel, hasAccess } = props;
+  const { onClick, buttonLabel, hasAccess, buttonClassName } = props;
   return (
     <CapButton
+      className={buttonClassName}
       style={{ marginTop: CAP_SPACE_12 }}
       onClick={onClick}
       disabled={!hasAccess}
@@ -30,11 +31,12 @@ const GetActionButton = (props) => {
 };
 // import styled from 'styled-components';
 const CapIllustration = (props) => {
-  const { description, illustrationImage, title, hasAccess, accessForbiddenMsg, buttonLabel, onClick } = props;
+  const { description, illustrationImage, title, hasAccess, accessForbiddenMsg, buttonLabel, onClick, buttonClassName } = props;
   const actionButtonProps = {
     onClick,
     hasAccess,
     buttonLabel,
+    buttonClassName,
   };
   return (
     <div align="center" style={{ paddingTop: CAP_SPACE_16 }}>
@@ -76,12 +78,14 @@ CapIllustration.propTypes = {
   title: PropTypes.string.isRequired,
   hasAccess: PropTypes.bool,
   accessForbiddenMsg: PropTypes.string,
+  buttonClassName: PropTypes.string,
 };
 
 GetActionButton.propTypes = {
   buttonLabel: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   hasAccess: PropTypes.bool,
+  buttonClassName: PropTypes.string,
 };
 
 CapIllustration.defaultProps = {
