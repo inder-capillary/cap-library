@@ -595,10 +595,8 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <Text>premiumColored</Text>
             </List>
             <List>
-<<<<<<< HEAD
               <CapIcon type="lock" />
               <Text>lock</Text>
-=======
               <CapIcon type="union" />
               <Text>union</Text>
             </List>
@@ -613,7 +611,6 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
             <List>
               <CapIcon type="subtractRight" />
               <Text>subtractRight</Text>
->>>>>>> 6d9444499addef51c803fa6ff97e1b8e3365b85e
             </List>
           </ul>
         </div>
