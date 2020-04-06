@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function SvgColor(props) {
+function SvgLock(props) {
   return (
     <svg
       width="1em"
@@ -28,4 +28,4 @@ function SvgColor(props) {
   );
 }
 
-export default SvgColor;
+export default SvgLock;
