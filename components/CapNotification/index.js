@@ -6,6 +6,7 @@
 import React from 'react';
 import { notification } from 'antd';
 import classNames from 'classnames';
+import styled from 'styled-components';
 import CapHeading from '../CapHeading';
 import CapIcon from '../CapIcon';
 
@@ -15,11 +16,15 @@ const { info, warning, warn, close, destroy } = notification;
 
 const clsPrefix = 'cap-notification-v2';
 
+const BreakWordHeading = styled(CapHeading)`
+  word-break: break-all
+`;
+
 const openNotification = (props, type) => {
   const { className, message, description, ...rest } = props;
   const notificationProps = {
-    message: <CapHeading type="h4">{message}</CapHeading>,
-    description: <CapHeading type="h6">{description}</CapHeading>,
+    message: <BreakWordHeading type="h4">{message}</BreakWordHeading>,
+    description: <BreakWordHeading type="h6">{description}</BreakWordHeading>,
     ...rest,
     className: classNames(clsPrefix, className, type),
   };
