@@ -31,7 +31,7 @@ function CapStatisticCard(props) {
         </CapColumn>
       )}
       {statsItems.map((item, index) => (
-        <CapColumn span={type && index % 2 === 0 ? 4 : colSpan || 4} className="stats-item" key={`stats-${item.text}-${index}`}>
+        <CapColumn span={index % 2 === 0 ? colSpan || 4 : 4} className="stats-item" key={`stats-${item.text}-${index}`}>
           <CapRow className="stats-text" style={{paddingRight: type && index % 2 === 0 ? CAP_SPACE_20 : '10px'}}>
             {type ? <CapLabel type="label1" className="truncate-text" title={item.text} style={{textAlign: 'right'}}>{item.text}</CapLabel>
               : <CapHeading type="h6">{item.text}</CapHeading>
