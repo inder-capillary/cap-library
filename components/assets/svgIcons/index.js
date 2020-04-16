@@ -130,3 +130,7 @@ export { default as Union } from './Icons/Union';
 export { default as Intersect } from './Icons/Intersect';
 export { default as SubtractLeft } from './Icons/SubtractLeft';
 export { default as SubtractRight } from './Icons/SubtractRight';
+export { default as Sync } from './Icons/Sync';
+export { default as Error } from './Icons/Error';
+export { default as Folder } from './Icons/Folder';
+export { default as Click } from './Icons/Click';

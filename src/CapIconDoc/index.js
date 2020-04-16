@@ -612,6 +612,23 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="subtractRight" />
               <Text>subtractRight</Text>
             </List>
+            <List>
+              <CapIcon type="error" />
+              <Text>Error</Text>
+            </List>
+            <List>
+              <CapIcon type="sync" />
+              <Text>sync</Text>
+            </List>
+            <List>
+              <CapIcon type="folder" />
+              <Text>folder</Text>
+            </List>
+            <List>
+              <CapIcon type="click" />
+              <Text>click</Text>
+            </List>
+
           </ul>
         </div>
         {`Used as:`}

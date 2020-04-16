@@ -134,7 +134,10 @@ const getSvgComponentFromType = (type) => {
     case 'intersect': return SvgIcons.Intersect;
     case 'subtractLeft': return SvgIcons.SubtractLeft;
     case 'subtractRight': return SvgIcons.SubtractRight;
-
+    case 'error': return SvgIcons.Error;
+    case 'sync': return SvgIcons.Sync;
+    case 'folder': return SvgIcons.Folder;
+    case 'click': return SvgIcons.Click;
     default: return null;
   }
 };
