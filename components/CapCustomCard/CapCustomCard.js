@@ -27,6 +27,7 @@ const channels = {
   call_task: 'CALL_TASK',
   wechat: 'WECHAT',
   facebook: 'FACEBOOK',
+  line: 'LINE',
 };
 
 const getMpushContent = (templateData) => {
@@ -150,6 +151,7 @@ const getCardContent = (props) => {
     case channels.call_task:
       return <Meta description={content} />;
     case channels.email:
+    case channels.line:
       return <Meta description={url ? <img width={width || 244} height={height || 279} src={url} alt={url} /> : content || <CapSkeleton loading />} />;
     case channels.mpush: {
       const contentPreview = getMpushContent(content);
