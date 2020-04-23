@@ -1,6 +1,6 @@
-import React from "react";
+import * as React from "react";
 
-function SvgSubtractRight(props) {
+function SubtractRight(props) {
   return (
     <svg
       width="1em"
@@ -10,17 +10,11 @@ function SvgSubtractRight(props) {
       {...props}
     >
       <g fill="none" fillRule="evenodd">
-        <circle
-          cx={8}
-          cy={8}
-          r={8}
-          fill="#091E42"
-          transform="rotate(-180 8 8)"
-        />
-        <path fill="#B3BAC5" d="M8 16a8 8 0 008-8 8 8 0 11-8 8z" />
+        <circle cx={16} cy={16} r={8} fill="#B3BAC5" />
+        <path fill="#091E42" d="M16 8a8 8 0 00-8 8 8 8 0 118-8z" />
       </g>
     </svg>
   );
 }
 
-export default SvgSubtractRight;
+export default SubtractRight;

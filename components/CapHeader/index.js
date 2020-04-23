@@ -46,6 +46,7 @@ function CapHeader(props) {
           </CapLabelwithDirection>
         );
       case "label":
+      case "greyed":
         return (
           <CapLabelwithDirection style={{ marginLeft }} type="label3" className={descriptionClassName}>
             {description}
@@ -83,6 +84,12 @@ function CapHeader(props) {
       case "label1":
         return (
           <CapHeadingwithDirection type="h4" className={titleClassName}>
+            {title}
+          </CapHeadingwithDirection>
+        );
+      case "greyed":
+        return (
+          <CapHeadingwithDirection type="h6" className={titleClassName}>
             {title}
           </CapHeadingwithDirection>
         );
