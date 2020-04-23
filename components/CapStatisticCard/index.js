@@ -7,7 +7,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CapRow from '../CapRow';
-import CapColumn from '../CapColumn';
 import CapLabel from '../CapLabel';
 import CapDivider from '../CapDivider';
 import CapHeading from '../CapHeading';
@@ -15,43 +14,57 @@ import CapHeading from '../CapHeading';
 import './_capStatisticCard.scss';
 import {
   CAP_SPACE_12,
-  CAP_SPACE_20,
 } from '../styled/variables';
 function CapStatisticCard(props) {
-  const { statsItems, colSpan, type } = props;
-
+  const { statsItems, width, type, showHeader } = props;
+  const customDivider = type ? (<CapDivider style={{ marginTop: CAP_SPACE_12, marginBottom: CAP_SPACE_12 }} />) : (<></>);
   return (
     <CapRow className="stats-card">
       {!!statsItems.length && type && (
-        <CapColumn span={3} className="stats-item" key="stats-heading">
-          <CapRow style={{ paddingBottom: '14px' }} />
-          <CapDivider style={{ marginBottom: CAP_SPACE_12, marginTop: CAP_SPACE_12 }} />
-          <CapRow className="stats-val"><CapLabel type="label1">{type}</CapLabel></CapRow>
-          <CapDivider style={{ marginBottom: CAP_SPACE_12, marginTop: CAP_SPACE_12 }} />
-        </CapColumn>
+        <div style={{width: '16%', display: showHeader ? 'inline-grid' : 'inline-table'}} key="stats-heading">
+          {showHeader
+          && <>
+            <div style={{ marginBottom: '-4px'}} />
+            {customDivider}
+          </>}
+          <CapRow className="stats-val">
+            <CapLabel type="label1">{type}</CapLabel>
+          </CapRow>
+          {customDivider}
+        </div>
       )}
       {statsItems.map((item, index) => (
-        <CapColumn span={index % 2 === 0 ? colSpan || 4 : 4} className="stats-item" key={`stats-${item.text}-${index}`}>
-          <CapRow className="stats-text" style={{paddingRight: type && index % 2 === 0 ? CAP_SPACE_20 : '10px'}}>
-            {type ? <CapLabel type="label1" className="truncate-text" title={item.text} style={{textAlign: 'right'}}>{item.text}</CapLabel>
-              : <CapHeading type="h6">{item.text}</CapHeading>
-            }
-          </CapRow>
-          {type && <CapDivider style={{ marginBottom: CAP_SPACE_12, marginTop: CAP_SPACE_12 }} />}
-          <CapRow className="stats-val" style={{paddingRight: type && index % 2 === 0 ? CAP_SPACE_20 : '10px'}}>
+        <div style={{width: width || '20%'}} className="stats-item" key={`stats-${item.text}-${index}`}>
+          {showHeader
+          && <>
+              {type ? (
+                <CapLabel
+                  type="label1"
+                  className="truncate-text stats-text"
+                  title={item.text}
+                  style={{textAlign: 'right'}}>
+                  {item.text}
+
+                </CapLabel>
+              )
+                : <CapHeading type="h6" className="stats-text">{item.text}</CapHeading>
+              }
+            {customDivider}
+          </>
+          }
+          <CapRow className="stats-val">
             {type ? <CapLabel type="label1" style={{float: 'right'}}>{item.value}</CapLabel>
               : <CapHeading type="h3">{item.value}</CapHeading>}
           </CapRow>
           {item.subText
             && (
               <CapRow className="stats-sub-text">
-                {type ? <CapLabel type="label1">{item.subText}</CapLabel>
-                  : <CapHeading type="h6">{item.subText}</CapHeading>}
+                <CapLabel type={type ? "label1" : "label7"}>{item.subText}</CapLabel>
               </CapRow>
             )
           }
-          {type && <CapDivider style={{ marginBottom: CAP_SPACE_12, marginTop: CAP_SPACE_12 }} />}
-        </CapColumn>
+          {customDivider}
+        </div>
       ))}
     </CapRow>
   );
@@ -59,8 +72,9 @@ function CapStatisticCard(props) {
 
 CapStatisticCard.propTypes = {
   statsItems: PropTypes.array,
-  colSpan: PropTypes.number,
+  width: PropTypes.string,
   type: PropTypes.string,
+  showHeader: PropTypes.bool,
 };
 
 export default CapStatisticCard;
