@@ -630,6 +630,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="click" />
               <Text>click</Text>
             </List>
+            <List>
+              <CapIcon type="line" />
+              <Text>line</Text>
+            </List>
 
           </ul>
         </div>
