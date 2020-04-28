@@ -597,6 +597,8 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
             <List>
               <CapIcon type="lock" />
               <Text>lock</Text>
+            </List>
+            <List>
               <CapIcon type="union" />
               <Text>union</Text>
             </List>
@@ -627,6 +629,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
             <List>
               <CapIcon type="click" />
               <Text>click</Text>
+            </List>
+            <List>
+              <CapIcon type="line" />
+              <Text>line</Text>
             </List>
 
           </ul>

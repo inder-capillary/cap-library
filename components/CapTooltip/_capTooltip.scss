@@ -9,4 +9,9 @@ $tooltip: cap-tooltip-overlay-v2;
     font-size: $FONT_SIZE_M;
     font-weight: $FONT_WEIGHT_MEDIUM;
   }
+  &.cap-bgcolor-tooltip{
+    .ant-tooltip-inner{
+        background-color:$FONT_COLOR_05;
+    }
+  }
 }

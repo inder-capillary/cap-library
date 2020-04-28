@@ -2,8 +2,13 @@
 
 .stats-card {
     .stats-item {
+        display: inline-block;
         .stats-text {
             margin-bottom: $CAP_SPACE_04;
+            padding-right: 10px;
+        }
+        .stats-val {
+            padding-right: 10px;
         }
         .stats-sub-text {
             margin-top: $CAP_SPACE_08;

@@ -140,6 +140,12 @@ export default class CapHeaderDoc extends Component { // eslint-disable-line rea
               size="label"
               title="Title" />
           </Container>
+          <Container>
+            <CapHeader
+              description="Inductive text"
+              size="greyed"
+              title="Title" />
+          </Container>
         </Flex>
         <PropertyTable data={infoData} />
       </div>

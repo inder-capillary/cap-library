@@ -134,3 +134,4 @@ export { default as Sync } from './Icons/Sync';
 export { default as Error } from './Icons/Error';
 export { default as Folder } from './Icons/Folder';
 export { default as Click } from './Icons/Click';
+export { default as Line } from './Icons/Line';
