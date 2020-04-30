@@ -139,6 +139,7 @@ const getSvgComponentFromType = (type) => {
     case 'folder': return SvgIcons.Folder;
     case 'click': return SvgIcons.Click;
     case 'line': return SvgIcons.Line;
+    case 'unicode': return SvgIcons.Unicode;
     default: return null;
   }
 };
