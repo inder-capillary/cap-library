@@ -248,16 +248,14 @@ $cap-custom-card: cap-custom-card;
 }
 
 .ant-card.#{$cap-custom-card}.EMAIL {
+  .ant-card-meta {
+    width:100%
+  }
   &.no-image{
     .ant-card-body{
       padding-bottom: 0;
       padding-top: $CAP_SPACE_04;
       height: 129px;
-      display: block;
-      display: -webkit-box;
-      -webkit-line-clamp: 7;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }  
   }
   }

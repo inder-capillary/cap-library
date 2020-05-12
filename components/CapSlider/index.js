@@ -5,7 +5,7 @@
 */
 import React from 'react';
 import './_capSlider.scss';
-import { Slider } from 'antd';
+import { Slider, ConfigProvider} from 'antd';
 import PropTypes from 'prop-types';
 const classNames = require('classnames');
 
@@ -26,9 +26,11 @@ class CapSlider extends React.Component { // eslint-disable-line react/prefer-st
     const {type, children, className, sliderRaleColor, ...rest} = this.props;
     const formatter = this.translateType(type);
     return (
-      <Slider tipFormatter={formatter} {...rest} className={classNames(`cap-slider-v2 ${sliderRaleColor ? 'slider-rail' : ''}`, className)}>
-        {React.Children.toArray(children)}
-      </Slider>
+      <ConfigProvider getPopupContainer={(triggerNode) => triggerNode.parentNode}>
+        <Slider tipFormatter={formatter} {...rest} className={classNames(`cap-slider-v2 ${sliderRaleColor ? 'slider-rail' : ''}`, className)}>
+          {React.Children.toArray(children)}
+        </Slider>
+      </ConfigProvider>
     );
   }
 }
