@@ -71,7 +71,6 @@ const defaultProps = {
   withFullScreenPortal: false,
   initialVisibleMonth: null,
   numberOfMonths: 2,
-  keepOpenOnDateSelect: true,
   reopenPickerOnClearDates: false,
   isRTL: false,
   daySize: 32,
@@ -98,7 +97,7 @@ const defaultProps = {
   monthFormat: 'MMMM YYYY',
   phrases: DateRangePickerPhrases,
   weekDayFormat: "ddd",
-  displayFormat: "YYYY-MM-DD",
+  displayFormat: "D MMM YYYY",
 
   stateDateWrapper: (date) => date,
 };
@@ -185,7 +184,7 @@ class DateRangePickerWrapper extends React.Component {
           endDate={endDate}
           customInputIcon={customInputIcon || <CapIcon type="calendar" style={{color: styledVars.CAP_G01}} size="m" />
           }
-          customArrowIcon={customArrowIcon || <span style={{color: styledVars.CAP_G01}}>~</span>}
+          customArrowIcon={customArrowIcon || <span style={{color: styledVars.CAP_G01}}>–</span>}
           navNext={
             navNext || <div className="month-nav-btn next-month-nav-btn"><CapIcon type="chevron-right" style={{color: styledVars.CAP_G01}} /></div>
           }
