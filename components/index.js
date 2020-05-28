@@ -74,4 +74,5 @@ export { default as CapReorderComponent } from './CapReorderComponent';
 export { default as CapShape } from './CapShape';
 export { default as CapImage } from './CapImage';
 export { default as CapCardBox } from './CapCardBox';
+export { default as CapCSVFileUploader} from './CapCSVFileUploader';
 //export components
