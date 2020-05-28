@@ -3,6 +3,9 @@
 $slidebar : cap-slider-v2;
 
 .ant-slider.#{$slidebar} {
+    .ant-tooltip{
+        z-index:10;
+    }
     .ant-slider-handle.ant-tooltip-open{
         background-color:map-get($CAP_PRIMARY, base);
     }

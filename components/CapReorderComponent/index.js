@@ -55,15 +55,15 @@ function CapReorderComponent(props) {
 
   return (
     <div className="cap-reorder-component-v2">
-      {panes.map((pane, index) => (
-        <div style={{display: 'inline-block', paddingRight: CAP_SPACE_12}} key={`order${pane.order}`}>
+      {panes.map(({ order, capIconClass, withBackground, backgroundProps, icon, channel }, index) => (
+        <div style={{display: 'inline-block', paddingRight: CAP_SPACE_12}} key={`order${order}`}>
           {props.title && (
             <CapLabel
               type="label4"
               className="title-label">
               {props.title}
               {' '}
-              {pane.order}
+              {order}
 
             </CapLabel>
           )}
@@ -73,7 +73,7 @@ function CapReorderComponent(props) {
               <CapCustomIcon
                 type="chevron-left"
                 style={{left: CAP_SPACE_12}}
-                onClick={() => changeOrder(pane.order, 'left')}
+                onClick={() => changeOrder(order, 'left')}
               >
               </CapCustomIcon>
             )}
@@ -82,19 +82,24 @@ function CapReorderComponent(props) {
                 display: 'inline-block',
               }}
             >
-              <CapIcon type={pane.icon} className="component-icon"></CapIcon>
+              <CapIcon
+                type={icon}
+                className={`component-icon ${capIconClass}`}
+                withBackground={withBackground}
+                backgroundProps={backgroundProps}
+              />
               <CapLabel
                 type="label1"
                 className="component-channel"
               >
-                {pane.channel}
+                {channel}
               </CapLabel>
             </CapRow>
             {index !== panes.length - 1 && (
               <CapCustomIcon
                 type="chevron-right"
                 style={{right: CAP_SPACE_12}}
-                onClick={() => changeOrder(pane.order, 'right')}
+                onClick={() => changeOrder(order, 'right')}
               >
               </CapCustomIcon>
             )}
