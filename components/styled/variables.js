@@ -26,6 +26,7 @@ export const CAP_ICON = "#7a869a";
 export const CAP_PALE_GREY = "#e9f0fe";
 export const CAP_BLUE01 = "#2466eb";
 export const CAP_RED01 = "#e51fa3";
+export const CAP_RED02 = "#f5222d";
 
 // Grey colors
 export const CAP_G01 = "#091e42";

@@ -74,18 +74,24 @@ const labels = {
     'font-weight': 'normal',
     'line-height': 'normal',
   },
+  label12: {
+    'color': '#ffffff',
+    'font-size': '12px',
+    'font-weight': 'normal',
+    'line-height': 'normal',
+  },
 };
 
 const CapLabel = styled.div`
     font-size: ${[(props) => labels[props.type]["font-size"]]};
-    font-weight: ${[(props) => labels[props.type]["font-weight"]]};
+    font-weight: ${[(props) => props.fontWeight || labels[props.type]["font-weight"]]};
     color: ${[(props) => labels[props.type].color]};
     line-height: ${[(props) => props.lineHeight || labels[props.type]["line-height"] || 'initial']};
     `;
 
 const CapLabelInline = styled.span`
 font-size: ${[(props) => labels[props.type]["font-size"]]};
-font-weight: ${[(props) => labels[props.type]["font-weight"]]};
+font-weight: ${[(props) => props.fontWeight || labels[props.type]["font-weight"]]};
 color: ${[(props) => labels[props.type].color]};
 line-height: ${[(props) => props.lineHeight || labels[props.type]["line-height"] || 'initial']};
 `;
