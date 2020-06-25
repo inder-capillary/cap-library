@@ -638,6 +638,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="unicode" />
               <Text>unicode</Text>
             </List>
+            <List>
+              <CapIcon type="whatsapp" />
+              <Text>whatsapp</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}

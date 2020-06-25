@@ -140,6 +140,7 @@ const getSvgComponentFromType = (type) => {
     case 'click': return SvgIcons.Click;
     case 'line': return SvgIcons.Line;
     case 'unicode': return SvgIcons.Unicode;
+    case 'whatsapp': return SvgIcons.Whatsapp;
     default: return null;
   }
 };
