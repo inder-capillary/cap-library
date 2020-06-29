@@ -141,6 +141,8 @@ const getSvgComponentFromType = (type) => {
     case 'line': return SvgIcons.Line;
     case 'unicode': return SvgIcons.Unicode;
     case 'whatsapp': return SvgIcons.Whatsapp;
+    case 'notSent': return SvgIcons.NotSent;
+
     default: return null;
   }
 };
