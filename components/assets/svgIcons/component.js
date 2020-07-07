@@ -142,6 +142,7 @@ const getSvgComponentFromType = (type) => {
     case 'unicode': return SvgIcons.Unicode;
     case 'whatsapp': return SvgIcons.Whatsapp;
     case 'notSent': return SvgIcons.NotSent;
+    case 'xengage': return SvgIcons.XEngage;
 
     default: return null;
   }

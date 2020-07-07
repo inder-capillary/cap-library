@@ -6,23 +6,6 @@
   }
 }
 
-.cap-icon-container {
-  padding-right: 24px;
-  height: 48px;
-  width: 48px;
-  background-color: $CAP_G07;
-  background-size: cover;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 18px;
-  position: relative;
-  .div-icon {
-    position: absolute;
-    top: 25%;
-    left: 25%;
-  }
-}
-
 .cap-icon-v2-avatar{
   margin-right: $CAP_SPACE_08;
   display: flex;

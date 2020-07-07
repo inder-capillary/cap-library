@@ -138,3 +138,4 @@ export { default as Line } from './Icons/Line';
 export { default as Unicode } from './Icons/Unicode';
 export { default as Whatsapp } from './Icons/Whatsapp';
 export { default as NotSent } from './Icons/NotSent';
+export { default as XEngage } from './Icons/XEngage';
