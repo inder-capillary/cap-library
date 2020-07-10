@@ -650,6 +650,26 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="xengage" withBackground />
               <Text>xengage</Text>
             </List>
+            <List>
+              <CapIcon type="hotstar" />
+              <Text>hotstar</Text>
+            </List>
+            <List>
+              <CapIcon type="facebook" />
+              <Text>facebook</Text>
+            </List>
+            <List>
+              <CapIcon type="google-ad" />
+              <Text>google-ad</Text>
+            </List>
+            <List>
+              <CapIcon type="snapchat" />
+              <Text>snapchat</Text>
+            </List>
+            <List>
+              <CapIcon type="tiktok" />
+              <Text>tiktok</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}

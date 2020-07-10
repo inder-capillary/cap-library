@@ -143,7 +143,12 @@ const getSvgComponentFromType = (type) => {
     case 'whatsapp': return SvgIcons.Whatsapp;
     case 'notSent': return SvgIcons.NotSent;
     case 'xengage': return SvgIcons.XEngage;
-
+    case 'hotstar': return SvgIcons.DisneyHotstar;
+    case 'facebook-filled': return SvgIcons.FacebookFilled;
+    case 'google-ad': return SvgIcons.GoogleAd;
+    case 'snapchat': return SvgIcons.Snapchat;
+    case 'tiktok': return SvgIcons.Tiktok;
+    case 'facebook': return SvgIcons.Facebook;
     default: return null;
   }
 };
