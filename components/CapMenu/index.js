@@ -19,8 +19,10 @@ function CapMenu(props) {
     <Menu className={classNames(clsPrefix, className)} {...rest} />
   );
 }
+const initialize = () => {};
+
 // fixing antd issue: default value of onItemHover is not defined.
-const withItemHOC = (props) => <Item {...props} onItemHover={() => {}} />;
+const withItemHOC = (props) => <Item {...props} onItemHover={initialize} />;
 
 CapMenu.Item = withItemHOC;
 CapMenu.SubMenu = SubMenu;
