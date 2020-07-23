@@ -90,6 +90,15 @@ export default class CapRadioGroupDoc extends Component { // eslint-disable-line
           </CapRadioGroup>
           <br />
           <br />
+          <p>Error message</p>
+          <CapRadioGroup name="radiogroup" defaultValue={1} errorMessage="Error message">
+            <CapRadio value={1}>A</CapRadio>
+            <CapRadio value={2}>B</CapRadio>
+            <CapRadio value={3}>C</CapRadio>
+            <CapRadio value={4}>D</CapRadio>
+          </CapRadioGroup>
+          <br />
+          <br />
         </div>
         <PropertyTable data={infoData} />
       </div>
