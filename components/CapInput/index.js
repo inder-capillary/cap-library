@@ -4,6 +4,7 @@ import { Input } from 'antd';
 import styled from 'styled-components';
 import Search from './Search';
 import TextArea from './TextArea';
+import Number from './Number';
 import CapIcon from '../CapIcon';
 import ComponentWithLabelHOC from '../assets/HOCs/ComponentWithLabelHOC';
 import * as styledVars from '../styled/variables';
@@ -55,5 +56,6 @@ CapInput.defaultProps = {
 const InputFinal = ComponentWithLabelHOC(CapInput);
 InputFinal.Search = Search;
 InputFinal.TextArea = TextArea;
+InputFinal.Number = Number;
 
 export default InputFinal;

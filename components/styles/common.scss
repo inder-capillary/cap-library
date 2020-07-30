@@ -1,0 +1,73 @@
+$sizes: 100;
+
+/* generates the classes for margin and padding from 1 to 100px
+Ex: margin-r-10, margin-rl-12, padding-tb-34 ..etc
+l - left
+r - right
+t - top
+b - bottom
+rl - right and left
+tb - top and bottom
+*/
+
+@mixin margin-classes {
+  @for $i from 1 through $sizes {
+    $margin: $i * 0.0714rem;
+    /* margin #{$margin} */
+    .maring-#{$i}  {
+        margin: $margin;
+    }
+    .margin-l-#{$i} {
+        margin-left: $margin;
+    }
+    .margin-r-#{$i} {
+        margin-right: $margin;
+    }
+    .margin-t-#{$i} {
+        margin-top: $margin;
+    }
+    .margin-b-#{$i} {
+        margin-bottom: $margin;
+    }
+    .margin-lr-#{$i} {
+        margin-left: $margin;
+        margin-right: $margin;
+    }
+    .margin-tb-#{$i} {
+        margin-top: $margin;
+        margin-bottom: $margin;
+    }
+  }
+}
+@include margin-classes;
+
+
+@mixin padding-classes {
+  @for $i from 1 through $sizes {
+    $padding: $i * 0.0714rem;
+    .padding-#{$i} {
+        padding: $padding;
+    }
+    .padding-l-#{$i} {
+        padding-left: $padding;
+    }
+    .padding-r-#{$i} {
+        padding-right: $padding;
+    }
+    .padding-t-#{$i} {
+        padding-top: $padding;
+    }
+    .padding-b-#{$i} {
+        padding-bottom: $padding;
+    }
+    .padding-lr-#{$i} {
+        padding-left: $padding;
+        padding-right: $padding;
+    }
+    .padding-tb-#{$i} {
+        padding-top: $padding;
+        padding-bottom: $padding;
+    }
+  }
+}
+@include padding-classes;

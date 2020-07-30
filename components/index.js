@@ -1,4 +1,5 @@
 import './styles/ant_theme_vars.less';
+import './styles/common.scss';
 
 import * as CapIcons from './assets/icons';
 

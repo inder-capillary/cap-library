@@ -4,7 +4,6 @@ $cap-customCheckbox: cap-customCheckboxList-v2;
 
 .#{$cap-customCheckbox} {
     width: 208px;
-    height: 194px;
     border-radius: $CAP_SPACE_04;
     border: solid 1px $CAP_G07;
     background-color: $CAP_WHITE;
@@ -28,6 +27,5 @@ $cap-customCheckbox: cap-customCheckboxList-v2;
     }
     .customCheckbox{
         padding: $CAP_SPACE_16 $CAP_SPACE_24 $CAP_SPACE_16 $CAP_SPACE_16;
-        height: 106px;
     }
 }

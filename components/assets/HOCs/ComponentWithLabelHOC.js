@@ -11,15 +11,16 @@ const CapComponentStyled = styled.div`
     display: ${(props) => props.inline ? 'inline-block' : 'block'};
     cursor: ${(props) => props.disabled && 'not-allowed'};
     input,
+    .ant-input-number,
     textarea {
       &::-webkit-input-placeholder {
         font-size: 14px;
       }
-      &.ant-input:hover {
+      &.ant-input:hover, &.ant-input-number:hover {
         border-color: ${(props) => props.errorMessage ? styledVars.CAP_RED : styledVars.CAP_G11};
         box-shadow: none;
       }
-      &.ant-input:focus {
+      &.ant-input:focus, &.ant-input-number:focus {
         border-color: ${(props) => props.errorMessage ? styledVars.CAP_RED : styledVars.CAP_G01};
         box-shadow: none;
       }
@@ -34,6 +35,11 @@ const CapComponentStyled = styled.div`
       & > input {
         width: 100%;
       }
+    }
+    .ant-input-number {
+      border-width: 1px;
+      border-style: solid;
+      border-color: ${(props) => props.errorMessage ? styledVars.CAP_RED : styledVars.CAP_G11};
     }
     .ant-input-affix-wrapper .ant-input-suffix {
       right: 8px;

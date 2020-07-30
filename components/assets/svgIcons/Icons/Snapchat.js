@@ -3,8 +3,8 @@ import * as React from "react";
 function SvgSnapchat(props) {
   return (
     <svg
-      width="1em"
-      height="1em"
+      width="2em"
+      height="2em"
       viewBox="0 0 48 48"
       fill="currentColor"
       {...props}
