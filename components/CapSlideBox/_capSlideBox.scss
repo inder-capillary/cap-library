@@ -106,3 +106,9 @@ $slideBox: "cap-slide-box-v2";
 .#{$slideBox}-container.right {
   right: 0;
 }
+
+.#{$slideBox}-container.size-xl {
+  min-width: 1180px;
+  max-width: 1280px;
+  width: 1180px;
+}
