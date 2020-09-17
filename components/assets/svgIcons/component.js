@@ -149,6 +149,16 @@ const getSvgComponentFromType = (type) => {
     case 'snapchat': return SvgIcons.Snapchat;
     case 'tiktok': return SvgIcons.Tiktok;
     case 'facebook': return SvgIcons.Facebook;
+    case 'image-message-filled': return SvgIcons.ImageMessageSelected;
+    case 'image-message': return SvgIcons.ImageMessageNormal;
+    case 'text-message': return SvgIcons.TextMessageNormal;
+    case 'text-message-filled': return SvgIcons.TextMessageSelected;
+    case 'rich-message': return SvgIcons.RichMessageNormal;
+    case 'rich-message-filled': return SvgIcons.RichMessageSelected;
+    case 'smiley-message': return SvgIcons.SmileyMessageNormal;
+    case 'smiley-message-filled': return SvgIcons.SmileyMessageSelected;
+    case 'carousel-message': return SvgIcons.CarouselMessage;
+    case 'carousel-message-filled': return SvgIcons.CarouselMessageSelected;
     default: return null;
   }
 };
