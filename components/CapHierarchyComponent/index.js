@@ -61,6 +61,10 @@ class CapHierarchyComponent extends Component { // eslint-disable-line react/pre
   }
 }
 
+GetComponentFromProps.defaultProps = {
+  componentProps: {},
+};
+
 CapHierarchyComponent.propTypes = {
   className: PropTypes.string,
   structure: PropTypes.object,

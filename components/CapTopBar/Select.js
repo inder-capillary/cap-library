@@ -42,7 +42,7 @@ export class Select extends Component {
     const { items, selectedItem } = this.props;
     const { searchText } = this.state;
     return items.reduce((acc, item) => {
-      if (searchText === "" || item.label.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
+      if (searchText === "" || ((item.label || "").toLowerCase().indexOf((searchText || "").toLowerCase()) !== -1)) {
         acc.push(
           <CapHeading
             type="h6"
