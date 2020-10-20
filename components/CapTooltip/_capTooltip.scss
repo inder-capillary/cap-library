@@ -16,18 +16,14 @@ $tooltip: cap-tooltip-overlay-v2;
   }
 }
 
-.ant-tooltip-open{
-  display: inline-flex !important;
-}
-
-.ant-tooltip-open > button[disabled] {
-  pointer-events: none;
-  display: inline-table;
-  vertical-align: top !important;
-}
-
-.ant-tooltip-open > button[disabled] > span{
-  pointer-events: auto;
+.button-disabled-tooltip-wrapper {
+  display: inline-flex;
   cursor: not-allowed;
-  display: table-cell;
+  .cap-button-v2.ant-btn[disabled] {
+    pointer-events: none;
+    &>* {
+      pointer-events: auto;
+      cursor: not-allowed;
+    }
+  }
 }

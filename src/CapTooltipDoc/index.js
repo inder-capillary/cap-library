@@ -28,21 +28,20 @@ export default class CapTooltipDoc extends Component { // eslint-disable-line re
 
         <div style={{marginTop: '48px'}}>
           <CapTooltip title="button with tooltip">
-                <span>
-                  <CapButton>Button</CapButton>
-                </span>
+            <span>
+              <CapButton>Button</CapButton>
+            </span>
           </CapTooltip>
         </div>
-
 
         <div style={{marginTop: '24px'}}>
           <CapTooltip title="disabled button with tooltip">
-                <span>
-                  <CapButton disabled>Button</CapButton>
-                </span>
+            <span className="button-disabled-tooltip-wrapper">
+              <CapButton disabled>Button</CapButton>
+            </span>
           </CapTooltip>
         </div>
-        
+
         {/* <PropertyTable data={infoData} /> */}
         <div style={{ marginTop: '24px' }}>
           <b>NOTE: </b>
