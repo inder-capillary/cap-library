@@ -42,6 +42,11 @@ export default class CapTooltipDoc extends Component { // eslint-disable-line re
           </CapTooltip>
         </div>
 
+        <div style={{marginTop: '24px'}}>
+          <b>NOTE: </b>
+                While using a disabled button with tooltip, wrap the button with an element with className: &quot;button-disabled-tooltip-wrapper&quot;.
+        </div>
+
         {/* <PropertyTable data={infoData} /> */}
         <div style={{ marginTop: '24px' }}>
           <b>NOTE: </b>
