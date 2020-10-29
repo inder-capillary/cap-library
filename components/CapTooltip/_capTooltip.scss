@@ -15,3 +15,15 @@ $tooltip: cap-tooltip-overlay-v2;
     }
   }
 }
+
+.button-disabled-tooltip-wrapper {
+  display: inline-flex;
+  cursor: not-allowed;
+  .cap-button-v2.ant-btn[disabled] {
+    pointer-events: none;
+    &>* {
+      pointer-events: auto;
+      cursor: not-allowed;
+    }
+  }
+}
