@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import styled from 'styled-components';
-import { CapButton, CapIcon } from '../../components';
+import { CapButton, CapIcon, CapTooltip } from '../../components';
 import PropertyTable from '../../helpers/PropertyTable';
 import './info.scss';
 
@@ -51,6 +51,21 @@ class CapButtonDoc extends Component {
             <CapButton>Primary</CapButton>
             <MarginDiv />
             <CapButton disabled>Primary</CapButton>
+            <MarginDiv />
+            <CapTooltip title="button with tooltip">
+              <span>
+                <CapButton>Button</CapButton>
+              </span>
+            </CapTooltip>
+            <MarginDiv />
+            <CapTooltip title="disabled button with tooltip">
+              <span className="button-disabled-tooltip-wrapper">
+                <CapButton disabled>Button</CapButton>
+              </span>
+            </CapTooltip>
+            <MarginDiv />
+            <b>NOTE: </b>
+                While using a disabled button with tooltip, wrap the button with an element with className: &quot;button-disabled-tooltip-wrapper&quot;.
           </Col>
           <Col span={5} className="button-type">
             <div className="button-type-title">Secondary button</div>
