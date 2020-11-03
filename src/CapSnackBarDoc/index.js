@@ -124,20 +124,16 @@ export default class CapSnackBarDoc extends Component { // eslint-disable-line r
 
           <b>Props allowed: </b>
           <br />
-          <b>content:</b>
-          {' '}
+          <b>content: </b>
 HTML element to be displayed as message.
           <br />
-          <b>duration:</b>
-          {' '}
-duration for which message is displayed. deafults to 1.5s for messages without close Button. A long times(1000s) for messages with close button.
+          <b>duration: </b>
+duration for which message is displayed. deafults to 1.5s for messages without close Button. A long time(1000s) for messages with close button.
           <br />
-          <b>onClose:</b>
-          {' '}
+          <b>onClose: </b>
 function called on close of message.
           <br />
-          <b>showCloseIcon:</b>
-          {' '}
+          <b>showCloseIcon: </b>
 Boolean, whether to display close button.
           <br />
         </div>
