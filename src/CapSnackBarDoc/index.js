@@ -3,19 +3,40 @@
 */
 import React, { Component } from "react";
 import styled from 'styled-components';
-//import PropertyTable from '../../helpers/PropertyTable';
+import PropertyTable from '../../helpers/PropertyTable';
 import { CapSnackBar, CapButton, CapHeading } from "../../components";
 import "./info.scss";
 
-// const infoData = [
-//   {
-//     key: 1,
-//     property: "-",
-//     description: "-",
-//     type: "-",
-//     default: "-",
-//   },
-// ];
+const infoData = [
+  {
+    key: 1,
+    property: "content",
+    description: "content to be displayed in the snackbar",
+    type: "element | string",
+    default: "-",
+  },
+  {
+    key: 2,
+    property: "duration",
+    description: "duration for which message is displayed.",
+    type: "number",
+    default: "1.5s for messages without close button. 1000s for messages with close button",
+  },
+  {
+    key: 3,
+    property: "showCloseIcon",
+    description: "whether close button is to be displayed",
+    type: "boolean",
+    default: "false",
+  },
+  {
+    key: 4,
+    property: "onClose",
+    description: "function to be called on message close",
+    type: "function",
+    default: "-",
+  },
+];
 
 const Heading = styled(CapHeading)`
   padding-bottom: 8px;
@@ -112,7 +133,7 @@ export default class CapSnackBarDoc extends Component { // eslint-disable-line r
           <br />
           <br />
         </div>
-        {/* <PropertyTable data={infoData} /> */}
+        <PropertyTable data={infoData} />
         <div style={{ marginTop: '24px' }}>
           <b>API</b>
           {' '}
@@ -121,21 +142,6 @@ export default class CapSnackBarDoc extends Component { // eslint-disable-line r
           <Heading>CapSnackBar.error(config)</Heading>
           <Heading>CapSnackBar.info(config)</Heading>
           <Heading>CapSnackBar.warning(config)</Heading>
-
-          <b>Props allowed: </b>
-          <br />
-          <b>content: </b>
-HTML element to be displayed as message.
-          <br />
-          <b>duration: </b>
-duration for which message is displayed. deafults to 1.5s for messages without close Button. A long time(1000s) for messages with close button.
-          <br />
-          <b>onClose: </b>
-function called on close of message.
-          <br />
-          <b>showCloseIcon: </b>
-Boolean, whether to display close button.
-          <br />
         </div>
       </div>
     );
