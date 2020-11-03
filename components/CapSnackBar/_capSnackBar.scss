@@ -1,0 +1,18 @@
+@import "../styles/_variables.scss";
+
+ .ant-message-custom-content {
+   display: flex;
+ }
+
+ .ant-message-notice-content{
+   width: 100%;
+   background-color: $CAP_COLOR_01;
+   .ant-message-custom-content{
+    justify-content: center;
+    position: relative;
+    & .cap-icon-v2-close {
+      position: absolute;
+      right: 0px;
+   }
+   }
+ }
