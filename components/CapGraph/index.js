@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Chart, Geom, Axis, Tooltip, Legend } from 'bizcharts';
+import { Chart, Geom, Axis, Tooltip, Legend, Coord, Guide, Label } from 'bizcharts';
 const defaultStyles = {
   g2Tooltip: {
     position: 'absolute',
@@ -46,10 +46,11 @@ class CapGraph extends React.Component {
   render() {
     const { data, xAxis, yAxis,
       legend, g2Tooltip, g2TooltipList, g2TooltipListItem,
-      itemTemplate, size, scale, tooltipData, height, chartProps, yAxisProps, graphList, xAxisProps} = this.props;
+      itemTemplate, size, scale, tooltipData, height, chartProps, yAxisProps, graphList, xAxisProps, showGuide, coord, guide, title } = this.props;
     let { containerTemplate } = this.props;
+    const { Text } = Guide;
     let legendType = 'circle';
-    let legendPosition = 'bottom';
+    let legendPosition = 'bottom-center';
     const defaultHeight = 400;
     const defaultContainerTpl = () => `<div class="g2-tooltip"><div class="g2-tooltip-title" style="margin:10px 0;"></div><ul class="g2-tooltip-list"></ul></div>`;
     const defaultItemTpl = '<li data-index={index}><span style="background-color:{color};width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:8px;"></span>{value}</li>';
@@ -77,6 +78,20 @@ class CapGraph extends React.Component {
             name={xAxis}
             {...xAxisProps}
           />
+
+          {coord && <Coord {...coord} />}
+          {showGuide && (
+            <Guide>
+              {data.map((obj) => (
+                <Text
+                  top
+                  position={obj.position}
+                  content={obj.content}
+                  style={guide.style}
+                />
+              ))}
+            </Guide>
+          )}
           <Tooltip
             offset={50}
             showTitle={false}
@@ -86,16 +101,22 @@ class CapGraph extends React.Component {
             g2-tooltip-list={g2TooltipList || defaultStyles.g2TooltipList}
             g2-tooltip-list-item={g2TooltipListItem || defaultStyles.g2TooltipListItem}
           />
-          <Legend marker={legendType} position={legendPosition} />
-          {graphList.map((graph) => (
-            <Geom
-              type={graph.type}
-              position={`${xAxis}*${yAxis}`}
-              color={[graph.groupBy, graph.colors]}
-              size={size || 10}
-              tooltip={!graph.tooltipDisable && [`${xAxis}*${yAxis}`, this.updateTooltipInfo]}
-            />
-          ))}
+          <Legend marker={legendType} position={legendPosition} title={title} />
+          {graphList.map((graph) => {
+            const tooltip = graph.showTooltip ? graph.tooltip : !graph.tooltipDisable && [`${xAxis}*${yAxis}`, this.updateTooltipInfo];
+            return (
+              <Geom
+                type={graph.type}
+                position={`${xAxis}*${yAxis}`}
+                color={[graph.groupBy, graph.colors]}
+                size={size}
+                tooltip={tooltip}
+                shape={graph.shape}
+              >
+                {graph.showlabel && <Label {...graph.label} />}
+              </Geom>
+            );
+          } )}
         </Chart>
       </div>
     );
@@ -105,6 +126,7 @@ CapGraph.defaultProps = {
   graphList: [],
   xAxisProps: {},
   yAxisProps: {},
+  title: null,
 };
 CapGraph.propTypes = {
   height: PropTypes.number,
@@ -124,6 +146,10 @@ CapGraph.propTypes = {
   yAxisProps: PropTypes.object,
   xAxisProps: PropTypes.object,
   chartProps: PropTypes.object,
+  title: PropTypes.object,
+  showGuide: PropTypes.bool,
+  coord: PropTypes.object,
+  guide: PropTypes.object,
 };
 
 export default CapGraph;
