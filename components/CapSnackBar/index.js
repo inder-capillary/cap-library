@@ -9,44 +9,44 @@ import CapIcon from '../CapIcon';
 import * as styledVars from '../styled/variables';
 import './_capSnackBar.scss';
 
-const callFunction = (props, type) => {
+const CallFunction = (props, type) => {
   const { content, showCloseIcon, duration, onClose } = props;
-  const updatedContent = showCloseIcon ? addCloseIcon(content) : content;
+  const updatedContent = showCloseIcon ? AddCloseIcon(content) : content;
   const updatedDuration = showCloseIcon ? 1000 : duration || 1.5;
   message[type](updatedContent, updatedDuration, onClose);
 };
-const infoSnackBar = (props) => {
-  callFunction(props, 'info');
+const InfoSnackBar = (props) => {
+  CallFunction(props, 'info');
 };
 
-const successSnackBar = (props) => {
-  callFunction(props, 'success');
+const SuccessSnackBar = (props) => {
+  CallFunction(props, 'success');
 };
 
-const errorSnackBar = (props) => {
-  callFunction(props, 'error');
+const ErrorSnackBar = (props) => {
+  CallFunction(props, 'error');
 };
 
-const warningSnackBar = (props) => {
-  callFunction(props, 'warning');
+const WarningSnackBar = (props) => {
+  CallFunction(props, 'warning');
 };
 
-const addCloseIcon = (content) => (
+const AddCloseIcon = (content) => (
   <div>
     {content}
-    <CapIcon type="close" onClick={closeSnackBar} style={{ color: styledVars.FONT_COLOR_02 }} />
+    <CapIcon type="close" onClick={CloseSnackBar} style={{ color: styledVars.FONT_COLOR_02 }} />
   </div>
 );
 
-const closeSnackBar = () => {
+const CloseSnackBar = () => {
   message.destroy();
 };
 
 const CapSnackBar = {};
 
-CapSnackBar.info = infoSnackBar;
-CapSnackBar.success = successSnackBar;
-CapSnackBar.error = errorSnackBar;
-CapSnackBar.warning = warningSnackBar;
+CapSnackBar.info = InfoSnackBar;
+CapSnackBar.success = SuccessSnackBar;
+CapSnackBar.error = ErrorSnackBar;
+CapSnackBar.warning = WarningSnackBar;
 
 export default CapSnackBar;

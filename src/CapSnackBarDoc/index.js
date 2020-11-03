@@ -5,7 +5,6 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 import PropertyTable from '../../helpers/PropertyTable';
 import { CapSnackBar, CapButton, CapHeading } from "../../components";
-import "./info.scss";
 
 const infoData = [
   {
@@ -42,7 +41,7 @@ const Heading = styled(CapHeading)`
   padding-bottom: 8px;
 `;
 
-const infoSnackBar = () => {
+const InfoSnackBar = () => {
   CapSnackBar.info({
     content: (
       <div>
@@ -56,7 +55,7 @@ const infoSnackBar = () => {
   });
 };
 
-const successSnackBar = () => {
+const SuccessSnackBar = () => {
   CapSnackBar.success({
     content: (
       <div>
@@ -72,7 +71,7 @@ const successSnackBar = () => {
   });
 };
 
-const errorSnackBar = () => {
+const ErrorSnackBar = () => {
   CapSnackBar.error({
     content: (
       <div>
@@ -88,7 +87,7 @@ const errorSnackBar = () => {
 };
 
 
-const warningSnackBar = () => {
+const WarningSnackBar = () => {
   CapSnackBar.warning({
     content: (
       <div>
@@ -120,16 +119,16 @@ export default class CapSnackBarDoc extends Component { // eslint-disable-line r
             <a href="https://ant.design/components/message"> Message </a>
             component. Please refer their component for detailed explanation of component and supported props.
           </div>
-          <CapButton type="primary" onClick={infoSnackBar}>default snack bar</CapButton>
+          <CapButton type="primary" onClick={InfoSnackBar}>default snack bar</CapButton>
           <br />
           <br />
-          <CapButton type="primary" onClick={successSnackBar}>success snack box</CapButton>
+          <CapButton type="primary" onClick={SuccessSnackBar}>success snack box</CapButton>
           <br />
           <br />
-          <CapButton type="primary" onClick={errorSnackBar}>error snack box</CapButton>
+          <CapButton type="primary" onClick={ErrorSnackBar}>error snack box</CapButton>
           <br />
           <br />
-          <CapButton type="primary" onClick={warningSnackBar}>warning snack box</CapButton>
+          <CapButton type="primary" onClick={WarningSnackBar}>warning snack box</CapButton>
           <br />
           <br />
         </div>
