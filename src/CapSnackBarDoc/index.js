@@ -4,7 +4,7 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
 //import PropertyTable from '../../helpers/PropertyTable';
-import { CapSnackBar, CapButton, CapHeading, CapLabel } from "../../components";
+import { CapSnackBar, CapButton, CapHeading } from "../../components";
 import "./info.scss";
 
 // const infoData = [
@@ -24,10 +24,10 @@ const Heading = styled(CapHeading)`
 const infoSnackBar = () => {
   CapSnackBar.info({
     content: (
-      <CapLabel type="label7">
+      <div>
         Task
         <b> info.</b>
-      </CapLabel>
+      </div>
     ),
     onClose: () => {
       console.log("snack bar closed");
@@ -38,10 +38,10 @@ const infoSnackBar = () => {
 const successSnackBar = () => {
   CapSnackBar.success({
     content: (
-      <CapLabel type="label7">
+      <div>
         Task
         <b> success.</b>
-      </CapLabel>
+      </div>
     ),
     onClose: () => {
       console.log("snack bar closed");
@@ -54,10 +54,10 @@ const successSnackBar = () => {
 const errorSnackBar = () => {
   CapSnackBar.error({
     content: (
-      <CapLabel type="label7">
+      <div>
         Task
         <b> error.</b>
-      </CapLabel>
+      </div>
     ),
     onClose: () => {
       console.log("snack bar closed");
@@ -70,10 +70,10 @@ const errorSnackBar = () => {
 const warningSnackBar = () => {
   CapSnackBar.warning({
     content: (
-      <CapLabel type="label7">
+      <div>
         Task
         <b> warning.</b>
-      </CapLabel>
+      </div>
     ),
     onClose: () => {
       console.log("snack bar closed");
