@@ -670,6 +670,18 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="tiktok" />
               <Text>tiktok</Text>
             </List>
+            <List>
+              <CapIcon type="rich-video-message" />
+              <Text>RichVideo</Text>
+            </List>
+            <List>
+              <CapIcon type="rich-video-message-filled" />
+              <Text>RichVideoFilled</Text>
+            </List>
+            <List>
+              <CapIcon type="reply" />
+              <Text>Reply</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}

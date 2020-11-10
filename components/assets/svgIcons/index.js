@@ -155,3 +155,6 @@ export { default as SmileyMessageNormal } from './Icons/SmileyMessageNormal';
 export { default as SmileyMessageSelected } from './Icons/SmileyMessageSelected';
 export { default as CarouselMessage } from './Icons/CarouselNormal';
 export { default as CarouselMessageSelected } from './Icons/CarouselSelected';
+export { default as RichVideo } from './Icons/RichVideoNormal';
+export { default as RichVideoSelected } from './Icons/RichVideoSelected';
+export { default as Reply } from './Icons/Reply';

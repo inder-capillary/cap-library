@@ -159,6 +159,9 @@ const getSvgComponentFromType = (type) => {
     case 'smiley-message-filled': return SvgIcons.SmileyMessageSelected;
     case 'carousel-message': return SvgIcons.CarouselMessage;
     case 'carousel-message-filled': return SvgIcons.CarouselMessageSelected;
+    case 'rich-video-message': return SvgIcons.RichVideo;
+    case 'rich-video-message-filled': return SvgIcons.RichVideoSelected;
+    case 'reply': return SvgIcons.Reply;
     default: return null;
   }
 };
