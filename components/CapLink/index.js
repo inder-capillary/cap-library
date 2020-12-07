@@ -19,7 +19,10 @@ const AntAnchor = styled(Anchor)`
 class CapLink extends React.Component { // eslint-disable-line react/prefer-stateless-function
   handleClick=(e, link) => {
     e.preventDefault();
-    this.props.onClick(e, link);
+
+    if (this.props.onClick) {
+      this.props.onClick(e, link);
+    }
   }
 
   render() {
@@ -29,7 +32,7 @@ class CapLink extends React.Component { // eslint-disable-line react/prefer-stat
         affix={false}
         style={style}
         className={classNames(`${classPrefix}`, className, {disabled})}
-        onClick={onClick ? this.handleClick : undefined}
+        onClick={this.handleClick}
         fontWeight={fontWeight}>
         <Link {...rest}>
           {prefix && <span className={classNames(`${classPrefix}-prefix`)}>{prefix}</span>}
