@@ -65,6 +65,7 @@ import CapShapeDoc from '../src/CapShapeDoc';
 import CapImageDoc from '../src/CapImageDoc';
 import CapCardBoxDoc from '../src/CapCardBoxDoc';
 import CapSnackBarDoc from '../src/CapSnackBarDoc';
+import CapTreeSelectDoc from '../src/CapTreeSelectDoc';
 //imported for docs
 
 
@@ -98,6 +99,8 @@ class ComponentSwitcher extends Component {
         return <CapTableDoc />;
       case 'capSelect':
         return <CapSelectDoc />;
+      case 'capTreeSelect':
+        return <CapTreeSelectDoc />;
       case 'capDatePicker':
         return <CapDatePickerDoc />;
       case 'capDateRangePicker':
