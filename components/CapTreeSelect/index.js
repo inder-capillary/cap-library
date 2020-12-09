@@ -8,7 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { TreeSelect } from 'antd';
-import ComponentWithLabelHOC from '../assets/HOCs/ComponentWithLabelHOC';
 
 const clsPrefix = 'cap-tree-select-v2';
 
@@ -27,5 +26,4 @@ CapTreeSelect.propTypes = {
   treeData: PropTypes.array.isRequired,
 };
 
-const CapTreeSelectFinal = ComponentWithLabelHOC(CapTreeSelect);
-export default CapTreeSelectFinal;
+export default CapTreeSelect;
