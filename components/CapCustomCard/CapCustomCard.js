@@ -28,6 +28,7 @@ const channels = {
   wechat: 'WECHAT',
   facebook: 'FACEBOOK',
   line: 'LINE',
+  viber: 'VIBER',
 };
 
 const getMpushContent = (templateData) => {
@@ -144,7 +145,7 @@ const getFacebookPreview = (FBDynamicComponent = () => <Fragment />) => (
 );
 
 const getCardContent = (props) => {
-  const { content, url, width, height, FBDynamicComponent } = props;
+  const { content, url, width, height, FBDynamicComponent, buttonText } = props;
   const type = (props.type || "").toUpperCase();
   switch (type) {
     case channels.sms:
@@ -153,6 +154,15 @@ const getCardContent = (props) => {
     case channels.email:
     case channels.line:
       return <Meta description={url ? <img width={width || 244} height={height || 279} src={url} alt={url} /> : content || <CapSkeleton loading />} />;
+    case channels.viber:
+      return <>
+        <Meta
+          className={ClassNames("truncate-text", { "truncate-text-with-image": url, "truncate-text-with-button": buttonText })}
+          description={content || <CapSkeleton loading />}
+        />
+        {url && <Meta style={{paddingTop: '14px'}} description={<img width={width || 215} height={height || 103} src={url} alt={url} />} />}
+        {buttonText && <Meta style={{paddingTop: '14px'}} className={ClassNames({'button-content': buttonText})} description={<div>{buttonText}</div>} />}
+        </>;
     case channels.mpush: {
       const contentPreview = getMpushContent(content);
       const previewMpush = [
@@ -205,6 +215,7 @@ CapCustomCard.propTypes = {
   cardList: PropTypes.array,
   type: PropTypes.string,
   FBDynamicComponent: PropTypes.func,
+  buttonText: PropTypes.string,
 };
 
 CapCustomCard.getRichMediaPreview = getRichMediaPreview;

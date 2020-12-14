@@ -162,6 +162,7 @@ const getSvgComponentFromType = (type) => {
     case 'rich-video-message': return SvgIcons.RichVideo;
     case 'rich-video-message-filled': return SvgIcons.RichVideoSelected;
     case 'reply': return SvgIcons.Reply;
+    case 'button': return SvgIcons.Button;
     default: return null;
   }
 };
