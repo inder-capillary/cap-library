@@ -157,7 +157,7 @@ const getCardContent = (props) => {
     case channels.viber:
       return <>
         <Meta
-          className={ClassNames("truncate-text", { "truncate-text-with-image": url, "truncate-text-with-button": buttonText })}
+          className={ClassNames("truncate-text-viber", { "truncate-text-with-image": url, "truncate-text-with-button": buttonText })}
           description={content || <CapSkeleton loading />}
         />
         {url && <Meta style={{paddingTop: '14px'}} description={<img width={width || 215} height={height || 103} src={url} alt={url} />} />}
