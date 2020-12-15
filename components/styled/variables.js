@@ -27,6 +27,7 @@ export const CAP_PALE_GREY = "#e9f0fe";
 export const CAP_BLUE01 = "#2466eb";
 export const CAP_RED01 = "#e51fa3";
 export const CAP_RED02 = "#f5222d";
+export const CAP_PURPLE01 = "#6563ff";
 
 // Grey colors
 export const CAP_G01 = "#091e42";
@@ -43,6 +44,8 @@ export const CAP_G11 = "#7a869a";
 export const CAP_G12 = "#e8e8e8";
 export const CAP_G13 = "#ecece7";
 export const CAP_G14 = "#e9f0fd";
+export const CAP_G15 = "#efefef";
+export const CAP_G16 = "#2a2a2a";
 
 export const CAP_WHITE = "#ffffff";
 
