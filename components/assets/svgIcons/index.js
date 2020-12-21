@@ -159,3 +159,4 @@ export { default as RichVideo } from './Icons/RichVideoNormal';
 export { default as RichVideoSelected } from './Icons/RichVideoSelected';
 export { default as Reply } from './Icons/Reply';
 export { default as Button } from './Icons/Button';
+export { default as Viber } from './Icons/Viber';
