@@ -1,0 +1,12 @@
+@import '../styles/_variables.scss';
+
+.cap-content-wrapper {
+    position: absolute;
+    padding: 0;
+    background-color: $CAP_WHITE;
+    width: 100%;
+    top: 64px;
+    height: calc(100vh - 64px);
+    overflow: auto;
+    display: none;
+}

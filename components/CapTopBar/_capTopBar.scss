@@ -83,11 +83,21 @@ $orgSelectPrefix: top-bar-select;
   align-items: center;
 }
 
-.#{$orgSelectPrefix}-selected-value-label {
+.#{$orgSelectPrefix}-overflow-ellipsis {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.#{$orgSelectPrefix}-selected-value-label {
   max-width: 150px;
+}
+
+.#{$orgSelectPrefix}-selected-ou-value-label {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 150px;
 }
 
 .ant-menu.ant-menu-horizontal.#{$clsPrefix}-menu {
@@ -149,8 +159,7 @@ $orgSelectPrefix: top-bar-select;
   font-weight: $FONT_WEIGHT_MEDIUM;
 }
 
-.#{$orgSelectPrefix}-select-item {
-  padding: $CAP_SPACE_08 $CAP_SPACE_08 $CAP_SPACE_08 $CAP_SPACE_24;
+.#{$orgSelectPrefix}-select-item, .#{$orgSelectPrefix}-select-ou-org-item,  .#{$orgSelectPrefix}-select-ou-item {
   cursor: pointer;
   &:hover {
     background-color: $BG_01;
@@ -170,6 +179,21 @@ $orgSelectPrefix: top-bar-select;
       background-color: map-get($CAP_SECONDARY, base);
     }
   }
+}
+
+.#{$orgSelectPrefix}-select-item {
+  padding: $CAP_SPACE_08 $CAP_SPACE_08 $CAP_SPACE_08 $CAP_SPACE_24;
+}
+
+.#{$orgSelectPrefix}-select-ou-org-item {
+  padding: $CAP_SPACE_08 $CAP_SPACE_08 $CAP_SPACE_08 $CAP_SPACE_08;
+}
+
+.#{$orgSelectPrefix}-select-ou-item {
+  padding: $CAP_SPACE_08 $CAP_SPACE_16 $CAP_SPACE_08 $CAP_SPACE_40;
+  display: flex; 
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .#{$orgSelectPrefix}-no-results {

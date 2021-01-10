@@ -1,0 +1,223 @@
+/**
+*
+* CapNavigation
+*
+*/
+
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+//import { Auth } from '@capillarytech/cap-ui-utils';
+import CapTopBar from '../CapTopBar';
+import CapHeading from '../CapHeading';
+import CapSideBar from "../CapSideBar";
+import LocaleHoc from '../LocaleHoc';
+import { CAP_SPACE_24 } from '../styled/variables';
+import './_capNavigation.scss';
+
+const DEFAULT_MODULE = 'campaign';
+const PRODUCT_MASTERS = 'masters';
+// const CAMP_REPORT_VIEW = 'CAMP_REPORT_VIEW';
+
+const CapNavigation = (props) => {
+  const {
+    className,
+    userData = {},
+    topbarMenuData,
+    dropdownMenuProps,
+    topbarIcons,
+    sidebarMenuData = [],
+    sidebarMenuItemsPosition,
+    loadStorageItem,
+    showContent,
+    selectProduct,
+    selectOrganization,
+    organization,
+    noResultText,
+    settingsLabel,
+    defaultSelectedProduct,
+  } = props;
+
+  const handleProductChange = (product) => {
+    updateSelectedProduct(product.value);
+    if (product.url !== window.location.pathname) {
+      window.location.pathname = product.url;
+    }
+  };
+
+  const handleOrgEntityChange = (orgID, entityItem, ouId) => {
+    props.changeOrgEntity(orgID, ouId);
+    updateSelectedOrg(orgID);
+    updateSelectedOu(ouId);
+  };
+
+  const handleTopbarMenuChange = (option) => {
+    if (option && option.onClickHandler) {
+      option.onClickHandler(option);
+    } else {
+      window.location.pathname = option.link;
+    }
+  };
+
+  const handleSideBarLinkClick = (item) => {
+    const { sidebarMenuItemClick } = props;
+    updateSelectedSidebarMenuItem(item.key);
+    if (sidebarMenuItemClick) {
+      sidebarMenuItemClick(item);
+    }
+  };
+
+  const getDefaultSidebarMenuItem = () => {
+    const { pathname } = window.location;
+    let selectedMenuItem = '';
+    sidebarMenuData.forEach((obj) => {
+      if (obj.link === pathname) {
+        selectedMenuItem = obj.key;
+      }
+    });
+    return selectedMenuItem;
+  };
+
+  const getProxyOrgList = () => {
+    const proxyOrgList = [];
+    if (userData && userData.user && userData.user !== '') {
+      const { proxyOrgList: orgList = [] } = userData.user;
+      if (orgList && orgList.length) {
+        orgList.forEach((item) => {
+          const id = item.orgID;
+          const name = item.orgName;
+          const orgObj = { label: name, value: id, key: id };
+          if (item.ouList) {
+            orgObj.accessibleOus = getOuList(item);
+          }
+          proxyOrgList.push(orgObj);
+        });
+      }
+    }
+    return proxyOrgList;
+  };
+
+  const getOuList = (orgItem) => {
+    const { ouList = [] } = orgItem;
+    const accessibleOus = [];
+    if (ouList.length) {
+      ouList.forEach((item) => {
+        accessibleOus.push({ label: item.ouName, value: item.ouID, key: item.ouID });
+      });
+    }
+    return accessibleOus;
+  };
+
+  const getProductList = () => {
+    const { currentOrgDetails = {}} = userData;
+    const { module_details: moduleDetails } = currentOrgDetails;
+    const productsList = [];
+    if (Object.keys(currentOrgDetails).length !== 0) {
+      moduleDetails.forEach((module) => {
+        if (module.name.toLowerCase() !== PRODUCT_MASTERS) {
+          const productName = module.namespace;
+          const intlProductName = props[productName];
+          const moduleName = intlProductName || module.name.toLowerCase();
+          productsList.push({
+            value: moduleName,
+            url: module.url,
+            key: module.code,
+          });
+        }
+      });
+      // below change is temporary and should be fixed once we get correct modules list
+      // adding insights+ to module list
+      // if (Auth.hasAccess(CAMP_REPORT_VIEW)) {
+      productsList.push({
+        value: props.insights,
+        url: 'analytics/v2/',
+        key: 'analytics/v2/',
+      });
+      // }
+    }
+    return productsList;
+  };
+
+  const proxyOrgList = getProxyOrgList();
+  const productsList = getProductList();
+  const [selectedProduct, updateSelectedProduct] = useState(props[defaultSelectedProduct] || '');
+  const [selectedOrg, updateSelectedOrg] = useState(loadStorageItem('orgID'));
+  const [selectedOu, updateSelectedOu] = useState(loadStorageItem('ouId'));
+  const [selectedSidebarMenuItem, updateSelectedSidebarMenuItem] = useState(getDefaultSidebarMenuItem());
+  const showSidebar = sidebarMenuData.length > 0 && sidebarMenuItemsPosition === 'left';
+  return (
+    <div className={className}>
+      <CapTopBar
+        drawerListProps={{
+          productsList,
+          selectedProduct,
+          handleProductChange,
+          title: (
+            <CapHeading type="h5" style={{ margin: `${CAP_SPACE_24} 0` }}>
+              {selectProduct}
+            </CapHeading>
+          ),
+          closable: false,
+          placement: 'left',
+          width: 320,
+        }}
+        selectProps={{
+          items: proxyOrgList,
+          selectedItem: selectedOrg,
+          selectedOuItem: selectedOu,
+          handleItemChange: handleOrgEntityChange,
+          selectPlaceholder: selectOrganization,
+          showSearch: true,
+          showHeader: true,
+          title: selectOrganization,
+          placeholder: organization,
+          noResultText,
+        }}
+        menuProps={{
+          items: topbarMenuData,
+          defaultSelectedKeys: [DEFAULT_MODULE],
+          onMenuItemClick: handleTopbarMenuChange,
+        }}
+        dropdownMenuProps={dropdownMenuProps}
+        topbarIcons={topbarIcons}
+      />
+      {showContent && (
+        <div className="cap-content-wrapper" style={{ display: showSidebar ? 'flex' : 'block' }}>
+          {showSidebar ? (
+            <CapSideBar
+              sidebarItems={sidebarMenuData}
+              onLinkClick={handleSideBarLinkClick}
+              selectedMenuItem={selectedSidebarMenuItem}
+              defaultActiveKey=""
+              pageHeading={settingsLabel}
+            />
+          ) : null}
+          {React.Children.toArray(props.children)}
+        </div>
+      )}
+    </div>
+  );
+};
+
+CapNavigation.propTypes = {
+  className: PropTypes.string,
+  showContent: PropTypes.bool,
+  userData: PropTypes.object,
+  loadStorageItem: PropTypes.func,
+  changeOrgEntity: PropTypes.func,
+  topbarMenuData: PropTypes.array,
+  dropdownMenuProps: PropTypes.array,
+  topbarIcons: PropTypes.array,
+  sidebarMenuData: PropTypes.array,
+  sidebarMenuItemsPosition: PropTypes.string,
+  sidebarMenuItemClick: PropTypes.func,
+  children: PropTypes.node,
+  selectProduct: PropTypes.string,
+  defaultSelectedProduct: PropTypes.string,
+  selectOrganization: PropTypes.string,
+  organization: PropTypes.string,
+  noResultText: PropTypes.string,
+  settingsLabel: PropTypes.string,
+  insights: PropTypes.string,
+};
+
+export default LocaleHoc(CapNavigation, { key: 'CapNavigation' });

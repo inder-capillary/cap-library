@@ -53,11 +53,29 @@ const infoData = [
 ];
 
 const orgsList = [
-  { label: 'Purples', value: 'purples', key: 'purples' },
-  { label: 'Buckle', value: 'buckle', key: 'buckle' },
-  { label: 'Ski', value: 'ski', key: 'ski' },
-  { label: 'Splash', value: 'splash', key: 'splash' },
-  { label: 'Metro', value: 'metro', key: 'metro' },
+  { label: 'Purples',
+    value: 123,
+    key: 123,
+    accessibleOus: [
+      {label: "ExpressWay", value: 50007995, key: 50007995},
+      {label: "Franchisee", value: 50007996, key: 50007996},
+      {label: "supermarket", value: 50007994, key: 50007994},
+      {label: "All", value: -1, key: -1},
+    ],
+  },
+  { label: 'Buckle',
+    value: 124,
+    key: 124,
+    accessibleOus: [
+      {label: "dadq", value: 42342, key: 42342},
+      {label: "daesfas", value: 43241, key: 43241},
+      {label: "fasfa", value: 232324, key: 232324},
+      {label: "All", value: -1, key: -1},
+    ],
+  },
+  { label: 'Ski', value: 125, key: 125 },
+  { label: 'Splash', value: 126, key: 126 },
+  { label: 'Metro', value: 127, key: 127 },
 ];
 
 const productsList = [
@@ -93,13 +111,14 @@ export default class NavigationBarDoc extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedOrg: "buckle",
+      selectedOrg: 123,
       selectedProduct: "Campaign manager",
+      selectedOu: '',
     };
   }
 
-  handleOrgChange = (value) => {
-    this.setState({ selectedOrg: value });
+  handleOrgChange = (itemValue, item, ouValue) => {
+    this.setState({ selectedOrg: itemValue, selectedOu: ouValue });
   }
 
   handleProductChange = (product) => {
@@ -107,7 +126,7 @@ export default class NavigationBarDoc extends Component {
   }
 
   render() {
-    const { selectedOrg, selectedProduct } = this.state;
+    const { selectedOrg, selectedProduct, selectedOu } = this.state;
     return (
       <div className="navigation-bar-info">
         <div className="navigation-bar-showcase">
@@ -128,6 +147,7 @@ export default class NavigationBarDoc extends Component {
             selectProps={{
               items: orgsList,
               selectedItem: selectedOrg,
+              selectedOuItem: selectedOu,
               handleItemChange: this.handleOrgChange,
               showSearch: true,
               showHeader: true,
@@ -144,6 +164,7 @@ export default class NavigationBarDoc extends Component {
             selectProps={{
               items: orgsList,
               selectedItem: selectedOrg,
+              selectedOuItem: selectedOu,
               handleItemChange: this.handleOrgChange,
               showSearch: true,
               showHeader: true,
@@ -166,6 +187,7 @@ export default class NavigationBarDoc extends Component {
               fixedOrg: true,
               items: orgsList,
               selectedItem: selectedOrg,
+              selectedOuItem: selectedOu,
               handleItemChange: this.handleOrgChange,
               showSearch: true,
               showHeader: true,

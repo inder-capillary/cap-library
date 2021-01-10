@@ -36,4 +36,19 @@ export default {
   CapIllustration: {
     accessForbiddenMsg: 'Action cannot be performed due to insufficient permission',
   },
+  CapNavigation: {
+    businessProcesses: 'Workbench',
+    wecrm: 'Wecrm',
+    loyaltyProgram: 'Loyalty+',
+    storePerformance: 'Store Performance',
+    memberCare: 'Member Care',
+    storeCare: 'Store Care',
+    insights: 'Insights+',
+    settingsLabel: 'Settings',
+    campaign: 'Engage+',
+    selectOrganization: 'Select Organization',
+    organization: 'Organization',
+    noResultText: 'No results found',
+    selectProduct: 'Select Product',
+  },
 };
