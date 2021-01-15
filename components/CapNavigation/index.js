@@ -50,8 +50,8 @@ const CapNavigation = (props) => {
 
   const handleOrgEntityChange = (orgID, entityItem, ouId) => {
     props.changeOrgEntity(orgID, ouId);
-    updateSelectedOrg(orgID);
-    updateSelectedOu(ouId);
+    // updateSelectedOrg(orgID);
+    // updateSelectedOu(ouId);
   };
 
   const handleTopbarMenuChange = (option) => {
@@ -162,8 +162,8 @@ const CapNavigation = (props) => {
   const proxyOrgList = getProxyOrgList();
   const productsList = getProductList();
   const [selectedProduct, updateSelectedProduct] = useState(props[defaultSelectedProduct] || '');
-  const [selectedOrg, updateSelectedOrg] = useState(loadStorageItem('orgID'));
-  const [selectedOu, updateSelectedOu] = useState(loadStorageItem('ouId'));
+  const [selectedOrg] = useState(loadStorageItem('orgID'));
+  const [selectedOu] = useState(loadStorageItem('ouId'));
   const [selectedSidebarMenuItem, updateSelectedSidebarMenuItem] = useState(getDefaultSidebarMenuItem());
   const showSidebar = sidebarMenuData.length > 0 && sidebarMenuItemsPosition === 'left';
   return (
