@@ -147,7 +147,7 @@ export class Select extends Component {
     const selectedItemIndex = findIndex(items, (item) => item.value === selectedItem);
     const itemDetails = items[selectedItemIndex] || {};
     let selectedOuItemIndex = -1;
-    if (selectedOuItem) {
+    if (selectedOuItem && selectedOuItem !== -1) {
       selectedOuItemIndex = findIndex(itemDetails.accessibleOus, (ou) => ou.value === selectedOuItem);
     }
     const showSelectedIcon = selectedItemIndex !== -1;

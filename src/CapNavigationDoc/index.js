@@ -77,6 +77,27 @@ const infoData = [
     type: "Function",
     default: "-",
   },
+  {
+    key: 11,
+    property: "topbarSelectedMenuData",
+    description: "Topbar default selected menu Item (selected tab)",
+    type: "Array",
+    default: "",
+  },
+  {
+    key: 12,
+    property: "showSecondaryTopBar",
+    description: "To render secondary navigation bar",
+    type: "boolean",
+    default: "false",
+  },
+  {
+    key: 13,
+    property: "secondaryTopBarActionHandler",
+    description: "function to handle secondary Nav Actions",
+    type: "Function",
+    default: "-",
+  },
 ];
 
 const dropdownMenuProps = [
@@ -98,7 +119,7 @@ const menuItems = [
 
 const globalData = {
   currentOrgDetails: {
-    module_details: [{code: "businessProcesses", display_order: 10, id: 26, name: "WORKBENCH", namespace: "businessProcesses", url: "/businessProcesses/index", version: "1.0.0.1"}],
+    module_details: [{id: 26, name: "WORKBENCH", code: "businessProcesses", version: "1.0.0.1", namespace: "businessProcesses", display_order: 10, url: "/businessProcesses/index"}, {id: 44, name: "ENGAGE+", code: "campaigns/ui/list", version: "1.0.0.1", namespace: "campaign", display_order: 9, url: "/campaigns/ui/list"}, {id: 41, name: "LOYALTY+", code: "loyaltyProgram", version: "1.0.0.1", namespace: "loyaltyProgram", display_order: 6, url: "/loyaltyProgram/index"}, {id: 39, name: "MEMBER CARE", code: "memberCare", version: "1.0.0.1", namespace: "memberCare", display_order: 5, url: "/memberCare/index"}, {id: 27, name: "MASTERS", code: "org", version: "1.0.0.1", namespace: "org", display_order: 0, url: "/org/index"}],
   },
   user: {
     proxyOrgList: [{orgID: 50221, orgName: "REON_BIUI", ouList: [{ouID: 50011536, ouName: "supermarket"}, {ouID: 50011537, ouName: "Brand"}]}, {orgID: 50401, orgName: "REON_BIUI_Automation"}, {orgID: 50146, orgName: "REON_DATA", ouList: [{ouID: 50007994, ouName: "supermarket"}, {ouID: 50007995, ouName: "ExpressWay"}, {ouID: 50007996, ouName: "Franchisee"}]}],
@@ -123,6 +144,7 @@ export default class CapNavigationDoc extends Component { // eslint-disable-line
             loadStorageItem={this.loadStorageItem}
             changeOrgEntity={this.changeOrgEntity}
             showContent={false}
+            topbarSelectedMenuData={["campaigns"]}
           />
         </div>
         <PropertyTable data={infoData} />
