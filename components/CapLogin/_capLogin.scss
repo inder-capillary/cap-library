@@ -1,0 +1,46 @@
+.cap-login {
+
+  &-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: flex-end;
+    align-items: center;
+    background-image: url(../../components/assets/images/login_page_image.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  &-card {
+    width: 25rem;
+    padding: 4rem 2rem;
+    border-radius: .5rem;
+    margin-right: 4rem;
+  }
+
+  &-logo {
+    width: 3rem;
+    height: auto;
+  }
+
+  &-heading {
+    padding: 1.25rem 0;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+  }
+
+  &-input {
+    margin-bottom: 1rem;
+  }
+
+  &-button {
+    width: 50%;
+    margin-top: 1.25rem;
+  }
+}
+.centeringDiv {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

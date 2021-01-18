@@ -79,4 +79,5 @@ export { default as CapCardBox } from './CapCardBox';
 export { default as CapSnackBar } from './CapSnackBar';
 export { default as CapCSVFileUploader} from './CapCSVFileUploader';
 export { default as CapNavigation } from './CapNavigation';
+export { default as CapLogin } from './CapLogin';
 //export components
