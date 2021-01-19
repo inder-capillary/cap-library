@@ -121,6 +121,8 @@ function CapHeader(props) {
 CapHeader.defaultProps = {
   inline: false,
   size: 'large',
+  titleClass: '',
+  descriptionClass: '',
 };
 
 CapHeader.propTypes = {

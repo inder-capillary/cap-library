@@ -7,14 +7,7 @@ import { LogoBackground } from "../assets/icons";
 const clsPrefix = "cap-icon-v2";
 
 function CapIconAvatar(props) {
-  const {
-    className,
-    text,
-    width,
-    height,
-    backgroundProps = {},
-    labelProps = {},
-  } = props;
+  const { className, text, width, height, backgroundProps, labelProps } = props;
   const customClassName = `${clsPrefix}-avatar`;
 
   return (
@@ -26,6 +19,11 @@ function CapIconAvatar(props) {
     </div>
   );
 }
+
+CapIconAvatar.defaultProps = {
+  backgroundProps: {},
+  labelProps: {},
+};
 
 CapIconAvatar.propTypes = {
   className: PropTypes.string,
