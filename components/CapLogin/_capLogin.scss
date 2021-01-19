@@ -34,13 +34,14 @@
     margin-bottom: 1rem;
   }
 
+  &-centeringDiv {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
   &-button {
     width: 50%;
     margin-top: 1.25rem;
   }
-}
-.centeringDiv {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 }

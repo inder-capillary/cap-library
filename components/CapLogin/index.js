@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import CapCard from '../CapCard';
 import CapImage from '../CapImage';
@@ -16,23 +16,27 @@ function CapLogin(props) {
   const [loginProgess, updateLoginProgress] = useState(false);
 
   const {
-    signInLabel = 'Sign In!',
-    userNameLabel = 'Username',
-    passwordLabel = 'Password',
+    signInLabel,
+    userNameLabel,
+    passwordLabel,
     apiEndPoint = '',
     onSuccess,
     onFailure,
   } = props;
 
-  const handleNameChange = (event) => {
+  const handleNameChange = useCallback((event) => {
     setUserName(event.target.value);
-  };
+  }, []);
 
-  const handlePasswordChange = (event) => {
+  const handlePasswordChange = useCallback((event) => {
     setPassword(event.target.value);
-  };
+  }, []);
 
-  const authorize = () => {
+  const handleLoginProgess = useCallback(() => {
+    updateLoginProgress((state) => !state);
+  }, []);
+
+  const authorize = useCallback(() => {
     const body = {
       username: userName,
       password,
@@ -45,14 +49,10 @@ function CapLogin(props) {
       }),
     };
     requestObj.body = JSON.stringify(body);
-    return request(`${apiEndPoint}/auth/login`, requestObj);
-  };
+    return request(`${apiEndPoint}`, requestObj);
+  }, [apiEndPoint, password, userName]);
 
-  const handleLoginProgess = () => {
-    updateLoginProgress((state) => !state);
-  };
-
-  const handleLogin = () => {
+  const handleLogin = useCallback(() => {
     if (apiEndPoint) {
       handleLoginProgess();
       authorize()
@@ -69,7 +69,7 @@ function CapLogin(props) {
           if (onFailure) onFailure(err);
         });
     }
-  };
+  }, [apiEndPoint, onFailure, onSuccess, authorize, handleLoginProgess]);
 
   return (
     <CapSpin spinning={loginProgess}>
@@ -99,7 +99,7 @@ function CapLogin(props) {
             onChange={handlePasswordChange}
             isRequired
           />
-          <div className="centeringDiv">
+          <div className="cap-login-centeringDiv">
             <CapButton className="cap-login-button" onClick={handleLogin}>{signInLabel}</CapButton>
           </div>
         </CapCard>
