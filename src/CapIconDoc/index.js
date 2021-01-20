@@ -683,6 +683,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <Text>Reply</Text>
             </List>
             <List>
+              <CapIcon type="sitemap" />
+              <Text>Sitemap</Text>
+            </List>
+            <List>
               <CapIcon type="button" />
               <Text>Button</Text>
             </List>

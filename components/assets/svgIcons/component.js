@@ -162,6 +162,7 @@ const getSvgComponentFromType = (type) => {
     case 'rich-video-message': return SvgIcons.RichVideo;
     case 'rich-video-message-filled': return SvgIcons.RichVideoSelected;
     case 'reply': return SvgIcons.Reply;
+    case 'sitemap': return SvgIcons.Sitemap;
     case 'button': return SvgIcons.Button;
     case 'viber': return SvgIcons.Viber;
 

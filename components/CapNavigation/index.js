@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import CapTopBar from '../CapTopBar';
 import CapHeading from '../CapHeading';
 import CapSideBar from "../CapSideBar";
+import CapSecondaryTopBar from "../CapSecondaryTopBar";
 import LocaleHoc from '../LocaleHoc';
 import { CAP_SPACE_24 } from '../styled/variables';
 import './_capNavigation.scss';
@@ -23,6 +24,7 @@ const CapNavigation = (props) => {
     className,
     userData = {},
     topbarMenuData,
+    topbarSelectedMenuData,
     dropdownMenuProps,
     topbarIcons,
     sidebarMenuData = [],
@@ -35,6 +37,8 @@ const CapNavigation = (props) => {
     noResultText,
     settingsLabel,
     defaultSelectedProduct,
+    showSecondaryTopBar = false,
+    secondaryTopBarActionHandler,
   } = props;
 
   const handleProductChange = (product) => {
@@ -46,8 +50,8 @@ const CapNavigation = (props) => {
 
   const handleOrgEntityChange = (orgID, entityItem, ouId) => {
     props.changeOrgEntity(orgID, ouId);
-    updateSelectedOrg(orgID);
-    updateSelectedOu(ouId);
+    // updateSelectedOrg(orgID);
+    // updateSelectedOu(ouId);
   };
 
   const handleTopbarMenuChange = (option) => {
@@ -137,49 +141,71 @@ const CapNavigation = (props) => {
     return productsList;
   };
 
+  const renderSecondaryTopbar = (proxyOrgList) => {
+    const selectedOrg = loadStorageItem('orgID');
+    const selectedOrgObj = proxyOrgList.find((o) => o.value === selectedOrg);
+    const CapSecondaryTopBarProps = {
+      primaryMenuItem: {
+        key: 'primaryMenu',
+        label: selectedProduct,
+      },
+      secondaryMenuItem: {
+        key: 'secondaryMenu',
+        label: (selectedOrgObj || {}).label || '',
+      },
+      menuActions: [{ key: 'close-icon', iconType: 'close' }],
+      menuActionHandler: secondaryTopBarActionHandler,
+    };
+    return <CapSecondaryTopBar {...CapSecondaryTopBarProps} />;
+  };
+
   const proxyOrgList = getProxyOrgList();
   const productsList = getProductList();
   const [selectedProduct, updateSelectedProduct] = useState(props[defaultSelectedProduct] || '');
-  const [selectedOrg, updateSelectedOrg] = useState(loadStorageItem('orgID'));
-  const [selectedOu, updateSelectedOu] = useState(loadStorageItem('ouId'));
+  const [selectedOrg] = useState(loadStorageItem('orgID'));
+  const [selectedOu] = useState(loadStorageItem('ouId'));
   const [selectedSidebarMenuItem, updateSelectedSidebarMenuItem] = useState(getDefaultSidebarMenuItem());
   const showSidebar = sidebarMenuData.length > 0 && sidebarMenuItemsPosition === 'left';
   return (
     <div className={className}>
-      <CapTopBar
-        drawerListProps={{
-          productsList,
-          selectedProduct,
-          handleProductChange,
-          title: (
-            <CapHeading type="h5" style={{ margin: `${CAP_SPACE_24} 0` }}>
-              {selectProduct}
-            </CapHeading>
-          ),
-          closable: false,
-          placement: 'left',
-          width: 320,
-        }}
-        selectProps={{
-          items: proxyOrgList,
-          selectedItem: selectedOrg,
-          selectedOuItem: selectedOu,
-          handleItemChange: handleOrgEntityChange,
-          selectPlaceholder: selectOrganization,
-          showSearch: true,
-          showHeader: true,
-          title: selectOrganization,
-          placeholder: organization,
-          noResultText,
-        }}
-        menuProps={{
-          items: topbarMenuData,
-          defaultSelectedKeys: [DEFAULT_MODULE],
-          onMenuItemClick: handleTopbarMenuChange,
-        }}
-        dropdownMenuProps={dropdownMenuProps}
-        topbarIcons={topbarIcons}
-      />
+      {showSecondaryTopBar ? (
+        renderSecondaryTopbar(proxyOrgList)
+      ) : (
+        <CapTopBar
+          drawerListProps={{
+            productsList,
+            selectedProduct,
+            handleProductChange,
+            title: (
+              <CapHeading type="h5" style={{ margin: `${CAP_SPACE_24} 0` }}>
+                {selectProduct}
+              </CapHeading>
+            ),
+            closable: false,
+            placement: 'left',
+            width: 320,
+          }}
+          selectProps={{
+            items: proxyOrgList,
+            selectedItem: selectedOrg,
+            selectedOuItem: selectedOu,
+            handleItemChange: handleOrgEntityChange,
+            selectPlaceholder: selectOrganization,
+            showSearch: true,
+            showHeader: true,
+            title: selectOrganization,
+            placeholder: organization,
+            noResultText,
+          }}
+          menuProps={{
+            items: topbarMenuData,
+            defaultSelectedKeys: topbarSelectedMenuData || [DEFAULT_MODULE],
+            onMenuItemClick: handleTopbarMenuChange,
+          }}
+          dropdownMenuProps={dropdownMenuProps}
+          topbarIcons={topbarIcons}
+        />
+      )}
       {showContent && (
         <div className="cap-content-wrapper" style={{ display: showSidebar ? 'flex' : 'block' }}>
           {showSidebar ? (
@@ -207,12 +233,15 @@ CapNavigation.propTypes = {
   topbarMenuData: PropTypes.array,
   dropdownMenuProps: PropTypes.array,
   topbarIcons: PropTypes.array,
+  topbarSelectedMenuData: PropTypes.array,
   sidebarMenuData: PropTypes.array,
   sidebarMenuItemsPosition: PropTypes.string,
   sidebarMenuItemClick: PropTypes.func,
+  secondaryTopBarActionHandler: PropTypes.func,
   children: PropTypes.node,
   selectProduct: PropTypes.string,
   defaultSelectedProduct: PropTypes.string,
+  showSecondaryTopBar: PropTypes.bool,
   selectOrganization: PropTypes.string,
   organization: PropTypes.string,
   noResultText: PropTypes.string,
