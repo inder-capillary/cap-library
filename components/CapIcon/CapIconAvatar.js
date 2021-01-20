@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import "./_capIcon.scss";
-import { LogoBackground } from "../assets/icons";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import './_capIcon.scss';
+import { LogoBackground } from '../assets/icons';
 
-const clsPrefix = "cap-icon-v2";
+const clsPrefix = 'cap-icon-v2';
 
 function CapIconAvatar(props) {
   const { className, text, width, height, backgroundProps, labelProps } = props;
