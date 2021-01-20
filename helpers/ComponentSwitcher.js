@@ -207,10 +207,9 @@ class ComponentSwitcher extends Component {
         return <CapSnackBarDoc />;
       case 'capNavigation':
         return <CapNavigationDoc />;
-        //components for docs
       case 'capLogin':
         return <CapLoginDoc />;
-
+        //components for docs
       default:
         return null;
     }
