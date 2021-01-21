@@ -7,7 +7,7 @@ import CapInput from '../CapInput';
 import CapButton from '../CapButton';
 import CapSpin from '../CapSpin';
 import CapillaryLogo from '../assets/icons/capillary_logo_v2.png';
-import { request } from '../../service/api';
+import { request } from '../service/api';
 import './_capLogin.scss';
 
 function CapLogin(props) {
