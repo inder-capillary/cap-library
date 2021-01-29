@@ -210,7 +210,7 @@ class CapMultiSelect extends React.Component {
   render() {
     const { placeholder, searchPlaceholder, triggerClassName, disabled, width, closeText,
       noResultsFoundText, selectedText, disableSelectAll, popoverClassName, selectAllText,
-      selectAllSearchResultsText, getPopupContainer, moreText, searchKey } = this.props;
+      selectAllSearchResultsText, getPopupContainer, moreText, searchKey, showFooter } = this.props;
     const { visible, searchValue, selectedKeys, appliedKeys } = this.state;
     const { treeData, ...rest } = this.props;
     const newProps = omit(rest, ['onSelect', 'treeData']);
@@ -265,7 +265,7 @@ class CapMultiSelect extends React.Component {
                   {treeNodes}
                 </Tree>
               )}
-              {treeNodes && treeNodes.length > 0 && (
+              {showFooter && treeNodes && treeNodes.length > 0 && (
                 <div className="options">
                   <div>
                     {this.getSaveButton()}
@@ -308,6 +308,7 @@ CapMultiSelect.defaultProps = {
   searchKey: "title",
   getPopupContainer: () => document.body,
   showSelectButtonToolTip: false,
+  showFooter: true,
 };
 
 CapMultiSelect.propTypes = {
@@ -333,6 +334,7 @@ CapMultiSelect.propTypes = {
   maxValuesToSelect: PropTypes.number,
   selectTooltipText: PropTypes.string,
   showSelectButtonToolTip: PropTypes.bool,
+  showFooter: PropTypes.bool,
 };
 
 export default LocaleHoc(CapMultiSelect, { key: 'CapMultiSelect' });

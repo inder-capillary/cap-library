@@ -217,7 +217,9 @@ const CapNavigation = (props) => {
               pageHeading={settingsLabel}
             />
           ) : null}
-          {React.Children.toArray(props.children)}
+          <div className="cap-component-wrapper" style={{ width: showSidebar ? 'calc(100% - 240px)' : '100%'}}>
+            {React.Children.toArray(props.children)}
+          </div>
         </div>
       )}
     </div>

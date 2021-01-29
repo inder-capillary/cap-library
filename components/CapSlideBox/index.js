@@ -50,7 +50,7 @@ export default class CapSlideBox extends Component {
   }
 
   render() {
-    const { size, show, header, handleClose, footer, content, className, position } = this.props;
+    const { size, show, header, handleClose, footer, content, className, position, closeIconSize} = this.props;
     const { showShadow } = this.state;
     return (
       show ? (
@@ -58,7 +58,7 @@ export default class CapSlideBox extends Component {
           <div className={classNames(`${clsPrefix}-container ${size} ${position}`)}>
             <div className="slidebox-header">
               <CapHeading type="h1">{header}</CapHeading>
-              {<CapIcon onClick={handleClose} type="close" className={classNames(`${clsPrefix}-close-icon`)} />}
+              {<CapIcon size={closeIconSize} onClick={handleClose} type="close" className={classNames(`${clsPrefix}-close-icon`)} />}
             </div>
             <div onScroll={this.throttleScroll} className={classNames('slidebox-content-container', { 'has-footer': footer })} ref={(node) => { this.slideBoxContainer = node; }}>
               <div ref={(node) => { this.slideBoxContent = node; }} style={{ height: '100%' }}>
@@ -80,6 +80,7 @@ export default class CapSlideBox extends Component {
 CapSlideBox.defaultProps = {
   size: "size-r",
   position: "right",
+  closeIconSize: "m",
 };
 
 CapSlideBox.propTypes = {
@@ -97,4 +98,5 @@ CapSlideBox.propTypes = {
   size: PropTypes.string,
   className: PropTypes.string,
   position: PropTypes.string,
+  closeIconSize: PropTypes.string,
 };
