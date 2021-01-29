@@ -289,6 +289,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <Text>offer</Text>
             </List>
             <List>
+              <CapIcon type="ftp" />
+              <Text>ftp</Text>
+            </List>
+            <List>
               <CapIcon type="open-in-new" />
               <Text>open-in-new</Text>
             </List>

@@ -54,6 +54,7 @@ const getSvgComponentFromType = (type) => {
     case 'notepad-material': return SvgIcons.NotepadMaterial;
     case 'notifications': return SvgIcons.Notifications;
     case 'offer': return SvgIcons.Offer;
+    case 'ftp': return SvgIcons.Ftp;
     case 'open-in-new': return SvgIcons.OpenInNew;
     case 'open-in-new-light': return SvgIcons.OpenInNewLight;
     case 'pause': return SvgIcons.Pause;

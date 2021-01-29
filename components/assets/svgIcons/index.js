@@ -50,6 +50,7 @@ export { default as Notepad } from './Icons/Notepad';
 export { default as NotepadMaterial } from './Icons/NotepadMaterial';
 export { default as Notifications } from './Icons/Notifications';
 export { default as Offer } from './Icons/Offer';
+export { default as Ftp } from './Icons/Ftp';
 export { default as OpenInNew } from './Icons/OpenInNew';
 export { default as OpenInNewLight } from './Icons/OpenInNewLight';
 export { default as Pause } from './Icons/Pause';
