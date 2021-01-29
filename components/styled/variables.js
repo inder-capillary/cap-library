@@ -18,6 +18,7 @@ export const CAP_SECONDARY = {
 export const CAP_ORANGE = "#f87d23";
 export const CAP_YELLOW = "#fec52e";
 export const CAP_YELLOW01 = "#e8bc25";
+export const CAP_YELLOW02 = "#f9d438";
 export const CAP_BLUE = "#23cccc";
 export const CAP_PURPLE = "#8517e5";
 export const CAP_PINK = "#e51fa3";
@@ -46,6 +47,7 @@ export const CAP_G13 = "#ecece7";
 export const CAP_G14 = "#e9f0fd";
 export const CAP_G15 = "#efefef";
 export const CAP_G16 = "#2a2a2a";
+export const CAP_G17 = "#7F8185";
 
 export const CAP_WHITE = "#ffffff";
 

@@ -10,3 +10,10 @@
     overflow: auto;
     display: none;
 }
+
+.cap-component-wrapper {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 24px 0;
+    height: max-content;
+}
