@@ -7,7 +7,7 @@ const clsPrefix = "cap-custom-card-list";
 
 export default class CapCustomCardList extends React.Component {
   render() {
-    const { className, cardList, type } = this.props;
+    const { className, cardList, type, fbType } = this.props;
     return (
       <div className={classNames(clsPrefix, type, className)}>
         {cardList && (
@@ -19,7 +19,12 @@ export default class CapCustomCardList extends React.Component {
                 return (
                   <div className={classNames(`${clsPrefix}-col`)}>
                     {cardTop && cardTop}
-                    <CapCustomCard key={key} type={cardType || type} cardTop={cardTop} {...rest} />
+                    <CapCustomCard
+                      key={key}
+                      type={cardType || type}
+                      cardTop={cardTop}
+                      fbType={fbType}
+                      {...rest} />
                     {
                       dataBelowCard && dataBelowCard
                     }

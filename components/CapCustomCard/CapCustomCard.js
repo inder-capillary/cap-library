@@ -145,7 +145,15 @@ const getFacebookPreview = (FBDynamicComponent = () => <Fragment />) => (
 );
 
 const getCardContent = (props) => {
-  const { content, url, width, height, FBDynamicComponent, buttonText } = props;
+  const {
+    content,
+    url,
+    width,
+    height,
+    FBDynamicComponent,
+    buttonText,
+    fbType,
+  } = props;
   const type = (props.type || "").toUpperCase();
   switch (type) {
     case channels.sms:
@@ -186,6 +194,9 @@ const getCardContent = (props) => {
       return previewWeChat;
     }
     case channels.facebook: {
+      if (fbType === "list") {
+        return <Meta description={url ? <img width={width || 244} height={height || 279} src={url} alt={url} /> : content || <CapSkeleton loading />} />;
+      }
       return getFacebookPreview(FBDynamicComponent);
     }
     default:
@@ -216,6 +227,7 @@ CapCustomCard.propTypes = {
   type: PropTypes.string,
   FBDynamicComponent: PropTypes.func,
   buttonText: PropTypes.string,
+  fbType: PropTypes.string,
 };
 
 CapCustomCard.getRichMediaPreview = getRichMediaPreview;
