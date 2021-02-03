@@ -14,6 +14,8 @@ const clsPrefix = 'cap-icon-v2';
 
 const getFontSizeFromProps = (size) => {
   switch (size) {
+    case 'xs':
+      return StyledVars.ICON_SIZE_XS;
     case 's':
       return StyledVars.ICON_SIZE_S;
     case 'm':

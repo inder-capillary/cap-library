@@ -92,6 +92,7 @@ export const FONT_SIZE_VS = "10px";
 
 
 // Icon sizes
+export const ICON_SIZE_XS = "12px";
 export const ICON_SIZE_S = "16px";
 export const ICON_SIZE_M = "24px";
 export const ICON_SIZE_L = "32px";
