@@ -161,7 +161,7 @@ const CapNavigation = (props) => {
 
   const proxyOrgList = getProxyOrgList();
   const productsList = getProductList();
-  const [selectedProduct, updateSelectedProduct] = useState(props[defaultSelectedProduct] || '');
+  const [selectedProduct, updateSelectedProduct] = useState(defaultSelectedProduct || '');
   const [selectedOrg] = useState(loadStorageItem('orgID'));
   const [selectedOu] = useState(loadStorageItem('ouId'));
   const [selectedSidebarMenuItem, updateSelectedSidebarMenuItem] = useState(getDefaultSidebarMenuItem());
