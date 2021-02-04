@@ -51,12 +51,13 @@ class CapGraph extends React.Component {
     const { Text } = Guide;
     let legendType = 'circle';
     let legendPosition = 'bottom-center';
+    let legendProps = {};
     const defaultHeight = 400;
     const defaultContainerTpl = () => `<div class="g2-tooltip"><div class="g2-tooltip-title" style="margin:10px 0;"></div><ul class="g2-tooltip-list"></ul></div>`;
     const defaultItemTpl = '<li data-index={index}><span style="background-color:{color};width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:8px;"></span>{value}</li>';
 
     if (legend) {
-      ({ marker: legendType, position: legendPosition } = legend);
+      ({ marker: legendType, position: legendPosition, ...legendProps } = legend);
     }
 
     if (typeof containerTemplate !== 'function') {
@@ -101,19 +102,26 @@ class CapGraph extends React.Component {
             g2-tooltip-list={g2TooltipList || defaultStyles.g2TooltipList}
             g2-tooltip-list-item={g2TooltipListItem || defaultStyles.g2TooltipListItem}
           />
-          <Legend marker={legendType} position={legendPosition} title={title} />
-          {graphList.map((graph) => {
-            const tooltip = graph.showTooltip ? graph.tooltip : !graph.tooltipDisable && [`${xAxis}*${yAxis}`, this.updateTooltipInfo];
+          <Legend
+            marker={legendType}
+            position={legendPosition}
+            title={title}
+            {...legendProps}
+          />
+          {graphList.map(({showTooltip, tooltip, tooltipDisable, type, groupBy, colors, shape, showlabel, label, ...rest}) => {
+            const tooltipProp = showTooltip ? tooltip : !tooltipDisable && [`${xAxis}*${yAxis}`, this.updateTooltipInfo];
             return (
               <Geom
-                type={graph.type}
+                key={type}
+                type={type}
                 position={`${xAxis}*${yAxis}`}
-                color={[graph.groupBy, graph.colors]}
+                color={[groupBy, colors]}
                 size={size}
-                tooltip={tooltip}
-                shape={graph.shape}
+                tooltip={tooltipProp}
+                shape={shape}
+                {...rest}
               >
-                {graph.showlabel && <Label {...graph.label} />}
+                {showlabel && <Label {...label} />}
               </Geom>
             );
           } )}
