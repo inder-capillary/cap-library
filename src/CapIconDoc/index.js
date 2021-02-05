@@ -698,6 +698,38 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="viber" />
               <Text>Viber</Text>
             </List>
+            <List>
+              <CapIcon type="waitEvent" />
+              <Text>Wait Event</Text>
+            </List>
+            <List>
+              <CapIcon type="join" />
+              <Text>Join</Text>
+            </List>
+            <List>
+              <CapIcon type="engagementSplit" />
+              <Text>Engagement Split</Text>
+            </List>
+            <List>
+              <CapIcon type="split" />
+              <Text>Split</Text>
+            </List>
+            <List>
+              <CapIcon type="userAttributeChange" />
+              <Text>User Attribute Change</Text>
+            </List>
+            <List>
+              <CapIcon type="api" />
+              <Text>Api</Text>
+            </List>
+            <List>
+              <CapIcon type="wechatOutline" />
+              <Text>Wechat outline</Text>
+            </List>
+            <List>
+              <CapIcon type="topXChannel" />
+              <Text>Top X channel</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}

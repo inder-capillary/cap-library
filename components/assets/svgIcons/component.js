@@ -166,6 +166,15 @@ const getSvgComponentFromType = (type) => {
     case 'sitemap': return SvgIcons.Sitemap;
     case 'button': return SvgIcons.Button;
     case 'viber': return SvgIcons.Viber;
+    case 'messageWithTransform': return SvgIcons.MessageWithTransform;
+    case 'waitEvent': return SvgIcons.WaitEvent;
+    case 'join': return SvgIcons.Join;
+    case 'engagementSplit': return SvgIcons.EngagementSplit;
+    case 'split': return SvgIcons.Split;
+    case 'userAttributeChange': return SvgIcons.UserAttributeChange;
+    case 'api': return SvgIcons.Api;
+    case 'wechatOutline': return SvgIcons.WechatOutline;
+    case 'topXChannel': return SvgIcons.TopXChannel;
 
     default: return null;
   }

@@ -51,4 +51,9 @@ export default {
     noResultText: 'No results found',
     selectProduct: 'Select Product',
   },
+  CapJourneySidebar: {
+    sidebarTitle: 'Building blocks',
+    sidebarDescription: 'Drag & drop blocks to create the journey, start with the Entry triggers',
+    infoTooltipTitle: 'info',
+  },
 };

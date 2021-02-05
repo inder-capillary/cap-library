@@ -30,7 +30,7 @@ const getActionIcons = (actionNodes) => actionNodes.map((node) => {
 });
 
 const CapAdvancedIcon = (props) => {
-  const { type, backgroundColor, actionNodes, label1, label2, ...rest } = props;
+  const { type, backgroundColor, actionNodes = [], label1, label2, dragRef, ...rest } = props;
   const [actionIconsVisible, setActionIconsVisibility] = useState(false);
 
   const showActionIcons = useCallback(() => {
@@ -47,6 +47,7 @@ const CapAdvancedIcon = (props) => {
         <div
           onMouseEnter={actionNodes.length ? showActionIcons : undefined}
           onMouseLeave={actionNodes.length ? hideActionIcons : undefined}
+          ref={dragRef}
         >
           <CapIcon
             type={type}
