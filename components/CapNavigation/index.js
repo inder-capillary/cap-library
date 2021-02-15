@@ -84,7 +84,21 @@ const CapNavigation = (props) => {
   const getProxyOrgList = () => {
     const proxyOrgList = [];
     if (userData && userData.user && userData.user !== '') {
-      const { proxyOrgList: orgList = [] } = userData.user;
+      const { proxyOrgList: orgList = [], orgName: selectedOrgName, orgID: selectedOrgId, accessibleOUList } = userData.user;
+      // fetching current selected org details and adding to org list dropdown
+      const selectedOrg = {
+        label: selectedOrgName,
+        value: selectedOrgId,
+        key: selectedOrgId,
+        accessibleOus: [],
+      };
+      // add ou list for selected org if available
+      if (!isEmpty(accessibleOUList)) {
+        forOwn(accessibleOUList, (ouId, ouName) => {
+          selectedOrg.accessibleOus.push({ label: ouName, value: ouId, key: ouId });
+        });
+      }
+      proxyOrgList.push(selectedOrg);
       if (orgList && orgList.length) {
         orgList.forEach((item) => {
           const id = item.orgID;
