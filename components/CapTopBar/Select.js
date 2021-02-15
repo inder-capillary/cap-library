@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Popover } from "antd";
+import { List } from "react-virtualized";
 import classNames from 'classnames';
 import findIndex from 'lodash/findIndex';
 import CapIcon from '../CapIcon';
@@ -10,6 +11,10 @@ import CapHeading from '../CapHeading';
 import CapillaryLogo from '../assets/icons/capillary_logo.svg';
 import { LogoBackground } from '../assets/icons';
 import * as styledVars from "../styled/variables";
+
+const height = 200;
+const rowHeight = 40;
+const width = 260;
 
 const clsPrefix = 'top-bar-select';
 
@@ -140,6 +145,13 @@ export class Select extends Component {
     return (items.length === 1 && !items[0].accessibleOus);
   }
 
+  // eslint-disable-next-line no-unused-vars
+  rowRenderer = ({ index, isScrolling, key, style }, itemsList) => (
+    <div key={key} style={style}>
+        <>{itemsList[index]}</>
+    </div>
+  );
+
   render() {
     const { fixedOrg = false, items, selectedItem, selectedOuItem, showSearch, showHeader, selectPlaceholder, showCapillaryIcon, className, title, placeholder, noResultText } = this.props;
     const { visible, searchText } = this.state;
@@ -178,7 +190,20 @@ export class Select extends Component {
                 className={classNames(`${clsPrefix}-search`)}
               />
             )}
-            {itemsHtml.length > 0 ? <div className={classNames(`${clsPrefix}-items-wrapper`)}>{itemsHtml}</div>
+            {itemsHtml.length > 0 ? (
+              <div className={classNames(`${clsPrefix}-items-wrapper`)}>
+                {
+                  <List
+                    rowCount={(itemsHtml || []).length}
+                    width={width}
+                    height={height}
+                    rowHeight={rowHeight}
+                    rowRenderer={(value) => this.rowRenderer(value, itemsHtml)}
+                    overscanRowCount={5}
+                  />
+                }
+              </div>
+            )
               : (
                 <div className={classNames(`${clsPrefix}-no-results`)}>
                   <CapIcon style={{ color: styledVars.CAP_G06 }} type="alert" />

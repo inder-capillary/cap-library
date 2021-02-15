@@ -226,7 +226,7 @@ $orgSelectPrefix: top-bar-select;
 }
 
 .#{$orgSelectPrefix}-items-wrapper {
-  overflow-y: auto;
+  // overflow-y: auto;
   max-height: 200px;
 }
 
