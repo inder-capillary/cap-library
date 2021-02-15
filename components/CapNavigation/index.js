@@ -92,10 +92,10 @@ const CapNavigation = (props) => {
         label: selectedOrgName,
         value: selectedOrgId,
         key: selectedOrgId,
-        accessibleOus: [],
       };
       // add ou list for selected org if available
       if (!isEmpty(accessibleOUList)) {
+        selectedOrg.accessibleOus = [];
         forOwn(accessibleOUList, (ouId, ouName) => {
           selectedOrg.accessibleOus.push({ label: ouName, value: ouId, key: ouId });
         });
@@ -103,13 +103,15 @@ const CapNavigation = (props) => {
       proxyOrgList.push(selectedOrg);
       if (orgList && orgList.length) {
         orgList.forEach((item) => {
-          const id = item.orgID;
-          const name = item.orgName;
-          const orgObj = { label: name, value: id, key: id };
-          if (item.ouList) {
-            orgObj.accessibleOus = getOuList(item);
+          if (item.orgID !== selectedOrgId) {
+            const id = item.orgID;
+            const name = item.orgName;
+            const orgObj = { label: name, value: id, key: id };
+            if (item.ouList) {
+              orgObj.accessibleOus = getOuList(item);
+            }
+            proxyOrgList.push(orgObj);
           }
-          proxyOrgList.push(orgObj);
         });
       }
     }
