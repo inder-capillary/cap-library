@@ -172,3 +172,4 @@ export { default as Api } from './Icons/Api';
 export { default as WechatOutline } from './Icons/WechatOutline';
 export { default as TopXChannel } from './Icons/TopXChannel';
 export { default as Points } from './Icons/Points';
+export { default as Org } from './Icons/Org';
