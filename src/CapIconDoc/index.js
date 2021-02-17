@@ -730,6 +730,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="topXChannel" />
               <Text>Top X channel</Text>
             </List>
+            <List>
+              <CapIcon type="points" />
+              <Text>points</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}
