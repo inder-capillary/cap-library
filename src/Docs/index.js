@@ -99,9 +99,7 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             <MenuItem key="capLogin"><span>CapLogin</span></MenuItem>
             <MenuItem key="capJourneySidebar"><span>CapJourneySidebar</span></MenuItem>
             <MenuItem key="capAdvancedIcon"><span>CapAdvancedIcon</span></MenuItem>
-            <MenuItem key="capColorPicker"><span>CapColorPicker</span></MenuItem>
             {/*Menu items for components*/}
-
           </Menu>
         </Sider>
         <Layout style={{ marginLeft: 200 }}>
