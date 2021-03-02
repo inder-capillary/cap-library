@@ -70,6 +70,7 @@ import CapNavigationDoc from '../src/CapNavigationDoc';
 import CapLoginDoc from '../src/CapLoginDoc';
 import CapJourneySidebarDoc from '../src/CapJourneySidebarDoc';
 import CapAdvancedIconDoc from '../src/CapAdvancedIconDoc';
+import CapColorPickerDoc from '../src/CapColorPickerDoc';
 //imported for docs
 
 
@@ -215,7 +216,10 @@ class ComponentSwitcher extends Component {
         return <CapJourneySidebarDoc />;
       case 'capAdvancedIcon':
         return <CapAdvancedIconDoc />;
+      case 'capColorPicker':
+        return <CapColorPickerDoc />;
         //components for docs
+
       default:
         return null;
     }
