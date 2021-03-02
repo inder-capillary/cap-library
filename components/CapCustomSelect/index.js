@@ -11,7 +11,7 @@ import { Popover } from "antd";
 import classNames from "classnames";
 import findIndex from "lodash/findIndex";
 import styled from "styled-components";
-import { List } from "react-virtualized";
+import { List, AutoSizer } from "react-virtualized";
 import * as styledVars from "../styled/variables";
 import CapHeading from "../CapHeading";
 import CapIcon from "../CapIcon";
@@ -123,9 +123,11 @@ class CapCustomSelect extends React.Component {
       disabled,
       type,
       virtual = false,
+      virtualScrollWidth = '100%',
       virtualScrollHeight = 200,
-      virtualScrollWidth = 250,
       rowHeight = 40,
+      virtualContainerStyle = {},
+      placement = "bottomLeft",
     } = this.props;
 
     const { visible, searchText } = this.state;
@@ -140,6 +142,7 @@ class CapCustomSelect extends React.Component {
     return (
       <Popover
         trigger="click"
+        placement={placement}
         // removing it for testing purpose, if styling issue occurs, uncomment it and check
         // getPopupContainer={(trigger) => trigger.parentNode}
         overlayClassName={classNames(`${clsPrefix}-popover`, popoverClassName)}
@@ -164,14 +167,20 @@ class CapCustomSelect extends React.Component {
             {itemsHtml.length > 0 ? (
               <div className={classNames(`${clsPrefix}-items-wrapper`)}>
                 {virtual ? (
-                  <List
-                    rowCount={itemsHtml.length}
-                    width={virtualScrollWidth}
-                    height={virtualScrollHeight}
-                    rowHeight={rowHeight}
-                    rowRenderer={(optValue) => this.rowRenderer(optValue, itemsHtml)}
-                    overscanRowCount={5}
-                  />
+                  <div style={{width: virtualScrollWidth, height: virtualScrollHeight, ...virtualContainerStyle}}>
+                    <AutoSizer>
+                      {({width: autowidth, height: autoHeight}) => (
+                        <List
+                          rowCount={itemsHtml.length}
+                          width={autowidth}
+                          height={autoHeight}
+                          rowHeight={rowHeight}
+                          rowRenderer={(optValue) => this.rowRenderer(optValue, itemsHtml)}
+                          overscanRowCount={5}
+                        />
+                      )}
+                    </AutoSizer>
+                  </div>
                 ) : (
                   itemsHtml
                 )}
@@ -254,6 +263,8 @@ CapCustomSelect.propTypes = {
   type: PropTypes.string,
   virtual: PropTypes.bool,
   closeOnSelect: PropTypes.bool,
+  placement: PropTypes.string,
+  virtualContainerStyle: PropTypes.object,
   virtualScrollHeight: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

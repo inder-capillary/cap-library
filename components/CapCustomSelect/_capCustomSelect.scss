@@ -92,16 +92,16 @@ $selectPrefix: cap-custom-select;
   .#{$selectPrefix}-items-wrapper {
     overflow-y: auto;
     max-height: 200px;
-    .#{$selectPrefix}-no-results {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      .#{$selectPrefix}-no-results-text {
-        margin-top: $CAP_SPACE_08;
-        text-align: center;
-        color: $CAP_G05;
-        font-size: $FONT_SIZE_S;
-      }
+  }
+  .#{$selectPrefix}-no-results {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .#{$selectPrefix}-no-results-text {
+      margin-top: $CAP_SPACE_08;
+      text-align: center;
+      color: $CAP_G05;
+      font-size: $FONT_SIZE_S;
     }
   }
 }
