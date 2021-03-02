@@ -2,6 +2,10 @@
 
 $selectPrefix: cap-custom-select;
 
+*:focus {
+  outline: 0;
+}
+
 .#{$selectPrefix}-selection {
   display: flex;
   align-items: center;
@@ -22,13 +26,22 @@ $selectPrefix: cap-custom-select;
     background-color: $CAP_G08;
     pointer-events: none;
   }
+  &.type-tag {
+    height: auto;
+    padding: 0px 0px $CAP_SPACE_04 $CAP_SPACE_04;
+    min-height: $CAP_SPACE_40;
+  }
   .#{$selectPrefix}-selected-value {
     font-size: $FONT_SIZE_L;
     font-weight: $FONT_WEIGHT_MEDIUM;
     overflow: hidden;
   }
-  .selected-value-label-disabled{
+  .selected-value-label-disabled {
     color: $CAP_G04;
+  }
+  .#{$selectPrefix}-selected-tag {
+    margin: $CAP_SPACE_04 $CAP_SPACE_04 0px 0px;
+    max-width: 100%;
   }
   .#{$selectPrefix}-arrow {
     margin-right: $FONT_SIZE_S;
