@@ -136,6 +136,7 @@ class CapCustomSelect extends React.Component {
       selectedItemLabel = options[selectedItemIndex].label;
     }
     const popwidth = this.node ? `${this.node.offsetWidth}px` : "100%";
+    const showTags = (type === TAG && Array.isArray(value) && value.length > 0);
     return (
       <Popover
         trigger="click"
@@ -194,13 +195,13 @@ class CapCustomSelect extends React.Component {
           className={classNames(
             `${clsPrefix}-selection`,
             { open: !!visible },
-            { "type-tag": type === TAG },
+            { "type-tag": showTags },
             className,
             { "selection-disabled": disabled }
           )}
         >
           <div className={`${clsPrefix}-selected-value`}>
-            {type !== TAG ? (
+            {!showTags ? (
               <StyledCapHeading
                 type={value ? "h5" : "h6"}
                 className={classNames({
