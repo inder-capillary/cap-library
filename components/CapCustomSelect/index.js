@@ -103,10 +103,9 @@ class CapCustomSelect extends React.Component {
     this.setState({ searchText: "" });
   };
 
-  // eslint-disable-next-line no-unused-vars
-  rowRenderer = ({ index, isScrolling, key, style }, itemsList) => (
+  rowRenderer = ({ index, key, style }, itemsList) => (
     <div key={key} style={style}>
-      <>{itemsList[index]}</>
+      {itemsList[index]}
     </div>
   );
 
