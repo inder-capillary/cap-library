@@ -31,7 +31,6 @@ const StyledCapHeading = styled(CapHeading)`
 `;
 
 class CapCustomSelect extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
     this.state = {
