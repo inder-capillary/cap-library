@@ -7,6 +7,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //import { Auth } from '@capillarytech/cap-ui-utils';
+import isEmpty from 'lodash/isEmpty';
+import forOwn from 'lodash/forOwn';
 import CapTopBar from '../CapTopBar';
 import CapHeading from '../CapHeading';
 import CapSideBar from "../CapSideBar";
@@ -14,8 +16,6 @@ import CapSecondaryTopBar from "../CapSecondaryTopBar";
 import LocaleHoc from '../LocaleHoc';
 import { CAP_SPACE_24 } from '../styled/variables';
 import './_capNavigation.scss';
-import isEmpty from 'lodash/isEmpty';
-import forOwn from 'lodash/forOwn';
 
 const DEFAULT_MODULE = 'campaign';
 const PRODUCT_MASTERS = 'masters';

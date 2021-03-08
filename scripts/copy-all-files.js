@@ -76,6 +76,8 @@ function createPackageFile() {
           "rangy": "^1.3.0",
           "bizcharts": "^3.5.5",
           "lodash": "^4.17.11",
+          "react-colorful": "^5.0.0",
+          "react-virtualized": "9.22.3",
         },
       };
 
