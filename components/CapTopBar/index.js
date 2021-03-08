@@ -15,6 +15,7 @@ import CapDrawer from '../CapDrawer';
 import CapList from '../CapList';
 import CapLink from '../CapLink';
 import CapHeading from '../CapHeading';
+import CapTooltip from '../CapTooltip';
 import { Select } from './Select';
 import './_capTopBar.scss';
 import { LogoBackground } from '../assets/icons';
@@ -60,13 +61,16 @@ class CapTopBar extends React.Component {
   renderTopbarIcons = () => {
     const { topbarIcons } = this.props;
     return (
-      topbarIcons.map((topbarIcon) => (
-        <CapIcon
-          onClick={topbarIcon.onClickHandler ? () => { topbarIcon.onClickHandler(); } : null}
-          className={classNames(`${clsPrefix}-topbarIcon`)}
-          type={topbarIcon.iconType}
-          key={topbarIcon.key}
-        />
+      topbarIcons.map(({key, iconType, onClickHandler, className, toolTip, placement, ...rest}) => (
+        <CapTooltip title={toolTip} placement={placement || "bottom"}>
+          <CapIcon
+            onClick={onClickHandler ? () => { onClickHandler(); } : null}
+            className={classNames(`${clsPrefix}-topbarIcon`, className)}
+            type={iconType}
+            key={key}
+            {...rest}
+          />
+        </CapTooltip>
       ))
     );
   }
