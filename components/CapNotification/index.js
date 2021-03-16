@@ -1,24 +1,23 @@
 /**
-*
-* CapNotification
-*
-*/
-import React from 'react';
-import { notification } from 'antd';
-import classNames from 'classnames';
-import styled from 'styled-components';
-import CapHeading from '../CapHeading';
-import CapIcon from '../CapIcon';
+ *
+ * CapNotification
+ *
+ */
+import React from "react";
+import { notification } from "antd";
+import classNames from "classnames";
+import styled from "styled-components";
+import CapHeading from "../CapHeading";
+import CapIcon from "../CapIcon";
 
-
-import './_capNotification.scss';
+import "./_capNotification.scss";
 
 const { info, warning, warn, close, destroy } = notification;
 
-const clsPrefix = 'cap-notification-v2';
+const clsPrefix = "cap-notification-v2";
 
 const BreakWordHeading = styled(CapHeading)`
-  word-break: break-all
+  word-break: break-all;
 `;
 
 const openNotification = (props, type) => {
@@ -30,31 +29,32 @@ const openNotification = (props, type) => {
     className: classNames(clsPrefix, className, type),
   };
 
-  if (type === 'error') {
+  if (type === "error") {
     notificationProps.icon = <CapIcon className="error" type="alert" />;
-  } else if (type === 'success') {
-    notificationProps.icon = <CapIcon className="success" type="check-filled" />;
-  } else if(type === 'custom'){
-    const leftStrip = {
-      borderLeft : `4px solid ${bgColor}`
-    }
-    notificationProps.icon = icon
-    notificationProps.style = leftStrip
+  } else if (type === "success") {
+    notificationProps.icon = (
+      <CapIcon className="success" type="check-filled" />
+    );
+  } else if (type === "custom") {
+    notificationProps.icon = icon;
+    notificationProps.style = {
+      borderLeft: `4px solid ${bgColor}`,
+    };
   }
   notification.open(notificationProps);
 };
 
 const errorNotification = (props) => {
-  openNotification(props, 'error');
+  openNotification(props, "error");
 };
 
 const successNotification = (props) => {
-  openNotification(props, 'success');
+  openNotification(props, "success");
 };
 
 const custom = (props) => {
-  openNotification(props, 'custom')
-}
+  openNotification(props, "custom");
+};
 
 const CapNotification = {};
 
