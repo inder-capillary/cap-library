@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import CapHeading from '../CapHeading';
 import CapIcon from '../CapIcon';
 
+
 import './_capNotification.scss';
 
 const { info, warning, warn, close, destroy } = notification;
@@ -21,19 +22,24 @@ const BreakWordHeading = styled(CapHeading)`
 `;
 
 const openNotification = (props, type) => {
-  const { className, message, description, icon, ...rest } = props;
+  const { className, message, description, icon, bgColor, ...rest } = props;
   const notificationProps = {
     message: <BreakWordHeading type="h4">{message}</BreakWordHeading>,
     description: <BreakWordHeading type="h6">{description}</BreakWordHeading>,
     ...rest,
     className: classNames(clsPrefix, className, type),
   };
+
   if (type === 'error') {
     notificationProps.icon = <CapIcon className="error" type="alert" />;
   } else if (type === 'success') {
     notificationProps.icon = <CapIcon className="success" type="check-filled" />;
   } else if(type === 'custom'){
+    const leftStrip = {
+      borderLeft : `4px solid ${bgColor}`
+    }
     notificationProps.icon = icon
+    notificationProps.style = leftStrip
   }
   notification.open(notificationProps);
 };

@@ -5,6 +5,8 @@
     .ant-notification-notice-with-icon {
       .ant-notification-notice-icon {
         position: absolute;
+        margin-left: 0;
+        line-height: 18px;
         .cap-icon-v2-alert.error {
           color: $CAP_RED;
         }
@@ -33,8 +35,5 @@
   }
   &.success::before {
     background-color: map-get($CAP_PRIMARY, base);
-  }
-  &.custom::before {
-    background-color: $CAP_ORANGE;
   }
 }
