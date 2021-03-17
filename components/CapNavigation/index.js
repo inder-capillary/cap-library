@@ -86,21 +86,26 @@ const CapNavigation = (props) => {
   const getProxyOrgList = () => {
     const proxyOrgList = [];
     if (userData && userData.user && userData.user !== '') {
-      const { proxyOrgList: orgList = [], orgName: selectedOrgName, orgID: selectedOrgId, accessibleOUList } = userData.user;
+      const { orgDetails = {}, user = {} } = userData;
+      let { name: selectedOrgName, org_id: selectedOrgId } = orgDetails;
+      const { proxyOrgList: orgList = [], accessibleOUList } = user;
       // fetching current selected org details and adding to org list dropdown
-      const selectedOrg = {
-        label: selectedOrgName,
-        value: selectedOrgId,
-        key: selectedOrgId,
-      };
-      // add ou list for selected org if available
-      if (!isEmpty(accessibleOUList)) {
-        selectedOrg.accessibleOus = [];
-        forOwn(accessibleOUList, (ouId, ouName) => {
-          selectedOrg.accessibleOus.push({ label: ouName, value: ouId, key: ouId });
-        });
+      if (!isEmpty(selectedOrgId)) {
+        selectedOrgId = Number(selectedOrgId);
+        const selectedOrg = {
+          label: selectedOrgName,
+          value: selectedOrgId,
+          key: selectedOrgId,
+        };
+        // add ou list for selected org if available
+        if (!isEmpty(accessibleOUList)) {
+          selectedOrg.accessibleOus = [];
+          forOwn(accessibleOUList, (ouId, ouName) => {
+            selectedOrg.accessibleOus.push({ label: ouName, value: ouId, key: ouId });
+          });
+        }
+        proxyOrgList.push(selectedOrg);
       }
-      proxyOrgList.push(selectedOrg);
       if (orgList && orgList.length) {
         orgList.forEach((item) => {
           if (item.orgID !== selectedOrgId) {
@@ -152,7 +157,7 @@ const CapNavigation = (props) => {
       productsList.push({
         value: props.insights,
         url: 'analytics/v2/',
-        key: 'analytics/v2/',
+        key: 'insights',
       });
       // }
     }

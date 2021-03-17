@@ -8,7 +8,7 @@ import momentPropTypes from 'react-moment-proptypes';
 import moment from 'moment';
 import omit from 'lodash/omit';
 import 'react-dates/initialize';
-import { DateRangePicker, DateRangePickerPhrases, DateRangePickerShape, START_DATE, END_DATE, HORIZONTAL_ORIENTATION, ANCHOR_LEFT, isInclusivelyAfterDay } from 'react-dates';
+import { DateRangePicker, DateRangePickerPhrases, DateRangePickerShape, HORIZONTAL_ORIENTATION, ANCHOR_LEFT, isInclusivelyAfterDay } from 'react-dates';
 import classNames from 'classnames';
 import ComponentWithLabelHOC from '../assets/HOCs/ComponentWithLabelHOC';
 import * as styledVars from "../styled/variables";
@@ -19,6 +19,9 @@ import './_capDateRangePicker.scss';
 const commonClsPrefix = 'cap-date-picker-common-v2';
 const clsPrefix = 'cap-date-range-picker-v2';
 
+const START_DATE = 'startDate';
+const END_DATE = 'endDate';
+
 const propTypes = {
   // example props for the demo
   autoFocus: PropTypes.bool,
@@ -26,6 +29,8 @@ const propTypes = {
   stateDateWrapper: PropTypes.func,
   initialStartDate: momentPropTypes.momentObj,
   initialEndDate: momentPropTypes.momentObj,
+  showCalendarOnly: PropTypes.bool,
+  hideCalendar: PropTypes.bool,
 
   ...omit(DateRangePickerShape, [
     'startDate',
@@ -97,9 +102,11 @@ const defaultProps = {
   monthFormat: 'MMMM YYYY',
   phrases: DateRangePickerPhrases,
   weekDayFormat: "ddd",
-  displayFormat: "D MMM YYYY",
+  displayFormat: "DD MMM YYYY",
 
   stateDateWrapper: (date) => date,
+  showCalendarOnly: false,
+  hideCalendar: false,
 };
 
 class DateRangePickerWrapper extends React.Component {
@@ -107,6 +114,7 @@ class DateRangePickerWrapper extends React.Component {
     super(props);
 
     let focusedInput = null;
+    // is autoFocus is set, then open up calendar by default when component is rendered
     if (props.autoFocus) {
       focusedInput = START_DATE;
     } else if (props.autoFocusEndDate) {
@@ -135,7 +143,10 @@ class DateRangePickerWrapper extends React.Component {
   }
 
   onFocusChange(focusedInput) {
-    this.setState({ focusedInput });
+    // if only calendar is shown then do not let it get closed on outside click
+    if (!this.props.showCalendarOnly || focusedInput) {
+      this.setState({ focusedInput });
+    }
   }
 
   renderDayContents(day) {
@@ -170,12 +181,14 @@ class DateRangePickerWrapper extends React.Component {
       'isDayBlocked',
       'onChange',
       'small',
+      'showCalendarOnly',
+      'hideCalendar',
     ]);
 
-    const { customInputIcon, customArrowIcon, navNext, navPrev, renderDayContents, disabledDate, isDayBlocked } = this.props;
+    const { customInputIcon, customArrowIcon, navNext, navPrev, renderDayContents, disabledDate, isDayBlocked, showCalendarOnly, hideCalendar } = this.props;
 
     return (
-      <div className={classNames(commonClsPrefix, clsPrefix)}>
+      <div className={`${classNames(commonClsPrefix, clsPrefix)} ${showCalendarOnly ? 'show-calendar-only' : ''} ${hideCalendar ? 'hide-calendar' : ''}`}>
         <DateRangePicker
           onDatesChange={this.onDatesChange}
           onFocusChange={this.onFocusChange}
@@ -186,10 +199,10 @@ class DateRangePickerWrapper extends React.Component {
           }
           customArrowIcon={customArrowIcon || <span style={{color: styledVars.CAP_G01}}>–</span>}
           navNext={
-            navNext || <div className="month-nav-btn next-month-nav-btn"><CapIcon type="chevron-right" style={{color: styledVars.CAP_G01}} /></div>
+            navNext || <div className="month-nav-btn next-month-nav-btn" title="Next"><CapIcon type="chevron-right" style={{ color: styledVars.CAP_G01 }} /></div>
           }
           navPrev={
-            navPrev || <div className="month-nav-btn prev-month-nav-btn"><CapIcon type="chevron-left" style={{color: styledVars.CAP_G01}} /></div>
+            navPrev || <div className="month-nav-btn prev-month-nav-btn" title="Previous"><CapIcon type="chevron-left" style={{ color: styledVars.CAP_G01 }} /></div>
           }
           renderDayContents={renderDayContents || this.renderDayContents}
           isDayBlocked={disabledDate || isDayBlocked}

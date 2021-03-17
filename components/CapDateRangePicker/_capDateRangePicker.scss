@@ -133,3 +133,26 @@ $rangePicker: cap-date-range-picker-v2;
       display: none;
   }
 }
+
+.hide-calendar {
+  .DateRangePicker_picker {
+    display: none;
+  }
+}
+
+.show-calendar-only {
+  .DateRangePickerInput {
+    .DateInput, .DateRangePickerInput_arrow, .DateRangePickerInput_calendarIcon {
+      display: none;
+    }
+    .DateRangePicker_picker {
+      top: 0 !important;
+    }
+    .DayPicker_weekHeader {
+      top: 40px;
+    }
+    .CalendarMonth_table {
+      margin-top: 28px;
+    }
+  }
+}
