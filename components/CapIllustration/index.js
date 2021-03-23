@@ -32,7 +32,7 @@ const GetActionButton = (props) => {
 };
 // import styled from 'styled-components';
 const CapIllustration = (props) => {
-  const { description, illustrationImage, title, hasAccess, accessForbiddenMsg, buttonLabel, onClick, buttonClassName, disabled } = props;
+  const { description, illustrationImage, title, hasAccess, accessForbiddenMsg, buttonLabel, onClick, buttonClassName, disabled, descriptionPosition = 'top', titleClassName, descriptionClassName } = props;
   const actionButtonProps = {
     onClick,
     hasAccess,
@@ -42,7 +42,7 @@ const CapIllustration = (props) => {
   };
   return (
     <div align="center" style={{ paddingTop: CAP_SPACE_16 }}>
-      {description && <CapLabel type="label1">{description}</CapLabel>}
+      {description && descriptionPosition === 'top' && <CapLabel type="label1" className={descriptionClassName}>{description}</CapLabel>}
       <CapRow>
         <img
           src={illustrationImage}
@@ -53,9 +53,10 @@ const CapIllustration = (props) => {
           }}
         />
       </CapRow>
-      <CapHeading type="h3" style={{ paddingTop: CAP_SPACE_12 }}>
+      <CapHeading type="h3" style={{ paddingTop: CAP_SPACE_12 }} className={titleClassName}>
         {title}
       </CapHeading>
+      {description && descriptionPosition === 'bottom' && <CapLabel type="label1" className={descriptionClassName}>{description}</CapLabel>}
       {!hasAccess
         ? (
           <CapTooltip

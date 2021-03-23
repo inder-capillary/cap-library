@@ -177,7 +177,11 @@ const getSvgComponentFromType = (type) => {
     case 'topXChannel': return SvgIcons.TopXChannel;
     case 'points': return SvgIcons.Points;
     case 'org': return SvgIcons.Org;
-
+    case 'personLove': return SvgIcons.PersonLove;
+    case 'group': return SvgIcons.Group;
+    case 'refreshCircle': return SvgIcons.RefreshCircle;
+    case 'sortUp': return SvgIcons.SortUp;
+    case 'star': return SvgIcons.Star;
 
     default: return null;
   }
