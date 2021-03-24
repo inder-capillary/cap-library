@@ -32,10 +32,10 @@ const AntIcon = styled(Icon)`
 `;
 
 function CapIcon(props) {
-  const { type, className, disabled, backgroundProps, withBackground, svgProps, ...rest } = props;
+  const { type, className, disabled, backgroundProps, withBackground, svgProps, allowSvg = true, ...rest } = props;
   const customClassName = `${clsPrefix}-${type}`;
   const IconComponent = getSvgComponentFromType(type);
-  const BaseIcon = IconComponent ? (
+  const BaseIcon = IconComponent && allowSvg ? (
     <AntIcon
       className={classNames(clsPrefix, customClassName, className, { disabled })}
       component={() => <IconComponent {...svgProps} />}
@@ -57,6 +57,7 @@ CapIcon.propTypes = {
   type: PropTypes.string,
   className: PropTypes.string,
   withBackground: PropTypes.bool,
+  allowSvg: PropTypes.bool,
 };
 
 CapIcon.AntIcon = Icon;

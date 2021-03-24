@@ -61,18 +61,16 @@ class CapTopBar extends React.Component {
   renderTopbarIcons = () => {
     const { topbarIcons } = this.props;
     return (
-      topbarIcons.map(({key, iconType, onClickHandler, className, toolTip, placement, ...rest}) => (
+      React.Children.toArray(topbarIcons.map(({iconType, onClickHandler, className, toolTip, placement, ...rest}) => (
         <CapTooltip title={toolTip} placement={placement || "bottom"}>
           <CapIcon
             onClick={onClickHandler ? () => { onClickHandler(); } : null}
             className={classNames(`${clsPrefix}-topbarIcon`, className)}
             type={iconType}
-            key={key}
             {...rest}
           />
         </CapTooltip>
-      ))
-    );
+      ))));
   }
 
   expandUserBackground = (flag) => {

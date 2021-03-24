@@ -182,6 +182,7 @@ const getSvgComponentFromType = (type) => {
     case 'refreshCircle': return SvgIcons.RefreshCircle;
     case 'sortUp': return SvgIcons.SortUp;
     case 'star': return SvgIcons.Star;
+    case 'downgrade': return SvgIcons.Downgrade;
 
     default: return null;
   }
