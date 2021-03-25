@@ -738,6 +738,27 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="org" />
               <Text>org</Text>
             </List>
+            <List>
+              <CapIcon type="personLove" />
+              <Text>PersonLove</Text>
+            </List>
+            <List>
+              <CapIcon type="star" />
+              <Text>Star</Text>
+            </List>
+            <List>
+              <CapIcon type="refreshCircle" />
+              <Text>Refresh circle</Text>
+            </List>
+            <List>
+              <CapIcon type="sortUp" />
+              <Text>Sort Up</Text>
+            </List>
+            <List>
+              <CapIcon type="group" />
+              <Text>Group</Text>
+            </List>
+
           </ul>
         </div>
         {`Used as:`}
