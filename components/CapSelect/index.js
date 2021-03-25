@@ -17,8 +17,8 @@ const clsPrefix = 'cap-select-v2';
 const { Option } = Select;
 
 function CapSelect(props) {
-  const { componentClassName, dropdownClassName, options, ...rest } = props;
-  const items = options.map((op) => <Option {...op}>{op.label}</Option>);
+  const { componentClassName, dropdownClassName, options, propToBeMadeLabel, ...rest } = props;
+  const items = options.map((op) => <Option {...op} label={op[propToBeMadeLabel] || op.label}>{op.label}</Option>);
   return (
     <Select
       removeIcon={<CapIcon type="close" size="s" />}
