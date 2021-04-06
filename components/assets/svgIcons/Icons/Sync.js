@@ -20,7 +20,7 @@ function SvgSync(props) {
           <use xlinkHref="#sync_svg__a" />
         </mask>
         <use fill="#000" xlinkHref="#sync_svg__a" />
-        <g fill="#7A869A" mask="url(#sync_svg__b)">
+        <g fill="currentColor" mask="url(#sync_svg__b)">
           <path d="M0-1h12v12H0z" />
         </g>
       </g>
