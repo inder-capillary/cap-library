@@ -41,6 +41,7 @@ const CapNavigation = (props) => {
     defaultSelectedProduct,
     showSecondaryTopBar = false,
     secondaryTopBarActionHandler,
+    skipStateForStorage = false,
   } = props;
 
   const handleProductChange = (product) => {
@@ -185,8 +186,8 @@ const CapNavigation = (props) => {
   const proxyOrgList = getProxyOrgList();
   const productsList = getProductList();
   const [selectedProduct, updateSelectedProduct] = useState(defaultSelectedProduct || '');
-  const [selectedOrg] = useState(loadStorageItem('orgID'));
-  const [selectedOu] = useState(loadStorageItem('ouId'));
+  const [selectedOrg] = !skipStateForStorage ? useState(loadStorageItem('orgID')) : [loadStorageItem('orgID')];
+  const [selectedOu] = !skipStateForStorage ? useState(loadStorageItem('ouId')) : [loadStorageItem('ouId')];
   const [selectedSidebarMenuItem, updateSelectedSidebarMenuItem] = useState(getDefaultSidebarMenuItem());
   const showSidebar = sidebarMenuData.length > 0 && sidebarMenuItemsPosition === 'left';
   return (
@@ -272,6 +273,7 @@ CapNavigation.propTypes = {
   noResultText: PropTypes.string,
   settingsLabel: PropTypes.string,
   insights: PropTypes.string,
+  skipStateForStorage: PropTypes.bool,
 };
 
 export default LocaleHoc(CapNavigation, { key: 'CapNavigation' });

@@ -81,4 +81,5 @@ export { default as CapCSVFileUploader} from './CapCSVFileUploader';
 export { default as CapNavigation } from './CapNavigation';
 export { default as CapLogin } from './CapLogin';
 export { default as CapColorPicker } from './CapColorPicker';
+export { default as CapSomethingWentWrong } from './CapSomethingWentWrong';
 //export components
