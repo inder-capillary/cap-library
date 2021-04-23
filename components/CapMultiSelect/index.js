@@ -210,7 +210,7 @@ class CapMultiSelect extends React.Component {
   render() {
     const { placeholder, searchPlaceholder, triggerClassName, disabled, width, closeText,
       noResultsFoundText, selectedText, disableSelectAll, popoverClassName, selectAllText,
-      selectAllSearchResultsText, getPopupContainer, moreText, searchKey, showFooter } = this.props;
+      selectAllSearchResultsText, getPopupContainer, moreText, searchKey, showFooter, searchFocusOnMount, alwaysShowFocusOnSearch } = this.props;
     const { visible, searchValue, selectedKeys, appliedKeys } = this.state;
     const { treeData, ...rest } = this.props;
     const newProps = omit(rest, ['onSelect', 'treeData']);
@@ -245,8 +245,8 @@ class CapMultiSelect extends React.Component {
             <div>
               <div className="search-input">
                 <Search
-                  focusOnMount
-                  alwaysShowFocus
+                  focusOnMount={searchFocusOnMount}
+                  alwaysShowFocus={alwaysShowFocusOnSearch}
                   value={searchValue}
                   onClear={this.clearSearch}
                   placeholder={searchPlaceholder}
@@ -309,6 +309,8 @@ CapMultiSelect.defaultProps = {
   getPopupContainer: () => document.body,
   showSelectButtonToolTip: false,
   showFooter: true,
+  searchFocusOnMount: true,
+  alwaysShowFocusOnSearch: true,
 };
 
 CapMultiSelect.propTypes = {
@@ -335,6 +337,8 @@ CapMultiSelect.propTypes = {
   selectTooltipText: PropTypes.string,
   showSelectButtonToolTip: PropTypes.bool,
   showFooter: PropTypes.bool,
+  searchFocusOnMount: PropTypes.bool,
+  alwaysShowFocusOnSearch: PropTypes.bool,
 };
 
 export default LocaleHoc(CapMultiSelect, { key: 'CapMultiSelect' });
