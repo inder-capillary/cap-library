@@ -80,6 +80,7 @@ class CapCustomSelect extends React.Component {
             className={classNames(`${clsPrefix}-select-item`, {
               selected: value === item.value,
             })}
+            title={typeof item.label === 'string' && item.label}
           >
             {item.label}
           </StyledCapHeading>

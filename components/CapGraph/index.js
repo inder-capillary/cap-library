@@ -44,7 +44,7 @@ class CapGraph extends React.Component {
 
 
   render() {
-    const { data, xAxis, yAxis,
+    const { data, xAxis, yAxis, y1Axis, y1AxisProps,
       legend, g2Tooltip, g2TooltipList, g2TooltipListItem,
       itemTemplate, size, scale, tooltipData, height, chartProps, yAxisProps, graphList, xAxisProps, showGuide, coord, guide, title } = this.props;
     let { containerTemplate } = this.props;
@@ -75,6 +75,7 @@ class CapGraph extends React.Component {
         >
 
           <Axis name={yAxis} {...yAxisProps} />
+          {y1Axis && <Axis name={y1Axis} {...y1AxisProps} />}
           <Axis
             name={xAxis}
             {...xAxisProps}

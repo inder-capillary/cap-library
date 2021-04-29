@@ -78,6 +78,8 @@ function createPackageFile() {
           "lodash": "^4.17.11",
           "react-colorful": "^5.0.0",
           "react-virtualized": "9.22.3",
+          "@antv/x6": "1.12.4",
+          "@antv/x6-react-shape": "1.2.3",
         },
       };
 

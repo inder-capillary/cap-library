@@ -71,6 +71,7 @@ import CapLoginDoc from '../src/CapLoginDoc';
 import CapJourneySidebarDoc from '../src/CapJourneySidebarDoc';
 import CapAdvancedIconDoc from '../src/CapAdvancedIconDoc';
 import CapColorPickerDoc from '../src/CapColorPickerDoc';
+import CapLevelGraphRendererDoc from '../src/CapLevelGraphRendererDoc';
 //imported for docs
 
 
@@ -218,6 +219,8 @@ class ComponentSwitcher extends Component {
         return <CapAdvancedIconDoc />;
       case 'capColorPicker':
         return <CapColorPickerDoc />;
+      case 'capLevelGraphRenderer':
+        return <CapLevelGraphRendererDoc />;
         //components for docs
 
       default:

@@ -1,0 +1,14 @@
+@import "../styles/_variables.scss";
+
+.cap-level-graph-renderer-v2 {
+  .pagination-row {
+    display: flex;
+    justify-content: flex-end;
+    height: $CAP_SPACE_24;
+    margin-bottom: $CAP_SPACE_36;
+
+    .pagination-left {
+      margin-right: $CAP_SPACE_24;
+    }
+  }
+}
