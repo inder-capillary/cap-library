@@ -208,7 +208,9 @@ class CapMultiSelect extends React.Component {
   }
 
   render() {
-    const { placeholder, searchPlaceholder, triggerClassName, disabled, width, closeText, noResultsFoundText, selectedText, disableSelectAll, popoverClassName, selectAllText, selectAllSearchResultsText, getPopupContainer, moreText, searchKey, showFooter, searchFocusOnMount, alwaysShowFocusOnSearch, showSelectAllText } = this.props;
+    const { placeholder, searchPlaceholder, triggerClassName, disabled, width, closeText,
+      noResultsFoundText, selectedText, disableSelectAll, popoverClassName, selectAllText,
+      selectAllSearchResultsText, getPopupContainer, moreText, searchKey, showFooter, searchFocusOnMount, alwaysShowFocusOnSearch } = this.props;
     const { visible, searchValue, selectedKeys, appliedKeys } = this.state;
     const { treeData, ...rest } = this.props;
     const newProps = omit(rest, ['onSelect', 'treeData']);
@@ -217,7 +219,7 @@ class CapMultiSelect extends React.Component {
     let triggerLeftContent = "";
     let triggerRightContent = "";
     if (appliedKeys && appliedKeys.length > 0) {
-      if (appliedKeys.length === this.props.treeData.length && showSelectAllText) {
+      if (appliedKeys.length === this.props.treeData.length) {
         triggerLeftContent = "All selected";
       } else {
         const obj = getObject(treeData, 'key', appliedKeys[0]);
@@ -309,7 +311,6 @@ CapMultiSelect.defaultProps = {
   showFooter: true,
   searchFocusOnMount: true,
   alwaysShowFocusOnSearch: true,
-  showSelectAllText: true,
 };
 
 CapMultiSelect.propTypes = {
@@ -338,7 +339,6 @@ CapMultiSelect.propTypes = {
   showFooter: PropTypes.bool,
   searchFocusOnMount: PropTypes.bool,
   alwaysShowFocusOnSearch: PropTypes.bool,
-  showSelectAllText: PropTypes.bool,
 };
 
 export default LocaleHoc(CapMultiSelect, { key: 'CapMultiSelect' });
