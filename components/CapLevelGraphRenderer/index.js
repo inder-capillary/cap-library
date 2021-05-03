@@ -12,6 +12,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
+import get from 'lodash/get';
 import { Graph } from "@antv/x6";
 
 import TooltipTool from "./Tooltip";
@@ -316,8 +317,8 @@ const CapLevelGraphRenderer = ({
     if (showToolTip) {
       graphRef.current.on("edge:mouseenter", ({ edge }) => {
         const [sourceId, targetId] = edge.id.split(idSeparator);
-        const sourceToolTip = nodePostionObj?.[sourceId]?.toolTip;
-        const targetToolTip = nodePostionObj?.[targetId]?.toolTip;
+        const sourceToolTip = get(nodePostionObj, [sourceId, 'toolTip']);
+        const targetToolTip = get(nodePostionObj, [targetId, 'toolTip']);
         if (sourceToolTip && targetToolTip) {
           edge.addTools([
             {
