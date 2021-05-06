@@ -13,8 +13,10 @@ import classNames from 'classnames';
 import ComponentWithLabelHOC from '../assets/HOCs/ComponentWithLabelHOC';
 import * as styledVars from "../styled/variables";
 import CapIcon from '../CapIcon';
+import CapSelect from '../CapSelect';
 import 'react-dates/lib/css/_datepicker.css';
 import './_capDateRangePicker.scss';
+// import { isUndefined } from 'lodash';
 
 const commonClsPrefix = 'cap-date-picker-common-v2';
 const clsPrefix = 'cap-date-range-picker-v2';
@@ -30,6 +32,7 @@ const propTypes = {
   initialStartDate: momentPropTypes.momentObj,
   initialEndDate: momentPropTypes.momentObj,
   showCalendarOnly: PropTypes.bool,
+  allowYearNavigation: PropTypes.bool,
   hideCalendar: PropTypes.bool,
 
   ...omit(DateRangePickerShape, [
@@ -106,6 +109,7 @@ const defaultProps = {
 
   stateDateWrapper: (date) => date,
   showCalendarOnly: false,
+  allowYearNavigation: false,
   hideCalendar: false,
 };
 
@@ -147,7 +151,34 @@ class DateRangePickerWrapper extends React.Component {
     if (!this.props.showCalendarOnly || focusedInput) {
       this.setState({ focusedInput });
     }
+    const { onFocusChange } = this.props;
+    onFocusChange && onFocusChange(focusedInput);
   }
+
+  returnYears = () => {
+    let years = []
+    for (let i = moment().year() - 100; i <= moment().year(); i++) {
+      years.push({
+        key: i,
+        value: i,
+        label: i,
+      });
+    }
+    return years;
+  }
+
+  renderMonthElement = ({ month, onMonthSelect, onYearSelect }) =>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <span className="month-name">
+        {moment.months()[month.month()]}
+      </span>
+      <CapSelect
+        className="year-selector"
+        value={month.year()}
+        onChange={(e) => onYearSelect(month, e)}
+        options={this.returnYears()}
+      />
+    </div>
 
   renderDayContents(day) {
     const date = day.format('D');
@@ -182,33 +213,57 @@ class DateRangePickerWrapper extends React.Component {
       'onChange',
       'small',
       'showCalendarOnly',
+      'allowYearNavigation',
       'hideCalendar',
     ]);
 
-    const { customInputIcon, customArrowIcon, navNext, navPrev, renderDayContents, disabledDate, isDayBlocked, showCalendarOnly, hideCalendar } = this.props;
+    const { customInputIcon, customArrowIcon, navNext, navPrev, renderDayContents, disabledDate, isDayBlocked, showCalendarOnly, allowYearNavigation, hideCalendar } = this.props;
 
     return (
       <div className={`${classNames(commonClsPrefix, clsPrefix)} ${showCalendarOnly ? 'show-calendar-only' : ''} ${hideCalendar ? 'hide-calendar' : ''}`}>
-        <DateRangePicker
-          onDatesChange={this.onDatesChange}
-          onFocusChange={this.onFocusChange}
-          focusedInput={focusedInput}
-          startDate={startDate}
-          endDate={endDate}
-          customInputIcon={customInputIcon || <CapIcon type="calendar" style={{color: styledVars.CAP_G01}} size="m" />
-          }
-          customArrowIcon={customArrowIcon || <span style={{color: styledVars.CAP_G01}}>–</span>}
-          navNext={
-            navNext || <div className="month-nav-btn next-month-nav-btn" title="Next"><CapIcon type="chevron-right" style={{ color: styledVars.CAP_G01 }} /></div>
-          }
-          navPrev={
-            navPrev || <div className="month-nav-btn prev-month-nav-btn" title="Previous"><CapIcon type="chevron-left" style={{ color: styledVars.CAP_G01 }} /></div>
-          }
-          renderDayContents={renderDayContents || this.renderDayContents}
-          isDayBlocked={disabledDate || isDayBlocked}
-          {...props}
-
-        />
+        {
+          allowYearNavigation ?
+            <DateRangePicker
+              onDatesChange={this.onDatesChange}
+              onFocusChange={this.onFocusChange}
+              focusedInput={focusedInput}
+              startDate={startDate}
+              endDate={endDate}
+              customInputIcon={customInputIcon || <CapIcon type="calendar" style={{ color: styledVars.CAP_G01 }} size="m" />
+              }
+              customArrowIcon={customArrowIcon || <span style={{ color: styledVars.CAP_G01 }}>–</span>}
+              navNext={
+                navNext || <div className="month-nav-btn next-month-nav-btn with-year-navigation" title="Next"><CapIcon type="chevron-right" style={{ color: styledVars.CAP_G01 }} /></div>
+              }
+              navPrev={
+                navPrev || <div className="month-nav-btn prev-month-nav-btn with-year-navigation" title="Previous"><CapIcon type="chevron-left" style={{ color: styledVars.CAP_G01 }} /></div>
+              }
+              renderMonthElement={this.renderMonthElement}
+              renderDayContents={renderDayContents || this.renderDayContents}
+              isDayBlocked={disabledDate || isDayBlocked}
+              {...props}
+            />
+            :
+            <DateRangePicker
+              onDatesChange={this.onDatesChange}
+              onFocusChange={this.onFocusChange}
+              focusedInput={focusedInput}
+              startDate={startDate}
+              endDate={endDate}
+              customInputIcon={customInputIcon || <CapIcon type="calendar" style={{ color: styledVars.CAP_G01 }} size="m" />
+              }
+              customArrowIcon={customArrowIcon || <span style={{ color: styledVars.CAP_G01 }}>–</span>}
+              navNext={
+                navNext || <div className="month-nav-btn next-month-nav-btn" title="Next"><CapIcon type="chevron-right" style={{ color: styledVars.CAP_G01 }} /></div>
+              }
+              navPrev={
+                navPrev || <div className="month-nav-btn prev-month-nav-btn" title="Previous"><CapIcon type="chevron-left" style={{ color: styledVars.CAP_G01 }} /></div>
+              }
+              renderDayContents={renderDayContents || this.renderDayContents}
+              isDayBlocked={disabledDate || isDayBlocked}
+              {...props}
+            />
+        }
       </div>
     );
   }

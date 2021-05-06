@@ -120,11 +120,40 @@ $rangePicker: cap-date-range-picker-v2;
     position: absolute;
     top: $CAP_SPACE_20;
   }
+  .month-nav-btn.with-year-navigation {
+    top: 8px !important;
+  }
   .prev-month-nav-btn {
     left: $CAP_SPACE_20;
   }
   .next-month-nav-btn {
     right: $CAP_SPACE_20;
+  }
+  .month-name {
+    font-weight: 700;
+    margin: 1px 10px 1px 2px;
+  }
+  .year-selector {
+    .cap-select-v2 {
+      .ant-select-selection {
+        height: 24px;
+        .ant-select-selection-selected-value {
+          font-size: 12px;
+        }
+        .ant-select-selection__rendered {
+          line-height: 22px;
+        }
+        .ant-select-arrow {
+          right: 0;
+        }
+      }
+    }
+  }
+  .month-selector {
+    .cap-select-v2 {
+      width: 100px;
+      margin-right: 4px;
+    }
   }
 }
 
@@ -152,7 +181,17 @@ $rangePicker: cap-date-range-picker-v2;
       top: 40px;
     }
     .CalendarMonth_table {
-      margin-top: 28px;
+      margin-top: 22px;
+    }
+  }
+}
+
+.cap-select-v2-dropdown.ant-select-dropdown--single {
+  .ant-select-dropdown-menu {
+    max-height: 200px;
+    .ant-select-dropdown-menu-item {
+      padding: 4px 12px;
+      font-size: 12px;
     }
   }
 }
