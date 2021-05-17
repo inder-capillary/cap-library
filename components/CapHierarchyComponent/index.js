@@ -44,7 +44,7 @@ function GetComponentFromProps(props) {
         <ComponentToBeRendered
           {...props.componentProps}
         >
-          {props.componentProps.children}
+          {(props.componentProps || {} ).children}
         </ComponentToBeRendered>
       </CapFormItem>
     </CapColumn>
