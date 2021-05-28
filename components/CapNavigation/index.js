@@ -109,7 +109,7 @@ const CapNavigation = (props) => {
       }
       if (orgList && orgList.length) {
         orgList.forEach((item) => {
-          if (item.orgID !== selectedOrgId) {
+          if (parseInt(item.orgID) !== parseInt(selectedOrgId)) {
             const id = item.orgID;
             const name = item.orgName;
             const orgObj = { label: name, value: id, key: id };
