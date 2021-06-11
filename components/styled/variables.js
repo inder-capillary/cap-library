@@ -68,6 +68,7 @@ export const CAP_COLOR_13 = '#bcd0fa';
 export const CAP_COLOR_14 = '#9BC79A';
 export const CAP_COLOR_15 = '#F6BA8E';
 export const CAP_COLOR_16 = '#22b803';
+export const CAP_COLOR_17 = '#EB2E2D';
 
 
 /* Fonts */
