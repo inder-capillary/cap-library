@@ -17,6 +17,7 @@ import { Graph } from "@antv/x6";
 
 import TooltipTool from "./Tooltip";
 import CapIcon from "../CapIcon";
+import CapButton from "../CapButton";
 
 import "@antv/x6-react-shape";
 import "./_capLevelGraphRenderer.scss";
@@ -48,7 +49,9 @@ const CapLevelGraphRenderer = ({
 }) => {
   const graphRef = useRef(null);
   const [scrollbarPosition, setScrollbarPosition] = useState(0);
-  const totalAvailWidth = nodes.length * defaultEleWidth + defaultEleDistance * (nodes.length - 1);
+  const totalAvailWidth = nodes.length * defaultEleWidth
+    + defaultEleDistance * (nodes.length - 1)
+    - parseInt(graphWidth, 10);
 
   useEffect(() => {
     // Initlize graph and events
@@ -85,9 +88,7 @@ const CapLevelGraphRenderer = ({
         className: scrollClassName,
         ...scrollerProps,
       },
-      interacting: {
-        nodeMovable: false,
-      },
+      interacting: false,
     });
   }, []);
 
@@ -246,7 +247,7 @@ const CapLevelGraphRenderer = ({
     // Iterate level list by level by level
     levelList.forEach((levels, index) => {
       // Iterate connection on a each level
-      levels.forEach(({ sourceId, targetId }) => {
+      levels.forEach(({ sourceId, targetId }, levelItemIndex) => {
         // Get source and target total connection count
         const srcConCount = connectionObj[sourceId].in.length
           + connectionObj[sourceId].out.length
@@ -309,11 +310,49 @@ const CapLevelGraphRenderer = ({
             },
           })
           .setConnector("jumpover");
+        // adding emtpy edge at last level
+        if (
+          levelList.length - 1 === index
+          && levels.length - 1 === levelItemIndex
+        ) {
+          const v3 = {
+            x: v1.x,
+            y: v1.y + 8,
+          };
+          const v4 = {
+            x: v2.x,
+            y: v2.y + 8,
+          };
+          graphRef.current.addEdge({
+            id: `${sourceId}${idSeparator}${targetId}-end`,
+            sourcePoint: [x, y],
+            target: [x1, y1],
+            vertices: [v3, v4],
+            router: {
+              name: "orth",
+              args: {
+                padding: {},
+              },
+            },
+            attrs: {
+              line: {
+                stroke: "transparent",
+              },
+            },
+          });
+        }
       });
     });
   };
 
   const initializeEvents = useCallback(() => {
+    graphRef.current.on("node:mousedown", (data) => {
+      const targetElement = get(data, "e.target", {});
+      if (targetElement.tagName === "INPUT") {
+        targetElement.focus();
+      }
+    });
+
     if (showToolTip) {
       graphRef.current.on("edge:mouseenter", ({ edge }) => {
         const [sourceId, targetId] = edge.id.split(idSeparator);
@@ -338,33 +377,53 @@ const CapLevelGraphRenderer = ({
   });
 
   const onPreviousPageClick = useCallback(() => {
-    const newScrollValue = scrollbarPosition - parseInt(graphWidth, 10);
+    let newScrollValue = parseFloat(
+      (scrollbarPosition - (defaultEleWidth + defaultEleDistance)).toFixed(5),
+      10
+    );
+    if (newScrollValue < 0) {
+      newScrollValue = 0;
+    }
     if (newScrollValue >= 0) setScrollbarPosition(newScrollValue);
   }, [scrollbarPosition]);
 
   const onNextPageClick = useCallback(() => {
-    const newScrollValue = scrollbarPosition + parseInt(graphWidth, 10);
-    if (newScrollValue < totalAvailWidth) setScrollbarPosition(scrollbarPosition + parseInt(graphWidth, 10));
+    const newScrollValue = parseFloat(
+      (scrollbarPosition + defaultEleWidth + defaultEleDistance).toFixed(5),
+      10
+    );
+    if (newScrollValue < totalAvailWidth) setScrollbarPosition(newScrollValue);
   }, [nodes, scrollbarPosition]);
 
   return (
     <div className={classnames("cap-level-graph-renderer-v2", className)}>
-      <div className="pagination-row">
-        <div className="pagination-container">
-          <CapIcon
-            className="pointer-cursor pagination-left"
-            disabled={scrollbarPosition === 0}
+      <div className="level-graph-pagination-row">
+        <div className="level-graph-pagination-container">
+          <CapButton
+            type="flat"
+            className="pointer-cursor level-graph-pagination-left"
+            disabled={scrollbarPosition <= 0}
             onClick={onPreviousPageClick}
-            type="chevron-left"
-          />
-          <CapIcon
-            className="pointer-cursor pagination-right"
+          >
+            <CapIcon type="chevron-left"></CapIcon>
+          </CapButton>
+          <CapButton
+            type="flat"
+            className="pointer-cursor level-graph-pagination-right"
             disabled={
-              scrollbarPosition + parseInt(graphWidth, 10) > totalAvailWidth
+              parseFloat(
+                (
+                  scrollbarPosition
+                  + defaultEleWidth
+                  + defaultEleDistance
+                ).toFixed(5),
+                10
+              ) > totalAvailWidth
             }
             onClick={onNextPageClick}
-            type="chevron-right"
-          />
+          >
+            <CapIcon type="chevron-right"></CapIcon>
+          </CapButton>
         </div>
       </div>
       <div className="graph-renderer-container" style={{ ...containerStyles }}>

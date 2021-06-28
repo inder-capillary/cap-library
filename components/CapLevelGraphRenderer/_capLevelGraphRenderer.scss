@@ -1,14 +1,31 @@
 @import "../styles/_variables.scss";
 
 .cap-level-graph-renderer-v2 {
-  .pagination-row {
-    display: flex;
+
+  .level-graph-pagination-container, .level-graph-pagination-row,
+  .level-graph-pagination-left, .level-graph-pagination-right
+    {
+      display: flex;
+    }
+
+    .level-graph-pagination-row {
     justify-content: flex-end;
     height: $CAP_SPACE_24;
     margin-bottom: $CAP_SPACE_36;
 
-    .pagination-left {
+    .level-graph-pagination-left {
       margin-right: $CAP_SPACE_24;
+      & > span + .anticon{
+        margin: 0;
+      }
     }
+
+    .level-graph-pagination-left, .level-graph-pagination-right{
+      justify-content: center;
+      align-items: center;
+      min-width: fit-content;
+      height: 100%;
+      padding: 0;
+    } 
   }
 }
