@@ -33,6 +33,7 @@ const propTypes = {
   initialEndDate: momentPropTypes.momentObj,
   showCalendarOnly: PropTypes.bool,
   allowYearNavigation: PropTypes.bool,
+  minDate: PropTypes.string,
   hideCalendar: PropTypes.bool,
 
   ...omit(DateRangePickerShape, [
@@ -111,6 +112,7 @@ const defaultProps = {
   showCalendarOnly: false,
   allowYearNavigation: false,
   hideCalendar: false,
+  minDate: '1970-01-01',
 };
 
 class DateRangePickerWrapper extends React.Component {
@@ -156,8 +158,12 @@ class DateRangePickerWrapper extends React.Component {
   }
 
   returnYears = () => {
-    let years = []
-    for (let i = moment().year() - 100; i <= moment().year(); i++) {
+    let years = [];
+    const minDateYear = moment(this.props.minDate).year();
+    const currentYear = moment().year();
+    const hundredYears = currentYear - 100;
+    const start = minDateYear > hundredYears ? minDateYear > currentYear ? currentYear : minDateYear : hundredYears;
+    for (let i = start; i <= currentYear; i++) {
       years.push({
         key: i,
         value: i,
@@ -214,6 +220,7 @@ class DateRangePickerWrapper extends React.Component {
       'small',
       'showCalendarOnly',
       'allowYearNavigation',
+      'minDate',
       'hideCalendar',
     ]);
 
