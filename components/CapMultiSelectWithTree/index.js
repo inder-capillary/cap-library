@@ -385,7 +385,7 @@ class CapMultiSelectWithTree extends React.Component {
   }
 
   applySelect() {
-    const { treeData } = this.props;
+    const { treeData, includeTreeData } = this.props;
     const { selectedKeys } = this.state;
     const formattedKeys = without(selectedKeys, "select-all-common");
     treeData.forEach((data) => {
@@ -402,7 +402,7 @@ class CapMultiSelectWithTree extends React.Component {
         ? union(getExpandedKeys(formattedKeys, treeData, this.dataList),
           ["select-all-common"]) : ["select-all-common"],
     }, () => {
-      this.props.onSelect(formattedKeys);
+      this.props.onSelect(formattedKeys, includeTreeData && treeData ); // passing treeData for a use-case in promo-ui. To be removed going further.
     });
   }
 
