@@ -38,6 +38,7 @@ function CapTreeSelect(props) {
     disabledTooltip,
     infoNote,
     noteText,
+    infoNoteWidth,
     ...rest
   } = props;
   return (
@@ -53,7 +54,7 @@ function CapTreeSelect(props) {
         </CapLabel>
       )}
       {infoNote && (
-        <CapInfoNote message={props.infoNote} />
+        <CapInfoNote message={props.infoNote} style={{width: infoNoteWidth || '60%'}} />
       )}
       <CustomRow className="margin-t-4">
         {treeSelectSideLabel && (
