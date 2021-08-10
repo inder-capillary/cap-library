@@ -56,4 +56,7 @@ export default {
     sidebarDescription: 'Drag & drop blocks to create the journey, start with the Entry triggers',
     infoTooltipTitle: 'info',
   },
+  InfoNote: {
+    noteText: 'Note',
+  },
 };

@@ -83,4 +83,6 @@ export { default as CapLogin } from './CapLogin';
 export { default as CapColorPicker } from './CapColorPicker';
 export { default as CapSomethingWentWrong } from './CapSomethingWentWrong';
 export { default as CapLevelGraphRenderer } from './CapLevelGraphRenderer';
+export { default as CapInfoNote } from './CapInfoNote';
+
 //export components

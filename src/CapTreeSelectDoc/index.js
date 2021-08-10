@@ -1,9 +1,11 @@
 /**
 * CapSelectDoc
 */
+import { Divider } from "antd";
 import React from "react";
 import { CapTreeSelect } from "../../components";
 import PropertyTable from '../../helpers/PropertyTable';
+
 const infoData = [
   {
     key: 1,
@@ -75,6 +77,42 @@ const infoData = [
     type: "boolean",
     default: "false",
   },
+  {
+    key: 11,
+    property: "headerTitle",
+    description: "Header Text to show above CapTreeSelect",
+    type: "string/node",
+    default: "",
+  },
+  {
+    key: 12,
+    property: "headerDescription",
+    description: "Description Text to show above CapTreeSelect",
+    type: "string/node",
+    default: "",
+  },
+  {
+    key: 13,
+    property: "treeSelectSideLabel",
+    description: "Side label to show left side of the CapTreeSelect",
+    type: "string/node",
+    default: "",
+  },
+  {
+    key: 14,
+    property: "disabledTooltip",
+    description: "Text to show on hover of disabled CapTreeSelect",
+    type: "string/node",
+    default: "",
+  },
+  {
+    key: 15,
+    property: "infoNote",
+    description: "InfoNote to show below the header",
+    type: "node",
+    default: "",
+  },
+
 ];
 
 function CapTreeSelectDoc() {
@@ -279,6 +317,22 @@ function CapTreeSelectDoc() {
           placeholder="Please select"
           size="large"
         />
+        <Divider />
+
+        <div style={{ marginTop: '24px', width: 800 }}>
+          <CapTreeSelect
+            treeData={treeData}
+            style={{ width: '400px' }}
+            dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+            placeholder="Please select"
+            size="large"
+            headerTitle="Scope of message"
+            headerDescription="This enables targeting users in a particular Loyalty program/ Card series."
+            infoNote="You won’t be able to add loyalty related attributes if the loyalty program/ card series is None."
+            treeSelectSideLabel="Loyalty program/ Card series"
+            disabledTooltip="Tooltip text to show when CapTreeSelect is disabled"
+          />
+        </div>
       </div>
       <PropertyTable data={infoData} title="CapTreeSelect Component Properties" />
     </div>
