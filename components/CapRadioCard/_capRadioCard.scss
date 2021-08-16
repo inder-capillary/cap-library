@@ -2,7 +2,6 @@
 
 $capRadioCardV2: cap-radioCard-v2;
 
-
 .ant-radio-group.#{$capRadioCardV2} {
   .ant-radio-button-wrapper {
     border-radius: $CAP_SPACE_04;
@@ -16,6 +15,7 @@ $capRadioCardV2: cap-radioCard-v2;
   .ant-card-body {
     display: flex;
     padding: $CAP_SPACE_16;
+    height: 100%;
   }
   .ant-card.ant-card-bordered {
     height: 100%;
@@ -46,28 +46,26 @@ $capRadioCardV2: cap-radioCard-v2;
     top: -12px;
     display: none;
   }
-  
+
   .ant-radio-button-wrapper-checked {
     border-radius: 4px;
     .radio-card-checked {
       display: block;
       z-index: 1;
     }
-    
   }
   .ant-radio-button-wrapper-disabled {
     opacity: 0.5;
-    &.custom-disable-radio-button{
-      border:unset;
+    &.custom-disable-radio-button {
+      border: unset;
       .radio-card-checked {
         display: none;
       }
-      .ant-card-body{
+      .ant-card-body {
         padding: unset;
       }
-      max-height:75px;
+      max-height: 75px;
     }
-    
   }
   .div-icon {
     position: absolute;
@@ -91,33 +89,28 @@ $capRadioCardV2: cap-radioCard-v2;
       }
     }
   }
-  &.smallRadioCard{
-    .ant-card-body{
-      padding: $CAP_SPACE_12;  
+  &.smallRadioCard {
+    .ant-card-body {
+      padding: $CAP_SPACE_12;
       height: 48px;
     }
-    .icon-container{
-      padding-right:unset;
+    .icon-container {
+      padding-right: unset;
       background-color: unset;
     }
-    .radio-card-icon{
-      height:$CAP_SPACE_20;
-      width:$CAP_SPACE_24;
+    .radio-card-icon {
+      height: $CAP_SPACE_20;
+      width: $CAP_SPACE_24;
     }
-    .div-icon{
-      top:0%;
-      left:0%;
+    .div-icon {
+      top: 0%;
+      left: 0%;
     }
-    .ant-radio-button-wrapper{
-      margin:6px 12px 6px 0px;
+    .ant-radio-button-wrapper {
+      margin: 6px 12px 6px 0px;
       &:nth-child(3n) {
         margin-right: 0;
       }
     }
   }
 }
-
-
-
-
-
