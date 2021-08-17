@@ -179,3 +179,4 @@ export { default as RefreshCircle } from './Icons/RefreshCircle';
 export { default as Star } from './Icons/Star';
 export { default as SortUp } from './Icons/SortUp';
 export { default as Downgrade } from './Icons/Downgrade';
+export { default as Scope } from './Icons/Scope';

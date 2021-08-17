@@ -8,6 +8,8 @@ import {
 import CapAlert from '../CapAlert';
 import CapIcon from '../CapIcon';
 import CapLabel from '../CapLabel';
+import CapRow from '../CapRow';
+import CapColumn from '../CapColumn';
 import LocaleHoc from '../LocaleHoc';
 
 const Note = ({ noteText }) => (
@@ -20,7 +22,17 @@ Note.propTypes = {
 
 const InfoNote = (props) => (
   <CapAlert
-    message={<><Note noteText={props.noteText} />: {props.message}</>}
+    message={(
+      <CapRow>
+        <CapColumn span={2}>
+          {/* eslint-disable-next-line */}
+          <Note noteText={props.noteText} />:
+        </CapColumn>
+        <CapColumn span={22} style={{marginLeft: '-20px'}}>
+          {props.message}
+        </CapColumn>
+      </CapRow>
+    )}
     type="info"
     icon={(
       <CapIcon
