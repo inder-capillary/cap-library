@@ -20,6 +20,7 @@ export { default as CapSelect } from './CapSelect';
 export { default as CapTreeSelect } from './CapTreeSelect';
 export { default as CapDatePicker } from './CapDatePicker';
 export { default as CapDateRangePicker } from './CapDateRangePicker';
+export { default as CapCalendarDatePicker } from './CapCalendarDatePicker';
 export { default as CapHeader } from './CapHeader';
 export { default as CapCustomCard } from './CapCustomCard';
 export { default as CapInput } from './CapInput';
