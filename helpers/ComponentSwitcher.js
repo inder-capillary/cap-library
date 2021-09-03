@@ -73,6 +73,8 @@ import CapAdvancedIconDoc from '../src/CapAdvancedIconDoc';
 import CapColorPickerDoc from '../src/CapColorPickerDoc';
 import CapLevelGraphRendererDoc from '../src/CapLevelGraphRendererDoc';
 import CapInfoNoteDoc from '../src/CapInfoNoteDoc';
+import CapErrorStateIllustrationDoc from '../src/CapErrorStateIllustrationDoc';
+import CapErrorBoundaryDoc from '../src/CapErrorBoundaryDoc';
 //imported for docs
 
 
@@ -224,6 +226,10 @@ class ComponentSwitcher extends Component {
         return <CapLevelGraphRendererDoc />;
       case 'capInfoNote':
         return <CapInfoNoteDoc />;
+      case 'capErrorStateIllustration':
+        return <CapErrorStateIllustrationDoc />;
+      case 'capErrorBoundary':
+        return <CapErrorBoundaryDoc />;
         //components for docs
 
       default:

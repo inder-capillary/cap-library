@@ -1,0 +1,15 @@
+@import "../styles/_variables.scss";
+
+.cap-error-state-illustration {
+  .error-state-image {
+    padding-bottom: $CAP_SPACE_20;
+  }
+
+  .error-state-refresh-button {
+    margin: $CAP_SPACE_04;
+  }
+
+  .error-state-refresh-icon {
+    font-size: $FONT_SIZE_L;
+  }
+}
