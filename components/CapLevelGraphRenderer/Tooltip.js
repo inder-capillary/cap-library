@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
-import { Tooltip } from "antd";
 import { ToolsView } from "@antv/x6";
+import CapTooltip from "../CapTooltip";
 
 class TooltipTool extends ToolsView.ToolItem {
   constructor(props) {
@@ -24,9 +24,9 @@ class TooltipTool extends ToolsView.ToolItem {
 
     if (visible) {
       ReactDom.render(
-        <Tooltip title={this.options.tooltip} visible>
+        <CapTooltip title={this.options.tooltip} visible>
           <div />
-        </Tooltip>,
+        </CapTooltip>,
         this.knob
       );
     }

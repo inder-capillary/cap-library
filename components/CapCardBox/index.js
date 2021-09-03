@@ -41,9 +41,9 @@ const getContent = (content, topLeftIcon) => (
   </div>
 );
 function CapCardBox(props) {
-  const { className, avatarText, content = {}, width, height, borderStyle, topLeftIcon = {}, ...rest } = props;
+  const { wrapperClassName = '', className, avatarText, content = {}, width, height, borderStyle, topLeftIcon = {}, ...rest } = props;
   return (
-    <CardBoxWrapper width={width} borderStyle={borderStyle} height={height}>
+    <CardBoxWrapper width={width} borderStyle={borderStyle} height={height} className={wrapperClassName}>
       <Card className={classNames(clsPrefix, className)} {...rest}>{isEmpty(topLeftIcon) ? content : getContent(content, topLeftIcon)}</Card>
       {avatarText && showAvatar(avatarText)}
     </CardBoxWrapper>
@@ -57,6 +57,7 @@ CapCardBox.propTypes = {
   height: PropTypes.string,
   borderStyle: PropTypes.string,
   topLeftIcon: PropTypes.element,
+  wrapperClassName: PropTypes.string,
 };
 
 

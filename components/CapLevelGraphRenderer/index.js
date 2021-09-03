@@ -23,6 +23,7 @@ import "@antv/x6-react-shape";
 import "./_capLevelGraphRenderer.scss";
 
 const nodePostionObj = {};
+const edgeObj = {};
 const idSeparator = " ";
 
 const CapLevelGraphRenderer = ({
@@ -46,6 +47,8 @@ const CapLevelGraphRenderer = ({
   reverseConnProps,
   defaultEleDistance,
   offsetLineDistance,
+  allowForwardArrowTooltip,
+  allowReverseArrowTooltip,
 }) => {
   const graphRef = useRef(null);
   const [scrollbarPosition, setScrollbarPosition] = useState(0);
@@ -132,8 +135,10 @@ const CapLevelGraphRenderer = ({
         // Skip connection for last node
         if (nodes[index + 1]) {
           // offsetY - Connection offset height from node point
+          const forwardEdgeId = `${id}${idSeparator}${nodes[index + 1].id}`;
+          edgeObj[forwardEdgeId] = { forward: true };
           graphRef.current.addEdge({
-            id: `${id} ${nodes[index + 1].id}`,
+            id: forwardEdgeId,
             sourcePoint: { x: endX, y: y + offsetY },
             targetPoint: { x: nextX, y: y + offsetY },
             attrs: {
@@ -290,9 +295,11 @@ const CapLevelGraphRenderer = ({
         const { y1 } = nodePostionObj[targetId];
         const v1 = { x, y: maxHeight + offsetLineDistance * (index + 1) };
         const v2 = { x: x1, y: maxHeight + offsetLineDistance * (index + 1) };
+        const reverseEdgeId = `${sourceId}${idSeparator}${targetId}`;
+        edgeObj[reverseEdgeId] = { reverse: true };
         graphRef.current
           .addEdge({
-            id: `${sourceId}${idSeparator}${targetId}`,
+            id: reverseEdgeId,
             sourcePoint: [x, y],
             target: [x1, y1],
             vertices: [v1, v2],
@@ -316,11 +323,11 @@ const CapLevelGraphRenderer = ({
           && levels.length - 1 === levelItemIndex
         ) {
           const v3 = {
-            x: v1.x,
+            x: v1.x - 8,
             y: v1.y + 8,
           };
           const v4 = {
-            x: v2.x,
+            x: v2.x - 8,
             y: v2.y + 8,
           };
           graphRef.current.addEdge({
@@ -354,19 +361,26 @@ const CapLevelGraphRenderer = ({
     });
 
     if (showToolTip) {
-      graphRef.current.on("edge:mouseenter", ({ edge }) => {
-        const [sourceId, targetId] = edge.id.split(idSeparator);
-        const sourceToolTip = get(nodePostionObj, [sourceId, 'toolTip']);
-        const targetToolTip = get(nodePostionObj, [targetId, 'toolTip']);
-        if (sourceToolTip && targetToolTip) {
-          edge.addTools([
-            {
-              name: "tooltip",
-              args: {
-                tooltip: `${sourceToolTip} - ${targetToolTip}`,
+      graphRef.current.on("edge:mouseenter", ({ edge = {} }) => {
+        const edgeId = edge.id;
+        if (
+          edgeObj[edgeId]
+          && ((allowForwardArrowTooltip && edgeObj[edgeId].forward)
+            || (allowReverseArrowTooltip && edgeObj[edgeId].reverse))
+        ) {
+          const [sourceId, targetId] = edgeId.split(idSeparator);
+          const sourceToolTip = get(nodePostionObj, [sourceId, "toolTip"]);
+          const targetToolTip = get(nodePostionObj, [targetId, "toolTip"]);
+          if (sourceToolTip && targetToolTip) {
+            edge.addTools([
+              {
+                name: "tooltip",
+                args: {
+                  tooltip: `${sourceToolTip} - ${targetToolTip}`,
+                },
               },
-            },
-          ]);
+            ]);
+          }
         }
       });
 
@@ -388,11 +402,14 @@ const CapLevelGraphRenderer = ({
   }, [scrollbarPosition]);
 
   const onNextPageClick = useCallback(() => {
-    const newScrollValue = parseFloat(
+    let newScrollValue = parseFloat(
       (scrollbarPosition + defaultEleWidth + defaultEleDistance).toFixed(5),
       10
     );
-    if (newScrollValue < totalAvailWidth) setScrollbarPosition(newScrollValue);
+    if (newScrollValue > totalAvailWidth) {
+      newScrollValue = totalAvailWidth;
+    }
+    if (newScrollValue <= totalAvailWidth) setScrollbarPosition(newScrollValue);
   }, [nodes, scrollbarPosition]);
 
   return (
@@ -454,6 +471,8 @@ CapLevelGraphRenderer.propTypes = {
   graphId: PropTypes.string.isRequired,
   graphWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   graphHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  allowForwardArrowTooltip: PropTypes.bool,
+  allowReverseArrowTooltip: PropTypes.bool,
 };
 
 CapLevelGraphRenderer.defaultProps = {
@@ -476,6 +495,8 @@ CapLevelGraphRenderer.defaultProps = {
   defaultEleDistance: 20,
   offsetLineDistance: 18,
   lineStrokeColor: "gray",
+  allowForwardArrowTooltip: false,
+  allowReverseArrowTooltip: false,
 };
 
 export default CapLevelGraphRenderer;
