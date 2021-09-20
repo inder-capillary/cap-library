@@ -184,6 +184,7 @@ const getSvgComponentFromType = (type) => {
     case 'star': return SvgIcons.Star;
     case 'downgrade': return SvgIcons.Downgrade;
     case 'scope': return SvgIcons.Scope;
+    case 'return': return SvgIcons.Return;
 
     default: return null;
   }

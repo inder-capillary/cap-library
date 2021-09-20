@@ -38,6 +38,7 @@ const RefreshButtonTextContainer = styled.div`
 `;
 
 const CapErrorStateIllustration = ({
+  showImage,
   className,
   refreshText,
   expiryTitle,
@@ -50,14 +51,16 @@ const CapErrorStateIllustration = ({
     className={classnames("cap-error-state-illustration", className)}
   >
     <CapRow>
-      <CapImage
-        src={
-          isRefreshExpired
-            ? expiryErrorStateIllustration
-            : refreshErrorStateIllustration
-        }
-        className="error-state-image"
-      />
+      {showImage && (
+        <CapImage
+          src={
+            isRefreshExpired
+              ? expiryErrorStateIllustration
+              : refreshErrorStateIllustration
+          }
+          className="error-state-image"
+        />
+      )}
       {!isRefreshExpired ? (
         <>
           {refreshTitle && <CapHeading type="h4">{refreshTitle}</CapHeading>}
@@ -90,6 +93,7 @@ CapErrorStateIllustration.defaultProps = {
   className: "",
   refreshText: "",
   expiryTitle: "",
+  showImage: true,
   refreshTitle: "",
   expiryDescription: "",
   isRefreshExpired: false,
@@ -97,6 +101,7 @@ CapErrorStateIllustration.defaultProps = {
 };
 
 CapErrorStateIllustration.propTypes = {
+  showImage: PropTypes.bool,
   className: PropTypes.string,
   onRefreshClick: PropTypes.func,
   isRefreshExpired: PropTypes.bool,

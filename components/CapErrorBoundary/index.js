@@ -6,7 +6,10 @@
 
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 import { ErrorBoundary } from "react-error-boundary";
+import "./_capErrorBoundary.scss";
+
 import CapRow from "../CapRow";
 import CapErrorStateIllustration from "../CapErrorStateIllustration";
 
@@ -22,6 +25,7 @@ const CapErrorBoundary = ({
   refreshThreshold,
   expiryDescription,
   isApiErrorBoundary,
+  showIllustrationImage,
 }) => {
   const [refreshCount, setRefreshCount] = useState(0);
   const [updatedKey, setUpdatedKey] = useState(
@@ -38,9 +42,11 @@ const CapErrorBoundary = ({
 
   const errorStateIllustration = (
     <CapErrorStateIllustration
+      className="cap-error-boundary-illustration"
       refreshText={refreshText}
       expiryTitle={expiryTitle}
       refreshTitle={refreshTitle}
+      showImage={showIllustrationImage}
       onRefreshClick={handleRefreshClick}
       expiryDescription={expiryDescription}
       isRefreshExpired={refreshCount === refreshThreshold}
@@ -53,7 +59,10 @@ const CapErrorBoundary = ({
   };
 
   return (
-    <CapRow key={updatedKey} className={className}>
+    <CapRow
+      key={updatedKey}
+      className={classnames("cap-error-boundary", className)}
+    >
       {!isApiErrorBoundary && (
         <ErrorBoundary fallbackRender={fallbackRender}>
           {children}
@@ -75,6 +84,7 @@ CapErrorBoundary.defaultProps = {
   errorHandler: () => {},
   onRefreshClick: () => {},
   isApiErrorBoundary: false,
+  showIllustrationImage: true,
 };
 
 CapErrorBoundary.propTypes = {
@@ -85,6 +95,7 @@ CapErrorBoundary.propTypes = {
   onRefreshClick: PropTypes.func,
   refreshThreshold: PropTypes.number,
   isApiErrorBoundary: PropTypes.bool,
+  showIllustrationImage: PropTypes.bool,
   refreshText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   expiryTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   refreshTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
