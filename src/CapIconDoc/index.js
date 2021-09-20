@@ -117,6 +117,14 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <Text>arrow-filled</Text>
             </List>
             <List>
+              <CapIcon type="arrow-up" />
+              <Text>arrow-up</Text>
+            </List>
+            <List>
+              <CapIcon type="arrow-down" />
+              <Text>arrow-down</Text>
+            </List>
+            <List>
               <CapIcon type="back" />
               <Text>back</Text>
             </List>
