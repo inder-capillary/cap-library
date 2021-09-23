@@ -59,4 +59,9 @@ export default {
   InfoNote: {
     noteText: 'Note',
   },
+  SomethingWentWrong: {
+    title: 'Sorry, something went wrong.',
+    description: 'Please try again. If this issue occurs again, please reach out to Capillary support team.',
+    reloadText: 'Try refreshing again',
+  },
 };
