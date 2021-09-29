@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Dropdown } from 'antd';
 import classNames from 'classnames';
 import './_capDropdown.scss';
@@ -23,8 +24,12 @@ function CapDropdown(props) {
   );
 }
 
-CapDropdown.propTypes = {
+CapDropdown.defaultProps = {
+  getPopupContainer: (triggerNode) => triggerNode?.parentNode || document.body,
+};
 
+CapDropdown.propTypes = {
+  getPopupContainer: PropTypes.func,
 };
 
 CapDropdown.Button = Button;

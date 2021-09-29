@@ -34,6 +34,7 @@ function CapSelect(props) {
 
 CapSelect.defaultProps = {
   size: 'large',
+  getPopupContainer: (triggerNode) => triggerNode?.parentNode || document.body,
 };
 
 CapSelect.propTypes = {
@@ -45,6 +46,7 @@ CapSelect.propTypes = {
   inductiveText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   options: PropTypes.array.isRequired,
   size: PropTypes.string,
+  getPopupContainer: PropTypes.func,
 };
 
 const CapSelectFinal = ComponentWithLabelHOC(CapSelect);

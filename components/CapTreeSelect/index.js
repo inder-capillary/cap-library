@@ -86,8 +86,13 @@ function CapTreeSelect(props) {
   );
 }
 
+CapTreeSelect.defaultProps = {
+  getPopupContainer: (triggerNode) => triggerNode?.parentNode || document.body,
+};
+
 CapTreeSelect.propTypes = {
   treeData: PropTypes.array.isRequired,
+  getPopupContainer: PropTypes.func,
 };
 
 export default CapTreeSelect;
