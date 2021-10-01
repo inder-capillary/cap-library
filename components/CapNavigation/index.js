@@ -137,7 +137,7 @@ const CapNavigation = (props) => {
 
   const getProductList = () => {
     const { currentOrgDetails = {}} = userData;
-    const { module_details: moduleDetails } = currentOrgDetails;
+    const { module_details: moduleDetails = [] } = currentOrgDetails;
     const productsList = [];
     if (Object.keys(currentOrgDetails).length !== 0) {
       moduleDetails.forEach((module) => {

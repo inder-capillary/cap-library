@@ -1,17 +1,26 @@
 @import "../styles/_variables.scss";
 
-.cap-error-boundary {
-  @keyframes errorBoundarySlide {
-    from {
-      transform: translateY(100%);
-    }
-    to {
-      transform: translateY(0%);
-    }
+@keyframes errorBoundarySlide {
+  from {
+    transform: translateY(30%);
   }
+  to {
+    transform: translateY(0%);
+  }
+}
 
-  .cap-error-boundary-illustration {
-    position: relative;
-    animation: errorBoundarySlide 0.3s ease;
+.cap-error-boundary-illustration-animation {
+  position: relative;
+  animation: errorBoundarySlide 0.3s ease;
+}
+
+.cap-error-boundary-slide-box {
+  .cap-slide-box-v2-container .slidebox-content-container {
+    overflow: hidden;
   }
+}
+
+.cap-error-boundary-illustration-container {
+  height: 100%;
+  width: 100%;
 }

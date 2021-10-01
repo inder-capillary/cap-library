@@ -46,9 +46,11 @@ const CapErrorStateIllustration = ({
   onRefreshClick,
   isRefreshExpired,
   expiryDescription,
+  ...rest
 }) => (
   <ErrorStateIllustrationContainer
     className={classnames("cap-error-state-illustration", className)}
+    {...rest}
   >
     <CapRow>
       {showImage && (
