@@ -150,8 +150,10 @@ class DateRangePickerWrapper extends React.Component {
 
   onFocusChange(focusedInput) {
     // if only calendar is shown then do not let it get closed on outside click
-    if (!this.props.showCalendarOnly || focusedInput) {
-      this.setState({ focusedInput });
+    if ((!this.props.showCalendarOnly || focusedInput)) {
+      if ((this.props.allowYearNavigation && focusedInput) || !this.props.allowYearNavigation) {
+        this.setState({ focusedInput });
+      }
     }
     const { onFocusChange } = this.props;
     onFocusChange && onFocusChange(focusedInput);
@@ -227,7 +229,7 @@ class DateRangePickerWrapper extends React.Component {
     const { customInputIcon, customArrowIcon, navNext, navPrev, renderDayContents, disabledDate, isDayBlocked, showCalendarOnly, allowYearNavigation, hideCalendar } = this.props;
 
     return (
-      <div className={`${classNames(commonClsPrefix, clsPrefix)} ${showCalendarOnly ? 'show-calendar-only' : ''} ${hideCalendar ? 'hide-calendar' : ''}`}>
+      <div className={`${classNames(commonClsPrefix, clsPrefix)} ${showCalendarOnly ? 'show-calendar-only' : ''} ${hideCalendar ? 'hide-calendar' : ''} ${allowYearNavigation ? 'allow-year-navigation' : ''}`}>
         {
           allowYearNavigation ?
             <DateRangePicker
@@ -236,7 +238,7 @@ class DateRangePickerWrapper extends React.Component {
               focusedInput={focusedInput}
               startDate={startDate}
               endDate={endDate}
-              customInputIcon={customInputIcon || <CapIcon type="calendar" style={{ color: styledVars.CAP_G01 }} size="m" />
+              customInputIcon={customInputIcon || <CapIcon type="calendar" style={{ color: styledVars.CAP_G01 }} size="m" onClick={(e) => this.setState({focusedInput: null})}/>
               }
               customArrowIcon={customArrowIcon || <span style={{ color: styledVars.CAP_G01 }}>–</span>}
               navNext={

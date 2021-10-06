@@ -73,13 +73,13 @@ $rangePicker: cap-date-range-picker-v2;
     color: $FONT_COLOR_06;
   }
   .CalendarDay__selected_start .calendar-day-content {
-    background: linear-gradient(90deg,$CAP_WHITE 50%, $CAP_G09 50%);
+    background: linear-gradient(90deg,$CAP_WHITE 50%,#e9f0fe 50%);
   }
   .CalendarDay__selected_end .calendar-day-content {
-    background: linear-gradient(90deg,$CAP_G09 50%, $CAP_WHITE 50%);
+    background: linear-gradient(90deg,#e9f0fe 50%, $CAP_WHITE 50%);
   }
   .CalendarDay__selected_span .calendar-day-content, .CalendarDay__hovered_span .calendar-day-content {
-    background-color: $CAP_G09;
+    background-color: #e9f0fe;
   }
   .CalendarDay__blocked_out_of_range, .CalendarDay__blocked_calendar {
     color: $FONT_COLOR_04;
@@ -182,6 +182,18 @@ $rangePicker: cap-date-range-picker-v2;
     }
     .CalendarMonth_table {
       margin-top: 22px;
+    }
+  }
+}
+
+.allow-year-navigation {
+  .DateRangePicker_picker {
+    .DayPicker_weekHeader {
+      top: 36px;
+    }
+    .CalendarMonth_caption {
+      padding-top: 9px;
+      padding-bottom: 20px;
     }
   }
 }
