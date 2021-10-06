@@ -13,7 +13,7 @@ const LocaleHoc = (WrapperComponent, customProps) => class Wrapper extends Compo
     };
     const jlocale = localStorage.getItem('jlocale') || 'en';
     const localKey = mapLocale[jlocale];
-    this.translatedDefaults = files[localKey][customProps.key] || {};
+    this.translatedDefaults = files?.[localKey]?.[customProps.key] || files?.[mapLocale.en]?.[customProps.key];
   }
 
   render() {
