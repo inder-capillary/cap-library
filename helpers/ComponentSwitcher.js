@@ -68,13 +68,14 @@ import CapSnackBarDoc from '../src/CapSnackBarDoc';
 import CapTreeSelectDoc from '../src/CapTreeSelectDoc';
 import CapNavigationDoc from '../src/CapNavigationDoc';
 import CapLoginDoc from '../src/CapLoginDoc';
-import CapJourneySidebarDoc from '../src/CapJourneySidebarDoc';
+import CapDndGraphSidebarDoc from '../src/CapDndGraphSidebarDoc';
 import CapAdvancedIconDoc from '../src/CapAdvancedIconDoc';
 import CapColorPickerDoc from '../src/CapColorPickerDoc';
 import CapLevelGraphRendererDoc from '../src/CapLevelGraphRendererDoc';
 import CapInfoNoteDoc from '../src/CapInfoNoteDoc';
 import CapErrorStateIllustrationDoc from '../src/CapErrorStateIllustrationDoc';
 import CapErrorBoundaryDoc from '../src/CapErrorBoundaryDoc';
+import CapDnDGraphDoc from '../src/CapDndGraphDoc';
 //imported for docs
 
 
@@ -216,10 +217,12 @@ class ComponentSwitcher extends Component {
         return <CapNavigationDoc />;
       case 'capLogin':
         return <CapLoginDoc />;
-      case 'capJourneySidebar':
-        return <CapJourneySidebarDoc />;
+      case 'capDndGraphSidebarDoc':
+        return <CapDndGraphSidebarDoc />;
       case 'capAdvancedIcon':
         return <CapAdvancedIconDoc />;
+      case 'capDnDGraph':
+        return <CapDnDGraphDoc />;
       case 'capColorPicker':
         return <CapColorPickerDoc />;
       case 'capLevelGraphRenderer':

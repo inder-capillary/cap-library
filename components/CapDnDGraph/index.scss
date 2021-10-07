@@ -1,0 +1,13 @@
+.cap-graph-builder {
+  display: flex;
+
+  .cap-graph-builder-element {
+    svg {
+      g {
+        body {
+          position: fixed;
+        }
+      }
+    }
+  }
+}

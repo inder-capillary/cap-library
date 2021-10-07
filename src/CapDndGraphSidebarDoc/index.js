@@ -2,9 +2,9 @@ import React from 'react';
 import { Layout } from 'antd';
 import { DndProvider } from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
-import CapJourneySidebar from '../../components/CapJourneySidebar';
+import CapDndGraphSidebar from '../../components/CapDndGraphSidebar';
 import PropertyTable from '../../helpers/PropertyTable';
-import { CAP_YELLOW, CAP_SECONDARY } from '../../components/styled/variables';
+import { CAP_YELLOW, CAP_SECONDARY, CAP_BLUE } from '../../components/styled/variables';
 
 const { Sider } = Layout;
 
@@ -18,93 +18,123 @@ const api = [
   },
 ];
 
-const nodes = {
-  engagements: {
-    title: 'Enagagements',
-    description: 'engagement nodes',
-    color: CAP_YELLOW,
+const sidebarNodes = [
+  {
+    key: 'engagements',
+    title: 'Engagements',
+    tooltipText: 'engagement nodes',
     children: [
       {
+        id: 'sms',
         type: "sms",
         label: "SMS",
       },
       {
+        id: 'email',
         type: "messageWithTransform",
         label: "Email",
       },
       {
+        id: 'mpush',
         type: "mpush",
         label: "M-push",
       },
       {
+        id: 'line',
         type: "line",
         label: "Line",
       },
       {
+        id: 'wechat',
         type: "wechatOutline",
         label: "WeChat",
       },
       {
+        id: 'topXChannel',
         type: "topXChannel",
         label: "Top X channel",
       },
       {
+        id: 'channelPriority',
         type: "channelPriority",
         label: "Channel priority",
       },
       {
+        id: 'abTesting',
         type: "lab",
         label: "A/B test",
       },
     ],
+    color: CAP_YELLOW,
   },
-  flowControl: {
+  {
+    key: 'flowControl',
     title: 'Flow Control',
-    description: 'flow control nodes',
+    tooltipText: 'flow control nodes',
     children: [
       {
+        id: 'wait',
         type: "alarm",
         label: "Wait",
       },
       {
+        id: 'waitUntil',
         type: "waitEvent",
         label: "Wait till event",
+        isMultiPath: true,
       },
       {
+        id: 'join',
         type: "join",
         label: "Join",
       },
       {
+        id: 'engagementSplit',
         type: "engagementSplit",
         label: "Engagement split",
+        isMultiPath: true,
       },
       {
+        id: 'split',
         type: "split",
         label: "Decision split",
       },
-    ]},
-  actions: {
+    ],
+    color: CAP_BLUE,
+  },
+  {
+    key: 'actions',
     title: 'Actions',
-    description: 'actions nodes',
-    color: CAP_SECONDARY.base,
+    tooltipText: 'actions nodes',
     children: [
       {
+        id: 'userAttributeChange',
         type: "userAttributeChange",
-        label: "User attribute c...",
+        label: "User attribute change",
       },
       {
+        id: 'api',
         type: "api",
         label: "API call",
       },
-    ]},
+    ],
+    color: CAP_SECONDARY.base,
+  },
+];
+
+const props = {
+  sidebarTitle: 'Building blocks',
+  sidebarTitleInfo: 'Info text here',
+  sidebarDescription: 'Drag & drop blocks to create the journey, start with the Entry triggers',
+  nodes: sidebarNodes,
 };
 
-function CapJourneySidebarDoc() {
+function CapDndGraphSidebarDoc() {
   return (
     <Layout>
       <Sider width={240}>
         <DndProvider backend={HTML5Backend}>
-          <CapJourneySidebar nodes={nodes} drag />
+          <CapDndGraphSidebar {...props} isNodeDraggable />
         </DndProvider>
       </Sider>
       <Layout>
@@ -113,4 +143,4 @@ function CapJourneySidebarDoc() {
     </Layout>
   );
 }
-export default CapJourneySidebarDoc;
+export default CapDndGraphSidebarDoc;

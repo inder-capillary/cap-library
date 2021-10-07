@@ -88,7 +88,7 @@ const CapNavigation = (props) => {
     const proxyOrgList = [];
     if (userData && userData.user && userData.user !== '') {
       const { orgDetails = {}, user = {} } = userData;
-      let { name: selectedOrgName, org_id: selectedOrgId } = orgDetails;
+      let { name: selectedOrgName, org_id: selectedOrgId } = orgDetails; //eslint-disable-line
       const { proxyOrgList: orgList = [], accessibleOUList } = user;
       // fetching current selected org details and adding to org list dropdown
       if (!isEmpty(selectedOrgId)) {
@@ -109,7 +109,7 @@ const CapNavigation = (props) => {
       }
       if (orgList && orgList.length) {
         orgList.forEach((item) => {
-          if (parseInt(item.orgID) !== parseInt(selectedOrgId)) {
+          if (parseInt(item.orgID, 10) !== parseInt(selectedOrgId, 10)) {
             const id = item.orgID;
             const name = item.orgName;
             const orgObj = { label: name, value: id, key: id };

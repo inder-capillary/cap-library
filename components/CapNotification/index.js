@@ -34,10 +34,10 @@ const openNotification = (props, type) => {
     notificationProps.icon = <CapIcon className="error" type="alert" />;
   } else if (type === 'success') {
     notificationProps.icon = <CapIcon className="success" type="check-filled" />;
-  } else if(type === 'custom'){
+  } else if (type === 'custom') {
     notificationProps.icon = icon;
     notificationProps.style = {
-      borderLeft : `4px solid ${bgColor}`
+      borderLeft: `4px solid ${bgColor}`,
     };
   }
   notification.open(notificationProps);
@@ -53,7 +53,7 @@ const successNotification = (props) => {
 
 const custom = (props) => {
   openNotification(props, 'custom');
-}
+};
 
 const CapNotification = {};
 

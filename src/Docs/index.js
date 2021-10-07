@@ -10,7 +10,7 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
   constructor(props) {
     super(props);
     this.state = {
-      menuSelected: "capButton",
+      menuSelected: "capDnDGraph",
     };
     this.onMenuItemClick = this.onMenuItemClick.bind(this);
   }
@@ -30,6 +30,7 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             <img className="cap-logo" style={{ width: "150px", margin: "10px" }} src={logo} alt="Capillary Technologies" />
           </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.state.menuSelected]} onClick={this.onMenuItemClick}>
+            <MenuItem key="capDnDGraph"><span className="nav-text">CapDnDGraph</span></MenuItem>
             <MenuItem key="capButton"><span className="nav-text">CapButton</span></MenuItem>
             <MenuItem key="capCardBox"><span>CapCardBox</span></MenuItem>
             <MenuItem key="capSlider"><span>CapSlider</span></MenuItem>
@@ -97,7 +98,7 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             <MenuItem key="capSnackBar"><span>CapSnackBar</span></MenuItem>
             <MenuItem key="capNavigation"><span>CapNavigation</span></MenuItem>
             <MenuItem key="capLogin"><span>CapLogin</span></MenuItem>
-            <MenuItem key="capJourneySidebar"><span>CapJourneySidebar</span></MenuItem>
+            <MenuItem key="capDndGraphSidebarDoc"><span>CapDndGraphSidebarDoc</span></MenuItem>
             <MenuItem key="capAdvancedIcon"><span>CapAdvancedIcon</span></MenuItem>
             <MenuItem key="capColorPicker"><span>CapColorPicker</span></MenuItem>
             <MenuItem key="capLevelGraphRenderer"><span>CapLevelGraphRenderer</span></MenuItem>
@@ -110,7 +111,7 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
         </Sider>
         <Layout style={{ marginLeft: 200 }}>
           <Content style={{ overflow: 'initial' }}>
-            <div style={{ padding: 24, background: '#fff' }}>
+            <div style={{ padding: this.state.menuSelected === 'capDnDGraph' ? 0 : 24, background: '#fff' }}>
               {/*<CapPageHeader pageHeading={this.state.menuSelected.toUpperCase()} />*/}
               <ComponentSwitcher type={this.state.menuSelected} />
             </div>

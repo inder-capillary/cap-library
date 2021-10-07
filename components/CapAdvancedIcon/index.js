@@ -7,10 +7,13 @@ import {
   CAP_WHITE,
 } from '../styled/variables';
 import CapIcon from '../CapIcon';
+import CapRow from '../CapRow';
 import './_capAdvancedIcon.scss';
 
-const getActionIcons = (actionNodes) => actionNodes.map((node) => {
-  const { type, backgroundColor, position, customProps } = node;
+const getActionIcons = (actionNodes, id) => actionNodes.map((node) => {
+  const { type, backgroundColor, position, props } = node;
+
+  const onClickIcon = () => node.onClick({blockId: id, actionType: type});
   return (
     <CapIcon
       type={type}
@@ -23,15 +26,33 @@ const getActionIcons = (actionNodes) => actionNodes.map((node) => {
         },
         className: classnames(`${position}-action-icon-container`, 'action-icon-container'),
       }}
-      {...customProps}
+      onClick={onClickIcon}
+      {...props}
       size="xs"
     />
   );
 });
 
 const CapAdvancedIcon = (props) => {
-  const { type, backgroundColor, actionNodes = [], label1, label2, dragRef, ...rest } = props;
+  const {
+    type,
+    backgroundColor,
+    actionNodes = [],
+    label1,
+    label2,
+    dragRef,
+    backgroundProps,
+    positionLabel,
+    id,
+    isConfigured,
+    ...rest
+  } = props;
   const [actionIconsVisible, setActionIconsVisibility] = useState(false);
+
+  const labelStyles = positionLabel ? {
+    width: 135,
+    marginLeft: -47,
+  } : {};
 
   const showActionIcons = useCallback(() => {
     setActionIconsVisibility(true);
@@ -43,7 +64,7 @@ const CapAdvancedIcon = (props) => {
 
   return (
     <>
-      <div className="advanced-icon-container">
+      <CapRow className="advanced-icon-container">
         <div
           onMouseEnter={actionNodes.length ? showActionIcons : undefined}
           onMouseLeave={actionNodes.length ? hideActionIcons : undefined}
@@ -53,20 +74,24 @@ const CapAdvancedIcon = (props) => {
             type={type}
             withBackground
             backgroundProps={{
+              backgroundColor: backgroundColor || CAP_YELLOW,
+              lineHeight: 1,
+              padding: '9px',
               style: {
-                backgroundColor: backgroundColor || CAP_YELLOW,
                 lineHeight: 1,
-                padding: '9px',
               },
+              ...backgroundProps,
             }}
             style={{ color: CAP_WHITE }}
             {...rest}
           />
-          {actionIconsVisible && getActionIcons(actionNodes)}
+          {actionIconsVisible && getActionIcons(actionNodes, id)}
         </div>
-      </div>
-      {label1}
-      {label2}
+      </CapRow>
+      <CapRow style={{ textAlign: 'center', ...labelStyles }}>
+        {label1}
+        {label2}
+      </CapRow>
     </>
   );
 };

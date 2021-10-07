@@ -1,24 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useDrag } from 'react-dnd';
 import CapAdvancedIcon from '../CapAdvancedIcon';
 import CapLabel from '../CapLabel';
-import { CAP_YELLOW, CAP_BLUE, CAP_SECONDARY } from '../styled/variables';
 
-const colorMap = {
-  engagements: CAP_YELLOW,
-  flowControl: CAP_BLUE,
-  actions: CAP_SECONDARY.base,
-};
-
-const SideBarIcon = (childNode, color, key, isNodeDraggable) => {
-  const { type, label } = childNode;
-  let customProps; let
-    drag;
+const SideBarIcon = ({ childNode, color, isNodeDraggable }) => {
+  const { type, label, id, isMultiPath } = childNode;
+  let drag;
   if (isNodeDraggable) {
-    [customProps, drag] = useDrag({
+    [, drag] = useDrag({
       item: {
-        id: type,
-        type,
+        id,
+        type: 'draggableNode',
+        iconType: type,
+        color,
+        isMultiPath,
       },
     });
   }
@@ -28,7 +24,7 @@ const SideBarIcon = (childNode, color, key, isNodeDraggable) => {
       <div className="node-container-inner">
         <CapAdvancedIcon
           type={type}
-          backgroundColor={color || colorMap[key]}
+          backgroundColor={color}
           label1={
             <CapLabel className="node-label" type="label5">{label}</CapLabel>
           }
@@ -42,6 +38,12 @@ const SideBarIcon = (childNode, color, key, isNodeDraggable) => {
       </div>
     </div>
   );
+};
+
+SideBarIcon.propTypes = {
+  childNode: PropTypes.object,
+  color: PropTypes.string,
+  isNodeDraggable: PropTypes.bool,
 };
 
 export default SideBarIcon;

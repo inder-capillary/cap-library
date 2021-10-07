@@ -175,6 +175,9 @@ const getSvgComponentFromType = (type) => {
     case 'api': return SvgIcons.Api;
     case 'wechatOutline': return SvgIcons.WechatOutline;
     case 'topXChannel': return SvgIcons.TopXChannel;
+    case 'entry': return SvgIcons.Entry;
+    case 'exit': return SvgIcons.Exit;
+    case 'end': return SvgIcons.End;
     case 'points': return SvgIcons.Points;
     case 'org': return SvgIcons.Org;
     case 'personLove': return SvgIcons.PersonLove;

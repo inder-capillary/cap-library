@@ -27,8 +27,9 @@ const SomethingWentWrong = ({
   url,
   onClickReload,
 }) => {
+  let onClickReloadButton = onClickReload;
   if (!onClickReload) {
-    onClickReload = useCallback(() => {
+    onClickReloadButton = useCallback(() => {
       if (window.location.pathname.includes("somethingwentwrong")) {
         window.location = url;
       } else {
@@ -50,13 +51,13 @@ const SomethingWentWrong = ({
         type="link"
         className={buttonClassName}
         style={{ color: CAP_SECONDARY.base }}
-        onClick={onClickReload}
+        onClick={onClickReloadButton}
       >
         {reloadText}
       </CapButton>
     </SomethingWentWrongContainer>
   );
-}
+};
 
 SomethingWentWrong.propTypes = {
   className: PropTypes.string,

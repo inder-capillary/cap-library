@@ -6,6 +6,7 @@ const CapIconWithBackground = styled.div`
   border-radius: 18px;
   padding: ${(props) => props.padding || CAP_SPACE_12};
   display: inline-block;
+  opacity: ${(props) => props.opacity || 1}
 `;
 
 export default CapIconWithBackground;
