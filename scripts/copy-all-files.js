@@ -80,6 +80,11 @@ function createPackageFile() {
           "react-virtualized": "9.22.3",
           "@antv/x6": "1.12.4",
           "@antv/x6-react-shape": "1.2.3",
+          "@antv/layout": "0.1.3",
+          "react-dnd": "^11.1.3",
+          "react-dnd-html5-backend": "^11.1.3",
+          "cap-dagre": "0.8.6-pre",
+          "uuid": "8.3.2",
         },
       };
 

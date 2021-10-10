@@ -3,7 +3,7 @@ import { DndProvider } from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 
 import CapLabel from '../../components/CapLabel';
-import CapEmptyDivWithBorder from '../../components/CapEmptyDivWithBorder';
+import CapBorderedBox from '../../components/CapBorderedBox';
 import CapIcon from '../../components/CapIcon';
 import CapHeading from '../../components/CapHeading';
 import CapDnDGraph from '../../components/CapDnDGraph';
@@ -180,7 +180,7 @@ export const initialGraphData = [
   {
     from: '1',
     id: '2',
-    component: CapEmptyDivWithBorder,
+    component: CapBorderedBox,
     to: ['3'],
     type: 'PLACEHOLDER_NODE',
     width: 48,
@@ -189,7 +189,7 @@ export const initialGraphData = [
   {
     from: '2',
     id: '3',
-    component: CapEmptyDivWithBorder,
+    component: CapBorderedBox,
     to: ['4', '5'],
     type: 'PLACEHOLDER_NODE',
     width: 48,
@@ -198,7 +198,7 @@ export const initialGraphData = [
   {
     from: '3',
     id: '4',
-    component: CapEmptyDivWithBorder,
+    component: CapBorderedBox,
     to: ['6'],
     type: 'PLACEHOLDER_NODE',
     width: 48,
@@ -207,7 +207,7 @@ export const initialGraphData = [
   {
     from: '3',
     id: '5',
-    component: CapEmptyDivWithBorder,
+    component: CapBorderedBox,
     to: ['7'],
     type: 'PLACEHOLDER_NODE',
     width: 48,

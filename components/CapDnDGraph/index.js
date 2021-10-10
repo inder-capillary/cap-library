@@ -7,7 +7,7 @@ import { Graph, Markup } from '@antv/x6';
 import { Layout } from '@antv/layout';
 import { useDrop } from 'react-dnd';
 
-import uniqueId from 'lodash/uniqueId';
+import { v4 as uuidv4 } from 'uuid';
 import cloneDeep from 'lodash/cloneDeep';
 import debounce from 'lodash/debounce';
 
@@ -32,7 +32,7 @@ import {
 
 import { CAP_G06 } from '../styled/variables';
 import './index.scss';
-import CapEmptyDivWithBorder from '../CapEmptyDivWithBorder';
+import CapBorderedBox from '../CapBorderedBox';
 
 const endIconProps = {
   type: 'end',
@@ -49,6 +49,7 @@ const CapDndGraph = (props) => {
   const dagreLayoutRef = useRef(null);
   const previouslyFoundEdge = useRef(-1);
   const edgesData = useRef([]);
+  const graphContainerPositionStart = useRef(null);
 
   const [graphNodes, setGraphNodes] = useState(initialGraphData);
   const [graphData, setGraphData] = useState({
@@ -308,6 +309,7 @@ const CapDndGraph = (props) => {
     registerEdges();
     initializeGraphAndLayout();
     prepareGraphNodeEdges();
+    graphContainerPositionStart.current = document.querySelector('.cap-graph-builder .x6-graph-scroller').getBoundingClientRect().x;
   }, []);
 
   useEffect(() => {
@@ -322,13 +324,13 @@ const CapDndGraph = (props) => {
   }, [graphData]);
 
   const onDrop = useCallback((item) => {
-    const newNodeId = uniqueId();
+    const newNodeId = uuidv4();
     let endNode;
     previouslyFoundEdge.current = -1;
     if (item.isMultiPath) {
       endNode = {
         from: newNodeId,
-        id: uniqueId(),
+        id: uuidv4(),
         component: CapIcon,
         props: {
           ...endIconProps,
@@ -341,7 +343,7 @@ const CapDndGraph = (props) => {
       const entryTrigger = graphNodes.find((node) => node.type === ENTRY_TRIGGER);
       const exitTrigger = graphNodes.find((node) => node.type === EXIT_TRIGGER);
 
-      const endNodeId = uniqueId();
+      const endNodeId = uuidv4();
       const newSetNodes = [
         {
           ...entryTrigger,
@@ -454,8 +456,8 @@ const CapDndGraph = (props) => {
         // const isZoomed = false;
         if (!isZoomed) {
           dragPosition = {
-            x: draggingItemPosition.x - 434 - 10,
-            y: draggingItemPosition.y - 24,
+            x: draggingItemPosition.x - graphContainerPositionStart.current - 10,
+            y: draggingItemPosition.y - 34,
           };
         }
         const scrollPosition = isZoomed ? {left: 0, top: 0} : graphRef.current.getScrollbarPosition();
@@ -500,11 +502,11 @@ const CapDndGraph = (props) => {
           }
           const sourceChildrens = nodes[sourceIndex].to || [];
           const toIndex = sourceChildrens.findIndex((nodeId) => nodeId === targetId);
-          const id = uniqueId();
+          const id = uuidv4();
           nodes.splice(targetIndex, 0, {
             from: sourceNode.id,
             id,
-            component: CapEmptyDivWithBorder,
+            component: CapBorderedBox,
             to: [targetNode.id],
             type: PLACEHOLDER_NODE,
           });

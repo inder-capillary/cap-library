@@ -76,6 +76,7 @@ import CapInfoNoteDoc from '../src/CapInfoNoteDoc';
 import CapErrorStateIllustrationDoc from '../src/CapErrorStateIllustrationDoc';
 import CapErrorBoundaryDoc from '../src/CapErrorBoundaryDoc';
 import CapDnDGraphDoc from '../src/CapDndGraphDoc';
+import CapBorderedBoxDoc from '../src/CapBorderedBoxDoc';
 //imported for docs
 
 
@@ -233,6 +234,8 @@ class ComponentSwitcher extends Component {
         return <CapErrorStateIllustrationDoc />;
       case 'capErrorBoundary':
         return <CapErrorBoundaryDoc />;
+      case 'capBorderedBox':
+        return <CapBorderedBoxDoc />;
         //components for docs
 
       default:
