@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React, { useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
@@ -56,7 +57,6 @@ const CapDndGraph = (props) => {
     nodes: [],
     edges: [],
   });
-  const [prevGraphNodes, setPrevGraphNodes] = useState(initialGraphData);
 
   const blockNodes = useMemo(() => graphNodes.filter(
     (node) => ![ENTRY_TRIGGER, EXIT_TRIGGER, END_NODE, PLACEHOLDER_NODE, EMPTY_GRAPH_TEXT].includes(node.type)
@@ -377,10 +377,9 @@ const CapDndGraph = (props) => {
       if (item.isMultiPath) {
         newSetNodes.push(endNode);
       }
+      previouslyFoundEdge.current = -1;
       setGraphNodes(newSetNodes);
-      setPrevGraphNodes(newSetNodes);
     } else {
-      let updatedNodes = [];
       setGraphNodes((prevNodes) => {
         let nodes = cloneDeep(prevNodes);
         const placeholderNodeIndex = nodes.findIndex((node) => node.type === PLACEHOLDER_NODE);
@@ -429,10 +428,9 @@ const CapDndGraph = (props) => {
             nodes[sourceIndex].to[toNodeIndex] = newNodeId;
           }
         }
-        updatedNodes = cloneDeep(nodes);
         return nodes;
       });
-      setPrevGraphNodes(updatedNodes);
+      previouslyFoundEdge.current = -1;
     }
   }, [graphNodes]);
 
@@ -480,26 +478,16 @@ const CapDndGraph = (props) => {
             );
           }
         );
-        console.log(foundEdgeIndex);
-        console.log(previouslyFoundEdge);
-        // if (foundEdgeIndex > 0 && previouslyFoundEdge.current  < foundEdgeIndex) {
-        //   const placeholderIndex = graphNodes.findIndex((node) => node.type === PLACEHOLDERNODE);
-        //   if (placeholderIndex !== -1) foundEdgeIndex -= 1;
-        // }
         if (foundEdgeIndex !== -1 && previouslyFoundEdge.current !== foundEdgeIndex) {
-          previouslyFoundEdge.current = foundEdgeIndex;
-          let nodes = cloneDeep(graphNodes);
-          const placeholderIndex = nodes.findIndex((node) => node.type === PLACEHOLDER_NODE);
+          const nodes = cloneDeep(graphNodes);
           const { sourceId, targetId } = edgesData.current[foundEdgeIndex];
           const targetIndex = nodes.findIndex((node) => node.id === targetId);
           const sourceIndex = sourceId === undefined ? 0 : nodes.findIndex((node) => node.id === sourceId);
           const sourceNode = nodes[sourceIndex];
           const targetNode = nodes[targetIndex];
           if (sourceNode?.type === PLACEHOLDER_NODE
-            || targetNode?.type === PLACEHOLDER_NODE) return;
-          if (placeholderIndex !== -1) {
-            nodes = cloneDeep(prevGraphNodes);
-          }
+            || targetNode?.type === PLACEHOLDER_NODE
+            || !targetNode || !sourceNode) return;
           const sourceChildrens = nodes[sourceIndex].to || [];
           const toIndex = sourceChildrens.findIndex((nodeId) => nodeId === targetId);
           const id = uuidv4();
@@ -518,44 +506,54 @@ const CapDndGraph = (props) => {
           if (toIndex !== -1) {
             nodes[sourceIndex].to[toIndex] = id;
           }
-          setGraphNodes(nodes);
+          previouslyFoundEdge.current = foundEdgeIndex;
+          let secondaryPlaceholderId = null;
+          nodes.forEach((node) => {
+            if (node.type === PLACEHOLDER_NODE && node.id !== id) secondaryPlaceholderId = node.id;
+          });
+          const updatedNodes = secondaryPlaceholderId ? deleteNode(nodes, secondaryPlaceholderId) : nodes;
+          setGraphNodes(updatedNodes);
         }
       }
     }),
 
   });
 
-  const deleteNode = useCallback((blockId) => {
-    let updatedNodes = [];
-    setGraphNodes((prevNodes) => {
-      let nodes = cloneDeep(prevNodes);
-      const foundNode = nodes.find((node) => node.id === blockId);
-      const sourceNode = nodes.findIndex((node) => node.id === foundNode.from);
-      let from;
-      nodes = nodes.map((node) => {
-        from = '';
-        if (node.from === foundNode.id) {
-          from = nodes[sourceNode].id;
-        }
-        if (foundNode.to && foundNode.to.slice(1).includes(node.id)) {
-          return null;
-        }
-        return {
-          ...node,
-          from: from || node.from,
-        };
-      });
-      nodes[sourceNode].to = foundNode.to && foundNode.to.slice(0, 1);
-      const a = nodes.filter((node) => node && node.id !== blockId);
-      updatedNodes = cloneDeep(a);
-      return a;
+  const deleteNode = (nodesParam, blockId) => {
+    let nodes = cloneDeep(nodesParam);
+    const foundNode = nodes.find((node) => node.id === blockId);
+    const sourceNode = nodes.findIndex((node) => node.id === foundNode.from);
+    let from;
+    nodes = nodes.map((node) => {
+      from = '';
+      if (node.from === foundNode.id) {
+        from = nodes[sourceNode].id;
+      }
+      if (foundNode.to && foundNode.to.slice(1).includes(node.id)) {
+        return null;
+      }
+      return {
+        ...node,
+        from: from || node.from,
+      };
     });
-    setPrevGraphNodes(updatedNodes);
+    const toIndex = nodes[sourceNode].to && nodes[sourceNode].to.findIndex((nodeId) => nodeId === foundNode.id);
+    nodes[sourceNode].to[toIndex] = foundNode.to && foundNode.to[0];
+    nodes[sourceNode].toType = undefined;
+    const a = nodes.filter((node) => node && node.id !== blockId);
+    return a;
+  };
+
+  const deleteNodeHandler = useCallback((blockId) => {
+    setGraphNodes((prevNodes) => {
+      const nodes = deleteNode(prevNodes, blockId);
+      return nodes;
+    });
   }, []);
 
   const onClickActionIcon = useCallback(({ blockId, actionType }) => {
     if (actionType === 'delete') {
-      deleteNode(blockId);
+      deleteNodeHandler(blockId);
     } else if (actionType === 'settings') {
       console.log('On click settings..');
     }
