@@ -188,6 +188,7 @@ const getSvgComponentFromType = (type) => {
     case 'downgrade': return SvgIcons.Downgrade;
     case 'scope': return SvgIcons.Scope;
     case 'return': return SvgIcons.Return;
+    case 'userCopy': return SvgIcons.UserCopy;
 
     default: return null;
   }
