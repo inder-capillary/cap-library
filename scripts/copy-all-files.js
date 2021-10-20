@@ -84,7 +84,7 @@ function createPackageFile() {
           "react-dnd": "^11.1.3",
           "react-dnd-html5-backend": "^11.1.3",
           "cap-dagre": "0.8.6-pre",
-          "uuid": "8.3.2",
+          "nanoid": "3.1.30",
         },
       };
 

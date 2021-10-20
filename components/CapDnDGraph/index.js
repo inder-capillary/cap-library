@@ -8,7 +8,7 @@ import { Graph, Markup } from '@antv/x6';
 import { Layout } from '@antv/layout';
 import { useDrop } from 'react-dnd';
 
-import { v4 as uuidv4 } from 'uuid';
+import { nanoid } from 'nanoid';
 import cloneDeep from 'lodash/cloneDeep';
 import debounce from 'lodash/debounce';
 
@@ -44,7 +44,7 @@ const endIconProps = {
 };
 
 const CapDndGraph = (props) => {
-  const { sidebarProps = {}, dndGraphId, initialGraphData } = props;
+  const { sidebarProps = {}, dndGraphId, initialGraphData, onClickConfigure } = props;
 
   const graphRef = useRef(null);
   const dagreLayoutRef = useRef(null);
@@ -324,13 +324,13 @@ const CapDndGraph = (props) => {
   }, [graphData]);
 
   const onDrop = useCallback((item) => {
-    const newNodeId = uuidv4();
+    const newNodeId = nanoid(10);
     let endNode;
     previouslyFoundEdge.current = -1;
     if (item.isMultiPath) {
       endNode = {
         from: newNodeId,
-        id: uuidv4(),
+        id: nanoid(10),
         component: CapIcon,
         props: {
           ...endIconProps,
@@ -343,7 +343,7 @@ const CapDndGraph = (props) => {
       const entryTrigger = graphNodes.find((node) => node.type === ENTRY_TRIGGER);
       const exitTrigger = graphNodes.find((node) => node.type === EXIT_TRIGGER);
 
-      const endNodeId = uuidv4();
+      const endNodeId = nanoid(10);
       const newSetNodes = [
         {
           ...entryTrigger,
@@ -490,7 +490,7 @@ const CapDndGraph = (props) => {
             || !targetNode || !sourceNode) return;
           const sourceChildrens = nodes[sourceIndex].to || [];
           const toIndex = sourceChildrens.findIndex((nodeId) => nodeId === targetId);
-          const id = uuidv4();
+          const id = nanoid(10);
           nodes.splice(targetIndex, 0, {
             from: sourceNode.id,
             id,
@@ -555,7 +555,7 @@ const CapDndGraph = (props) => {
     if (actionType === 'delete') {
       deleteNodeHandler(blockId);
     } else if (actionType === 'settings') {
-      console.log('On click settings..');
+      onClickConfigure(blockId);
     }
   }, []);
 
