@@ -75,6 +75,8 @@ import CapLevelGraphRendererDoc from '../src/CapLevelGraphRendererDoc';
 import CapInfoNoteDoc from '../src/CapInfoNoteDoc';
 import CapErrorStateIllustrationDoc from '../src/CapErrorStateIllustrationDoc';
 import CapErrorBoundaryDoc from '../src/CapErrorBoundaryDoc';
+import CapMultiplePathDoc from "../src/CapMultiplePathDoc";
+import CapBlockDoc from '../src/CapBlockDoc';
 import CapDnDGraphDoc from '../src/CapDndGraphDoc';
 import CapBorderedBoxDoc from '../src/CapBorderedBoxDoc';
 //imported for docs
@@ -84,8 +86,12 @@ class ComponentSwitcher extends Component {
   render() {
     const { type } = this.props;
     switch (type) {
+      case 'capMultiplePath':
+        return <CapMultiplePathDoc />;
       case 'capButton':
         return <CapButtonDoc />;
+      case 'capBlock':
+        return <CapBlockDoc />;
       case 'capSlider':
         return <CapSliderDoc />;
       case 'capSideBar':

@@ -59,4 +59,12 @@ export default {
     description: 'Please try again. If this issue occurs again, please reach out to Capillary support team.',
     reloadText: 'Try refreshing again',
   },
+  CapBlock: {
+    deleteBlock: 'Delete',
+    expandBlock: 'Expand',
+    collapseBlock: 'Collapse',
+  },
+  CapMultiplePath: {
+    notUnique: 'Not Unique',
+  },
 };
