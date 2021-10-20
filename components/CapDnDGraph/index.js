@@ -44,7 +44,7 @@ const endIconProps = {
 };
 
 const CapDndGraph = (props) => {
-  const { sidebarProps = {}, dndGraphId, initialGraphData, onClickConfigure } = props;
+  const { sidebarProps = {}, dndGraphId, initialGraphData, onClickConfigure, onDropNewNode } = props;
 
   const graphRef = useRef(null);
   const dagreLayoutRef = useRef(null);
@@ -432,6 +432,7 @@ const CapDndGraph = (props) => {
       });
       previouslyFoundEdge.current = -1;
     }
+    onDropNewNode({ blockId: newNodeId, blockType: item.type});
   }, [graphNodes]);
 
   const [, drop] = useDrop({
