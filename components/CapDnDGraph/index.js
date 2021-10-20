@@ -180,7 +180,7 @@ const CapDndGraph = (props) => {
                 distance: 100 * (index + 1),
                 offset: 2,
               },
-              text: (node.props || {}).pathType === 'multiple' ? `Path ${index + 1}` : '',
+              text: (node.props || {}).isMultiPath ? `Path ${index + 1}` : '',
             },
           });
         });
@@ -195,7 +195,6 @@ const CapDndGraph = (props) => {
   // Pass nodes and Edges data to graph
   const layout = () => {
     if (graphData.nodes.length) {
-      console.log('Laying out..');
       const model = dagreLayoutRef.current.layout({ nodes: graphData.nodes, edges: graphData.edges });
       graphRef.current.fromJSON(model);
     }
@@ -360,6 +359,7 @@ const CapDndGraph = (props) => {
             id: newNodeId,
             blockType: item.id,
             onClickActionIcon,
+            isMultiPath: item.isMultiPath,
           },
           to: endNode ? [endNodeId, endNode.id] : [endNodeId],
         },
@@ -415,6 +415,7 @@ const CapDndGraph = (props) => {
               id: newNodeId,
               blockType: item.id,
               onClickActionIcon,
+              isMultiPath: item.isMultiPath,
             },
             to: toNodes,
             from: nodes[sourceIndex].id,
@@ -432,7 +433,7 @@ const CapDndGraph = (props) => {
       });
       previouslyFoundEdge.current = -1;
     }
-    onDropNewNode({ blockId: newNodeId, blockType: item.type});
+    onDropNewNode({ blockId: newNodeId, blockType: item.id});
   }, [graphNodes]);
 
   const [, drop] = useDrop({
