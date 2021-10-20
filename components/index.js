@@ -87,5 +87,6 @@ export { default as CapSomethingWentWrong } from './CapSomethingWentWrong';
 export { default as CapLevelGraphRenderer } from './CapLevelGraphRenderer';
 export { default as CapInfoNote } from './CapInfoNote';
 export { default as CapBorderedBox } from './CapBorderedBox';
+export { default as CapPopoverTree } from './CapPopoverTree';
 
 //export components

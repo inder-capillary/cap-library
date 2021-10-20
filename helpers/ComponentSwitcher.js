@@ -79,6 +79,7 @@ import CapMultiplePathDoc from "../src/CapMultiplePathDoc";
 import CapBlockDoc from '../src/CapBlockDoc';
 import CapDnDGraphDoc from '../src/CapDndGraphDoc';
 import CapBorderedBoxDoc from '../src/CapBorderedBoxDoc';
+import CapPopoverTreeDoc from '../src/CapPopoverTreeDoc';
 //imported for docs
 
 
@@ -242,6 +243,8 @@ class ComponentSwitcher extends Component {
         return <CapErrorBoundaryDoc />;
       case 'capBorderedBox':
         return <CapBorderedBoxDoc />;
+      case 'capPopoverTree':
+        return <CapPopoverTreeDoc />;
         //components for docs
 
       default:

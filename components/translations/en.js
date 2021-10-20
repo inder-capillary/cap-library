@@ -67,4 +67,8 @@ export default {
   CapMultiplePath: {
     notUnique: 'Not Unique',
   },
+  CapPopoverTree: {
+    emptyDataMessage: 'No data found',
+    searchPlaceholder: 'Search',
+  },
 };

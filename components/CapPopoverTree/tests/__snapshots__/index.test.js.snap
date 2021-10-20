@@ -1,0 +1,573 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CapPopoverTree /> Should expand and collapse the parent node onSelect 1`] = `undefined`;
+
+exports[`<CapPopoverTree /> Should select the child node onSelect 1`] = `undefined`;
+
+exports[`<CapPopoverTree /> should get filtered result on search 1`] = `undefined`;
+
+exports[`<CapPopoverTree /> should get filtered result on search 2`] = `undefined`;
+
+exports[`<CapPopoverTree /> should toggle visibility CapPopoverTree on trigger click 1`] = `
+<CapPopoverTree
+  blockNode={true}
+  defaultExpandAll={false}
+  placement="rightBottom"
+  showIcon={true}
+  switcherIcon={
+    <ForwardRef(Styled(CapIcon))
+      size="m"
+      type="chevron-down"
+    />
+  }
+  treeData={
+    Array [
+      Object {
+        "children": Array [
+          Object {
+            "key": "skuCode",
+            "title": "skuCode",
+          },
+          Object {
+            "key": "brandCode",
+            "title": "brandCode",
+          },
+        ],
+        "icon": "survey-response",
+        "key": "onEvent",
+        "title": "on Event",
+      },
+      Object {
+        "children": Array [
+          Object {
+            "key": "newStore",
+            "title": "New store",
+          },
+        ],
+        "icon": "bulb",
+        "key": "onStore",
+        "title": "on Store",
+      },
+    ]
+  }
+  trigger="click"
+  visible={true}
+>
+  <_default
+    blockNode={true}
+    content={
+      <CapRow
+        className="search-and-tree-wrapper"
+      >
+        <_class
+          className="search-tree-node"
+          labelPosition="top"
+          onChange={[Function]}
+        />
+        <div
+          className="divider"
+        />
+        <ForwardRef(Styled(CapTree))
+          blockNode={true}
+          defaultExpandAll={false}
+          expandedKeys={Array []}
+          isExpanded={0}
+          onExpand={[Function]}
+          onSelect={[Function]}
+          showIcon={true}
+          switcherIcon={
+            <ForwardRef(Styled(CapIcon))
+              size="m"
+              type="chevron-down"
+            />
+          }
+        >
+          <ContextTreeNode
+            icon={
+              <ForwardRef(Styled(CapIcon))
+                className="tree-node-icon"
+                size="s"
+                type="survey-response"
+              />
+            }
+            isLeafNode={false}
+            title={
+              <ForwardRef(Styled(styled.div))
+                className="tree-node-title"
+                type="h5"
+              >
+                on Event
+              </ForwardRef(Styled(styled.div))>
+            }
+          >
+            <ContextTreeNode
+              isLeafNode={true}
+              title={
+                <ForwardRef(Styled(styled.div))
+                  className="tree-node-title"
+                  type="h5"
+                >
+                  skuCode
+                </ForwardRef(Styled(styled.div))>
+              }
+            >
+              0
+            </ContextTreeNode>
+            <ContextTreeNode
+              isLeafNode={true}
+              title={
+                <ForwardRef(Styled(styled.div))
+                  className="tree-node-title"
+                  type="h5"
+                >
+                  brandCode
+                </ForwardRef(Styled(styled.div))>
+              }
+            >
+              0
+            </ContextTreeNode>
+          </ContextTreeNode>
+          <ContextTreeNode
+            icon={
+              <ForwardRef(Styled(CapIcon))
+                className="tree-node-icon"
+                size="s"
+                type="bulb"
+              />
+            }
+            isLeafNode={false}
+            title={
+              <ForwardRef(Styled(styled.div))
+                className="tree-node-title"
+                type="h5"
+              >
+                on Store
+              </ForwardRef(Styled(styled.div))>
+            }
+          >
+            <ContextTreeNode
+              isLeafNode={true}
+              title={
+                <ForwardRef(Styled(styled.div))
+                  className="tree-node-title"
+                  type="h5"
+                >
+                  New store
+                </ForwardRef(Styled(styled.div))>
+              }
+            >
+              0
+            </ContextTreeNode>
+          </ContextTreeNode>
+        </ForwardRef(Styled(CapTree))>
+      </CapRow>
+    }
+    overlayClassName="cap-popover-tree-v2"
+    placement="rightBottom"
+    showIcon={true}
+    trigger="click"
+    visible={true}
+  >
+    <div
+      blockNode={true}
+      className="cap-popover"
+      content={
+        <CapRow
+          className="search-and-tree-wrapper"
+        >
+          <_class
+            className="search-tree-node"
+            labelPosition="top"
+            onChange={[Function]}
+          />
+          <div
+            className="divider"
+          />
+          <ForwardRef(Styled(CapTree))
+            blockNode={true}
+            defaultExpandAll={false}
+            expandedKeys={Array []}
+            isExpanded={0}
+            onExpand={[Function]}
+            onSelect={[Function]}
+            showIcon={true}
+            switcherIcon={
+              <ForwardRef(Styled(CapIcon))
+                size="m"
+                type="chevron-down"
+              />
+            }
+          >
+            <ContextTreeNode
+              icon={
+                <ForwardRef(Styled(CapIcon))
+                  className="tree-node-icon"
+                  size="s"
+                  type="survey-response"
+                />
+              }
+              isLeafNode={false}
+              title={
+                <ForwardRef(Styled(styled.div))
+                  className="tree-node-title"
+                  type="h5"
+                >
+                  on Event
+                </ForwardRef(Styled(styled.div))>
+              }
+            >
+              <ContextTreeNode
+                isLeafNode={true}
+                title={
+                  <ForwardRef(Styled(styled.div))
+                    className="tree-node-title"
+                    type="h5"
+                  >
+                    skuCode
+                  </ForwardRef(Styled(styled.div))>
+                }
+              >
+                0
+              </ContextTreeNode>
+              <ContextTreeNode
+                isLeafNode={true}
+                title={
+                  <ForwardRef(Styled(styled.div))
+                    className="tree-node-title"
+                    type="h5"
+                  >
+                    brandCode
+                  </ForwardRef(Styled(styled.div))>
+                }
+              >
+                0
+              </ContextTreeNode>
+            </ContextTreeNode>
+            <ContextTreeNode
+              icon={
+                <ForwardRef(Styled(CapIcon))
+                  className="tree-node-icon"
+                  size="s"
+                  type="bulb"
+                />
+              }
+              isLeafNode={false}
+              title={
+                <ForwardRef(Styled(styled.div))
+                  className="tree-node-title"
+                  type="h5"
+                >
+                  on Store
+                </ForwardRef(Styled(styled.div))>
+              }
+            >
+              <ContextTreeNode
+                isLeafNode={true}
+                title={
+                  <ForwardRef(Styled(styled.div))
+                    className="tree-node-title"
+                    type="h5"
+                  >
+                    New store
+                  </ForwardRef(Styled(styled.div))>
+                }
+              >
+                0
+              </ContextTreeNode>
+            </ContextTreeNode>
+          </ForwardRef(Styled(CapTree))>
+        </CapRow>
+      }
+      overlayClassName="cap-popover-tree-v2"
+      placement="rightBottom"
+      showIcon={true}
+      trigger="click"
+      visible={true}
+    >
+      CapPopover Mock
+    </div>
+  </_default>
+</CapPopoverTree>
+`;
+
+exports[`<CapPopoverTree /> should toggle visibility CapPopoverTree on trigger click 2`] = `
+<CapPopoverTree
+  blockNode={true}
+  defaultExpandAll={false}
+  placement="rightBottom"
+  showIcon={true}
+  switcherIcon={
+    <ForwardRef(Styled(CapIcon))
+      size="m"
+      type="chevron-down"
+    />
+  }
+  treeData={
+    Array [
+      Object {
+        "children": Array [
+          Object {
+            "key": "skuCode",
+            "title": "skuCode",
+          },
+          Object {
+            "key": "brandCode",
+            "title": "brandCode",
+          },
+        ],
+        "icon": "survey-response",
+        "key": "onEvent",
+        "title": "on Event",
+      },
+      Object {
+        "children": Array [
+          Object {
+            "key": "newStore",
+            "title": "New store",
+          },
+        ],
+        "icon": "bulb",
+        "key": "onStore",
+        "title": "on Store",
+      },
+    ]
+  }
+  trigger="click"
+  visible={false}
+>
+  <_default
+    blockNode={true}
+    content={
+      <CapRow
+        className="search-and-tree-wrapper"
+      >
+        <_class
+          className="search-tree-node"
+          labelPosition="top"
+          onChange={[Function]}
+        />
+        <div
+          className="divider"
+        />
+        <ForwardRef(Styled(CapTree))
+          blockNode={true}
+          defaultExpandAll={false}
+          expandedKeys={Array []}
+          isExpanded={0}
+          onExpand={[Function]}
+          onSelect={[Function]}
+          showIcon={true}
+          switcherIcon={
+            <ForwardRef(Styled(CapIcon))
+              size="m"
+              type="chevron-down"
+            />
+          }
+        >
+          <ContextTreeNode
+            icon={
+              <ForwardRef(Styled(CapIcon))
+                className="tree-node-icon"
+                size="s"
+                type="survey-response"
+              />
+            }
+            isLeafNode={false}
+            title={
+              <ForwardRef(Styled(styled.div))
+                className="tree-node-title"
+                type="h5"
+              >
+                on Event
+              </ForwardRef(Styled(styled.div))>
+            }
+          >
+            <ContextTreeNode
+              isLeafNode={true}
+              title={
+                <ForwardRef(Styled(styled.div))
+                  className="tree-node-title"
+                  type="h5"
+                >
+                  skuCode
+                </ForwardRef(Styled(styled.div))>
+              }
+            >
+              0
+            </ContextTreeNode>
+            <ContextTreeNode
+              isLeafNode={true}
+              title={
+                <ForwardRef(Styled(styled.div))
+                  className="tree-node-title"
+                  type="h5"
+                >
+                  brandCode
+                </ForwardRef(Styled(styled.div))>
+              }
+            >
+              0
+            </ContextTreeNode>
+          </ContextTreeNode>
+          <ContextTreeNode
+            icon={
+              <ForwardRef(Styled(CapIcon))
+                className="tree-node-icon"
+                size="s"
+                type="bulb"
+              />
+            }
+            isLeafNode={false}
+            title={
+              <ForwardRef(Styled(styled.div))
+                className="tree-node-title"
+                type="h5"
+              >
+                on Store
+              </ForwardRef(Styled(styled.div))>
+            }
+          >
+            <ContextTreeNode
+              isLeafNode={true}
+              title={
+                <ForwardRef(Styled(styled.div))
+                  className="tree-node-title"
+                  type="h5"
+                >
+                  New store
+                </ForwardRef(Styled(styled.div))>
+              }
+            >
+              0
+            </ContextTreeNode>
+          </ContextTreeNode>
+        </ForwardRef(Styled(CapTree))>
+      </CapRow>
+    }
+    overlayClassName="cap-popover-tree-v2"
+    placement="rightBottom"
+    showIcon={true}
+    trigger="click"
+    visible={false}
+  >
+    <div
+      blockNode={true}
+      className="cap-popover"
+      content={
+        <CapRow
+          className="search-and-tree-wrapper"
+        >
+          <_class
+            className="search-tree-node"
+            labelPosition="top"
+            onChange={[Function]}
+          />
+          <div
+            className="divider"
+          />
+          <ForwardRef(Styled(CapTree))
+            blockNode={true}
+            defaultExpandAll={false}
+            expandedKeys={Array []}
+            isExpanded={0}
+            onExpand={[Function]}
+            onSelect={[Function]}
+            showIcon={true}
+            switcherIcon={
+              <ForwardRef(Styled(CapIcon))
+                size="m"
+                type="chevron-down"
+              />
+            }
+          >
+            <ContextTreeNode
+              icon={
+                <ForwardRef(Styled(CapIcon))
+                  className="tree-node-icon"
+                  size="s"
+                  type="survey-response"
+                />
+              }
+              isLeafNode={false}
+              title={
+                <ForwardRef(Styled(styled.div))
+                  className="tree-node-title"
+                  type="h5"
+                >
+                  on Event
+                </ForwardRef(Styled(styled.div))>
+              }
+            >
+              <ContextTreeNode
+                isLeafNode={true}
+                title={
+                  <ForwardRef(Styled(styled.div))
+                    className="tree-node-title"
+                    type="h5"
+                  >
+                    skuCode
+                  </ForwardRef(Styled(styled.div))>
+                }
+              >
+                0
+              </ContextTreeNode>
+              <ContextTreeNode
+                isLeafNode={true}
+                title={
+                  <ForwardRef(Styled(styled.div))
+                    className="tree-node-title"
+                    type="h5"
+                  >
+                    brandCode
+                  </ForwardRef(Styled(styled.div))>
+                }
+              >
+                0
+              </ContextTreeNode>
+            </ContextTreeNode>
+            <ContextTreeNode
+              icon={
+                <ForwardRef(Styled(CapIcon))
+                  className="tree-node-icon"
+                  size="s"
+                  type="bulb"
+                />
+              }
+              isLeafNode={false}
+              title={
+                <ForwardRef(Styled(styled.div))
+                  className="tree-node-title"
+                  type="h5"
+                >
+                  on Store
+                </ForwardRef(Styled(styled.div))>
+              }
+            >
+              <ContextTreeNode
+                isLeafNode={true}
+                title={
+                  <ForwardRef(Styled(styled.div))
+                    className="tree-node-title"
+                    type="h5"
+                  >
+                    New store
+                  </ForwardRef(Styled(styled.div))>
+                }
+              >
+                0
+              </ContextTreeNode>
+            </ContextTreeNode>
+          </ForwardRef(Styled(CapTree))>
+        </CapRow>
+      }
+      overlayClassName="cap-popover-tree-v2"
+      placement="rightBottom"
+      showIcon={true}
+      trigger="click"
+      visible={false}
+    >
+      CapPopover Mock
+    </div>
+  </_default>
+</CapPopoverTree>
+`;

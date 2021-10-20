@@ -1,0 +1,31 @@
+@import '../styles/_variables.scss';
+
+$popoverTree: cap-popover-tree-v2;
+
+.ant-popover.#{$popoverTree} {
+    .ant-popover-content {
+        width: 324px;
+        padding: 0;
+    }        
+
+    .divider {
+        border-top: 1px solid $CAP_G07;
+    }
+    .empty-data-text {
+        text-align: center;
+        margin-top: 12px;
+        padding: 10px 0;
+    }
+    .ant-popover-inner-content {
+        padding: 0 0 12px 0;
+    }
+    .ant-input-affix-wrapper {
+        width: 300px;
+        margin-left: 12px;
+        .ant-input.ant-input-lg {
+            border: none;
+            border-radius: 0;
+            margin-left: 8px;
+        }
+    }
+}
