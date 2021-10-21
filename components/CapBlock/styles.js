@@ -5,10 +5,10 @@ export const StyledDiv = styled.div`
   & {
     position: relative;
     border: 1px solid ${CAP_G07};
-    border-left: ${props => `4px solid ${props.borderLeftColor}`};
+    border-left: ${(props) => `4px solid ${props.borderLeftColor}`};
     border-radius: 4px;
     padding: 26px 20px;
-    width: ${props => props.width};
+    width: ${(props) => props.width};
 
     [data-type="rounded-icon"] {
       height: 18px;

@@ -17,6 +17,7 @@ import CapRow from '../CapRow';
 import CapLabel from '../CapLabel';
 import GraphBlockNode from './GraphBlockNode';
 import CapIcon from '../CapIcon';
+import CapTooltip from '../CapTooltip';
 
 import {
   CUSTOM_EDGE,
@@ -44,7 +45,7 @@ const endIconProps = {
 };
 
 const CapDndGraph = (props) => {
-  const { sidebarProps = {}, dndGraphId, initialGraphData, onClickConfigure, onDropNewNode } = props;
+  const { sidebarProps = {}, dndGraphId, initialGraphData, onClickConfigure, onDropNewNode = () => {} } = props;
 
   const graphRef = useRef(null);
   const dagreLayoutRef = useRef(null);
@@ -120,7 +121,17 @@ const CapDndGraph = (props) => {
         const { selectors, label } = args;
         const content = selectors.foContent;
         if (content && label.text) {
-          ReactDOM.render(<CapLabel type="label1">{label.text}</CapLabel>, content);
+          ReactDOM.render(
+            /**Will be replaced by Label component passed as prop */
+            <CapLabel type="label1">
+              {label.text}
+              <span style={{ padding: '5px' }}>
+                <CapTooltip title="Tooltip with path information">
+                  <CapIcon type="info" size="s" />
+                </CapTooltip>
+              </span>
+            </CapLabel>, content
+          );
         }
       },
     });
@@ -132,8 +143,10 @@ const CapDndGraph = (props) => {
       nodesepFunc: () => 15,
       ranksepFunc: (node) => {
         if (node.type === ENTRY_TRIGGER) {
-          return 100;
+          /**Gap between the Entry Trigger and First child */
+          return 150;
         }
+        /**Gap between other nodes */
         return 35;
       },
     });
@@ -171,7 +184,7 @@ const CapDndGraph = (props) => {
                 fo: {
                   width: 120,
                   height: 30,
-                  x: -70 + ((index) * 20),
+                  x: index === 0 ? -50 : -80 + (index * 20),
                 },
               },
             },
@@ -203,7 +216,7 @@ const CapDndGraph = (props) => {
   // Set the vertices to edges so that, edges shows with 90 degree angel
   const setEdgeVertices = () => {
     if (!graphRef.current) return; // Do nothing if graph is not initialized yet
-
+    let sourcePosition = null;
     const edges = graphRef.current.getEdges();
     edges.forEach((edge) => {
       const source = edge.getSourceNode() || {};
@@ -218,17 +231,56 @@ const CapDndGraph = (props) => {
         custom logic to place the edge source based on the Entry trigger vertices
         */
         if (sourceNode.type === ENTRY_TRIGGER) {
-          edge.setSource({ x: sourceBBox.topRight.x, y: targetBBox.center.y });
+          if (!sourcePosition) {
+            sourcePosition = { x: sourceBBox.topRight.x, y: targetBBox.center.y };
+            edge.setSource({ x: sourceBBox.topRight.x, y: targetBBox.center.y });
+          } else {
+            const gap = GRAPH_DIRECTION === 'LR'
+              ? targetBBox.x - sourceBBox.x - sourceBBox.width
+              : -sourceBBox.x + targetBBox.x + targetBBox.width;
+            const fix = GRAPH_DIRECTION === 'LR' ? sourceBBox.width : 0;
+            const x = sourceBBox.x + fix + gap / 4;
+            edge.setSource({
+              x, y: sourcePosition.y,
+            });
+          }
         }
 
         /* Logic to show the edges with 90 degree angle instead of straight edge lines,
         logic taken from ant v x6 examples: https://x6.antv.vision/en/examples/showcase/practices#orgchart
         */
-        if ((GRAPH_DIRECTION === 'LR' || GRAPH_DIRECTION === 'RL') && sourceBBox.y !== targetBBox.y) {
+        if (sourceNode.type !== ENTRY_TRIGGER) {
+          if ((GRAPH_DIRECTION === 'LR' || GRAPH_DIRECTION === 'RL') && sourceBBox.y !== targetBBox.y) {
+            const fix = GRAPH_DIRECTION === 'LR' ? sourceBBox.width : 0;
+            const x = sourceBBox.x + fix / 2;
+            edge.setVertices([
+              // { x, y: sourceBBox.center.y },
+              { x, y: targetBBox.center.y },
+            ]);
+          } else if (
+            (GRAPH_DIRECTION === 'TB' || GRAPH_DIRECTION === 'BT')
+            && sourceBBox.x !== targetBBox.x
+          ) {
+            const gap = GRAPH_DIRECTION === 'TB'
+              ? targetBBox.y - sourceBBox.y - sourceBBox.height
+              : -sourceBBox.y + targetBBox.y + targetBBox.height;
+            const fix = GRAPH_DIRECTION === 'TB' ? sourceBBox.height : 0;
+            const y = sourceBBox.y + fix + gap / 2;
+            edge.setVertices([
+              // { x: sourceBBox.center.x, y },
+              { x: targetBBox.center.x, y },
+            ]);
+          } else {
+            edge.setVertices([]);
+          }
+        } else if ((GRAPH_DIRECTION === 'LR' || GRAPH_DIRECTION === 'RL') && sourceBBox.y !== targetBBox.y) {
+          const gap = GRAPH_DIRECTION === 'LR'
+            ? targetBBox.x - sourceBBox.x - sourceBBox.width
+            : -sourceBBox.x + targetBBox.x + targetBBox.width;
           const fix = GRAPH_DIRECTION === 'LR' ? sourceBBox.width : 0;
-          const x = sourceBBox.x + fix / 2;
+          const x = sourceBBox.x + fix + gap / 4;
           edge.setVertices([
-            // { x, y: sourceBBox.center.y },
+            { x, y: sourceBBox.center.y },
             { x, y: targetBBox.center.y },
           ]);
         } else if (
@@ -241,7 +293,7 @@ const CapDndGraph = (props) => {
           const fix = GRAPH_DIRECTION === 'TB' ? sourceBBox.height : 0;
           const y = sourceBBox.y + fix + gap / 2;
           edge.setVertices([
-            // { x: sourceBBox.center.x, y },
+            { x: sourceBBox.center.x, y },
             { x: targetBBox.center.x, y },
           ]);
         } else {
@@ -265,7 +317,9 @@ const CapDndGraph = (props) => {
 
     if (entryTriggerNode) {
       const entryTriggerBBox = entryTriggerNode.getBBox().bottomLeft;
+      const entryTriggerTopBBox = entryTriggerNode.getBBox().topLeft;
       exitTriggerNode.position(entryTriggerBBox.x, entryTriggerBBox.y + 16);
+      entryTriggerNode.position(entryTriggerTopBBox.x, entryTriggerTopBBox.y - 16);
     }
 
     if (emptyGraphText && nextNode) {
