@@ -166,6 +166,7 @@ export default class CapPopoverTreeDoc extends Component {
     super(props);
     this.state = {
       selectedKey: [],
+      popoverVisibility: false,
     };
   }
 
@@ -174,8 +175,12 @@ export default class CapPopoverTreeDoc extends Component {
     this.setState({ selectedKey });
   };
 
+  handleClick = () => {
+    this.setState( (prevState) => ({ popoverVisibility: !prevState?.popoverVisibility }));
+  };
+
   render() {
-    const { selectedKey } = this.state;
+    const { selectedKey, popoverVisibility } = this.state;
     return (
       <div className="cap-popover-tree-info">
         <div className="cap-popover-tree-showcase">
@@ -184,8 +189,9 @@ export default class CapPopoverTreeDoc extends Component {
             treeData={treeData}
             onSelect={this.handleSelect}
             selectedKey={selectedKey}
+            visible={popoverVisibility}
           >
-            <CapButton type="flat"> CapPopoverTree</CapButton>
+            <CapButton onClick={this.handleClick}> Click here </CapButton>
           </CapPopoverTree>
 
         </div>
