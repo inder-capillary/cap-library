@@ -67,6 +67,21 @@ export default {
   CapMultiplePath: {
     notUnique: 'Not Unique',
   },
+  CapCondition: {
+    includeMsg: 'include',
+    excludeMsg: 'exclude',
+    equalMsg: 'equal to',
+    greaterThanMsg: 'greater than',
+    lessThanMsg: 'less than',
+    greaterThanOrEqualMsg: 'greater than or equal to',
+    lessThanorEqualMsg: 'less than or equal',
+    inRangeMsg: 'in range',
+    notEqualMsg: 'not equal to',
+    whoseMsg: 'Whose',
+    isMsg: 'is',
+    andMsg: 'and',
+
+  },
   CapPopoverTree: {
     emptyDataMessage: 'No data found',
     searchPlaceholder: 'Search',
