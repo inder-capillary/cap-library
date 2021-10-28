@@ -90,6 +90,13 @@ describe("CapMultiplePath", () => {
       .find("i.cap-icon-v2-delete")
       .at(1)
       .simulate("click");
+    wrapper.update();
+    const deleteBtn = wrapper.findWhere((node) => (
+      node.type()
+        && node.name()
+        && node.text() === "Yes, Delete"
+    ));
+    deleteBtn.at(0).simulate('click');
     expect(setPathList).toHaveBeenCalledTimes(1);
     expect(setPathList).toHaveBeenCalledWith(pathList3Item1Delete);
   });
@@ -103,7 +110,7 @@ describe("CapMultiplePath", () => {
     wrapper.update();
     const textarea = wrapper.find("textarea");
     textarea.simulate("change", { target: { value: "abc" } });
-    textarea.props().onBlur({currentTarget: {value: "abc"}}); //click outside or onBlur
+    textarea.simulate("blur");
     wrapper.update();
     expect(setPathList).toHaveBeenCalledTimes(1);
     expect(setPathList).toHaveBeenCalledWith(pathList1Item1Update);

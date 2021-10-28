@@ -9,13 +9,12 @@ import {
   BORDER_DASHED,
   BORDER_SOLID,
 } from "./constants";
-const { CAP_G06, CAP_G07, CAP_SECONDARY } = StyledVars;
+const {CAP_G04, CAP_G06, CAP_G07, CAP_SECONDARY } = StyledVars;
 /**
  * MultiplePathRowWrapper : used for styling single Path row
  */
 export const MultiplePathRowWrapper = styled.div`
   display: flex;
-  align-items: center;
   position: relative;
 `;
 
@@ -38,10 +37,9 @@ export const PathConnector = styled.div`
     : ""};
 `;
 
-export const StyledPathName = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+export const StyledPathNamePlaceHolder = styled.div`
+text-align: center;
+color: ${CAP_G04} 
 `;
 
 export const StyledPathNameHolder = styled.div`
@@ -64,6 +62,8 @@ export const StyledPathNameHolder = styled.div`
  * StyledArrowIcon : Used to style the StyledArrowIcons
  */
 export const StyledArrowIcon = styled(CapIcon)`
+  display:flex;
+  align-items:center;
   svg {
     height: 16px;
     width: 16px;
@@ -88,4 +88,8 @@ export const StyledPathInput = styled.div`
   .error-message {
     text-align: center;
   }
+`;
+
+export const StyledCapIcon = styled(CapIcon)`
+  color:${((props) => props.color)};
 `;

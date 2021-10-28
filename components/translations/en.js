@@ -60,12 +60,20 @@ export default {
     reloadText: 'Try refreshing again',
   },
   CapBlock: {
-    deleteBlock: 'Delete',
-    expandBlock: 'Expand',
-    collapseBlock: 'Collapse',
+    deleteBlockMsg: 'Delete',
+    expandBlockMsg: 'Expand',
+    collapseBlockMsg: 'Collapse',
   },
   CapMultiplePath: {
-    notUnique: 'Not Unique',
+    notUniqueMsg: 'Not Unique',
+    deleteConfirmationTitleMsg: 'Confirm delete path',
+    deleteConfirmationTextMsg: 'Are you sure you wish to delete path',
+    deleteConfirmationWarningMsg: 'This action cannot be undone.',
+    deleteButtonTextMsg: 'Yes, Delete',
+    yesMsg: 'Yes',
+    noMsg: 'No',
+    pathMsg: 'Path',
+
   },
   CapCondition: {
     includeMsg: 'include',

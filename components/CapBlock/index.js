@@ -20,9 +20,10 @@ const CapBlock = (props) => {
     deleteCallback,
     isCollapseEnabled,
     componentName,
-    deleteBlock,
-    collapseBlock,
-    expandBlock,
+    /**Below fields are added in translations/en.js */
+    deleteBlockMsg,
+    collapseBlockMsg,
+    expandBlockMsg,
   } = props;
 
   const toggleCollapse = () => {
@@ -31,7 +32,7 @@ const CapBlock = (props) => {
 
   const getDeleteIcon = () => (
     <CapColumn data-type="rounded-icon" data-type-value="delete">
-      <CapTooltip title={`${deleteBlock} ${componentName}`}>
+      <CapTooltip title={`${deleteBlockMsg} ${componentName}`}>
         <CapIcon
           type="delete"
           onClick={deleteCallback}
@@ -45,7 +46,7 @@ const CapBlock = (props) => {
   const getCollapseIcon = () => (
     <CapColumn data-type="rounded-icon" data-type-value="collapse">
       <CapTooltip
-        title={`${isCollapsed ? expandBlock : collapseBlock} ${componentName}`}
+        title={`${isCollapsed ? expandBlockMsg : collapseBlockMsg} ${componentName}`}
       >
         <CapIcon
           type={isCollapsed ? "chevron-right" : "chevron-up"}
@@ -74,18 +75,19 @@ CapBlock.propTypes = {
   isCollapseEnabled: PropTypes.bool,
   componentName: PropTypes.string,
   children: PropTypes.any,
-  deleteBlock: PropTypes.string,
-  collapseBlock: PropTypes.string,
-  expandBlock: PropTypes.string,
+  /**Below fields are added in translations/en.js */
+  deleteBlockMsg: PropTypes.string,
+  collapseBlockMsg: PropTypes.string,
+  expandBlockMsg: PropTypes.string,
 };
 
 CapBlock.defaultProps = {
   width: "800px",
   borderLeftColor: CAP_SECONDARY.base,
   componentName: "path",
-  deleteBlock: "",
-  collapseBlock: "",
-  expandBlock: "",
+  deleteBlockMsg: "",
+  collapseBlockMsg: "",
+  expandBlockMsg: "",
 };
 
 export default LocaleHoc(CapBlock, { key: "CapBlock" });

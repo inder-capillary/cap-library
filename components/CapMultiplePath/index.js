@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { nanoid } from 'nanoid';
+import { nanoid } from "nanoid";
 import LocaleHoc from "../LocaleHoc";
 
-import CapIcon from "../CapIcon";
 import CapInput from "../CapInput";
 import CapButton from "../CapButton";
 import CapBlock from "../CapBlock";
 import CapTooltip from "../CapTooltip";
 import CapRow from "../CapRow";
-
+import CapModal from "../CapModal";
 
 import {
   MultiplePathRowWrapper,
   PathConnector,
-  StyledPathName,
   StyledArrowIcon,
+  StyledPathNamePlaceHolder,
   StyledPathNameHolder,
   StyledAddPath,
   StyledPathInput,
+  StyledCapIcon,
 } from "./styles";
 
 import {
@@ -27,10 +27,13 @@ import {
   HORIZONTAL,
   VERTICAL,
   BORDER_DASHED,
+  PATH_NAME_MAX_LENGTH,
 } from "./constants";
 
 import * as StyledVars from "../styled/variables";
-const { CAP_G04, CAP_G07 } = StyledVars;
+import CapLabel from "../CapLabel";
+const { CapLabelInline } = CapLabel;
+const { CAP_G07 } = StyledVars;
 
 const CapMultiplePath = (props) => {
   const {
@@ -42,7 +45,15 @@ const CapMultiplePath = (props) => {
     isToggleEnabled,
     defaultContents,
     ContentsRenderer,
-    notUnique,
+    /**Below intl fields are added in translations/en.js */
+    notUniqueMsg,
+    deleteButtonTextMsg,
+    deleteConfirmationWarningMsg,
+    deleteConfirmationTextMsg,
+    deleteConfirmationTitleMsg,
+    yesMsg,
+    noMsg,
+    pathMsg,
   } = props;
 
   /**
@@ -54,18 +65,21 @@ const CapMultiplePath = (props) => {
   const [isPathNameDuplicateOrEmpty, setIsPathNameDuplicateOrEmpty] = useState(
     false
   );
-
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [deletePathIndex, setDeletePathIndex] = useState(null);
+  const [tempPathName, setTempPathName] = useState(null);
   /**
    *
    * @param {*} e
    * If currently editing the pathname, and clicked outside the input box
    * setIndexOfPathEditEnabled to -1
    */
-  const onPathNameClickOutside = (value) => {
+  const onPathNameClickOutside = () => {
     /** If clicked outside and PathNames are duplicate do not update state, if unique show div with updated pathname.*/
-    if (!isPathNameDuplicateOrEmpty && value) {
-      updatePathName(indexOfPathEditEnabled, value);
+    if (!isPathNameDuplicateOrEmpty && tempPathName) {
+      updatePathName(indexOfPathEditEnabled, tempPathName);
     }
+    setTempPathName(null);
     setIndexOfPathEditEnabled(-1);
     setIsPathNameDuplicateOrEmpty(false);
   };
@@ -233,6 +247,12 @@ const CapMultiplePath = (props) => {
     setIsPathNameDuplicateOrEmpty(false);
   };
 
+  const onDeleteOk = () => {
+    deletePath(deletePathIndex);
+    setDeletePathIndex(null);
+    setShowDeleteConfirmation(false);
+  };
+
   /**
    * getPathNameOrEdit :
    * If Pathname is currently being edited (when index === indexOfPathEditEnabled),
@@ -242,34 +262,51 @@ const CapMultiplePath = (props) => {
    * @param {*} index
    */
   const getPathNameOrEdit = (index) => {
-    if (indexOfPathEditEnabled === index) {
-      return (
-        <StyledPathInput hasError={isPathNameDuplicateOrEmpty}>
-          <CapInput.TextArea
-            path-name-edit="true"
-            onChange={(e) => {
-              checkDuplicateOrEmptyPathName(e.target.value);
-            }}
-            style={{ width: "80px" }}
-            autosize={{
-              minRows: 1,
-            }}
-            errorMessage={isPathNameDuplicateOrEmpty ? notUnique : null}
-            onBlur={(e) => onPathNameClickOutside(e.currentTarget.value)}
-            autoFocus
-          />
-        </StyledPathInput>
-      );
-    }
     const onClick = () => onPathNameClick(index);
+    const onTextAreaChange = (e) => {
+      if (e.target.value.length <= PATH_NAME_MAX_LENGTH) {
+        setTempPathName(e.target.value);
+        checkDuplicateOrEmptyPathName(e.target.value);
+      }
+    };
+    const style = { marginTop: indexOfPathEditEnabled === index && "-16px" };
     return (
-      <StyledPathNameHolder>
-        <CapTooltip title={pathList[index]?.pathName}>
-          <CapRow path-name-edit="false" onClick={onClick}>
-            {pathList[index].pathName || getPathNamePlaceHolder(index)}
-          </CapRow>
-        </CapTooltip>
-      </StyledPathNameHolder>
+      <CapRow style={style}>
+        <StyledPathNamePlaceHolder>
+          {pathList[index].pathName || indexOfPathEditEnabled === index
+            ? getPathNamePlaceHolder(index)
+            : null}
+        </StyledPathNamePlaceHolder>
+        {indexOfPathEditEnabled === index ? (
+          <StyledPathInput hasError={isPathNameDuplicateOrEmpty}>
+            <CapInput.TextArea
+              path-name-edit="true"
+              value={tempPathName}
+              onChange={onTextAreaChange}
+              style={{ width: "80px" }}
+              autosize={{
+                minRows: 1,
+                maxRows: 5,
+              }}
+              errorMessage={isPathNameDuplicateOrEmpty ? notUniqueMsg : null}
+              onBlur={onPathNameClickOutside}
+              onFocus={() => {
+                setTempPathName(pathList[index]?.pathName);
+              }}
+              autoFocus
+              showCount={false}
+            />
+          </StyledPathInput>
+        ) : (
+          <StyledPathNameHolder>
+            <CapTooltip title={pathList[index]?.pathName}>
+              <CapRow path-name-edit="false" onClick={onClick}>
+                {pathList[index].pathName || getPathNamePlaceHolder(index)}
+              </CapRow>
+            </CapTooltip>
+          </StyledPathNameHolder>
+        )}
+      </CapRow>
     );
   };
 
@@ -323,34 +360,45 @@ const CapMultiplePath = (props) => {
           borderWidth="2px"
         />
         <CapRow
+          type="flex"
+          align="middle"
           style={{
-            display: "flex",
-            alignItems: "center",
             transform: "translateY(-50%)",
           }}
         >
-          <PathConnector
-            type={HORIZONTAL}
-            borderType={BORDER_DASHED}
-            width={`${horizontalLineWidth}px`}
-            borderWidth="2px"
-          />
-          <CapRow style={{ width: "80px", textAlign: "center" }}>
-            {pathList.length === 1 ? "No" : `Path ${pathList.length + 1}`}
-          </CapRow>
-          <PathConnector
-            type={HORIZONTAL}
-            borderType={BORDER_DASHED}
-            width={`${horizontalLineWidth}px`}
-            borderWidth="2px"
-          />
-
-          <CapIcon
+          {/**
+           * If addPathDisabled, show only horizontal line.
+           */
+            addPathDisabled ? (
+              <PathConnector
+                type={HORIZONTAL}
+                borderType={BORDER_DASHED}
+                width={`${horizontalLineWidth * 2 + 80}px`}
+                borderWidth="2px"
+              />
+            ) : (
+            <>
+              <PathConnector
+                type={HORIZONTAL}
+                borderType={BORDER_DASHED}
+                width={`${horizontalLineWidth}px`}
+                borderWidth="2px"
+              />
+              <StyledPathNameHolder style={{textAlign: 'center'}}>
+                {pathList.length === 1 ? noMsg : `${pathMsg} ${pathList.length + 1}`}
+              </StyledPathNameHolder>
+              <PathConnector
+                type={HORIZONTAL}
+                borderType={BORDER_DASHED}
+                width={`${horizontalLineWidth}px`}
+                borderWidth="2px"
+              />
+            </>
+            )}
+          <StyledCapIcon
             type="chevron-right"
-            style={{
-              marginLeft: "-12px",
-              color: CAP_G07,
-            }}
+            color={CAP_G07}
+            style={{transform: 'translateX(-50%)'}}
           />
         </CapRow>
       </StyledAddPath>
@@ -362,8 +410,8 @@ const CapMultiplePath = (props) => {
    * if more than 1 path : return Path 1, Path 2 and so on.
    */
   const getPathNamePlaceHolder = (index) => {
-    if (index === 0 && pathList.length === 1) return "Yes";
-    return `Path ${index + 1}`;
+    if (index === 0 && pathList.length === 1) return yesMsg;
+    return `${pathMsg} ${index + 1}`;
   };
 
   /**
@@ -371,28 +419,16 @@ const CapMultiplePath = (props) => {
    * @param {*} index
    */
   const getEditOrDisplayPathName = (index) => (
-    <StyledPathName>
-      <CapRow
-        style={{ display: "flex", justifyContent: "center", color: CAP_G04 }}
-      >
-        {pathList[index].pathName || indexOfPathEditEnabled === index
-          ? getPathNamePlaceHolder(index)
-          : null}
-      </CapRow>
-      <CapRow style={{ display: "flex", alignItems: "center" }}>
-        {getPathConnector(HORIZONTAL)}
-        {getPathNameOrEdit(index)}
-        {getPathConnector(HORIZONTAL)}
-        <CapIcon
-          type="chevron-right"
-          style={{
-            marginLeft: "-12px",
-            marginBotton: "1px",
-            color: CAP_G07,
-          }}
-        />
-      </CapRow>
-    </StyledPathName>
+    <CapRow type="flex" align="middle">
+      {getPathConnector(HORIZONTAL)}
+      {getPathNameOrEdit(index)}
+      {getPathConnector(HORIZONTAL)}
+      <StyledCapIcon
+        color={CAP_G07}
+        type="chevron-right"
+        style={{transform: 'translateX(-50%)'}}
+      />
+    </CapRow>
   );
 
   /**
@@ -402,20 +438,27 @@ const CapMultiplePath = (props) => {
    * @param {*} path
    * @returns A Rectangle shaped Path Component.
    */
-  const getPathComponent = (index) => (
-    <CapBlock
-      isDeleteEnabled={pathList.length > 1}
-      deleteCallback={() => deletePath(index)}
-      isCollapseEnabled
-      width={`${capBlockWidth}px`}
-    >
-      <ContentsRenderer
-        pathList={pathList}
-        setPathList={setPathList}
-        pathIndex={index}
-      />
-    </CapBlock>
-  );
+  const getPathComponent = (index) => {
+    const deleteCallback = () => {
+      setShowDeleteConfirmation(true);
+      setDeletePathIndex(index);
+    };
+    return (
+      <CapBlock
+        isDeleteEnabled={pathList.length > 1}
+        deleteCallback={deleteCallback}
+        isCollapseEnabled
+        width={`${capBlockWidth}px`}
+      >
+        <ContentsRenderer
+          pathList={pathList}
+          setPathList={setPathList}
+          pathIndex={index}
+        />
+      </CapBlock>
+    );
+  };
+
   return (
     <>
       {pathList.map((path, index) => (
@@ -429,6 +472,32 @@ const CapMultiplePath = (props) => {
         </CapRow>
       ))}
       {getAddPathComponent()}
+      {
+        <CapModal
+          visible={showDeleteConfirmation}
+          onCancel={() => {
+            setShowDeleteConfirmation(false);
+            setDeletePathIndex(null);
+          }}
+          onOk={onDeleteOk}
+          title={deleteConfirmationTitleMsg}
+          okText={deleteButtonTextMsg}
+        >
+          <CapRow style={{ marginBottom: "8px" }}>
+            <CapLabelInline type="label9">{`${deleteConfirmationTextMsg} `}</CapLabelInline>
+            <q>
+              <CapLabelInline type="label8">
+                {pathList[deletePathIndex]?.pathName
+                  || `${pathMsg} ${deletePathIndex + 1}`}
+              </CapLabelInline>
+            </q>
+            <CapLabelInline type="label9"> ?</CapLabelInline>
+          </CapRow>
+          <CapLabel style={{ marginBottom: "8px" }} type="label9">
+            {deleteConfirmationWarningMsg}
+          </CapLabel>
+        </CapModal>
+      }
     </>
   );
 };
@@ -442,14 +511,22 @@ CapMultiplePath.propTypes = {
   isToggleEnabled: PropTypes.bool,
   defaultContents: PropTypes.any,
   ContentsRenderer: PropTypes.any,
-  notUnique: PropTypes.string,
+  /**Below intl fields are added in translations/en.js */
+  notUniqueMsg: PropTypes.string,
+  deleteButtonTextMsg: PropTypes.string,
+  deleteConfirmationWarningMsg: PropTypes.string,
+  deleteConfirmationTextMsg: PropTypes.string,
+  deleteConfirmationTitleMsg: PropTypes.string,
+  yesMsg: PropTypes.string,
+  noMsg: PropTypes.string,
+  pathMsg: PropTypes.string,
 };
 
 CapMultiplePath.defaultProps = {
   isToggleEnabled: true,
   addPathDisabled: false,
   capBlockWidth: 676,
-  notUnique: "",
+  notUniqueMsg: "",
 };
 
 export default LocaleHoc(CapMultiplePath, { key: "CapMultiplePath" });

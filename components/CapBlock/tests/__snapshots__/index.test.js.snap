@@ -3,10 +3,10 @@
 exports[`CapBlock Should Render correctly 1`] = `
 <CapBlock
   borderLeftColor="#2466ea"
-  collapseBlock="Collapse"
+  collapseBlockMsg="Collapse"
   componentName="path"
-  deleteBlock="Delete"
-  expandBlock="Expand"
+  deleteBlockMsg="Delete"
+  expandBlockMsg="Expand"
   width="800px"
 >
   Test
@@ -19,10 +19,10 @@ exports[`CapBlock Should hide contents when collapse button is clicked 1`] = `
 >
   <CapBlock
     borderLeftColor="#2466ea"
-    collapseBlock="Collapse"
+    collapseBlockMsg="Collapse"
     componentName="path"
-    deleteBlock="Delete"
-    expandBlock="Expand"
+    deleteBlockMsg="Delete"
+    expandBlockMsg="Expand"
     isCollapseEnabled={true}
     width="800px"
   >
@@ -783,10 +783,10 @@ exports[`CapBlock Should hide contents when collapse button is clicked 2`] = `
 >
   <CapBlock
     borderLeftColor="#2466ea"
-    collapseBlock="Collapse"
+    collapseBlockMsg="Collapse"
     componentName="path"
-    deleteBlock="Delete"
-    expandBlock="Expand"
+    deleteBlockMsg="Delete"
+    expandBlockMsg="Expand"
     isCollapseEnabled={true}
     width="800px"
   >

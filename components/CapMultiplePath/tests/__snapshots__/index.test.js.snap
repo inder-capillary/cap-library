@@ -24,8 +24,13 @@ exports[`CapMultiplePath Should render the component 1`] = `
     addPathDisabledMessage=""
     capBlockWidth={676}
     defaultContents="Hello World"
+    deleteButtonTextMsg="Yes, Delete"
+    deleteConfirmationTextMsg="Are you sure you wish to delete path"
+    deleteConfirmationTitleMsg="Confirm delete path"
+    deleteConfirmationWarningMsg="This action cannot be undone."
     isToggleEnabled={true}
-    notUnique="Not Unique"
+    noMsg="No"
+    notUniqueMsg="Not Unique"
     pathList={
       Array [
         Object {
@@ -35,7 +40,9 @@ exports[`CapMultiplePath Should render the component 1`] = `
         },
       ]
     }
+    pathMsg="Path"
     setPathList={[MockFunction]}
+    yesMsg="Yes"
   >
     <CapRow
       key="1"
@@ -58,11 +65,10 @@ exports[`CapMultiplePath Should render the component 1`] = `
                   "componentStyle": ComponentStyle {
                     "componentId": "sc-jzJRlG",
                     "isStatic": false,
-                    "lastClassName": "fyjGzt",
+                    "lastClassName": "eEgJrW",
                     "rules": Array [
                       "
   display: flex;
-  align-items: center;
   position: relative;
 ",
                     ],
@@ -80,7 +86,7 @@ exports[`CapMultiplePath Should render the component 1`] = `
               forwardedRef={null}
             >
               <div
-                className="sc-jzJRlG fyjGzt"
+                className="sc-jzJRlG eEgJrW"
               >
                 <TogglePositionIcons
                   index={0}
@@ -101,9 +107,11 @@ exports[`CapMultiplePath Should render the component 1`] = `
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-kgoBCf",
                             "isStatic": false,
-                            "lastClassName": "jxTEos",
+                            "lastClassName": "CHHmm",
                             "rules": Array [
                               "
+  display:flex;
+  align-items:center;
   svg {
     height: 16px;
     width: 16px;
@@ -135,18 +143,18 @@ exports[`CapMultiplePath Should render the component 1`] = `
                       type="arrow-up"
                     >
                       <CapIcon
-                        className="sc-kgoBCf jtUpfE"
+                        className="sc-kgoBCf kxasVt"
                         disabled={true}
                         onClick={[Function]}
                         type="arrow-up"
                       >
                         <Styled(Icon)
-                          className="cap-icon-v2 cap-icon-v2-arrow-up sc-kgoBCf jtUpfE disabled"
+                          className="cap-icon-v2 cap-icon-v2-arrow-up sc-kgoBCf kxasVt disabled"
                           component={[Function]}
                           onClick={[Function]}
                         >
                           <StyledComponent
-                            className="cap-icon-v2 cap-icon-v2-arrow-up sc-kgoBCf jtUpfE disabled"
+                            className="cap-icon-v2 cap-icon-v2-arrow-up sc-kgoBCf kxasVt disabled"
                             component={[Function]}
                             forwardedComponent={
                               Object {
@@ -181,7 +189,7 @@ exports[`CapMultiplePath Should render the component 1`] = `
                             onClick={[Function]}
                           >
                             <Icon
-                              className="sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-arrow-up sc-kgoBCf jtUpfE disabled"
+                              className="sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-arrow-up sc-kgoBCf kxasVt disabled"
                               component={[Function]}
                               onClick={[Function]}
                             >
@@ -189,7 +197,7 @@ exports[`CapMultiplePath Should render the component 1`] = `
                                 componentName="Icon"
                               >
                                 <i
-                                  className="anticon sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-arrow-up sc-kgoBCf jtUpfE disabled"
+                                  className="anticon sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-arrow-up sc-kgoBCf kxasVt disabled"
                                   onClick={[Function]}
                                   tabIndex={-1}
                                 >
@@ -246,9 +254,11 @@ exports[`CapMultiplePath Should render the component 1`] = `
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-kgoBCf",
                             "isStatic": false,
-                            "lastClassName": "jxTEos",
+                            "lastClassName": "CHHmm",
                             "rules": Array [
                               "
+  display:flex;
+  align-items:center;
   svg {
     height: 16px;
     width: 16px;
@@ -280,18 +290,18 @@ exports[`CapMultiplePath Should render the component 1`] = `
                       type="arrow-down"
                     >
                       <CapIcon
-                        className="sc-kgoBCf jxTEos"
+                        className="sc-kgoBCf CHHmm"
                         disabled={true}
                         onClick={[Function]}
                         type="arrow-down"
                       >
                         <Styled(Icon)
-                          className="cap-icon-v2 cap-icon-v2-arrow-down sc-kgoBCf jxTEos disabled"
+                          className="cap-icon-v2 cap-icon-v2-arrow-down sc-kgoBCf CHHmm disabled"
                           component={[Function]}
                           onClick={[Function]}
                         >
                           <StyledComponent
-                            className="cap-icon-v2 cap-icon-v2-arrow-down sc-kgoBCf jxTEos disabled"
+                            className="cap-icon-v2 cap-icon-v2-arrow-down sc-kgoBCf CHHmm disabled"
                             component={[Function]}
                             forwardedComponent={
                               Object {
@@ -326,7 +336,7 @@ exports[`CapMultiplePath Should render the component 1`] = `
                             onClick={[Function]}
                           >
                             <Icon
-                              className="sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-arrow-down sc-kgoBCf jxTEos disabled"
+                              className="sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-arrow-down sc-kgoBCf CHHmm disabled"
                               component={[Function]}
                               onClick={[Function]}
                             >
@@ -334,7 +344,7 @@ exports[`CapMultiplePath Should render the component 1`] = `
                                 componentName="Icon"
                               >
                                 <i
-                                  className="anticon sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-arrow-down sc-kgoBCf jxTEos disabled"
+                                  className="anticon sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-arrow-down sc-kgoBCf CHHmm disabled"
                                   onClick={[Function]}
                                   tabIndex={-1}
                                 >
@@ -1148,76 +1158,79 @@ exports[`CapMultiplePath Should render the component 1`] = `
                     </styled.div>
                   </CapBlock>
                 </Wrapper>
-                <styled.div>
-                  <StyledComponent
-                    forwardedComponent={
-                      Object {
-                        "$$typeof": Symbol(react.forward_ref),
-                        "attrs": Array [],
-                        "componentStyle": ComponentStyle {
-                          "componentId": "sc-kAzzGY",
-                          "isStatic": false,
-                          "lastClassName": "jwGftw",
-                          "rules": Array [
-                            "
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-",
-                          ],
-                        },
-                        "displayName": "styled.div",
-                        "foldedComponentIds": Array [],
-                        "render": [Function],
-                        "styledComponentId": "sc-kAzzGY",
-                        "target": "div",
-                        "toString": [Function],
-                        "warnTooManyClasses": [Function],
-                        "withComponent": [Function],
-                      }
-                    }
-                    forwardedRef={null}
+                <CapRow
+                  align="middle"
+                  type="flex"
+                >
+                  <Row
+                    align="middle"
+                    className="cap-row-v2"
+                    gutter={0}
+                    type="flex"
                   >
                     <div
-                      className="sc-kAzzGY jwGftw"
+                      className="ant-row-flex ant-row-flex-middle cap-row-v2"
                     >
-                      <CapRow
-                        style={
-                          Object {
-                            "color": "#5e6c84",
-                            "display": "flex",
-                            "justifyContent": "center",
-                          }
-                        }
+                      <styled.div
+                        key=".0"
+                        type="horizontal"
+                        width="24px"
                       >
-                        <Row
-                          className="cap-row-v2"
-                          gutter={0}
-                          style={
+                        <StyledComponent
+                          forwardedComponent={
                             Object {
-                              "color": "#5e6c84",
-                              "display": "flex",
-                              "justifyContent": "center",
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-cSHVUG",
+                                "isStatic": false,
+                                "lastClassName": "jwBFGg",
+                                "rules": Array [
+                                  "
+  margin-left: ",
+                                  [Function],
+                                  ";
+  height: ",
+                                  [Function],
+                                  ";
+  width: ",
+                                  [Function],
+                                  ";
+  border-right: ",
+                                  [Function],
+                                  ";
+  border-bottom: ",
+                                  [Function],
+                                  ";
+",
+                                ],
+                              },
+                              "displayName": "styled.div",
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-cSHVUG",
+                              "target": "div",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
                             }
                           }
+                          forwardedRef={null}
+                          type="horizontal"
+                          width="24px"
                         >
                           <div
-                            className="ant-row cap-row-v2"
-                            style={
-                              Object {
-                                "color": "#5e6c84",
-                                "display": "flex",
-                                "justifyContent": "center",
-                              }
-                            }
+                            className="sc-cSHVUG eVQNHu"
+                            type="horizontal"
+                            width="24px"
                           />
-                        </Row>
-                      </CapRow>
+                        </StyledComponent>
+                      </styled.div>
                       <CapRow
+                        key=".1"
                         style={
                           Object {
-                            "alignItems": "center",
-                            "display": "flex",
+                            "marginTop": false,
                           }
                         }
                       >
@@ -1226,8 +1239,7 @@ exports[`CapMultiplePath Should render the component 1`] = `
                           gutter={0}
                           style={
                             Object {
-                              "alignItems": "center",
-                              "display": "flex",
+                              "marginTop": false,
                             }
                           }
                         >
@@ -1235,15 +1247,12 @@ exports[`CapMultiplePath Should render the component 1`] = `
                             className="ant-row cap-row-v2"
                             style={
                               Object {
-                                "alignItems": "center",
-                                "display": "flex",
+                                "marginTop": false,
                               }
                             }
                           >
                             <styled.div
                               key=".0"
-                              type="horizontal"
-                              width="24px"
                             >
                               <StyledComponent
                                 forwardedComponent={
@@ -1251,33 +1260,22 @@ exports[`CapMultiplePath Should render the component 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
-                                      "componentId": "sc-cSHVUG",
+                                      "componentId": "sc-kAzzGY",
                                       "isStatic": false,
-                                      "lastClassName": "jwBFGg",
+                                      "lastClassName": "fdBXFv",
                                       "rules": Array [
                                         "
-  margin-left: ",
-                                        [Function],
-                                        ";
-  height: ",
-                                        [Function],
-                                        ";
-  width: ",
-                                        [Function],
-                                        ";
-  border-right: ",
-                                        [Function],
-                                        ";
-  border-bottom: ",
-                                        [Function],
-                                        ";
+text-align: center;
+color: ",
+                                        "#5e6c84",
+                                        " 
 ",
                                       ],
                                     },
                                     "displayName": "styled.div",
                                     "foldedComponentIds": Array [],
                                     "render": [Function],
-                                    "styledComponentId": "sc-cSHVUG",
+                                    "styledComponentId": "sc-kAzzGY",
                                     "target": "div",
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
@@ -1285,13 +1283,9 @@ exports[`CapMultiplePath Should render the component 1`] = `
                                   }
                                 }
                                 forwardedRef={null}
-                                type="horizontal"
-                                width="24px"
                               >
                                 <div
-                                  className="sc-cSHVUG eVQNHu"
-                                  type="horizontal"
-                                  width="24px"
+                                  className="sc-kAzzGY fdBXFv"
                                 />
                               </StyledComponent>
                             </styled.div>
@@ -1909,182 +1903,227 @@ exports[`CapMultiplePath Should render the component 1`] = `
                                 </div>
                               </StyledComponent>
                             </styled.div>
-                            <styled.div
-                              key=".2"
-                              type="horizontal"
-                              width="24px"
+                          </div>
+                        </Row>
+                      </CapRow>
+                      <styled.div
+                        key=".2"
+                        type="horizontal"
+                        width="24px"
+                      >
+                        <StyledComponent
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-cSHVUG",
+                                "isStatic": false,
+                                "lastClassName": "jwBFGg",
+                                "rules": Array [
+                                  "
+  margin-left: ",
+                                  [Function],
+                                  ";
+  height: ",
+                                  [Function],
+                                  ";
+  width: ",
+                                  [Function],
+                                  ";
+  border-right: ",
+                                  [Function],
+                                  ";
+  border-bottom: ",
+                                  [Function],
+                                  ";
+",
+                                ],
+                              },
+                              "displayName": "styled.div",
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-cSHVUG",
+                              "target": "div",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                          type="horizontal"
+                          width="24px"
+                        >
+                          <div
+                            className="sc-cSHVUG eVQNHu"
+                            type="horizontal"
+                            width="24px"
+                          />
+                        </StyledComponent>
+                      </styled.div>
+                      <Styled(CapIcon)
+                        color="#dfe2e7"
+                        key=".3"
+                        style={
+                          Object {
+                            "transform": "translateX(-50%)",
+                          }
+                        }
+                        type="chevron-right"
+                      >
+                        <StyledComponent
+                          color="#dfe2e7"
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "AntIcon": [Function],
+                              "CapIconAvatar": [Function],
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-dxgOiQ",
+                                "isStatic": false,
+                                "lastClassName": "kaVixh",
+                                "rules": Array [
+                                  "
+  color:",
+                                  [Function],
+                                  ";
+",
+                                ],
+                              },
+                              "displayName": "Styled(CapIcon)",
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-dxgOiQ",
+                              "target": [Function],
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                          style={
+                            Object {
+                              "transform": "translateX(-50%)",
+                            }
+                          }
+                          type="chevron-right"
+                        >
+                          <CapIcon
+                            className="sc-dxgOiQ kaVixh"
+                            color="#dfe2e7"
+                            style={
+                              Object {
+                                "transform": "translateX(-50%)",
+                              }
+                            }
+                            type="chevron-right"
+                          >
+                            <Styled(Icon)
+                              className="cap-icon-v2 cap-icon-v2-chevron-right sc-dxgOiQ kaVixh"
+                              color="#dfe2e7"
+                              component={[Function]}
+                              style={
+                                Object {
+                                  "transform": "translateX(-50%)",
+                                }
+                              }
                             >
                               <StyledComponent
+                                className="cap-icon-v2 cap-icon-v2-chevron-right sc-dxgOiQ kaVixh"
+                                color="#dfe2e7"
+                                component={[Function]}
                                 forwardedComponent={
                                   Object {
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
-                                      "componentId": "sc-cSHVUG",
+                                      "componentId": "sc-bwzfXH",
                                       "isStatic": false,
-                                      "lastClassName": "jwBFGg",
+                                      "lastClassName": "dNCrpK",
                                       "rules": Array [
                                         "
-  margin-left: ",
-                                        [Function],
-                                        ";
-  height: ",
-                                        [Function],
-                                        ";
-  width: ",
-                                        [Function],
-                                        ";
-  border-right: ",
-                                        [Function],
-                                        ";
-  border-bottom: ",
+  font-size: ",
                                         [Function],
                                         ";
 ",
                                       ],
                                     },
-                                    "displayName": "styled.div",
+                                    "createFromIconfontCN": [Function],
+                                    "displayName": "Styled(Icon)",
                                     "foldedComponentIds": Array [],
+                                    "getTwoToneColor": [Function],
                                     "render": [Function],
-                                    "styledComponentId": "sc-cSHVUG",
-                                    "target": "div",
+                                    "setTwoToneColor": [Function],
+                                    "styledComponentId": "sc-bwzfXH",
+                                    "target": [Function],
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
                                   }
                                 }
                                 forwardedRef={null}
-                                type="horizontal"
-                                width="24px"
-                              >
-                                <div
-                                  className="sc-cSHVUG eVQNHu"
-                                  type="horizontal"
-                                  width="24px"
-                                />
-                              </StyledComponent>
-                            </styled.div>
-                            <CapIcon
-                              key=".3"
-                              style={
-                                Object {
-                                  "color": "#dfe2e7",
-                                  "marginBotton": "1px",
-                                  "marginLeft": "-12px",
-                                }
-                              }
-                              type="chevron-right"
-                            >
-                              <Styled(Icon)
-                                className="cap-icon-v2 cap-icon-v2-chevron-right"
-                                component={[Function]}
                                 style={
                                   Object {
-                                    "color": "#dfe2e7",
-                                    "marginBotton": "1px",
-                                    "marginLeft": "-12px",
+                                    "transform": "translateX(-50%)",
                                   }
                                 }
                               >
-                                <StyledComponent
-                                  className="cap-icon-v2 cap-icon-v2-chevron-right"
+                                <Icon
+                                  className="sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-chevron-right sc-dxgOiQ kaVixh"
+                                  color="#dfe2e7"
                                   component={[Function]}
-                                  forwardedComponent={
-                                    Object {
-                                      "$$typeof": Symbol(react.forward_ref),
-                                      "attrs": Array [],
-                                      "componentStyle": ComponentStyle {
-                                        "componentId": "sc-bwzfXH",
-                                        "isStatic": false,
-                                        "lastClassName": "dNCrpK",
-                                        "rules": Array [
-                                          "
-  font-size: ",
-                                          [Function],
-                                          ";
-",
-                                        ],
-                                      },
-                                      "createFromIconfontCN": [Function],
-                                      "displayName": "Styled(Icon)",
-                                      "foldedComponentIds": Array [],
-                                      "getTwoToneColor": [Function],
-                                      "render": [Function],
-                                      "setTwoToneColor": [Function],
-                                      "styledComponentId": "sc-bwzfXH",
-                                      "target": [Function],
-                                      "toString": [Function],
-                                      "warnTooManyClasses": [Function],
-                                      "withComponent": [Function],
-                                    }
-                                  }
-                                  forwardedRef={null}
                                   style={
                                     Object {
-                                      "color": "#dfe2e7",
-                                      "marginBotton": "1px",
-                                      "marginLeft": "-12px",
+                                      "transform": "translateX(-50%)",
                                     }
                                   }
                                 >
-                                  <Icon
-                                    className="sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-chevron-right"
-                                    component={[Function]}
-                                    style={
-                                      Object {
-                                        "color": "#dfe2e7",
-                                        "marginBotton": "1px",
-                                        "marginLeft": "-12px",
-                                      }
-                                    }
+                                  <LocaleReceiver
+                                    componentName="Icon"
                                   >
-                                    <LocaleReceiver
-                                      componentName="Icon"
-                                    >
-                                      <i
-                                        className="anticon sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-chevron-right"
-                                        style={
-                                          Object {
-                                            "color": "#dfe2e7",
-                                            "marginBotton": "1px",
-                                            "marginLeft": "-12px",
-                                          }
+                                    <i
+                                      className="anticon sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-chevron-right sc-dxgOiQ kaVixh"
+                                      color="#dfe2e7"
+                                      style={
+                                        Object {
+                                          "transform": "translateX(-50%)",
                                         }
+                                      }
+                                    >
+                                      <component
+                                        aria-hidden={true}
+                                        className=""
+                                        fill="currentColor"
+                                        focusable="false"
+                                        height="1em"
+                                        width="1em"
                                       >
-                                        <component
-                                          aria-hidden={true}
-                                          className=""
-                                          fill="currentColor"
-                                          focusable="false"
-                                          height="1em"
-                                          width="1em"
-                                        >
-                                          <SvgChevronRight>
-                                            <svg
-                                              fill="currentColor"
-                                              height="1em"
-                                              viewBox="0 0 24 24"
-                                              width="1em"
-                                            >
-                                              <path
-                                                d="M14.992 12.707L10.4 17.3A.991.991 0 0 1 9 15.9l3.9-3.9L9 8.1a.991.991 0 0 1 1.4-1.4l4.594 4.592a1 1 0 0 1 0 1.415"
-                                                id="chevron-right_svg__a"
-                                              />
-                                            </svg>
-                                          </SvgChevronRight>
-                                        </component>
-                                      </i>
-                                    </LocaleReceiver>
-                                  </Icon>
-                                </StyledComponent>
-                              </Styled(Icon)>
-                            </CapIcon>
-                          </div>
-                        </Row>
-                      </CapRow>
+                                        <SvgChevronRight>
+                                          <svg
+                                            fill="currentColor"
+                                            height="1em"
+                                            viewBox="0 0 24 24"
+                                            width="1em"
+                                          >
+                                            <path
+                                              d="M14.992 12.707L10.4 17.3A.991.991 0 0 1 9 15.9l3.9-3.9L9 8.1a.991.991 0 0 1 1.4-1.4l4.594 4.592a1 1 0 0 1 0 1.415"
+                                              id="chevron-right_svg__a"
+                                            />
+                                          </svg>
+                                        </SvgChevronRight>
+                                      </component>
+                                    </i>
+                                  </LocaleReceiver>
+                                </Icon>
+                              </StyledComponent>
+                            </Styled(Icon)>
+                          </CapIcon>
+                        </StyledComponent>
+                      </Styled(CapIcon)>
                     </div>
-                  </StyledComponent>
-                </styled.div>
+                  </Row>
+                </CapRow>
               </div>
             </StyledComponent>
           </styled.div>
@@ -2931,31 +2970,29 @@ exports[`CapMultiplePath Should render the component 1`] = `
             </StyledComponent>
           </styled.div>
           <CapRow
+            align="middle"
             style={
               Object {
-                "alignItems": "center",
-                "display": "flex",
                 "transform": "translateY(-50%)",
               }
             }
+            type="flex"
           >
             <Row
+              align="middle"
               className="cap-row-v2"
               gutter={0}
               style={
                 Object {
-                  "alignItems": "center",
-                  "display": "flex",
                   "transform": "translateY(-50%)",
                 }
               }
+              type="flex"
             >
               <div
-                className="ant-row cap-row-v2"
+                className="ant-row-flex ant-row-flex-middle cap-row-v2"
                 style={
                   Object {
-                    "alignItems": "center",
-                    "display": "flex",
                     "transform": "translateY(-50%)",
                   }
                 }
@@ -2963,7 +3000,6 @@ exports[`CapMultiplePath Should render the component 1`] = `
                 <styled.div
                   borderType="dashed"
                   borderWidth="2px"
-                  key=".0"
                   type="horizontal"
                   width="74px"
                 >
@@ -3019,42 +3055,72 @@ exports[`CapMultiplePath Should render the component 1`] = `
                     />
                   </StyledComponent>
                 </styled.div>
-                <CapRow
-                  key=".1"
+                <styled.div
                   style={
                     Object {
                       "textAlign": "center",
-                      "width": "80px",
                     }
                   }
                 >
-                  <Row
-                    className="cap-row-v2"
-                    gutter={0}
+                  <StyledComponent
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-chPdSV",
+                          "isStatic": false,
+                          "lastClassName": "giTCLv",
+                          "rules": Array [
+                            "
+  padding: 2px;
+  max-height: 40px;
+  width: 80px;
+  div {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    // Addition lines for 2 line or multiline ellipsis
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    text-align: center;
+  }
+",
+                          ],
+                        },
+                        "displayName": "styled.div",
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "styledComponentId": "sc-chPdSV",
+                        "target": "div",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
                     style={
                       Object {
                         "textAlign": "center",
-                        "width": "80px",
                       }
                     }
                   >
                     <div
-                      className="ant-row cap-row-v2"
+                      className="sc-chPdSV giTCLv"
                       style={
                         Object {
                           "textAlign": "center",
-                          "width": "80px",
                         }
                       }
                     >
                       No
                     </div>
-                  </Row>
-                </CapRow>
+                  </StyledComponent>
+                </styled.div>
                 <styled.div
                   borderType="dashed"
                   borderWidth="2px"
-                  key=".2"
                   type="horizontal"
                   width="74px"
                 >
@@ -3110,122 +3176,272 @@ exports[`CapMultiplePath Should render the component 1`] = `
                     />
                   </StyledComponent>
                 </styled.div>
-                <CapIcon
-                  key=".3"
+                <Styled(CapIcon)
+                  color="#dfe2e7"
+                  key=".1"
                   style={
                     Object {
-                      "color": "#dfe2e7",
-                      "marginLeft": "-12px",
+                      "transform": "translateX(-50%)",
                     }
                   }
                   type="chevron-right"
                 >
-                  <Styled(Icon)
-                    className="cap-icon-v2 cap-icon-v2-chevron-right"
-                    component={[Function]}
-                    style={
+                  <StyledComponent
+                    color="#dfe2e7"
+                    forwardedComponent={
                       Object {
-                        "color": "#dfe2e7",
-                        "marginLeft": "-12px",
+                        "$$typeof": Symbol(react.forward_ref),
+                        "AntIcon": [Function],
+                        "CapIconAvatar": [Function],
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-dxgOiQ",
+                          "isStatic": false,
+                          "lastClassName": "kaVixh",
+                          "rules": Array [
+                            "
+  color:",
+                            [Function],
+                            ";
+",
+                          ],
+                        },
+                        "displayName": "Styled(CapIcon)",
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "styledComponentId": "sc-dxgOiQ",
+                        "target": [Function],
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
                       }
                     }
-                  >
-                    <StyledComponent
-                      className="cap-icon-v2 cap-icon-v2-chevron-right"
-                      component={[Function]}
-                      forwardedComponent={
-                        Object {
-                          "$$typeof": Symbol(react.forward_ref),
-                          "attrs": Array [],
-                          "componentStyle": ComponentStyle {
-                            "componentId": "sc-bwzfXH",
-                            "isStatic": false,
-                            "lastClassName": "dNCrpK",
-                            "rules": Array [
-                              "
-  font-size: ",
-                              [Function],
-                              ";
-",
-                            ],
-                          },
-                          "createFromIconfontCN": [Function],
-                          "displayName": "Styled(Icon)",
-                          "foldedComponentIds": Array [],
-                          "getTwoToneColor": [Function],
-                          "render": [Function],
-                          "setTwoToneColor": [Function],
-                          "styledComponentId": "sc-bwzfXH",
-                          "target": [Function],
-                          "toString": [Function],
-                          "warnTooManyClasses": [Function],
-                          "withComponent": [Function],
-                        }
+                    forwardedRef={null}
+                    style={
+                      Object {
+                        "transform": "translateX(-50%)",
                       }
-                      forwardedRef={null}
+                    }
+                    type="chevron-right"
+                  >
+                    <CapIcon
+                      className="sc-dxgOiQ kaVixh"
+                      color="#dfe2e7"
                       style={
                         Object {
-                          "color": "#dfe2e7",
-                          "marginLeft": "-12px",
+                          "transform": "translateX(-50%)",
                         }
                       }
+                      type="chevron-right"
                     >
-                      <Icon
-                        className="sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-chevron-right"
+                      <Styled(Icon)
+                        className="cap-icon-v2 cap-icon-v2-chevron-right sc-dxgOiQ kaVixh"
+                        color="#dfe2e7"
                         component={[Function]}
                         style={
                           Object {
-                            "color": "#dfe2e7",
-                            "marginLeft": "-12px",
+                            "transform": "translateX(-50%)",
                           }
                         }
                       >
-                        <LocaleReceiver
-                          componentName="Icon"
+                        <StyledComponent
+                          className="cap-icon-v2 cap-icon-v2-chevron-right sc-dxgOiQ kaVixh"
+                          color="#dfe2e7"
+                          component={[Function]}
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-bwzfXH",
+                                "isStatic": false,
+                                "lastClassName": "dNCrpK",
+                                "rules": Array [
+                                  "
+  font-size: ",
+                                  [Function],
+                                  ";
+",
+                                ],
+                              },
+                              "createFromIconfontCN": [Function],
+                              "displayName": "Styled(Icon)",
+                              "foldedComponentIds": Array [],
+                              "getTwoToneColor": [Function],
+                              "render": [Function],
+                              "setTwoToneColor": [Function],
+                              "styledComponentId": "sc-bwzfXH",
+                              "target": [Function],
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                          style={
+                            Object {
+                              "transform": "translateX(-50%)",
+                            }
+                          }
                         >
-                          <i
-                            className="anticon sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-chevron-right"
+                          <Icon
+                            className="sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-chevron-right sc-dxgOiQ kaVixh"
+                            color="#dfe2e7"
+                            component={[Function]}
                             style={
                               Object {
-                                "color": "#dfe2e7",
-                                "marginLeft": "-12px",
+                                "transform": "translateX(-50%)",
                               }
                             }
                           >
-                            <component
-                              aria-hidden={true}
-                              className=""
-                              fill="currentColor"
-                              focusable="false"
-                              height="1em"
-                              width="1em"
+                            <LocaleReceiver
+                              componentName="Icon"
                             >
-                              <SvgChevronRight>
-                                <svg
+                              <i
+                                className="anticon sc-bwzfXH dNCrpK cap-icon-v2 cap-icon-v2-chevron-right sc-dxgOiQ kaVixh"
+                                color="#dfe2e7"
+                                style={
+                                  Object {
+                                    "transform": "translateX(-50%)",
+                                  }
+                                }
+                              >
+                                <component
+                                  aria-hidden={true}
+                                  className=""
                                   fill="currentColor"
+                                  focusable="false"
                                   height="1em"
-                                  viewBox="0 0 24 24"
                                   width="1em"
                                 >
-                                  <path
-                                    d="M14.992 12.707L10.4 17.3A.991.991 0 0 1 9 15.9l3.9-3.9L9 8.1a.991.991 0 0 1 1.4-1.4l4.594 4.592a1 1 0 0 1 0 1.415"
-                                    id="chevron-right_svg__a"
-                                  />
-                                </svg>
-                              </SvgChevronRight>
-                            </component>
-                          </i>
-                        </LocaleReceiver>
-                      </Icon>
-                    </StyledComponent>
-                  </Styled(Icon)>
-                </CapIcon>
+                                  <SvgChevronRight>
+                                    <svg
+                                      fill="currentColor"
+                                      height="1em"
+                                      viewBox="0 0 24 24"
+                                      width="1em"
+                                    >
+                                      <path
+                                        d="M14.992 12.707L10.4 17.3A.991.991 0 0 1 9 15.9l3.9-3.9L9 8.1a.991.991 0 0 1 1.4-1.4l4.594 4.592a1 1 0 0 1 0 1.415"
+                                        id="chevron-right_svg__a"
+                                      />
+                                    </svg>
+                                  </SvgChevronRight>
+                                </component>
+                              </i>
+                            </LocaleReceiver>
+                          </Icon>
+                        </StyledComponent>
+                      </Styled(Icon)>
+                    </CapIcon>
+                  </StyledComponent>
+                </Styled(CapIcon)>
               </div>
             </Row>
           </CapRow>
         </div>
       </StyledComponent>
     </styled.div>
+    <Wrapper
+      okText="Yes, Delete"
+      onCancel={[Function]}
+      onOk={[Function]}
+      title="Confirm delete path"
+      visible={false}
+    >
+      <CapModal
+        closeText="No"
+        okText="Yes, Delete"
+        onCancel={[Function]}
+        onOk={[Function]}
+        title="Confirm delete path"
+        visible={false}
+      >
+        <Modal
+          className="cap-modal-v2"
+          confirmLoading={false}
+          footer={
+            <div
+              className="default-footer"
+            >
+              <CapButton
+                isAddBtn={false}
+                onClick={[Function]}
+                type="primary"
+              >
+                Yes, Delete
+              </CapButton>
+              <CapButton
+                isAddBtn={false}
+                onClick={[Function]}
+                type="flat"
+              >
+                No
+              </CapButton>
+            </div>
+          }
+          maskTransitionName="fade"
+          okType="primary"
+          onCancel={[Function]}
+          onOk={[Function]}
+          title="Confirm delete path"
+          transitionName="zoom"
+          visible={false}
+          width={520}
+          wrapClassName="cap-modal-v2-wrap"
+        >
+          <Component
+            className="cap-modal-v2"
+            closeIcon={
+              <span
+                className="ant-modal-close-x"
+              >
+                <Icon
+                  className="ant-modal-close-icon"
+                  type="close"
+                />
+              </span>
+            }
+            confirmLoading={false}
+            footer={
+              <div
+                className="default-footer"
+              >
+                <CapButton
+                  isAddBtn={false}
+                  onClick={[Function]}
+                  type="primary"
+                >
+                  Yes, Delete
+                </CapButton>
+                <CapButton
+                  isAddBtn={false}
+                  onClick={[Function]}
+                  type="flat"
+                >
+                  No
+                </CapButton>
+              </div>
+            }
+            maskTransitionName="fade"
+            okType="primary"
+            onCancel={[Function]}
+            onClose={[Function]}
+            onOk={[Function]}
+            prefixCls="ant-modal"
+            title="Confirm delete path"
+            transitionName="zoom"
+            visible={false}
+            width={520}
+            wrapClassName="cap-modal-v2-wrap"
+          >
+            <PortalWrapper
+              visible={false}
+            />
+          </Component>
+        </Modal>
+      </CapModal>
+    </Wrapper>
   </CapMultiplePath>
 </Wrapper>
 `;
