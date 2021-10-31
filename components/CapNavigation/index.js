@@ -42,6 +42,7 @@ const CapNavigation = (props) => {
     showSecondaryTopBar = false,
     secondaryTopBarActionHandler,
     skipStateForStorage = false,
+    fixedOrg = false,
   } = props;
 
   const handleProductChange = (product) => {
@@ -220,6 +221,7 @@ const CapNavigation = (props) => {
             title: selectOrganization,
             placeholder: organization,
             noResultText,
+            fixedOrg,
           }}
           menuProps={{
             items: topbarMenuData,
@@ -274,6 +276,7 @@ CapNavigation.propTypes = {
   settingsLabel: PropTypes.string,
   insights: PropTypes.string,
   skipStateForStorage: PropTypes.bool,
+  fixedOrg: PropTypes.bool,
 };
 
 export default LocaleHoc(CapNavigation, { key: 'CapNavigation' });
