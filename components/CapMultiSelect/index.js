@@ -304,7 +304,7 @@ class CapMultiSelect extends React.Component {
 
 CapMultiSelect.defaultProps = {
   searchKey: "title",
-  getPopupContainer: (triggerNode) => triggerNode?.parentNode || document.body,
+  getPopupContainer: () => document.body,
   showSelectButtonToolTip: false,
   showFooter: true,
   searchFocusOnMount: true,

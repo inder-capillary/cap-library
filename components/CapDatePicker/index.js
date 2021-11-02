@@ -33,7 +33,6 @@ function CapDatePicker(props) {
 
 CapDatePicker.defaultProps = {
   size: 'large',
-  getCalendarContainer: (triggerNode) => triggerNode?.parentNode || document.body,
 };
 
 export default ComponentWithLabelHOC(CapDatePicker);

@@ -5,7 +5,6 @@
 */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { TimePicker} from 'antd';
 import classNames from 'classnames';
 import './_capTimePicker.scss';
@@ -23,12 +22,8 @@ class CapTimePicker extends React.PureComponent { // eslint-disable-line react/p
   }
 }
 
-CapTimePicker.defaultProps = {
-  getPopupContainer: (triggerNode) => triggerNode?.parentNode || document.body,
-};
-
 CapTimePicker.propTypes = {
-  getPopupContainer: PropTypes.func,
+
 };
 
 export default CapTimePicker;
