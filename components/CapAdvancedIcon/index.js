@@ -38,8 +38,8 @@ const CapAdvancedIcon = (props) => {
     type,
     backgroundColor,
     actionNodes = [],
-    label1,
-    label2,
+    label,
+    preview,
     dragRef,
     backgroundProps,
     positionLabel,
@@ -89,8 +89,8 @@ const CapAdvancedIcon = (props) => {
         </div>
       </CapRow>
       <CapRow style={{ textAlign: 'center', ...labelStyles }}>
-        {label1}
-        {label2}
+        {label}
+        {preview}
       </CapRow>
     </>
   );
@@ -100,8 +100,8 @@ CapAdvancedIcon.propTypes = {
   type: PropTypes.string,
   backgroundColor: PropTypes.string,
   actionNodes: PropTypes.array,
-  label1: PropTypes.node,
-  label2: PropTypes.node,
+  label: PropTypes.node,
+  preview: PropTypes.node,
 };
 
 export default CapAdvancedIcon;

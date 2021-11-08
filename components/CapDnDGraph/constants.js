@@ -9,3 +9,7 @@ export const EXIT_TRIGGER = 'EXIT_TRIGGER';
 export const EMPTY_GRAPH_TEXT = 'EMPTY_GRAPH_TEXT';
 export const PLACEHOLDER_NODE = 'PLACEHOLDER_NODE';
 export const END_NODE = 'END_NODE';
+
+export const DELETE = 'delete';
+export const SETTINGS = 'settings';
+export const COPY = 'copy';

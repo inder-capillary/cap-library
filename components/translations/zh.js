@@ -51,4 +51,7 @@ export default {
     noResultText: '未发现结果',
     selectProduct: '选择产品',
   },
+  CapGraphBlockNode: {
+    configure: 'Configure',
+  },
 };

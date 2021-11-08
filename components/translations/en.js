@@ -94,4 +94,7 @@ export default {
     emptyDataMessage: 'No data found',
     searchPlaceholder: 'Search',
   },
+  CapGraphBlockNode: {
+    configure: 'Configure',
+  },
 };

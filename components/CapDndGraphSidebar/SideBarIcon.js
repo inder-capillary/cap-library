@@ -25,7 +25,7 @@ const SideBarIcon = ({ childNode, color, isNodeDraggable }) => {
         <CapAdvancedIcon
           type={type}
           backgroundColor={color}
-          label1={
+          label={
             <CapLabel className="node-label" type="label5">{label}</CapLabel>
           }
           svgProps={{

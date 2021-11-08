@@ -2,51 +2,49 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CapAdvancedIcon from '../CapAdvancedIcon';
 import CapLabel from '../CapLabel';
-import CapTooltipWithInfo from '../CapTooltipWithInfo';
-
-const iconTextMap = {
-  SMS: 'SMS',
-  EMAIL: 'Email',
-  MPUSH: 'Push notification',
-  LINE: 'Line',
-  WECHAT: 'WeChat',
-  TOP_X_CHANNEL: 'Top X Channel',
-  CHANNEL_PRIORITY: 'Channel priority',
-  AB_TESTING: 'A/B Testing',
-  WAIT: 'Time based wait',
-  WAIT_TILL_EVENT: 'Wait unitl event',
-  JOIN: 'Join',
-  ENGAGEMENT_SPLIT: 'Engagement split',
-  SPLIT: 'Desicition split',
-  userAttributeChange: 'User attribute change',
-  api: 'API call',
-};
+import LocaleHoc from '../LocaleHoc';
+import { DELETE, SETTINGS } from './constants';
 
 const GraphBlockNode = (props) => {
-  const { id, iconType, color, onClickActionIcon, isConfigured, blockType, meta } = props;
-  const label1 = isConfigured ? (
-    null
-  ) : 'Configure:';
-  const label2 = isConfigured ? (
-    <div style={{display: 'inline-flex', alignItems: 'center'}}>
-      <CapLabel type="label2" style={{marginRight: '4px'}}>{iconTextMap[blockType]}</CapLabel>
-      <CapTooltipWithInfo title={meta.content} />
-    </div>
-  ) : iconTextMap[blockType];
+  const {
+    configureText,
+    id,
+    iconType,
+    color,
+    onClickActionIcon,
+    isConfigured,
+    nodePreview,
+    nodeTitle,
+  } = props;
 
-  const actionNodes = [{
-    type: 'settings',
-    position: 'top-right',
-    onClick: onClickActionIcon,
-  }, {
-    type: 'delete',
-    position: 'top-left',
-    onClick: onClickActionIcon,
-  }, {
-    type: 'copy',
-    position: 'bottom-right',
-    onClick: onClickActionIcon,
-  }];
+  let preview = nodePreview;
+
+  if (!isConfigured && !nodePreview) {
+    preview = (
+      <>
+        <CapLabel type="label1" className="margin-t-10">{configureText}</CapLabel>
+        <CapLabel type="label2">{nodeTitle}</CapLabel>
+      </>
+    );
+  }
+
+  const actionNodes = [
+    {
+      type: SETTINGS,
+      position: 'top-right',
+      onClick: onClickActionIcon,
+    },
+    {
+      type: DELETE,
+      position: 'top-left',
+      onClick: onClickActionIcon,
+    },
+    // {
+    //   type: COPY,
+    //   position: 'bottom-right',
+    //   onClick: onClickActionIcon,
+    // },
+  ];
   return (
     <CapAdvancedIcon
       type={iconType}
@@ -62,8 +60,8 @@ const GraphBlockNode = (props) => {
       actionNodes={actionNodes}
       id={id}
       positionLabel
-      label1={<CapLabel type="label1" className="margin-t-10">{label1}</CapLabel>}
-      label2={<CapLabel type="label2">{label2}</CapLabel>}
+      preview={preview}
+      onClick={() => onClickActionIcon({blockId: id, actionType: SETTINGS})}
     />
   );
 };
@@ -73,9 +71,20 @@ GraphBlockNode.propTypes = {
   iconType: PropTypes.string,
   onClickActionIcon: PropTypes.func,
   isConfigured: PropTypes.bool,
-  meta: PropTypes.object,
-  blockType: PropTypes.string,
+  nodePreview: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.node,
+  ]),
   color: PropTypes.string,
+  nodeTitle: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]),
+  configureText: PropTypes.string,
 };
 
-export default GraphBlockNode;
+GraphBlockNode.defaultProps = {
+  onClickActionIcon: () => {},
+};
+
+export default LocaleHoc(GraphBlockNode, { key: 'GraphBlockNode' });

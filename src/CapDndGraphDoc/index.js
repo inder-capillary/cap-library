@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 
@@ -244,9 +244,10 @@ const props = {
   dndGraphId: 'journey-graph-container',
 };
 function CapDndGraphSidebar() {
+  const [graphNodes, setGraphNodes] = useState(initialGraphData);
   return (
     <DndProvider backend={HTML5Backend}>
-      <CapDnDGraph {...props} />
+      <CapDnDGraph {...props} graphNodes={graphNodes} setGraphNodes={setGraphNodes} />
     </DndProvider>
   );
 }

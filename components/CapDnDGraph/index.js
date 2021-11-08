@@ -30,6 +30,8 @@ import {
   EMPTY_GRAPH_TEXT,
   PLACEHOLDER_NODE,
   END_NODE,
+  SETTINGS,
+  DELETE,
 } from './constants';
 
 import { CAP_G06 } from '../styled/variables';
@@ -45,7 +47,15 @@ const endIconProps = {
 };
 
 const CapDndGraph = (props) => {
-  const { sidebarProps = {}, dndGraphId, initialGraphData, onClickConfigure, onDropNewNode = () => {} } = props;
+  const {
+    sidebarProps = {},
+    dndGraphId,
+    onClickConfigure,
+    onDropNewNode = () => {},
+    graphNodes,
+    setGraphNodes,
+    nodeTitleMapping,
+  } = props;
 
   const graphRef = useRef(null);
   const dagreLayoutRef = useRef(null);
@@ -53,7 +63,6 @@ const CapDndGraph = (props) => {
   const edgesData = useRef([]);
   const graphContainerPositionStart = useRef(null);
 
-  const [graphNodes, setGraphNodes] = useState(initialGraphData);
   const [graphData, setGraphData] = useState({
     nodes: [],
     edges: [],
@@ -311,14 +320,17 @@ const CapDndGraph = (props) => {
     const placeholderNode = graphNodes.find((node) => node.type === PLACEHOLDER_NODE);// First placeholder node where we need to show text
 
     const entryTriggerNode = graphRef.current.getCell(entryTrigger.id);
-    const exitTriggerNode = graphRef.current.getCell(exitTrigger.id);
+    const exitTriggerNode = graphRef.current.getCell(exitTrigger?.id);
     const emptyGraphText = emptyGraphTextNode && graphRef.current.getCell(emptyGraphTextNode.id);
     const nextNode = placeholderNode && graphRef.current.getCell(placeholderNode.id);
 
     if (entryTriggerNode) {
       const entryTriggerBBox = entryTriggerNode.getBBox().bottomLeft;
       const entryTriggerTopBBox = entryTriggerNode.getBBox().topLeft;
-      exitTriggerNode.position(entryTriggerBBox.x, entryTriggerBBox.y + 16);
+
+      if (exitTriggerNode) {
+        exitTriggerNode.position(entryTriggerBBox.x, entryTriggerBBox.y + 16);
+      }
       entryTriggerNode.position(entryTriggerTopBBox.x, entryTriggerTopBBox.y - 16);
     }
 
@@ -402,7 +414,6 @@ const CapDndGraph = (props) => {
           ...entryTrigger,
           to: [newNodeId],
         },
-        exitTrigger,
         {
           from: entryTrigger.id,
           id: newNodeId,
@@ -414,6 +425,7 @@ const CapDndGraph = (props) => {
             blockType: item.id,
             onClickActionIcon,
             isMultiPath: item.isMultiPath,
+            nodeTitle: nodeTitleMapping[item.id],
           },
           to: endNode ? [endNodeId, endNode.id] : [endNodeId],
         },
@@ -430,6 +442,9 @@ const CapDndGraph = (props) => {
       ];
       if (item.isMultiPath) {
         newSetNodes.push(endNode);
+      }
+      if (exitTrigger) {
+        newSetNodes.splice(1, 0, exitTrigger);
       }
       previouslyFoundEdge.current = -1;
       setGraphNodes(newSetNodes);
@@ -470,6 +485,7 @@ const CapDndGraph = (props) => {
               blockType: item.id,
               onClickActionIcon,
               isMultiPath: item.isMultiPath,
+              nodeTitle: nodeTitleMapping[item.id],
             },
             to: toNodes,
             from: nodes[sourceIndex].id,
@@ -608,9 +624,9 @@ const CapDndGraph = (props) => {
   }, []);
 
   const onClickActionIcon = useCallback(({ blockId, actionType }) => {
-    if (actionType === 'delete') {
+    if (actionType === DELETE) {
       deleteNodeHandler(blockId);
-    } else if (actionType === 'settings') {
+    } else if (actionType === SETTINGS) {
       onClickConfigure(blockId);
     }
   }, []);
@@ -636,7 +652,11 @@ const CapDndGraph = (props) => {
 CapDndGraph.propTypes = {
   sidebarIcons: PropTypes.array,
   graphBuilderId: PropTypes.string,
+  nodeTitleMapping: PropTypes.object,
 };
 
+CapDndGraph.defaultProps = {
+  nodeTitleMapping: {},
+};
 
 export default CapDndGraph;
