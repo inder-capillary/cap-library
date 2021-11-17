@@ -11,6 +11,7 @@ import { useDrop } from 'react-dnd';
 import { nanoid } from 'nanoid';
 import cloneDeep from 'lodash/cloneDeep';
 import debounce from 'lodash/debounce';
+import isEmpty from 'lodash/isEmpty';
 
 import CapIconsSidebar from '../CapDndGraphSidebar';
 import CapRow from '../CapRow';
@@ -56,6 +57,7 @@ const CapDndGraph = (props) => {
     graphNodes,
     setGraphNodes,
     nodeTitleMapping,
+    offset = 0,
   } = props;
 
   const graphRef = useRef(null);
@@ -241,7 +243,7 @@ const CapDndGraph = (props) => {
         const sourceBBox = source.getBBox();
         const targetBBox = target.getBBox();
 
-        const sourceNode = graphNodes.find((node) => node.id === source.id);
+        const sourceNode = graphNodes.find((node) => node.id === source.id) || {};
         /* By default, edges start from the middle of the node,
         but for Exit Trigger, we need to start the edge from the top
         custom logic to place the edge source based on the Entry trigger vertices
@@ -399,16 +401,17 @@ const CapDndGraph = (props) => {
 
   const onDrop = useCallback((item) => {
     const newNodeId = nanoid(10);
+    const endNodeIdSecondary = nanoid(10);
     let endNode;
     previouslyFoundEdge.current = -1;
     if (item.isMultiPath) {
       endNode = {
         from: newNodeId,
-        id: nanoid(10),
+        id: endNodeIdSecondary,
         component: CapIcon,
         props: {
           ...endIconProps,
-          id: newNodeId,
+          id: endNodeIdSecondary,
         },
         type: END_NODE,
       };
@@ -443,7 +446,7 @@ const CapDndGraph = (props) => {
             isMultiPath: item.isMultiPath,
             nodeTitle: nodeTitleMapping[item.id],
           },
-          to: endNode ? [endNodeId, endNode.id] : [endNodeId],
+          to: !isEmpty(endNode) ? [endNodeId, endNodeIdSecondary] : [endNodeId],
           type: BLOCK_NODE,
         },
         {
@@ -474,11 +477,12 @@ const CapDndGraph = (props) => {
         const placeholderNodeIndex = nodes.findIndex((node) => node.type === PLACEHOLDER_NODE);
         if (placeholderNodeIndex !== -1) {
           const sourceId = nodes[placeholderNodeIndex].from;
+          const targetId = nodes[placeholderNodeIndex].to[0];
           const sourceIndex = nodes.findIndex((node) => node.id === sourceId);
           let from;
           nodes = nodes.map((node) => {
             from = '';
-            if (node.from === sourceId) {
+            if (node.from === sourceId && node.id === targetId) {
               from = newNodeId;
             }
             return {
@@ -490,7 +494,7 @@ const CapDndGraph = (props) => {
 
           let toNodes = nodes[placeholderNodeIndex].to;
           if (item.isMultiPath) {
-            toNodes = [...toNodes, endNode.id];
+            toNodes = [...toNodes, endNodeIdSecondary];
             nodes.push(endNode);
           }
           const toNodeIndex = nodes[sourceIndex].to.findIndex((nodeId) => nodeId === nodes[placeholderNodeIndex].id);
@@ -561,7 +565,7 @@ const CapDndGraph = (props) => {
         if (!isZoomed) {
           dragPosition = {
             x: draggingItemPosition.x - graphContainerPositionStart.current - 10,
-            y: draggingItemPosition.y - 34,
+            y: draggingItemPosition.y - 34 - offset,
           };
         }
         const scrollPosition = isZoomed ? {left: 0, top: 0} : graphRef.current.getScrollbarPosition();
@@ -628,25 +632,44 @@ const CapDndGraph = (props) => {
   const deleteNode = (nodesParam, blockId) => {
     let nodes = cloneDeep(nodesParam);
     const foundNode = nodes.find((node) => node.id === blockId);
-    const sourceNode = nodes.findIndex((node) => node.id === foundNode.from);
-    let from;
-    nodes = nodes.map((node) => {
-      from = '';
-      if (node.from === foundNode.id) {
-        from = nodes[sourceNode].id;
-      }
-      if (foundNode.to && foundNode.to.slice(1).includes(node.id)) {
-        return null;
-      }
-      return {
-        ...node,
-        from: from || node.from,
+    const { isMultiPath = false } = foundNode?.props || {};
+    const secondaryNode = isMultiPath ? foundNode.to.length > 1 : false;
+    const nodesToDelete = {};
+    if (secondaryNode) {
+      const nodesObject = nodes.reduce((nodesObject, node) => {
+        // eslint-disable-next-line no-param-reassign
+        nodesObject[node.id] = node;
+        return nodesObject;
+      }, {});
+      const childrens = foundNode.to.slice(1);
+      const getAllChildrenNode = (childId) => {
+        if (!childId) {
+          return;
+        }
+        childId.forEach((id) => {
+          nodesToDelete[id] = true;
+          getAllChildrenNode(nodesObject[id].to);
+        });
       };
+      getAllChildrenNode(childrens);
+    }
+    nodes = nodes.map((node) => {
+      if (node.from === foundNode.id) {
+        return {
+          ...node,
+          from: foundNode.from,
+        };
+      }
+      if (node.id === foundNode.from) {
+        const updatedSource = cloneDeep(node);
+        const toIndex = updatedSource.to && updatedSource.to.findIndex((nodeId) => nodeId === foundNode.id);
+        updatedSource.to[toIndex] = foundNode.to && foundNode.to[0];
+        updatedSource.toType = undefined;
+        return updatedSource;
+      }
+      return node;
     });
-    const toIndex = nodes[sourceNode].to && nodes[sourceNode].to.findIndex((nodeId) => nodeId === foundNode.id);
-    nodes[sourceNode].to[toIndex] = foundNode.to && foundNode.to[0];
-    nodes[sourceNode].toType = undefined;
-    const a = nodes.filter((node) => node && node.id !== blockId);
+    const a = nodes.filter((node) => node && node.id !== blockId && !nodesToDelete[node.id]);
     return a;
   };
 
