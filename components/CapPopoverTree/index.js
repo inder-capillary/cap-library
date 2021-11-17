@@ -48,10 +48,11 @@ export const CapPopoverTree = (props) => {
     ...rest
   } = props || {};
 
+  const defaultExpandKey = propsTreeData?.length === 1 && propsTreeData[0]?.key;
   const [searchText, setSearchText] = useState(null);
   const [showPopover, setShowPopover] = useState(null);
   const [filteredTreeData, setFilteredTreeData] = useState(propsTreeData || []);
-  const [expandedKeys, setExpandedKeys] = useState([]);
+  const [expandedKeys, setExpandedKeys] = useState([defaultExpandKey] || []);
 
   useEffect(() => {
     setFilteredTreeData(propsTreeData);

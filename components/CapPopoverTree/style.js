@@ -39,8 +39,8 @@ export const StyledCapColumn = styled(CapColumn)`
 
 export const StyledCapTree = styled(CapTree)`
   &.ant-tree.cap-tree-v2 {
-    min-height: 176px;
     padding: 3px 0 3px 16px;
+    min-height: 124px;
     li {
       padding: 0;
     }
@@ -61,13 +61,13 @@ export const StyledCapTree = styled(CapTree)`
     }
 
     .ant-tree-node-content-wrapper-open {
-      background: ${(props) => props?.isExpanded && `${CAP_PALE_GREY}`};
+      background: ${(props) => props?.isExpanded && CAP_PALE_GREY};
       border-left: ${(props) => props?.isExpanded && `2px solid ${FONT_COLOR_05}`};
       margin-left: -40px;
       padding-left: 44px;
       width: 324px;
       :hover {
-        background-color: ${(props) => props?.isExpanded && `${CAP_PALE_GREY}`};
+        background-color: ${(props) => props?.isExpanded && CAP_PALE_GREY};
       }
       .tree-node-title {
         color: ${(props) => props.isExpanded && '#1d61ee'};

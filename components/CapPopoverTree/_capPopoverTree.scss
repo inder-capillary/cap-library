@@ -6,7 +6,8 @@ $popoverTree: cap-popover-tree-v2;
     .ant-popover-content {
         width: 324px;
         padding: 0;
-    }        
+        min-height: 176px;
+    }
 
     .divider {
         border-top: 1px solid $CAP_G07;
@@ -19,13 +20,15 @@ $popoverTree: cap-popover-tree-v2;
     .ant-popover-inner-content {
         padding: 0 0 12px 0;
     }
-    .ant-input-affix-wrapper {
-        width: 300px;
-        margin-left: 12px;
-        .ant-input.ant-input-lg {
-            border: none;
-            border-radius: 0;
-            margin-left: 8px;
+    .search-tree-node {
+        .ant-input-affix-wrapper {
+            width: 300px;
+            margin-left: 12px;
+            .ant-input.ant-input-lg {
+                border: none !important;
+                border-radius: 0 !important;
+                margin-left: 8px;
+            }
         }
     }
 }
