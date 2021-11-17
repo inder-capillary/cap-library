@@ -615,6 +615,8 @@ const CapDndGraph = (props) => {
             id,
             component: CapBorderedBox,
             to: [targetNode.id],
+            width: 42,
+            height: 42,
             type: PLACEHOLDER_NODE,
           });
           nodes[sourceIndex] = {
