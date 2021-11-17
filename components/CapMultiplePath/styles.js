@@ -71,6 +71,11 @@ export const StyledArrowIcon = styled(CapIcon)`
   }
   color: ${(props) => props?.disabled && CAP_G06};
   display: ${(props) => props.disabled};
+
+  // important to override creatives' styles
+  &&& {
+    background-color: unset !important;
+  }
 `;
 
 /**
