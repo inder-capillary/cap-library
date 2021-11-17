@@ -20,6 +20,7 @@ const CapBlock = (props) => {
     deleteCallback,
     isCollapseEnabled,
     componentName,
+    className,
     /**Below fields are added in translations/en.js */
     deleteBlockMsg,
     collapseBlockMsg,
@@ -59,7 +60,7 @@ const CapBlock = (props) => {
   );
 
   return (
-    <StyledDiv width={width} borderLeftColor={borderLeftColor}>
+    <StyledDiv width={width} borderLeftColor={borderLeftColor} className={className}>
       {isDeleteEnabled ? getDeleteIcon() : null}
       {isCollapseEnabled ? getCollapseIcon() : null}
       {!isCollapsed ? props.children : null}
@@ -75,6 +76,7 @@ CapBlock.propTypes = {
   isCollapseEnabled: PropTypes.bool,
   componentName: PropTypes.string,
   children: PropTypes.any,
+  className: PropTypes.string,
   /**Below fields are added in translations/en.js */
   deleteBlockMsg: PropTypes.string,
   collapseBlockMsg: PropTypes.string,

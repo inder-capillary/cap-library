@@ -1,29 +1,45 @@
-import React, { useState } from "react";
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { Tree } from 'antd';
-import CapPopover from '../CapPopover';
-import CapInput from '../CapInput';
-import CapHeading from '../CapHeading';
-import CapRow from '../CapRow';
-import './_capPopoverTree.scss';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import { Tree } from "antd";
+import CapPopover from "../CapPopover";
+import CapInput from "../CapInput";
+import CapHeading from "../CapHeading";
+import CapRow from "../CapRow";
+import CapTooltip from "../CapTooltip";
+import CapSpin from "../CapSpin";
+import "./_capPopoverTree.scss";
 import LocaleHoc from "../LocaleHoc";
-import { ExpandIcon, StyledIcon, StyledCapHeading, StyledCapTree, StyledCapColumn } from './style';
+import {
+  ExpandIcon,
+  StyledIcon,
+  StyledCapHeading,
+  StyledCapTree,
+  StyledCapColumn,
+} from "./style";
 
 const { TreeNode } = Tree;
 const { Search } = CapInput;
-const clsPrefix = 'cap-popover-tree-v2';
+const clsPrefix = "cap-popover-tree-v2";
 
 export const CapPopoverTree = (props) => {
   const {
     treeData: propsTreeData = [],
     overlayClassName,
     trigger,
+
+    TriggerComponent,
+    componentText,
+    triggerProps,
+    isTriggerDisabled,
+    triggerDisabledText,
+    tooltipText,
+    isLoadingData,
+    loadingTip,
+
     placement,
     switcherIcon,
     className,
-    visible: popoverVisible,
-    onVisibleChange: onPopoverVisibleChange,
     defaultExpandAll,
     onSelect,
     selectedKey: propsSelectedKey,
@@ -33,8 +49,13 @@ export const CapPopoverTree = (props) => {
   } = props || {};
 
   const [searchText, setSearchText] = useState(null);
+  const [showPopover, setShowPopover] = useState(null);
   const [filteredTreeData, setFilteredTreeData] = useState(propsTreeData || []);
   const [expandedKeys, setExpandedKeys] = useState([]);
+
+  useEffect(() => {
+    setFilteredTreeData(propsTreeData);
+  }, [propsTreeData]);
 
   const handleSearch = (e) => {
     const { value } = e.target;
@@ -57,6 +78,7 @@ export const CapPopoverTree = (props) => {
     const { isLeafNode, eventKey, expanded } = node?.props || {};
     // This condition is to select only child node and expand/collapse the parent node.
     if (isLeafNode) {
+      setShowPopover(false);
       onSelect(selectedKey);
     } else {
       const key = expanded ? [] : [eventKey];
@@ -64,8 +86,8 @@ export const CapPopoverTree = (props) => {
     }
   };
 
-  const getTreeData = ( treeData ) => {
-    const finalTreeData = treeData?.reduce(( result, data ) => {
+  const getTreeData = (treeData) => {
+    const finalTreeData = treeData?.reduce((result, data) => {
       const { title, key, icon, children = [] } = data;
       if (title) {
         const itemName = title?.toLowerCase()?.trim();
@@ -74,11 +96,15 @@ export const CapPopoverTree = (props) => {
         const beforeString = title?.substr(0, searchIndex);
         const afterString = title?.substr(searchIndex + searchValue?.length);
         const matchedSearch = title?.substr(searchIndex, searchValue?.length);
-        const searchResult = (<>
-          <StyledCapColumn>{beforeString}</StyledCapColumn>
-          <StyledCapColumn style={{ fontWeight: 500 }}>{matchedSearch}</StyledCapColumn>
-          <StyledCapColumn>{afterString}</StyledCapColumn>
-        </>);
+        const searchResult = (
+          <>
+            <StyledCapColumn>{beforeString}</StyledCapColumn>
+            <StyledCapColumn style={{ fontWeight: 500 }}>
+              {matchedSearch}
+            </StyledCapColumn>
+            <StyledCapColumn>{afterString}</StyledCapColumn>
+          </>
+        );
 
         const treeNodeProps = {
           title: (
@@ -89,18 +115,12 @@ export const CapPopoverTree = (props) => {
           key,
           isLeafNode: !children?.length,
           icon: icon && (
-            <StyledIcon
-              className="tree-node-icon"
-              size="s"
-              type={icon}
-            />
+            <StyledIcon className="tree-node-icon" size="s" type={icon} />
           ),
         };
 
         result.push(
-          <TreeNode
-            {...treeNodeProps}
-          >
+          <TreeNode {...treeNodeProps}>
             {children?.length && getTreeData(children)}
           </TreeNode>
         );
@@ -110,7 +130,6 @@ export const CapPopoverTree = (props) => {
     return finalTreeData;
   };
 
-
   // This function is to handle the search items;
   const getFilteredData = (searchValue) => {
     const searchString = searchValue?.toLowerCase()?.trim();
@@ -118,12 +137,14 @@ export const CapPopoverTree = (props) => {
     if (!searchString) {
       return;
     }
-    const filteredData = propsTreeData.reduce(( result, currentData ) => {
+    const filteredData = propsTreeData.reduce((result, currentData) => {
       const parentName = currentData?.title?.toLowerCase();
       const isParent = parentName?.indexOf(searchString) > -1;
-      const childItems = currentData?.children?.filter((childItem) => childItem?.title?.toLowerCase()?.indexOf(searchString) > -1);
+      const childItems = currentData?.children?.filter(
+        (childItem) => childItem?.title?.toLowerCase()?.indexOf(searchString) > -1
+      );
       const hasChildren = !!childItems?.length;
-      const currentDataCopy = {...currentData};
+      const currentDataCopy = { ...currentData };
       if (hasChildren) {
         currentDataCopy.children = childItems;
         result.push(currentDataCopy);
@@ -139,51 +160,78 @@ export const CapPopoverTree = (props) => {
   };
 
   return (
-    <CapPopover
-      visible={popoverVisible}
-      onVisibleChange={onPopoverVisibleChange}
-      trigger={trigger}
-      placement={placement}
-      overlayClassName={classNames(`${clsPrefix}`, overlayClassName)}
-      {...rest}
-      content={(
-        <CapRow className="search-and-tree-wrapper">
-          <Search
-            placeholder={searchPlaceholder}
-            onChange={handleSearch}
-            className="search-tree-node"
-          />
-          <div className="divider" />
-          {filteredTreeData?.length ? (
-            <StyledCapTree
-              showIcon
-              blockNode
-              expandedKeys={expandedKeys}
-              selectedKeys={propsSelectedKey}
-              defaultExpandAll={defaultExpandAll}
-              onExpand={handleOnExpand}
-              onSelect={handleSelect}
-              switcherIcon={switcherIcon}
-              isExpanded={expandedKeys?.length && !searchText}
-              {...rest}
+    <CapRow>
+      <CapPopover
+        visible={showPopover}
+        onVisibleChange={setShowPopover}
+        trigger={trigger}
+        placement={placement}
+        overlayClassName={classNames(`${clsPrefix}`, overlayClassName)}
+        {...rest}
+        content={(
+          <CapRow className="search-and-tree-wrapper">
+            <CapSpin spinning={isLoadingData} tip={loadingTip}>
+              <Search
+                placeholder={searchPlaceholder}
+                onChange={handleSearch}
+                className="search-tree-node"
+              />
+              <div className="divider" />
+              {filteredTreeData?.length ? (
+                <StyledCapTree
+                  showIcon
+                  blockNode
+                  expandedKeys={expandedKeys}
+                  selectedKeys={propsSelectedKey}
+                  defaultExpandAll={defaultExpandAll}
+                  onExpand={handleOnExpand}
+                  onSelect={handleSelect}
+                  switcherIcon={switcherIcon}
+                  isExpanded={expandedKeys?.length && !searchText}
+                  {...rest}
+                >
+                  {getTreeData(searchText ? filteredTreeData : propsTreeData)}
+                </StyledCapTree>
+              ) : (
+                <CapHeading type="h5" className="empty-data-text">
+                  {emptyDataMessage}
+                </CapHeading>
+              )}
+            </CapSpin>
+          </CapRow>
+        )}
+      />
+      <CapRow>
+        {!isTriggerDisabled ? (
+          <CapTooltip title={tooltipText}>
+            <TriggerComponent
+              {...triggerProps}
+              onClick={() => setShowPopover(true)}
             >
-              { getTreeData( searchText ? filteredTreeData : propsTreeData ) }
-            </StyledCapTree>
-          ) : (
-            <CapHeading type="h5" className="empty-data-text">{emptyDataMessage}</CapHeading>
-          )}
-        </CapRow>)}
-    />
+              {componentText}
+            </TriggerComponent>
+          </CapTooltip>
+        ) : (
+          <CapTooltip title={triggerDisabledText}>
+            <span className="button-disabled-tooltip-wrapper">
+              <TriggerComponent {...triggerProps}>
+                {componentText}
+              </TriggerComponent>
+            </span>
+          </CapTooltip>
+        )}
+      </CapRow>
+    </CapRow>
   );
 };
 
 CapPopoverTree.defaultProps = {
-  trigger: 'click',
-  placement: 'rightBottom',
+  trigger: "click",
+  placement: "rightBottom",
   showIcon: true,
   blockNode: true,
-  visible: true,
   defaultExpandAll: false,
+  isLoadingData: false,
   switcherIcon: <ExpandIcon size="m" type="chevron-down" />,
 };
 
@@ -197,19 +245,18 @@ CapPopoverTree.propTypes = {
   blockNode: PropTypes.bool,
   propsTreeData: PropTypes.array,
   switcherIcon: PropTypes.node,
+  TriggerComponent: PropTypes.node,
+  componentText: PropTypes.string,
+  triggerProps: PropTypes.object,
+  isTriggerDisabled: PropTypes.bool,
+  triggerDisabledText: PropTypes.string,
+  tooltipText: PropTypes.string,
   onSelect: PropTypes.func,
-  onPopoverVisibleChange: PropTypes.func,
-  visible: PropTypes.bool,
   propsSelectedKey: PropTypes.array,
-  searchPlaceholder: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.node,
-  ]),
-  emptyDataMessage: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.node,
-  ]),
+  isLoadingData: PropTypes.bool,
+  loadingTip: PropTypes.string,
+  searchPlaceholder: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  emptyDataMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
-
-export default LocaleHoc(CapPopoverTree, {key: 'CapPopoverTree'});
+export default LocaleHoc(CapPopoverTree, { key: "CapPopoverTree" });

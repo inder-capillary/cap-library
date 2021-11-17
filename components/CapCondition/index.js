@@ -1,6 +1,9 @@
 import React, {useEffect} from "react";
 import PropTypes from 'prop-types';
+import classnames from "classnames";
+import CapColumn from "../CapColumn";
 import CapSelect from "../CapSelect";
+import CapRow from "../CapRow";
 import CapLabel from "../CapLabel";
 import ConditionNumber from "./ConditionNumber";
 import LocaleHoc from "../LocaleHoc";
@@ -21,6 +24,9 @@ const CapCondition = (props) => {
     setCriteria,
     conditionValidationError,
     setConditionValidationError,
+    className,
+    prefix,
+    suffix,
     includeMsg,
     excludeMsg,
     whoseMsg,
@@ -66,19 +72,25 @@ const CapCondition = (props) => {
   };
 
   return (
-    <StyledFlexWrapDiv>
-      <CapSelect
-        options={list}
-        value={criteria}
-        onChange={handleCriteriaChange}
-        style={{ width: "100px"}}
-        size="medium"
-      />
-      <CapLabelInline type="label18">{whoseMsg}</CapLabelInline>
-      <StyledCapLabel type="label2">{fact}</StyledCapLabel>
-      <CapLabelInline type="label18">{isMsg}</CapLabelInline>
-      {getOperatorsAndOperand()}
-    </StyledFlexWrapDiv>
+    <CapRow display="flex" className={classnames(className, 'cap-condition-wrapper')}>
+      <CapColumn xs={1} className="condition-prefix">{prefix}</CapColumn>
+      <CapColumn xs={22}>
+        <StyledFlexWrapDiv>
+          <CapSelect
+            options={list}
+            value={criteria}
+            onChange={handleCriteriaChange}
+            style={{ width: '100px' }}
+            size="medium"
+          />
+          <CapLabelInline type="label18">{whoseMsg}</CapLabelInline>
+          <StyledCapLabel type="label2">{fact}</StyledCapLabel>
+          <CapLabelInline type="label18">{isMsg}</CapLabelInline>
+          {getOperatorsAndOperand()}
+        </StyledFlexWrapDiv>
+      </CapColumn>
+      <CapColumn xs={1} className="condition-suffix">{suffix}</CapColumn>
+    </CapRow>
   );
 };
 
@@ -91,6 +103,9 @@ CapCondition.propTypes = {
   setCriteria: PropTypes.func,
   conditionValidationError: PropTypes.string,
   setConditionValidationError: PropTypes.func,
+  className: PropTypes.string,
+  prefix: PropTypes.node,
+  suffix: PropTypes.node,
   /**Below fields are added in translations/en.js */
   includeMsg: PropTypes.string,
   excludeMsg: PropTypes.string,

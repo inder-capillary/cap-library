@@ -30,6 +30,7 @@ import {
   EMPTY_GRAPH_TEXT,
   PLACEHOLDER_NODE,
   END_NODE,
+  BLOCK_NODE,
   SETTINGS,
   DELETE,
 } from './constants';
@@ -101,7 +102,7 @@ const CapDndGraph = (props) => {
           line: {
             fill: 'none',
             strokeLinejoin: 'round',
-            strokeWidth: '2',
+            strokeWidth: 1,
             stroke: CAP_G06,
             sourceMarker: null,
             targetMarker: null,
@@ -132,14 +133,19 @@ const CapDndGraph = (props) => {
         if (content && label.text) {
           ReactDOM.render(
             /**Will be replaced by Label component passed as prop */
-            <CapLabel type="label1">
+            <CapLabel.CapLabelInline
+              type="label1"
+              style={{
+                background: 'white',
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '0px 4px',
+              }}>
               {label.text}
-              <span style={{ padding: '5px' }}>
-                <CapTooltip title="Tooltip with path information">
-                  <CapIcon type="info" size="s" />
-                </CapTooltip>
-              </span>
-            </CapLabel>, content
+              <CapTooltip title="Tooltip with path information">
+                <CapIcon type="info" size="xs" className="margin-l-4" />
+              </CapTooltip>
+            </CapLabel.CapLabelInline>, content
           );
         }
       },
@@ -194,6 +200,7 @@ const CapDndGraph = (props) => {
                   width: 120,
                   height: 30,
                   x: index === 0 ? -50 : -80 + (index * 20),
+                  y: -11.5,
                 },
               },
             },
@@ -202,7 +209,7 @@ const CapDndGraph = (props) => {
                 distance: 100 * (index + 1),
                 offset: 2,
               },
-              text: (node.props || {}).isMultiPath ? `Path ${index + 1}` : '',
+              text: node?.pathsInfo?.[toNodeId]?.name,
             },
           });
         });
@@ -312,9 +319,11 @@ const CapDndGraph = (props) => {
     });
   };
 
+  const getEntryTrigger = () => graphNodes.find((node) => node.type === ENTRY_TRIGGER);
+
   // Position of Exit Trigger and Empty Graph Text to be placed manually based on the requirement
   const positionNodesManually = () => {
-    const entryTrigger = graphNodes.find((node) => node.type === ENTRY_TRIGGER);
+    const entryTrigger = getEntryTrigger();
     const exitTrigger = graphNodes.find((node) => node.type === EXIT_TRIGGER);
     const emptyGraphTextNode = graphNodes.find((node) => node.type === EMPTY_GRAPH_TEXT);
     const placeholderNode = graphNodes.find((node) => node.type === PLACEHOLDER_NODE);// First placeholder node where we need to show text
@@ -404,8 +413,10 @@ const CapDndGraph = (props) => {
         type: END_NODE,
       };
     }
-    if (!blockNodes.length) {
-      const entryTrigger = graphNodes.find((node) => node.type === ENTRY_TRIGGER);
+    let oldToNode; let
+      newToNode;
+    if (!blockNodes.length && getEntryTrigger().to.length === 1) {
+      const entryTrigger = getEntryTrigger();
       const exitTrigger = graphNodes.find((node) => node.type === EXIT_TRIGGER);
 
       const endNodeId = nanoid(10);
@@ -413,6 +424,11 @@ const CapDndGraph = (props) => {
         {
           ...entryTrigger,
           to: [newNodeId],
+          pathsInfo: {
+            [newNodeId]: {
+              ...entryTrigger.pathsInfo[endNodeId],
+            },
+          },
         },
         {
           from: entryTrigger.id,
@@ -428,6 +444,7 @@ const CapDndGraph = (props) => {
             nodeTitle: nodeTitleMapping[item.id],
           },
           to: endNode ? [endNodeId, endNode.id] : [endNodeId],
+          type: BLOCK_NODE,
         },
         {
           from: newNodeId,
@@ -440,6 +457,9 @@ const CapDndGraph = (props) => {
           type: END_NODE,
         },
       ];
+      [oldToNode] = entryTrigger.to;
+      newToNode = newNodeId;
+
       if (item.isMultiPath) {
         newSetNodes.push(endNode);
       }
@@ -489,12 +509,21 @@ const CapDndGraph = (props) => {
             },
             to: toNodes,
             from: nodes[sourceIndex].id,
+            type: BLOCK_NODE,
           });
           nodes[sourceIndex] = {
             ...nodes[sourceIndex],
             toType: undefined,
             placeholderToIndex: undefined,
           };
+
+          if (sourceId === getEntryTrigger().id) {
+            [oldToNode] = toNodes;
+            newToNode = newNodeId;
+            nodes[sourceIndex].pathsInfo[newToNode] = nodes[sourceIndex].pathsInfo[toNodes[0]];
+            delete nodes[sourceIndex].pathsInfo[toNodes[0]];
+          }
+
           if (toNodeIndex !== -1) {
             nodes[sourceIndex].to[toNodeIndex] = newNodeId;
           }
@@ -503,7 +532,7 @@ const CapDndGraph = (props) => {
       });
       previouslyFoundEdge.current = -1;
     }
-    onDropNewNode({ blockId: newNodeId, blockType: item.id});
+    onDropNewNode({ blockId: newNodeId, blockType: item.id, oldToNode, newToNode });
   }, [graphNodes]);
 
   const [, drop] = useDrop({
@@ -517,7 +546,12 @@ const CapDndGraph = (props) => {
     hover: debounce((item, monitor) => {
       const draggingItemPosition = monitor.getClientOffset();
 
-      if (draggingItemPosition && blockNodes.length) {
+      if (
+        draggingItemPosition
+        && (
+          blockNodes.length
+          || !(getEntryTrigger().to.length === 1) //if more than one path, allow nodes to be dropped
+        )) {
         let dragPosition = {
           x: draggingItemPosition.x,
           y: draggingItemPosition.y,

@@ -54,6 +54,7 @@ const CapMultiplePath = (props) => {
     yesMsg,
     noMsg,
     pathMsg,
+    contentsRendererProps,
   } = props;
 
   /**
@@ -82,6 +83,13 @@ const CapMultiplePath = (props) => {
     setTempPathName(null);
     setIndexOfPathEditEnabled(-1);
     setIsPathNameDuplicateOrEmpty(false);
+  };
+
+  const onPressEnterCall = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      onPathNameClickOutside();
+    }
   };
 
   /**
@@ -290,6 +298,7 @@ const CapMultiplePath = (props) => {
               }}
               errorMessage={isPathNameDuplicateOrEmpty ? notUniqueMsg : null}
               onBlur={onPathNameClickOutside}
+              onPressEnter={onPressEnterCall}
               onFocus={() => {
                 setTempPathName(pathList[index]?.pathName);
               }}
@@ -454,6 +463,7 @@ const CapMultiplePath = (props) => {
           pathList={pathList}
           setPathList={setPathList}
           pathIndex={index}
+          {...contentsRendererProps}
         />
       </CapBlock>
     );
@@ -520,6 +530,7 @@ CapMultiplePath.propTypes = {
   yesMsg: PropTypes.string,
   noMsg: PropTypes.string,
   pathMsg: PropTypes.string,
+  contentsRendererProps: PropTypes.object,
 };
 
 CapMultiplePath.defaultProps = {

@@ -107,6 +107,10 @@ $button: cap-button-v2;
     min-width: auto;
     &.add-btn {
       color: $FONT_COLOR_05;
+
+      &[disabled] {
+        color: $FONT_COLOR_05;
+      }
     }
     &:hover {
       background-color: $CAP_G09;
