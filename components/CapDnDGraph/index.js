@@ -138,12 +138,16 @@ const CapDndGraph = (props) => {
             <CapLabel.CapLabelInline
               type="label1"
               style={{
-                background: 'white',
-                display: 'inline-flex',
-                alignItems: 'center',
-                padding: '0px 4px',
-              }}>
-              {label.text}
+                background: "white",
+                display: "inline-flex",
+                alignItems: "center",
+                padding: "0px 4px",
+                maxWidth: "64px",
+              }}
+            >
+              <CapTooltip title={label.text}>
+                <div className="truncate-text">{label.text}</div>
+              </CapTooltip>
               <CapTooltip title="Tooltip with path information">
                 <CapIcon type="info" size="xs" className="margin-l-4" />
               </CapTooltip>
@@ -427,11 +431,6 @@ const CapDndGraph = (props) => {
         {
           ...entryTrigger,
           to: [newNodeId],
-          pathsInfo: {
-            [newNodeId]: {
-              ...entryTrigger.pathsInfo[endNodeId],
-            },
-          },
         },
         {
           from: entryTrigger.id,
@@ -460,6 +459,16 @@ const CapDndGraph = (props) => {
           type: END_NODE,
         },
       ];
+
+      //change node id in pathsInfo
+      if (!isEmpty(entryTrigger.pathsInfo)) {
+        newSetNodes[0].pathsInfo = {
+          [newNodeId]: {
+            ...entryTrigger.pathsInfo[endNodeId],
+          },
+        };
+      }
+
       [oldToNode] = entryTrigger.to;
       newToNode = newNodeId;
 

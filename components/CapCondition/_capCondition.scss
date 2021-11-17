@@ -10,6 +10,11 @@ $capConditionNumber: cap-condition-number;
     appearance: none;
     margin: 0; 
   }
+
+  input.ant-input {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
 }
 
 .cap-condition-wrapper {
