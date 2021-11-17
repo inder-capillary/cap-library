@@ -56,6 +56,7 @@ export const CapPopoverTree = (props) => {
 
   useEffect(() => {
     setFilteredTreeData(propsTreeData);
+    setExpandedKeys([defaultExpandKey]);
   }, [propsTreeData]);
 
   const handleSearch = (e) => {
@@ -189,6 +190,7 @@ export const CapPopoverTree = (props) => {
                   onSelect={handleSelect}
                   switcherIcon={switcherIcon}
                   isExpanded={expandedKeys?.length && !searchText}
+                  className={className}
                   {...rest}
                 >
                   {getTreeData(searchText ? filteredTreeData : propsTreeData)}
