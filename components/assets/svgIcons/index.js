@@ -185,3 +185,4 @@ export { default as Downgrade } from './Icons/Downgrade';
 export { default as Scope } from './Icons/Scope';
 export { default as Return } from './Icons/Return';
 export { default as UserCopy } from './Icons/UserCopy';
+export { default as Diamond } from './Icons/Diamond';
