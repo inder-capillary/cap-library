@@ -19,9 +19,7 @@ exports[`<CapSelectFilter /> should render component selected value and badge 1`
       >
         <ForwardRef(styled.div)
           type="h5"
-        >
-          APPROVED
-        </ForwardRef(styled.div)>
+        />
       </ForwardRef(Styled(withItemHOC))>
       <ForwardRef(Styled(withItemHOC))
         onClick={[MockFunction]}
@@ -30,9 +28,7 @@ exports[`<CapSelectFilter /> should render component selected value and badge 1`
       >
         <ForwardRef(styled.div)
           type="h5"
-        >
-          COMPLETED
-        </ForwardRef(styled.div)>
+        />
       </ForwardRef(Styled(withItemHOC))>
       <ForwardRef(Styled(withItemHOC))
         onClick={[MockFunction]}
@@ -41,9 +37,7 @@ exports[`<CapSelectFilter /> should render component selected value and badge 1`
       >
         <ForwardRef(styled.div)
           type="h5"
-        >
-          DISABLED
-        </ForwardRef(styled.div)>
+        />
       </ForwardRef(Styled(withItemHOC))>
     </CapMenu>
   }
@@ -141,9 +135,7 @@ exports[`<CapSelectFilter /> should render default component with data 1`] = `
       >
         <ForwardRef(styled.div)
           type="h5"
-        >
-          APPROVED
-        </ForwardRef(styled.div)>
+        />
       </ForwardRef(Styled(withItemHOC))>
       <ForwardRef(Styled(withItemHOC))
         onClick={[MockFunction]}
@@ -152,9 +144,7 @@ exports[`<CapSelectFilter /> should render default component with data 1`] = `
       >
         <ForwardRef(styled.div)
           type="h5"
-        >
-          COMPLETED
-        </ForwardRef(styled.div)>
+        />
       </ForwardRef(Styled(withItemHOC))>
       <ForwardRef(Styled(withItemHOC))
         onClick={[MockFunction]}
@@ -163,9 +153,7 @@ exports[`<CapSelectFilter /> should render default component with data 1`] = `
       >
         <ForwardRef(styled.div)
           type="h5"
-        >
-          DISABLED
-        </ForwardRef(styled.div)>
+        />
       </ForwardRef(Styled(withItemHOC))>
     </CapMenu>
   }

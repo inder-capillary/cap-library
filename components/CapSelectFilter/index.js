@@ -39,14 +39,14 @@ function CapSelectFilter(props) {
   const getMenuItems = (dataArray = []) => {
     const menuItems = (
       <CapMenu style={{ border: `1px solid ${CAP_G12}` }}>
-        {dataArray?.map(({ key, value }) => (
+        {dataArray?.map(({ key, value, label }) => (
           <MenuItem
             key={key}
             value={value}
             onClick={onSelect}
             selected={value === selectedValue}
           >
-            <CapHeading type="h5">{value}</CapHeading>
+            <CapHeading type="h5">{label}</CapHeading>
           </MenuItem>
         ))
         }

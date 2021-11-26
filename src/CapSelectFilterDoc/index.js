@@ -11,38 +11,32 @@ const data = [
   {
     key: 'approved',
     value: 'APPROVED',
+    label: 'Approved',
   },
   {
     key: 'completed',
     value: 'COMPLETED',
-  },
-  {
-    key: 'disabled',
-    value: 'DISABLED',
+    label: 'Completed',
   },
   {
     key: 'draft',
     value: 'DRAFT',
+    label: 'Draft',
   },
   {
     key: 'live',
     value: 'LIVE',
+    label: 'Live',
   },
   {
     key: 'stopped',
     value: 'STOPPED',
-  },
-  {
-    key: 'sunset',
-    value: 'SUNSET',
-  },
-  {
-    key: 'suspended',
-    value: 'SUSPENDED',
+    label: 'Stopped',
   },
   {
     key: 'waitingForApproval',
     value: 'WAITING_FOR_APPROVAL',
+    label: 'Waiting approval',
   }];
 
 const infoData = [
