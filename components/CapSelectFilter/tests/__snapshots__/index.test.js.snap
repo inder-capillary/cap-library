@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CapSelectFilter /> should render component selected value and badge 1`] = `
+<CapDropdown
+  className="cap-select-filter-v2"
+  getPopupContainer={[Function]}
+  overlay={
+    <CapMenu
+      style={
+        Object {
+          "border": "1px solid #e8e8e8",
+        }
+      }
+    >
+      <ForwardRef(Styled(withItemHOC))
+        onClick={[MockFunction]}
+        selected={false}
+        value="APPROVED"
+      >
+        <ForwardRef(styled.div)
+          type="h5"
+        >
+          APPROVED
+        </ForwardRef(styled.div)>
+      </ForwardRef(Styled(withItemHOC))>
+      <ForwardRef(Styled(withItemHOC))
+        onClick={[MockFunction]}
+        selected={false}
+        value="COMPLETED"
+      >
+        <ForwardRef(styled.div)
+          type="h5"
+        >
+          COMPLETED
+        </ForwardRef(styled.div)>
+      </ForwardRef(Styled(withItemHOC))>
+      <ForwardRef(Styled(withItemHOC))
+        onClick={[MockFunction]}
+        selected={false}
+        value="DISABLED"
+      >
+        <ForwardRef(styled.div)
+          type="h5"
+        >
+          DISABLED
+        </ForwardRef(styled.div)>
+      </ForwardRef(Styled(withItemHOC))>
+    </CapMenu>
+  }
+  overlayClassName="cap-select-filter-v2-overlay"
+  overlayStyle={
+    Object {
+      "maxHeight": "320px",
+      "overflowY": "scroll",
+      "width": "228px",
+    }
+  }
+  placement="bottomLeft"
+  trigger={
+    Array [
+      "click",
+    ]
+  }
+>
+  <styled.div
+    selected={4}
+    showBadge="LIVE"
+    width="80px"
+  >
+    <styled.span
+      type="label9"
+    />
+    <styled.div>
+      1
+    </styled.div>
+    <CapIcon
+      type="chevron-down"
+    />
+  </styled.div>
+</CapDropdown>
+`;
+
+exports[`<CapSelectFilter /> should render default component 1`] = `
+<CapDropdown
+  className="cap-select-filter-v2"
+  getPopupContainer={[Function]}
+  overlay={
+    <CapMenu
+      style={
+        Object {
+          "border": "1px solid #e8e8e8",
+        }
+      }
+    />
+  }
+  overlayClassName="cap-select-filter-v2-overlay"
+  overlayStyle={
+    Object {
+      "maxHeight": "320px",
+      "overflowY": "scroll",
+      "width": "228px",
+    }
+  }
+  placement="bottomLeft"
+  trigger={
+    Array [
+      "click",
+    ]
+  }
+>
+  <styled.div
+    showBadge={false}
+    width="80px"
+  >
+    <styled.span
+      type="label9"
+    />
+    <CapIcon
+      type="chevron-down"
+    />
+  </styled.div>
+</CapDropdown>
+`;
+
+exports[`<CapSelectFilter /> should render default component with data 1`] = `
+<CapDropdown
+  className="cap-select-filter-v2"
+  getPopupContainer={[Function]}
+  overlay={
+    <CapMenu
+      style={
+        Object {
+          "border": "1px solid #e8e8e8",
+        }
+      }
+    >
+      <ForwardRef(Styled(withItemHOC))
+        onClick={[MockFunction]}
+        selected={false}
+        value="APPROVED"
+      >
+        <ForwardRef(styled.div)
+          type="h5"
+        >
+          APPROVED
+        </ForwardRef(styled.div)>
+      </ForwardRef(Styled(withItemHOC))>
+      <ForwardRef(Styled(withItemHOC))
+        onClick={[MockFunction]}
+        selected={false}
+        value="COMPLETED"
+      >
+        <ForwardRef(styled.div)
+          type="h5"
+        >
+          COMPLETED
+        </ForwardRef(styled.div)>
+      </ForwardRef(Styled(withItemHOC))>
+      <ForwardRef(Styled(withItemHOC))
+        onClick={[MockFunction]}
+        selected={false}
+        value="DISABLED"
+      >
+        <ForwardRef(styled.div)
+          type="h5"
+        >
+          DISABLED
+        </ForwardRef(styled.div)>
+      </ForwardRef(Styled(withItemHOC))>
+    </CapMenu>
+  }
+  overlayClassName="cap-select-filter-v2-overlay"
+  overlayStyle={
+    Object {
+      "maxHeight": "320px",
+      "overflowY": "scroll",
+      "width": "228px",
+    }
+  }
+  placement="bottomLeft"
+  trigger={
+    Array [
+      "click",
+    ]
+  }
+>
+  <styled.div
+    showBadge={false}
+    width="80px"
+  >
+    <styled.span
+      type="label9"
+    />
+    <CapIcon
+      type="chevron-down"
+    />
+  </styled.div>
+</CapDropdown>
+`;

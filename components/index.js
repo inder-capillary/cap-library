@@ -88,5 +88,6 @@ export { default as CapLevelGraphRenderer } from './CapLevelGraphRenderer';
 export { default as CapInfoNote } from './CapInfoNote';
 export { default as CapBorderedBox } from './CapBorderedBox';
 export { default as CapPopoverTree } from './CapPopoverTree';
+export { default as CapSelectFilter } from './CapSelectFilter';
 
 //export components
