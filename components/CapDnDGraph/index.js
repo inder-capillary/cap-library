@@ -54,6 +54,7 @@ const CapDndGraph = (props) => {
     sidebarProps = {},
     dndGraphId,
     onClickConfigure,
+    deleteNodesFromMeta = () => {},
     onDropNewNode = () => {},
     graphNodes,
     setGraphNodes,
@@ -647,7 +648,9 @@ const CapDndGraph = (props) => {
     const foundNode = nodes.find((node) => node.id === blockId);
     const { isMultiPath = false } = foundNode?.props || {};
     const secondaryNode = isMultiPath ? foundNode.to.length > 1 : false;
-    const nodesToDelete = {};
+    const nodesToDelete = {
+      [blockId]: true,
+    };
     if (secondaryNode) {
       const nodesObject = nodes.reduce((nodesObject, node) => {
         // eslint-disable-next-line no-param-reassign
@@ -682,13 +685,14 @@ const CapDndGraph = (props) => {
       }
       return node;
     });
-    const a = nodes.filter((node) => node && node.id !== blockId && !nodesToDelete[node.id]);
-    return a;
+    const filteredNodes = nodes.filter((node) => node && node.id !== blockId && !nodesToDelete[node.id]);
+    return { nodes: filteredNodes, nodesToDelete };
   };
 
   const deleteNodeHandler = useCallback((blockId) => {
     setGraphNodes((prevNodes) => {
-      const nodes = deleteNode(prevNodes, blockId);
+      const { nodes, nodesToDelete } = deleteNode(prevNodes, blockId);
+      deleteNodesFromMeta(nodesToDelete);
       return nodes;
     });
   }, []);
