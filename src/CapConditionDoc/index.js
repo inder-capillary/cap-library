@@ -64,6 +64,25 @@ const infoData = [
   },
 ];
 
+const couponsTreeData = [
+  {
+    title: 'CouponId1',
+    key: '10001',
+  },
+  {
+    title: 'CouponId2',
+    key: '10002',
+  },
+  {
+    title: 'CouponId3',
+    key: '10003',
+  },
+  {
+    title: 'CouponId4',
+    key: '10004',
+  },
+];
+
 const CapConditionDoc = () => {
   /**
    * General fact structure.
@@ -89,6 +108,7 @@ const CapConditionDoc = () => {
     operand: null,
   };
   const [conditionExpression, setConditionExpression] = useState(defaultState);
+  const [conditionExpressionDst, setConditionExpressionDst] = useState(defaultState);
   const [criteria, setCriteria] = useState(null);
   const [conditionValidationError, setConditionValidationError] = useState(null);
   return (
@@ -101,6 +121,19 @@ const CapConditionDoc = () => {
           setCriteria={setCriteria}
           conditionExpression={conditionExpression}
           setConditionExpression={setConditionExpression}
+          conditionValidationError={conditionValidationError}
+          setConditionValidationError={setConditionValidationError}
+        />
+      </div>
+      <div className="cap-card-box-doc-showcase">
+        <CapCondition
+          fact="Customers who have redeemed"
+          dataType="DOMAIN_SPECIFIC_TYPE"
+          treeData={couponsTreeData}
+          criteria={criteria}
+          setCriteria={setCriteria}
+          conditionExpression={conditionExpressionDst}
+          setConditionExpression={setConditionExpressionDst}
           conditionValidationError={conditionValidationError}
           setConditionValidationError={setConditionValidationError}
         />

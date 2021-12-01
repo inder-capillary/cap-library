@@ -1,4 +1,5 @@
 $capConditionNumber: cap-condition-number;
+$capConditionMultiSelect: cap-condition-multi-select;
 
 .#{$capConditionNumber}{
   display: contents;
@@ -14,6 +15,13 @@ $capConditionNumber: cap-condition-number;
   input.ant-input {
     padding-top: 4px;
     padding-bottom: 4px;
+  }
+}
+
+.#{$capConditionMultiSelect}{
+  margin: 0;
+  .cap-multi-select-v2-selection {
+    height: 32px;
   }
 }
 

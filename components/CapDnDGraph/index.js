@@ -28,6 +28,7 @@ import {
   GRAPH_ALIGNMENT,
   ENTRY_TRIGGER,
   EXIT_TRIGGER,
+  WAIT_TILL_EVENT,
   EMPTY_GRAPH_TEXT,
   PLACEHOLDER_NODE,
   END_NODE,
@@ -60,6 +61,7 @@ const CapDndGraph = (props) => {
     setGraphNodes,
     nodeTitleMapping,
     offset = 0,
+    getPathsInfo,
     viewMode,
   } = props;
 
@@ -423,8 +425,8 @@ const CapDndGraph = (props) => {
         type: END_NODE,
       };
     }
-    let oldToNode; let
-      newToNode;
+    let oldToNode;
+    let sourceId;
     if (!blockNodes.length && getEntryTrigger().to.length === 1) {
       const entryTrigger = getEntryTrigger();
       const exitTrigger = graphNodes.find((node) => node.type === EXIT_TRIGGER);
@@ -473,10 +475,13 @@ const CapDndGraph = (props) => {
       }
 
       [oldToNode] = entryTrigger.to;
-      newToNode = newNodeId;
+      sourceId = entryTrigger.id;
 
       if (item.isMultiPath) {
         newSetNodes.push(endNode);
+      }
+      if (item.id === WAIT_TILL_EVENT) {
+        newSetNodes[1].pathsInfo = getPathsInfo(WAIT_TILL_EVENT, [endNodeId, endNodeIdSecondary]);
       }
       if (exitTrigger) {
         newSetNodes.splice(1, 0, exitTrigger);
@@ -488,7 +493,7 @@ const CapDndGraph = (props) => {
         let nodes = cloneDeep(prevNodes);
         const placeholderNodeIndex = nodes.findIndex((node) => node.type === PLACEHOLDER_NODE);
         if (placeholderNodeIndex !== -1) {
-          const sourceId = nodes[placeholderNodeIndex].from;
+          sourceId = nodes[placeholderNodeIndex].from;
           const targetId = nodes[placeholderNodeIndex].to[0];
           const sourceIndex = nodes.findIndex((node) => node.id === sourceId);
           let from;
@@ -533,10 +538,17 @@ const CapDndGraph = (props) => {
             placeholderToIndex: undefined,
           };
 
-          if (sourceId === getEntryTrigger().id) {
+          if (item.id === WAIT_TILL_EVENT) {
+            nodes[placeholderNodeIndex].pathsInfo = getPathsInfo(WAIT_TILL_EVENT, toNodes);
+          }
+
+          if ((
+            sourceId === getEntryTrigger().id
+                || nodes.find((node) => node.id === sourceId).props.blockType === WAIT_TILL_EVENT
+          )
+              && nodes[sourceIndex]?.pathsInfo) {
             [oldToNode] = toNodes;
-            newToNode = newNodeId;
-            nodes[sourceIndex].pathsInfo[newToNode] = nodes[sourceIndex].pathsInfo[toNodes[0]];
+            nodes[sourceIndex].pathsInfo[newNodeId] = nodes[sourceIndex]?.pathsInfo[toNodes[0]];
             delete nodes[sourceIndex].pathsInfo[toNodes[0]];
           }
 
@@ -548,7 +560,7 @@ const CapDndGraph = (props) => {
       });
       previouslyFoundEdge.current = -1;
     }
-    onDropNewNode({ blockId: newNodeId, blockType: item.id, oldToNode, newToNode });
+    onDropNewNode({ blockId: newNodeId, blockType: item.id, oldToNode, sourceId });
   }, [graphNodes]);
 
   const [, drop] = useDrop({
