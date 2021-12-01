@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CapAdvancedIcon from '../CapAdvancedIcon';
 import CapLabel from '../CapLabel';
 import LocaleHoc from '../LocaleHoc';
-import { DELETE, SETTINGS } from './constants';
+import { DELETE, SETTINGS, VIEW } from './constants';
 
 const GraphBlockNode = (props) => {
   const {
@@ -15,6 +15,7 @@ const GraphBlockNode = (props) => {
     isConfigured,
     nodePreview,
     nodeTitle,
+    viewMode,
   } = props;
 
   let preview = nodePreview;
@@ -45,6 +46,14 @@ const GraphBlockNode = (props) => {
     //   onClick: onClickActionIcon,
     // },
   ];
+
+  const viewNodes = [
+    {
+      type: VIEW,
+      position: 'top-right',
+      onClick: onClickActionIcon,
+    },
+  ];
   return (
     <CapAdvancedIcon
       type={iconType}
@@ -57,7 +66,7 @@ const GraphBlockNode = (props) => {
         width: '24px',
         viewBox: '0 0 24 24',
       }}
-      actionNodes={actionNodes}
+      actionNodes={viewMode ? viewNodes : actionNodes}
       id={id}
       positionLabel
       preview={preview}
@@ -81,10 +90,12 @@ GraphBlockNode.propTypes = {
     PropTypes.node,
   ]),
   configureText: PropTypes.string,
+  viewMode: PropTypes.bool,
 };
 
 GraphBlockNode.defaultProps = {
   onClickActionIcon: () => {},
+  viewMode: false,
 };
 
 export default LocaleHoc(GraphBlockNode, { key: 'GraphBlockNode' });

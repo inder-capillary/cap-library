@@ -14,3 +14,4 @@ export const BLOCK_NODE = 'BLOCK_NODE';
 export const DELETE = 'delete';
 export const SETTINGS = 'settings';
 export const COPY = 'copy';
+export const VIEW = 'view';

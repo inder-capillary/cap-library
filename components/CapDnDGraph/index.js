@@ -34,6 +34,7 @@ import {
   BLOCK_NODE,
   SETTINGS,
   DELETE,
+  VIEW,
 } from './constants';
 
 import { CAP_G06 } from '../styled/variables';
@@ -58,6 +59,7 @@ const CapDndGraph = (props) => {
     setGraphNodes,
     nodeTitleMapping,
     offset = 0,
+    viewMode,
   } = props;
 
   const graphRef = useRef(null);
@@ -694,14 +696,14 @@ const CapDndGraph = (props) => {
   const onClickActionIcon = useCallback(({ blockId, actionType }) => {
     if (actionType === DELETE) {
       deleteNodeHandler(blockId);
-    } else if (actionType === SETTINGS) {
+    } else if ([SETTINGS, VIEW].includes(actionType)) {
       onClickConfigure(blockId);
     }
   }, []);
 
   return (
     <CapRow className="cap-graph-builder" style={{height: '100vh'}}>
-      <CapIconsSidebar {...sidebarProps} isNodeDraggable />
+      <CapIconsSidebar {...sidebarProps} isNodeDraggable={viewMode ? null : true} />
       <div
         id={dndGraphId}
         ref={drop}
