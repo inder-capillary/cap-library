@@ -187,7 +187,7 @@ const CapDndGraph = (props) => {
       const Component = node.component; // Passed from parent
       graphNodesData.push({
         id: node.id,
-        component: <Component {...node.props} width={node.width || size} height={node.height || size} />,
+        component: <Component {...node.props} onClickActionIcon={onClickActionIcon} width={node.width || size} height={node.height || size} />,
         width: node.width || size,
         height: node.height || size,
         shape: 'react-shape',
