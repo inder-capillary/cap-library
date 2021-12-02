@@ -184,7 +184,21 @@ const CapDndGraph = (props) => {
     const graphEdges = [];
 
     const edgeType = blockNodes.length ? CUSTOM_EDGE : CUSTOM_EDGE_DASHED;
-    const size = blockNodes.length ? 42 : 56;
+    const size = 42;
+    /**Distance is calculated by converting the position 1 to absolute value
+     * getDifference return the value that needs to be reduced from absolute value
+     * To create aligned path info distance
+     */
+    const getDifference = (index) => {
+      switch (index) {
+        case 0:
+          return 2.5;
+        case 1:
+          return 2;
+        default:
+          return index * 1;
+      }
+    };
 
     graphNodes.forEach((node) => {
       const Component = node.component; // Passed from parent
@@ -210,16 +224,13 @@ const CapDndGraph = (props) => {
                 fo: {
                   width: 120,
                   height: 30,
-                  x: index === 0 ? -50 : -80 + (index * 20),
-                  y: -11.5,
+                  x: -85 - getDifference(index),
+                  y: -10,
                 },
               },
             },
             label: {
-              position: {
-                distance: 100 * (index + 1),
-                offset: 2,
-              },
+              position: 1,
               text: node?.pathsInfo?.[toNodeId]?.name,
             },
           });
