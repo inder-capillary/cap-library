@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { nanoid } from "nanoid";
+import cloneDeep from "lodash/cloneDeep";
 import LocaleHoc from "../LocaleHoc";
 
 import CapInput from "../CapInput";
@@ -134,7 +135,7 @@ const CapMultiplePath = (props) => {
    * Delete a path.
    */
   const deletePath = (index) => {
-    const newPathList = JSON.parse(JSON.stringify(pathList));
+    const newPathList = cloneDeep(pathList);
     newPathList.splice(index, 1);
     setPathList(newPathList);
   };
@@ -178,7 +179,7 @@ const CapMultiplePath = (props) => {
    */
 
   const swapArrayElements = (i, j, arr) => {
-    const newArr = JSON.parse(JSON.stringify(arr));
+    const newArr = cloneDeep(arr);
     newArr[j] = arr[i];
     newArr[i] = arr[j];
     return newArr;
@@ -250,7 +251,7 @@ const CapMultiplePath = (props) => {
    * @param {*} value
    */
   const updatePathName = (index, value) => {
-    const newPaths = JSON.parse(JSON.stringify(pathList));
+    const newPaths = cloneDeep(pathList);
     newPaths[index].pathName = value;
     setPathList(newPaths);
     setIsPathNameDuplicateOrEmpty(false);

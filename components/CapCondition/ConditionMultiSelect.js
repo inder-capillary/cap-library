@@ -18,7 +18,7 @@ export const ConditionMultiSelect = (props) => {
         popoverClassName="cap-condition-popover"
         treeData={treeData}
         onSelect={handleOnSelect}
-        placeholder="placeholder"
+        placeholder="Select coupon series"
         appliedKeys={conditionExpression.operand}
         searchKey="title"
         width="250px"

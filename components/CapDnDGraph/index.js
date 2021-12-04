@@ -658,7 +658,7 @@ const CapDndGraph = (props) => {
           nodes.forEach((node) => {
             if (node.type === PLACEHOLDER_NODE && node.id !== id) secondaryPlaceholderId = node.id;
           });
-          const updatedNodes = secondaryPlaceholderId ? deleteNode(nodes, secondaryPlaceholderId) : nodes;
+          const updatedNodes = secondaryPlaceholderId ? deleteNode(nodes, secondaryPlaceholderId).nodes : nodes;
           setGraphNodes(updatedNodes);
         }
       }
@@ -692,6 +692,8 @@ const CapDndGraph = (props) => {
       };
       getAllChildrenNode(childrens);
     }
+
+
     nodes = nodes.map((node) => {
       if (node.from === foundNode.id) {
         return {
@@ -704,18 +706,24 @@ const CapDndGraph = (props) => {
         const toIndex = updatedSource.to && updatedSource.to.findIndex((nodeId) => nodeId === foundNode.id);
         updatedSource.to[toIndex] = foundNode.to && foundNode.to[0];
         updatedSource.toType = undefined;
+
+        if (updatedSource.pathsInfo && foundNode.type !== PLACEHOLDER_NODE) {
+          updatedSource.pathsInfo[foundNode.to[0]] = updatedSource.pathsInfo[foundNode.id];
+          delete updatedSource.pathsInfo[foundNode.id];
+        }
+
         return updatedSource;
       }
       return node;
     });
     const filteredNodes = nodes.filter((node) => node && node.id !== blockId && !nodesToDelete[node.id]);
-    return { nodes: filteredNodes, nodesToDelete };
+    return { nodes: filteredNodes, nodesToDelete, newToId: foundNode.type !== PLACEHOLDER_NODE ? foundNode.to[0] : null };
   };
 
   const deleteNodeHandler = useCallback((blockId) => {
     setGraphNodes((prevNodes) => {
-      const { nodes, nodesToDelete } = deleteNode(prevNodes, blockId);
-      deleteNodesFromMeta(nodesToDelete);
+      const { nodes, nodesToDelete, newToId } = deleteNode(prevNodes, blockId);
+      deleteNodesFromMeta(nodesToDelete, prevNodes.find((node) => node.id === blockId).from, blockId, newToId );
       return nodes;
     });
   }, []);
