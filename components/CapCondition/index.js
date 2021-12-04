@@ -32,6 +32,7 @@ const CapCondition = (props) => {
     setCriteria,
     conditionValidationError,
     setConditionValidationError,
+    multiSelectPlaceholder,
     className,
     prefix,
     suffix,
@@ -82,6 +83,7 @@ const CapCondition = (props) => {
             setConditionExpression={setConditionExpression}
             conditionValidationError={conditionValidationError}
             setConditionValidationError={setConditionValidationError}
+            placeholder={multiSelectPlaceholder}
           />
         );
       default:
@@ -132,6 +134,7 @@ CapCondition.propTypes = {
   prefix: PropTypes.node,
   suffix: PropTypes.node,
   treeData: PropTypes.array,
+  multiSelectPlaceholder: PropTypes.string,
   /**Below fields are added in translations/en.js */
   includeMsg: PropTypes.string,
   excludeMsg: PropTypes.string,

@@ -4,7 +4,7 @@ import CapMultiSelect from "../CapMultiSelect";
 import { StyledFlexWrapDiv } from "./style";
 
 export const ConditionMultiSelect = (props) => {
-  const { treeData, conditionExpression, setConditionExpression } = props;
+  const { treeData, conditionExpression, setConditionExpression, placeholder } = props;
 
   const handleOnSelect = (values) => {
     setConditionExpression({
@@ -18,7 +18,7 @@ export const ConditionMultiSelect = (props) => {
         popoverClassName="cap-condition-popover"
         treeData={treeData}
         onSelect={handleOnSelect}
-        placeholder="Select coupon series"
+        placeholder={placeholder}
         appliedKeys={conditionExpression.operand}
         searchKey="title"
         width="250px"
@@ -31,6 +31,7 @@ ConditionMultiSelect.propTypes = {
   treeData: PropTypes.array,
   conditionExpression: PropTypes.any,
   setConditionExpression: PropTypes.func,
+  placeholder: PropTypes.string,
 };
 
 export default ConditionMultiSelect;
