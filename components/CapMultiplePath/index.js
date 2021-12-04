@@ -55,6 +55,7 @@ const CapMultiplePath = (props) => {
     noMsg,
     pathMsg,
     contentsRendererProps,
+    pathBlockColorMapping,
   } = props;
 
   /**
@@ -458,6 +459,8 @@ const CapMultiplePath = (props) => {
         deleteCallback={deleteCallback}
         isCollapseEnabled
         width={`${capBlockWidth}px`}
+        borderLeftColor={pathBlockColorMapping?.[pathList[index]?.contents?.operator]}
+        pathBlockText={pathList[index]?.pathBlockText}
       >
         <ContentsRenderer
           pathList={pathList}

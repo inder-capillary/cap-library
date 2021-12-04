@@ -25,6 +25,7 @@ const CapBlock = (props) => {
     deleteBlockMsg,
     collapseBlockMsg,
     expandBlockMsg,
+    pathBlockText,
   } = props;
 
   const toggleCollapse = () => {
@@ -64,6 +65,7 @@ const CapBlock = (props) => {
       {isDeleteEnabled ? getDeleteIcon() : null}
       {isCollapseEnabled ? getCollapseIcon() : null}
       {!isCollapsed ? props.children : null}
+      {pathBlockText}
     </StyledDiv>
   );
 };
@@ -81,6 +83,10 @@ CapBlock.propTypes = {
   deleteBlockMsg: PropTypes.string,
   collapseBlockMsg: PropTypes.string,
   expandBlockMsg: PropTypes.string,
+  pathBlockText: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.element,
+  ]),
 };
 
 CapBlock.defaultProps = {
