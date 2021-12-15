@@ -90,5 +90,5 @@ export { default as CapBorderedBox } from './CapBorderedBox';
 export { default as CapPopoverTree } from './CapPopoverTree';
 export { default as CapSelectFilter } from './CapSelectFilter';
 export { default as CapAppNotEnabled } from './CapAppNotEnabled';
-
+export { default as CapColoredTag } from './CapColoredTag';
 //export components

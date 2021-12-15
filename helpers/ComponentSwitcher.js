@@ -44,6 +44,7 @@ import CapMenuDoc from '../src/CapMenuDoc';
 import CapDropdownDoc from '../src/CapDropdownDoc';
 import CapCarouselDoc from '../src/CapCarouselDoc';
 import CapTagDoc from '../src/CapTagDoc';
+import CapColoredTagDoc from '../src/CapColoredTagDoc';
 import CapDividerDoc from '../src/CapDividerDoc';
 import CapLabelDoc from '../src/CapLabelDoc';
 import CapTimePickerDoc from '../src/CapTimePickerDoc';
@@ -188,6 +189,8 @@ class ComponentSwitcher extends Component {
         return <CapCarouselDoc />;
       case 'capTag':
         return <CapTagDoc />;
+      case 'capColoredTag':
+        return <CapColoredTagDoc />;
       case 'capDivider':
         return <CapDividerDoc />;
       case 'capLabel':
