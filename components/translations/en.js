@@ -97,4 +97,10 @@ export default {
   CapGraphBlockNode: {
     configure: 'Configure',
   },
+  CapStaticTemplates: {
+    selectCategoryTitleMsg: 'Select the template',
+    comingSoonMsg: 'Coming soon',
+    blankTemplateLabel: 'Blank',
+    blankTemplateDescription: 'Build your own journey flow from scratch',
+  },
 };
