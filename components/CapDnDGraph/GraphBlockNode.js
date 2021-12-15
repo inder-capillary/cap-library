@@ -16,6 +16,7 @@ const GraphBlockNode = (props) => {
     nodePreview,
     nodeTitle,
     viewMode,
+    userHistoryProps,
   } = props;
 
   let preview = nodePreview;
@@ -57,6 +58,7 @@ const GraphBlockNode = (props) => {
   return (
     <CapAdvancedIcon
       type={iconType}
+      userHistoryProps={viewMode && userHistoryProps}
       backgroundProps={{
         backgroundColor: color,
         opacity: isConfigured ? 1 : 0.5,
@@ -91,11 +93,13 @@ GraphBlockNode.propTypes = {
   ]),
   configureText: PropTypes.string,
   viewMode: PropTypes.bool,
+  userHistoryProps: PropTypes.object,
 };
 
 GraphBlockNode.defaultProps = {
   onClickActionIcon: () => {},
   viewMode: false,
+  userHistoryProps: {},
 };
 
 export default LocaleHoc(GraphBlockNode, { key: 'GraphBlockNode' });

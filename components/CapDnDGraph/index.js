@@ -181,7 +181,7 @@ const CapDndGraph = (props) => {
   /* Function to prepare data to pass to the graph instance */
   const prepareGraphNodeEdges = useCallback(() => {
     const graphNodesData = [];
-    const graphEdges = [];
+    let graphEdges = [];
 
     const edgeType = blockNodes.length ? CUSTOM_EDGE : CUSTOM_EDGE_DASHED;
     const size = 42;
@@ -237,6 +237,27 @@ const CapDndGraph = (props) => {
         });
       }
     });
+
+    /**Update the graphEdges with appropriate color if viewMode and userHistoryProps */
+    if (viewMode) {
+      graphEdges = graphEdges.map((graphEdge) => {
+        const edge = cloneDeep(graphEdge);
+        const {target} = edge;
+        const targetNode = graphNodes.find((node) => node.id === target);
+        if (!isEmpty(targetNode?.props?.userHistoryProps)) {
+          const attrs = {
+            line: {
+              stroke: targetNode?.props?.userHistoryProps?.color,
+              strokeWidth: 2,
+            },
+          };
+          edge.attrs = attrs;
+        }
+        return edge;
+      });
+    }
+
+
     setGraphData({
       nodes: graphNodesData,
       edges: graphEdges,

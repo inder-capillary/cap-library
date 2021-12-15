@@ -8,6 +8,7 @@ import {
 } from '../styled/variables';
 import CapIcon from '../CapIcon';
 import CapRow from '../CapRow';
+import {StyledDiv} from './styles';
 import './_capAdvancedIcon.scss';
 
 const getActionIcons = (actionNodes, id) => actionNodes.map((node) => {
@@ -45,6 +46,7 @@ const CapAdvancedIcon = (props) => {
     positionLabel,
     id,
     isConfigured,
+    userHistoryProps,
     ...rest
   } = props;
   const [actionIconsVisible, setActionIconsVisibility] = useState(false);
@@ -65,10 +67,11 @@ const CapAdvancedIcon = (props) => {
   return (
     <>
       <CapRow className="advanced-icon-container">
-        <div
+        <StyledDiv
           onMouseEnter={actionNodes.length ? showActionIcons : undefined}
           onMouseLeave={actionNodes.length ? hideActionIcons : undefined}
           ref={dragRef}
+          color={userHistoryProps?.color} //used to give box-shadow for userJourneyHistory
         >
           <CapIcon
             type={type}
@@ -86,7 +89,7 @@ const CapAdvancedIcon = (props) => {
             {...rest}
           />
           {actionIconsVisible && getActionIcons(actionNodes, id)}
-        </div>
+        </StyledDiv>
       </CapRow>
       <CapRow style={{ textAlign: 'center', ...labelStyles }}>
         {label}
