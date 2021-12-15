@@ -230,6 +230,13 @@ const infoData = [
     type: "string",
     default: "400px",
   },
+  {
+    key: 12,
+    property: "modalContent",
+    description: "The data required to show on the modal. Example: title, description, iconsAndMessages",
+    type: "array",
+    default: "-",
+  },
 ];
 
 export default class CapStaticTemplatesDoc extends Component { //

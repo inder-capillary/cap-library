@@ -70,7 +70,6 @@ function CapStaticTemplates(props) {
     label: blankTemplateLabel,
     description: blankTemplateDescription,
     icon: BLANK_TEMPLATE_ICON,
-    isDisabled: false,
     isAvailable: true,
   };
 
@@ -109,7 +108,7 @@ function CapStaticTemplates(props) {
   }
 
   function getPane(pane) {
-    const { value, label, description, icon, isDisabled, isAvailable = false } = pane;
+    const { value, label, description, icon, isAvailable = false, ...rest } = pane;
     return ({
       title: (
         <CapRow type="flex" justify="space-between" className="card-header-row">
@@ -129,7 +128,7 @@ function CapStaticTemplates(props) {
       customComponent: !isAvailable && (
         <CapLabel type="label1" className="card-content">{description}</CapLabel>
       ),
-      disabled: isDisabled,
+      ...rest,
     });
   }
 
