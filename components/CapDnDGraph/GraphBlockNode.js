@@ -4,6 +4,7 @@ import CapAdvancedIcon from '../CapAdvancedIcon';
 import CapLabel from '../CapLabel';
 import LocaleHoc from '../LocaleHoc';
 import { DELETE, SETTINGS, VIEW } from './constants';
+import { CAP_COLOR_05 } from '../styled/variables';
 
 const GraphBlockNode = (props) => {
   const {
@@ -40,6 +41,7 @@ const GraphBlockNode = (props) => {
       type: DELETE,
       position: 'top-left',
       onClick: onClickActionIcon,
+      backgroundColor: CAP_COLOR_05,
     },
     // {
     //   type: COPY,
