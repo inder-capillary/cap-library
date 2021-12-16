@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import CapRow from '../CapRow';
 import CapInput from '../CapInput';
 import CapIcon from '../CapIcon';
-import CapLabel from '../CapLabel';
 import CapModal from '../CapModal';
 import CapCard from '../CapCard';
 
@@ -69,15 +68,6 @@ export const TemplateIcon = styled(CapIcon)`
   }
 `;
 
-export const StyledCapLabel = styled(CapLabel)`
-  background-color: #0065ff;
-  width: 89px;
-  padding: 4px 9px 4px 8px;
-  border-radius: ${CAP_SPACE_04};
-  margin-bottom: ${CAP_SPACE_12};
-  margin-left: 2px;
-`;
-
 export const StrategyTemplate = styled(CapRadioCard)`
   &.ant-radio-group {
     .ant-radio-button-wrapper {
@@ -114,9 +104,11 @@ export const StrategyTemplate = styled(CapRadioCard)`
         }
         .card-header-row {
           width: 208px;
+          flex-flow: nowrap;
         }
         .card-header-title {
           max-width: 116px;
+          margin-right: 2px;
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;

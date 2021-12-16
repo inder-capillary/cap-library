@@ -16,6 +16,8 @@ import CapIcon from '../CapIcon';
 import CapImage from '../CapImage';
 import CapColumn from '../CapColumn';
 import CapSpin from '../CapSpin';
+import CapTooltip from '../CapTooltip';
+import CapColoredTag from '../CapColoredTag';
 import LocaleHoc from "../LocaleHoc";
 import ModalImage from '../assets/images/group-3.svg';
 import {
@@ -31,7 +33,6 @@ import {
   SearchBox,
   StrategyTemplate,
   TemplateIcon,
-  StyledCapLabel,
   TemplatesModal,
   StyledCapCard,
 } from './style';
@@ -114,13 +115,15 @@ function CapStaticTemplates(props) {
         <CapRow type="flex" justify="space-between" className="card-header-row">
           <CapHeader
             title={(
-              <CapHeading type="h4" className="card-header-title">
-                {label}
-              </CapHeading>
+              <CapTooltip title={label}>
+                <CapHeading type="h4" className="card-header-title">
+                  {label}
+                </CapHeading>
+              </CapTooltip>
             )}
             description={isAvailable && (<CapLabel type="label1" className="card-content">{description}</CapLabel>)}
           />
-          {!isAvailable && <StyledCapLabel type="label10">{comingSoonMsg}</StyledCapLabel>}
+          {!isAvailable && <CapColoredTag tagColor="#0065ff">{comingSoonMsg}</CapColoredTag>}
         </CapRow>
       ),
       value,
@@ -195,7 +198,7 @@ function CapStaticTemplates(props) {
         <CapColumn className="modal-info-content">
           <CapHeader
             title={title}
-            description={(<StyledCapLabel type="label10">{comingSoonMsg}</StyledCapLabel>)}
+            description={(<CapColoredTag tagColor="#0065ff">{comingSoonMsg}</CapColoredTag>)}
           />
           <CapHeading type="label2" className="margin-t-16">{description}</CapHeading>
           <CapRow type="flex" align="center" justify="space-between" className="margin-t-16">
