@@ -7,8 +7,9 @@ export const StyledDiv = styled.div`
     border: 1px solid ${CAP_G07};
     border-left: ${(props) => `4px solid ${props.borderLeftColor}`};
     border-radius: 4px;
-    padding: 26px 20px;
+    padding: 16px 20px;
     width: ${(props) => props.width};
+    min-height: 40px;
 
     [data-type="rounded-icon"] {
       height: 18px;
