@@ -759,7 +759,7 @@ const CapDndGraph = (props) => {
 
   return (
     <CapRow className="cap-graph-builder" style={{height: '100vh'}}>
-      <CapIconsSidebar {...sidebarProps} isNodeDraggable={viewMode ? null : true} />
+      <CapIconsSidebar {...sidebarProps} isNodeDraggable={viewMode ? null : true} viewMode={viewMode} />
       <div
         id={dndGraphId}
         ref={drop}

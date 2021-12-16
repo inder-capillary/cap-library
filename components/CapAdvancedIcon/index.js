@@ -46,6 +46,7 @@ const CapAdvancedIcon = (props) => {
     positionLabel,
     id,
     isConfigured,
+    isDisabled,
     userHistoryProps,
     ...rest
   } = props;
@@ -85,6 +86,7 @@ const CapAdvancedIcon = (props) => {
               },
               ...backgroundProps,
             }}
+            className={classnames({'item-disabled': isDisabled})}
             style={{ color: CAP_WHITE }}
             {...rest}
           />

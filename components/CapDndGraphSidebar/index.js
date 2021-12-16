@@ -12,7 +12,7 @@ import './_capDndGraphSidebar.scss';
 const { CapHeadingSpan } = CapHeading;
 
 export const CapDndGraphSidebar = (props) => {
-  const { nodes = [], sidebarTitle, sidebarDescription, sidebarTitleInfo, isNodeDraggable, endDrag } = props;
+  const { nodes = [], sidebarTitle, sidebarDescription, sidebarTitleInfo, isNodeDraggable, endDrag, viewMode } = props;
 
   return (
     <CapRow className="dnd-graph-sidebar-container">
@@ -37,6 +37,7 @@ export const CapDndGraphSidebar = (props) => {
         nodes={nodes}
         isNodeDraggable={isNodeDraggable}
         endDrag={endDrag}
+        viewMode={viewMode}
       />
     </CapRow>
   );
@@ -49,6 +50,11 @@ CapDndGraphSidebar.propTypes = {
   sidebarTitleInfo: PropTypes.string,
   isNodeDraggable: PropTypes.bool,
   endDrag: PropTypes.object,
+  viewMode: PropTypes.bool,
+};
+
+CapDndGraphSidebar.defaultProps = {
+  viewMode: false,
 };
 
 export default LocaleHoc(CapDndGraphSidebar, { key: 'CapDndGraphSidebar' });
