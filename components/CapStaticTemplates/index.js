@@ -36,6 +36,7 @@ import {
   TemplatesModal,
   StyledCapCard,
 } from './style';
+import { CAP_SPACE_12 } from '../styled/variables';
 
 const clsPrefix = 'cap-static-templates-v2';
 function CapStaticTemplates(props) {
@@ -123,7 +124,7 @@ function CapStaticTemplates(props) {
             )}
             description={isAvailable && (<CapLabel type="label1" className="card-content">{description}</CapLabel>)}
           />
-          {!isAvailable && <CapColoredTag tagColor="#0065ff">{comingSoonMsg}</CapColoredTag>}
+          {!isAvailable && <CapColoredTag style={{ marginBottom: CAP_SPACE_12 }} tagColor="#0065ff">{comingSoonMsg}</CapColoredTag>}
         </CapRow>
       ),
       value,
