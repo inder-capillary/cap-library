@@ -80,7 +80,12 @@ export const StrategyTemplate = styled(CapRadioCard)`
         border-radius: ${CAP_SPACE_16};
         .div-icon {
           left: 32%;
-          top: 20%;
+          top: 21%;
+          .cap-icon-v2-add {
+            display: block;
+            margin-left: 1px;
+            margin-top: 6px;
+          }
         }
       }
       .radio-card-icon {
