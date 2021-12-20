@@ -41,6 +41,7 @@ import {
 import { CAP_G06 } from '../styled/variables';
 import './index.scss';
 import CapBorderedBox from '../CapBorderedBox';
+import { recursivelyDeleteNodes } from './utils';
 
 const endIconProps = {
   type: 'end',
@@ -689,28 +690,16 @@ const CapDndGraph = (props) => {
     const foundNode = nodes.find((node) => node.id === blockId);
     const { isMultiPath = false } = foundNode?.props || {};
     const secondaryNode = isMultiPath ? foundNode.to.length > 1 : false;
-    const nodesToDelete = {
+    let nodesToDelete = {
       [blockId]: true,
     };
     if (secondaryNode) {
-      const nodesObject = nodes.reduce((nodesObject, node) => {
-        // eslint-disable-next-line no-param-reassign
-        nodesObject[node.id] = node;
-        return nodesObject;
-      }, {});
       const childrens = foundNode.to.slice(1);
-      const getAllChildrenNode = (childId) => {
-        if (!childId) {
-          return;
-        }
-        childId.forEach((id) => {
-          nodesToDelete[id] = true;
-          getAllChildrenNode(nodesObject[id].to);
-        });
-      };
-      getAllChildrenNode(childrens);
+      nodesToDelete = {
+        ...nodesToDelete,
+        ...recursivelyDeleteNodes(nodes, childrens),
+      }
     }
-
 
     nodes = nodes.map((node) => {
       if (node.from === foundNode.id) {

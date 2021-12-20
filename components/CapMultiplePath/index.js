@@ -127,7 +127,8 @@ const CapMultiplePath = (props) => {
       pathName: null,
       id: nanoid(10),
     };
-    const newPathList = [...pathList, temp];
+    const clonedPathList = cloneDeep(pathList);
+    const newPathList = [...clonedPathList, temp];
     setPathList(newPathList);
   };
 
