@@ -252,6 +252,7 @@ const CapDndGraph = (props) => {
             },
           };
           edge.attrs = attrs;
+          edge.zIndex = 2;
         }
         return edge;
       });
@@ -294,13 +295,8 @@ const CapDndGraph = (props) => {
             sourcePosition = { x: sourceBBox.topRight.x, y: targetBBox.center.y };
             edge.setSource({ x: sourceBBox.topRight.x, y: targetBBox.center.y });
           } else {
-            const gap = GRAPH_DIRECTION === 'LR'
-              ? targetBBox.x - sourceBBox.x - sourceBBox.width
-              : -sourceBBox.x + targetBBox.x + targetBBox.width;
-            const fix = GRAPH_DIRECTION === 'LR' ? sourceBBox.width : 0;
-            const x = sourceBBox.x + fix + gap / 4;
             edge.setSource({
-              x, y: sourcePosition.y,
+              x: sourcePosition.x, y: sourcePosition.y,
             });
           }
         }
@@ -339,6 +335,7 @@ const CapDndGraph = (props) => {
           const fix = GRAPH_DIRECTION === 'LR' ? sourceBBox.width : 0;
           const x = sourceBBox.x + fix + gap / 4;
           edge.setVertices([
+            { x, y: sourcePosition.y },
             { x, y: sourceBBox.center.y },
             { x, y: targetBBox.center.y },
           ]);
