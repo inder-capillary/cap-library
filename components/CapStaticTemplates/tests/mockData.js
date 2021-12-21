@@ -23,5 +23,29 @@ const mockData = {
       ],
     },
   ],
+
+  modalContent: {
+    title: 'Journey templates',
+    description: 'Pre-defined strategy driven marketing use-cases journey templates, with AI powered advanced options:',
+    iconsAndMessages: [
+      {
+        message: 'Content personalisation',
+        iconType: 'communication',
+      },
+      {
+        message: 'Channel personalisation',
+        iconType: 'megaphone',
+      },
+      {
+        message: 'Product personalisation',
+        iconType: 'footwear',
+      },
+      {
+        message: 'Time personalisation',
+        iconType: 'filled',
+      },
+    ],
+  },
+
 };
 export default mockData;

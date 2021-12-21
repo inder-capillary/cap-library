@@ -1,21 +1,25 @@
 
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
+import debounce from 'lodash/debounce';
 import CapStaticTemplates from '../index';
 import mockData from './mockData';
 
-const { categories } = mockData;
+const { categories, modalContent } = mockData;
 const componentProps = {
   categories,
+  modalContent,
 };
 const setStrategyTemplate = jest.fn();
+// Jest to mock this import
+jest.mock('lodash/debounce');
 
 const renderFunction = (props) => <CapStaticTemplates {...props} />;
 
 describe('<CapStaticTemplates />', () => {
   let wrapper;
   it('should render default component', () => {
-    wrapper = mount(renderFunction(componentProps));
+    wrapper = shallow(renderFunction());
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -51,9 +55,40 @@ describe('<CapStaticTemplates />', () => {
   });
 
   it('should get search result', () => {
-    const event = { target: { value: 'bootSale' }};
+    debounce.mockImplementation((fn) => fn);
+    const event = { target: { value: 'boostSale' }};
     wrapper = mount(renderFunction(componentProps));
     wrapper.find('Search').props().onChange(event);
     expect(wrapper).toMatchSnapshot();
+
+    // Search with empty string
+    const event2 = { target: { value: '' }};
+    wrapper = mount(renderFunction(componentProps));
+    wrapper.find('Search').props().onChange(event2);
+    expect(wrapper).toMatchSnapshot();
+
+    // Search with child value
+    const event3 = { target: { value: 'browseAbandonNew' }};
+    wrapper = mount(renderFunction(componentProps));
+    wrapper.find('Search').props().onChange(event3);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should select category onClick of sidebar category', () => {
+    const onSelect = jest.fn();
+    const templatesContainer = { scrollTo: jest.fn() };
+    jest.spyOn(document, 'querySelector').mockImplementation((selector) => selector === '.templates-container' ? templatesContainer : {});
+    const newComponentProps = {
+      ...componentProps,
+      isBlankTemplateRequired: true,
+      onSelect,
+    };
+
+    wrapper = mount(renderFunction(newComponentProps));
+    // To select Blank category
+    wrapper.find('.category-selector').at(0).props().onClick('BLANK_TEMPLATE');
+    expect(document.querySelector).toHaveBeenCalled();
+    wrapper.find('.category-selector').at(3).props().onClick('boostSale');
+    expect(document.querySelector).toHaveBeenCalled();
   });
 });

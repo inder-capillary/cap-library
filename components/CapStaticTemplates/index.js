@@ -225,6 +225,7 @@ function CapStaticTemplates(props) {
           {isBlankTemplateRequired && (
             <CategoryContainer
               selected
+              className="category-selector"
               onClick={() => handleClick(BLANK_TEMPLATE)}
             >
               <CapLabel type="label4">{blankTemplateLabel}</CapLabel>
@@ -233,6 +234,7 @@ function CapStaticTemplates(props) {
           {categories?.map((category) => (
             <CategoryContainer
               key={category?.key}
+              className="category-selector"
               color={category?.color}
               selected={category?.value === selectedCategory}
               onClick={() => handleClick(category?.value)}
