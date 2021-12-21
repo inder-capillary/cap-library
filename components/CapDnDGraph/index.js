@@ -36,6 +36,7 @@ import {
   SETTINGS,
   DELETE,
   VIEW,
+  SOURCE_COORDINATES,
 } from './constants';
 
 import { CAP_G06 } from '../styled/variables';
@@ -279,6 +280,28 @@ const CapDndGraph = (props) => {
     if (!graphRef.current) return; // Do nothing if graph is not initialized yet
     let sourcePosition = null;
     const edges = graphRef.current.getEdges();
+
+    edges.forEach((edge) => {
+      const source = edge.getSourceNode() || {};
+      const target = edge.getTargetNode() || {};
+      const sourceNode = graphNodes.find((node) => node.id === source.id) || {};
+      if (sourceNode.type === ENTRY_TRIGGER && source.getBBox && target.getBBox) {
+        const sourceBBox = source.getBBox();
+        const targetBBox = target.getBBox();
+        if (!sourcePosition || targetBBox.center.y < sourcePosition.y) {
+          // Sets the top most node's center.y as sourcePosition.y
+          sourcePosition = { x: sourceBBox.topRight.x, y: targetBBox.center.y };
+        }
+      }
+    });
+
+    /** Added fixed x and y co ordinates in case of error in above flow
+     * Position of the source node is fixed, which makes the first node position fixed as well
+     * Below value is the generated value. In case if there is an error in the flow setting source position
+     * This value will be used as fallback
+     */
+    if (!sourcePosition) sourcePosition = SOURCE_COORDINATES;
+
     edges.forEach((edge) => {
       const source = edge.getSourceNode() || {};
       const target = edge.getTargetNode() || {};
@@ -292,14 +315,9 @@ const CapDndGraph = (props) => {
         custom logic to place the edge source based on the Entry trigger vertices
         */
         if (sourceNode.type === ENTRY_TRIGGER) {
-          if (!sourcePosition) {
-            sourcePosition = { x: sourceBBox.topRight.x, y: targetBBox.center.y };
-            edge.setSource({ x: sourceBBox.topRight.x, y: targetBBox.center.y });
-          } else {
-            edge.setSource({
-              x: sourcePosition.x, y: sourcePosition.y,
-            });
-          }
+          edge.setSource({
+            x: sourcePosition.x, y: sourcePosition.y,
+          });
         }
 
         /* Logic to show the edges with 90 degree angle instead of straight edge lines,
@@ -698,7 +716,7 @@ const CapDndGraph = (props) => {
       nodesToDelete = {
         ...nodesToDelete,
         ...recursivelyDeleteNodes(nodes, childrens),
-      }
+      };
     }
 
     nodes = nodes.map((node) => {

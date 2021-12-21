@@ -16,3 +16,5 @@ export const DELETE = 'delete';
 export const SETTINGS = 'settings';
 export const COPY = 'copy';
 export const VIEW = 'view';
+
+export const SOURCE_COORDINATES = { x: 318, y: 56 };
