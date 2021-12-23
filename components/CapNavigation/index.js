@@ -221,7 +221,7 @@ const CapNavigation = (props) => {
             title: selectOrganization,
             placeholder: organization,
             noResultText,
-            fixedOrg,
+            fixedOrg: fixedOrg || !proxyOrgList.length,
           }}
           menuProps={{
             items: topbarMenuData,
