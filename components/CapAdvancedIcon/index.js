@@ -23,7 +23,6 @@ const getActionIcons = (actionNodes, id) => actionNodes.map((node) => {
       backgroundProps={{
         style: {
           backgroundColor: backgroundColor || CAP_G05,
-          lineHeight: 0.8,
         },
         className: classnames(`${position}-action-icon-container`, 'action-icon-container'),
       }}
