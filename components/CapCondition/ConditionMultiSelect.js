@@ -22,6 +22,7 @@ export const ConditionMultiSelect = (props) => {
         appliedKeys={conditionExpression.operand}
         searchKey="title"
         width="250px"
+        showSelectAllText={false}
       />
     </StyledFlexWrapDiv>
   );
