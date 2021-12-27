@@ -155,9 +155,12 @@ const CapDndGraph = (props) => {
               <CapTooltip title={label.text}>
                 <div className="truncate-text">{label.text}</div>
               </CapTooltip>
-              <CapTooltip title="Tooltip with path information">
-                <CapIcon type="info" size="xs" className="margin-l-4" />
-              </CapTooltip>
+              {/*
+                // Commenting the below code as per the current requirement. It might be required in future so not removing it.
+                <CapTooltip title="Tooltip with path information">
+                  <CapIcon type="info" size="xs" className="margin-l-4" />
+                </CapTooltip>
+              */}
             </CapLabel.CapLabelInline>, content
           );
         }
