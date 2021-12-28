@@ -22,5 +22,11 @@ $radioButton:cap-radio-v2;
       .ant-radio-wrapper{
         font-size: $FONT_SIZE_S;
         font-family: $FONT_FAMILY;
+
+        &.ant-radio-wrapper-disabled {
+          .inductive-text, .title {
+            color: $FONT_COLOR_03;
+          }
+        }
       }
 }

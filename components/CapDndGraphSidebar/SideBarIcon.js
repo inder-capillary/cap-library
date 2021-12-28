@@ -42,7 +42,7 @@ const SideBarIcon = ({ childNode, color, isNodeDraggable, viewMode }) => {
   return (
     <div className="node-container" key={type}>
       <div className="node-container-inner">
-        {isDisabled ? (<CapTooltip title={tooltipText} defaultVisible visible>{Icon}</CapTooltip>) : (<>{Icon}</>)}
+        {isDisabled ? (<CapTooltip title={tooltipText}>{Icon}</CapTooltip>) : (<>{Icon}</>)}
       </div>
     </div>
   );

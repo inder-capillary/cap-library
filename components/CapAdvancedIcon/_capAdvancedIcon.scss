@@ -11,6 +11,10 @@
                 padding: 3px;
                 line-height: 0.8;
                 border: 2px solid $CAP_WHITE;
+
+                .cap-icon-v2 {
+                    vertical-align: unset;
+                }
             }
        
             .top-left-action-icon-container {
