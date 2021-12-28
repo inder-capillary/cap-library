@@ -22,8 +22,8 @@ export const CapDndGraphSidebar = (props) => {
             {sidebarTitle}
           </CapHeadingSpan>
           {sidebarTitleInfo && (
-            <CapTooltip title={sidebarTitleInfo} className="margin-l-4">
-              <CapIcon type="info" className="info-icon" size="xs" />
+            <CapTooltip title={sidebarTitleInfo} overlayClassName="hide-tooltip-pointer">
+              <CapIcon type="info" className="info-icon margin-l-4" size="xs" />
             </CapTooltip>
           )}
         </CapRow>

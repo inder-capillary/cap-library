@@ -14,6 +14,11 @@ $tooltip: cap-tooltip-overlay-v2;
         background-color:$FONT_COLOR_05;
     }
   }
+  &.hide-tooltip-pointer {
+    .ant-tooltip-arrow {
+        display: none;
+    }
+  }
 }
 
 .button-disabled-tooltip-wrapper {
@@ -27,3 +32,4 @@ $tooltip: cap-tooltip-overlay-v2;
     }
   }
 }
+

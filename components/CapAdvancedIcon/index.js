@@ -66,7 +66,7 @@ const CapAdvancedIcon = (props) => {
 
   return (
     <>
-      <CapRow className="advanced-icon-container">
+      <CapRow className={`advanced-icon-container ${isDisabled ? 'item-disabled' : ''}`}>
         <StyledDiv
           onMouseEnter={actionNodes.length ? showActionIcons : undefined}
           onMouseLeave={actionNodes.length ? hideActionIcons : undefined}
@@ -85,7 +85,6 @@ const CapAdvancedIcon = (props) => {
               },
               ...backgroundProps,
             }}
-            className={classnames({'item-disabled': isDisabled})}
             style={{ color: CAP_WHITE }}
             {...rest}
           />

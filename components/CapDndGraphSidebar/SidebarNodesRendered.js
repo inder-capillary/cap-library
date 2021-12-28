@@ -15,8 +15,8 @@ const SidebarNodesRendered = ({ nodes = [], isNodeDraggable, endDrag, viewMode }
           {title}
         </CapHeadingSpan>
         {tooltipText && (
-          <CapTooltip title={tooltipText} className="margin-l-4">
-            <CapIcon type="info" className="info-icon" size="xs" />
+          <CapTooltip title={tooltipText} overlayClassName="hide-tooltip-pointer">
+            <CapIcon type="info" className="info-icon margin-l-4" size="xs" />
           </CapTooltip>
         )}
       </CapRow>
