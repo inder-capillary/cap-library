@@ -539,6 +539,7 @@ const CapDndGraph = (props) => {
       }
       previouslyFoundEdge.current = -1;
       setGraphNodes(newSetNodes);
+      onDropNewNode({ blockId: newNodeId, blockType: item.id, oldToNode, sourceId });
     } else {
       setGraphNodes((prevNodes) => {
         let nodes = cloneDeep(prevNodes);
@@ -606,12 +607,12 @@ const CapDndGraph = (props) => {
           if (toNodeIndex !== -1) {
             nodes[sourceIndex].to[toNodeIndex] = newNodeId;
           }
+          onDropNewNode({ blockId: newNodeId, blockType: item.id, oldToNode, sourceId });
         }
         return nodes;
       });
       previouslyFoundEdge.current = -1;
     }
-    onDropNewNode({ blockId: newNodeId, blockType: item.id, oldToNode, sourceId });
   }, [graphNodes]);
 
   const [, drop] = useDrop({
