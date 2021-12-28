@@ -98,9 +98,12 @@ export default {
     configure: 'Configure',
   },
   CapStaticTemplates: {
-    selectCategoryTitleMsg: 'Select the template',
+    strategyTitleMsg: 'Select the strategy',
+    strategyDescriptionMsg: 'Use strategy driven pre-defined marketing use-cases or build your own strategy',
     comingSoonMsg: 'Coming soon',
-    blankTemplateLabel: 'Blank',
-    blankTemplateDescription: 'Build your own journey flow from scratch',
+    blankCategoryLabel: 'Custom',
+    blankTemplateLabel: 'Build strategy',
+    blankTemplateDescription: 'Create your own engagement strategy from scratch',
+    searchPlaceholderMsg: 'Search strategy',
   },
 };

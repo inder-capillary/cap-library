@@ -23,6 +23,7 @@ import ModalImage from '../assets/images/group-3.svg';
 import {
   BLANK_TEMPLATE,
   BLANK_TEMPLATE_ICON,
+  BLANK_TEMPLATE_CLASS,
 } from './constants';
 import {
   StyledDiv,
@@ -55,11 +56,15 @@ function CapStaticTemplates(props) {
     templatesContainerWidth,
     templatesContainerMaxHeight,
     modalContent,
+    searchPlaceholder,
     // Below props are messages form LocaleHoc
-    selectCategoryTitleMsg,
+    strategyTitleMsg,
+    strategyDescriptionMsg,
     comingSoonMsg,
+    blankCategoryLabel,
     blankTemplateLabel,
     blankTemplateDescription,
+    searchPlaceholderMsg,
   } = props;
 
   const [showModal, setShowModal] = useState(false);
@@ -67,12 +72,13 @@ function CapStaticTemplates(props) {
   const [isSearching, setIsSearching] = useState(false);
   const [filteredCategories, setFilteredCategories] = useState([]);
 
-  const blankTemplatePane = {
+  const CUSTOM_STRATEGY_PANE = {
     value: BLANK_TEMPLATE,
     label: blankTemplateLabel,
     description: blankTemplateDescription,
     icon: BLANK_TEMPLATE_ICON,
     isAvailable: true,
+    isBlankTemplate: true,
   };
 
   function handleClick(value) {
@@ -110,27 +116,39 @@ function CapStaticTemplates(props) {
   }
 
   function getPane(pane) {
-    const { value, label, description, icon, isAvailable = false, ...rest } = pane;
+    const { value, label, description, icon, isAvailable = false, isBlankTemplate, ...rest } = pane;
+    const iconLabelArray = value?.split(' ');
+    const iconLabelText = iconLabelArray?.length > 1 ? iconLabelArray?.[0][0] + iconLabelArray?.[1][0] : iconLabelArray?.[0][0];
     return ({
       title: (
-        <CapRow type="flex" justify="space-between" className="card-header-row">
+        <CapRow
+          type="flex"
+          justify="space-between"
+          className={`card-header-row ${isBlankTemplate ? 'custom-template' : ''}`}
+        >
           <CapHeader
             title={(
               <CapTooltip title={label}>
-                <CapHeading type="h4" className="card-header-title">
+                <CapHeading type="h4" className={`card-header-title ${isAvailable ? 'card-available' : ''}`}>
                   {label}
                 </CapHeading>
               </CapTooltip>
             )}
-            description={isAvailable && (<CapLabel type="label1" className="card-content">{description}</CapLabel>)}
+            description={isBlankTemplate && (<CapLabel type="label1" className="card-content">{description}</CapLabel>)}
           />
-          {!isAvailable && <CapColoredTag style={{ marginBottom: CAP_SPACE_12 }} tagColor="#0065ff">{comingSoonMsg}</CapColoredTag>}
+          {(!isAvailable && !isBlankTemplate) && <CapColoredTag className="coming-soon-tag" style={{ marginBottom: CAP_SPACE_12 }} tagColor="#0065ff">{comingSoonMsg}</CapColoredTag>}
         </CapRow>
       ),
       value,
-      icon: <TemplateIcon type={icon} color="blue" />,
-      customComponent: !isAvailable && (
-        <CapLabel type="label1" className="card-content">{description}</CapLabel>
+      icon: isBlankTemplate ? (<TemplateIcon type={icon} color="blue" />) : (
+        <CapColumn className="strategy-icon">
+          <span className={`text-label ${strategyTemplate === value ? 'selected' : ''}`}>
+            {iconLabelText}
+          </span>
+        </CapColumn>),
+
+      customComponent: !isBlankTemplate && (
+        <CapLabel type="label1" className={!isBlankTemplate && "card-content margin-t-4"}>{description}</CapLabel>
       ),
       ...rest,
     });
@@ -219,16 +237,20 @@ function CapStaticTemplates(props) {
 
   return (
     <>
-      <CapHeading type="h3" className="margin-b-12">{selectCategoryTitleMsg}</CapHeading>
+      <CapHeader
+        className="margin-b-16"
+        title={<CapHeading type="h3">{strategyTitleMsg}</CapHeading>}
+        description={<CapLabel type="label3">{strategyDescriptionMsg}</CapLabel>}
+      />
       <StyledDiv>
         <SideBar>
           {isBlankTemplateRequired && (
             <CategoryContainer
-              selected
+              selected={BLANK_TEMPLATE === selectedCategory}
               className="category-selector"
               onClick={() => handleClick(BLANK_TEMPLATE)}
             >
-              <CapLabel type="label4">{blankTemplateLabel}</CapLabel>
+              <CapLabel type={BLANK_TEMPLATE === selectedCategory ? "label4" : "label9"}>{blankCategoryLabel}</CapLabel>
             </CategoryContainer>
           )}
           {categories?.map((category) => (
@@ -239,24 +261,30 @@ function CapStaticTemplates(props) {
               selected={category?.value === selectedCategory}
               onClick={() => handleClick(category?.value)}
             >
-              <CapLabel type="label9">{category?.label}</CapLabel>
+              <CapLabel type={category?.value === selectedCategory ? "label4" : "label9"}>{category?.label}</CapLabel>
               <CapLabel type="label1">{category?.panes?.length}</CapLabel>
             </CategoryContainer>
           ))}
         </SideBar>
         <TemplatesAndSearchContainer width={templatesContainerWidth}>
-          <SearchBox value={searchText} onChange={handleSearch} onClear={handleSearch} />
+          <SearchBox
+            value={searchText}
+            onChange={handleSearch}
+            onClear={handleSearch}
+            placeholder={searchPlaceholder || searchPlaceholderMsg}
+          />
           <TemplatesContainer className="templates-container" maxHeight={templatesContainerMaxHeight}>
             <CapSpin spinning={isSearching}>
               {isBlankTemplateRequired && (
                 <CapRow id={BLANK_TEMPLATE} key={BLANK_TEMPLATE} className="margin-t-4">
                   <StrategyTemplate
-                    panes={[getPane(blankTemplatePane)]}
+                    panes={[getPane(CUSTOM_STRATEGY_PANE)]}
                     cardWidth={blankCardWidth}
                     cardHeight={blankCardHeight}
                     selected={strategyTemplate}
                     value={strategyTemplate}
                     onChange={handleShowModal}
+                    className={BLANK_TEMPLATE_CLASS}
                   />
                 </CapRow>
               )}
@@ -303,6 +331,7 @@ CapStaticTemplates.propTypes = {
   templatesContainerWidth: PropTypes.string,
   templatesContainerMaxHeight: PropTypes.string,
   modalContent: PropTypes.object,
+  searchPlaceholder: PropTypes.any,
 };
 
 export default LocaleHoc(CapStaticTemplates, { key: "CapStaticTemplates" });

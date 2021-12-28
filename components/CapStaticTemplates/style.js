@@ -4,20 +4,23 @@ import CapInput from '../CapInput';
 import CapIcon from '../CapIcon';
 import CapModal from '../CapModal';
 import CapCard from '../CapCard';
-
+import {
+  BLANK_TEMPLATE_CLASS,
+} from './constants';
 import {
   CAP_G09,
   CAP_G05,
+  CAP_G07,
   CAP_SPACE_24,
   CAP_SPACE_12,
   CAP_SPACE_16,
   CAP_SPACE_20,
   CAP_SPACE_32,
   CAP_SPACE_08,
-  CAP_WHITE,
   CAP_SPACE_40,
   CAP_SPACE_04,
   CAP_PALE_GREY,
+  CAP_WHITE,
 } from '../styled/variables';
 import CapRadioCard from '../CapRadioCard';
 
@@ -29,7 +32,7 @@ export const StyledDiv = styled.div`
 export const SideBar = styled.div`
     width: 258px;
     margin-right: ${CAP_SPACE_24};
-    background-color: ${CAP_G09};
+    border: 1px solid ${CAP_G07};
 `;
 
 export const TemplatesAndSearchContainer = styled.div`
@@ -47,7 +50,7 @@ export const CategoryContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   height: ${CAP_SPACE_40};
-  background-color: ${(props) => props?.selected && CAP_WHITE};
+  background-color: ${(props) => props?.selected && CAP_G09};
   padding: ${CAP_SPACE_12} ${CAP_SPACE_16} ${CAP_SPACE_12} ${CAP_SPACE_20};
   border-left: ${(props) => `4px solid ${props?.color || CAP_G05}`};
   cursor: pointer;
@@ -111,12 +114,58 @@ export const StrategyTemplate = styled(CapRadioCard)`
           width: 208px;
           flex-flow: nowrap;
         }
+        .custom-template {
+          margin-left: ${CAP_SPACE_08};
+          .title-desc-container {
+            width: 200px;
+          }
+        }
         .card-header-title {
-          max-width: 116px;
-          margin-right: 2px;
+          max-width: 200px;
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
+        }
+        opacity: ${(props) => props?.className !== BLANK_TEMPLATE_CLASS && 0.5};
+        .coming-soon-tag {
+          display: none;
+        }
+        :hover {
+          opacity: 1;
+          .coming-soon-tag {
+            display: inline-flex;
+            height: auto;
+          }
+          .card-header-title {
+            max-width: 116px;
+            margin-right: 2px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+          .card-available {
+            max-width: 200px;
+          }
+        }
+        .strategy-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: ${CAP_SPACE_40};
+          width: ${CAP_SPACE_40};
+          margin-top: -8px;
+          margin-left: -12px;
+          svg {
+            width: ${CAP_SPACE_40};
+            height: ${CAP_SPACE_40};
+          }
+          .text-label {
+            font-weight: 500;
+            text-transform: uppercase;
+          }
+          .selected {
+            color: ${CAP_WHITE};
+          }
         }
       }
     }
