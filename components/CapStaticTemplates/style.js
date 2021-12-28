@@ -27,6 +27,7 @@ import CapRadioCard from '../CapRadioCard';
 export const StyledDiv = styled.div`
   display: flex;
   flex-flow: nowrap;
+  min-width: 85vw;
 `;
 
 export const SideBar = styled.div`
