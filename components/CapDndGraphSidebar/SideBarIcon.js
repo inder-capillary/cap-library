@@ -5,11 +5,16 @@ import CapAdvancedIcon from '../CapAdvancedIcon';
 import CapLabel from '../CapLabel';
 import CapTooltip from '../CapTooltip';
 
-const SideBarIcon = ({ childNode, color, isNodeDraggable, viewMode }) => {
+const SideBarIcon = ({ childNode, color, isNodeDraggable, viewMode, onDropOutsideCanvas }) => {
   const { type, label, id, isMultiPath, isDisabled, tooltipText } = childNode;
   let drag;
   if (isNodeDraggable && !isDisabled) {
     [, drag] = useDrag({
+      end: (item, monitor) => {
+        if (!monitor.didDrop()) {
+          onDropOutsideCanvas(item);
+        }
+      },
       item: {
         id,
         type: 'draggableNode',
@@ -53,10 +58,12 @@ SideBarIcon.propTypes = {
   color: PropTypes.string,
   isNodeDraggable: PropTypes.bool,
   viewMode: PropTypes.bool,
+  onDropOutsideCanvas: PropTypes.func,
 };
 
 SideBarIcon.defaultProps = {
   viewMode: false,
+  onDropOutsideCanvas: () => {},
 };
 
 export default SideBarIcon;

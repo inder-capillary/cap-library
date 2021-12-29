@@ -6,7 +6,7 @@ import CapRow from '../CapRow';
 import SideBarIcon from './SideBarIcon';
 
 const { CapHeadingSpan } = CapHeading;
-const SidebarNodesRendered = ({ nodes = [], isNodeDraggable, endDrag, viewMode }) => nodes.map((node) => {
+const SidebarNodesRendered = ({ nodes = [], isNodeDraggable, endDrag, viewMode, onDropOutsideCanvas }) => nodes.map((node) => {
   const { title, tooltipText, children, color, key } = node;
   return (
     <CapRow className="category-container" key={key}>
@@ -29,6 +29,7 @@ const SidebarNodesRendered = ({ nodes = [], isNodeDraggable, endDrag, viewMode }
             isNodeDraggable={isNodeDraggable}
             endDrag={endDrag}
             viewMode={viewMode}
+            onDropOutsideCanvas={onDropOutsideCanvas}
           />
         ))}
       </CapRow>
