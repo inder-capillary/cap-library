@@ -102,8 +102,8 @@ export default {
     strategyDescriptionMsg: 'Use strategy driven pre-defined marketing use-cases or build your own strategy',
     comingSoonMsg: 'Coming soon',
     blankCategoryLabel: 'Custom',
-    blankTemplateLabel: 'Build strategy',
-    blankTemplateDescription: 'Create your own engagement strategy from scratch',
+    blankTemplateLabel: 'Build from scratch',
+    blankTemplateDescription: 'Create your own journey from scratch',
     searchPlaceholderMsg: 'Search strategy',
   },
 };

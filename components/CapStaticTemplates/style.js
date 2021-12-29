@@ -78,6 +78,33 @@ export const StrategyTemplate = styled(CapRadioCard)`
       .ant-card.ant-card-bordered {
         border-left: ${(props) => `4px solid ${props?.borderColor || CAP_G05}`};
       }
+      opacity: ${(props) => props?.className !== BLANK_TEMPLATE_CLASS && 0.5};
+      .card-header-title {
+        max-width: 200px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .coming-soon-tag {
+        display: none;
+      }
+      :hover {
+        opacity: 1;
+        .coming-soon-tag {
+          display: inline-flex;
+          height: auto;
+        }
+        .card-header-title {
+          max-width: 116px;
+          margin-right: 2px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        .card-available {
+          max-width: 200px;
+        }
+      }
       .icon-container {
         height: ${CAP_SPACE_40};
         width: ${CAP_SPACE_40};
@@ -118,34 +145,7 @@ export const StrategyTemplate = styled(CapRadioCard)`
         .custom-template {
           margin-left: ${CAP_SPACE_08};
           .title-desc-container {
-            width: 200px;
-          }
-        }
-        .card-header-title {
-          max-width: 200px;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
-        }
-        opacity: ${(props) => props?.className !== BLANK_TEMPLATE_CLASS && 0.5};
-        .coming-soon-tag {
-          display: none;
-        }
-        :hover {
-          opacity: 1;
-          .coming-soon-tag {
-            display: inline-flex;
-            height: auto;
-          }
-          .card-header-title {
-            max-width: 116px;
-            margin-right: 2px;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-          }
-          .card-available {
-            max-width: 200px;
+            width: 196px;
           }
         }
         .strategy-icon {
