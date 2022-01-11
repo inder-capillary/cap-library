@@ -1,0 +1,20 @@
+.mobile-date-picker-modal{
+    min-width: 320px;
+    width: unset !important;
+    .ant-modal-content{
+        .ant-modal-body, .ant-modal-footer{
+            padding: 0 !important;
+        }
+        .react-datepicker__day--keyboard-selected {
+            background-color: rgb(36, 102, 234);
+            color: #fff !important;
+            border-radius: 50%;
+        }
+        .react-datepicker__navigation-icon--next, .react-datepicker__navigation-icon--previous{
+            display: none !important;
+        }
+    }
+}
+.ant-input-lg{
+    font-size: 14px !important;
+}

@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import momentPropTypes from 'react-moment-proptypes';
 import moment from 'moment';
 import omit from 'lodash/omit';
+import isEmpty from 'lodash/isEmpty';
 import 'react-dates/initialize';
 import { DateRangePicker, DateRangePickerPhrases, DateRangePickerShape, HORIZONTAL_ORIENTATION, ANCHOR_LEFT, isInclusivelyAfterDay } from 'react-dates';
 import classNames from 'classnames';
@@ -33,6 +34,7 @@ const propTypes = {
   initialEndDate: momentPropTypes.momentObj,
   showCalendarOnly: PropTypes.bool,
   allowYearNavigation: PropTypes.bool,
+  rootClass: PropTypes.string,
   minDate: PropTypes.string,
   hideCalendar: PropTypes.bool,
 
@@ -113,6 +115,7 @@ const defaultProps = {
   allowYearNavigation: false,
   hideCalendar: false,
   minDate: '1970-01-01',
+  rootClass: null,
 };
 
 class DateRangePickerWrapper extends React.Component {
@@ -178,6 +181,17 @@ class DateRangePickerWrapper extends React.Component {
     return years;
   }
 
+  findRootOfTrigger = (trigger) => {
+    if (!isEmpty(this.props.rootClass)) {
+      let elem = trigger;
+      while (!elem.classList.contains(this.props.rootClass)) {
+        elem = elem.parentNode;
+      }
+      return elem;
+    }
+    return trigger;
+  }
+
   renderMonthElement = ({ month, onMonthSelect, onYearSelect }) => ( //eslint-disable-line
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <span className="month-name">
@@ -188,6 +202,7 @@ class DateRangePickerWrapper extends React.Component {
         value={month.year()}
         onChange={(e) => onYearSelect(month, e)}
         options={this.returnYears()}
+        getPopupContainer={(triggerNode) => this.findRootOfTrigger(triggerNode)}
       />
     </div>
   );
@@ -228,6 +243,7 @@ class DateRangePickerWrapper extends React.Component {
       'allowYearNavigation',
       'minDate',
       'hideCalendar',
+      'rootClass',
     ]);
 
     const { customInputIcon, customArrowIcon, navNext, navPrev, renderDayContents, disabledDate, isDayBlocked, showCalendarOnly, allowYearNavigation, hideCalendar } = this.props;

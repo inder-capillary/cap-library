@@ -1,0 +1,225 @@
+@mixin highlight-inputbox($color) {
+  border: 1px solid $color;
+  border-radius: 0.285rem;
+  height: 32px;
+}
+$modal-content-height: 38vh;
+$daypicker-width: 80vw;
+$base-date-color: rgb(36, 102, 234);
+$base-date-color-range: rgb(233, 240, 254);
+$compare-date-color: rgb(229, 31, 163);
+$compare-date-color-range: rgba(229, 31, 163, 0.1);  
+.mobile-view{
+  .mobile-date-range-picker-modal{
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 10px;
+    }
+    .ant-modal-content {
+      .ant-modal-body {
+        .cap-divider-v2 {
+          margin-top: 22px;
+          margin-bottom: 12px;
+        }
+        .compare-mobile-date-picker {
+          .datepicker {
+            .datepicker-wheel {
+              background: $compare-date-color-range;
+            }
+            .datepicker-scroll>li.selected {
+              color: $compare-date-color;
+            }
+          }
+        }
+        .datepicker {
+          position: static;
+          .datepicker-content {
+            background: #fff;
+            padding: 0.75em 0.25em;
+          }
+          .datepicker-viewport {
+            height: calc(#{$modal-content-height} - 12px);
+          }
+          .datepicker-scroll>li {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+          }
+          .datepicker-scroll>li.selected {
+            color: $base-date-color;
+          }
+          .datepicker-wheel {
+            border-top: 0;
+            border-bottom: 0;
+            background: $base-date-color-range;
+          }
+        }
+      }
+      .ant-modal-footer {
+        padding-top: 1.714rem;
+      }
+    }
+  }
+  .mobile-dateRange-picker-inputs{
+    display: flex;
+    align-items: center;
+    .cap-column-v2.ant-col-11 {
+      width: 45%;
+    }
+    .cap-column-v2.ant-col-2 {
+      width: 2%;
+    }
+    input{
+      margin-top: 5px;
+      max-width: 100px;
+    }
+    .focused .ant-input{
+      border: 1px solid #091e42;
+    }
+    .ant-input[disabled]{
+      background-color: transparent;
+      color: rgb(9, 30, 66);
+      -webkit-text-fill-color: rgb(9, 30, 66) !important;
+    }
+    .placeholder-text{
+      font-size: 12px;
+      color: rgb(94, 108, 132);
+    }
+    .date-range-hyphen{
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .vertical-align{
+      margin-top: 28px;
+    }
+    .ant-input-affix-wrapper .ant-input:not(:last-child){
+      padding-right : 0;
+    }
+  }
+  .calender-only {
+    // height: $modal-content-height ;
+    margin-top: 8px;
+    .DayPicker_transitionContainer {
+      // height: $modal-content-height ;
+      max-width: $daypicker-width;
+    }
+    .DayPicker {
+      max-width: $daypicker-width;
+    }
+    .DateRangePicker {
+      .ant-select-dropdown.cap-select-v2-dropdown {
+        .ant-select-dropdown-menu {
+          li {
+            font-size: 14px;
+            padding: 4px 12px;
+            height: 36px;
+            line-height: 30px;
+          }
+        }
+      }
+    }
+  }
+  .DateRangePicker_picker {
+    .year-selector .cap-select-v2 .ant-select-selection {
+      height: 28px;
+      .ant-select-selection__rendered {
+        line-height: 26px;
+      }
+      .ant-select-selection-selected-value {
+        font-size: 14px;
+      }
+    }
+  }
+  .calender-only.compare-mobile-date-range-picker .DateRangePicker_picker {
+    .CalendarDay__selected .calendar-day-content span {
+      background: $compare-date-color;
+    }
+    .CalendarDay__selected_span .calendar-day-content, .DateRangePicker_picker .CalendarDay__hovered_span .calendar-day-content {
+      background: $compare-date-color-range;
+    }
+    .CalendarDay__selected_start .calendar-day-content {
+      background: linear-gradient(90deg, #ffffff 50%, $compare-date-color-range 50%);
+    }
+    .CalendarDay__selected_end .calendar-day-content {
+      background: linear-gradient(90deg, $compare-date-color-range 50%, #ffffff 50%);
+    }
+  }
+  .control-section{
+    .action-item{
+      padding-top: 8%;
+      margin-left: -6%;
+      width: 16%;
+      text-align: right;
+    }
+    .cap-column-v2.ant-col-11 {
+      width: 40%;
+      min-width: 100px;
+    }
+    .cap-column-v2.ant-col-2 {
+      width: 2%;
+    }
+  }
+  .toggle-text{
+    text-align: right;
+    margin: 0;
+  }
+  .DayPicker_weekHeader, .CalendarMonth {
+    padding: 0 6px !important;
+  }
+  .CalendarMonth {
+    .CalendarMonth_caption {
+      padding: 6px 0 10px;
+      line-height: 20px;
+      font-weight: 400;
+      font-size: 14px;
+      color: rgb(9, 30, 66);
+      .month-name {
+        padding-top: 3px;
+      }
+      .ant-select-lg {
+        width: 75px;
+      }
+    }
+  }
+  .DateRangePicker_picker {
+    left: -16px !important;
+    .calendar-day-content{
+      padding: 0 5px;
+    }  
+    .DayPicker__withBorder{
+      box-shadow: none;
+    }
+    .month-nav-btn {
+      top: 6px;
+      margin-left: -2px;
+      margin-right: 14px;
+    }
+    .CalendarDay__selected_span .calendar-day-content, .DateRangePicker_picker .CalendarDay__hovered_span .calendar-day-content {
+      background: rgb(233, 240, 254),;
+    }
+    .CalendarDay__selected_start .calendar-day-content {
+      background: linear-gradient(90deg, #ffffff 50%, rgb(233, 240, 254), 50%);
+    }
+    .CalendarDay__selected_end .calendar-day-content {
+      background: linear-gradient(90deg, rgb(233, 240, 254), 50%, #ffffff 50%);
+    }
+  }
+}
+
+@media screen and (max-height: 930px) {
+  .calender-only {
+    height: 32vh !important;
+    .DayPicker_transitionContainer {
+      height: 32vh !important;
+    }
+  }
+}
+
+@media screen and (max-height: 854px) {
+  .calender-only {
+    height: 38.5vh !important;
+    .DayPicker_transitionContainer {
+      height: 38.5vh !important;
+    }
+  }
+}
