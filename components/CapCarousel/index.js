@@ -1,17 +1,17 @@
 /**
-*
-* CapCarousel
-*
-*/
+ *
+ * CapCarousel
+ *
+ */
 
-import React from 'react';
-import './_capCarousel.scss';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import { Carousel } from 'antd';
-import CapIcon from '../CapIcon';
+import React from "react";
+import "./_capCarousel.scss";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import { Carousel } from "antd";
+import CapIcon from "../CapIcon";
 
-const clsPrefix = 'cap-carousel-v2';
+const clsPrefix = "cap-carousel-v2";
 
 export default class CapCarousel extends React.Component {
   constructor(props) {
@@ -22,13 +22,24 @@ export default class CapCarousel extends React.Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.currentIndex !== prevProps.currentIndex) {
+      this.goTo(this.props.currentIndex, false);
+    }
+  }
+
+  goTo = (index, dontAnimate) => {
+    this.setState({ currentIndex: index });
+    this.carousel.goTo(index, dontAnimate);
+  };
+
   next = () => {
     this.carousel.next();
-  }
+  };
 
   previous = () => {
     this.carousel.prev();
-  }
+  };
 
   beforeChange = (from, to) => {
     this.setState({ currentIndex: to });
@@ -37,18 +48,27 @@ export default class CapCarousel extends React.Component {
     if (beforeChange) {
       beforeChange({ currentIndex: to });
     }
-  }
+  };
 
   render() {
-    const { className, wrapperClassName, data, width, showTopSwitcher, ...rest } = this.props;
+    const {
+      className,
+      wrapperClassName,
+      data,
+      width,
+      showTopSwitcher,
+      ...rest
+    } = this.props;
     const { currentIndex } = this.state;
     const carouselProps = {
-      ref: (node) => { this.carousel = node; },
+      ref: (node) => {
+        this.carousel = node;
+      },
       className: classNames(clsPrefix, className),
       ...rest,
     };
     const leftDisabled = currentIndex === 0;
-    const rightDisabled = currentIndex === (data.length - 1);
+    const rightDisabled = currentIndex === data.length - 1;
 
     if (showTopSwitcher && !(leftDisabled && rightDisabled)) {
       carouselProps.beforeChange = this.beforeChange;
@@ -57,18 +77,29 @@ export default class CapCarousel extends React.Component {
     const heading = (data[currentIndex] || {}).name;
 
     return (
-      <div style={{ width: width || "100%" }} className={classNames(`${clsPrefix}-wrapper`, wrapperClassName)}>
+      <div
+        style={{ width: width || "100%" }}
+        className={classNames(`${clsPrefix}-wrapper`, wrapperClassName)}
+      >
         {showTopSwitcher && !(leftDisabled && rightDisabled) && (
           <div className="switcher-icons">
-            <CapIcon type="chevron-left" disabled={leftDisabled} onClick={!leftDisabled ? this.previous : null} />
+            <CapIcon
+              type="chevron-left"
+              disabled={leftDisabled}
+              onClick={!leftDisabled ? this.previous : null}
+            />
             <div className="heading">{heading}</div>
-            <CapIcon type="chevron-right" disabled={rightDisabled} onClick={!rightDisabled ? this.next : null} />
+            <CapIcon
+              type="chevron-right"
+              disabled={rightDisabled}
+              onClick={!rightDisabled ? this.next : null}
+            />
           </div>
         )}
         <Carousel {...carouselProps}>
-          {
-            data.map((d) => <React.Fragment key={d.key}>{d.content}</React.Fragment>)
-          }
+          {data.map((d) => (
+            <React.Fragment key={d.key}>{d.content}</React.Fragment>
+          ))}
         </Carousel>
       </div>
     );
