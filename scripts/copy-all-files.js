@@ -83,8 +83,11 @@ function createPackageFile() {
           "@antv/layout": "0.1.3",
           "react-dnd": "^11.1.3",
           "react-dnd-html5-backend": "^11.1.3",
+          "react-datepicker": "4.2.0",
+          "react-dates": "^20.2.4",
           "cap-dagre": "0.8.6-pre",
           "nanoid": "3.1.30",
+          "semantic-ui-react": "0.68.3",
         },
       };
 

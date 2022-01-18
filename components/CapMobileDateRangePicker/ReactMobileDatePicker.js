@@ -4,7 +4,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('react'), require('react-dom'))
     : typeof define === 'function' && define.amd ? define(['react', 'react-dom'], factory)
-      : (global.reactMobileDatePicker = factory(global.React, global.ReactDOM));
+      : global ? (global.reactMobileDatePicker = factory(global.React, global.ReactDOM)) : {};
 }(this, ((React, ReactDOM) => {
   function __$styleInject(css, ref) {
     if ( ref === void 0 ) ref = {};
