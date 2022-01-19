@@ -36,6 +36,7 @@ import {
   TemplateIcon,
   TemplatesModal,
   StyledCapCard,
+  PremiumIcon,
 } from './style';
 import { CAP_SPACE_12 } from '../styled/variables';
 
@@ -261,7 +262,10 @@ function CapStaticTemplates(props) {
               selected={category?.value === selectedCategory}
               onClick={() => handleClick(category?.value)}
             >
-              <CapLabel type={category?.value === selectedCategory ? "label4" : "label9"}>{category?.label}</CapLabel>
+              <CapLabel type={category?.value === selectedCategory ? "label4" : "label9"}>
+                {category?.label}
+                {category?.premium && <PremiumIcon type="premium" size="s" />}
+              </CapLabel>
               <CapLabel type="label1">{category?.panes?.length}</CapLabel>
             </CategoryContainer>
           ))}

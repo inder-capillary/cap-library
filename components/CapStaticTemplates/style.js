@@ -21,6 +21,7 @@ import {
   CAP_SPACE_04,
   CAP_PALE_GREY,
   CAP_WHITE,
+  CAP_YELLOW01,
 } from '../styled/variables';
 import CapRadioCard from '../CapRadioCard';
 
@@ -225,4 +226,9 @@ export const StyledCapCard = styled(CapCard)`
       }
     }
   }
+`;
+
+export const PremiumIcon = styled(CapIcon)`
+  margin-left: ${CAP_SPACE_04};
+  color: ${CAP_YELLOW01}
 `;

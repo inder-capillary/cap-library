@@ -31,8 +31,8 @@ function CapAdvancedIconDoc() {
   return (
       <>
         <CapAppNotEnabled
-          headerText="MarkO - Marketing Orchestration"
-          title="MarkO - Marketing Orchestration, is not enabled for you."
+          headerText="Journey"
+          title="Journey, is not enabled for you."
           description="This can help you in designing and automating AI enabled engagement programs that have multiple touchpoints,
             channels etc. Please reach out to your Capillary POCs to know more"
         />
