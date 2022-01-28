@@ -47,8 +47,8 @@ function CapMobileDatePicker({onChange, value, lastSyncDate}) {
       >
         <CapCalendarDatePicker
           inline
-          minDate={moment(INCEPTION_DATE)}
-          maxDate={moment(lastSyncDate)}
+          minDate={new Date(INCEPTION_DATE)}
+          maxDate={new Date(lastSyncDate)}
           dropdownMode="select"
           showMonthDropdown
           showYearDropdown
