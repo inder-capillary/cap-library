@@ -152,7 +152,7 @@ const CapDndGraph = (props) => {
                 maxWidth: "64px",
               }}
             >
-              <CapTooltip title={label.text}>
+              <CapTooltip>
                 <div className="truncate-text">{label.text}</div>
               </CapTooltip>
               {/*

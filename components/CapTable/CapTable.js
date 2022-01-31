@@ -3,7 +3,7 @@
 */
 import React from "react";
 import PropTypes from 'prop-types';
-import { throttle } from 'lodash';
+import { throttle, cloneDeep } from 'lodash';
 import { Table } from "antd";
 import "./_capTable.scss";
 import styled from "styled-components";
@@ -78,7 +78,7 @@ class CapTable extends React.Component { // eslint-disable-line react/prefer-sta
     const maxScroll = event.target.scrollHeight - event.target.clientHeight;
     const currentScroll = event.target.scrollTop;
     if (currentScroll >= (maxScroll - 10) && !this.props.showLoader) {
-      const offsetLimit = Object.assign(this.props.offset_limit);
+      const offsetLimit = { ...this.props.offset_limit };
       offsetLimit.offset += offsetLimit.limit;
       this.props.setPagination(offsetLimit);
     }

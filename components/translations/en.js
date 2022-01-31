@@ -90,6 +90,21 @@ export default {
     andMsg: 'and',
 
   },
+
+  CapConditionPreview: {
+    includeMsg: 'Include',
+    excludeMsg: 'Exclude',
+    equalMsg: 'equal to',
+    greaterThanMsg: 'greater than',
+    lessThanMsg: 'less than',
+    greaterThanOrEqualMsg: 'greater than or equal to',
+    lessThanorEqualMsg: 'less than or equal',
+    inRangeMsg: 'in range',
+    notEqualMsg: 'not equal to',
+    whoseMsg: 'whose',
+    isMsg: 'is',
+    andMsg: 'and',
+  },
   CapPopoverTree: {
     emptyDataMessage: 'No data found',
     searchPlaceholder: 'Search',
