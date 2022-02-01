@@ -20,7 +20,7 @@ function SvgError(props) {
           <use xlinkHref="#error_svg__a" />
         </mask>
         <use fill="#FFF" xlinkHref="#error_svg__a" />
-        <g fill="#B3BAC5" mask="url(#error_svg__b)">
+        <g fill="currentColor" mask="url(#error_svg__b)">
           <path d="M-1-1h16v16H-1z" />
         </g>
       </g>

@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import CapAdvancedIcon from '../CapAdvancedIcon';
 import CapLabel from '../CapLabel';
 import LocaleHoc from '../LocaleHoc';
 import { DELETE, SETTINGS, VIEW } from './constants';
-import { CAP_COLOR_05 } from '../styled/variables';
+import { CAP_COLOR_03, CAP_COLOR_05 } from '../styled/variables';
+
+const StyledLabel = styled(CapLabel)`
+  color: ${(props) => props.notConfiguredError ? CAP_COLOR_03 : ""};
+`;
 
 const GraphBlockNode = (props) => {
   const {
-    configureText,
     id,
     iconType,
     color,
@@ -18,6 +22,8 @@ const GraphBlockNode = (props) => {
     nodeTitle,
     viewMode,
     userHistoryProps,
+    error, // To hightlight block with error Icon.
+    configureText,
   } = props;
 
   let preview = nodePreview;
@@ -25,8 +31,8 @@ const GraphBlockNode = (props) => {
   if (!isConfigured && !nodePreview) {
     preview = (
       <>
-        <CapLabel type="label1" className="margin-t-10">{configureText}</CapLabel>
-        <CapLabel type="label2">{nodeTitle}</CapLabel>
+        <StyledLabel type="label1" className="margin-t-10" notConfiguredError={error?.notConfiguredError}>{configureText}</StyledLabel>
+        <StyledLabel type="label2">{nodeTitle}</StyledLabel>
       </>
     );
   }
@@ -57,6 +63,7 @@ const GraphBlockNode = (props) => {
       onClick: onClickActionIcon,
     },
   ];
+
   return (
     <CapAdvancedIcon
       type={iconType}
@@ -75,6 +82,7 @@ const GraphBlockNode = (props) => {
       positionLabel
       preview={preview}
       onClick={() => onClickActionIcon({blockId: id, actionType: SETTINGS})}
+      hasError={!!error}
     />
   );
 };
@@ -96,6 +104,7 @@ GraphBlockNode.propTypes = {
   configureText: PropTypes.string,
   viewMode: PropTypes.bool,
   userHistoryProps: PropTypes.object,
+  error: PropTypes.object,
 };
 
 GraphBlockNode.defaultProps = {
@@ -104,4 +113,4 @@ GraphBlockNode.defaultProps = {
   userHistoryProps: {},
 };
 
-export default LocaleHoc(GraphBlockNode, { key: 'GraphBlockNode' });
+export default LocaleHoc(GraphBlockNode, { key: 'CapGraphBlockNode' });

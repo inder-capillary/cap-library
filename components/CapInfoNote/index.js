@@ -27,10 +27,11 @@ const InfoNote = (props) => (
           <Note noteText={props.noteText} />: {props.message}
       </CapRow>
     )}
+    className={props.className}
     type="info"
     icon={(
       <CapIcon
-        type="info"
+        type={props.type}
         size="s"
         style={{
           color: `${CAP_G01}`,
@@ -51,6 +52,12 @@ InfoNote.propTypes = {
   message: PropTypes.node,
   style: PropTypes.object,
   noteText: PropTypes.string,
+  type: PropTypes.string,
+  className: PropTypes.string,
+};
+
+InfoNote.defaultProps = {
+  type: 'info', //this will not break the existing flow, if any different icon required that can be specified.
 };
 
 export default LocaleHoc(InfoNote, { key: 'InfoNote' });

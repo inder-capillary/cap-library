@@ -6,32 +6,49 @@
         width: fit-content;
         margin: auto;
 
-            .action-icon-container {
+            .action-icon-container,
+            .error-icon-container {
                 position: absolute;
-                padding: 3px;
-                line-height: 0.8;
-                border: 2px solid $CAP_WHITE;
+                padding: 0px;
 
                 .cap-icon-v2 {
                     vertical-align: unset;
                 }
             }
+
+            .action-icon-container {
+                padding: 3px;
+                line-height: 0.8;
+                border: 2px solid $CAP_WHITE;
+            }
+            .error-icon-container{
+                color: $CAP_RED;
+            }
        
             .top-left-action-icon-container {
-                top: -5px;
-                left: -5px;
+                top: 0;
+                left: 0;
+                transform: translate(-50%,-50%);
             }
             .bottom-left-action-icon-container {
-                bottom: -5px;
-                left: -5px;
+                bottom: 0;
+                left: 0;
+                transform: translate(-50%,50%);
             }
             .top-right-action-icon-container {
-                top: -5px;
-                right: -5px;
+                top: 0;
+                left: 100%;
+                transform: translate(-50%,-50%);
             }
             .bottom-right-action-icon-container {
-                bottom: -5px;
-                right: -5px;
+                bottom: 0;
+                left: 100%;
+                transform: translate(-50%,+50%);
+            }
+            .top-center-error-icon-container {
+                top: 0;
+                left: 50%;
+                transform: translate(-50%,-50%);
             }
             &.item-disabled{
                 cursor: not-allowed;

@@ -47,6 +47,7 @@ const CapAdvancedIcon = (props) => {
     isConfigured,
     isDisabled,
     userHistoryProps,
+    hasError,
     ...rest
   } = props;
   const [actionIconsVisible, setActionIconsVisibility] = useState(false);
@@ -73,6 +74,13 @@ const CapAdvancedIcon = (props) => {
           ref={dragRef}
           color={userHistoryProps?.color} //used to give box-shadow for userJourneyHistory
         >
+          {hasError && ( // error icon to highlight block has error.
+            <CapIcon
+              type="error"
+              className={classnames(`top-center-error-icon-container`, 'error-icon-container')}
+              size="s"
+            />
+          )}
           <CapIcon
             type={type}
             withBackground
@@ -89,6 +97,7 @@ const CapAdvancedIcon = (props) => {
             {...rest}
           />
           {actionIconsVisible && getActionIcons(actionNodes, id)}
+
         </StyledDiv>
       </CapRow>
       <CapRow style={{ textAlign: 'center', ...labelStyles }}>

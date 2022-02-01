@@ -110,7 +110,7 @@ export default {
     searchPlaceholder: 'Search',
   },
   CapGraphBlockNode: {
-    configure: 'Configure',
+    configureText: 'Configure',
   },
   CapStaticTemplates: {
     strategyTitleMsg: 'Select the strategy',

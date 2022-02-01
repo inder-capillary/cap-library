@@ -171,7 +171,12 @@ const CapDndGraph = (props) => {
       type: GRAPH_LAYOUT_TYPE, // dagre
       rankdir: GRAPH_DIRECTION, // LR
       align: GRAPH_ALIGNMENT, // UL
-      nodesepFunc: () => 15,
+      nodesepFunc: (node) => {
+        if (node.type === ENTRY_TRIGGER) {
+          return 42;
+        }
+        return 15;
+      },
       ranksepFunc: (node) => {
         if (node.type === ENTRY_TRIGGER) {
           /**Gap between the Entry Trigger and First child */

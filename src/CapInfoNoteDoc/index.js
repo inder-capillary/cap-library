@@ -4,14 +4,13 @@
 import React from "react";
 import { CapInfoNote } from "../../components";
 import PropertyTable from '../../helpers/PropertyTable';
-
 const infoData = [
   {
     key: 1,
     property: "message",
     description: "message that needs to be shown in the info note has border style",
-    type: "string/node",
-    default: "",
+    type: "string/node - denotes type of icon",
+    default: "info",
   },
 
 ];
