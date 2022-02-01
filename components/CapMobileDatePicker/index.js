@@ -13,6 +13,7 @@ import CapInput from "../CapInput";
 import CapIcon from "../CapIcon";
 import "./_index.scss";
 const INCEPTION_DATE = "2000-01-01";
+const DATE_CALC_FORMAT = 'YYYY-MM-DD';
 const DATE_DISPLAY_FORMAT = "DD MMMM YYYY";
 
 function CapMobileDatePicker({onChange, value, lastSyncDate}) {
@@ -47,14 +48,14 @@ function CapMobileDatePicker({onChange, value, lastSyncDate}) {
       >
         <CapCalendarDatePicker
           inline
-          minDate={new Date(INCEPTION_DATE)}
-          maxDate={new Date(lastSyncDate)}
+          minDate={moment(INCEPTION_DATE, DATE_CALC_FORMAT).toDate()}
+          maxDate={lastSyncDate.toDate()}
           dropdownMode="select"
           showMonthDropdown
           showYearDropdown
           readOnly
           onChange={handleDateChange}
-          value={value}
+          selected={moment(value).toDate()}
           disabledDate={(currentDate) => currentDate.isAfter(lastSyncDate)
             || currentDate.isBefore(moment(INCEPTION_DATE))
           }
