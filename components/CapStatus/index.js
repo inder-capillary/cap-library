@@ -12,6 +12,8 @@ const CapStatus = (props) => {
 
   const typeColorMapping = {
     draft: CAP_BLUE02,
+    pending: CAP_ORANGE02,
+    unsubmitted: CAP_ORANGE02,
     awaitingApproval: CAP_ORANGE02,
     approved: CAP_PRIMARY.base,
     rejected: CAP_RED03,
