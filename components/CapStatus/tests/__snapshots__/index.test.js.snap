@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CapStatus Should render the component 1`] = `
+<CapRow
+  align="middle"
+  type="flex"
+>
+  <styled.div
+    color="#47af46"
+    height="0.571rem"
+    width="0.571rem"
+  />
+  <styled.div
+    type="label2"
+  >
+    Approved
+  </styled.div>
+</CapRow>
+`;

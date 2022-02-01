@@ -29,6 +29,7 @@ const channels = {
   facebook: 'FACEBOOK',
   line: 'LINE',
   viber: 'VIBER',
+  whatsapp: 'WHATSAPP',
 };
 
 const getMpushContent = (templateData) => {
@@ -84,6 +85,40 @@ const getMpushContent = (templateData) => {
     );
   }
   return preview;
+};
+
+const getWhatsappContent = (content) => {
+  const {
+    versions: {
+      base: {
+        content: {
+          whatsapp: {
+            languages = [{}],
+            'var-mapped': varMapped = {},
+          } = {},
+        } = {},
+      } = {},
+    } = {},
+  } = content;
+
+  let text = languages[0]?.content?.slice(2, -1) || '';
+
+  let searchStartIndex = 0;
+  while (true) {
+    const openIndex = text.indexOf("{{", searchStartIndex);
+    const closeIndex = text.indexOf("}}", searchStartIndex);
+    if (openIndex > -1) {
+      const mappedValue = varMapped[text.substring(openIndex + 2, closeIndex)] || '';
+      text = text.slice(0, openIndex) + mappedValue + text.slice(closeIndex + 2);
+      searchStartIndex = closeIndex + 2;
+    } else {
+      break;
+    }
+  }
+
+  return {
+    content: text,
+  };
 };
 
 const getWeChatContent = (content) => {
@@ -183,6 +218,13 @@ const getCardContent = (props) => {
         previewMpush.push(contentPreview.iosButtons);
       }
       return previewMpush;
+    }
+    case channels.whatsapp: {
+      const contentPreview = getWhatsappContent(content);
+      const previewWhatsapp = [
+        <Meta description={contentPreview.content} />,
+      ];
+      return previewWhatsapp;
     }
     case channels.wechat: {
       const contentPreview = getWeChatContent(content);

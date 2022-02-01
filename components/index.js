@@ -95,6 +95,7 @@ export { default as CapSelectFilter } from './CapSelectFilter';
 export { default as CapStaticTemplates } from './CapStaticTemplates';
 export { default as CapAppNotEnabled } from './CapAppNotEnabled';
 export { default as CapColoredTag } from './CapColoredTag';
+export { default as CapStatus } from './CapStatus';
 export { default as CapConditionPreview } from './CapConditionPreview';
 
 //export components

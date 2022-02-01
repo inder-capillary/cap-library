@@ -16,6 +16,8 @@ export const CAP_SECONDARY = {
 
 // Custom colors
 export const CAP_ORANGE = "#f87d23";
+export const CAP_ORANGE01 = "#ffe5d2";
+export const CAP_ORANGE02 = "#fa7d02";
 export const CAP_YELLOW = "#fec52e";
 export const CAP_YELLOW01 = "#e8bc25";
 export const CAP_YELLOW02 = "#f9d438";
@@ -26,9 +28,16 @@ export const CAP_RED = "#ea213a";
 export const CAP_ICON = "#7a869a";
 export const CAP_PALE_GREY = "#e9f0fe";
 export const CAP_BLUE01 = "#2466eb";
+export const CAP_BLUE02 = "#1d61ee";
 export const CAP_RED01 = "#e51fa3";
 export const CAP_RED02 = "#f5222d";
+export const CAP_RED03 = "#ed1b34";
 export const CAP_PURPLE01 = "#6563ff";
+export const CAP_PURPLE02 = "#a451ff";
+export const CAP_PURPLE03 = "#f2e7fe";
+export const CAP_GREEN01 = "#6bb56b";
+export const CAP_GREEN02 = "#ecf7ec";
+
 
 // Grey colors
 export const CAP_G01 = "#091e42";

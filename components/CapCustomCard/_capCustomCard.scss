@@ -90,6 +90,45 @@ $cap-custom-card: cap-custom-card;
   }
 }
 
+ .ant-card.#{$cap-custom-card}.WHATSAPP {
+  .ant-card-body {
+    padding-bottom: 0;
+    padding-top: 14px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: $CAP_G09;
+    height: 274px;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    .ant-card-meta {
+      height: fit-content;
+      width: 100%;
+      background-color: $CAP_WHITE;
+      padding: $CAP_SPACE_12;
+      border-radius: 4px;
+    }
+  }
+
+  .ant-card-head{
+    padding: 0 16px;
+  }
+
+  .ant-card-head-title{
+    overflow: visible;
+  }
+
+  .ant-card-head-wrapper {
+    align-items: flex-start;
+
+    .ant-card-extra {
+      margin-top: $CAP_SPACE_12;
+    }
+  }
+}
+
 .ant-card.#{$cap-custom-card}.MOBILEPUSH, .ant-card.#{$cap-custom-card}.WECHAT {
   .ant-card-body {
     padding-bottom: 0;
