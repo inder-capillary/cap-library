@@ -801,7 +801,7 @@ var typify = (function() {
 				t = inherit(p, type);
 			}
 			else {
-				throw "Couldn't find supertype " + type.form;
+				return;
 			}
 		}
 		
@@ -917,7 +917,7 @@ var typify = (function() {
 				this.operands[1].setExpectedTypes(["function"]);
 				
 				//Handling wherever the function doesnt have parameters. Remove the last node.
-				if(this.operands[1].type.params == 0)
+				if(this.operands[1] && this.operands[1].type && this.operands[1].type.params == 0)
 				{
 					this.operands[2]=null;
 					this.operands.length=2;
@@ -1090,7 +1090,7 @@ var io = {
 		var popup = $(".balloon"), editor, t, i, l, j, m, expected, picker,
 			calltips = [], show = false, calltipDiv, calltipEls;
 		
-		if(node.dom.hasClass("selected")) return;
+		if(!node.dom || node.dom.hasClass("selected")) return;
 		
 		editor = node.dom.closest(".expredit").eq(0);
 		if(!editor.is(":focus")) return;
@@ -1499,11 +1499,11 @@ return this.each(function () {
 		var reverse = cursor.reverse;
 		var node_s = selectNode(tree, cursor.start);
 		var node_e = selectNode(tree, cursor.end);
-		
-		var cur_s = node_s && node_s.node.arity==="missing"?
+  
+		var cur_s = node_s && node_s.node.dom && node_s.node.arity==="missing"?
 			io.charOffset(node_s.node.dom[0], node_s.pos):
 			io.charOffset(xedit[0], cursor.start);
-		var cur_e = node_e && node_e.node.arity==="missing"?
+		var cur_e = node_e && node_s.node.dom && node_e.node.arity==="missing"?
 			io.charOffset(node_e.node.dom[0], node_e.pos):
 			io.charOffset(xedit[0], cursor.end);
 		
@@ -1557,7 +1557,6 @@ return this.each(function () {
 				e.which == 39 && missingPos==1) 
 			) {
 				onMissing = false;
-				return;
 			}
 			if(!options.offline)
 				cursor = io.getCursor(xedit[0]);
@@ -1583,7 +1582,7 @@ return this.each(function () {
 	
 	xedit.html(initVal1);
 	input.hide();
-		
+  
 	handleText(true);
 });
 }
