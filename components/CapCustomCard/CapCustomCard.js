@@ -186,10 +186,7 @@ const getCardContent = (props) => {
       return previewMpush;
     }
     case channels.whatsapp: {
-      const previewWhatsapp = [
-        <Meta description={content} />,
-      ];
-      return previewWhatsapp;
+      return <Meta description={content} className="whatsapp-content" />;
     }
     case channels.wechat: {
       const contentPreview = getWeChatContent(content);

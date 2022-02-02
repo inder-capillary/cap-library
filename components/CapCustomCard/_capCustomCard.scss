@@ -110,6 +110,10 @@ $cap-custom-card: cap-custom-card;
       padding: $CAP_SPACE_12;
       border-radius: 4px;
     }
+
+    .whatsapp-content {
+      white-space: pre-wrap;
+    }
   }
 
   .ant-card-head{
