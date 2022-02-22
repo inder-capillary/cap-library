@@ -187,3 +187,5 @@ export { default as Return } from './Icons/Return';
 export { default as UserCopy } from './Icons/UserCopy';
 export { default as Diamond } from './Icons/Diamond';
 export { default as Filled } from "./Icons/Filled";
+export { default as Referal } from "./Icons/Referal";
+export { default as FacebookReach } from "./Icons/FacebookReach";

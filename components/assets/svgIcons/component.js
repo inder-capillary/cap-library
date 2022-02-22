@@ -191,6 +191,8 @@ const getSvgComponentFromType = (type) => {
     case 'userCopy': return SvgIcons.UserCopy;
     case 'diamond': return SvgIcons.Diamond;
     case 'filled': return SvgIcons.Filled;
+    case 'referal': return SvgIcons.Referal;
+    case 'facebook-reach': return SvgIcons.FacebookReach;
 
     default: return null;
   }
