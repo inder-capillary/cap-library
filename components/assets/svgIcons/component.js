@@ -193,6 +193,10 @@ const getSvgComponentFromType = (type) => {
     case 'filled': return SvgIcons.Filled;
     case 'referal': return SvgIcons.Referal;
     case 'facebook-reach': return SvgIcons.FacebookReach;
+    case 'circle-dollar': return SvgIcons.CircleDollar;
+    case 'academy': return SvgIcons.Academy;
+    case 'headphone': return SvgIcons.HeadPhone;
+    case 'add-profile': return SvgIcons.AddProfile;
 
     default: return null;
   }

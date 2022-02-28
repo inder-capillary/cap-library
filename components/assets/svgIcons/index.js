@@ -189,3 +189,7 @@ export { default as Diamond } from './Icons/Diamond';
 export { default as Filled } from "./Icons/Filled";
 export { default as Referal } from "./Icons/Referal";
 export { default as FacebookReach } from "./Icons/FacebookReach";
+export { default as Academy } from "./Icons/Academy";
+export { default as CircleDollar } from "./Icons/CircleDollar";
+export { default as HeadPhone } from "./Icons/Headphones";
+export { default as AddProfile } from "./Icons/AddProfile";
