@@ -197,6 +197,7 @@ const getSvgComponentFromType = (type) => {
     case 'academy': return SvgIcons.Academy;
     case 'headphone': return SvgIcons.HeadPhone;
     case 'add-profile': return SvgIcons.AddProfile;
+    case 'check-filled-plus': return SvgIcons.CheckFilledPlus;
 
     default: return null;
   }

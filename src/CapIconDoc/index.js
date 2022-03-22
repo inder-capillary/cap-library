@@ -812,6 +812,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="add-profile" />
               <Text>add-profile</Text>
             </List>
+            <List>
+              <CapIcon type="check-filled-plus" />
+              <Text>check-filled-plus</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}

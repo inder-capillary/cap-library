@@ -186,6 +186,12 @@ class CapMultiSelect extends React.Component {
     return selectButton;
   }
 
+
+  // Handle to get ref for a wrapper component.
+  handleWrapperRef = (node) => {
+    this.node = node;
+  };
+
   togglePopoverVisibility(visible) {
     this.setState({ visible });
   }
@@ -208,7 +214,7 @@ class CapMultiSelect extends React.Component {
   }
 
   render() {
-    const { placeholder, searchPlaceholder, triggerClassName, disabled, width, closeText, noResultsFoundText, selectedText, disableSelectAll, popoverClassName, selectAllText, selectAllSearchResultsText, getPopupContainer, moreText, searchKey, showFooter, searchFocusOnMount, alwaysShowFocusOnSearch, showSelectAllText } = this.props;
+    const { placeholder, searchPlaceholder, triggerClassName, disabled, width, closeText, noResultsFoundText, selectedText, disableSelectAll, popoverClassName, selectAllText, selectAllSearchResultsText, getPopupContainer, moreText, searchKey, showFooter, searchFocusOnMount, alwaysShowFocusOnSearch, showSelectAllText, target } = this.props;
     const { visible, searchValue, selectedKeys, appliedKeys } = this.state;
     const { treeData, ...rest } = this.props;
     const newProps = omit(rest, ['onSelect', 'treeData']);
@@ -228,6 +234,10 @@ class CapMultiSelect extends React.Component {
       }
     }
     const popwidth = this.node ? `${this.node.offsetWidth}px` : "100%";
+    const wrapperCommonProps = {
+      ref: this.handleWrapperRef,
+      style: { width: width || "100%" },
+    };
     return (
       <div className="cap-multi-select">
         <Popover
@@ -286,16 +296,20 @@ class CapMultiSelect extends React.Component {
             </div>
           )}
         >
-          <div
-            ref={(node) => { this.node = node; }}
-            style={{ width: width || "100%" }}
-            className={classNames(`${clsPrefix}-selection`, { selected: triggerLeftContent, open: visible && !disabled, triggerClassName, disabled })}>
-            <span className={classNames(`${clsPrefix}-left-content`, { placeholder: !triggerLeftContent, disabled })} title={triggerLeftContent}>{triggerLeftContent || placeholder}</span>
-            <span style={{ display: 'inline-flex', alignItems: 'center' }}>
-              {triggerRightContent}
-              {disabled ? <CapIcon type="chevron-down" style={{ color: styledVars.CAP_G06 }} /> : <CapIcon type="chevron-down" />}
-            </span>
-          </div>
+          {/*Target will be any valid node, Popover content to show on target element instead of default select element*/}
+          {target ? (
+            <div {...wrapperCommonProps}>{target}</div>
+          ) : (
+            <div
+              {...wrapperCommonProps}
+              className={classNames(`${clsPrefix}-selection`, { selected: triggerLeftContent, open: visible && !disabled, triggerClassName, disabled })}>
+              <span className={classNames(`${clsPrefix}-left-content`, { placeholder: !triggerLeftContent, disabled })} title={triggerLeftContent}>{triggerLeftContent || placeholder}</span>
+              <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+                {triggerRightContent}
+                {disabled ? <CapIcon type="chevron-down" style={{ color: styledVars.CAP_G06 }} /> : <CapIcon type="chevron-down" />}
+              </span>
+            </div>
+          )}
         </Popover>
       </div>
     );

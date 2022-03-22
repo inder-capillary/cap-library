@@ -3,7 +3,7 @@
 */
 import React, { Component } from "react";
 import PropertyTable from '../../helpers/PropertyTable';
-import { CapMultiSelect } from "../../components";
+import { CapMultiSelect, CapButton } from "../../components";
 
 const api = [
   {
@@ -153,6 +153,14 @@ const api = [
     type: "string",
     default: "-",
   },
+  {
+    key: 22,
+    property: "target",
+    description:
+      "Popover content to show on target element instead of default select element",
+    type: "node",
+    default: "-",
+  },
 ];
 
 const list = [
@@ -207,6 +215,19 @@ export default class CapMultiSelectInfo extends Component { // eslint-disable-li
               treeData={list}
               onSelect={() => { }}
               disabled
+            />
+          </div>
+          <div style={{ marginLeft: "24px", flex: 1 }}>
+            <CapMultiSelect
+              searchPlaceholder="Search"
+              treeData={list}
+              onSelect={() => {}}
+              width="300px"
+              target={(
+                <CapButton isAddBtn type="flat">
+                  Click here
+                </CapButton>
+              )}
             />
           </div>
         </div>
