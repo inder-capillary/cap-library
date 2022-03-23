@@ -198,6 +198,13 @@ const getSvgComponentFromType = (type) => {
     case 'headphone': return SvgIcons.HeadPhone;
     case 'add-profile': return SvgIcons.AddProfile;
     case 'check-filled-plus': return SvgIcons.CheckFilledPlus;
+    case 'survey-background': return SvgIcons.SurveyBackground;
+    case 'academy-background': return SvgIcons.AcademyBackground;
+    case 'add-user-background': return SvgIcons.AddUserBackground;
+    case 'dollar-background': return SvgIcons.DollarBackground;
+    case 'headphone-background': return SvgIcons.HeadphoneBackground;
+    case 'megaphone-background': return SvgIcons.MegaphoneBackground;
+    case 'monitor-background': return SvgIcons.MonitorBackground;
 
     default: return null;
   }

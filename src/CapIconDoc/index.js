@@ -816,6 +816,34 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="check-filled-plus" />
               <Text>check-filled-plus</Text>
             </List>
+            <List>
+              <CapIcon type="academy-background" />
+              <Text>academy-background</Text>
+            </List>
+            <List>
+              <CapIcon type="add-user-background" />
+              <Text>add-user-background</Text>
+            </List>
+            <List>
+              <CapIcon type="dollar-background" />
+              <Text>dollar-background</Text>
+            </List>
+            <List>
+              <CapIcon type="headphone-background" />
+              <Text>headphone-background</Text>
+            </List>
+            <List>
+              <CapIcon type="megaphone-background" />
+              <Text>megaphone-background</Text>
+            </List>
+            <List>
+              <CapIcon type="monitor-background" />
+              <Text>monitor-background</Text>
+            </List>
+            <List>
+              <CapIcon type="survey-background" />
+              <Text>survey-background</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}
