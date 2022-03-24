@@ -201,3 +201,4 @@ export { default as HeadphoneBackground } from "./Icons/HeadphoneBackground";
 export { default as MegaphoneBackground } from "./Icons/MegaphoneBackground";
 export { default as MonitorBackground } from "./Icons/MonitorBackground";
 export { default as SurveyBackground } from "./Icons/SurveyBackground";
+export { default as LoyaltyBackground } from "./Icons/LoyaltyBackground";
