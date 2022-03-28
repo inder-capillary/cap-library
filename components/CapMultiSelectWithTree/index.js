@@ -38,61 +38,6 @@ function getObject(array, key, value) {
   return o;
 }
 
-const renderTreeNodes = (data, searchValue, searchKey, isMatching) => {
-  const nodes = data.reduce((acc, item) => {
-    if (item.children) {
-      const isParentMatching = isMatching || (item.key !== "select-all-common" && !item.isCategory && !!(!searchValue || item[searchKey].toLowerCase().indexOf(searchValue.toLowerCase()) > -1));
-      const temp = renderTreeNodes(item.children, searchValue, searchKey, isParentMatching);
-      if (temp.length > 0) {
-        acc.push(
-          <TreeNode
-            key={item.key}
-            dataRef={item}
-            className={classNames(item.className, { "item-category": item.isCategory, 'not-category': !item.isCategory, 'parent-contains-info-icon': item.info })}
-            title={(
-              <div className="multi-select-title">
-                <div className="multi-select-main-title" title={item.title}>{item.title}</div>
-                {item.info && (
-                  <span className="info-tooltip">
-                    <Tooltip placement="right" title={item.info}>
-                      <Icon className="info-icon" type="info-circle-o" />
-                    </Tooltip>
-                  </span>
-                )}
-              </div>
-            )}
-          >
-            {temp}
-          </TreeNode>
-        );
-      }
-      return acc;
-    }
-    if (isMatching || !searchValue || item[searchKey].toLowerCase().indexOf(searchValue.toLowerCase()) > -1) {
-      acc.push(
-        <TreeNode
-          {...item}
-          className={classNames('child-node', { 'contains-info-icon': item.info })}
-          title={(
-            <div className="multi-select-title">
-              <div className="multi-select-main-title" title={item.title}>{item.title}</div>
-              {item.info && (
-                <span className="info-tooltip">
-                  <Tooltip placement="right" title={item.info}>
-                    <Icon className="info-icon" type="info-circle-o" />
-                  </Tooltip>
-                </span>
-              )}
-            </div>
-          )}
-        />
-      );
-    }
-    return acc;
-  }, []);
-  return nodes;
-};
-
 const getDataValuesInTree = (data, searchValue, searchKey, isMatching) => (
   data.reduce((acc, item) => {
     if (item.children) {
@@ -212,9 +157,10 @@ class CapMultiSelectWithTree extends React.Component {
     const selectedKeys = getSelectedKeysFromAppliedKeys(props.appliedKeys, this.dataListObject);
     this.state = {
       visible: false,
-      expandedKeys: props.appliedKeys && props.appliedKeys.length > 0
-        ? union(getExpandedKeys(props.appliedKeys, props.treeData, this.dataList),
-          ["select-all-common"]) : ["select-all-common"],
+      expandedKeys: props.expandedKeys || 
+        (props.appliedKeys && props.appliedKeys.length > 0
+          ? union(getExpandedKeys(props.appliedKeys, props.treeData, this.dataList),
+            ["select-all-common"]) : ["select-all-common"]),
       autoExpandParent: true,
       searchValue: '',
       selectedKeys,
@@ -238,9 +184,11 @@ class CapMultiSelectWithTree extends React.Component {
       const selectedKeys = getSelectedKeysFromAppliedKeys(nextProps.appliedKeys, this.dataListObject);
       this.setState({
         selectedKeys,
-        expandedKeys: nextProps.appliedKeys && nextProps.appliedKeys.length > 0
-          ? union(getExpandedKeys(nextProps.appliedKeys, nextProps.treeData, this.dataList),
-            ["select-all-common"]) : ["select-all-common"],
+        expandedKeys: (nextProps.appliedKeys && nextProps.appliedKeys.length > 0
+          ? union(
+              getExpandedKeys(nextProps.appliedKeys, nextProps.treeData, this.dataList),
+              ["select-all-common"]) 
+          : ["select-all-common"]),
       });
     }
     this.dataList = [];
@@ -249,7 +197,81 @@ class CapMultiSelectWithTree extends React.Component {
     this.generateList(nextProps.treeData);
   }
 
+  renderTreeNodes = (data, searchValue, searchKey, isMatching) => {
+    const { showSelectedCountByParent, appliedKeys, moreText } = this.props;
+    const nodes = (data || []).reduce((acc, item) => {
+      if (!isEmpty(item.children)) {
+        const isParentMatching = isMatching || (item.key !== "select-all-common" && !item.isCategory && !!(!searchValue || item[searchKey].toLowerCase().indexOf(searchValue.toLowerCase()) > -1));
+        const temp = this.renderTreeNodes(item.children, searchValue, searchKey, isParentMatching);
+        const childrenMap = {};
+        let selectedCount = 0;
+        item.children.forEach((child) => {
+          childrenMap[child.key] = true;
+        });
+        appliedKeys.forEach((key) => {
+          if (childrenMap[key]) {
+            selectedCount++;
+          }
+        })
+        if (temp.length > 0) {
+          acc.push(
+            <TreeNode
+              key={item.key}
+              dataRef={item}
+              className={classNames(item.className, { "item-category": item.isCategory, 'not-category': !item.isCategory, 'parent-contains-info-icon': item.info })}
+              title={(
+                <div className="multi-select-title">
+                  <div className="multi-select-main-title" title={item.title}>{item.title}</div>
+                  {showSelectedCountByParent && selectedCount > 0
+                    ? <span className="selected-text-for-parent">
+                      {selectedCount} {moreText}
+                    </span>
+                    : <></>
+                  }
+                  {item.info && (
+                    <span className="info-tooltip">
+                      <Tooltip placement="right" title={item.info}>
+                        <Icon className="info-icon" type="info-circle-o" />
+                      </Tooltip>
+                    </span>
+                  )}
+                </div>
+              )}
+            >
+              {temp}
+            </TreeNode>
+          );
+        }
+        return acc;
+      }
+      if (isMatching || !searchValue || item[searchKey].toLowerCase().indexOf(searchValue.toLowerCase()) > -1) {
+        acc.push(
+          <TreeNode
+            {...item}
+            className={classNames('child-node', { 'contains-info-icon': item.info })}
+            title={(
+              <div className="multi-select-title">
+                <div className="multi-select-main-title" title={item.title}>{item.title}</div>
+                {item.info && (
+                  <span className="info-tooltip">
+                    <Tooltip placement="right" title={item.info}>
+                      <Icon className="info-icon" type="info-circle-o" />
+                    </Tooltip>
+                  </span>
+                )}
+              </div>
+            )}
+          />
+        );
+      }
+      return acc;
+    }, []);
+    return nodes;
+  };
+
   onExpand(expandedKeys) {
+    const { expandedKeysHandler } = this.props;
+    expandedKeysHandler && expandedKeysHandler(expandedKeys);
     this.setState({
       expandedKeys,
       autoExpandParent: false,
@@ -267,7 +289,7 @@ class CapMultiSelectWithTree extends React.Component {
 
   onSearch(e, searchVal) {
     const searchValue = (searchVal === "" || searchVal) ? searchVal : e.target.value;
-    const { treeData, searchKey } = this.props;
+    const { treeData, searchKey, expandedKeysHandler } = this.props;
     const { selectedKeys } = this.state;
     let expandedKeys = [];
     if (searchValue) {
@@ -287,6 +309,7 @@ class CapMultiSelectWithTree extends React.Component {
         ? union(getExpandedKeys(selectedKeys, treeData, this.dataList),
           ["select-all-common"]) : ["select-all-common"];
     }
+    expandedKeysHandler && expandedKeysHandler(expandedKeys);
     this.setState((prevState) => ({
       expandedKeys,
       searchValue,
@@ -359,33 +382,37 @@ class CapMultiSelectWithTree extends React.Component {
   }
 
   togglePopoverVisibility(visible) {
-    const { appliedKeys, treeData } = this.props;
+    const { appliedKeys, treeData, expandedKeysHandler } = this.props;
     this.setState({
       visible,
     });
     if (visible) {
+      const expandedKeys = appliedKeys && appliedKeys.length > 0
+      ? union(getExpandedKeys(appliedKeys, treeData, this.dataList),
+        ["select-all-common"]) : ["select-all-common"];
+      expandedKeysHandler && expandedKeysHandler(expandedKeys);
       this.setState({
-        expandedKeys: appliedKeys && appliedKeys.length > 0
-          ? union(getExpandedKeys(appliedKeys, treeData, this.dataList),
-            ["select-all-common"]) : ["select-all-common"],
+        expandedKeys,
       });
     }
   }
 
   hide() {
-    const { appliedKeys, treeData } = this.props;
+    const { appliedKeys, treeData, expandedKeysHandler } = this.props;
+    const expandedKeys = appliedKeys && appliedKeys.length > 0
+      ? union(getExpandedKeys(appliedKeys, treeData, this.dataList),
+        ["select-all-common"]) : ["select-all-common"];
+    expandedKeysHandler && expandedKeysHandler(expandedKeys);
     this.setState({
       visible: false,
       selectedKeys: appliedKeys || [],
       autoExpandParent: true,
-      expandedKeys: appliedKeys && appliedKeys.length > 0
-        ? union(getExpandedKeys(appliedKeys, treeData, this.dataList),
-          ["select-all-common"]) : ["select-all-common"],
+      expandedKeys,
     });
   }
 
   applySelect() {
-    const { treeData, includeTreeData } = this.props;
+    const { treeData, includeTreeData, expandedKeysHandler } = this.props;
     const { selectedKeys } = this.state;
     const formattedKeys = without(selectedKeys, "select-all-common");
     treeData.forEach((data) => {
@@ -395,12 +422,14 @@ class CapMultiSelectWithTree extends React.Component {
         replaceChildrenWithParent({ data, arr: formattedKeys });
       }
     });
+    const expandedKeys = formattedKeys && formattedKeys.length > 0
+      ? union(getExpandedKeys(formattedKeys, treeData, this.dataList),
+        ["select-all-common"]) : ["select-all-common"];
+    expandedKeysHandler && expandedKeysHandler(expandedKeys);
     this.setState({
       visible: false,
       autoExpandParent: true,
-      expandedKeys: formattedKeys && formattedKeys.length > 0
-        ? union(getExpandedKeys(formattedKeys, treeData, this.dataList),
-          ["select-all-common"]) : ["select-all-common"],
+      expandedKeys,
     }, () => {
       this.props.onSelect(formattedKeys, includeTreeData && treeData ); // passing treeData for a use-case in promo-ui. To be removed going further.
     });
@@ -442,7 +471,7 @@ class CapMultiSelectWithTree extends React.Component {
     const { treeData, ...rest } = this.props;
     const newProps = omit(rest, ['onSelect', 'treeData']);
     const treeDataWithSelectAll = [{ title: searchValue ? selectAllSearchResultsText : selectAllText, key: "select-all-common", className: "select-all-tree", children: treeData }];
-    const treeNodes = renderTreeNodes(treeDataWithSelectAll, searchValue, searchKey);
+    const treeNodes = this.renderTreeNodes(treeDataWithSelectAll, searchValue, searchKey);
     let triggerLeftContent = "";
     let triggerRightContent = "";
     if (appliedKeys && appliedKeys.length > 0) {
@@ -497,7 +526,10 @@ class CapMultiSelectWithTree extends React.Component {
                 {treeNodes && treeNodes.length > 0 && (
                   <Tree
                     checkable
-                    onCheck={this.onCheck}
+                    onCheck={(selectedKeys, info) => {
+                      this.onCheck(selectedKeys, info);
+                      this.props.onChange && this.props.onChange(selectedKeys, info);
+                    }}
                     checkedKeys={currentCheckedKeys}
                     selectedKeys={currentCheckedKeys}
                     multiple
@@ -509,6 +541,14 @@ class CapMultiSelectWithTree extends React.Component {
                     {treeNodes}
                   </Tree>
                 )
+                }
+                {this.props.showClearAll 
+                  ? <div className="clear-all">
+                      <span onClick={this.props.onClearAll}>
+                        {this.props.clearAllText}
+                      </span>
+                    </div>
+                  : <></>
                 }
                 {treeNodes && treeNodes.length > 0 ? (
                   <div className="options">
@@ -582,6 +622,12 @@ CapMultiSelectWithTree.defaultProps = {
 
 CapMultiSelectWithTree.propTypes = {
   onSelect: PropTypes.func,
+  onChange: PropTypes.func,
+  expandedKeys: PropTypes.array,
+  expandedKeysHandler: PropTypes.func,
+  onClearAll: PropTypes.func,
+  showClearAll: PropTypes.bool,
+  clearAllText: PropTypes.string,
   placeholder: PropTypes.string,
   searchPlaceholder: PropTypes.string,
   noResultsFoundText: PropTypes.string,

@@ -102,10 +102,28 @@ $multiSelect: cap-multi-tree-select-v2;
       margin: $CAP_SPACE_16 $CAP_SPACE_16 0 $CAP_SPACE_16;
       .ant-input-affix-wrapper .ant-input-prefix {
         left: 8px;
+        .cap-icon-v2 {
+          font-size: 16px !important;
+        }
+      }
+      .ant-input {
+        padding-left: 35px;
       }
     }
     .ant-input-affix-wrapper {
       height: 40px;
+    }
+    .clear-all {
+      display: block;
+      text-align: right;
+      color: rgb(36, 102, 234);
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      padding: 0 24px 8px 0;
+      span {
+        cursor: pointer;
+      }
     }
   }
   .showing-spinner {
@@ -120,6 +138,8 @@ $multiSelect: cap-multi-tree-select-v2;
   }
   .ant-tree li .ant-tree-node-content-wrapper {
     cursor: default;
+    width: -webkit-fill-available;
+    padding-right: 48px;
   }
   .multi-select-title {
     display: flex;
@@ -133,6 +153,11 @@ $multiSelect: cap-multi-tree-select-v2;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+    .selected-text-for-parent {
+      color: rgb(94, 108, 132);
+      font-size: 14px;
+      line-height: 20px;
     }
   }
 }
