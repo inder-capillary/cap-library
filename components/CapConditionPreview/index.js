@@ -5,12 +5,14 @@ import classnames from 'classnames';
 import CapColumn from "../CapColumn";
 import CapRow from "../CapRow";
 import LocaleHoc from "../LocaleHoc";
+import CapLabel from "../CapLabel";
 
 import {
   StyledFlexWrapDiv,
-  StyledCapInlineLabel,
   StyledCapLabel,
 } from "./style";
+
+const { CapLabelInline } = CapLabel;
 
 const CapConditionPreview = ({
   className,
@@ -44,9 +46,9 @@ const CapConditionPreview = ({
   };
   const ValuesPrefix = () => (
     <>
-      <StyledCapInlineLabel type="label18">
+      <CapLabelInline type="label18">
         {operandsMapping[condition.operator].text}
-      </StyledCapInlineLabel>
+      </CapLabelInline>
     </>
   );
 
@@ -60,24 +62,24 @@ const CapConditionPreview = ({
         return (
           <>
             <ValuesPrefix condition={condition} />
-            <StyledCapInlineLabel type="label18">
+            <CapLabelInline type="label16">
               {condition.operand[type]}
-            </StyledCapInlineLabel>
+            </CapLabelInline>
           </>
         );
       case type.indexOf("List") !== -1:
         return (
           <>
             <ValuesPrefix condition={condition} />
-            <StyledCapInlineLabel type="label18">
+            <CapLabelInline type="label16">
               {condition.operand[type][0]}
-            </StyledCapInlineLabel>
-            <StyledCapInlineLabel type="label18">
+            </CapLabelInline>
+            <CapLabelInline type="label18">
               {andMsg}
-            </StyledCapInlineLabel>
-            <StyledCapInlineLabel type="label18">
+            </CapLabelInline>
+            <CapLabelInline type="label16">
               {condition.operand[type][1]}
-            </StyledCapInlineLabel>
+            </CapLabelInline>
           </>
         );
       default:
@@ -94,14 +96,14 @@ const CapConditionPreview = ({
     >
       <CapColumn xs={25}>
         <StyledFlexWrapDiv>
-          <StyledCapInlineLabel type="label18">
+          <CapLabelInline type="label18">
             {condition.isExcluded ? excludeMsg : includeMsg}
-          </StyledCapInlineLabel>
-          <StyledCapInlineLabel type="label18">{whoseMsg}</StyledCapInlineLabel>
+          </CapLabelInline>
+          <CapLabelInline type="label18">{whoseMsg}</CapLabelInline>
           <StyledCapLabel type="label2">
             {grammar[condition?.fact?.factId]}
           </StyledCapLabel>
-          <StyledCapInlineLabel type="label18">{isMsg}</StyledCapInlineLabel>
+          <CapLabelInline type="label18">{isMsg}</CapLabelInline>
           <Values condition={condition} type={type} />
         </StyledFlexWrapDiv>
       </CapColumn>
