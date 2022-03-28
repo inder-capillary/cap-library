@@ -24,6 +24,7 @@ export { default as CapCalendarDatePicker } from './CapCalendarDatePicker';
 export { default as CapHamburgerMenu } from './CapHamburgerMenu';
 export { default as CapMobileDateRangePicker } from './CapMobileDateRangePicker';
 export { default as CapMobileDatePicker } from './CapMobileDatePicker';
+export { default as CapCollapsibleNavbar } from './CapCollapsibleNavbar';
 export { default as CapHeader } from './CapHeader';
 export { default as CapCustomCard } from './CapCustomCard';
 export { default as CapInput } from './CapInput';

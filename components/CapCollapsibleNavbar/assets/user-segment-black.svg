@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="19px" viewBox="0 0 20 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Atoms/Icons/24/user-segment/dark</title>
+    <defs>
+        <path d="M8,9 C9.21050364,9 10.9677605,9.27543205 12.5271906,9.82443237 C11.6859635,10.128455 10.9407385,10.6305948 10.3473782,11.2747771 C9.5852174,11.1065811 8.7760845,11 8,11 C5.3,11 2.2,12.29 2,13.01 L2,13.01 L2,14 L8.98439172,14.0001919 C8.92484987,14.3244081 8.89373885,14.6585709 8.89373885,15 C8.89373885,15.3417786 8.92491359,15.676276 8.98457464,16.0008036 L0,16 L0,13 C0,10.34 5.33,9 8,9 Z M8,0 C10.21,0 12,1.79 12,4 C12,6.21 10.21,8 8,8 C5.79,8 4,6.21 4,4 C4,1.79 5.79,0 8,0 Z M8,2 C6.9,2 6,2.9 6,4 C6,5.1 6.9,6 8,6 C9.1,6 10,5.1 10,4 C10,2.9 9.1,2 8,2 Z" id="path-1"></path>
+        <path d="M5.25,1.96875 L5.25,5.25 L8.53125,5.25 L8.53125,5.90625 C8.53125,8.0808712 6.7683712,9.84375 4.59375,9.84375 C2.4191288,9.84375 0.65625,8.0808712 0.65625,5.90625 C0.65625,3.7316288 2.4191288,1.96875 4.59375,1.96875 L5.25,1.96875 Z M3.9375,3.36394897 C2.80531964,3.65535206 1.96875,4.68310537 1.96875,5.90625 C1.96875,7.35599747 3.14400253,8.53125 4.59375,8.53125 C5.81689463,8.53125 6.84464794,7.69468036 7.13605103,6.5625 L3.9375,6.5625 L3.9375,3.36394897 Z M6.671875,-2.91433544e-15 C8.78609006,-2.02615702e-15 10.5,1.71390994 10.5,3.828125 L10.5,4.59375 L5.90625,4.59375 L5.90625,-2.91433544e-15 L6.671875,-2.91433544e-15 Z M7.4375,1.66194656 L7.4375,3.0625 L8.83805344,3.0625 C8.60738217,2.40987095 8.09012905,1.89261783 7.4375,1.66194656 Z" id="path-3"></path>
+    </defs>
+    <g id="Left-navigation" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01.03.00a_dashboard-expanded" transform="translate(-11.000000, -684.000000)">
+            <g id="Group" transform="translate(8.000000, 681.000000)">
+                <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                <g id="Atoms/Icons/24/user" transform="translate(3.000000, 3.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Combined-Shape" fill="#FFFFFF" fill-rule="nonzero" xlink:href="#path-1"></use>
+                    <g id="Group" mask="url(#mask-2)">
+                        <g transform="translate(-4.000000, -4.000000)" id="↳-🎨Color">
+                            <rect id="grey_k-091E42" fill="#091E42" x="0" y="0" width="24" height="24"></rect>
+                        </g>
+                    </g>
+                </g>
+                <g transform="translate(12.143739, 11.750000)" id="Atoms/Icons/16/chart">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="Mask" fill="#979797" fill-rule="nonzero" xlink:href="#path-3"></use>
+                    <g id="Group" mask="url(#mask-4)" fill="#091E42">
+                        <g id="↳-🎨Color">
+                            <rect id="grey_k-091E42" x="0" y="0" width="10.5" height="10.5"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

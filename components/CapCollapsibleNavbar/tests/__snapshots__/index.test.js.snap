@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CapCollapsibleNavbar /> CapCollapsibleNavbar renders correctly 1`] = `
+<div
+  className="cap-collapsible-nav collapsed hovered"
+  id="cap-collapsible-navbar"
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
+>
+  <div
+    className="ant-row cap-row-v2 controls"
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    span={24}
+  >
+    <div
+      className="ant-col ant-col-24 cap-column-v2 icon-column"
+    >
+      <div
+        className="switcher"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+      >
+        <img
+          className="sc-htpNat kspKcS"
+          src={
+            Object {
+              "ReactComponent": [Function],
+              "__esModule": true,
+              "default": "chevron-left.svg",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="ant-col ant-col-21 cap-column-v2 menu-item collapsed"
+    />
+  </div>
+  <div
+    className="ant-row cap-row-v2 create-new"
+    span={24}
+  >
+    <div
+      className="ant-col ant-col-24 cap-column-v2 icon-column"
+    >
+      <div
+        className="icon-container"
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+      >
+        <img
+          className="sc-bxivhb hZvUOU"
+          src={
+            Object {
+              "ReactComponent": [Function],
+              "__esModule": true,
+              "default": "left-nav-add.svg",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="ant-col ant-col-21 cap-column-v2 menu-item collapsed"
+    >
+      <button
+        className="ant-btn cap-button-v2 secondary-btn ant-btn-secondary"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        type="button"
+      >
+        <img
+          className="sc-bxivhb hZvUOU"
+          src={
+            Object {
+              "ReactComponent": [Function],
+              "__esModule": true,
+              "default": "left-nav-add-black.svg",
+            }
+          }
+        />
+        <span>
+          Create New
+        </span>
+      </button>
+    </div>
+  </div>
+  <div
+    className="ant-row cap-row-v2"
+    span={24}
+  >
+    <div
+      className="ant-col ant-col-24 cap-column-v2 icon-column"
+    >
+      <div
+        className="icon-container"
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        style={Object {}}
+      >
+        <img
+          className="sc-ifAKCX iZeWMU"
+          src={
+            Object {
+              "ReactComponent": [Function],
+              "__esModule": true,
+              "default": "user-segment.svg",
+            }
+          }
+          style={Object {}}
+        />
+      </div>
+    </div>
+    <div
+      className="ant-col ant-col-21 cap-column-v2 menu-item collapsed"
+    >
+      <div
+        className="ant-collapse ant-collapse-borderless ant-collapse-icon-position-right"
+        role="tablist"
+      >
+        <div
+          className="ant-collapse-item"
+          style={Object {}}
+        >
+          <div
+            aria-expanded="false"
+            className="ant-collapse-header"
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="tab"
+            tabIndex={0}
+          >
+            <img
+              className="sc-htpNat kspKcS ant-collapse-arrow"
+              src={
+                Object {
+                  "ReactComponent": [Function],
+                  "__esModule": true,
+                  "default": "chevron-down.svg",
+                }
+              }
+              style={Object {}}
+            />
+            <div
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+            >
+              User segments
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
