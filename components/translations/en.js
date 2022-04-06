@@ -121,4 +121,7 @@ export default {
     blankTemplateDescription: 'Create your own journey from scratch',
     searchPlaceholderMsg: 'Search strategy',
   },
+  CapTruncateList: {
+    more: 'more',
+  },
 };

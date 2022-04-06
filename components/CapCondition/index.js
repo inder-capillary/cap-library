@@ -121,6 +121,11 @@ const CapCondition = (props) => {
   );
 };
 
+CapCondition.defaultProps = {
+  conditionValidationError: 'false',
+  setConditionValidationError: () => {},
+};
+
 CapCondition.propTypes = {
   fact: PropTypes.string,
   dataType: PropTypes.string,

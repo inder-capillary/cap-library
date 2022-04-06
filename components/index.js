@@ -98,5 +98,6 @@ export { default as CapAppNotEnabled } from './CapAppNotEnabled';
 export { default as CapColoredTag } from './CapColoredTag';
 export { default as CapStatus } from './CapStatus';
 export { default as CapConditionPreview } from './CapConditionPreview';
+export { default as CapTruncateList } from './CapTruncateList';
 
 //export components

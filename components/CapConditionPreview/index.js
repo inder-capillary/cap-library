@@ -4,9 +4,15 @@ import classnames from 'classnames';
 
 import CapColumn from "../CapColumn";
 import CapRow from "../CapRow";
+import CapIcon from "../CapIcon";
 import LocaleHoc from "../LocaleHoc";
 import CapLabel from "../CapLabel";
-
+import CapTruncateList from "../CapTruncateList";
+import {
+  MULTI_SELECT,
+  LIST,
+  NUMBER,
+} from './constants';
 import {
   StyledFlexWrapDiv,
   StyledCapLabel,
@@ -16,9 +22,12 @@ const { CapLabelInline } = CapLabel;
 
 const CapConditionPreview = ({
   className,
-  condition,
-  grammar,
   type,
+  operand,
+  operator,
+  dstData,
+  isExcluded,
+  conditionName,
   excludeMsg,
   includeMsg,
   whoseMsg,
@@ -47,38 +56,42 @@ const CapConditionPreview = ({
   const ValuesPrefix = () => (
     <>
       <CapLabelInline type="label18">
-        {operandsMapping[condition.operator].text}
+        {operandsMapping[operator].text}
       </CapLabelInline>
     </>
   );
 
   const Values = () => {
-    switch (true) {
-      case condition.fact.profileId === "COUPON_REDEMPTION_PROFILE": {
-        // const couponSeriesIds = condition.fact.params[0].dst.dstInfo.couponSeriesIds;
-        return null; //Coupons grammer
+    switch (type) {
+      case MULTI_SELECT: {
+        return (
+          <CapRow type="flex" align="middle">
+            <CapIcon className="offer-icon" size="s" type="attachment" />
+            <CapTruncateList list={dstData.couponSeriesNames} showNumber={1} capLabelType="label4" />
+          </CapRow>
+        );
       }
-      case type.indexOf("List") === -1:
+      case NUMBER:
         return (
           <>
-            <ValuesPrefix condition={condition} />
+            <ValuesPrefix />
             <CapLabelInline type="label16">
-              {condition.operand[type]}
+              {operand}
             </CapLabelInline>
           </>
         );
-      case type.indexOf("List") !== -1:
+      case LIST:
         return (
           <>
-            <ValuesPrefix condition={condition} />
+            <ValuesPrefix />
             <CapLabelInline type="label16">
-              {condition.operand[type][0]}
+              {operand[0]}
             </CapLabelInline>
             <CapLabelInline type="label18">
               {andMsg}
             </CapLabelInline>
             <CapLabelInline type="label16">
-              {condition.operand[type][1]}
+              {operand[1]}
             </CapLabelInline>
           </>
         );
@@ -97,14 +110,14 @@ const CapConditionPreview = ({
       <CapColumn xs={25}>
         <StyledFlexWrapDiv>
           <CapLabelInline type="label18">
-            {condition.isExcluded ? excludeMsg : includeMsg}
+            {isExcluded ? excludeMsg : includeMsg}
           </CapLabelInline>
           <CapLabelInline type="label18">{whoseMsg}</CapLabelInline>
           <StyledCapLabel type="label2">
-            {grammar[condition?.fact?.factId]}
+            {conditionName}
           </StyledCapLabel>
           <CapLabelInline type="label18">{isMsg}</CapLabelInline>
-          <Values condition={condition} type={type} />
+          <Values />
         </StyledFlexWrapDiv>
       </CapColumn>
     </CapRow>
@@ -112,10 +125,13 @@ const CapConditionPreview = ({
 };
 
 CapConditionPreview.propTypes = {
-  condition: PropTypes.object,
-  grammar: PropTypes.object,
   type: PropTypes.string,
   className: PropTypes.string,
+  conditionName: PropTypes.string,
+  operand: PropTypes.any,
+  operator: PropTypes.string,
+  isExcluded: PropTypes.bool,
+  dstData: PropTypes.object,
   /**Below fields are added in translations/en.js */
   includeMsg: PropTypes.string,
   excludeMsg: PropTypes.string,
