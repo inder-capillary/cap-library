@@ -90,7 +90,7 @@ $cap-custom-card: cap-custom-card;
   }
 }
 
- .ant-card.#{$cap-custom-card}.WHATSAPP {
+ .ant-card.#{$cap-custom-card}:is(.WHATSAPP,.RCS) {
   .ant-card-body {
     padding-bottom: 0;
     padding-top: 14px;
@@ -111,7 +111,7 @@ $cap-custom-card: cap-custom-card;
       border-radius: 4px;
     }
 
-    .whatsapp-content {
+    .content {
       white-space: pre-wrap;
     }
   }
@@ -121,7 +121,9 @@ $cap-custom-card: cap-custom-card;
   }
 
   .ant-card-head-title{
-    overflow: visible;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .ant-card-head-wrapper {
@@ -312,7 +314,7 @@ $cap-custom-card: cap-custom-card;
     justify-content: flex-start;
     .#{$cap-custom-card-list}-col {
       margin-top: $CAP_SPACE_08;
-      width: 276px;
+      width: 265px;
       margin-right: 12px;
     }
   }

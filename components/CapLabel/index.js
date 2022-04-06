@@ -116,6 +116,12 @@ const labels = {
     'font-weight': 'normal',
     'line-height': 'normal',
   },
+  label19: {
+    'color': 'rgba(0, 0, 0, 0.87)',
+    'font-size': '12px',
+    'font-weight': 'normal',
+    'line-height': '16px',
+  },
 };
 
 const CapLabel = styled.div`

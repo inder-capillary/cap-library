@@ -30,6 +30,7 @@ const channels = {
   line: 'LINE',
   viber: 'VIBER',
   whatsapp: 'WHATSAPP',
+  rcs:"RCS"
 };
 
 const getMpushContent = (templateData) => {
@@ -185,8 +186,9 @@ const getCardContent = (props) => {
       }
       return previewMpush;
     }
+    case channels.rcs:
     case channels.whatsapp: {
-      return <Meta description={content} className="whatsapp-content" />;
+      return <Meta description={content} className="content" />;
     }
     case channels.wechat: {
       const contentPreview = getWeChatContent(content);
