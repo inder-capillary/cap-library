@@ -223,6 +223,10 @@ const CapDndGraph = (props) => {
       });
       if (node.showEdge !== false) { //  We do not show edges for two nodes, Exit trigger and Graph Text
         (node.to || []).forEach((toNodeId, index) => {
+          const {
+            previewComponent: PreviewContainer,
+            previewProps,
+          } = node?.pathsInfo?.[toNodeId] || {};
           graphEdges.push({
             source: node.id,
             target: toNodeId,
@@ -241,7 +245,7 @@ const CapDndGraph = (props) => {
             },
             label: {
               position: 1,
-              text: node?.pathsInfo?.[toNodeId]?.name,
+              text: <PreviewContainer {...previewProps} />,
             },
           });
         });

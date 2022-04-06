@@ -30,7 +30,7 @@ const channels = {
   line: 'LINE',
   viber: 'VIBER',
   whatsapp: 'WHATSAPP',
-  rcs:"RCS"
+  rcs: "RCS",
 };
 
 const getMpushContent = (templateData) => {
