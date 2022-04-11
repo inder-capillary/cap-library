@@ -10,9 +10,18 @@ const componentProps = {
   categories,
   modalContent,
 };
-const setStrategyTemplate = jest.fn();
+const onSelectStrategyTemplate = jest.fn();
 // Jest to mock this import
 jest.mock('lodash/debounce');
+jest.mock("../../CapColoredTag", () => ({
+  __esModule: true,
+  default: (props) => <div className="cap-colored-tag" {...props}>coming soon</div>,
+}));
+
+jest.mock("../../CapModal", () => ({
+  __esModule: true,
+  default: (props) => <div className="cap-modal" {...props}>cap modal</div>,
+}));
 
 const renderFunction = (props) => <CapStaticTemplates {...props} />;
 
@@ -41,16 +50,10 @@ describe('<CapStaticTemplates />', () => {
     const event = { target: { value: 'bootSales' }};
     const newComponentProps = {
       ...componentProps,
-      setStrategyTemplate,
+      onSelectStrategyTemplate,
     };
     wrapper = mount(renderFunction(newComponentProps));
     wrapper.find('Styled(CapRadioCard)').props().onChange(event);
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should close modal on click of close icon', () => {
-    wrapper = mount(renderFunction(componentProps));
-    wrapper.find('CapModal').props().onCancel();
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -75,13 +78,13 @@ describe('<CapStaticTemplates />', () => {
   });
 
   it('should select category onClick of sidebar category', () => {
-    const onSelect = jest.fn();
+    const onSelectCategory = jest.fn();
     const templatesContainer = { scrollTo: jest.fn() };
     jest.spyOn(document, 'querySelector').mockImplementation((selector) => selector === '.templates-container' ? templatesContainer : {});
     const newComponentProps = {
       ...componentProps,
       isBlankTemplateRequired: true,
-      onSelect,
+      onSelectCategory,
     };
 
     wrapper = mount(renderFunction(newComponentProps));

@@ -1,126 +1,137 @@
 /**
-* CapStaticTemplatesDoc
-*/
+ * CapStaticTemplatesDoc
+ */
 import React, { Component } from "react";
-import PropertyTable from '../../helpers/PropertyTable';
+import PropertyTable from "../../helpers/PropertyTable";
 import CapStaticTemplates from "../../components/CapStaticTemplates";
 import "./info.scss";
 
 const categoryColors = {
-  category1: '#91e5e5',
-  category2: '#fbbe91',
-  category3: '#8badf0',
+  category1: "#91e5e5",
+  category2: "#fbbe91",
+  category3: "#8badf0",
 };
 
 const icon = "basket";
 const categories = [
   {
-    key: 'boostSales',
-    label: 'Boost sales',
-    value: 'Boost sales',
+    key: "boostSales",
+    label: "Boost sales",
+    value: "Boost sales",
     color: categoryColors.category1,
     panes: [
       {
-        key: 'browseAbandonNew',
-        label: 'Browse abandon new',
-        value: 'Browse abandon new',
-        description: 'Target contacts who have visited your product pages more than once but have not added anything to their cart',
+        key: "browseAbandonNew",
+        label: "Browse abandon new",
+        value: "Browse abandon new",
+        description:
+          "Target contacts who have visited your product pages more than once but have not added anything to their cart",
+        icon,
+        isAvailable: true,
+      },
+      {
+        key: "cartAbandonNew",
+        label: "Cart abandon new",
+        value: "Cart abandon new",
+        description:
+          "Target contacts who have added item to cart but haven't completed the purchase",
         icon,
         isAvailable: false,
       },
       {
-        key: 'cartAbandonNew',
-        label: 'Cart abandon new',
-        value: 'Cart abandon new',
-        description: 'Target contacts who have added item to cart but haven\'t completed the purchase',
+        key: "increaseOnline",
+        label: "Increase online",
+        value: "Increase online",
+        description:
+          "Make customers aware of ecom and social channels from where they can order products",
         icon,
-        isAvailable: false,
-      },
-      {
-        key: 'increaseOnline',
-        label: 'Increase online',
-        value: 'Increase online',
-        description: 'Make customers aware of ecom and social channels from where they can order products',
-        icon,
-        isAvailable: false,
+        isAvailable: true,
       },
     ],
   },
   {
-    key: 'increaseConversion',
-    label: 'Increase conversion',
-    value: 'Increase conversion',
+    key: "increaseConversion",
+    label: "Increase conversion",
+    value: "Increase conversion",
     color: categoryColors.category2,
     panes: [
       {
-        key: 'strategy4',
-        label: 'Strategy 4',
-        value: 'Strategy 4',
-        description: 'Target contacts who have visited your product pages more than once but have not added anything to their cart',
+        key: "strategy4",
+        label: "Strategy 4",
+        value: "Strategy 4",
+        description:
+          "Target contacts who have visited your product pages more than once but have not added anything to their cart",
         icon,
         isAvailable: false,
       },
       {
-        key: 'strategy5',
-        label: 'Strategy 5',
-        value: 'Strategy 5',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
+        key: "strategy5",
+        label: "Strategy 5",
+        value: "Strategy 5",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
         icon,
         isAvailable: false,
       },
       {
-        key: 'increaseOnline2',
-        label: 'Increase online2',
-        value: 'Increase online2',
-        description: 'Make customers aware of ecom and social channels from where they can order products',
+        key: "increaseOnline2",
+        label: "Increase online2",
+        value: "Increase online2",
+        description:
+          "Make customers aware of ecom and social channels from where they can order products",
         icon,
         isAvailable: false,
       },
       {
-        key: 'strategy6',
-        label: 'Strategy 6',
-        value: 'Strategy 6',
-        description: 'Target contacts who have visited your product pages more than once but have not added anything to their cart',
+        key: "strategy6",
+        label: "Strategy 6",
+        value: "Strategy 6",
+        description:
+          "Target contacts who have visited your product pages more than once but have not added anything to their cart",
         icon,
         isAvailable: false,
       },
       {
-        key: 'strategy7',
-        label: 'Strategy 7',
-        value: 'Strategy 7',
-        description: 'Target contacts who have added item to cart but haven\'t completed the purchase',
+        key: "strategy7",
+        label: "Strategy 7",
+        value: "Strategy 7",
+        description:
+          "Target contacts who have added item to cart but haven't completed the purchase",
         icon,
         isAvailable: false,
       },
       {
-        key: 'strategy8',
-        label: 'Strategy 8',
-        value: 'Strategy 8',
-        description: 'Make customers aware of ecom and social channels from where they can order products',
+        key: "strategy8",
+        label: "Strategy 8",
+        value: "Strategy 8",
+        description:
+          "Make customers aware of ecom and social channels from where they can order products",
         icon,
         isAvailable: false,
       },
     ],
   },
   {
-    key: 'customerLifecycle',
-    label: 'Customer lifecycle',
-    value: 'Customer lifecycle',
+    key: "customerLifecycle",
+    label: "Customer lifecycle",
+    value: "Customer lifecycle",
     color: categoryColors.category3,
     panes: [
       {
-        key: 'strategy9',
-        label: 'Strategy 9',
-        value: 'Strategy 9',
-        description: 'Make customers aware of ecom and social channels from where they can order products',
+        key: "strategy9",
+        label: "Strategy 9",
+        value: "Strategy 9",
+        description:
+          "Make customers aware of ecom and social channels from where they can order products",
         icon,
         isAvailable: false,
       },
       {
-        key: 'strategy10',
-        label: 'Strategy 10',
-        value: 'Strategy 10',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
+        key: "strategy10",
+        label: "Strategy 10",
+        value: "Strategy 10",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
         icon,
         isAvailable: false,
       },
@@ -129,54 +140,55 @@ const categories = [
 ];
 
 const modalContent = {
-  title: 'Journey templates',
-  description: 'Pre-defined strategy driven marketing use-cases journey templates, with AI powered advanced options:',
+  title: "Journey templates",
+  description:
+    "Pre-defined strategy driven marketing use-cases journey templates, with AI powered advanced options:",
   iconsAndMessages: [
     {
-      message: 'Content personalisation',
-      iconType: 'communication',
+      message: "Content personalisation",
+      iconType: "communication",
     },
     {
-      message: 'Channel personalisation',
-      iconType: 'megaphone',
+      message: "Channel personalisation",
+      iconType: "megaphone",
     },
     {
-      message: 'Product personalisation',
-      iconType: 'footwear',
+      message: "Product personalisation",
+      iconType: "footwear",
     },
     {
-      message: 'Time personalisation',
-      iconType: 'filled',
+      message: "Time personalisation",
+      iconType: "filled",
     },
   ],
 };
-
 
 const infoData = [
   {
     key: 1,
     property: "categories",
-    description: "The data required to show the values on the side bar and templates content",
+    description:
+      "The data required to show the values on the side bar and templates content",
     type: "array",
     default: "-",
   },
   {
     key: 2,
-    property: "onSelect",
+    property: "onSelectCategory",
     description: "The callback function to handle the selected category",
     type: "callback",
     default: "-",
   },
   {
     key: 3,
-    property: "strategyTemplate",
+    property: "selectedStrategyTemplate",
     description: "The selected template value",
     type: "string",
     default: "-",
   },
   {
     key: 4,
-    property: "setStrategyTemplate",
+    property: "onSelectStrategyTemplate",
     description: "The callback function to handle the selected template",
     type: "callback",
     default: "-",
@@ -184,7 +196,8 @@ const infoData = [
   {
     key: 5,
     property: "isBlankTemplateRequired",
-    description: "Whether to display the Blank template or not. Example, isBlankTemplateRequired={false}",
+    description:
+      "Whether to display the Blank template or not. Example, isBlankTemplateRequired={false}",
     type: "boolean",
     default: "false",
   },
@@ -233,56 +246,63 @@ const infoData = [
   {
     key: 12,
     property: "modalContent",
-    description: "The data required to show on the modal. Example: title, description, iconsAndMessages",
+    description:
+      "The data required to show on the modal. Example: title, description, iconsAndMessages",
     type: "array",
     default: "-",
   },
 ];
 
-export default class CapStaticTemplatesDoc extends Component { //
+export default class CapStaticTemplatesDoc extends Component {
+  //
   constructor(props) {
     super(props);
     this.state = {
-      category: null,
-      strategyTemplate: null,
+      selectedCategory: null,
+      selectedStrategyTemplate: null,
     };
   }
 
-  setStrategyTemplate = (value) => {
+  onSelectStrategyTemplate= (value) => {
     this.setState((prevState) => ({
       ...prevState,
-      strategyTemplate: value,
+      selectedStrategyTemplate: value,
     }));
-  }
+  };
 
-  onSelect = (value) => {
+  onSelectCategory = (value) => {
     this.setState((prevState) => ({
       ...prevState,
-      category: value,
+      selectedCategory: value,
     }));
-  }
+  };
 
   render() {
-    const { category, strategyTemplate } = this.state;
+    const { selectedCategory, selectedStrategyTemplate } = this.state;
     return (
       <div className="cap-static-info">
         <div className="cap-static-showcase">
           <CapStaticTemplates
             categories={categories}
-            selectedCategory={category}
-            onSelect={this.onSelect}
-            strategyTemplate={strategyTemplate}
-            setStrategyTemplate={this.setStrategyTemplate}
+            selectedCategory={selectedCategory}
+            onSelectCategory={this.onSelectCategory}
+            selectedStrategyTemplate={selectedStrategyTemplate}
+            onSelectStrategyTemplate={this.onSelectStrategyTemplate}
             isBlankTemplateRequired
             modalContent={modalContent}
           />
         </div>
         <PropertyTable data={infoData} />
-        <div style={{ marginBottom: '24px' }}>
+        <div style={{ marginBottom: "24px" }}>
           <b>NOTE: </b>
-            This component is the extended version of ant design
-          <a href="https://ant.design/components/radio/#header"> CapRadioCard </a>
-            component. Please refer their component for detailed explanation of component and supported props.
+          This component is the extended version of ant design
+          <a href="https://ant.design/components/radio/#header">
+            {" "}
+            CapRadioCard
+            {" "}
+          </a>
+          component. Please refer their component for detailed explanation of
+          component and supported props.
         </div>
       </div>
     );

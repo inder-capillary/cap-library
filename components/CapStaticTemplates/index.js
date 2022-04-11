@@ -1,30 +1,30 @@
 /**
-*
-* CapStaticTemplates
-*
-*/
+ *
+ * CapStaticTemplates
+ *
+ */
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo } from "react";
 import PropTypes from "prop-types";
-import classNames from 'classnames';
-import debounce from 'lodash/debounce';
-import CapHeading from '../CapHeading';
-import CapRow from '../CapRow';
-import CapHeader from '../CapHeader';
-import CapLabel from '../CapLabel';
-import CapIcon from '../CapIcon';
-import CapImage from '../CapImage';
-import CapColumn from '../CapColumn';
-import CapSpin from '../CapSpin';
-import CapTooltip from '../CapTooltip';
-import CapColoredTag from '../CapColoredTag';
+import classNames from "classnames";
+import debounce from "lodash/debounce";
+import CapHeading from "../CapHeading";
+import CapRow from "../CapRow";
+import CapHeader from "../CapHeader";
+import CapLabel from "../CapLabel";
+import CapIcon from "../CapIcon";
+import CapImage from "../CapImage";
+import CapColumn from "../CapColumn";
+import CapSpin from "../CapSpin";
+import CapTooltip from "../CapTooltip";
+import CapColoredTag from "../CapColoredTag";
 import LocaleHoc from "../LocaleHoc";
-import ModalImage from '../assets/images/group-3.svg';
+import ModalImage from "../assets/images/group-3.svg";
 import {
   BLANK_TEMPLATE,
   BLANK_TEMPLATE_ICON,
   BLANK_TEMPLATE_CLASS,
-} from './constants';
+} from "./constants";
 import {
   StyledDiv,
   TemplatesAndSearchContainer,
@@ -37,10 +37,10 @@ import {
   TemplatesModal,
   StyledCapCard,
   PremiumIcon,
-} from './style';
-import { CAP_SPACE_12 } from '../styled/variables';
+} from "./style";
+import { CAP_SPACE_12 } from "../styled/variables";
 
-const clsPrefix = 'cap-static-templates-v2';
+const clsPrefix = "cap-static-templates-v2";
 function CapStaticTemplates(props) {
   const {
     categories,
@@ -50,9 +50,9 @@ function CapStaticTemplates(props) {
     blankCardWidth,
     blankCardHeight,
     selectedCategory,
-    onSelect,
-    strategyTemplate,
-    setStrategyTemplate,
+    onSelectCategory,
+    selectedStrategyTemplate,
+    onSelectStrategyTemplate,
     isBlankTemplateRequired,
     templatesContainerWidth,
     templatesContainerMaxHeight,
@@ -75,6 +75,7 @@ function CapStaticTemplates(props) {
 
   const CUSTOM_STRATEGY_PANE = {
     value: BLANK_TEMPLATE,
+    key: BLANK_TEMPLATE,
     label: blankTemplateLabel,
     description: blankTemplateDescription,
     icon: BLANK_TEMPLATE_ICON,
@@ -84,12 +85,12 @@ function CapStaticTemplates(props) {
 
   function handleClick(value) {
     scrollToSelectedCategory(value);
-    onSelect(value);
+    onSelectCategory(value);
   }
 
   function scrollToSelectedCategory(id) {
     const selectedElement = document.getElementById(id);
-    const templateContainer = document.querySelector('.templates-container');
+    const templateContainer = document.querySelector(".templates-container");
     templateContainer.scrollTo(0, selectedElement?.offsetTop);
   }
 
@@ -106,53 +107,105 @@ function CapStaticTemplates(props) {
 
   function handleShowModal(event) {
     const { value } = event?.target;
-    if (value !== BLANK_TEMPLATE) {
-      setShowModal(true);
-    }
-    setStrategyTemplate(value);
+    onSelectStrategyTemplate(value);
+
+    //Show modal only if template is not Available.
+
+    /* eslint-disable no-unused-expressions */
+    categories?.forEach((category) => {
+        category?.panes?.forEach((template) => {
+          if (template?.key === value && !template.isAvailable) {
+            setShowModal(true);
+          }
+        });
+    });
+    /* eslint-enable no-unused-expressions */
   }
 
   function handleHideModal() {
     setShowModal(false);
   }
-
   function getPane(pane) {
-    const { value, label, description, icon, isAvailable = false, isBlankTemplate, ...rest } = pane;
-    const iconLabelArray = value?.split(' ');
-    const iconLabelText = iconLabelArray?.length > 1 ? iconLabelArray?.[0][0] + iconLabelArray?.[1][0] : iconLabelArray?.[0][0];
-    return ({
+    const {
+      value,
+      key,
+      label,
+      description,
+      icon,
+      isAvailable = false,
+      isBlankTemplate,
+      ...rest
+    } = pane;
+    const iconLabelArray = value?.split(" ");
+    const iconLabelText = iconLabelArray?.length > 1
+      ? iconLabelArray?.[0][0] + iconLabelArray?.[1][0]
+      : iconLabelArray?.[0][0];
+    return {
       title: (
         <CapRow
           type="flex"
           justify="space-between"
-          className={`card-header-row ${isBlankTemplate ? 'custom-template' : ''}`}
+          className={`card-header-row ${
+            isBlankTemplate ? "custom-template" : ""
+          }`}
         >
           <CapHeader
             title={(
               <CapTooltip title={label}>
-                <CapHeading type="h4" className={`card-header-title ${isAvailable ? 'card-available' : ''}`}>
+                <CapHeading
+                  type="h4"
+                  className={`card-header-title ${
+                    isAvailable ? "card-available" : ""
+                  }`}
+                >
                   {label}
                 </CapHeading>
               </CapTooltip>
             )}
-            description={isBlankTemplate && (<CapLabel type="label1" className="card-content">{description}</CapLabel>)}
+            description={
+              isBlankTemplate && (
+                <CapLabel type="label1" className="card-content">
+                  {description}
+                </CapLabel>
+              )
+            }
           />
-          {(!isAvailable && !isBlankTemplate) && <CapColoredTag className="coming-soon-tag" style={{ marginBottom: CAP_SPACE_12 }} tagColor="#0065ff">{comingSoonMsg}</CapColoredTag>}
+          {!isAvailable && !isBlankTemplate && (
+            <CapColoredTag
+              className="coming-soon-tag"
+              style={{ marginBottom: CAP_SPACE_12 }}
+              tagColor="#0065ff"
+            >
+              {comingSoonMsg}
+            </CapColoredTag>
+          )}
         </CapRow>
       ),
-      value,
-      icon: isBlankTemplate ? (<TemplateIcon type={icon} color="blue" />) : (
+      value: key,
+      icon: isBlankTemplate ? (
+        <TemplateIcon type={icon} color="blue" />
+      ) : (
         <CapColumn className="strategy-icon">
-          <span className={`text-label ${strategyTemplate === value ? 'selected' : ''}`}>
+          <span
+            className={`text-label ${
+              selectedStrategyTemplate === value ? "selected" : ""
+            }`}
+          >
             {iconLabelText}
           </span>
-        </CapColumn>),
+        </CapColumn>
+      ),
 
       customComponent: !isBlankTemplate && (
-        <CapLabel type="label1" className={!isBlankTemplate && "card-content margin-t-4"}>{description}</CapLabel>
+        <CapLabel
+          type="label1"
+          className={!isBlankTemplate && "card-content margin-t-4"}
+        >
+          {description}
+        </CapLabel>
       ),
       ...rest,
-    });
+    };
   }
 
   const getAllPanes = (panes = []) => panes.map((pane) => getPane(pane));
@@ -164,14 +217,16 @@ function CapStaticTemplates(props) {
       const structuredPanes = getAllPanes(panes);
       return (
         <CapRow id={value} key={key} className="margin-t-20">
-          <CapLabel className="margin-l-8 margin-b-8" type="label4">{label}</CapLabel>
+          <CapLabel className="margin-l-8 margin-b-8" type="label4">
+            {label}
+          </CapLabel>
           <StrategyTemplate
             panes={structuredPanes}
             cardWidth={cardWidth}
             cardHeight={cardHeight}
             borderColor={color}
-            selected={strategyTemplate}
-            value={strategyTemplate}
+            selected={selectedStrategyTemplate}
+            value={selectedStrategyTemplate}
             onChange={handleShowModal}
             className={classNames(clsPrefix, className)}
           />
@@ -179,7 +234,7 @@ function CapStaticTemplates(props) {
       );
     });
     return strategyTemplates;
-  }, [searchText, filteredCategories, categories, strategyTemplate]);
+  }, [searchText, filteredCategories, categories, selectedStrategyTemplate]);
 
   // This function is to handle the search;
   function getSearchResult(searchValue) {
@@ -218,16 +273,24 @@ function CapStaticTemplates(props) {
         <CapColumn className="modal-info-content">
           <CapHeader
             title={title}
-            description={(<CapColoredTag tagColor="#0065ff">{comingSoonMsg}</CapColoredTag>)}
+            description={
+              <CapColoredTag tagColor="#0065ff">{comingSoonMsg}</CapColoredTag>
+            }
           />
-          <CapHeading type="label2" className="margin-t-16">{description}</CapHeading>
-          <CapRow type="flex" align="center" justify="space-between" className="margin-t-16">
-            {iconsAndMessages?.map( (data) => (
-              <StyledCapCard
-                title={(
-                  <CapIcon type={data?.iconType} size="m" />
-                )}>
-                <CapLabel type="label5" style={{ fontWeight: 500 }}>{data?.message}</CapLabel>
+          <CapHeading type="label2" className="margin-t-16">
+            {description}
+          </CapHeading>
+          <CapRow
+            type="flex"
+            align="center"
+            justify="space-between"
+            className="margin-t-16"
+          >
+            {iconsAndMessages?.map((data) => (
+              <StyledCapCard title={<CapIcon type={data?.iconType} size="m" />}>
+                <CapLabel type="label5" style={{ fontWeight: 500 }}>
+                  {data?.message}
+                </CapLabel>
               </StyledCapCard>
             ))}
           </CapRow>
@@ -237,87 +300,101 @@ function CapStaticTemplates(props) {
   }
 
   return (
-    <>
-      <CapHeader
-        className="margin-b-16"
-        title={<CapHeading type="h3">{strategyTitleMsg}</CapHeading>}
-        description={<CapLabel type="label3">{strategyDescriptionMsg}</CapLabel>}
-      />
-      <StyledDiv>
-        <SideBar>
-          {isBlankTemplateRequired && (
-            <CategoryContainer
-              selected={BLANK_TEMPLATE === selectedCategory}
-              className="category-selector"
-              onClick={() => handleClick(BLANK_TEMPLATE)}
-            >
-              <CapLabel type={BLANK_TEMPLATE === selectedCategory ? "label4" : "label9"}>{blankCategoryLabel}</CapLabel>
-            </CategoryContainer>
-          )}
-          {categories?.map((category) => (
-            <CategoryContainer
-              key={category?.key}
-              className="category-selector"
-              color={category?.color}
-              selected={category?.value === selectedCategory}
-              onClick={() => handleClick(category?.value)}
-            >
-              <CapLabel type={category?.value === selectedCategory ? "label4" : "label9"}>
-                {category?.label}
-                {category?.premium && <PremiumIcon type="premium" size="s" />}
-              </CapLabel>
-              <CapLabel type="label1">{category?.panes?.length}</CapLabel>
-            </CategoryContainer>
-          ))}
-        </SideBar>
-        <TemplatesAndSearchContainer width={templatesContainerWidth}>
-          <SearchBox
-            value={searchText}
-            onChange={handleSearch}
-            onClear={handleSearch}
-            placeholder={searchPlaceholder || searchPlaceholderMsg}
-          />
-          <TemplatesContainer className="templates-container" maxHeight={templatesContainerMaxHeight}>
-            <CapSpin spinning={isSearching}>
-              {isBlankTemplateRequired && (
-                <CapRow id={BLANK_TEMPLATE} key={BLANK_TEMPLATE} className="margin-t-4">
-                  <StrategyTemplate
-                    panes={[getPane(CUSTOM_STRATEGY_PANE)]}
-                    cardWidth={blankCardWidth}
-                    cardHeight={blankCardHeight}
-                    selected={strategyTemplate}
-                    value={strategyTemplate}
-                    onChange={handleShowModal}
-                    className={BLANK_TEMPLATE_CLASS}
-                  />
-                </CapRow>
-              )}
-              {getTemplates}
-            </CapSpin>
-          </TemplatesContainer>
-        </TemplatesAndSearchContainer>
+     <>
+       <CapHeader
+         className="margin-b-16"
+         title={<CapHeading type="h3">{strategyTitleMsg}</CapHeading>}
+         description={
+           <CapLabel type="label3">{strategyDescriptionMsg}</CapLabel>
+         }
+       />
+       <StyledDiv>
+         <SideBar>
+           {isBlankTemplateRequired && (
+             <CategoryContainer
+               selected={BLANK_TEMPLATE === selectedCategory}
+               className="category-selector"
+               onClick={() => handleClick(BLANK_TEMPLATE)}
+             >
+               <CapLabel
+                 type={BLANK_TEMPLATE === selectedCategory ? "label4" : "label9"}
+               >
+                 {blankCategoryLabel}
+               </CapLabel>
+             </CategoryContainer>
+           )}
+           {categories?.map((category) => (
+             <CategoryContainer
+               key={category?.key}
+               className="category-selector"
+               color={category?.color}
+               selected={category?.value === selectedCategory}
+               onClick={() => handleClick(category?.value)}
+             >
+               <CapLabel
+                 type={
+                   category?.value === selectedCategory ? "label4" : "label9"
+                 }
+               >
+                 {category?.label}
+                 {category?.premium && <PremiumIcon type="premium" size="s" />}
+               </CapLabel>
+               <CapLabel type="label1">{category?.panes?.length}</CapLabel>
+             </CategoryContainer>
+           ))}
+         </SideBar>
+         <TemplatesAndSearchContainer width={templatesContainerWidth}>
+           <SearchBox
+             value={searchText}
+             onChange={handleSearch}
+             onClear={handleSearch}
+             placeholder={searchPlaceholder || searchPlaceholderMsg}
+           />
+           <TemplatesContainer
+             className="templates-container"
+             maxHeight={templatesContainerMaxHeight}
+           >
+             <CapSpin spinning={isSearching}>
+               {isBlankTemplateRequired && (
+                 <CapRow
+                   id={BLANK_TEMPLATE}
+                   key={BLANK_TEMPLATE}
+                   className="margin-t-4"
+                 >
+                   <StrategyTemplate
+                     panes={[getPane(CUSTOM_STRATEGY_PANE)]}
+                     cardWidth={blankCardWidth}
+                     cardHeight={blankCardHeight}
+                     selected={selectedStrategyTemplate}
+                     value={selectedStrategyTemplate}
+                     onChange={handleShowModal}
+                     className={BLANK_TEMPLATE_CLASS}
+                   />
+                 </CapRow>
+               )}
+               {getTemplates}
+             </CapSpin>
+           </TemplatesContainer>
+         </TemplatesAndSearchContainer>
 
-        {/* Modal Implementation. This will change in future */}
-        <TemplatesModal
-          visible={showModal}
-          onCancel={handleHideModal}
-        >
-          {getModalContent()}
-        </TemplatesModal>
-      </StyledDiv>
-    </>
+         {/* Modal Implementation. This will change in future */}
+         <TemplatesModal visible={showModal} onCancel={handleHideModal}>
+           {getModalContent()}
+         </TemplatesModal>
+       </StyledDiv>
+     </>
   );
 }
 
 CapStaticTemplates.defaultProps = {
-  cardWidth: '278px',
-  cardHeight: '104px',
-  blankCardWidth: '278px',
-  blankCardHeight: '80px',
+  cardWidth: "278px",
+  cardHeight: "104px",
+  blankCardWidth: "278px",
+  blankCardHeight: "80px",
   categories: [],
   isBlankTemplateRequired: false,
-  templatesContainerWidth: '990px',
-  templatesContainerMaxHeight: '400px',
+  templatesContainerWidth: "990px",
+  templatesContainerMaxHeight: "400px",
 };
 
 CapStaticTemplates.propTypes = {
@@ -328,13 +405,12 @@ CapStaticTemplates.propTypes = {
   blankCardWidth: PropTypes.string,
   blankCardHeight: PropTypes.string,
   selectedCategory: PropTypes.string,
-  onSelect: PropTypes.func,
-  strategyTemplate: PropTypes.string,
-  setStrategyTemplate: PropTypes.func,
+  onSelectCategory: PropTypes.func,
+  selectedStrategyTemplate: PropTypes.string,
+  onSelectStrategyTemplate: PropTypes.func,
   isBlankTemplateRequired: PropTypes.bool,
   templatesContainerWidth: PropTypes.string,
   templatesContainerMaxHeight: PropTypes.string,
-  modalContent: PropTypes.object,
   searchPlaceholder: PropTypes.any,
 };
 
