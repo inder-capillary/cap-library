@@ -245,7 +245,7 @@ const CapDndGraph = (props) => {
             },
             label: {
               position: 1,
-              text: <PreviewContainer {...previewProps} />,
+              text: PreviewContainer && <PreviewContainer {...previewProps} />,
             },
           });
         });
