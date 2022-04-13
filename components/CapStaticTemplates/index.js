@@ -23,7 +23,6 @@ import ModalImage from "../assets/images/group-3.svg";
 import {
   BLANK_TEMPLATE,
   BLANK_TEMPLATE_ICON,
-  BLANK_TEMPLATE_CLASS,
 } from "./constants";
 import {
   StyledDiv,
@@ -204,6 +203,7 @@ function CapStaticTemplates(props) {
           {description}
         </CapLabel>
       ),
+      radioCardClassName: isAvailable ? 'template-enabled' : 'template-disabled',
       ...rest,
     };
   }
@@ -368,7 +368,6 @@ function CapStaticTemplates(props) {
                      selected={selectedStrategyTemplate}
                      value={selectedStrategyTemplate}
                      onChange={handleShowModal}
-                     className={BLANK_TEMPLATE_CLASS}
                    />
                  </CapRow>
                )}

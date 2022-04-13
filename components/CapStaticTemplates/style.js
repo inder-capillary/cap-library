@@ -5,9 +5,6 @@ import CapIcon from '../CapIcon';
 import CapModal from '../CapModal';
 import CapCard from '../CapCard';
 import {
-  BLANK_TEMPLATE_CLASS,
-} from './constants';
-import {
   CAP_G09,
   CAP_G05,
   CAP_G07,
@@ -76,10 +73,12 @@ export const TemplateIcon = styled(CapIcon)`
 export const StrategyTemplate = styled(CapRadioCard)`
   &.ant-radio-group {
     .ant-radio-button-wrapper {
+      &.template-disabled{
+        opacity: 0.5;
+      }
       .ant-card.ant-card-bordered {
         border-left: ${(props) => `4px solid ${props?.borderColor || CAP_G05}`};
       }
-      opacity: ${(props) => props?.className !== BLANK_TEMPLATE_CLASS && 0.5};
       .card-header-title {
         max-width: 200px;
         text-overflow: ellipsis;

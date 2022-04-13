@@ -1461,6 +1461,7 @@ line-height: ",
                                                     b
                                                   </span>
                                                 </CapColumn>,
+                                                "radioCardClassName": "template-disabled",
                                                 "title": <CapRow
                                                   className="card-header-row "
                                                   justify="space-between"
@@ -1514,6 +1515,7 @@ line-height: ",
                                                     c
                                                   </span>
                                                 </CapColumn>,
+                                                "radioCardClassName": "template-disabled",
                                                 "title": <CapRow
                                                   className="card-header-row "
                                                   justify="space-between"
@@ -1566,19 +1568,19 @@ line-height: ",
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "sc-hMqMXs",
                                                   "isStatic": false,
-                                                  "lastClassName": "jtwVyG",
+                                                  "lastClassName": "cHkRXk",
                                                   "rules": Array [
                                                     "
   &.ant-radio-group {
     .ant-radio-button-wrapper {
+      &.template-disabled{
+        opacity: 0.5;
+      }
       .ant-card.ant-card-bordered {
         border-left: ",
                                                     [Function],
                                                     ";
       }
-      opacity: ",
-                                                    [Function],
-                                                    ";
       .card-header-title {
         max-width: 200px;
         text-overflow: ellipsis;
@@ -1736,6 +1738,7 @@ line-height: ",
                                                       b
                                                     </span>
                                                   </CapColumn>,
+                                                  "radioCardClassName": "template-disabled",
                                                   "title": <CapRow
                                                     className="card-header-row "
                                                     justify="space-between"
@@ -1789,6 +1792,7 @@ line-height: ",
                                                       c
                                                     </span>
                                                   </CapColumn>,
+                                                  "radioCardClassName": "template-disabled",
                                                   "title": <CapRow
                                                     className="card-header-row "
                                                     justify="space-between"
@@ -1833,7 +1837,7 @@ line-height: ",
                                               borderColor="#91e5e5"
                                               cardHeight="104px"
                                               cardWidth="278px"
-                                              className="sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                              className="sc-hMqMXs cHkRXk cap-static-templates-v2"
                                               onChange={[Function]}
                                               panes={
                                                 Array [
@@ -1853,6 +1857,7 @@ line-height: ",
                                                         b
                                                       </span>
                                                     </CapColumn>,
+                                                    "radioCardClassName": "template-disabled",
                                                     "title": <CapRow
                                                       className="card-header-row "
                                                       justify="space-between"
@@ -1906,6 +1911,7 @@ line-height: ",
                                                         c
                                                       </span>
                                                     </CapColumn>,
+                                                    "radioCardClassName": "template-disabled",
                                                     "title": <CapRow
                                                       className="card-header-row "
                                                       justify="space-between"
@@ -1950,14 +1956,14 @@ line-height: ",
                                                 borderColor="#91e5e5"
                                                 buttonStyle="outline"
                                                 cardWidth="278px"
-                                                className="cap-radioCard-v2 sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                                className="cap-radioCard-v2 sc-hMqMXs cHkRXk cap-static-templates-v2"
                                                 onChange={[Function]}
                                               >
                                                 <div
-                                                  className="ant-radio-group ant-radio-group-outline cap-radioCard-v2 sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                                  className="ant-radio-group ant-radio-group-outline cap-radioCard-v2 sc-hMqMXs cHkRXk cap-static-templates-v2"
                                                 >
                                                   <RadioButton
-                                                    className=""
+                                                    className="template-disabled"
                                                     key="browseAbandonNew"
                                                     style={
                                                       Object {
@@ -1969,7 +1975,7 @@ line-height: ",
                                                   >
                                                     <Radio
                                                       checked={false}
-                                                      className=""
+                                                      className="template-disabled"
                                                       prefixCls="ant-radio-button"
                                                       style={
                                                         Object {
@@ -1981,7 +1987,7 @@ line-height: ",
                                                       value="browseAbandonNew"
                                                     >
                                                       <label
-                                                        className="ant-radio-button-wrapper"
+                                                        className="template-disabled ant-radio-button-wrapper"
                                                         style={
                                                           Object {
                                                             "height": "104px",
@@ -3177,7 +3183,7 @@ line-height: ",
                                                     </Radio>
                                                   </RadioButton>
                                                   <RadioButton
-                                                    className=""
+                                                    className="template-disabled"
                                                     key="cartAbandonNew"
                                                     style={
                                                       Object {
@@ -3189,7 +3195,7 @@ line-height: ",
                                                   >
                                                     <Radio
                                                       checked={false}
-                                                      className=""
+                                                      className="template-disabled"
                                                       prefixCls="ant-radio-button"
                                                       style={
                                                         Object {
@@ -3201,7 +3207,7 @@ line-height: ",
                                                       value="cartAbandonNew"
                                                     >
                                                       <label
-                                                        className="ant-radio-button-wrapper"
+                                                        className="template-disabled ant-radio-button-wrapper"
                                                         style={
                                                           Object {
                                                             "height": "104px",
@@ -5957,6 +5963,7 @@ line-height: ",
                                                     b
                                                   </span>
                                                 </CapColumn>,
+                                                "radioCardClassName": "template-disabled",
                                                 "title": <CapRow
                                                   className="card-header-row "
                                                   justify="space-between"
@@ -6010,6 +6017,7 @@ line-height: ",
                                                     c
                                                   </span>
                                                 </CapColumn>,
+                                                "radioCardClassName": "template-disabled",
                                                 "title": <CapRow
                                                   className="card-header-row "
                                                   justify="space-between"
@@ -6062,19 +6070,19 @@ line-height: ",
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "sc-hMqMXs",
                                                   "isStatic": false,
-                                                  "lastClassName": "jtwVyG",
+                                                  "lastClassName": "cHkRXk",
                                                   "rules": Array [
                                                     "
   &.ant-radio-group {
     .ant-radio-button-wrapper {
+      &.template-disabled{
+        opacity: 0.5;
+      }
       .ant-card.ant-card-bordered {
         border-left: ",
                                                     [Function],
                                                     ";
       }
-      opacity: ",
-                                                    [Function],
-                                                    ";
       .card-header-title {
         max-width: 200px;
         text-overflow: ellipsis;
@@ -6232,6 +6240,7 @@ line-height: ",
                                                       b
                                                     </span>
                                                   </CapColumn>,
+                                                  "radioCardClassName": "template-disabled",
                                                   "title": <CapRow
                                                     className="card-header-row "
                                                     justify="space-between"
@@ -6285,6 +6294,7 @@ line-height: ",
                                                       c
                                                     </span>
                                                   </CapColumn>,
+                                                  "radioCardClassName": "template-disabled",
                                                   "title": <CapRow
                                                     className="card-header-row "
                                                     justify="space-between"
@@ -6329,7 +6339,7 @@ line-height: ",
                                               borderColor="#91e5e5"
                                               cardHeight="104px"
                                               cardWidth="278px"
-                                              className="sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                              className="sc-hMqMXs cHkRXk cap-static-templates-v2"
                                               onChange={[Function]}
                                               panes={
                                                 Array [
@@ -6349,6 +6359,7 @@ line-height: ",
                                                         b
                                                       </span>
                                                     </CapColumn>,
+                                                    "radioCardClassName": "template-disabled",
                                                     "title": <CapRow
                                                       className="card-header-row "
                                                       justify="space-between"
@@ -6402,6 +6413,7 @@ line-height: ",
                                                         c
                                                       </span>
                                                     </CapColumn>,
+                                                    "radioCardClassName": "template-disabled",
                                                     "title": <CapRow
                                                       className="card-header-row "
                                                       justify="space-between"
@@ -6446,14 +6458,14 @@ line-height: ",
                                                 borderColor="#91e5e5"
                                                 buttonStyle="outline"
                                                 cardWidth="278px"
-                                                className="cap-radioCard-v2 sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                                className="cap-radioCard-v2 sc-hMqMXs cHkRXk cap-static-templates-v2"
                                                 onChange={[Function]}
                                               >
                                                 <div
-                                                  className="ant-radio-group ant-radio-group-outline cap-radioCard-v2 sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                                  className="ant-radio-group ant-radio-group-outline cap-radioCard-v2 sc-hMqMXs cHkRXk cap-static-templates-v2"
                                                 >
                                                   <RadioButton
-                                                    className=""
+                                                    className="template-disabled"
                                                     key="browseAbandonNew"
                                                     style={
                                                       Object {
@@ -6465,7 +6477,7 @@ line-height: ",
                                                   >
                                                     <Radio
                                                       checked={false}
-                                                      className=""
+                                                      className="template-disabled"
                                                       prefixCls="ant-radio-button"
                                                       style={
                                                         Object {
@@ -6477,7 +6489,7 @@ line-height: ",
                                                       value="browseAbandonNew"
                                                     >
                                                       <label
-                                                        className="ant-radio-button-wrapper"
+                                                        className="template-disabled ant-radio-button-wrapper"
                                                         style={
                                                           Object {
                                                             "height": "104px",
@@ -7673,7 +7685,7 @@ line-height: ",
                                                     </Radio>
                                                   </RadioButton>
                                                   <RadioButton
-                                                    className=""
+                                                    className="template-disabled"
                                                     key="cartAbandonNew"
                                                     style={
                                                       Object {
@@ -7685,7 +7697,7 @@ line-height: ",
                                                   >
                                                     <Radio
                                                       checked={false}
-                                                      className=""
+                                                      className="template-disabled"
                                                       prefixCls="ant-radio-button"
                                                       style={
                                                         Object {
@@ -7697,7 +7709,7 @@ line-height: ",
                                                       value="cartAbandonNew"
                                                     >
                                                       <label
-                                                        className="ant-radio-button-wrapper"
+                                                        className="template-disabled ant-radio-button-wrapper"
                                                         style={
                                                           Object {
                                                             "height": "104px",
@@ -10453,6 +10465,7 @@ line-height: ",
                                                     b
                                                   </span>
                                                 </CapColumn>,
+                                                "radioCardClassName": "template-disabled",
                                                 "title": <CapRow
                                                   className="card-header-row "
                                                   justify="space-between"
@@ -10506,6 +10519,7 @@ line-height: ",
                                                     c
                                                   </span>
                                                 </CapColumn>,
+                                                "radioCardClassName": "template-disabled",
                                                 "title": <CapRow
                                                   className="card-header-row "
                                                   justify="space-between"
@@ -10558,19 +10572,19 @@ line-height: ",
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "sc-hMqMXs",
                                                   "isStatic": false,
-                                                  "lastClassName": "jtwVyG",
+                                                  "lastClassName": "cHkRXk",
                                                   "rules": Array [
                                                     "
   &.ant-radio-group {
     .ant-radio-button-wrapper {
+      &.template-disabled{
+        opacity: 0.5;
+      }
       .ant-card.ant-card-bordered {
         border-left: ",
                                                     [Function],
                                                     ";
       }
-      opacity: ",
-                                                    [Function],
-                                                    ";
       .card-header-title {
         max-width: 200px;
         text-overflow: ellipsis;
@@ -10728,6 +10742,7 @@ line-height: ",
                                                       b
                                                     </span>
                                                   </CapColumn>,
+                                                  "radioCardClassName": "template-disabled",
                                                   "title": <CapRow
                                                     className="card-header-row "
                                                     justify="space-between"
@@ -10781,6 +10796,7 @@ line-height: ",
                                                       c
                                                     </span>
                                                   </CapColumn>,
+                                                  "radioCardClassName": "template-disabled",
                                                   "title": <CapRow
                                                     className="card-header-row "
                                                     justify="space-between"
@@ -10825,7 +10841,7 @@ line-height: ",
                                               borderColor="#91e5e5"
                                               cardHeight="104px"
                                               cardWidth="278px"
-                                              className="sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                              className="sc-hMqMXs cHkRXk cap-static-templates-v2"
                                               onChange={[Function]}
                                               panes={
                                                 Array [
@@ -10845,6 +10861,7 @@ line-height: ",
                                                         b
                                                       </span>
                                                     </CapColumn>,
+                                                    "radioCardClassName": "template-disabled",
                                                     "title": <CapRow
                                                       className="card-header-row "
                                                       justify="space-between"
@@ -10898,6 +10915,7 @@ line-height: ",
                                                         c
                                                       </span>
                                                     </CapColumn>,
+                                                    "radioCardClassName": "template-disabled",
                                                     "title": <CapRow
                                                       className="card-header-row "
                                                       justify="space-between"
@@ -10942,14 +10960,14 @@ line-height: ",
                                                 borderColor="#91e5e5"
                                                 buttonStyle="outline"
                                                 cardWidth="278px"
-                                                className="cap-radioCard-v2 sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                                className="cap-radioCard-v2 sc-hMqMXs cHkRXk cap-static-templates-v2"
                                                 onChange={[Function]}
                                               >
                                                 <div
-                                                  className="ant-radio-group ant-radio-group-outline cap-radioCard-v2 sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                                  className="ant-radio-group ant-radio-group-outline cap-radioCard-v2 sc-hMqMXs cHkRXk cap-static-templates-v2"
                                                 >
                                                   <RadioButton
-                                                    className=""
+                                                    className="template-disabled"
                                                     key="browseAbandonNew"
                                                     style={
                                                       Object {
@@ -10961,7 +10979,7 @@ line-height: ",
                                                   >
                                                     <Radio
                                                       checked={false}
-                                                      className=""
+                                                      className="template-disabled"
                                                       prefixCls="ant-radio-button"
                                                       style={
                                                         Object {
@@ -10973,7 +10991,7 @@ line-height: ",
                                                       value="browseAbandonNew"
                                                     >
                                                       <label
-                                                        className="ant-radio-button-wrapper"
+                                                        className="template-disabled ant-radio-button-wrapper"
                                                         style={
                                                           Object {
                                                             "height": "104px",
@@ -12169,7 +12187,7 @@ line-height: ",
                                                     </Radio>
                                                   </RadioButton>
                                                   <RadioButton
-                                                    className=""
+                                                    className="template-disabled"
                                                     key="cartAbandonNew"
                                                     style={
                                                       Object {
@@ -12181,7 +12199,7 @@ line-height: ",
                                                   >
                                                     <Radio
                                                       checked={false}
-                                                      className=""
+                                                      className="template-disabled"
                                                       prefixCls="ant-radio-button"
                                                       style={
                                                         Object {
@@ -12193,7 +12211,7 @@ line-height: ",
                                                       value="cartAbandonNew"
                                                     >
                                                       <label
-                                                        className="ant-radio-button-wrapper"
+                                                        className="template-disabled ant-radio-button-wrapper"
                                                         style={
                                                           Object {
                                                             "height": "104px",
@@ -14989,7 +15007,6 @@ line-height: ",
                                         <Styled(CapRadioCard)
                                           cardHeight="80px"
                                           cardWidth="278px"
-                                          className="blank-strategy-template"
                                           key=".0"
                                           onChange={[Function]}
                                           panes={
@@ -15000,6 +15017,7 @@ line-height: ",
                                                   color="blue"
                                                   type="add"
                                                 />,
+                                                "radioCardClassName": "template-enabled",
                                                 "title": <CapRow
                                                   className="card-header-row custom-template"
                                                   justify="space-between"
@@ -15040,7 +15058,6 @@ line-height: ",
                                           <StyledComponent
                                             cardHeight="80px"
                                             cardWidth="278px"
-                                            className="blank-strategy-template"
                                             forwardedComponent={
                                               Object {
                                                 "$$typeof": Symbol(react.forward_ref),
@@ -15048,19 +15065,19 @@ line-height: ",
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "sc-hMqMXs",
                                                   "isStatic": false,
-                                                  "lastClassName": "jtwVyG",
+                                                  "lastClassName": "cHkRXk",
                                                   "rules": Array [
                                                     "
   &.ant-radio-group {
     .ant-radio-button-wrapper {
+      &.template-disabled{
+        opacity: 0.5;
+      }
       .ant-card.ant-card-bordered {
         border-left: ",
                                                     [Function],
                                                     ";
       }
-      opacity: ",
-                                                    [Function],
-                                                    ";
       .card-header-title {
         max-width: 200px;
         text-overflow: ellipsis;
@@ -15208,6 +15225,7 @@ line-height: ",
                                                     color="blue"
                                                     type="add"
                                                   />,
+                                                  "radioCardClassName": "template-enabled",
                                                   "title": <CapRow
                                                     className="card-header-row custom-template"
                                                     justify="space-between"
@@ -15248,7 +15266,7 @@ line-height: ",
                                             <CapRadioCard
                                               cardHeight="80px"
                                               cardWidth="278px"
-                                              className="sc-hMqMXs hiXEsD blank-strategy-template"
+                                              className="sc-hMqMXs Uwyox"
                                               onChange={[Function]}
                                               panes={
                                                 Array [
@@ -15258,6 +15276,7 @@ line-height: ",
                                                       color="blue"
                                                       type="add"
                                                     />,
+                                                    "radioCardClassName": "template-enabled",
                                                     "title": <CapRow
                                                       className="card-header-row custom-template"
                                                       justify="space-between"
@@ -15298,14 +15317,14 @@ line-height: ",
                                               <RadioGroup
                                                 buttonStyle="outline"
                                                 cardWidth="278px"
-                                                className="cap-radioCard-v2 sc-hMqMXs hiXEsD blank-strategy-template"
+                                                className="cap-radioCard-v2 sc-hMqMXs Uwyox"
                                                 onChange={[Function]}
                                               >
                                                 <div
-                                                  className="ant-radio-group ant-radio-group-outline cap-radioCard-v2 sc-hMqMXs hiXEsD blank-strategy-template"
+                                                  className="ant-radio-group ant-radio-group-outline cap-radioCard-v2 sc-hMqMXs Uwyox"
                                                 >
                                                   <RadioButton
-                                                    className=""
+                                                    className="template-enabled"
                                                     key="BLANK_TEMPLATE"
                                                     style={
                                                       Object {
@@ -15317,7 +15336,7 @@ line-height: ",
                                                   >
                                                     <Radio
                                                       checked={false}
-                                                      className=""
+                                                      className="template-enabled"
                                                       prefixCls="ant-radio-button"
                                                       style={
                                                         Object {
@@ -15329,7 +15348,7 @@ line-height: ",
                                                       value="BLANK_TEMPLATE"
                                                     >
                                                       <label
-                                                        className="ant-radio-button-wrapper"
+                                                        className="template-enabled ant-radio-button-wrapper"
                                                         style={
                                                           Object {
                                                             "height": "80px",
@@ -16856,6 +16875,7 @@ line-height: ",
                                                     b
                                                   </span>
                                                 </CapColumn>,
+                                                "radioCardClassName": "template-disabled",
                                                 "title": <CapRow
                                                   className="card-header-row "
                                                   justify="space-between"
@@ -16909,6 +16929,7 @@ line-height: ",
                                                     c
                                                   </span>
                                                 </CapColumn>,
+                                                "radioCardClassName": "template-disabled",
                                                 "title": <CapRow
                                                   className="card-header-row "
                                                   justify="space-between"
@@ -16961,19 +16982,19 @@ line-height: ",
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "sc-hMqMXs",
                                                   "isStatic": false,
-                                                  "lastClassName": "jtwVyG",
+                                                  "lastClassName": "cHkRXk",
                                                   "rules": Array [
                                                     "
   &.ant-radio-group {
     .ant-radio-button-wrapper {
+      &.template-disabled{
+        opacity: 0.5;
+      }
       .ant-card.ant-card-bordered {
         border-left: ",
                                                     [Function],
                                                     ";
       }
-      opacity: ",
-                                                    [Function],
-                                                    ";
       .card-header-title {
         max-width: 200px;
         text-overflow: ellipsis;
@@ -17131,6 +17152,7 @@ line-height: ",
                                                       b
                                                     </span>
                                                   </CapColumn>,
+                                                  "radioCardClassName": "template-disabled",
                                                   "title": <CapRow
                                                     className="card-header-row "
                                                     justify="space-between"
@@ -17184,6 +17206,7 @@ line-height: ",
                                                       c
                                                     </span>
                                                   </CapColumn>,
+                                                  "radioCardClassName": "template-disabled",
                                                   "title": <CapRow
                                                     className="card-header-row "
                                                     justify="space-between"
@@ -17228,7 +17251,7 @@ line-height: ",
                                               borderColor="#91e5e5"
                                               cardHeight="104px"
                                               cardWidth="278px"
-                                              className="sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                              className="sc-hMqMXs cHkRXk cap-static-templates-v2"
                                               onChange={[Function]}
                                               panes={
                                                 Array [
@@ -17248,6 +17271,7 @@ line-height: ",
                                                         b
                                                       </span>
                                                     </CapColumn>,
+                                                    "radioCardClassName": "template-disabled",
                                                     "title": <CapRow
                                                       className="card-header-row "
                                                       justify="space-between"
@@ -17301,6 +17325,7 @@ line-height: ",
                                                         c
                                                       </span>
                                                     </CapColumn>,
+                                                    "radioCardClassName": "template-disabled",
                                                     "title": <CapRow
                                                       className="card-header-row "
                                                       justify="space-between"
@@ -17345,14 +17370,14 @@ line-height: ",
                                                 borderColor="#91e5e5"
                                                 buttonStyle="outline"
                                                 cardWidth="278px"
-                                                className="cap-radioCard-v2 sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                                className="cap-radioCard-v2 sc-hMqMXs cHkRXk cap-static-templates-v2"
                                                 onChange={[Function]}
                                               >
                                                 <div
-                                                  className="ant-radio-group ant-radio-group-outline cap-radioCard-v2 sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                                  className="ant-radio-group ant-radio-group-outline cap-radioCard-v2 sc-hMqMXs cHkRXk cap-static-templates-v2"
                                                 >
                                                   <RadioButton
-                                                    className=""
+                                                    className="template-disabled"
                                                     key="browseAbandonNew"
                                                     style={
                                                       Object {
@@ -17364,7 +17389,7 @@ line-height: ",
                                                   >
                                                     <Radio
                                                       checked={false}
-                                                      className=""
+                                                      className="template-disabled"
                                                       prefixCls="ant-radio-button"
                                                       style={
                                                         Object {
@@ -17376,7 +17401,7 @@ line-height: ",
                                                       value="browseAbandonNew"
                                                     >
                                                       <label
-                                                        className="ant-radio-button-wrapper"
+                                                        className="template-disabled ant-radio-button-wrapper"
                                                         style={
                                                           Object {
                                                             "height": "104px",
@@ -18572,7 +18597,7 @@ line-height: ",
                                                     </Radio>
                                                   </RadioButton>
                                                   <RadioButton
-                                                    className=""
+                                                    className="template-disabled"
                                                     key="cartAbandonNew"
                                                     style={
                                                       Object {
@@ -18584,7 +18609,7 @@ line-height: ",
                                                   >
                                                     <Radio
                                                       checked={false}
-                                                      className=""
+                                                      className="template-disabled"
                                                       prefixCls="ant-radio-button"
                                                       style={
                                                         Object {
@@ -18596,7 +18621,7 @@ line-height: ",
                                                       value="cartAbandonNew"
                                                     >
                                                       <label
-                                                        className="ant-radio-button-wrapper"
+                                                        className="template-disabled ant-radio-button-wrapper"
                                                         style={
                                                           Object {
                                                             "height": "104px",
@@ -21372,6 +21397,7 @@ line-height: ",
                                                     b
                                                   </span>
                                                 </CapColumn>,
+                                                "radioCardClassName": "template-disabled",
                                                 "title": <CapRow
                                                   className="card-header-row "
                                                   justify="space-between"
@@ -21425,6 +21451,7 @@ line-height: ",
                                                     c
                                                   </span>
                                                 </CapColumn>,
+                                                "radioCardClassName": "template-disabled",
                                                 "title": <CapRow
                                                   className="card-header-row "
                                                   justify="space-between"
@@ -21477,19 +21504,19 @@ line-height: ",
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "sc-hMqMXs",
                                                   "isStatic": false,
-                                                  "lastClassName": "jtwVyG",
+                                                  "lastClassName": "cHkRXk",
                                                   "rules": Array [
                                                     "
   &.ant-radio-group {
     .ant-radio-button-wrapper {
+      &.template-disabled{
+        opacity: 0.5;
+      }
       .ant-card.ant-card-bordered {
         border-left: ",
                                                     [Function],
                                                     ";
       }
-      opacity: ",
-                                                    [Function],
-                                                    ";
       .card-header-title {
         max-width: 200px;
         text-overflow: ellipsis;
@@ -21647,6 +21674,7 @@ line-height: ",
                                                       b
                                                     </span>
                                                   </CapColumn>,
+                                                  "radioCardClassName": "template-disabled",
                                                   "title": <CapRow
                                                     className="card-header-row "
                                                     justify="space-between"
@@ -21700,6 +21728,7 @@ line-height: ",
                                                       c
                                                     </span>
                                                   </CapColumn>,
+                                                  "radioCardClassName": "template-disabled",
                                                   "title": <CapRow
                                                     className="card-header-row "
                                                     justify="space-between"
@@ -21744,7 +21773,7 @@ line-height: ",
                                               borderColor="#91e5e5"
                                               cardHeight="104px"
                                               cardWidth="278px"
-                                              className="sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                              className="sc-hMqMXs cHkRXk cap-static-templates-v2"
                                               onChange={[Function]}
                                               panes={
                                                 Array [
@@ -21764,6 +21793,7 @@ line-height: ",
                                                         b
                                                       </span>
                                                     </CapColumn>,
+                                                    "radioCardClassName": "template-disabled",
                                                     "title": <CapRow
                                                       className="card-header-row "
                                                       justify="space-between"
@@ -21817,6 +21847,7 @@ line-height: ",
                                                         c
                                                       </span>
                                                     </CapColumn>,
+                                                    "radioCardClassName": "template-disabled",
                                                     "title": <CapRow
                                                       className="card-header-row "
                                                       justify="space-between"
@@ -21861,14 +21892,14 @@ line-height: ",
                                                 borderColor="#91e5e5"
                                                 buttonStyle="outline"
                                                 cardWidth="278px"
-                                                className="cap-radioCard-v2 sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                                className="cap-radioCard-v2 sc-hMqMXs cHkRXk cap-static-templates-v2"
                                                 onChange={[Function]}
                                               >
                                                 <div
-                                                  className="ant-radio-group ant-radio-group-outline cap-radioCard-v2 sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                                  className="ant-radio-group ant-radio-group-outline cap-radioCard-v2 sc-hMqMXs cHkRXk cap-static-templates-v2"
                                                 >
                                                   <RadioButton
-                                                    className=""
+                                                    className="template-disabled"
                                                     key="browseAbandonNew"
                                                     style={
                                                       Object {
@@ -21880,7 +21911,7 @@ line-height: ",
                                                   >
                                                     <Radio
                                                       checked={false}
-                                                      className=""
+                                                      className="template-disabled"
                                                       prefixCls="ant-radio-button"
                                                       style={
                                                         Object {
@@ -21892,7 +21923,7 @@ line-height: ",
                                                       value="browseAbandonNew"
                                                     >
                                                       <label
-                                                        className="ant-radio-button-wrapper"
+                                                        className="template-disabled ant-radio-button-wrapper"
                                                         style={
                                                           Object {
                                                             "height": "104px",
@@ -23088,7 +23119,7 @@ line-height: ",
                                                     </Radio>
                                                   </RadioButton>
                                                   <RadioButton
-                                                    className=""
+                                                    className="template-disabled"
                                                     key="cartAbandonNew"
                                                     style={
                                                       Object {
@@ -23100,7 +23131,7 @@ line-height: ",
                                                   >
                                                     <Radio
                                                       checked={false}
-                                                      className=""
+                                                      className="template-disabled"
                                                       prefixCls="ant-radio-button"
                                                       style={
                                                         Object {
@@ -23112,7 +23143,7 @@ line-height: ",
                                                       value="cartAbandonNew"
                                                     >
                                                       <label
-                                                        className="ant-radio-button-wrapper"
+                                                        className="template-disabled ant-radio-button-wrapper"
                                                         style={
                                                           Object {
                                                             "height": "104px",
@@ -25898,6 +25929,7 @@ line-height: ",
                                                     b
                                                   </span>
                                                 </CapColumn>,
+                                                "radioCardClassName": "template-disabled",
                                                 "title": <CapRow
                                                   className="card-header-row "
                                                   justify="space-between"
@@ -25951,6 +25983,7 @@ line-height: ",
                                                     c
                                                   </span>
                                                 </CapColumn>,
+                                                "radioCardClassName": "template-disabled",
                                                 "title": <CapRow
                                                   className="card-header-row "
                                                   justify="space-between"
@@ -26003,19 +26036,19 @@ line-height: ",
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "sc-hMqMXs",
                                                   "isStatic": false,
-                                                  "lastClassName": "jtwVyG",
+                                                  "lastClassName": "cHkRXk",
                                                   "rules": Array [
                                                     "
   &.ant-radio-group {
     .ant-radio-button-wrapper {
+      &.template-disabled{
+        opacity: 0.5;
+      }
       .ant-card.ant-card-bordered {
         border-left: ",
                                                     [Function],
                                                     ";
       }
-      opacity: ",
-                                                    [Function],
-                                                    ";
       .card-header-title {
         max-width: 200px;
         text-overflow: ellipsis;
@@ -26173,6 +26206,7 @@ line-height: ",
                                                       b
                                                     </span>
                                                   </CapColumn>,
+                                                  "radioCardClassName": "template-disabled",
                                                   "title": <CapRow
                                                     className="card-header-row "
                                                     justify="space-between"
@@ -26226,6 +26260,7 @@ line-height: ",
                                                       c
                                                     </span>
                                                   </CapColumn>,
+                                                  "radioCardClassName": "template-disabled",
                                                   "title": <CapRow
                                                     className="card-header-row "
                                                     justify="space-between"
@@ -26270,7 +26305,7 @@ line-height: ",
                                               borderColor="#91e5e5"
                                               cardHeight="104px"
                                               cardWidth="278px"
-                                              className="sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                              className="sc-hMqMXs cHkRXk cap-static-templates-v2"
                                               onChange={[Function]}
                                               panes={
                                                 Array [
@@ -26290,6 +26325,7 @@ line-height: ",
                                                         b
                                                       </span>
                                                     </CapColumn>,
+                                                    "radioCardClassName": "template-disabled",
                                                     "title": <CapRow
                                                       className="card-header-row "
                                                       justify="space-between"
@@ -26343,6 +26379,7 @@ line-height: ",
                                                         c
                                                       </span>
                                                     </CapColumn>,
+                                                    "radioCardClassName": "template-disabled",
                                                     "title": <CapRow
                                                       className="card-header-row "
                                                       justify="space-between"
@@ -26387,14 +26424,14 @@ line-height: ",
                                                 borderColor="#91e5e5"
                                                 buttonStyle="outline"
                                                 cardWidth="278px"
-                                                className="cap-radioCard-v2 sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                                className="cap-radioCard-v2 sc-hMqMXs cHkRXk cap-static-templates-v2"
                                                 onChange={[Function]}
                                               >
                                                 <div
-                                                  className="ant-radio-group ant-radio-group-outline cap-radioCard-v2 sc-hMqMXs jtwVyG cap-static-templates-v2"
+                                                  className="ant-radio-group ant-radio-group-outline cap-radioCard-v2 sc-hMqMXs cHkRXk cap-static-templates-v2"
                                                 >
                                                   <RadioButton
-                                                    className=""
+                                                    className="template-disabled"
                                                     key="browseAbandonNew"
                                                     style={
                                                       Object {
@@ -26406,7 +26443,7 @@ line-height: ",
                                                   >
                                                     <Radio
                                                       checked={false}
-                                                      className=""
+                                                      className="template-disabled"
                                                       prefixCls="ant-radio-button"
                                                       style={
                                                         Object {
@@ -26418,7 +26455,7 @@ line-height: ",
                                                       value="browseAbandonNew"
                                                     >
                                                       <label
-                                                        className="ant-radio-button-wrapper"
+                                                        className="template-disabled ant-radio-button-wrapper"
                                                         style={
                                                           Object {
                                                             "height": "104px",
@@ -27614,7 +27651,7 @@ line-height: ",
                                                     </Radio>
                                                   </RadioButton>
                                                   <RadioButton
-                                                    className=""
+                                                    className="template-disabled"
                                                     key="cartAbandonNew"
                                                     style={
                                                       Object {
@@ -27626,7 +27663,7 @@ line-height: ",
                                                   >
                                                     <Radio
                                                       checked={false}
-                                                      className=""
+                                                      className="template-disabled"
                                                       prefixCls="ant-radio-button"
                                                       style={
                                                         Object {
@@ -27638,7 +27675,7 @@ line-height: ",
                                                       value="cartAbandonNew"
                                                     >
                                                       <label
-                                                        className="ant-radio-button-wrapper"
+                                                        className="template-disabled ant-radio-button-wrapper"
                                                         style={
                                                           Object {
                                                             "height": "104px",

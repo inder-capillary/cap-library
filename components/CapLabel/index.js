@@ -122,6 +122,12 @@ const labels = {
     'font-weight': 'normal',
     'line-height': '16px',
   },
+  label20: {
+    'color': '#2466ea',
+    'font-size': '14px',
+    'font-weight': '500',
+    'line-height': 'normal',
+  },
 };
 
 const CapLabel = styled.div`
