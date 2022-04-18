@@ -206,6 +206,7 @@ const getSvgComponentFromType = (type) => {
     case 'megaphone-background': return SvgIcons.MegaphoneBackground;
     case 'monitor-background': return SvgIcons.MonitorBackground;
     case 'loyalty-background': return SvgIcons.LoyaltyBackground;
+    case 'rcs': return SvgIcons.Rcs;
 
     default: return null;
   }
