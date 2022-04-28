@@ -203,3 +203,4 @@ export { default as MonitorBackground } from "./Icons/MonitorBackground";
 export { default as SurveyBackground } from "./Icons/SurveyBackground";
 export { default as LoyaltyBackground } from "./Icons/LoyaltyBackground";
 export { default as Rcs } from "./Icons/Rcs";
+export { default as WalletBackground } from './Icons/WalletBackground';

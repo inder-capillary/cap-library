@@ -852,6 +852,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="rcs" />
               <Text>rcs</Text>
             </List>
+            <List>
+              <CapIcon type="wallet-background" />
+              <Text>wallet-background</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}
