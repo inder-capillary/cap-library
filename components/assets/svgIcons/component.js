@@ -12,6 +12,7 @@ const getSvgComponentFromType = (type) => {
     case 'arrow-filled': return SvgIcons.ArrowFilled;
     case 'arrow-up': return SvgIcons.ArrowUp;
     case 'back': return SvgIcons.Back;
+    case 'bill': return SvgIcons.Bill;
     case 'bulb': return SvgIcons.Bulb;
     case 'calendar': return SvgIcons.Calendar;
     case 'calendar-active': return SvgIcons.CalendarActive;

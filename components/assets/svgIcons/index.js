@@ -8,6 +8,7 @@ export { default as ArrowDown } from './Icons/ArrowDown';
 export { default as ArrowFilled } from './Icons/ArrowFilled';
 export { default as ArrowUp } from './Icons/ArrowUp';
 export { default as Back } from './Icons/Back';
+export { default as Bill } from './Icons/Bill';
 export { default as Bulb } from './Icons/Bulb';
 export { default as Calendar } from './Icons/Calendar';
 export { default as CalendarActive } from './Icons/CalendarActive';
