@@ -1,10 +1,10 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { DndProvider, createDndContext } from 'react-dnd';
-import {HTML5Backend} from 'react-dnd-html5-backend';
+// import { DndProvider, createDndContext } from 'react-dnd';
+// import {HTML5Backend} from 'react-dnd-html5-backend';
 import Scheduler, { SchedulerData, ViewTypes, DATE_FORMAT } from 'react-big-scheduler';
-// import withDragDropContext from './withDndContext.js';
+import withDragDropContext from './withDndContext';
 import 'react-big-scheduler/lib/css/style.css';
 import CapPopover from '../CapPopover';
 import { quarterInfo } from './constants';
@@ -12,7 +12,7 @@ import { quarterInfo } from './constants';
 /**
  * Capillary Calendar Component using react big scheduler
  */
-const DndContext = createDndContext(HTML5Backend);
+// const DndContext = createDndContext(HTML5Backend);
 /* eslint-disable no-param-reassign */
 /* eslint-disable new-cap */
 const CapCalendar = ({
@@ -245,7 +245,7 @@ const CapCalendar = ({
     //     monthlyVerticalLine();
     // });
   };
-  const managerRef = useRef(DndContext);
+  //   const managerRef = useRef(DndContext);
   return (
     <div style={{ maxWidth: '100%'}}>
       { viewModel
@@ -255,20 +255,20 @@ const CapCalendar = ({
                     <div className="month-view">{displayMonths[startMonth + 1]}</div>
                     <div className="month-view">{displayMonths[startMonth + 2]}</div>
                   </div>
-                  <DndProvider
+                  {/* <DndProvider
                     debugMode
                     backend={HTML5Backend}
                     manager={managerRef.current.dragDropManager}
-                    context={DndContext}>
-                    <Scheduler
-                      schedulerData={viewModel}
-                      prevClick={prevClick}
-                      nextClick={nextClick}
-                      showAgenda={false}
-                      eventItemTemplateResolver={eventItemTemplateResolver}
-                      eventItemPopoverTemplateResolver={eventItemPopoverTemplateResolver}
-                    />
-                  </DndProvider>
+                    context={DndContext}> */}
+                  <Scheduler
+                    schedulerData={viewModel}
+                    prevClick={prevClick}
+                    nextClick={nextClick}
+                    showAgenda={false}
+                    eventItemTemplateResolver={eventItemTemplateResolver}
+                    eventItemPopoverTemplateResolver={eventItemPopoverTemplateResolver}
+                  />
+                  {/* </DndProvider> */}
                 </>
       }
     </div>
@@ -301,5 +301,5 @@ CapCalendar.propTypes = {
 };
 /* eslint-enable no-param-reassign */
 
-// export default withDragDropContext(CapCalendar);
-export default CapCalendar;
+export default withDragDropContext(CapCalendar);
+// export default CapCalendar;
