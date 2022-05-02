@@ -209,6 +209,7 @@ const getSvgComponentFromType = (type) => {
     case 'loyalty-background': return SvgIcons.LoyaltyBackground;
     case 'rcs': return SvgIcons.Rcs;
     case 'wallet-background': return SvgIcons.WalletBackground;
+    case 'alert-warning': return SvgIcons.AlertWarning;
 
     default: return null;
   }
