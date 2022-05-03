@@ -1,0 +1,95 @@
+
+@import "../styles/_variables.scss";
+
+.event-calendar{
+    height: 700px;
+    &__header{
+        display: flex;
+        position: relative;
+    }
+    &__month-header{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+        top: 30px;
+        &__label{
+            width: 33.33%;
+            text-align: center;
+            font-weight: 600;
+            font-size:$FONT_SIZE_M ;
+            color: #091e42;
+            text-align: center;
+        }
+    }
+    &__scheduler{
+        justify-content: center;
+        position: relative;
+        top:40px;
+        &__header{
+            height:40px;
+            overflow: hidden;
+            font-size:$FONT_SIZE_M;
+            display: flex;
+            .month{
+                width: 33.33%;
+                display: flex;
+                justify-content: center;
+                .week{
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    &__label{
+                        width:14%;
+                        font-size: $FONT_SIZE_S;
+                        color:$FONT_COLOR_01;
+                    }
+                    .show-left-border{
+                        border-left: 2px solid red;
+                    }
+                    .hide{
+                        // visibility: hidden;
+                        // opacity: 0;
+                        color:rgba(0,0,0,0)
+                    }
+                }
+            }
+           
+        }
+        &__timeline{
+            overflow-y:auto;
+            height:600px;
+            .event-row{
+                height:40px;
+                overflow: hidden;
+                font-size: $FONT_SIZE_S;
+                display: flex;
+                .month{
+                    width: 33.33%;
+                    display: flex;
+                    justify-content: center;
+                    .week{
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                        &__label{
+                            width:14%;
+                            font-size: $FONT_SIZE_S;
+                            color:$FONT_COLOR_01;
+                        }
+                        .hide{
+                            // visibility: hidden;
+                            // opacity: 0;
+                            color:rgba(0,0,0,0)
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+

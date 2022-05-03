@@ -99,6 +99,6 @@ export { default as CapColoredTag } from './CapColoredTag';
 export { default as CapStatus } from './CapStatus';
 export { default as CapConditionPreview } from './CapConditionPreview';
 export { default as CapTruncateList } from './CapTruncateList';
-export {default as CapCalendar} from './CapCalendar';
+export { default as CapCalendar} from './CapEventCalendar';
 
 //export components

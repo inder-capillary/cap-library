@@ -86,7 +86,7 @@ import CapSelectFilterDoc from '../src/CapSelectFilterDoc';
 import CapStaticTemplatesDoc from '../src/CapStaticTemplatesDoc';
 import CapAppNotEnabledDoc from '../src/CapAppNotEnabledDoc';
 import CapStatusDoc from '../src/CapStatusDoc';
-import CapCalendarDoc from '../src/CapCalendarDoc';
+import CapEventCalendarDoc from '../src/CapEventCalendarDoc';
 //imported for docs
 
 
@@ -264,8 +264,8 @@ class ComponentSwitcher extends Component {
         return <CapAppNotEnabledDoc />;
       case 'capStatus':
         return <CapStatusDoc />;
-      case 'capCalendar':
-        return <CapCalendarDoc />;
+      case 'capEventCalendar':
+        return <CapEventCalendarDoc />;
 
         //components for docs
 

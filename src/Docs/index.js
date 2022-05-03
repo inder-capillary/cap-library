@@ -10,7 +10,7 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
   constructor(props) {
     super(props);
     this.state = {
-      menuSelected: "capAppNotEnabled",
+      menuSelected: "capEventCalendar",
     };
     this.onMenuItemClick = this.onMenuItemClick.bind(this);
   }
@@ -116,7 +116,7 @@ export class Docs extends React.Component { // eslint-disable-line react/prefer-
             <MenuItem key="CapSelectFilter"><span>CapSelectFilter</span></MenuItem>
             <MenuItem key="CapStaticTemplates"><span>CapStaticTemplates</span></MenuItem>
             <MenuItem key="capStatus"><span>CapStatus</span></MenuItem>
-            <MenuItem key="capCalendar"><span>CapCalendar</span></MenuItem>
+            <MenuItem key="capEventCalendar"><span>CapEventCalendar</span></MenuItem>
             {/*Menu items for components*/}
 
           </Menu>
