@@ -4,9 +4,9 @@ import moment from 'moment';
 import * as _ from 'lodash';
 import './_capEventCalendar.scss';
 // import CapPopover from '../CapPopover';
-import { weekDays } from './constants';
+// import { weekDays } from './constants';
 import CapIcon from '../CapIcon';
-import { getQuarterForDate, getMonthsForQuarter, getMondaysOfMonth } from './utils';
+import { getQuarterForDate, getMonthsForQuarter, getDaysOfMonth } from './utils';
 import MonthHeader from './components/MonthHeader';
 
 /**
@@ -21,7 +21,12 @@ const data = [
     title: "Event 7",
     start: new Date("2022/5/4 09:00"),
     end: new Date("2022/5/5 09:20"),
-    admin_id: [3],
+  },
+  {
+    event_id: 8,
+    title: "Event 7",
+    start: new Date("2022/5/4 09:00"),
+    end: new Date("2022/5/5 09:20"),
   },
 ];
 const CapEventCalendar = ({currentDate = moment().format(), events = data}) => {
@@ -32,6 +37,23 @@ const CapEventCalendar = ({currentDate = moment().format(), events = data}) => {
   useEffect(() => {
   }, []);
 
+  const showBorder = (month, day, monthIndex) => {
+    if (moment(month.end).date() === moment(day).date()) return true;
+    if (!monthIndex) {
+      if (moment(month.start).date() === moment(day).date()) return true;
+    }
+    return false;
+  };
+
+  // const showEvent = (event, monthObj, day) => {
+  //   const eventStart = moment(event.start).format();
+  //   const eventEnd = moment(event.end).format();
+  //   if (moment(eventStart).month() === monthObj.month) {
+  //     if (moment(eventStart).date() >= moment(day).date() || moment(eventEnd).date() >= moment(day).date()) {
+  //       return <>{event.title}</>;
+  //     }
+  //   }
+  // };
 
   return (
     <div className="event-calendar">
@@ -47,26 +69,22 @@ const CapEventCalendar = ({currentDate = moment().format(), events = data}) => {
           {
             !_.isEmpty(displayMonths)
              && displayMonths.map((month, monthIndex) => {
-               const mondayList = getMondaysOfMonth(month.start);
+               const allDays = getDaysOfMonth(month.start);
                return (
                  <div key={monthIndex + month.name} className="month">
-                   {
-                     mondayList.map((monday) => (
-                       <div className="week" key={`${month.name + monday}`}>
-                         {
-                           weekDays.map((day, dayIndex) => (
-                             <div
-                               className={`week__label ${day === 1 ? '' : 'hide'}
-                               ${moment(month.start).day() === day || moment(month.end).day() === day
-                               ? 'show-left-border' : ''}`}
-                               key={day + monday + dayIndex}>
-                               {monday}
-                             </div>
-                           ))
-                         }
-                       </div>
-                     ))
-                   }
+                   <div className="days">
+                     {
+                       allDays.map((day) => (
+                         <div
+                           key={month.name + day}
+                           className={`each-day ${moment(day).day() === 1 ? '' : 'hide'}
+                              ${showBorder(month, day, monthIndex)
+                           ? 'show-right-border' : ''}`}>
+                           {moment(day).format('D')}
+                         </div>
+                       ))
+                     }
+                   </div>
                  </div>
                );
              })
@@ -81,33 +99,22 @@ const CapEventCalendar = ({currentDate = moment().format(), events = data}) => {
                     {
                       !_.isEmpty(displayMonths)
                        && displayMonths.map((month, monthIndex) => {
-                         const mondayList = getMondaysOfMonth(month.start);
+                         const allDays = getDaysOfMonth(month.start);
                          return (
                            <div key={`${monthIndex}month`} className="month">
-                             {
-                               mondayList.map((monday) => (
-                                 <div className="week" key={`${month.name + monday}`}>
-                                   {/* {
-                                           weekDays.map((day,index2) =>{
-                                             console.log("I am here", )
-                                           return (moment(month.start).date() === day || moment(month.end) === day || day === 1 &&
-                                           <div className='week__label' key={event.title + index2}>{day}</div>)
-                                           }
-                                           )
-                                         } */}
-                                   {
-                                     weekDays.map((day, dayIndex) => (
-                                       <div
-                                         className={`week__label 
-                                 ${moment(month.start).day() === day || moment(month.end).day() === day || day === 1 ? '' : 'hide'}`}
-                                         key={`week${dayIndex}of${month}`}>
-                                         {day}
-                                       </div>
-                                     ))
-                                   }
-                                 </div>
-                               ))
-                             }
+                             <div className="days">
+                               {
+                                 allDays.map((day) => (
+                                   <div
+                                     key={month.name + day}
+                                     className={`each-day ${moment(day).day() === 1 ? 'show-dashed-border' : 'hide'}
+                                      ${showBorder(month, day, monthIndex)
+                                     ? 'show-right-border' : ''}`}>
+                                     {/* {moment(day).format('D')} */}
+                                   </div>
+                                 ))
+                               }
+                             </div>
                            </div>
                          );
                        })

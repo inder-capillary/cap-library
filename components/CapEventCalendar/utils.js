@@ -20,7 +20,7 @@ export const getMonthsForQuarter = (quarter) => {
   let months = [];
   const quarterStartDate = moment().utc().quarter(quarter).startOf('quarter').format();
   const quarterMidDate = moment(quarterStartDate).add(1, 'M').startOf('month').format();
-  const quarterEndDate = moment().utc().quarter(quarter).endOf('quarter').format();
+  const quarterEndDate = moment(quarterStartDate).add(2, 'M').startOf('month').format();
 
   const quarterStartMonth = moment(quarterStartDate).month();
   const quarterMidMonth = moment(quarterMidDate).month();
@@ -32,16 +32,19 @@ export const getMonthsForQuarter = (quarter) => {
       start: quarterStartDate,
       end: moment(quarterStartDate).endOf('month').format(),
       name: getMonthName(quarterStartMonth),
+      month: quarterStartMonth,
     },
     {
       start: quarterMidDate,
       end: moment(quarterMidDate).endOf('month').format(),
       name: getMonthName(quarterMidMonth),
+      month: quarterMidMonth,
     },
     {
       start: quarterEndDate,
       end: moment(quarterEndDate).endOf('month').format(),
       name: getMonthName(quarterEndMonth),
+      month: quarterEndMonth,
     },
   ];
   return months;
@@ -53,12 +56,13 @@ export const getMonthName = (month) => monthNames[month];
 export const getDaysOfMonth = (date) => {
   const month = moment(date).month();
   const year = moment(date).year();
-  const monthDate = moment(`${year}-${month}`, 'YYYY-MM');
+  const monthDate = moment(`${year}-${month + 1}`, 'YYYY-MM');
   const daysInMonth = monthDate.daysInMonth();
-  const arrDays = [];
-
-  for (let i = 1; i <= daysInMonth;) {
-    const current = moment().date(i);
+  const arrDays = [monthDate.format()];
+  let current = monthDate.format();
+  for (let i = 1; i< daysInMonth;) {
+    /* console.log({i}); */
+    current = moment(current).add(1, 'day');
     arrDays.push(current.format());
     i++;
   }
