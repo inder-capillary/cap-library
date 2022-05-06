@@ -128,7 +128,7 @@ const CapEventCalendar = ({calendarDate = moment().format(), events = datas}) =>
   const drawLayout = ({ context, width, height }) => {
     const dayObject = {};
 
-    const [rectX, rectY, rectHeight, rectWidth] = [
+    let [rectX, rectY, rectHeight, rectWidth] = [
       0,
       0,
       height,
@@ -192,20 +192,6 @@ const CapEventCalendar = ({calendarDate = moment().format(), events = datas}) =>
     return dayObject;
   };
 
-  // let heightCalc = 20;
-  // formattedEvents.forEach(({ title, start, end, backgroundColor }) => {
-  //   const startRect = dayObject[moment(start).format()];
-  //   const endRect = dayObject[moment(end).format()];
-  //   context.beginPath();
-  //   context.fillStyle = backgroundColor;
-  //   context.fillRect(startRect.x, heightCalc, startRect.x + endRect.x, 20);
-  //   context.fillStyle = "#091e42";
-  //   context.font = "12px Roboto";
-  //   context.textAlign = "start";
-  //   context.fillText(title, startRect.x + 8, heightCalc + 14);
-  //   context.closePath();
-  //   heightCalc += 20 + 10;
-  // console.log({ startRect, endRect });
   const toggleTooltip = (visible) => {
     const knob = document.getElementById("event-calendar-tool-tip-knob");
     ReactDom.unmountComponentAtNode(knob);
@@ -327,6 +313,7 @@ const CapEventCalendar = ({calendarDate = moment().format(), events = datas}) =>
       style={{ width: "100%", height: "100%", position: "relative" }}
       ref={ref}
     >
+      
       <canvas
         ref={canvas}
         style={style}

@@ -90,7 +90,8 @@ export const formatDateToSuitCanvas = (events) => {
     } else {
       const lastEventRow = formattedEvents[formattedEvents.length - 1];
       const isClash = _.some(lastEventRow, (rowItem) => checkIfDateIsInRange(eventItem.start, rowItem.start, rowItem.end) || checkIfDateIsInRange(eventItem.end, rowItem.start, rowItem.end));
-      if (isClash) {
+      const isOnSameDateRange = _.some(lastEventRow, ((rowItem) => moment(rowItem.end).diff(moment(rowItem.start), 'days') === moment(eventItem.end).diff(moment(eventItem.start), 'days') ));
+      if (isClash || isOnSameDateRange) {
         formattedEvents.push([eventItem]);
       } else {
         lastEventRow.push(eventItem);
