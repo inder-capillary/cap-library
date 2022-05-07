@@ -1,7 +1,6 @@
 export const drawHeadingText = ({ context, x, y, height, text }) => {
   context.beginPath();
   context.fillStyle = "#ffff";
-  context.font = "12px Roboto";
   const textWidth = context.measureText(text).width;
 
   context.fillRect(x - textWidth / 2, y, textWidth, height);
@@ -64,5 +63,116 @@ export const drawLineSeperator = ({ context, x, y, x1, y1 }) => {
   context.lineTo(x1, y1);
 
   context.stroke();
+  context.closePath();
+};
+
+export const drawRoundRect = ({
+  context,
+  x,
+  y,
+  width,
+  height,
+  radius,
+  mouseX,
+  mouseY
+}) => {
+  context.beginPath();
+
+  context.moveTo(x + radius, y);
+  context.lineTo(x + width - radius, y);
+
+  context.quadraticCurveTo(x + width, y, x + width, y + radius);
+
+  context.lineTo(x + width, y + height - radius);
+
+  context.quadraticCurveTo(
+    x + width,
+    y + height,
+    x + width - radius,
+    y + height
+  );
+
+  context.lineTo(x + radius, y + height);
+
+  context.quadraticCurveTo(x, y + height, x, y + height - radius);
+
+  context.lineTo(x, y + radius);
+
+  context.quadraticCurveTo(x, y, x + radius, y);
+
+  if (mouseX) {
+    return context.isPointInPath(mouseX, mouseY);
+  }
+
+  context.fill();
+  context.closePath();
+};
+
+export const doEllipsis = ({ context, text, maxWidth }) => {
+  let returnText;
+  if (context.measureText(text)["width"] < maxWidth) {
+    return text;
+  } else {
+    const textArray = `${text}`.split("");
+    textArray.forEach((item, index) => {
+      const sliceText =
+        textArray.slice(0, textArray.length - index).join("") + "abc";
+      if (
+        context.measureText(sliceText)["width"] <= maxWidth &&
+        returnText === undefined
+      ) {
+        returnText =
+          textArray.slice(0, textArray.length - index).join("") + "...";
+      }
+    });
+    return returnText || "";
+  }
+};
+
+export const drawRoundRectWithText = ({
+  context,
+  x,
+  y,
+  width,
+  height,
+  bgColor,
+  borderRadius = 5,
+  text,
+  color,
+  textPadding,
+  mouseX,
+  mouseY
+}) => {
+  context.beginPath();
+  context.fillStyle = bgColor;
+  const isPointInRoundRectPath = drawRoundRect({
+    context,
+    x,
+    y,
+    width,
+    height,
+    radius: borderRadius,
+    mouseX,
+    mouseY
+  });
+
+  if (mouseX) {
+    return isPointInRoundRectPath;
+  }
+
+  context.fillStyle = color;
+  context.textAlign = "start";
+  context.scale(1, 1);
+
+  context.fillText(
+    doEllipsis({
+      context,
+      text,
+      maxWidth: width - textPadding
+    }),
+    x + textPadding,
+    y + 16
+  );
+
   context.closePath();
 };

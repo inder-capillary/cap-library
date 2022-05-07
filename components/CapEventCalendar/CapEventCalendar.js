@@ -3,6 +3,7 @@ import ReactDom from "react-dom";
 import moment from "moment";
 
 import CapTooltip from "../CapTooltip";
+import CapPopover from "../CapPopover";
 
 import {
   getQuarterForDate,
@@ -13,30 +14,44 @@ import {
   drawHeadingText,
   drawDashedLines,
   drawTodayLine,
-  drawLineSeperator
+  drawLineSeperator,
+  drawRoundRectWithText
 } from "./drawUtils";
+
+const PopoverConent = ({ title }) => <div>{title}</div>;
 
 const datas = [
   [
     {
       event_id: 1,
-      title: "Event 1",
+      title:
+        "A username and password prompt will appear with your next Git action A username and password prompt will appear with your next Git action",
       start: "2022/4/1",
       end: "2022/4/9",
       backgroundColor: "#e9e9ea"
     },
     {
       event_id: 1.1,
-      title: "Event 1.1",
+      title:
+        "A username and password prompt will appear with your next Git action A username and password prompt will appear with your next Git action",
       start: "2022/4/30",
       end: "2022/5/15",
+      backgroundColor: "#feedc0"
+    },
+    {
+      event_id: 1.2,
+      title:
+        "A username and password prompt will appear with your next Git action A username and password prompt will appear with your next Git action",
+      start: "2022/5/20",
+      end: "2022/5/21",
       backgroundColor: "#feedc0"
     }
   ],
   [
     {
       event_id: 2,
-      title: "Event 2",
+      title:
+        "A username and password prompt will appear with your next Git action A username and password prompt will appear with your next Git action",
       start: "2022/5/4",
       end: "2022/5/29",
       backgroundColor: "#c7e7c7"
@@ -45,7 +60,8 @@ const datas = [
   [
     {
       event_id: 3,
-      title: "Event 3",
+      title:
+        "A username and password prompt will appear with your next Git action A username and password prompt will appear with your next Git action",
       start: "2022/4/15",
       end: "2022/5/1",
       backgroundColor: "#feedc0"
@@ -55,7 +71,7 @@ const datas = [
 const dashLineOffsetY = 20;
 const dateKeyFormat = "DD/MM/YYYY";
 
-const CapEventCalendar = props => {
+const CapEventCalendar = ({ popoverConent = PopoverConent }) => {
   const [displayMonths] = useState(
     getMonthsForQuarter(getQuarterForDate(moment().format()))
   );
@@ -69,7 +85,9 @@ const CapEventCalendar = props => {
   const canvas = useRef(null);
   const contextRef = useRef(null);
   const drawObject = useRef(null);
+
   const isTooltipVisible = useRef(null);
+  const currentHoverEvent = useRef(null);
 
   const showBorder = (month, day, monthIndex) => {
     if (moment(month.end).date() === moment(day).date()) return true;
@@ -81,11 +99,28 @@ const CapEventCalendar = props => {
 
   // responsive width and height
   useEffect(() => {
-    setWidth(ref.current.clientWidth);
-    setHeight(ref.current.clientHeight > 400 ? ref.current.clientHeight : 400);
+    handleDimension();
   }, []);
 
-  const drawLayout = ({ context, width, height }) => {
+  useEffect(() => {
+    window.addEventListener("resize", doResize, true);
+    return () => {
+      window.removeEventListener("resize", doResize);
+    };
+  }, []);
+
+  const handleDimension = () => {
+    setWidth(ref.current.clientWidth);
+    setHeight(ref.current.clientHeight > 400 ? ref.current.clientHeight : 418);
+  };
+
+  const doResize = () => {
+    console.log({ pixelRatio });
+    handleDimension();
+  };
+
+  const drawLayout = () => {
+    const context = contextRef.current;
     const dayObject = {};
 
     let [rectX, rectY, rectHeight, rectWidth] = [
@@ -102,7 +137,6 @@ const CapEventCalendar = props => {
         const rectMidX = rectX + rectWidth / 2;
         context.beginPath();
         context.rect(rectX, rectY, rectWidth, rectHeight);
-        context.closePath();
 
         const dayKey = moment(day).format(dateKeyFormat);
         const today = moment().format(dateKeyFormat);
@@ -145,6 +179,7 @@ const CapEventCalendar = props => {
           });
         }
 
+        context.closePath();
         rectX += rectWidth;
       });
     });
@@ -167,8 +202,26 @@ const CapEventCalendar = props => {
     isTooltipVisible.current = visible;
   };
 
-  const updateKnobPosition = ({ mouseX, mouseY } = {}) => {
-    const knob = document.getElementById("event-calendar-tool-tip-knob");
+  const togglePopover = (visible, popoverContentProps) => {
+    const knob = document.getElementById("event-calendar-popover-knob");
+    ReactDom.unmountComponentAtNode(knob);
+    const Component = popoverConent;
+
+    if (visible) {
+      ReactDom.render(
+        <CapPopover
+          visible={true}
+          placement="left"
+          content={<Component {...popoverContentProps} />}
+        >
+          <div />
+        </CapPopover>,
+        knob
+      );
+    }
+  };
+
+  const updatePosition = ({ mouseX, mouseY, knob }) => {
     const { style } = knob;
     if (mouseX) {
       style.display = "block";
@@ -181,14 +234,28 @@ const CapEventCalendar = props => {
     }
   };
 
-  const handleTodayLine = ({ mouseX, mouseY } = {}) => {
+  const updateToolTipKnobPosition = ({ mouseX, mouseY } = {}) => {
+    const toolTipKnob = document.getElementById("event-calendar-tool-tip-knob");
+    updatePosition({ mouseX, mouseY, knob: toolTipKnob });
+  };
+
+  const updatePopoverKnobPosition = ({ mouseX, mouseY } = {}) => {
+    const popoverKnob = document.getElementById("event-calendar-popover-knob");
+    updatePosition({ mouseX, mouseY, knob: popoverKnob });
+  };
+
+  const getTodayRectObj = () => {
     const {
       current: { day }
     } = drawObject;
-    const context = contextRef.current;
 
     const today = moment().format(dateKeyFormat);
-    const currentDayObj = day[today];
+    return day[today];
+  };
+
+  const handleTodayLine = ({ mouseX, mouseY } = {}) => {
+    const context = contextRef.current;
+    const currentDayObj = getTodayRectObj();
 
     if (currentDayObj) {
       const { x, y, midX, height } = currentDayObj;
@@ -204,50 +271,95 @@ const CapEventCalendar = props => {
     }
   };
 
-  const drawEvent = () => {
+  const toggleCursor = pointer =>
+    (canvas.current.style.cursor = pointer ? "pointer" : "auto");
+
+  const drawEvent = ({ mouseX, mouseY } = {}) => {
     let eventStartY = 40;
-    const eventHeight = 20;
-    const eventRowGap = 10;
+    const eventHeight = 24;
+    const eventRowGap = 12;
+    const textPadding = 12;
     const {
       current: { day }
     } = drawObject;
     const context = contextRef.current;
+    let currentHoverItem = null;
 
     datas.forEach(row => {
-      row.forEach(({ title, start, end, backgroundColor }) => {
-        console.log(
-          moment(start).format(dateKeyFormat),
-          moment(end).format(dateKeyFormat)
-        );
+      row.forEach(event => {
+        const { title, start, end, backgroundColor } = event;
         const startRect = day[moment(start).format(dateKeyFormat)];
         const endRect = day[moment(end).format(dateKeyFormat)];
         if (startRect && endRect) {
-          context.beginPath();
-          context.fillStyle = backgroundColor;
-          context.fillRect(
-            startRect.midX,
-            eventStartY,
-            endRect.midX - startRect.midX,
-            eventHeight
-          );
-          context.fillStyle = "#091e42";
-          context.font = "12px Roboto";
-          context.textAlign = "start";
-          context.fillText(title, startRect.midX + 8, eventStartY + 14);
-          context.closePath();
+          const eventWidth = endRect.midX - startRect.midX;
+          const isPointInROundRectTextPath = drawRoundRectWithText({
+            context,
+            x: startRect.midX,
+            y: eventStartY,
+            width: eventWidth,
+            height: eventHeight,
+            bgColor: backgroundColor,
+            borderRadius: 5,
+            text: title,
+            color: "#091e42",
+            textPadding,
+            mouseX,
+            mouseY
+          });
+
+          if (mouseX && isPointInROundRectTextPath) {
+            currentHoverItem = {
+              event,
+              startRect,
+              endRect,
+              eventStartY,
+              eventHeight,
+              isNewEvent: true
+            };
+          }
         }
       });
       eventStartY += eventHeight + eventRowGap;
     });
+
+    if (currentHoverItem) {
+      const {
+        event: { event_id: currentEventId }
+      } = currentHoverItem;
+      if (currentHoverEvent.current?.event?.event_id !== currentEventId) {
+        currentHoverEvent.current = currentHoverItem;
+      }
+    } else {
+      currentHoverEvent.current = null;
+    }
+  };
+
+  const reDrawCanvas = () => {
+    const context = contextRef.current;
+    context.clearRect(0, 0, width, height);
+    context.beginPath();
+    context.font = "normal 12px sans-serif";
+    drawCanvas();
+    context.closePath();
+  };
+
+  const drawCanvas = () => {
+    drawLayout();
+    handleTodayLine();
+    drawEvent();
   };
 
   useLayoutEffect(() => {
     const context = canvas.current.getContext("2d");
     contextRef.current = context;
+  }, []);
 
-    drawLayout({ context, width, height });
-    handleTodayLine();
-    drawEvent();
+  useEffect(() => {
+    if (width > 0 && height > 0) {
+      const context = contextRef.current;
+      context.scale(pixelRatio, pixelRatio);
+      reDrawCanvas();
+    }
   }, [width, height]);
 
   const displayWidth = Math.floor(pixelRatio * width);
@@ -255,17 +367,49 @@ const CapEventCalendar = props => {
   const style = { width, height };
 
   const onMouseMove = event => {
-    const mouseX = event.nativeEvent.offsetX;
-    const mouseY = event.nativeEvent.offsetY;
+    const mouseX = event.nativeEvent.offsetX * pixelRatio;
+    const mouseY = event.nativeEvent.offsetY * pixelRatio;
 
-    if (handleTodayLine({ mouseX, mouseY })) {
+    drawEvent({ mouseX, mouseY });
+    if (currentHoverEvent.current) {
+      if (currentHoverEvent.current.isNewEvent) {
+        const {
+          event,
+          startRect,
+          eventHeight,
+          eventStartY
+        } = currentHoverEvent.current;
+        const { midX } = startRect;
+        updatePopoverKnobPosition({
+          mouseX: midX,
+          mouseY: eventStartY + eventHeight / 2
+        });
+        togglePopover(true, { ...event });
+        currentHoverEvent.current = {
+          ...currentHoverEvent.current,
+          isNewEvent: false
+        };
+      }
+    } else {
+      togglePopover(false);
+    }
+
+    const isTodayLineHovered = handleTodayLine({ mouseX, mouseY });
+    if (isTodayLineHovered && !currentHoverEvent.current) {
       if (!isTooltipVisible.current) {
-        updateKnobPosition({ mouseX, mouseY });
+        const currentDayObj = getTodayRectObj();
+        const { midX } = currentDayObj;
+        updateToolTipKnobPosition({
+          mouseX: midX,
+          mouseY: mouseY / pixelRatio
+        });
         toggleTooltip(event);
       }
     } else {
       toggleTooltip();
     }
+
+    toggleCursor(isTodayLineHovered || currentHoverEvent.current);
   };
 
   return (
@@ -281,6 +425,7 @@ const CapEventCalendar = props => {
         onMouseMove={onMouseMove}
       />
       <div style={{ position: "absolute" }} id="event-calendar-tool-tip-knob" />
+      <div style={{ position: "absolute" }} id="event-calendar-popover-knob" />
     </div>
   );
 };
