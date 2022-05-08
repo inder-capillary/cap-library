@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const drawHeadingText = ({ context, x, y, height, text }) => {
   context.beginPath();
   context.fillStyle = "#ffff";
@@ -72,33 +73,52 @@ export const drawRoundRect = ({
   y,
   width,
   height,
-  radius,
+  radius: radiusParam,
+  openLeft,
+  openRight,
+  fillStyle,
   mouseX,
   mouseY
 }) => {
+  let radius = {
+    tl: radiusParam,
+    tr: radiusParam,
+    br: radiusParam,
+    bl: radiusParam
+  };
+
+  if (openLeft) {
+    radius = { ...radius, tl: 0, bl: 0 };
+  }
+
+  if (openRight) {
+    radius = { ...radius, tr: 0, br: 0 };
+  }
+
   context.beginPath();
+  context.fillStyle = fillStyle;
 
-  context.moveTo(x + radius, y);
-  context.lineTo(x + width - radius, y);
+  context.moveTo(x + radius.tl, y);
+  context.lineTo(x + width - radius.tr, y);
 
-  context.quadraticCurveTo(x + width, y, x + width, y + radius);
+  context.quadraticCurveTo(x + width, y, x + width, y + radius.tr);
 
-  context.lineTo(x + width, y + height - radius);
+  context.lineTo(x + width, y + height - radius.br);
 
   context.quadraticCurveTo(
     x + width,
     y + height,
-    x + width - radius,
+    x + width - radius.br,
     y + height
   );
 
-  context.lineTo(x + radius, y + height);
+  context.lineTo(x + radius.bl, y + height);
 
-  context.quadraticCurveTo(x, y + height, x, y + height - radius);
+  context.quadraticCurveTo(x, y + height, x, y + height - radius.bl);
 
-  context.lineTo(x, y + radius);
+  context.lineTo(x, y + radius.tl);
 
-  context.quadraticCurveTo(x, y, x + radius, y);
+  context.quadraticCurveTo(x, y, x + radius.tl, y);
 
   if (mouseX) {
     return context.isPointInPath(mouseX, mouseY);
@@ -140,11 +160,12 @@ export const drawRoundRectWithText = ({
   text,
   color,
   textPadding,
+  openLeft,
+  openRight,
   mouseX,
   mouseY
 }) => {
   context.beginPath();
-  context.fillStyle = bgColor;
   const isPointInRoundRectPath = drawRoundRect({
     context,
     x,
@@ -152,6 +173,9 @@ export const drawRoundRectWithText = ({
     width,
     height,
     radius: borderRadius,
+    openLeft,
+    openRight,
+    fillStyle: bgColor,
     mouseX,
     mouseY
   });

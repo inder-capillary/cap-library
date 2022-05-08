@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
+import PropTypes from "prop-types";
 import ReactDom from "react-dom";
 import moment from "moment";
 
@@ -8,7 +9,9 @@ import CapPopover from "../CapPopover";
 import {
   getQuarterForDate,
   getMonthsForQuarter,
-  getDaysOfMonth
+  getDaysOfMonth,
+  getTotalNumberOfDaysInQuarter,
+  formatDateToSuitCanvas
 } from "./utils";
 import {
   drawHeadingText,
@@ -18,64 +21,29 @@ import {
   drawRoundRectWithText
 } from "./drawUtils";
 
+import { events as datas } from "./mockData";
+
 const PopoverConent = ({ title }) => <div>{title}</div>;
 
-const datas = [
-  [
-    {
-      event_id: 1,
-      title:
-        "A username and password prompt will appear with your next Git action A username and password prompt will appear with your next Git action",
-      start: "2022/4/1",
-      end: "2022/4/9",
-      backgroundColor: "#e9e9ea"
-    },
-    {
-      event_id: 1.1,
-      title:
-        "A username and password prompt will appear with your next Git action A username and password prompt will appear with your next Git action",
-      start: "2022/4/30",
-      end: "2022/5/15",
-      backgroundColor: "#feedc0"
-    },
-    {
-      event_id: 1.2,
-      title:
-        "A username and password prompt will appear with your next Git action A username and password prompt will appear with your next Git action",
-      start: "2022/5/20",
-      end: "2022/5/21",
-      backgroundColor: "#feedc0"
-    }
-  ],
-  [
-    {
-      event_id: 2,
-      title:
-        "A username and password prompt will appear with your next Git action A username and password prompt will appear with your next Git action",
-      start: "2022/5/4",
-      end: "2022/5/29",
-      backgroundColor: "#c7e7c7"
-    }
-  ],
-  [
-    {
-      event_id: 3,
-      title:
-        "A username and password prompt will appear with your next Git action A username and password prompt will appear with your next Git action",
-      start: "2022/4/15",
-      end: "2022/5/1",
-      backgroundColor: "#feedc0"
-    }
-  ]
-];
+/* eslint-disable */
 const dashLineOffsetY = 20;
 const dateKeyFormat = "DD/MM/YYYY";
 
-const CapEventCalendar = ({ popoverConent = PopoverConent }) => {
+const CapEventCalendar = ({
+  calendarDate = moment().format(),
+  events = datas,
+  popoverConent = PopoverConent
+}) => {
+  const [currentDate, setCurrentDate] = useState(moment().format());
   const [displayMonths] = useState(
     getMonthsForQuarter(getQuarterForDate(moment().format()))
   );
-  const noOfDaysInQuarter = 90;
+  const [formattedEvents] = useState(formatDateToSuitCanvas(events));
+
+  useEffect(() => {
+    setCurrentDate(currentDate || moment().format());
+  }, [calendarDate]);
+  const noOfDaysInQuarter = getTotalNumberOfDaysInQuarter(currentDate);
 
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -114,41 +82,54 @@ const CapEventCalendar = ({ popoverConent = PopoverConent }) => {
     setHeight(ref.current.clientHeight > 400 ? ref.current.clientHeight : 418);
   };
 
-  const doResize = () => {
-    console.log({ pixelRatio });
-    handleDimension();
-  };
+  const doResize = () => handleDimension();
+
+  const initDayObject = ({ x, y, midX, width, height }) => ({
+    x,
+    y,
+    midX,
+    width,
+    height
+  });
+
+  const getRectInitDimension = () => ({
+    x: 0,
+    y: 0,
+    height,
+    width: width / (noOfDaysInQuarter + 1)
+  });
 
   const drawLayout = () => {
     const context = contextRef.current;
     const dayObject = {};
 
-    let [rectX, rectY, rectHeight, rectWidth] = [
-      0,
-      0,
-      height,
-      width / noOfDaysInQuarter
-    ];
+    const {
+      x: rectX,
+      y: rectY,
+      height: rectHeight,
+      width: rectWidth
+    } = getRectInitDimension();
+    let startX = rectX;
 
     displayMonths.forEach((month, monthIndex) => {
       const allDays = getDaysOfMonth(month.start);
 
       allDays.forEach(day => {
-        const rectMidX = rectX + rectWidth / 2;
+        const rectMidX = startX + rectWidth / 2;
         context.beginPath();
-        context.rect(rectX, rectY, rectWidth, rectHeight);
+        context.rect(startX, rectY, rectWidth, rectHeight);
 
         const dayKey = moment(day).format(dateKeyFormat);
         const today = moment().format(dateKeyFormat);
         const isToday = dayKey === today;
 
-        dayObject[dayKey] = {
-          x: rectX,
+        dayObject[dayKey] = initDayObject({
+          x: startX,
           y: rectY,
           midX: rectMidX,
           width: rectWidth,
           height: rectHeight
-        };
+        });
 
         if (moment(day).day() === 1 && !isToday) {
           const headingMarginBottom = 8;
@@ -180,7 +161,7 @@ const CapEventCalendar = ({ popoverConent = PopoverConent }) => {
         }
 
         context.closePath();
-        rectX += rectWidth;
+        startX += rectWidth;
       });
     });
     drawObject.current = { ...drawObject.current, day: dayObject };
@@ -244,13 +225,16 @@ const CapEventCalendar = ({ popoverConent = PopoverConent }) => {
     updatePosition({ mouseX, mouseY, knob: popoverKnob });
   };
 
-  const getTodayRectObj = () => {
+  const getDayObject = () => {
     const {
       current: { day }
     } = drawObject;
+    return day;
+  };
 
+  const getTodayRectObj = () => {
     const today = moment().format(dateKeyFormat);
-    return day[today];
+    return getDayObject()[today];
   };
 
   const handleTodayLine = ({ mouseX, mouseY } = {}) => {
@@ -258,7 +242,7 @@ const CapEventCalendar = ({ popoverConent = PopoverConent }) => {
     const currentDayObj = getTodayRectObj();
 
     if (currentDayObj) {
-      const { x, y, midX, height } = currentDayObj;
+      const { y, midX, height } = currentDayObj;
       return drawTodayLine({
         context,
         x: midX,
@@ -274,25 +258,76 @@ const CapEventCalendar = ({ popoverConent = PopoverConent }) => {
   const toggleCursor = pointer =>
     (canvas.current.style.cursor = pointer ? "pointer" : "auto");
 
+  const getRectDimensionOnNotFound = (date, isEnd) => {
+    const day = getDayObject();
+    const {
+      x: rectX,
+      y: rectY,
+      height: rectHeight,
+      width: rectWidth
+    } = getRectInitDimension();
+
+    const dayObject = isEnd
+      ? {
+          ...initDayObject({
+            x: width,
+            y: rectY,
+            midX: width,
+            width: rectWidth,
+            height: rectHeight
+          }),
+          isCont: true
+        }
+      : {
+          ...initDayObject({
+            x: rectX,
+            y: rectY,
+            midX: 1,
+            width: rectWidth,
+            height: rectHeight
+          }),
+          isCont: true
+        };
+
+    if (date) {
+      drawObject.current = {
+        ...drawObject.current,
+        day: { ...day, [date]: dayObject }
+      };
+    }
+
+    return dayObject;
+  };
+
   const drawEvent = ({ mouseX, mouseY } = {}) => {
     let eventStartY = 40;
     const eventHeight = 24;
     const eventRowGap = 12;
     const textPadding = 12;
-    const {
-      current: { day }
-    } = drawObject;
+    const day = getDayObject();
     const context = contextRef.current;
     let currentHoverItem = null;
 
-    datas.forEach(row => {
-      row.forEach(event => {
+    formattedEvents.forEach(eventRow => {
+      eventRow.forEach(event => {
         const { title, start, end, backgroundColor } = event;
-        const startRect = day[moment(start).format(dateKeyFormat)];
-        const endRect = day[moment(end).format(dateKeyFormat)];
+        const startDate = moment(start).format(dateKeyFormat);
+        const endDate = moment(end).format(dateKeyFormat);
+
+        let startRect = day[startDate];
+        let endRect = day[endDate];
+
+        if (!startRect) {
+          startRect = getRectDimensionOnNotFound(startDate);
+        }
+
+        if (!endRect) {
+          endRect = getRectDimensionOnNotFound(endDate, true);
+        }
+
         if (startRect && endRect) {
           const eventWidth = endRect.midX - startRect.midX;
-          const isPointInROundRectTextPath = drawRoundRectWithText({
+          const isPointInRoundRectTextPath = drawRoundRectWithText({
             context,
             x: startRect.midX,
             y: eventStartY,
@@ -303,11 +338,13 @@ const CapEventCalendar = ({ popoverConent = PopoverConent }) => {
             text: title,
             color: "#091e42",
             textPadding,
+            openLeft: startRect.isCont,
+            openRight: endRect.isCont,
             mouseX,
             mouseY
           });
 
-          if (mouseX && isPointInROundRectTextPath) {
+          if (mouseX && isPointInRoundRectTextPath) {
             currentHoverItem = {
               event,
               startRect,
@@ -428,6 +465,11 @@ const CapEventCalendar = ({ popoverConent = PopoverConent }) => {
       <div style={{ position: "absolute" }} id="event-calendar-popover-knob" />
     </div>
   );
+};
+
+CapEventCalendar.propTypes = {
+  calendarDate: PropTypes.string,
+  events: PropTypes.array
 };
 
 export default CapEventCalendar;
