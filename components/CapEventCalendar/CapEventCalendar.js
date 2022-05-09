@@ -1,12 +1,21 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useMemo,
+  useLayoutEffect
+} from "react";
 import "./_capEventCalendar.scss";
 import PropTypes from "prop-types";
 import ReactDom from "react-dom";
 import moment from "moment";
 
+import CapIcon from "../CapIcon";
+import CapMenu from "../CapMenu";
+import CapButton from "../CapButton";
 import CapTooltip from "../CapTooltip";
 import CapPopover from "../CapPopover";
-import CapIcon from "../CapIcon";
+import CapDropdown from "../CapDropdown";
 
 import MonthHeader from "./components/MonthHeader";
 
@@ -14,7 +23,6 @@ import {
   getQuarterForDate,
   getMonthsForQuarter,
   getDaysOfMonth,
-  getTotalNumberOfDaysInQuarter,
   formatDataToSuitCanvas
 } from "./utils";
 import {
@@ -28,15 +36,17 @@ import {
 import { quarterInfo, workWeek } from "./constants";
 
 import { events as datas } from "./mockData";
-import CapDropdown from "../CapDropdown";
-import CapButton from "../CapButton";
-import CapMenu from "../CapMenu";
 
 const PopoverConent = ({ title }) => <div>{title}</div>;
 
 /* eslint-disable */
 const dashLineOffsetY = 20;
 const dateKeyFormat = "DD/MM/YYYY";
+const eventHeight = 24;
+const eventRowGap = 12;
+const textPadding = 12;
+const eventStartYOffset = 40;
+const defaultCanvasLimit = 150;
 
 const CapEventCalendar = ({
   calendarDate = moment().format(),
@@ -58,7 +68,10 @@ const CapEventCalendar = ({
   useEffect(() => {
     setCurrentDate(currentDate || moment().format());
   }, [calendarDate]);
-  const noOfDaysInQuarter = getTotalNumberOfDaysInQuarter(currentDate);
+  const noOfDaysInQuarter = useMemo(
+    () => displayMonths.reduce((acc, { daysInMonth }) => acc + daysInMonth, 0),
+    [displayMonths]
+  );
 
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -83,7 +96,7 @@ const CapEventCalendar = ({
   // responsive width and height
   useEffect(() => {
     handleDimension();
-  }, []);
+  }, [formattedEvents]);
 
   useEffect(() => {
     window.addEventListener("resize", doResize, true);
@@ -101,6 +114,11 @@ const CapEventCalendar = ({
     if (width > 0 && height > 0) {
       const context = contextRef.current;
       context.scale(pixelRatio, pixelRatio);
+    }
+  }, [width, height]);
+
+  useEffect(() => {
+    if (width > 0 && height > 0) {
       reDrawCanvas();
     }
   }, [width, height, quarterChanged, dayGrid]);
@@ -123,8 +141,17 @@ const CapEventCalendar = ({
   };
 
   const handleDimension = () => {
+    const { y: rectY } = getRectInitDimension();
+    const estimatedHeight =
+      rectY +
+      eventStartYOffset +
+      (eventHeight + eventRowGap) * formattedEvents.length;
     setWidth(ref.current.clientWidth);
-    setHeight(ref.current.clientHeight > 400 ? ref.current.clientHeight : 418);
+    setHeight(
+      estimatedHeight > defaultCanvasLimit
+        ? estimatedHeight
+        : defaultCanvasLimit
+    );
   };
 
   const doResize = () => handleDimension();
@@ -176,7 +203,9 @@ const CapEventCalendar = ({
           height: rectHeight
         });
 
-        if (moment(day).day() === dayGrid && !isToday) {
+        const showMonthBorder = showBorder(month, day, monthIndex);
+
+        if (moment(day).day() === dayGrid && !isToday && !showMonthBorder) {
           const headingMarginBottom = 8;
           drawHeadingText({
             context,
@@ -195,7 +224,7 @@ const CapEventCalendar = ({
           });
         }
 
-        if (showBorder(month, day, monthIndex)) {
+        if (showMonthBorder) {
           drawLineSeperator({
             context,
             x: rectMidX,
@@ -345,10 +374,8 @@ const CapEventCalendar = ({
   };
 
   const drawEvent = ({ mouseX, mouseY } = {}) => {
-    let eventStartY = 40;
-    const eventHeight = 24;
-    const eventRowGap = 12;
-    const textPadding = 12;
+    const { y: rectY } = getRectInitDimension();
+    let eventStartY = rectY + eventStartYOffset;
     const day = getDayObject();
     const context = contextRef.current;
     let currentHoverItem = null;
