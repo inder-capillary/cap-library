@@ -353,6 +353,7 @@ const CapEventCalendar = ({
     const context = contextRef.current;
     let currentHoverItem = null;
 
+    console.log({formattedEvents},'draw event');
     formattedEvents.length &&
       formattedEvents.forEach(eventRow => {
         eventRow.forEach(event => {

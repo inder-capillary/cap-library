@@ -83,7 +83,6 @@ export const getDaysOfMonth = date => {
   const arrDays = [monthDate.format()];
   let current = monthDate.format();
   for (let i = 1; i < daysInMonth; ) {
-    /* console.log({i}); */
     current = moment(current).add(1, "day");
     arrDays.push(current.format());
     i++;
@@ -101,10 +100,6 @@ export const checkIfDateIsInRange = (date, start, end) => {
   const _date = moment(date).format("DD-MM-YYYY");
   const _start = moment(start).format("DD-MM-YYYY");
   const _end = moment(end).format("DD-MM-YYYY");
-  console.log({ _date, _start, _end });
-  console.log(_date === _start);
-  console.log(_date === _end);
-
   return (
     moment(date).isBetween(start, end) || _date === _start || _date === _end
   );
@@ -144,7 +139,6 @@ export const formatDataToSuitCanvas = events => {
         const ifEventIsLong = _.some(lastEventRow, rowItem =>
           isEventLong(rowItem, eventItem)
         );
-        console.log({ isClash, isOnSameDateRange, ifEventIsLong });
         if (isClash || isOnSameDateRange || ifEventIsLong) {
           formattedEvents.push([eventItem]);
         } else {
@@ -152,9 +146,7 @@ export const formatDataToSuitCanvas = events => {
           formattedEvents[formattedEvents.length - 1] = lastEventRow;
         }
       }
-      console.log({ formattedEvents });
     });
   }
-  //   console.log(formattedEvents);
   return formattedEvents;
 };

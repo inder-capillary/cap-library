@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 const MonthHeader = ({displayMonths}) =>{
-    console.log({displayMonths});
     return(
         <div className="event-calendar__month-header">
             {
