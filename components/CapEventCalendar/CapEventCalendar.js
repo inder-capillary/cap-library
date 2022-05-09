@@ -15,14 +15,14 @@ import {
   getMonthsForQuarter,
   getDaysOfMonth,
   getTotalNumberOfDaysInQuarter,
-  formatDataToSuitCanvas
+  formatDataToSuitCanvas,
 } from "./utils";
 import {
   drawHeadingText,
   drawDashedLines,
   drawTodayLine,
   drawLineSeperator,
-  drawRoundRectWithText
+  drawRoundRectWithText,
 } from "./drawUtils";
 
 import { quarterInfo, workWeek } from "./constants";

@@ -1,6 +1,6 @@
 import moment from "moment";
 import * as _ from "lodash";
-export const getMondaysOfMonth = date => {
+export const getMondaysOfMonth = (date) => {
   const _date = date || new Date();
   const monday = moment(_date)
     .startOf("month")
@@ -15,11 +15,11 @@ export const getMondaysOfMonth = date => {
   return mondaysOfMonth;
 };
 
-export const getDate = date => date.format("D").toString();
+export const getDate = (date) => date.format("D").toString();
 
-export const getQuarterForDate = date => moment(date).quarter();
+export const getQuarterForDate = (date) => moment(date).quarter();
 
-export const getMonthsForQuarter = quarter => {
+export const getMonthsForQuarter = (quarter) => {
   let months = [];
   const quarterStartDate = moment()
     .utc()
@@ -48,7 +48,7 @@ export const getMonthsForQuarter = quarter => {
         .format(),
       name: getMonthName(quarterStartMonth),
       month: quarterStartMonth,
-      daysInMonth: moment(quarterStartDate).daysInMonth()
+      daysInMonth: moment(quarterStartDate).daysInMonth(),
     },
     {
       start: quarterMidDate,
@@ -57,7 +57,7 @@ export const getMonthsForQuarter = quarter => {
         .format(),
       name: getMonthName(quarterMidMonth),
       month: quarterMidMonth,
-      daysInMonth: moment(quarterMidDate).daysInMonth()
+      daysInMonth: moment(quarterMidDate).daysInMonth(),
     },
     {
       start: quarterEndDate,
@@ -66,16 +66,16 @@ export const getMonthsForQuarter = quarter => {
         .format(),
       name: getMonthName(quarterEndMonth),
       month: quarterEndMonth,
-      daysInMonth: moment(quarterEndDate).daysInMonth()
-    }
+      daysInMonth: moment(quarterEndDate).daysInMonth(),
+    },
   ];
   return months;
 };
 
 export const monthNames = moment.months();
-export const getMonthName = month => monthNames[month];
+export const getMonthName = (month) => monthNames[month];
 
-export const getDaysOfMonth = date => {
+export const getDaysOfMonth = (date) => {
   const month = moment(date).month();
   const year = moment(date).year();
   const monthDate = moment(`${year}-${month + 1}`, "YYYY-MM");
@@ -90,7 +90,7 @@ export const getDaysOfMonth = date => {
   return arrDays;
 };
 
-export const getTotalNumberOfDaysInQuarter = date => {
+export const getTotalNumberOfDaysInQuarter = (date) => {
   const quarterStart = moment(date).startOf("quarter");
   const quarterEnd = moment(date).endOf("quarter");
   return quarterEnd.diff(quarterStart, "days");
@@ -105,40 +105,35 @@ export const checkIfDateIsInRange = (date, start, end) => {
   );
 };
 
-export const isEventLong = (eventInRow, newEvent) => {
-  return (
-    moment(newEvent.start).isBefore(moment(eventInRow.start)) &&
-    moment(newEvent.end).isAfter(moment(eventInRow.end))
-  );
-};
+export const isEventLong = (eventInRow, newEvent) => (
+  moment(newEvent.start).isBefore(moment(eventInRow.start))
+    && moment(newEvent.end).isAfter(moment(eventInRow.end))
+);
 
-export const formatDataToSuitCanvas = events => {
-  let formattedEvents = [];
+export const formatDataToSuitCanvas = (events) => {
+  const formattedEvents = [];
   if (events.length) {
-    _.forEach(events, eventItem => {
+    _.forEach(events, (eventItem) => {
       if (!formattedEvents.length) {
         formattedEvents.push([eventItem]);
       } else {
         const lastEventRow = formattedEvents[formattedEvents.length - 1];
         const isClash = _.some(
           lastEventRow,
-          rowItem =>
-            checkIfDateIsInRange(eventItem.start, rowItem.start, rowItem.end) ||
-            checkIfDateIsInRange(eventItem.end, rowItem.start, rowItem.end)
+          (rowItem) => checkIfDateIsInRange(eventItem.start, rowItem.start, rowItem.end)
+            || checkIfDateIsInRange(eventItem.end, rowItem.start, rowItem.end)
         );
-        const isOnSameDateRange = _.some(lastEventRow, rowItem => {
+        const isOnSameDateRange = _.some(lastEventRow, (rowItem) => {
           const eventItemStart = moment(eventItem.start, "DD-MM-YYYY");
           const eventItemEnd = moment(eventItem.end, "DD-MM-YYYY");
           const rowItemStart = moment(rowItem.start, "DD-MM-YYYY");
           const rowItemEnd = moment(rowItem.end, "DD-MM-YYYY");
           return (
-            eventItemStart.isSame(rowItemStart) &&
-            eventItemEnd.isSame(rowItemEnd)
+            eventItemStart.isSame(rowItemStart)
+            && eventItemEnd.isSame(rowItemEnd)
           );
         });
-        const ifEventIsLong = _.some(lastEventRow, rowItem =>
-          isEventLong(rowItem, eventItem)
-        );
+        const ifEventIsLong = _.some(lastEventRow, (rowItem) => isEventLong(rowItem, eventItem));
         if (isClash || isOnSameDateRange || ifEventIsLong) {
           formattedEvents.push([eventItem]);
         } else {
