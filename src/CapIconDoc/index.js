@@ -429,6 +429,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <Text>clock</Text>
             </List>
             <List>
+              <CapIcon type="earth" />
+              <Text>earth</Text>
+            </List>
+            <List>
               <CapIcon type="refresh" />
               <Text>refresh</Text>
             </List>

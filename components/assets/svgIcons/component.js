@@ -90,6 +90,7 @@ const getSvgComponentFromType = (type) => {
     case 'refresh': return SvgIcons.Refresh;
     case 'delete': return SvgIcons.Delete;
     case 'drag': return SvgIcons.Drag;
+    case 'earth': return SvgIcons.Earth;
     case 'launch': return SvgIcons.Launch;
     case 'capture': return SvgIcons.Capture;
     case 'dollar': return SvgIcons.Dollar;

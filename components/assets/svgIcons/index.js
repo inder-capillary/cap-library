@@ -86,6 +86,7 @@ export { default as Clock } from './Icons/Clock';
 export { default as Refresh } from './Icons/Refresh';
 export { default as Delete } from './Icons/Delete';
 export { default as Drag } from './Icons/Drag';
+export { default as Earth } from './Icons/Earth';
 export { default as Launch } from './Icons/Launch';
 export { default as Capture } from './Icons/Capture';
 export { default as Dollar } from './Icons/Dollar';
