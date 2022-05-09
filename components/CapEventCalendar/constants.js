@@ -6,3 +6,11 @@ export const quarterInfo = {
 };
 
 export const weekDays = [0, 1, 2, 3, 4, 5, 6];
+
+export const workWeek = {
+  1: 'Monday',
+  2: 'Tuesday',
+  3: 'Wednesday',
+  4: 'Thursday',
+  5: 'Friday'
+}

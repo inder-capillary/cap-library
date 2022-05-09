@@ -80,10 +80,23 @@ export const getTotalNumberOfDaysInQuarter = (date) => {
 };
 
 
-export const checkIfDateIsInRange = (date, start, end) => moment(date).isBetween(start, end);
+export const checkIfDateIsInRange = (date, start, end) => {
+    const _date = moment(date).format('DD-MM-YYYY');
+    const _start = moment(start).format('DD-MM-YYYY');
+    const _end = moment(end).format('DD-MM-YYYY');
+    console.log({_date,_start,_end});
+    console.log(_date === _start);
+    console.log(_date === _end);
+
+    return moment(date).isBetween(start, end) || _date ===_start  || _date === _end;
+};
+
+export const isEventLong = (eventInRow, newEvent) =>{
+    return moment(newEvent.start).isBefore(moment(eventInRow.start)) && moment(newEvent.end).isAfter(moment(eventInRow.end))
+}
 
 export const formatDataToSuitCanvas = (events) => {
-  const formattedEvents = [];
+  let formattedEvents = [];
   if (events.length) {
     _.forEach(events, (eventItem) => {
       if (!formattedEvents.length) {
@@ -91,14 +104,23 @@ export const formatDataToSuitCanvas = (events) => {
       } else {
         const lastEventRow = formattedEvents[formattedEvents.length - 1];
         const isClash = _.some(lastEventRow, (rowItem) => checkIfDateIsInRange(eventItem.start, rowItem.start, rowItem.end) || checkIfDateIsInRange(eventItem.end, rowItem.start, rowItem.end));
-        const isOnSameDateRange = _.some(lastEventRow, ((rowItem) => moment(rowItem.end).diff(moment(rowItem.start), 'days') === moment(eventItem.end).diff(moment(eventItem.start), 'days') ));
-        if (isClash || isOnSameDateRange) {
+        const isOnSameDateRange = _.some(lastEventRow, (rowItem)=>{
+            const eventItemStart = moment(eventItem.start,"DD-MM-YYYY");
+            const eventItemEnd = moment(eventItem.end,"DD-MM-YYYY");
+            const rowItemStart = moment(rowItem.start,"DD-MM-YYYY");
+            const rowItemEnd = moment(rowItem.end,"DD-MM-YYYY");
+            return eventItemStart.isSame(rowItemStart) && eventItemEnd.isSame(rowItemEnd);
+        });
+        const ifEventIsLong = _.some(lastEventRow, (rowItem => isEventLong(rowItem,eventItem)))
+        console.log({isClash, isOnSameDateRange, ifEventIsLong})
+        if (isClash || isOnSameDateRange || ifEventIsLong) {
           formattedEvents.push([eventItem]);
         } else {
           lastEventRow.push(eventItem);
           formattedEvents[formattedEvents.length - 1] = lastEventRow;
         }
       }
+      console.log({formattedEvents})
     });
   }
   //   console.log(formattedEvents);
