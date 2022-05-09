@@ -618,6 +618,7 @@ CapMultiSelectWithTree.defaultProps = {
   searchKey: "title",
   getPopupContainer: () => document.body,
   showSelectButtonToolTip: false,
+  appliedKeys: [],
 };
 
 CapMultiSelectWithTree.propTypes = {
