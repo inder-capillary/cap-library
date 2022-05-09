@@ -100,9 +100,7 @@ export const checkIfDateIsInRange = (date, start, end) => {
   const _date = moment(date).format("DD-MM-YYYY");
   const _start = moment(start).format("DD-MM-YYYY");
   const _end = moment(end).format("DD-MM-YYYY");
-  return (
-    moment(date).isBetween(start, end) || _date === _start || _date === _end
-  );
+  return moment(date).isBetween(start, end) || _date === _start || _date === _end;
 };
 
 export const isEventLong = (eventInRow, newEvent) => (
@@ -110,38 +108,51 @@ export const isEventLong = (eventInRow, newEvent) => (
     && moment(newEvent.end).isAfter(moment(eventInRow.end))
 );
 
-export const formatDataToSuitCanvas = (events) => {
+/**
+ * In order to decide if events are to be displayed in new row, we follow rules
+ * 1- event start and end dates should not be in-between/same of any existing event in the row
+ * 2- if there is a long event that spans the quarter, we show that event and any events that are in the same date range, appear below in a new row
+ * @param {Array} events 
+ * @param {Number} chosenQuarter 
+ * @returns 
+ */
+export const formatDataToSuitCanvas = (events, chosenQuarter) => {
   const formattedEvents = [];
   if (events.length) {
     _.forEach(events, (eventItem) => {
-      if (!formattedEvents.length) {
-        formattedEvents.push([eventItem]);
-      } else {
-        const lastEventRow = formattedEvents[formattedEvents.length - 1];
-        const isClash = _.some(
-          lastEventRow,
-          (rowItem) => checkIfDateIsInRange(eventItem.start, rowItem.start, rowItem.end)
-            || checkIfDateIsInRange(eventItem.end, rowItem.start, rowItem.end)
-        );
-        const isOnSameDateRange = _.some(lastEventRow, (rowItem) => {
-          const eventItemStart = moment(eventItem.start, "DD-MM-YYYY");
-          const eventItemEnd = moment(eventItem.end, "DD-MM-YYYY");
-          const rowItemStart = moment(rowItem.start, "DD-MM-YYYY");
-          const rowItemEnd = moment(rowItem.end, "DD-MM-YYYY");
-          return (
-            eventItemStart.isSame(rowItemStart)
-            && eventItemEnd.isSame(rowItemEnd)
-          );
-        });
-        const ifEventIsLong = _.some(lastEventRow, (rowItem) => isEventLong(rowItem, eventItem));
-        if (isClash || isOnSameDateRange || ifEventIsLong) {
-          formattedEvents.push([eventItem]);
-        } else {
-          lastEventRow.push(eventItem);
-          formattedEvents[formattedEvents.length - 1] = lastEventRow;
+    //check if date existe in the chosen quarter to avoid adding incorrect rows to the formatted events
+    if(getQuarterForDate(eventItem.start) === chosenQuarter || getQuarterForDate(eventItem.end) === chosenQuarter){
+            if (!formattedEvents.length) {
+                formattedEvents.push([eventItem]);
+            } else {
+                const lastEventRow = formattedEvents[formattedEvents.length - 1];
+                //
+                const isClash = _.some(lastEventRow,
+                    (rowItem) => checkIfDateIsInRange(eventItem.start, rowItem.start, rowItem.end)
+                        || checkIfDateIsInRange(eventItem.end, rowItem.start, rowItem.end)
+                );
+                const isOnSameDateRange = _.some(lastEventRow, (rowItem) => {
+                    const eventItemStart = moment(eventItem.start, "DD-MM-YYYY");
+                    const eventItemEnd = moment(eventItem.end, "DD-MM-YYYY");
+                    const rowItemStart = moment(rowItem.start, "DD-MM-YYYY");
+                    const rowItemEnd = moment(rowItem.end, "DD-MM-YYYY");
+                    return (
+                        eventItemStart.isSame(rowItemStart)
+                        && eventItemEnd.isSame(rowItemEnd)
+                    );
+                });
+                const ifEventIsLong = _.some(lastEventRow, (rowItem) => isEventLong(rowItem, eventItem)); //to check if events span over the quarters
+                if (isClash || isOnSameDateRange || ifEventIsLong) {
+                    formattedEvents.push([eventItem]);
+                } else {
+                    lastEventRow.push(eventItem);
+                    formattedEvents[formattedEvents.length - 1] = lastEventRow;
+                }
+            }
         }
-      }
-    });
+    }
+    );
   }
+  
   return formattedEvents;
 };

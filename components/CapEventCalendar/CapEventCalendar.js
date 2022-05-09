@@ -136,8 +136,8 @@ const CapEventCalendar = ({
     let events = fetchEventsForTheQuarter
       ? fetchEventsForTheQuarter(quarter)
       : [];
-    if (quarter === 2) events = datas;
-    setFormattedEvents(formatDataToSuitCanvas(events));
+    if (quarter === 1) events = datas; //need to check events appear for chosen quarter
+    setFormattedEvents(formatDataToSuitCanvas(events,quarter));
   };
 
   const handleDimension = () => {
@@ -380,7 +380,6 @@ const CapEventCalendar = ({
     const context = contextRef.current;
     let currentHoverItem = null;
 
-    console.log({formattedEvents},'draw event');
     formattedEvents.length &&
       formattedEvents.forEach(eventRow => {
         eventRow.forEach(event => {
