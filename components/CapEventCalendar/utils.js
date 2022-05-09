@@ -82,23 +82,25 @@ export const getTotalNumberOfDaysInQuarter = (date) => {
 
 export const checkIfDateIsInRange = (date, start, end) => moment(date).isBetween(start, end);
 
-export const formatDateToSuitCanvas = (events) => {
+export const formatDataToSuitCanvas = (events) => {
   const formattedEvents = [];
-  _.forEach(events, (eventItem) => {
-    if (!formattedEvents.length) {
-      formattedEvents.push([eventItem]);
-    } else {
-      const lastEventRow = formattedEvents[formattedEvents.length - 1];
-      const isClash = _.some(lastEventRow, (rowItem) => checkIfDateIsInRange(eventItem.start, rowItem.start, rowItem.end) || checkIfDateIsInRange(eventItem.end, rowItem.start, rowItem.end));
-      const isOnSameDateRange = _.some(lastEventRow, ((rowItem) => moment(rowItem.end).diff(moment(rowItem.start), 'days') === moment(eventItem.end).diff(moment(eventItem.start), 'days') ));
-      if (isClash || isOnSameDateRange) {
+  if (events.length) {
+    _.forEach(events, (eventItem) => {
+      if (!formattedEvents.length) {
         formattedEvents.push([eventItem]);
       } else {
-        lastEventRow.push(eventItem);
-        formattedEvents[formattedEvents.length - 1] = lastEventRow;
+        const lastEventRow = formattedEvents[formattedEvents.length - 1];
+        const isClash = _.some(lastEventRow, (rowItem) => checkIfDateIsInRange(eventItem.start, rowItem.start, rowItem.end) || checkIfDateIsInRange(eventItem.end, rowItem.start, rowItem.end));
+        const isOnSameDateRange = _.some(lastEventRow, ((rowItem) => moment(rowItem.end).diff(moment(rowItem.start), 'days') === moment(eventItem.end).diff(moment(eventItem.start), 'days') ));
+        if (isClash || isOnSameDateRange) {
+          formattedEvents.push([eventItem]);
+        } else {
+          lastEventRow.push(eventItem);
+          formattedEvents[formattedEvents.length - 1] = lastEventRow;
+        }
       }
-    }
-  });
+    });
+  }
   //   console.log(formattedEvents);
   return formattedEvents;
 };

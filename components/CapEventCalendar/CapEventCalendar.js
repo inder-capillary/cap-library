@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
+import './_capEventCalendar.scss';
 import PropTypes from 'prop-types';
 import ReactDom from "react-dom";
 import moment from "moment";
@@ -11,6 +12,7 @@ import {
   getDaysOfMonth,
   getTotalNumberOfDaysInQuarter,
   formatDateToSuitCanvas,
+  formatDataToSuitCanvas,
 } from "./utils";
 import {
   drawHeadingText,
@@ -18,6 +20,9 @@ import {
   drawTodayLine,
   drawLineSeperator,
 } from "./drawUtils";
+import CapIcon from "../CapIcon";
+import MonthHeader from "./components/MonthHeader";
+import { quarterInfo } from "./constants";
 
 const datas = [
   {
@@ -89,12 +94,13 @@ const datas = [
 const dashLineOffsetY = 20;
 const dateKeyFormat = "DD/MM/YYYY";
 
-const CapEventCalendar = ({calendarDate = moment().format(), events = datas}) => {
+const CapEventCalendar = ({calendarDate = moment().format(), fetchEventsForTheQuarter}) => {
   const [currentDate, setCurrentDate] = useState(moment().format());
-  const [displayMonths] = useState(
-    getMonthsForQuarter(getQuarterForDate(moment().format()))
+  const [quarter, setQuarter] = useState(getQuarterForDate(calendarDate));
+  const [displayMonths, setDisplayMonths] = useState(
+    getMonthsForQuarter(getQuarterForDate(calendarDate))
   );
-  const [formattedEvents] = useState(formatDateToSuitCanvas(events));
+  const [formattedEvents, setFormattedEvents] = useState([]);
 
   useEffect(() => {
     setCurrentDate(currentDate || moment().format());
@@ -245,6 +251,7 @@ const CapEventCalendar = ({calendarDate = moment().format(), events = datas}) =>
   };
 
   const drawEvent = () => {
+    if(formattedEvents.length){
     let eventStartY = 40;
     const eventHeight = 20;
     const eventRowGap = 10;
@@ -279,12 +286,19 @@ const CapEventCalendar = ({calendarDate = moment().format(), events = datas}) =>
       });
       eventStartY += eventHeight + eventRowGap;
     });
+  }
   };
+
+  const formatEventsForQuarter = (quarter) =>{
+    console.log({quarter})
+    let events = fetchEventsForTheQuarter ? fetchEventsForTheQuarter(quarter) : [];
+    if(quarter === 2) events = datas;
+    setFormattedEvents(formatDataToSuitCanvas(events))
+  }
 
   useLayoutEffect(() => {
     const context = canvas.current.getContext("2d");
     contextRef.current = context;
-
     drawLayout({ context, width, height });
     handleTodayLine();
     drawEvent();
@@ -308,12 +322,21 @@ const CapEventCalendar = ({calendarDate = moment().format(), events = datas}) =>
     }
   };
 
+  console.log("quarter out", quarter);
   return (
     <div
       style={{ width: "100%", height: "100%", position: "relative" }}
       ref={ref}
     >
-      
+     <div className="event-calendar__header">
+        <div>
+          <CapIcon type="chevron-left" style={{cursor: 'pointer'}}  onClick={()=>{setQuarter(quarter - 1)}}/>
+          <CapIcon type="chevron-right"  style={{cursor: 'pointer'}} onClick={()=>{setQuarter(quarter - 1)}}/>
+        </div>
+        <div>{quarterInfo[getQuarterForDate(calendarDate)]}</div>
+      </div>
+      <MonthHeader displayMonths={displayMonths} />
+      <div style={{display: 'flex', width: '100%'}}>
       <canvas
         ref={canvas}
         style={style}
@@ -321,6 +344,7 @@ const CapEventCalendar = ({calendarDate = moment().format(), events = datas}) =>
         height={displayHeight}
         onMouseMove={onMouseMove}
       />
+      </div>
       <div style={{ position: "absolute" }} id="event-calendar-tool-tip-knob" />
     </div>
   );
