@@ -22,7 +22,8 @@ export const events = [
   },
   {
     event_id: 4,
-    title: "Event 4",
+    title:
+      "Function created below makes the drawing of multiple dashed lines simple. It receives a pattern array as its only parameter",
     start: "2022/4/15",
     end: "2022/5/1",
     backgroundColor: "#feedc0"

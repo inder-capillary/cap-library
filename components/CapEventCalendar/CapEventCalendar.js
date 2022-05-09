@@ -1,11 +1,14 @@
 import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
-import './_capEventCalendar.scss';
-import PropTypes from 'prop-types';
+import "./_capEventCalendar.scss";
+import PropTypes from "prop-types";
 import ReactDom from "react-dom";
 import moment from "moment";
 
 import CapTooltip from "../CapTooltip";
 import CapPopover from "../CapPopover";
+import CapIcon from "../CapIcon";
+
+import MonthHeader from "./components/MonthHeader";
 
 import {
   getQuarterForDate,
@@ -21,19 +24,20 @@ import {
   drawLineSeperator,
   drawRoundRectWithText
 } from "./drawUtils";
-import CapIcon from "../CapIcon";
-import MonthHeader from "./components/MonthHeader";
+
 import { quarterInfo, workWeek } from "./constants";
 
 import { events as datas } from "./mockData";
 import CapDropdown from "../CapDropdown";
-import CapButton from "../CapButton"
+import CapButton from "../CapButton";
 import CapMenu from "../CapMenu";
 
 const PopoverConent = ({ title }) => <div>{title}</div>;
+
 /* eslint-disable */
 const dashLineOffsetY = 20;
 const dateKeyFormat = "DD/MM/YYYY";
+
 const CapEventCalendar = ({
   calendarDate = moment().format(),
   events = datas,
@@ -45,7 +49,9 @@ const CapEventCalendar = ({
   const [displayMonths, setDisplayMonths] = useState(
     getMonthsForQuarter(getQuarterForDate(calendarDate))
   );
-  const [formattedEvents, setFormattedEvents] = useState(formatDataToSuitCanvas(events));
+  const [formattedEvents, setFormattedEvents] = useState(
+    formatDataToSuitCanvas(events)
+  );
   const [quarterChanged, setQuarterChanged] = useState(false);
   const [dayGrid, setDayGrid] = useState(1);
 
@@ -99,20 +105,22 @@ const CapEventCalendar = ({
     }
   }, [width, height, quarterChanged, dayGrid]);
 
-  useEffect(()=>{
-    setDisplayMonths(getMonthsForQuarter(quarter))
+  useEffect(() => {
+    setDisplayMonths(getMonthsForQuarter(quarter));
     formatEventsForQuarter(quarter);
     setQuarterChanged(true);
-  },[quarter])
+  }, [quarter]);
 
   /**
    * on quarter change, fetch events for that quarter
    */
-  const formatEventsForQuarter = (quarter) =>{
-    let events = fetchEventsForTheQuarter ? fetchEventsForTheQuarter(quarter) : [];
-    if(quarter === 2) events = datas;
-    setFormattedEvents(formatDataToSuitCanvas(events))
-  }
+  const formatEventsForQuarter = quarter => {
+    let events = fetchEventsForTheQuarter
+      ? fetchEventsForTheQuarter(quarter)
+      : [];
+    if (quarter === 2) events = datas;
+    setFormattedEvents(formatDataToSuitCanvas(events));
+  };
 
   const handleDimension = () => {
     setWidth(ref.current.clientWidth);
@@ -346,56 +354,56 @@ const CapEventCalendar = ({
     let currentHoverItem = null;
 
     formattedEvents.length &&
-    formattedEvents.forEach(eventRow => {
-      eventRow.forEach(event => {
-        const { title, start, end, backgroundColor } = event;
-        const startDate = moment(start).format(dateKeyFormat);
-        const endDate = moment(end).format(dateKeyFormat);
+      formattedEvents.forEach(eventRow => {
+        eventRow.forEach(event => {
+          const { title, start, end, backgroundColor } = event;
+          const startDate = moment(start).format(dateKeyFormat);
+          const endDate = moment(end).format(dateKeyFormat);
 
-        let startRect = day[startDate];
-        let endRect = day[endDate];
+          let startRect = day[startDate];
+          let endRect = day[endDate];
 
-        if (!startRect) {
-          startRect = getRectDimensionOnNotFound(startDate);
-        }
-
-        if (!endRect) {
-          endRect = getRectDimensionOnNotFound(endDate, true);
-        }
-
-        if (startRect && endRect) {
-          const eventWidth = endRect.midX - startRect.midX;
-          const isPointInRoundRectTextPath = drawRoundRectWithText({
-            context,
-            x: startRect.midX,
-            y: eventStartY,
-            width: eventWidth,
-            height: eventHeight,
-            bgColor: backgroundColor,
-            borderRadius: 5,
-            text: title,
-            color: "#091e42",
-            textPadding,
-            openLeft: startRect.isCont,
-            openRight: endRect.isCont,
-            mouseX,
-            mouseY
-          });
-
-          if (mouseX && isPointInRoundRectTextPath) {
-            currentHoverItem = {
-              event,
-              startRect,
-              endRect,
-              eventStartY,
-              eventHeight,
-              isNewEvent: true
-            };
+          if (!startRect) {
+            startRect = getRectDimensionOnNotFound(startDate);
           }
-        }
+
+          if (!endRect) {
+            endRect = getRectDimensionOnNotFound(endDate, true);
+          }
+
+          if (startRect && endRect) {
+            const eventWidth = endRect.midX - startRect.midX;
+            const isPointInRoundRectTextPath = drawRoundRectWithText({
+              context,
+              x: startRect.midX,
+              y: eventStartY,
+              width: eventWidth,
+              height: eventHeight,
+              bgColor: backgroundColor,
+              borderRadius: 5,
+              text: title,
+              color: "#091e42",
+              textPadding,
+              openLeft: startRect.isCont,
+              openRight: endRect.isCont,
+              mouseX,
+              mouseY
+            });
+
+            if (mouseX && isPointInRoundRectTextPath) {
+              currentHoverItem = {
+                event,
+                startRect,
+                endRect,
+                eventStartY,
+                eventHeight,
+                isNewEvent: true
+              };
+            }
+          }
+        });
+        eventStartY += eventHeight + eventRowGap;
       });
-      eventStartY += eventHeight + eventRowGap;
-    });
 
     if (currentHoverItem) {
       const {
@@ -475,61 +483,74 @@ const CapEventCalendar = ({
   };
 
   const menu = (
-    <CapMenu selectable = {true}>
-      <CapMenu.Item onClick={(event)=>setDayGrid(1)}>
-        Monday
-      </CapMenu.Item>
-      <CapMenu.Item onClick={(event)=>setDayGrid(2)}>
-        Tuesday
-      </CapMenu.Item>
-      <CapMenu.Item onClick={(event)=>setDayGrid(3)}>
-        Wednesday
-      </CapMenu.Item>
-      <CapMenu.Item onClick={(event)=>setDayGrid(4)}>
-        Thursday
-      </CapMenu.Item>
-      <CapMenu.Item onClick={(event)=>setDayGrid(5)}>
-        Friday
-      </CapMenu.Item>
+    <CapMenu selectable={true}>
+      <CapMenu.Item onClick={event => setDayGrid(1)}>Monday</CapMenu.Item>
+      <CapMenu.Item onClick={event => setDayGrid(2)}>Tuesday</CapMenu.Item>
+      <CapMenu.Item onClick={event => setDayGrid(3)}>Wednesday</CapMenu.Item>
+      <CapMenu.Item onClick={event => setDayGrid(4)}>Thursday</CapMenu.Item>
+      <CapMenu.Item onClick={event => setDayGrid(5)}>Friday</CapMenu.Item>
     </CapMenu>
   );
 
   return (
     <>
-    <div className="event-calendar__header">
-      <div className="event-calendar__header__left">
-        <div>
-          <CapIcon type="chevron-left" style={{cursor: 'pointer'}}  onClick={()=>{setQuarter(quarter => quarter - 1)}}/>
-          <CapIcon type="chevron-right"  style={{cursor: 'pointer'}} onClick={()=>{setQuarter(quarter => quarter + 1)}}/>
+      <div className="event-calendar__header">
+        <div className="event-calendar__header__left">
+          <div>
+            <CapIcon
+              type="chevron-left"
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setQuarter(quarter => quarter - 1);
+              }}
+            />
+            <CapIcon
+              type="chevron-right"
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setQuarter(quarter => quarter + 1);
+              }}
+            />
+          </div>
+          <div className="quarter-label">
+            {quarterInfo[getQuarterForDate(calendarDate)]}
+          </div>
         </div>
-        <div className="quarter-label">{quarterInfo[getQuarterForDate(calendarDate)]}</div>
-      </div>
-      <div className="event-calendar__header__right">
-        Calendar Grid Line
-        <CapDropdown
-            overlay={menu}
-            placement="topRight"
+        <div className="event-calendar__header__right">
+          Calendar Grid Line
+          <CapDropdown overlay={menu} placement="topRight">
+            <CapButton
+              type="flat"
+              className={"CapButton"}
+              suffix={<CapIcon size="s" type="chevron-down" color="#091e42" />}
             >
-        <CapButton type="flat" className={'CapButton'} 
-        suffix={<CapIcon size="s" type="chevron-down" color="#091e42" />}>{workWeek[dayGrid]}</CapButton>
-        </CapDropdown>    
-      </div>  
-    </div>
-    <MonthHeader displayMonths={displayMonths} />
-    {/* This is canvas, not to be changed: calculates dimensions */}
-    <div
-      style={{ width: "100%", height: "100%", position: "relative" }}
-      ref={ref}>
-      <canvas
-        ref={canvas}
-        style={style}
-        width={displayWidth}
-        height={displayHeight}
-        onMouseMove={onMouseMove}
-      />
-      <div style={{ position: "absolute" }} id="event-calendar-tool-tip-knob" />
-      <div style={{ position: "absolute" }} id="event-calendar-popover-knob" />
-    </div>
+              {workWeek[dayGrid]}
+            </CapButton>
+          </CapDropdown>
+        </div>
+      </div>
+      <MonthHeader displayMonths={displayMonths} />
+      {/* This is canvas, not to be changed: calculates dimensions */}
+      <div
+        style={{ width: "100%", height: "100%", position: "relative" }}
+        ref={ref}
+      >
+        <canvas
+          ref={canvas}
+          style={style}
+          width={displayWidth}
+          height={displayHeight}
+          onMouseMove={onMouseMove}
+        />
+        <div
+          style={{ position: "absolute" }}
+          id="event-calendar-tool-tip-knob"
+        />
+        <div
+          style={{ position: "absolute" }}
+          id="event-calendar-popover-knob"
+        />
+      </div>
     </>
   );
 };
