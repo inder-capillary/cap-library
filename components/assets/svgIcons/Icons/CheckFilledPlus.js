@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const CheckFilledPlus = (props) => (
+const CheckFilledPlus = ({ circleFill, ...props }) => (
   <svg
     width="24px"
     height="24px"
@@ -26,7 +26,7 @@ const CheckFilledPlus = (props) => (
             id="Oval"
             stroke="#FFFFFF"
             strokeWidth="2"
-            fill="#B3BAC5"
+            fill={circleFill || "#B3BAC5"}
             cx="12"
             cy="12"
             r="11"

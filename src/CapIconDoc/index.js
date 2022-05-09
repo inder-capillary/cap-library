@@ -129,6 +129,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <Text>back</Text>
             </List>
             <List>
+              <CapIcon type="bill" />
+              <Text>bill</Text>
+            </List>
+            <List>
               <CapIcon type="bulb" />
               <Text>bulb</Text>
             </List>
@@ -423,6 +427,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
             <List>
               <CapIcon type="clock" />
               <Text>clock</Text>
+            </List>
+            <List>
+              <CapIcon type="earth" />
+              <Text>earth</Text>
             </List>
             <List>
               <CapIcon type="refresh" />
@@ -851,6 +859,14 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
             <List>
               <CapIcon type="rcs" />
               <Text>rcs</Text>
+            </List>
+            <List>
+              <CapIcon type="wallet-background" />
+              <Text>wallet-background</Text>
+            </List>
+            <List>
+              <CapIcon type="alert-warning" />
+              <Text>alert-warning</Text>
             </List>
           </ul>
         </div>
