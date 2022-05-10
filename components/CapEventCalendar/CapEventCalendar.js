@@ -113,9 +113,11 @@ const CapEventCalendar = ({
   }, []);
 
   useEffect(() => {
-    const context = contextRef.current;
-    context.scale(pixelRatio, pixelRatio);
-  }, [pixelRatio]);
+    if (width > 0 && height > 0) {
+      const context = contextRef.current;
+      context.scale(pixelRatio, pixelRatio);
+    }
+  }, [width, height]);
 
   useEffect(() => {
     if (width > 0 && height > 0) {
