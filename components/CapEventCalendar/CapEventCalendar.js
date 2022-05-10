@@ -111,11 +111,9 @@ const CapEventCalendar = ({
   }, []);
 
   useEffect(() => {
-    if (width > 0 && height > 0) {
-      const context = contextRef.current;
-      context.scale(pixelRatio, pixelRatio);
-    }
-  }, [width, height]);
+    const context = contextRef.current;
+    context.scale(pixelRatio, pixelRatio);
+  }, [pixelRatio]);
 
   useEffect(() => {
     if (width > 0 && height > 0) {
@@ -168,7 +166,7 @@ const CapEventCalendar = ({
     x: 0,
     y: 0,
     height,
-    width: width / (noOfDaysInQuarter + 1)
+    width: width / noOfDaysInQuarter
   });
 
   const drawLayout = () => {
