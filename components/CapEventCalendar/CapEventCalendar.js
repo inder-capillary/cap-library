@@ -23,14 +23,14 @@ import {
   getQuarterForDate,
   getMonthsForQuarter,
   getDaysOfMonth,
-  formatDataToSuitCanvas
+  formatDataToSuitCanvas,
 } from "./utils";
 import {
   drawHeadingText,
   drawDashedLines,
   drawTodayLine,
   drawLineSeperator,
-  drawRoundRectWithText
+  drawRoundRectWithText,
 } from "./drawUtils";
 
 import { quarterInfo, workWeek } from "./constants";
@@ -136,8 +136,8 @@ const CapEventCalendar = ({
     let events = fetchEventsForTheQuarter
       ? fetchEventsForTheQuarter(quarter)
       : [];
-    if (quarter === 2) events = datas;
-    setFormattedEvents(formatDataToSuitCanvas(events));
+    if (quarter === 1) events = datas; //need to check events appear for chosen quarter
+    setFormattedEvents(formatDataToSuitCanvas(events,quarter));
   };
 
   const handleDimension = () => {
