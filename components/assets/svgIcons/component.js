@@ -12,6 +12,7 @@ const getSvgComponentFromType = (type) => {
     case 'arrow-filled': return SvgIcons.ArrowFilled;
     case 'arrow-up': return SvgIcons.ArrowUp;
     case 'back': return SvgIcons.Back;
+    case 'bill': return SvgIcons.Bill;
     case 'bulb': return SvgIcons.Bulb;
     case 'calendar': return SvgIcons.Calendar;
     case 'calendar-active': return SvgIcons.CalendarActive;
@@ -89,6 +90,7 @@ const getSvgComponentFromType = (type) => {
     case 'refresh': return SvgIcons.Refresh;
     case 'delete': return SvgIcons.Delete;
     case 'drag': return SvgIcons.Drag;
+    case 'earth': return SvgIcons.Earth;
     case 'launch': return SvgIcons.Launch;
     case 'capture': return SvgIcons.Capture;
     case 'dollar': return SvgIcons.Dollar;
@@ -207,6 +209,8 @@ const getSvgComponentFromType = (type) => {
     case 'monitor-background': return SvgIcons.MonitorBackground;
     case 'loyalty-background': return SvgIcons.LoyaltyBackground;
     case 'rcs': return SvgIcons.Rcs;
+    case 'wallet-background': return SvgIcons.WalletBackground;
+    case 'alert-warning': return SvgIcons.AlertWarning;
 
     default: return null;
   }
