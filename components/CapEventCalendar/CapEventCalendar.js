@@ -23,14 +23,14 @@ import {
   getQuarterForDate,
   getMonthsForQuarter,
   getDaysOfMonth,
-  formatDataToSuitCanvas,
+  formatDataToSuitCanvas
 } from "./utils";
 import {
   drawHeadingText,
   drawDashedLines,
   drawTodayLine,
   drawLineSeperator,
-  drawRoundRectWithText,
+  drawRoundRectWithText
 } from "./drawUtils";
 
 import { quarterInfo, workWeek } from "./constants";
@@ -84,6 +84,7 @@ const CapEventCalendar = ({
 
   const isTooltipVisible = useRef(null);
   const currentHoverEvent = useRef(null);
+  const totalEventRowsPerQuater = useRef(0);
 
   const showBorder = (month, day, monthIndex) => {
     if (moment(month.end).date() === moment(day).date()) return true;
@@ -95,6 +96,7 @@ const CapEventCalendar = ({
 
   // responsive width and height
   useEffect(() => {
+    totalEventRowsPerQuater.current = formattedEvents.length;
     handleDimension();
   }, [formattedEvents]);
 
@@ -111,12 +113,16 @@ const CapEventCalendar = ({
   }, []);
 
   useEffect(() => {
-    const context = contextRef.current;
-    context.scale(pixelRatio, pixelRatio);
-  }, [pixelRatio]);
+    if (width > 0 && height > 0) {
+      const context = contextRef.current;
+      context.scale(pixelRatio, pixelRatio);
+    }
+  }, [width, height]);
 
   useEffect(() => {
     if (width > 0 && height > 0) {
+      toggleTooltip(false);
+      togglePopover(false);
       reDrawCanvas();
     }
   }, [width, height, quarterChanged, dayGrid]);
@@ -135,7 +141,7 @@ const CapEventCalendar = ({
       ? fetchEventsForTheQuarter(quarter)
       : [];
     if (quarter === 1) events = datas; //need to check events appear for chosen quarter
-    setFormattedEvents(formatDataToSuitCanvas(events,quarter));
+    setFormattedEvents(formatDataToSuitCanvas(events, quarter));
   };
 
   const handleDimension = () => {
@@ -143,7 +149,7 @@ const CapEventCalendar = ({
     const estimatedHeight =
       rectY +
       eventStartYOffset +
-      (eventHeight + eventRowGap) * formattedEvents.length;
+      (eventHeight + eventRowGap) * totalEventRowsPerQuater.current;
     setWidth(ref.current.clientWidth);
     setHeight(
       estimatedHeight > defaultCanvasLimit
