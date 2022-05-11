@@ -26,7 +26,7 @@ const infoData = [
   {
     key: 2,
     property: "events(Mandatory)",
-    description: "Events that are displayed on the calendar",
+    description: "Events that are displayed on the calendar. ",
     type: "array",
     default: JSON.stringify([{
       event_id: 'event_id1',
@@ -34,6 +34,10 @@ const infoData = [
       start: '2022-01-02 09:30:00',
       end: '2022-03-20 23:30:00',
       backgroundColor: "#e9e9ea",
+      popoverProps: {
+        link: 'https://link.com',
+        name: 'John Doe',
+      },
     }]),
   },
   {

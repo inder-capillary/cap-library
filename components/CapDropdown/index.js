@@ -19,7 +19,8 @@ function CapDropdown(props) {
     <Dropdown
       className={classNames(clsPrefix, className)}
       overlayClassName={classNames(`${clsPrefix}-overlay`, overlayClassName)}
-      {...rest} />
+      {...rest}
+      placement="bottomCenter" />
   );
 }
 
