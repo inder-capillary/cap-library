@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable no-param-reassign, consistent-return */
 export const drawHeadingText = ({ context, x, y, height, text }) => {
   context.beginPath();
   context.fillStyle = "#ffff";
@@ -42,10 +42,9 @@ export const drawTodayLine = ({ context, x, y, x1, y1, mouseX, mouseY }) => {
     x,
     y: y - radius,
     radius,
-    color: "#2466ea"
+    color: "#2466ea",
   });
   context.strokeStyle = "#2466ea";
-  context.rect;
   context.moveTo(x, y);
   context.lineTo(x1, y1);
   if (mouseX) {
@@ -78,13 +77,13 @@ export const drawRoundRect = ({
   openRight,
   fillStyle,
   mouseX,
-  mouseY
+  mouseY,
 }) => {
   let radius = {
     tl: radiusParam,
     tr: radiusParam,
     br: radiusParam,
-    bl: radiusParam
+    bl: radiusParam,
   };
 
   if (openLeft) {
@@ -130,23 +129,20 @@ export const drawRoundRect = ({
 
 export const doEllipsis = ({ context, text, maxWidth }) => {
   let returnText;
-  if (context.measureText(text)["width"] < maxWidth) {
+  if (context.measureText(text).width < maxWidth) {
     return text;
-  } else {
-    const textArray = `${text}`.split("");
-    textArray.forEach((item, index) => {
-      const sliceText =
-        textArray.slice(0, textArray.length - index).join("") + "abc";
-      if (
-        context.measureText(sliceText)["width"] <= maxWidth &&
-        returnText === undefined
-      ) {
-        returnText =
-          textArray.slice(0, textArray.length - index).join("") + "...";
-      }
-    });
-    return returnText || "";
   }
+  const textArray = `${text}`.split("");
+  textArray.forEach((item, index) => {
+    const sliceText = `${textArray.slice(0, textArray.length - index).join("")}abc`;
+    if (
+      context.measureText(sliceText).width <= maxWidth
+        && returnText === undefined
+    ) {
+      returnText = `${textArray.slice(0, textArray.length - index).join("")}...`;
+    }
+  });
+  return returnText || "";
 };
 
 export const drawRoundRectWithText = ({
@@ -163,7 +159,7 @@ export const drawRoundRectWithText = ({
   openLeft,
   openRight,
   mouseX,
-  mouseY
+  mouseY,
 }) => {
   context.beginPath();
   const isPointInRoundRectPath = drawRoundRect({
@@ -177,7 +173,7 @@ export const drawRoundRectWithText = ({
     openRight,
     fillStyle: bgColor,
     mouseX,
-    mouseY
+    mouseY,
   });
 
   if (mouseX) {
@@ -192,7 +188,7 @@ export const drawRoundRectWithText = ({
     doEllipsis({
       context,
       text,
-      maxWidth: width - textPadding
+      maxWidth: width - textPadding,
     }),
     x + textPadding,
     y + 16

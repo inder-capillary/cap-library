@@ -39,7 +39,6 @@ import { quarterInfo, quarters } from "./constants";
 //for testing
 //import { events as datas } from "./mockData";
 
-/* eslint-disable */
 const dashLineOffsetY = 20;
 const dateKeyFormat = "DD/MM/YYYY";
 const eventHeight = 24;
@@ -48,20 +47,35 @@ const textPadding = 12;
 const eventStartYOffset = 40;
 const defaultCanvasLimit = 150;
 
+const DefaultPopover = ({ title }) => <div>{title}</div>;
+
+DefaultPopover.propTypes = {
+  title: PropTypes.string,
+};
+
 const CapEventCalendar = ({
   calendarDate = moment().format(),
   events,
   popoverContent = DefaultPopover,
   onQuarterChange,
-  selectedQuarter
+  selectedQuarter,
 }) => {
-  const [carouselDate, setCarouselDate] = useState(calendarDate || moment().format()); //To calculate the yeat based on carousel navigation
-  const [quarter, setQuarter] = useState(selectedQuarter ? quarters[selectedQuarter] : moment().quarter()); //display quarter info in the view
+  const [carouselDate, setCarouselDate] = useState(
+    calendarDate || moment().format()
+  ); //To calculate the year based on carousel navigation
+  const [quarter, setQuarter] = useState(
+    selectedQuarter ? quarters[selectedQuarter] : moment().quarter()
+  ); //display quarter info in the view
   const [displayMonths, setDisplayMonths] = useState(
-    getMonthsForQuarter(selectedQuarter ? quarters[selectedQuarter] : moment().quarter()) //show months of the quarter
+    getMonthsForQuarter(
+      selectedQuarter ? quarters[selectedQuarter] : moment().quarter()
+    ) //show months of the quarter
   );
   const [formattedEvents, setFormattedEvents] = useState(
-    formatDataToSuitCanvas(events,selectedQuarter ? quarters[selectedQuarter] : moment().quarter() ) //format events to suit the canvas
+    formatDataToSuitCanvas(
+      events,
+      selectedQuarter ? quarters[selectedQuarter] : moment().quarter()
+    ) //format events to suit the canvas
   );
   const [error, showError] = useState(false); //disable the left carousel click when first month of previous year is reached
   const [dayGrid, setDayGrid] = useState(1); //show grid line based on the day selected in dropdown
@@ -78,12 +92,10 @@ const CapEventCalendar = ({
   const isTooltipVisible = useRef(null);
   const currentHoverEvent = useRef(null);
   const totalEventRowsPerQuater = useRef(0);
-  const DefaultPopover = ({ title }) => <div>{title}</div>;
 
-
-  useEffect(()=>{
-    setFormattedEvents(formatDataToSuitCanvas(events,quarter));
-  },[events])
+  useEffect(() => {
+    setFormattedEvents(formatDataToSuitCanvas(events, quarter));
+  }, [events]);
 
   // responsive width and height
   useEffect(() => {
@@ -122,7 +134,6 @@ const CapEventCalendar = ({
     setDisplayMonths(getMonthsForQuarter(quarter));
   }, [quarter]);
 
-
   const noOfDaysInQuarter = useMemo(
     () => displayMonths.reduce((acc, { daysInMonth }) => acc + daysInMonth, 0),
     [displayMonths]
@@ -138,10 +149,9 @@ const CapEventCalendar = ({
 
   const handleDimension = () => {
     const { y: rectY } = getRectInitDimension();
-    const estimatedHeight =
-      rectY +
-      eventStartYOffset +
-      (eventHeight + eventRowGap) * totalEventRowsPerQuater.current;
+    const estimatedHeight = rectY
+      + eventStartYOffset
+      + (eventHeight + eventRowGap) * totalEventRowsPerQuater.current;
     setWidth(ref.current.clientWidth);
     setHeight(
       estimatedHeight > defaultCanvasLimit
@@ -152,19 +162,25 @@ const CapEventCalendar = ({
 
   const doResize = () => handleDimension();
 
-  const initDayObject = ({ x, y, midX, width, height }) => ({
-    x,
-    y,
-    midX,
-    width,
-    height
+  const initDayObject = ({
+    x: rectX,
+    y: rectY,
+    midX: rectMidX,
+    width: rectWidth,
+    height: rectHeight,
+  }) => ({
+    x: rectX,
+    y: rectY,
+    midX: rectMidX,
+    width: rectWidth,
+    height: rectHeight,
   });
 
   const getRectInitDimension = () => ({
     x: 0,
     y: 0,
     height,
-    width: width / noOfDaysInQuarter
+    width: width / noOfDaysInQuarter,
   });
 
   const drawLayout = () => {
@@ -175,14 +191,14 @@ const CapEventCalendar = ({
       x: rectX,
       y: rectY,
       height: rectHeight,
-      width: rectWidth
+      width: rectWidth,
     } = getRectInitDimension();
     let startX = rectX;
 
     displayMonths.forEach((month, monthIndex) => {
       const allDays = getDaysOfMonth(month.start);
 
-      allDays.forEach(day => {
+      allDays.forEach((day) => {
         const rectMidX = startX + rectWidth / 2;
         context.beginPath();
         context.rect(startX, rectY, rectWidth, rectHeight);
@@ -196,7 +212,7 @@ const CapEventCalendar = ({
           y: rectY,
           midX: rectMidX,
           width: rectWidth,
-          height: rectHeight
+          height: rectHeight,
         });
 
         const showMonthBorder = showBorder(month, day, monthIndex);
@@ -208,7 +224,7 @@ const CapEventCalendar = ({
             x: rectMidX,
             y: rectY,
             height: dashLineOffsetY - headingMarginBottom,
-            text: moment(day).format("D")
+            text: moment(day).format("D"),
           });
 
           drawDashedLines({
@@ -216,7 +232,7 @@ const CapEventCalendar = ({
             x: rectMidX,
             y: rectY + dashLineOffsetY,
             x1: rectMidX,
-            y1: rectHeight
+            y1: rectHeight,
           });
         }
 
@@ -226,7 +242,7 @@ const CapEventCalendar = ({
             x: rectMidX,
             y: rectY,
             x1: rectMidX,
-            y1: rectHeight
+            y1: rectHeight,
           });
         }
 
@@ -238,7 +254,7 @@ const CapEventCalendar = ({
     return dayObject;
   };
 
-  const toggleTooltip = visible => {
+  const toggleTooltip = (visible) => {
     const knob = document.getElementById("event-calendar-tool-tip-knob");
     ReactDom.unmountComponentAtNode(knob);
 
@@ -260,7 +276,7 @@ const CapEventCalendar = ({
     if (visible) {
       ReactDom.render(
         <CapPopover
-          visible={true}
+          visible
           placement="left"
           content={<Component {...popoverContentProps} />}
         >
@@ -296,7 +312,7 @@ const CapEventCalendar = ({
 
   const getDayObject = () => {
     const {
-      current: { day }
+      current: { day },
     } = drawObject;
     return day;
   };
@@ -310,22 +326,25 @@ const CapEventCalendar = ({
     const context = contextRef.current;
     const currentDayObj = getTodayRectObj();
 
-    if (currentDayObj) {
-      const { y, midX, height } = currentDayObj;
-      return drawTodayLine({
-        context,
-        x: midX,
-        y: y + dashLineOffsetY,
-        x1: midX,
-        y1: height,
-        mouseX,
-        mouseY
-      });
+    if (!currentDayObj) {
+      return null;
     }
+
+    const { y, midX, height: currentDayRectHeight } = currentDayObj;
+    return drawTodayLine({
+      context,
+      x: midX,
+      y: y + dashLineOffsetY,
+      x1: midX,
+      y1: currentDayRectHeight,
+      mouseX,
+      mouseY,
+    });
   };
 
-  const toggleCursor = pointer =>
-    (canvas.current.style.cursor = pointer ? "pointer" : "auto");
+  const toggleCursor = (pointer) => {
+    canvas.current.style.cursor = pointer ? "pointer" : "auto";
+  };
 
   const getRectDimensionOnNotFound = (date, isEnd) => {
     const day = getDayObject();
@@ -333,35 +352,35 @@ const CapEventCalendar = ({
       x: rectX,
       y: rectY,
       height: rectHeight,
-      width: rectWidth
+      width: rectWidth,
     } = getRectInitDimension();
 
     const dayObject = isEnd
       ? {
-          ...initDayObject({
-            x: width,
-            y: rectY,
-            midX: width,
-            width: rectWidth,
-            height: rectHeight
-          }),
-          isCont: true
-        }
+        ...initDayObject({
+          x: width,
+          y: rectY,
+          midX: width,
+          width: rectWidth,
+          height: rectHeight,
+        }),
+        isCont: true,
+      }
       : {
-          ...initDayObject({
-            x: rectX,
-            y: rectY,
-            midX: 1,
-            width: rectWidth,
-            height: rectHeight
-          }),
-          isCont: true
-        };
+        ...initDayObject({
+          x: rectX,
+          y: rectY,
+          midX: 1,
+          width: rectWidth,
+          height: rectHeight,
+        }),
+        isCont: true,
+      };
 
     if (date) {
       drawObject.current = {
         ...drawObject.current,
-        day: { ...day, [date]: dayObject }
+        day: { ...day, [date]: dayObject },
       };
     }
 
@@ -375,60 +394,59 @@ const CapEventCalendar = ({
     const context = contextRef.current;
     let currentHoverItem = null;
 
-    formattedEvents.length &&
-      formattedEvents.forEach(eventRow => {
-        eventRow.forEach(event => {
-          const { title, start, end, backgroundColor } = event;
-          const startDate = moment(start).format(dateKeyFormat);
-          const endDate = moment(end).format(dateKeyFormat);
+    formattedEvents.forEach((eventRow) => {
+      eventRow.forEach((event) => {
+        const { title, start, end, backgroundColor } = event;
+        const startDate = moment(start).format(dateKeyFormat);
+        const endDate = moment(end).format(dateKeyFormat);
 
-          let startRect = day[startDate];
-          let endRect = day[endDate];
+        let startRect = day[startDate];
+        let endRect = day[endDate];
 
-          if (!startRect) {
-            startRect = getRectDimensionOnNotFound(startDate);
+        if (!startRect) {
+          startRect = getRectDimensionOnNotFound(startDate);
+        }
+
+        if (!endRect) {
+          endRect = getRectDimensionOnNotFound(endDate, true);
+        }
+
+        if (startRect && endRect) {
+          const eventWidth = endRect.midX - startRect.midX;
+          const isPointInRoundRectTextPath = drawRoundRectWithText({
+            context,
+            x: startRect.midX,
+            y: eventStartY,
+            width: eventWidth,
+            height: eventHeight,
+            bgColor: backgroundColor,
+            borderRadius: 5,
+            text: title,
+            color: "#091e42",
+            textPadding,
+            openLeft: startRect.isCont,
+            openRight: endRect.isCont,
+            mouseX,
+            mouseY,
+          });
+          if (mouseX && isPointInRoundRectTextPath) {
+            currentHoverItem = {
+              event,
+              startRect,
+              endRect,
+              eventStartY,
+              eventHeight,
+              isNewEvent: true,
+            };
           }
-
-          if (!endRect) {
-            endRect = getRectDimensionOnNotFound(endDate, true);
-          }
-
-          if (startRect && endRect) {
-            const eventWidth = endRect.midX - startRect.midX;
-            const isPointInRoundRectTextPath = drawRoundRectWithText({
-              context,
-              x: startRect.midX,
-              y: eventStartY,
-              width: eventWidth,
-              height: eventHeight,
-              bgColor: backgroundColor,
-              borderRadius: 5,
-              text: title,
-              color: "#091e42",
-              textPadding,
-              openLeft: startRect.isCont,
-              openRight: endRect.isCont,
-              mouseX,
-              mouseY
-            });
-            if (mouseX && isPointInRoundRectTextPath) {
-              currentHoverItem = {
-                event,
-                startRect,
-                endRect,
-                eventStartY,
-                eventHeight,
-                isNewEvent: true
-              };
-            }
-          }
-        });
-        eventStartY += eventHeight + eventRowGap;
+        }
       });
+      eventStartY += eventHeight + eventRowGap;
+    });
 
     if (currentHoverItem) {
       const {
-        event: { event_id: currentEventId }
+        event: { event_id: currentEventId },
       } = currentHoverItem;
       if (currentHoverEvent.current?.event?.event_id !== currentEventId) {
         currentHoverEvent.current = currentHoverItem;
@@ -457,28 +475,28 @@ const CapEventCalendar = ({
   const displayHeight = Math.floor(pixelRatio * height);
   const style = { width, height };
 
-  const onMouseMove = event => {
-    const mouseX = event.nativeEvent.offsetX * pixelRatio;
-    const mouseY = event.nativeEvent.offsetY * pixelRatio;
+  const onMouseMove = (mouseEvent) => {
+    const mouseX = mouseEvent.nativeEvent.offsetX * pixelRatio;
+    const mouseY = mouseEvent.nativeEvent.offsetY * pixelRatio;
 
     drawEvent({ mouseX, mouseY });
     if (currentHoverEvent.current) {
       if (currentHoverEvent.current.isNewEvent) {
         const {
-          event,
-          startRect,
-          eventHeight,
-          eventStartY
+          event: hoverEvent,
+          startRect: hoverStartRect,
+          eventHeight: hoverEventHeight,
+          eventStartY: hoverEventStartY,
         } = currentHoverEvent.current;
-        const { midX } = startRect;
+        const { midX } = hoverStartRect;
         updatePopoverKnobPosition({
           mouseX: midX,
-          mouseY: eventStartY + eventHeight / 2
+          mouseY: hoverEventStartY + hoverEventHeight / 2,
         });
-        togglePopover(true, { ...event, ...event.popoverProps });
+        togglePopover(true, { ...hoverEvent, ...hoverEvent.popoverProps });
         currentHoverEvent.current = {
           ...currentHoverEvent.current,
-          isNewEvent: false
+          isNewEvent: false,
         };
       }
     } else {
@@ -492,9 +510,9 @@ const CapEventCalendar = ({
         const { midX } = currentDayObj;
         updateToolTipKnobPosition({
           mouseX: midX,
-          mouseY: mouseY / pixelRatio
+          mouseY: mouseY / pixelRatio,
         });
-        toggleTooltip(event);
+        toggleTooltip(mouseEvent);
       }
     } else {
       toggleTooltip();
@@ -503,19 +521,28 @@ const CapEventCalendar = ({
     toggleCursor(isTodayLineHovered || currentHoverEvent.current);
   };
 
-const handleCarouselClick = (quarter, carouselDate, increment, calendarDate) =>{
-  if(increment) showError(false);
-  let values = handleYearChange(quarter, carouselDate, increment, calendarDate)
-  if(values){
-    setCarouselDate(values[1]);
-    onQuarterChange(values[0])
-    if(values[2]) showError(true);
-    return values[0]
-  }
-  else{
-    return quarter;
-  }
-}
+  const handleCarouselClick = (
+    currentQuarter,
+    date,
+    increment,
+    referenceDate
+  ) => {
+    if (increment) showError(false);
+    const values = handleYearChange(
+      currentQuarter,
+      date,
+      increment,
+      referenceDate
+    );
+    if (values) {
+      setCarouselDate(values[1]);
+      onQuarterChange(values[0]);
+      if (values[2]) showError(true);
+      return values[0];
+    }
+
+    return currentQuarter;
+  };
 
   return (
     <>
@@ -525,37 +552,40 @@ const handleCarouselClick = (quarter, carouselDate, increment, calendarDate) =>{
             <CapIcon
               type="chevron-left"
               style={{ cursor: "pointer" }}
-              className={error ? 'disable-left' : ''}
+              className={error ? "disable-left" : ""}
               onClick={() => {
-                setQuarter(quarter => {                
-                  return handleCarouselClick(quarter, carouselDate, false, calendarDate);
-                });
+                setQuarter((currentQuarter) => handleCarouselClick(
+                  currentQuarter,
+                  carouselDate,
+                  false,
+                  calendarDate
+                ));
               }}
             />
             <CapIcon
               type="chevron-right"
               style={{ cursor: "pointer" }}
               onClick={() => {
-                setQuarter(quarter => {
-                  return handleCarouselClick(quarter, carouselDate, true);
-                });
+                setQuarter((currentQuarter) => handleCarouselClick(currentQuarter, carouselDate, true));
               }}
             />
           </div>
           <div className="quarter-label">
-            {quarterInfo[quarter]}&nbsp;&nbsp;{moment(carouselDate).year()}
+            {quarterInfo[quarter]}
+            {moment(carouselDate).year()}
           </div>
         </div>
         <div className="event-calendar__header__right">
           Calendar Grid Line
-          <DayDropdown fetchDay={(day)=>setDayGrid(day)} day={dayGrid}/>
+          <DayDropdown fetchDay={(day) => setDayGrid(day)} day={dayGrid} />
         </div>
       </div>
       <MonthHeader displayMonths={displayMonths} />
       {/* This is canvas, not to be changed: calculates dimensions */}
       <div
         style={{ width: "100%", height: "100%", position: "relative" }}
-        ref={ref}>
+        ref={ref}
+      >
         <canvas
           ref={canvas}
           style={style}
@@ -578,7 +608,7 @@ const handleCarouselClick = (quarter, carouselDate, increment, calendarDate) =>{
 
 CapEventCalendar.propTypes = {
   calendarDate: PropTypes.string,
-  events: PropTypes.array
+  events: PropTypes.array,
 };
 
 export default CapEventCalendar;
