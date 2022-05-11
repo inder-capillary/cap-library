@@ -18,17 +18,23 @@ const PopoverContent = (event) => (
 const infoData = [
   {
     key: 1,
-    property: "onQuarterChange",
+    property: "onQuarterChange(Mandatory)",
     description: "The callback function to detect the change in quarter in order to fetch events",
     type: "callback",
     default: "-",
   },
   {
     key: 2,
-    property: "events",
+    property: "events(Mandatory)",
     description: "Events that are displayed on the calendar",
     type: "array",
-    default: "-",
+    default: JSON.stringify([{
+      event_id: 'event_id1',
+      title: "Event 1",
+      start: '2022-01-02 09:30:00',
+      end: '2022-03-20 23:30:00',
+      backgroundColor: "#e9e9ea",
+    }]),
   },
   {
     key: 3,
@@ -39,10 +45,17 @@ const infoData = [
   },
   {
     key: 4,
-    property: "calendarDate",
+    property: "calendarDate (Use moment to handle these dates)",
     description: "The date is needed to present current day in quarter",
     type: "string",
     default: "current date",
+  },
+  {
+    key: 5,
+    property: "selectedQuarter(Mandatory)",
+    description: "The date is needed to present current day in quarter",
+    type: "string",
+    default: "Ex: JFM,AMJ,JAS,OND",
   },
 ];
 

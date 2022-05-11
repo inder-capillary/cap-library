@@ -41,13 +41,6 @@ export const resources = [
 ];
 export const q1 = [
   {
-    event_id: 'event_id1',
-    title: "Event 1",
-    start: '2022-01-02 09:30:00',
-    end: '2022-03-20 23:30:00',
-    backgroundColor: "#e9e9ea",
-  },
-  {
     event_id: 1,
     start: '2022-01-02 09:30:00',
     end: '2022-03-20 23:30:00',
@@ -100,262 +93,23 @@ export const q1 = [
     event_id: 10,
     start: '2022-01-05 12:30:00',
     end: '2022-02-18 23:30:00',
-    title: 'yyyyyyy promotion',
-    backgroundColor: '#e9e9ea',
+    title: 'Test sale 1',
+    backgroundColor: '#feedc0',
   },
 
   {
     event_id: 11,
     start: '2022-01-05 12:30:00',
     end: '2022-02-18 23:30:00',
-    title: 'zzzzzz promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 12,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'AAAAA promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 13,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'BBBBBB promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 14,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'CCCCCC promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 15,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'xxxxxxx promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 16,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'yyyyyyy promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 17,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'zzzzzz promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 18,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'AAAAA promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 19,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'BBBBBB promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 20,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'CCCCCC promotion',
-    backgroundColor: '#e9e9ea',
-  },
-  {
-    event_id: 21,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'xxxxxxx promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 22,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'yyyyyyy promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 23,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'zzzzzz promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 24,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'AAAAA promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 25,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'BBBBBB promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 26,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'CCCCCC promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 27,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'xxxxxxx promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 28,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'yyyyyyy promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 29,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'zzzzzz promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 30,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'AAAAA promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 31,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'BBBBBB promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 32,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'CCCCCC promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 33,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'xxxxxxx promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 34,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'yyyyyyy promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 35,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'zzzzzz promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 36,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'AAAAA promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 37,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'BBBBBB promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 38,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'CCCCCC promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 39,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'xxxxxxx promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 40,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'yyyyyyy promotion',
-    backgroundColor: '#e9e9ea',
-  },
-
-  {
-    event_id: 41,
-    start: '2022-01-05 12:30:00',
-    end: '2022-02-18 23:30:00',
-    title: 'zzzzzz promotion',
+    title: 'Test sale 2',
     backgroundColor: '#e9e9ea',
   },
   {
     event_id: 42,
     start: '2022-01-05 12:30:00',
     end: '2022-05-18 23:30:00',
-    title: 'AAAAA promotion',
-    backgroundColor: '#e9e9ea',
+    title: 'New promotion 1',
+    backgroundColor: '#feedc0',
   },
 
   {
@@ -371,7 +125,7 @@ export const q1 = [
     start: '2022-01-05 12:30:00',
     end: '2022-04-18 23:30:00',
     title: 'CCCCCC promotion',
-    backgroundColor: '#e9e9ea',
+    backgroundColor: '#c7e7c7',
   },
 ];
 
