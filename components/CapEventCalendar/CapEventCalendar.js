@@ -3,41 +3,41 @@ import React, {
   useRef,
   useEffect,
   useMemo,
-  useLayoutEffect
+  useLayoutEffect,
 } from "react";
-import "./_capEventCalendar.scss";
 import PropTypes from "prop-types";
 import ReactDom from "react-dom";
 import moment from "moment";
 
+//components
 import CapIcon from "../CapIcon";
-import CapMenu from "../CapMenu";
-import CapButton from "../CapButton";
 import CapTooltip from "../CapTooltip";
 import CapPopover from "../CapPopover";
-import CapDropdown from "../CapDropdown";
-
 import MonthHeader from "./components/MonthHeader";
+import DayDropdown from "./components/DayDropdown";
 
+//styles
+import "./_capEventCalendar.scss";
+
+//utils
 import {
-  getQuarterForDate,
   getMonthsForQuarter,
   getDaysOfMonth,
-  formatDataToSuitCanvas
+  formatDataToSuitCanvas,
+  handleYearChange,
 } from "./utils";
 import {
   drawHeadingText,
   drawDashedLines,
   drawTodayLine,
   drawLineSeperator,
-  drawRoundRectWithText
+  drawRoundRectWithText,
 } from "./drawUtils";
 
-import { quarterInfo, workWeek } from "./constants";
-
-import { events as datas } from "./mockData";
-
-const PopoverConent = ({ title }) => <div>{title}</div>;
+//constants
+import { quarterInfo, quarters } from "./constants";
+//for testing
+//import { events as datas } from "./mockData";
 
 /* eslint-disable */
 const dashLineOffsetY = 20;
@@ -50,28 +50,21 @@ const defaultCanvasLimit = 150;
 
 const CapEventCalendar = ({
   calendarDate = moment().format(),
-  events = datas,
-  popoverConent = PopoverConent,
-  fetchEventsForTheQuarter
+  events,
+  popoverContent = DefaultPopover,
+  onQuarterChange,
+  selectedQuarter
 }) => {
-  const [currentDate, setCurrentDate] = useState(moment().format());
-  const [quarter, setQuarter] = useState(getQuarterForDate(calendarDate));
+  const [carouselDate, setCarouselDate] = useState(calendarDate || moment().format()); //To calculate the yeat based on carousel navigation
+  const [quarter, setQuarter] = useState(selectedQuarter ? quarters[selectedQuarter] : moment().quarter()); //display quarter info in the view
   const [displayMonths, setDisplayMonths] = useState(
-    getMonthsForQuarter(getQuarterForDate(calendarDate))
+    getMonthsForQuarter(selectedQuarter ? quarters[selectedQuarter] : moment().quarter()) //show months of the quarter
   );
   const [formattedEvents, setFormattedEvents] = useState(
-    formatDataToSuitCanvas(events)
+    formatDataToSuitCanvas(events,selectedQuarter ? quarters[selectedQuarter] : moment().quarter() ) //format events to suit the canvas
   );
-  const [quarterChanged, setQuarterChanged] = useState(false);
-  const [dayGrid, setDayGrid] = useState(1);
-
-  useEffect(() => {
-    setCurrentDate(currentDate || moment().format());
-  }, [calendarDate]);
-  const noOfDaysInQuarter = useMemo(
-    () => displayMonths.reduce((acc, { daysInMonth }) => acc + daysInMonth, 0),
-    [displayMonths]
-  );
+  const [error, showError] = useState(false); //disable the left carousel click when first month of previous year is reached
+  const [dayGrid, setDayGrid] = useState(1); //show grid line based on the day selected in dropdown
 
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -85,14 +78,12 @@ const CapEventCalendar = ({
   const isTooltipVisible = useRef(null);
   const currentHoverEvent = useRef(null);
   const totalEventRowsPerQuater = useRef(0);
+  const DefaultPopover = ({ title }) => <div>{title}</div>;
 
-  const showBorder = (month, day, monthIndex) => {
-    if (moment(month.end).date() === moment(day).date()) return true;
-    if (!monthIndex) {
-      if (moment(month.start).date() === moment(day).date()) return true;
-    }
-    return false;
-  };
+
+  useEffect(()=>{
+    setFormattedEvents(formatDataToSuitCanvas(events,quarter));
+  },[events])
 
   // responsive width and height
   useEffect(() => {
@@ -125,23 +116,24 @@ const CapEventCalendar = ({
       togglePopover(false);
       reDrawCanvas();
     }
-  }, [width, height, quarterChanged, dayGrid]);
+  }, [width, height, formattedEvents, dayGrid]);
 
   useEffect(() => {
     setDisplayMonths(getMonthsForQuarter(quarter));
-    formatEventsForQuarter(quarter);
-    setQuarterChanged(true);
   }, [quarter]);
 
-  /**
-   * on quarter change, fetch events for that quarter
-   */
-  const formatEventsForQuarter = quarter => {
-    let events = fetchEventsForTheQuarter
-      ? fetchEventsForTheQuarter(quarter)
-      : [];
-    if (quarter === 1) events = datas; //need to check events appear for chosen quarter
-    setFormattedEvents(formatDataToSuitCanvas(events, quarter));
+
+  const noOfDaysInQuarter = useMemo(
+    () => displayMonths.reduce((acc, { daysInMonth }) => acc + daysInMonth, 0),
+    [displayMonths]
+  );
+
+  const showBorder = (month, day, monthIndex) => {
+    if (moment(month.end).date() === moment(day).date()) return true;
+    if (!monthIndex) {
+      if (moment(month.start).date() === moment(day).date()) return true;
+    }
+    return false;
   };
 
   const handleDimension = () => {
@@ -264,8 +256,7 @@ const CapEventCalendar = ({
   const togglePopover = (visible, popoverContentProps) => {
     const knob = document.getElementById("event-calendar-popover-knob");
     ReactDom.unmountComponentAtNode(knob);
-    const Component = popoverConent;
-
+    const Component = popoverContent;
     if (visible) {
       ReactDom.render(
         <CapPopover
@@ -420,7 +411,6 @@ const CapEventCalendar = ({
               mouseX,
               mouseY
             });
-
             if (mouseX && isPointInRoundRectTextPath) {
               currentHoverItem = {
                 event,
@@ -485,7 +475,7 @@ const CapEventCalendar = ({
           mouseX: midX,
           mouseY: eventStartY + eventHeight / 2
         });
-        togglePopover(true, { ...event });
+        togglePopover(true, { ...event, ...event.popoverProps });
         currentHoverEvent.current = {
           ...currentHoverEvent.current,
           isNewEvent: false
@@ -513,15 +503,19 @@ const CapEventCalendar = ({
     toggleCursor(isTodayLineHovered || currentHoverEvent.current);
   };
 
-  const menu = (
-    <CapMenu selectable={true}>
-      <CapMenu.Item onClick={event => setDayGrid(1)}>Monday</CapMenu.Item>
-      <CapMenu.Item onClick={event => setDayGrid(2)}>Tuesday</CapMenu.Item>
-      <CapMenu.Item onClick={event => setDayGrid(3)}>Wednesday</CapMenu.Item>
-      <CapMenu.Item onClick={event => setDayGrid(4)}>Thursday</CapMenu.Item>
-      <CapMenu.Item onClick={event => setDayGrid(5)}>Friday</CapMenu.Item>
-    </CapMenu>
-  );
+const handleCarouselClick = (quarter, carouselDate, increment, calendarDate) =>{
+  if(increment) showError(false);
+  let values = handleYearChange(quarter, carouselDate, increment, calendarDate)
+  if(values){
+    setCarouselDate(values[1]);
+    onQuarterChange(values[0])
+    if(values[2]) showError(true);
+    return values[0]
+  }
+  else{
+    return quarter;
+  }
+}
 
   return (
     <>
@@ -531,41 +525,37 @@ const CapEventCalendar = ({
             <CapIcon
               type="chevron-left"
               style={{ cursor: "pointer" }}
+              className={error ? 'disable-left' : ''}
               onClick={() => {
-                setQuarter(quarter => quarter - 1);
+                setQuarter(quarter => {                
+                  return handleCarouselClick(quarter, carouselDate, false, calendarDate);
+                });
               }}
             />
             <CapIcon
               type="chevron-right"
               style={{ cursor: "pointer" }}
               onClick={() => {
-                setQuarter(quarter => quarter + 1);
+                setQuarter(quarter => {
+                  return handleCarouselClick(quarter, carouselDate, true);
+                });
               }}
             />
           </div>
           <div className="quarter-label">
-            {quarterInfo[getQuarterForDate(calendarDate)]}
+            {quarterInfo[quarter]}&nbsp;&nbsp;{moment(carouselDate).year()}
           </div>
         </div>
         <div className="event-calendar__header__right">
           Calendar Grid Line
-          <CapDropdown overlay={menu} placement="topRight">
-            <CapButton
-              type="flat"
-              className={"CapButton"}
-              suffix={<CapIcon size="s" type="chevron-down" color="#091e42" />}
-            >
-              {workWeek[dayGrid]}
-            </CapButton>
-          </CapDropdown>
+          <DayDropdown fetchDay={(day)=>setDayGrid(day)} day={dayGrid}/>
         </div>
       </div>
       <MonthHeader displayMonths={displayMonths} />
       {/* This is canvas, not to be changed: calculates dimensions */}
       <div
         style={{ width: "100%", height: "100%", position: "relative" }}
-        ref={ref}
-      >
+        ref={ref}>
         <canvas
           ref={canvas}
           style={style}

@@ -22,6 +22,11 @@
                 letter-spacing: normal;
                 color: $FONT_COLOR_01;
             }
+            .disable-left{
+                color:grey;
+                cursor: not-allowed;
+                pointer-events: none;
+            }
         }
         &__right{
             .grid-label{
@@ -35,7 +40,7 @@
                 font-style: normal;
                 line-height: 1.43;
                 letter-spacing: normal;
-                color: #091e42;
+                color: $FONT_COLOR_01;
             }
         }
         .ant-btn-flat{
@@ -44,11 +49,17 @@
             margin: 0 0 0 8px !important;
             padding: 8px !important;
             border-radius: 4px !important;
-            border: solid 1px #b3bac5 !important;
+            border: solid 1px $CAP_G06 !important;
+            color: $FONT_COLOR_01;
+            font-weight: normal;
             .cap-button-v2-suffix{
-                margin-left: 60px !important;
+                position: absolute;
+                right: 8px;
             }
-        }       
+        } 
+        .flat-btn:hover{
+            background-color:  $CAP_WHITE!important;
+        }      
     }
     &__month-header{
         display: flex;
@@ -59,88 +70,42 @@
         margin-bottom: 10px;
         &__label{
             width: 33.33%;
+            height: 20px;
             text-align: center;
-            font-weight: 600;
+            color: $FONT_COLOR_01;
             font-size:$FONT_SIZE_M ;
-            color: #091e42;
-            text-align: center;
-        }
-    }
-    &__scheduler{
-        justify-content: center;
-        position: relative;
-        top:40px;
-        &__header{
-            height:40px;
-            overflow: hidden;
-            font-size:$FONT_SIZE_M;
-            display: flex;
-            .month{
-                width: 33.33%;
-                display: flex;
-                justify-content: center;
-                .days{
-                    display: flex;
-                    justify-content: center;
-                    width: 100%;
-                    .each-day{
-                        font-size: $FONT_SIZE_S;
-                        color:$FONT_COLOR_01;
-                        flex: 1 1 0;
-                        width: 0;
-                        text-align: center;
-                    }
-                    .hide{
-                        color:rgba(0,0,0,0)
-                    }
-                    .show-right-border{
-                        border-right: 2px solid red;
-                    }
-                    .show-dashed-border{
-                        border-right: 1px dashed red;
-                    }
-                }
-            }
-           
-        }
-        &__timeline{
-            overflow-y:auto;
-            height:600px;
-            .event-row{
-                height:40px;
-                overflow: hidden;
-                font-size: $FONT_SIZE_S;
-                display: flex;
-                .month{
-                    width: 33.33%;
-                    display: flex;
-                    justify-content: center;
-                    .days{
-                        display: flex;
-                        justify-content: center;
-                        width: 100%;
-                        .each-day{
-                            font-size: $FONT_SIZE_S;
-                            color:$FONT_COLOR_01;
-                            flex: 1 1 0;
-                            width: 0;
-                            text-align: center;
-                        }
-                        .hide{
-                            color:rgba(0,0,0,0)
-                        }
-                        .show-right-border{
-                            border-right: 2px solid red;
-                        }
-                        .show-dashed-border{
-                            border-right: 1px dashed red;
-                        }
-                    }
-                }
-            }
+            font-family: Roboto;
+            font-weight: $FONT_WEIGHT_MEDIUM;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.43;
+            letter-spacing: normal;
         }
     }
 }
+
+.ant-dropdown-placement-bottomRight{
+    left: 1276px !important;
+    .ant-dropdown-menu-item{
+        height: 40px !important;
+        padding: 9px 8px 11px 16px !important;
+        background-color: $CAP_WHITE !important;
+        color: $FONT_COLOR_01 !important;
+        font-size: $FONT_SIZE_M;
+    }
+    .ant-dropdown-menu-item:hover{
+        background-color: $BG_02 !important;
+    }
+    .ant-dropdown-menu-item-selected{
+        background-color: $CAP_PALE_GREY !important;
+        border-left: 1px solid $FONT_COLOR_05 !important;
+        color: $FONT_COLOR_01 !important;
+    }
+    .ant-dropdown-menu-vertical{
+        width: 140px !important; 
+    }
+}
+
 
 
 
