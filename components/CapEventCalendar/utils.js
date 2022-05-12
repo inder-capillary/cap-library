@@ -126,42 +126,73 @@ export const isEventLong = (eventInRow, newEvent) => (
  * @returns
  */
 export const formatDataToSuitCanvas = (events, chosenQuarter) => {
-  const formattedEvents = [];
   if (events.length) {
-    _.forEach(events, (eventItem) => {
-    //check if date existe in the chosen quarter to avoid adding incorrect rows to the formatted events
-      if (getQuarterForDate(eventItem.start) === chosenQuarter || getQuarterForDate(eventItem.end) === chosenQuarter) {
-        if (!formattedEvents.length) {
-          formattedEvents.push([eventItem]);
-        } else {
-          const lastEventRow = formattedEvents[formattedEvents.length - 1];
-          //
-          const isClash = _.some(lastEventRow,
-            (rowItem) => checkIfDateIsInRange(eventItem.start, rowItem.start, rowItem.end)
-                        || checkIfDateIsInRange(eventItem.end, rowItem.start, rowItem.end));
-          const isOnSameDateRange = _.some(lastEventRow, (rowItem) => {
-            const eventItemStart = moment(eventItem.start, "DD-MM-YYYY");
-            const eventItemEnd = moment(eventItem.end, "DD-MM-YYYY");
-            const rowItemStart = moment(rowItem.start, "DD-MM-YYYY");
-            const rowItemEnd = moment(rowItem.end, "DD-MM-YYYY");
-            return (
-              eventItemStart.isSame(rowItemStart)
-                        && eventItemEnd.isSame(rowItemEnd)
-            );
-          });
-          const ifEventIsLong = _.some(lastEventRow, (rowItem) => isEventLong(rowItem, eventItem)); //to check if events span over the quarters
-          if (isClash || isOnSameDateRange || ifEventIsLong) {
-            formattedEvents.push([eventItem]);
+    const formattedEvents = [];
+    _.forEach(events, (eachEvent) => {
+      if (getQuarterForDate(eachEvent.start) === chosenQuarter || getQuarterForDate(eachEvent.end) === chosenQuarter) {
+        if (formattedEvents.length === 0) {
+          formattedEvents.push([eachEvent]);
+        } else if (formattedEvents.length > 0) {
+          if (formattedEvents.length === 1) {
+            const lastEventRow = formattedEvents[0];
+            const isClash = _.some(lastEventRow,
+              (rowItem) => checkIfDateIsInRange(eachEvent.start, rowItem.start, rowItem.end)
+                                      || checkIfDateIsInRange(eachEvent.end, rowItem.start, rowItem.end));
+            const isOnSameDateRange = _.some(lastEventRow, (rowItem) => {
+              const eventItemStart = moment(eachEvent.start, "DD-MM-YYYY");
+              const eventItemEnd = moment(eachEvent.end, "DD-MM-YYYY");
+              const rowItemStart = moment(rowItem.start, "DD-MM-YYYY");
+              const rowItemEnd = moment(rowItem.end, "DD-MM-YYYY");
+              return (
+                eventItemStart.isSame(rowItemStart)
+                                      && eventItemEnd.isSame(rowItemEnd)
+              );
+            });
+            const ifEventIsLong = _.some(lastEventRow, (rowItem) => isEventLong(rowItem, eachEvent)); //to check if events span over the quarters
+            if (isClash || isOnSameDateRange || ifEventIsLong) {
+              formattedEvents.push([eachEvent]);
+            } else {
+              lastEventRow.push(eachEvent);
+              formattedEvents[0] = lastEventRow;
+            }
           } else {
-            lastEventRow.push(eventItem);
-            formattedEvents[formattedEvents.length - 1] = lastEventRow;
+            let isPushed = false;
+            let isNewRow = false;
+            formattedEvents.forEach((eventRow, index) => {
+              if (!isPushed) {
+                const lastEventRow = eventRow;
+                const isClash = _.some(lastEventRow,
+                  (rowItem) => checkIfDateIsInRange(eachEvent.start, rowItem.start, rowItem.end)
+                                            || checkIfDateIsInRange(eachEvent.end, rowItem.start, rowItem.end));
+                const isOnSameDateRange = _.some(lastEventRow, (rowItem) => {
+                  const eventItemStart = moment(eachEvent.start, "DD-MM-YYYY");
+                  const eventItemEnd = moment(eachEvent.end, "DD-MM-YYYY");
+                  const rowItemStart = moment(rowItem.start, "DD-MM-YYYY");
+                  const rowItemEnd = moment(rowItem.end, "DD-MM-YYYY");
+                  return (
+                    eventItemStart.isSame(rowItemStart)
+                                                && eventItemEnd.isSame(rowItemEnd)
+                  );
+                });
+                const ifEventIsLong = _.some(lastEventRow, (rowItem) => isEventLong(rowItem, eachEvent)); //to check if events span over the quarters
+                if (isClash || isOnSameDateRange || ifEventIsLong) {
+                  isNewRow = true;
+                } else {
+                  lastEventRow.push(eachEvent);
+                  formattedEvents[index] = lastEventRow;
+                  isPushed = true;
+                  isNewRow = false;
+                }
+              }
+            });
+            if (isNewRow) formattedEvents.push([eachEvent]);
           }
         }
       }
     });
+    return formattedEvents;
   }
-
-  return formattedEvents;
+  return [];
 };
 
 const startMonthOfQuarter = {

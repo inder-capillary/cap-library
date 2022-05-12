@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import moment from 'moment';
 import CapEventCalendar from "../../components/CapEventCalendar/CapEventCalendar";
-import { q1, q2, q3 } from "./demoData";
 import PropertyTable from "../../helpers/PropertyTable";
+import { q1, q2, q3 } from "./demoData";
 
 const PopoverContent = (event) => (
   <div>

@@ -71,12 +71,7 @@ const CapEventCalendar = ({
       selectedQuarter ? quarters[selectedQuarter] : moment().quarter()
     ) //show months of the quarter
   );
-  const [formattedEvents, setFormattedEvents] = useState(
-    formatDataToSuitCanvas(
-      events,
-      selectedQuarter ? quarters[selectedQuarter] : moment().quarter()
-    ) //format events to suit the canvas
-  );
+  const [formattedEvents, setFormattedEvents] = useState([]);
   const [error, showError] = useState(false); //disable the left carousel click when first month of previous year is reached
   const [dayGrid, setDayGrid] = useState(1); //show grid line based on the day selected in dropdown
 
@@ -94,7 +89,10 @@ const CapEventCalendar = ({
   const totalEventRowsPerQuater = useRef(0);
 
   useEffect(() => {
-    setFormattedEvents(formatDataToSuitCanvas(events, quarter));
+    setFormattedEvents( formatDataToSuitCanvas(
+      events,
+      selectedQuarter ? quarters[selectedQuarter] : quarter || moment().quarter()
+    ));
   }, [events]);
 
   // responsive width and height

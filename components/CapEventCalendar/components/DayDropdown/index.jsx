@@ -33,7 +33,7 @@ const DayDropdown = ({fetchDay, day}) =>{
 
 DayDropdown.propTypes = {
     fetchDay: PropTypes.func,
-    day: PropTypes.num
+    day: PropTypes.number
 }
 
 export default DayDropdown;
