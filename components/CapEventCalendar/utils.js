@@ -125,19 +125,21 @@ export const isEventLong = (eventInRow, newEvent) => (
  * @param {Number} chosenQuarter
  * @returns
  */
-export const formatDataToSuitCanvas = (events, chosenQuarter) => {
+export const formatDataToSuitCanvas = (events) => {
   if (events.length) {
     const formattedEvents = [];
     _.forEach(events, (eachEvent) => {
-      if (getQuarterForDate(eachEvent.start) === chosenQuarter || getQuarterForDate(eachEvent.end) === chosenQuarter) {
-        if (formattedEvents.length === 0) {
-          formattedEvents.push([eachEvent]);
-        } else if (formattedEvents.length > 0) {
-          if (formattedEvents.length === 1) {
-            const lastEventRow = formattedEvents[0];
+      if (formattedEvents.length === 0) {
+        formattedEvents.push([eachEvent]);
+      } else if (formattedEvents.length > 0) {
+        let isPushed = false;
+        let isNewRow = false;
+        formattedEvents.forEach((eventRow, index) => {
+          if (!isPushed) {
+            const lastEventRow = eventRow;
             const isClash = _.some(lastEventRow,
               (rowItem) => checkIfDateIsInRange(eachEvent.start, rowItem.start, rowItem.end)
-                                      || checkIfDateIsInRange(eachEvent.end, rowItem.start, rowItem.end));
+                                            || checkIfDateIsInRange(eachEvent.end, rowItem.start, rowItem.end));
             const isOnSameDateRange = _.some(lastEventRow, (rowItem) => {
               const eventItemStart = moment(eachEvent.start, "DD-MM-YYYY");
               const eventItemEnd = moment(eachEvent.end, "DD-MM-YYYY");
@@ -145,49 +147,21 @@ export const formatDataToSuitCanvas = (events, chosenQuarter) => {
               const rowItemEnd = moment(rowItem.end, "DD-MM-YYYY");
               return (
                 eventItemStart.isSame(rowItemStart)
-                                      && eventItemEnd.isSame(rowItemEnd)
+                                                && eventItemEnd.isSame(rowItemEnd)
               );
             });
             const ifEventIsLong = _.some(lastEventRow, (rowItem) => isEventLong(rowItem, eachEvent)); //to check if events span over the quarters
             if (isClash || isOnSameDateRange || ifEventIsLong) {
-              formattedEvents.push([eachEvent]);
+              isNewRow = true;
             } else {
               lastEventRow.push(eachEvent);
-              formattedEvents[0] = lastEventRow;
+              formattedEvents[index] = lastEventRow;
+              isPushed = true;
+              isNewRow = false;
             }
-          } else {
-            let isPushed = false;
-            let isNewRow = false;
-            formattedEvents.forEach((eventRow, index) => {
-              if (!isPushed) {
-                const lastEventRow = eventRow;
-                const isClash = _.some(lastEventRow,
-                  (rowItem) => checkIfDateIsInRange(eachEvent.start, rowItem.start, rowItem.end)
-                                            || checkIfDateIsInRange(eachEvent.end, rowItem.start, rowItem.end));
-                const isOnSameDateRange = _.some(lastEventRow, (rowItem) => {
-                  const eventItemStart = moment(eachEvent.start, "DD-MM-YYYY");
-                  const eventItemEnd = moment(eachEvent.end, "DD-MM-YYYY");
-                  const rowItemStart = moment(rowItem.start, "DD-MM-YYYY");
-                  const rowItemEnd = moment(rowItem.end, "DD-MM-YYYY");
-                  return (
-                    eventItemStart.isSame(rowItemStart)
-                                                && eventItemEnd.isSame(rowItemEnd)
-                  );
-                });
-                const ifEventIsLong = _.some(lastEventRow, (rowItem) => isEventLong(rowItem, eachEvent)); //to check if events span over the quarters
-                if (isClash || isOnSameDateRange || ifEventIsLong) {
-                  isNewRow = true;
-                } else {
-                  lastEventRow.push(eachEvent);
-                  formattedEvents[index] = lastEventRow;
-                  isPushed = true;
-                  isNewRow = false;
-                }
-              }
-            });
-            if (isNewRow) formattedEvents.push([eachEvent]);
           }
-        }
+        });
+        if (isNewRow) formattedEvents.push([eachEvent]);
       }
     });
     return formattedEvents;
