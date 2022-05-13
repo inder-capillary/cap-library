@@ -1,17 +1,17 @@
 /**
- *
- * CapDropdown
- *
- */
+*
+* CapDropdown
+*
+*/
 
-import React from "react";
-import { Dropdown } from "antd";
-import classNames from "classnames";
-import "./_capDropdown.scss";
+import React from 'react';
+import { Dropdown } from 'antd';
+import classNames from 'classnames';
+import './_capDropdown.scss';
 
 const { Button } = Dropdown;
 
-const clsPrefix = "cap-dropdown-v2";
+const clsPrefix = 'cap-dropdown-v2';
 
 function CapDropdown(props) {
   const { className, overlayClassName, ...rest } = props;
@@ -19,12 +19,13 @@ function CapDropdown(props) {
     <Dropdown
       className={classNames(clsPrefix, className)}
       overlayClassName={classNames(`${clsPrefix}-overlay`, overlayClassName)}
-      {...rest}
-    />
+      {...rest} />
   );
 }
 
-CapDropdown.propTypes = {};
+CapDropdown.propTypes = {
+
+};
 
 CapDropdown.Button = Button;
 
