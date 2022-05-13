@@ -1,11 +1,19 @@
+import {
+  CAP_G01,
+  CAP_G06,
+  CAP_G11,
+  CAP_WHITE,
+  FONT_COLOR_05,
+} from "../styled/variables";
+
 /* eslint-disable no-param-reassign, consistent-return */
 export const drawHeadingText = ({ context, x, y, height, text }) => {
   context.beginPath();
-  context.fillStyle = "#ffff";
+  context.fillStyle = CAP_WHITE;
   const textWidth = context.measureText(text).width;
 
   context.fillRect(x - textWidth / 2, y, textWidth, height);
-  context.fillStyle = "#091e42";
+  context.fillStyle = CAP_G01;
   context.textAlign = "center";
 
   context.fillText(text, x, y + height);
@@ -24,7 +32,7 @@ export const drawCircle = ({ context, x, y, radius, color }) => {
 export const drawDashedLines = ({ context, x, y, x1, y1 }) => {
   context.beginPath();
   context.setLineDash([5, 3]);
-  context.strokeStyle = "#b3bac5";
+  context.strokeStyle = CAP_G06;
 
   context.moveTo(x, y);
   context.lineTo(x1, y1);
@@ -42,9 +50,9 @@ export const drawTodayLine = ({ context, x, y, x1, y1, mouseX, mouseY }) => {
     x,
     y: y - radius,
     radius,
-    color: "#2466ea",
+    color: FONT_COLOR_05,
   });
-  context.strokeStyle = "#2466ea";
+  context.strokeStyle = FONT_COLOR_05;
   context.moveTo(x, y);
   context.lineTo(x1, y1);
   if (mouseX) {
@@ -57,7 +65,7 @@ export const drawTodayLine = ({ context, x, y, x1, y1, mouseX, mouseY }) => {
 
 export const drawLineSeperator = ({ context, x, y, x1, y1 }) => {
   context.beginPath();
-  context.strokeStyle = "#7a869a";
+  context.strokeStyle = CAP_G11;
 
   context.moveTo(x, y);
   context.lineTo(x1, y1);
@@ -134,12 +142,16 @@ export const doEllipsis = ({ context, text, maxWidth }) => {
   }
   const textArray = `${text}`.split("");
   textArray.forEach((item, index) => {
-    const sliceText = `${textArray.slice(0, textArray.length - index).join("")}abc`;
+    const sliceText = `${textArray
+      .slice(0, textArray.length - index)
+      .join("")}abc`;
     if (
       context.measureText(sliceText).width <= maxWidth
-        && returnText === undefined
+      && returnText === undefined
     ) {
-      returnText = `${textArray.slice(0, textArray.length - index).join("")}...`;
+      returnText = `${textArray
+        .slice(0, textArray.length - index)
+        .join("")}...`;
     }
   });
   return returnText || "";
@@ -182,7 +194,16 @@ export const drawRoundRectWithText = ({
 
   context.fillStyle = color;
   context.textAlign = "start";
-  context.scale(1, 1);
+
+  const {
+    actualBoundingBoxAscent,
+    actualBoundingBoxDescent,
+  } = context.measureText(text);
+
+  const midY = y + height / 2;
+  const fontY = midY
+    + (actualBoundingBoxAscent + actualBoundingBoxDescent) / 2
+    - (actualBoundingBoxDescent || 1);
 
   context.fillText(
     doEllipsis({
@@ -191,7 +212,7 @@ export const drawRoundRectWithText = ({
       maxWidth: width - textPadding,
     }),
     x + textPadding,
-    y + 16
+    fontY
   );
 
   context.closePath();

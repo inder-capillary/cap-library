@@ -1,23 +1,40 @@
-export const quarterInfo = {
-  1: "(Jan  Feb  Mar)",
-  2: "(Apr  May  Jun)",
-  3: "(July  Aug  Sep)",
-  4: "(Oct  Nov  Dec)",
-};
+export const DATE_KEY_FORMAT = "DD/MM/YYYY";
 
-export const weekDays = {
-  0: 'Sunday',
-  1: 'Monday',
-  2: 'Tuesday',
-  3: 'Wednesday',
-  4: 'Thursday',
-  5: 'Friday',
-  6: 'Saturday',
-};
-
-export const quarters = {
+export const QUATERS = {
   JFM: 1,
   AMJ: 2,
   JAS: 3,
   OND: 4,
 };
+
+export const QUARTER_LABELS = [
+  "(Jan  Feb  Mar)",
+  "(Apr  May  Jun)",
+  "(July  Aug  Sep)",
+  "(Oct  Nov  Dec)",
+];
+
+export const DAY_LABELS = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+export const MONTH_LABELS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];

@@ -15,6 +15,7 @@ import CapTooltip from "../CapTooltip";
 import CapPopover from "../CapPopover";
 import MonthHeader from "./components/MonthHeader";
 import DayDropdown from "./components/DayDropdown";
+import { FONT_COLOR_01, FONT_SIZE_S, FONT_FAMILY } from "../styled/variables";
 
 //styles
 import "./_capEventCalendar.scss";
@@ -36,17 +37,13 @@ import {
 } from "./drawUtils";
 
 //constants
-import { quarters } from "./constants";
-//for testing
-//import { events as datas } from "./mockData";
-
-const dashLineOffsetY = 20;
-const dateKeyFormat = "DD/MM/YYYY";
-const eventHeight = 24;
-const eventRowGap = 12;
-const textPadding = 12;
-const eventStartYOffset = 40;
-const defaultCanvasLimit = 150;
+import {
+  DATE_KEY_FORMAT,
+  QUATERS,
+  QUARTER_LABELS,
+  DAY_LABELS,
+  MONTH_LABELS,
+} from "./constants";
 
 const DefaultPopover = ({ title }) => <div>{title}</div>;
 
@@ -57,25 +54,35 @@ DefaultPopover.propTypes = {
 const CapEventCalendar = ({
   calendarDate = moment().format(),
   events,
-  popoverContent = DefaultPopover,
+  popoverContent,
   onQuarterChange,
   selectedQuarter,
   calendarGridLineLabel,
   dayLabels,
   allQuartersLabel,
   monthLabels,
+  todayTooltipProps,
+  dashLineOffsetY,
+  eventHeight,
+  eventRowGap,
+  textPadding,
+  eventStartYOffset,
+  minCanvasHeight,
+  canvasFont,
 }) => {
   const [carouselDate, setCarouselDate] = useState(
     calendarDate || moment().format()
   ); //To calculate the year based on carousel navigation
   const [quarter, setQuarter] = useState(
-    selectedQuarter ? quarters[selectedQuarter] : moment().quarter()
+    selectedQuarter ? QUATERS[selectedQuarter] : moment().quarter()
   ); //display quarter info in the view
   const [displayMonths, setDisplayMonths] = useState([]);
   const [formattedEvents, setFormattedEvents] = useState([]);
   const [error, showError] = useState(false); //disable the left carousel click when first month of previous year is reached
   const [dayGrid, setDayGrid] = useState(1); //show grid line based on the day selected in dropdown
-  const [quarterMonths] = useState(splitMonthsArrayToQuarterChunks(monthLabels));
+  const [quarterMonths] = useState(
+    splitMonthsArrayToQuarterChunks(monthLabels)
+  );
 
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -91,14 +98,18 @@ const CapEventCalendar = ({
   const totalEventRowsPerQuater = useRef(0);
 
   useEffect(() => {
-    const _quarter = selectedQuarter ? quarters[selectedQuarter] : quarter;
+    const _quarter = selectedQuarter ? QUATERS[selectedQuarter] : quarter;
     setDisplayMonths(
       getMonthsForQuarter(_quarter, quarterMonths) //show months of the quarter
     );
-    setFormattedEvents( formatDataToSuitCanvas(
-      events,
-      selectedQuarter ? quarters[selectedQuarter] : quarter || moment().quarter()
-    ));
+    setFormattedEvents(
+      formatDataToSuitCanvas(
+        events,
+        selectedQuarter
+          ? QUATERS[selectedQuarter]
+          : quarter || moment().quarter()
+      )
+    );
   }, [events]);
 
   // responsive width and height
@@ -134,10 +145,6 @@ const CapEventCalendar = ({
     }
   }, [width, height, formattedEvents, dayGrid]);
 
-  // useEffect(() => {
-  //   setDisplayMonths(getMonthsForQuarter(quarter),quarterMonths);
-  // }, [quarter]);
-
   const noOfDaysInQuarter = useMemo(
     () => displayMonths.reduce((acc, { daysInMonth }) => acc + daysInMonth, 0),
     [displayMonths]
@@ -158,9 +165,7 @@ const CapEventCalendar = ({
       + (eventHeight + eventRowGap) * totalEventRowsPerQuater.current;
     setWidth(ref.current.clientWidth);
     setHeight(
-      estimatedHeight > defaultCanvasLimit
-        ? estimatedHeight
-        : defaultCanvasLimit
+      estimatedHeight > minCanvasHeight ? estimatedHeight : minCanvasHeight
     );
   };
 
@@ -207,8 +212,8 @@ const CapEventCalendar = ({
         context.beginPath();
         context.rect(startX, rectY, rectWidth, rectHeight);
 
-        const dayKey = moment(day).format(dateKeyFormat);
-        const today = moment().format(dateKeyFormat);
+        const dayKey = moment(day).format(DATE_KEY_FORMAT);
+        const today = moment().format(DATE_KEY_FORMAT);
         const isToday = dayKey === today;
 
         dayObject[dayKey] = initDayObject({
@@ -264,7 +269,7 @@ const CapEventCalendar = ({
 
     if (visible) {
       ReactDom.render(
-        <CapTooltip title="Today" visible>
+        <CapTooltip visible {...todayTooltipProps}>
           <div />
         </CapTooltip>,
         knob
@@ -322,7 +327,7 @@ const CapEventCalendar = ({
   };
 
   const getTodayRectObj = () => {
-    const today = moment().format(dateKeyFormat);
+    const today = moment().format(DATE_KEY_FORMAT);
     return getDayObject()[today];
   };
 
@@ -401,8 +406,8 @@ const CapEventCalendar = ({
     formattedEvents.forEach((eventRow) => {
       eventRow.forEach((event) => {
         const { title, start, end, backgroundColor } = event;
-        const startDate = moment(start).format(dateKeyFormat);
-        const endDate = moment(end).format(dateKeyFormat);
+        const startDate = moment(start).format(DATE_KEY_FORMAT);
+        const endDate = moment(end).format(DATE_KEY_FORMAT);
 
         let startRect = day[startDate];
         let endRect = day[endDate];
@@ -426,7 +431,7 @@ const CapEventCalendar = ({
             bgColor: backgroundColor,
             borderRadius: 5,
             text: title,
-            color: "#091e42",
+            color: FONT_COLOR_01,
             textPadding,
             openLeft: startRect.isCont,
             openRight: endRect.isCont,
@@ -464,7 +469,7 @@ const CapEventCalendar = ({
     const context = contextRef.current;
     context.clearRect(0, 0, width, height);
     context.beginPath();
-    context.font = "normal 12px sans-serif";
+    context.font = canvasFont;
     drawCanvas();
     context.closePath();
   };
@@ -595,8 +600,12 @@ const CapEventCalendar = ({
           </div>
         </div>
         <div className="event-calendar__header__right">
-          {`${calendarGridLineLabel || 'Calendar Grid Line'}`}
-          <DayDropdown fetchDay={handleDayGridSelection} day={dayGrid} dayLabels={dayLabels} />
+          {`${calendarGridLineLabel || "Calendar Grid Line"}`}
+          <DayDropdown
+            fetchDay={handleDayGridSelection}
+            day={dayGrid}
+            dayLabels={dayLabels}
+          />
         </div>
       </div>
       <MonthHeader displayMonths={displayMonths} />
@@ -633,7 +642,31 @@ CapEventCalendar.propTypes = {
   selectedQuarter: PropTypes.string,
   calendarGridLineLabel: PropTypes.string,
   dayLabels: PropTypes.array,
+  allQuartersLabel: PropTypes.array,
   monthLabels: PropTypes.array,
+  todayTooltipProps: PropTypes.object,
+  dashLineOffsetY: PropTypes.number,
+  eventHeight: PropTypes.number,
+  eventRowGap: PropTypes.number,
+  textPadding: PropTypes.number,
+  eventStartYOffset: PropTypes.number,
+  minCanvasHeight: PropTypes.number,
+  canvasFont: PropTypes.string,
+};
+
+CapEventCalendar.defaultProps = {
+  popoverContent: DefaultPopover,
+  dashLineOffsetY: 20,
+  eventHeight: 24,
+  eventRowGap: 12,
+  textPadding: 12,
+  eventStartYOffset: 40,
+  minCanvasHeight: 150,
+  todayTooltipProps: { title: "Today" },
+  allQuartersLabel: QUARTER_LABELS,
+  dayLabels: DAY_LABELS,
+  monthLabels: MONTH_LABELS,
+  canvasFont: `normal ${FONT_SIZE_S} ${FONT_FAMILY}`,
 };
 
 export default CapEventCalendar;
