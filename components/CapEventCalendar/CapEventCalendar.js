@@ -25,6 +25,7 @@ import {
   getDaysOfMonth,
   formatDataToSuitCanvas,
   handleYearChange,
+  splitMonthsArrayToQuarterChunks,
 } from "./utils";
 import {
   drawHeadingText,
@@ -35,7 +36,7 @@ import {
 } from "./drawUtils";
 
 //constants
-import { quarterInfo, quarters } from "./constants";
+import { quarters } from "./constants";
 //for testing
 //import { events as datas } from "./mockData";
 
@@ -59,6 +60,10 @@ const CapEventCalendar = ({
   popoverContent = DefaultPopover,
   onQuarterChange,
   selectedQuarter,
+  calendarGridLineLabel,
+  dayLabels,
+  allQuartersLabel,
+  monthLabels,
 }) => {
   const [carouselDate, setCarouselDate] = useState(
     calendarDate || moment().format()
@@ -66,14 +71,11 @@ const CapEventCalendar = ({
   const [quarter, setQuarter] = useState(
     selectedQuarter ? quarters[selectedQuarter] : moment().quarter()
   ); //display quarter info in the view
-  const [displayMonths, setDisplayMonths] = useState(
-    getMonthsForQuarter(
-      selectedQuarter ? quarters[selectedQuarter] : moment().quarter()
-    ) //show months of the quarter
-  );
+  const [displayMonths, setDisplayMonths] = useState([]);
   const [formattedEvents, setFormattedEvents] = useState([]);
   const [error, showError] = useState(false); //disable the left carousel click when first month of previous year is reached
   const [dayGrid, setDayGrid] = useState(1); //show grid line based on the day selected in dropdown
+  const [quarterMonths] = useState(splitMonthsArrayToQuarterChunks(monthLabels));
 
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -89,6 +91,10 @@ const CapEventCalendar = ({
   const totalEventRowsPerQuater = useRef(0);
 
   useEffect(() => {
+    const _quarter = selectedQuarter ? quarters[selectedQuarter] : quarter;
+    setDisplayMonths(
+      getMonthsForQuarter(_quarter, quarterMonths) //show months of the quarter
+    );
     setFormattedEvents( formatDataToSuitCanvas(
       events,
       selectedQuarter ? quarters[selectedQuarter] : quarter || moment().quarter()
@@ -128,9 +134,9 @@ const CapEventCalendar = ({
     }
   }, [width, height, formattedEvents, dayGrid]);
 
-  useEffect(() => {
-    setDisplayMonths(getMonthsForQuarter(quarter));
-  }, [quarter]);
+  // useEffect(() => {
+  //   setDisplayMonths(getMonthsForQuarter(quarter),quarterMonths);
+  // }, [quarter]);
 
   const noOfDaysInQuarter = useMemo(
     () => displayMonths.reduce((acc, { daysInMonth }) => acc + daysInMonth, 0),
@@ -519,6 +525,14 @@ const CapEventCalendar = ({
     toggleCursor(isTodayLineHovered || currentHoverEvent.current);
   };
 
+  /**
+   * Perform respective date and year changes on left and right carousel icon clicks
+   * @param {*} currentQuarter , needed to increment/decrement the quarter
+   * @param {*} date , to calculate if the year needs to be decremented based on date
+   * @param {*} increment , true => increment and false => decrement
+   * @param {*} referenceDate , date that decides the default year of the calendar
+   * @returns
+   */
   const handleCarouselClick = (
     currentQuarter,
     date,
@@ -538,8 +552,24 @@ const CapEventCalendar = ({
       if (values[2]) showError(true);
       return values[0];
     }
-
     return currentQuarter;
+  };
+
+  /**
+   *
+   * @param {*} ifDecrement, if true, pass calendarDate to decide if the limit that is previous year is reached
+   * if false, unlimited movement to the future quarters
+   */
+  const handleQuarterSelection = (ifDecrement) => {
+    if (ifDecrement) {
+      setQuarter((prevQuarter) => handleCarouselClick(prevQuarter, carouselDate, false, calendarDate));
+    } else {
+      setQuarter((prevQuarter) => handleCarouselClick(prevQuarter, carouselDate, true));
+    }
+  };
+
+  const handleDayGridSelection = (day) => {
+    setDayGrid(day);
   };
 
   return (
@@ -551,31 +581,22 @@ const CapEventCalendar = ({
               type="chevron-left"
               style={{ cursor: "pointer" }}
               className={error ? "disable-left" : ""}
-              onClick={() => {
-                setQuarter((currentQuarter) => handleCarouselClick(
-                  currentQuarter,
-                  carouselDate,
-                  false,
-                  calendarDate
-                ));
-              }}
+              onClick={() => handleQuarterSelection(true)}
             />
             <CapIcon
               type="chevron-right"
               style={{ cursor: "pointer" }}
-              onClick={() => {
-                setQuarter((currentQuarter) => handleCarouselClick(currentQuarter, carouselDate, true));
-              }}
+              onClick={() => handleQuarterSelection(false)}
             />
           </div>
           <div className="quarter-label">
-            {quarterInfo[quarter]}
+            {allQuartersLabel[quarter - 1]}
             {moment(carouselDate).year()}
           </div>
         </div>
         <div className="event-calendar__header__right">
-          Calendar Grid Line
-          <DayDropdown fetchDay={(day) => setDayGrid(day)} day={dayGrid} />
+          {`${calendarGridLineLabel || 'Calendar Grid Line'}`}
+          <DayDropdown fetchDay={handleDayGridSelection} day={dayGrid} dayLabels={dayLabels} />
         </div>
       </div>
       <MonthHeader displayMonths={displayMonths} />
@@ -607,6 +628,12 @@ const CapEventCalendar = ({
 CapEventCalendar.propTypes = {
   calendarDate: PropTypes.string,
   events: PropTypes.array,
+  popoverContent: PropTypes.any,
+  onQuarterChange: PropTypes.func,
+  selectedQuarter: PropTypes.string,
+  calendarGridLineLabel: PropTypes.string,
+  dayLabels: PropTypes.array,
+  monthLabels: PropTypes.array,
 };
 
 export default CapEventCalendar;

@@ -1,28 +1,27 @@
 import moment from "moment";
-import * as _ from "lodash";
-
-//not used
-export const getMondaysOfMonth = (date) => {
-  const _date = date || new Date();
-  const monday = moment(_date)
-    .startOf("month")
-    .day("Monday");
-  if (monday.date() > 7) monday.add(7, "d");
-  const month = monday.month();
-  const mondaysOfMonth = [];
-  while (month === monday.month()) {
-    mondaysOfMonth.push(monday.date());
-    monday.add(7, "d");
-  }
-  return mondaysOfMonth;
-};
-
-//not used
-export const getDate = (date) => date.format("D").toString();
+import { forEach, some } from "lodash";
 
 export const getQuarterForDate = (date) => moment(date).quarter();
 
-export const getMonthsForQuarter = (quarter) => {
+export const splitMonthsArrayToQuarterChunks = () => {
+  const chunkSize = 3;
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const chunks = [];
+  for (let i = 0; i < months.length; i += chunkSize) {
+    const chunk = months.slice(i, i + chunkSize);
+    chunks.push(chunk);
+  }
+  return chunks;
+};
+
+/**
+ * The start and end of the months is calculated along with other information needed for month
+ * This is being used for drawing the canvas via the displayMonths state value in CapEventCalendar
+ * @param {Number} quarter  quarter for which we need to get all month info in order to calculate days and other information
+ * @param {*} monthNames  this is for localization of month strings when displaying the month names in the header
+ * @returns
+ */
+export const getMonthsForQuarter = (quarter, monthNames) => {
   let months = [];
   const quarterStartDate = moment()
     .utc()
@@ -41,7 +40,6 @@ export const getMonthsForQuarter = (quarter) => {
   const quarterStartMonth = moment(quarterStartDate).month();
   const quarterMidMonth = moment(quarterMidDate).month();
   const quarterEndMonth = moment(quarterEndDate).month();
-
   months = [
     ...months,
     {
@@ -49,7 +47,7 @@ export const getMonthsForQuarter = (quarter) => {
       end: moment(quarterStartDate)
         .endOf("month")
         .format(),
-      name: getMonthName(quarterStartMonth),
+      name: monthNames[quarter - 1][0],
       month: quarterStartMonth,
       daysInMonth: moment(quarterStartDate).daysInMonth(),
     },
@@ -58,7 +56,7 @@ export const getMonthsForQuarter = (quarter) => {
       end: moment(quarterMidDate)
         .endOf("month")
         .format(),
-      name: getMonthName(quarterMidMonth),
+      name: monthNames[quarter - 1][1],
       month: quarterMidMonth,
       daysInMonth: moment(quarterMidDate).daysInMonth(),
     },
@@ -67,7 +65,7 @@ export const getMonthsForQuarter = (quarter) => {
       end: moment(quarterEndDate)
         .endOf("month")
         .format(),
-      name: getMonthName(quarterEndMonth),
+      name: monthNames[quarter - 1][2],
       month: quarterEndMonth,
       daysInMonth: moment(quarterEndDate).daysInMonth(),
     },
@@ -75,11 +73,8 @@ export const getMonthsForQuarter = (quarter) => {
   return months;
 };
 
-export const monthNames = moment.months();
-export const getMonthName = (month) => monthNames[month];
-
 /**
-  * To display the dates in the header
+  * To display the dates in the header and caculate the rectangles to be drawn in the canvas
   * @param {*} date
   * @returns
   */
@@ -98,13 +93,16 @@ export const getDaysOfMonth = (date) => {
   return arrDays;
 };
 
-//not used
-export const getTotalNumberOfDaysInQuarter = (date) => {
-  const quarterStart = moment(date).startOf("quarter");
-  const quarterEnd = moment(date).endOf("quarter");
-  return quarterEnd.diff(quarterStart, "days");
-};
-
+/**
+ * Checks if the date lies between start and end or
+ * if it is same as start date or end date
+ * this is to decide if event associated with date param needs to be added/not
+ * in the array containing the event which has the start and end dates params
+ * @param {*} date
+ * @param {*} start
+ * @param {*} end
+ * @returns
+ */
 export const checkIfDateIsInRange = (date, start, end) => {
   const _date = moment(date).format("DD-MM-YYYY");
   const _start = moment(start).format("DD-MM-YYYY");
@@ -112,6 +110,13 @@ export const checkIfDateIsInRange = (date, start, end) => {
   return moment(date).isBetween(start, end) || _date === _start || _date === _end;
 };
 
+/**
+ * This is to check if the given event spans a longer duration( quarter long or spans multiple quarter)
+ * So as to create a new array for such events
+ * @param {*} eventInRow
+ * @param {*} newEvent
+ * @returns
+ */
 export const isEventLong = (eventInRow, newEvent) => (
   moment(newEvent.start).isBefore(moment(eventInRow.start))
     && moment(newEvent.end).isAfter(moment(eventInRow.end))
@@ -127,8 +132,8 @@ export const isEventLong = (eventInRow, newEvent) => (
  */
 export const formatDataToSuitCanvas = (events) => {
   if (events.length) {
-    const formattedEvents = [];
-    _.forEach(events, (eachEvent) => {
+    const formattedEvents = [];//array containing multiple array of events
+    forEach(events, (eachEvent) => {
       if (formattedEvents.length === 0) {
         formattedEvents.push([eachEvent]);
       } else if (formattedEvents.length > 0) {
@@ -137,10 +142,10 @@ export const formatDataToSuitCanvas = (events) => {
         formattedEvents.forEach((eventRow, index) => {
           if (!isPushed) {
             const lastEventRow = eventRow;
-            const isClash = _.some(lastEventRow,
+            const isClash = some(lastEventRow,
               (rowItem) => checkIfDateIsInRange(eachEvent.start, rowItem.start, rowItem.end)
                                             || checkIfDateIsInRange(eachEvent.end, rowItem.start, rowItem.end));
-            const isOnSameDateRange = _.some(lastEventRow, (rowItem) => {
+            const isOnSameDateRange = some(lastEventRow, (rowItem) => {
               const eventItemStart = moment(eachEvent.start, "DD-MM-YYYY");
               const eventItemEnd = moment(eachEvent.end, "DD-MM-YYYY");
               const rowItemStart = moment(rowItem.start, "DD-MM-YYYY");
@@ -150,7 +155,7 @@ export const formatDataToSuitCanvas = (events) => {
                                                 && eventItemEnd.isSame(rowItemEnd)
               );
             });
-            const ifEventIsLong = _.some(lastEventRow, (rowItem) => isEventLong(rowItem, eachEvent)); //to check if events span over the quarters
+            const ifEventIsLong = some(lastEventRow, (rowItem) => isEventLong(rowItem, eachEvent)); //to check if events span over the quarters
             if (isClash || isOnSameDateRange || ifEventIsLong) {
               isNewRow = true;
             } else {
@@ -185,7 +190,7 @@ export const getFirstDateOfQuarter = (quarter) => moment().month(quarter).startO
  * rule 2: check if the 1st quarter of last year is reached
  * For increment:
  * rule 1: Year is incremented infinitely
- * rule 2: Incremented if the last quarter if current year is reached
+ * rule 2: Incremented if the last quarter of current year is reached
  * Default:
  * rule 1:Increment quarter for the current year
  * @param {Number} quarter

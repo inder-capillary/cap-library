@@ -57,9 +57,50 @@ const infoData = [
   {
     key: 5,
     property: "selectedQuarter(Mandatory)",
-    description: "The date is needed to present current day in quarter",
+    description: "Pass the appropriate quarter value from the example upon quarter change. The letters are month initials.",
     type: "string",
-    default: "Ex: JFM,AMJ,JAS,OND",
+    default: "For ex: JFM/AMJ/JAS/OND",
+  },
+  {
+    key: 6,
+    property: "calendarGridLineLabel(Mandatory)",
+    description: "Label that appear beside the dropdown that selects the day to be highlighted in calendar",
+    type: "string",
+    default: "Calendar Grid Line",
+  },
+  {
+    key: 7,
+    property: "dayLabels(Mandatory)",
+    description: "Array of day names in the language of your choice needs to be passed to be displayed in dropdown. Please follow the order followed in default.",
+    type: "string",
+    default: JSON.stringify([
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+    ]),
+  },
+  {
+    key: 6,
+    property: "allQuartersLabel(Mandatory)",
+    description: "Array of quarter labels in the language of your choice are used to highlight the current quarter. 4 items in array correspond to 4 quarters in ascending order",
+    type: "string",
+    default: JSON.stringify([
+      "(Jan  Feb  Mar)",
+      "(Apr  May  Jun)",
+      "(July  Aug  Sep)",
+      "(Oct  Nov  Dec)",
+    ]),
+  },
+  {
+    key: 7,
+    property: "monthLabels(Mandatory)",
+    description: "Array of month names in the language of choice needs to be passed to be displayed as header above each month in the calendar. Please follow the order followed in default.",
+    type: "string",
+    default: JSON.stringify(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']),
   },
 ];
 
@@ -69,6 +110,25 @@ const quarterLabels = [
   "JAS",
   "OND",
 ];
+
+const dayLabels = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
+const allQuartersLabel = [
+  "(Jan  Feb  Mar)",
+  "(Apr  May  Jun)",
+  "(July  Aug  Sep)",
+  "(Oct  Nov  Dec)",
+];
+
+const monthLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 const CapEventCalendarDoc = () => {
   const [events, setEvents] = useState(q1);
@@ -90,7 +150,11 @@ const CapEventCalendarDoc = () => {
         onQuarterChange={fetchEventsForQuarter}
         popoverContent={PopoverContent}
         selectedQuarter={quarter}
-        calendarDate={moment().format()} />
+        calendarDate={moment().format()}
+        calendarGridLineLabel="Calendar Grid Line"
+        dayLabels={dayLabels}
+        allQuartersLabel={allQuartersLabel}
+        monthLabels={monthLabels} />
       <PropertyTable data={infoData} />
     </div>
   );
