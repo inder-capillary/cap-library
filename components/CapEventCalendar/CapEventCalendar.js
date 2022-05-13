@@ -6,6 +6,7 @@ import React, {
   useLayoutEffect,
 } from "react";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 import ReactDom from "react-dom";
 import moment from "moment";
 
@@ -73,11 +74,14 @@ const CapEventCalendar = ({
   const [carouselDate, setCarouselDate] = useState(
     calendarDate || moment().format()
   ); //To calculate the year based on carousel navigation
+
   const [quarter, setQuarter] = useState(
     selectedQuarter ? QUATERS[selectedQuarter] : moment().quarter()
   ); //display quarter info in the view
+
   const [displayMonths, setDisplayMonths] = useState([]);
   const [formattedEvents, setFormattedEvents] = useState([]);
+
   const [error, showError] = useState(false); //disable the left carousel click when first month of previous year is reached
   const [dayGrid, setDayGrid] = useState(1); //show grid line based on the day selected in dropdown
   const [quarterMonths] = useState(
@@ -88,7 +92,7 @@ const CapEventCalendar = ({
   const [height, setHeight] = useState(0);
   const pixelRatio = window.devicePixelRatio;
 
-  const ref = useRef(null);
+  const canvasContainerRef = useRef(null);
   const canvas = useRef(null);
   const contextRef = useRef(null);
   const drawObject = useRef(null);
@@ -163,7 +167,7 @@ const CapEventCalendar = ({
     const estimatedHeight = rectY
       + eventStartYOffset
       + (eventHeight + eventRowGap) * totalEventRowsPerQuater.current;
-    setWidth(ref.current.clientWidth);
+    setWidth(canvasContainerRef.current.clientWidth);
     setHeight(
       estimatedHeight > minCanvasHeight ? estimatedHeight : minCanvasHeight
     );
@@ -577,6 +581,10 @@ const CapEventCalendar = ({
     setDayGrid(day);
   };
 
+  const onClickQuarterLeft = () => handleQuarterSelection(true);
+
+  const onClickQuarterRight = () => handleQuarterSelection(false);
+
   return (
     <>
       <div className="event-calendar__header">
@@ -585,13 +593,13 @@ const CapEventCalendar = ({
             <CapIcon
               type="chevron-left"
               style={{ cursor: "pointer" }}
-              className={error ? "disable-left" : ""}
-              onClick={() => handleQuarterSelection(true)}
+              className={classnames({ "disable-left": error })}
+              onClick={onClickQuarterLeft}
             />
             <CapIcon
               type="chevron-right"
               style={{ cursor: "pointer" }}
-              onClick={() => handleQuarterSelection(false)}
+              onClick={onClickQuarterRight}
             />
           </div>
           <div className="quarter-label">
@@ -600,7 +608,7 @@ const CapEventCalendar = ({
           </div>
         </div>
         <div className="event-calendar__header__right">
-          {`${calendarGridLineLabel || "Calendar Grid Line"}`}
+          {calendarGridLineLabel}
           <DayDropdown
             fetchDay={handleDayGridSelection}
             day={dayGrid}
@@ -609,10 +617,10 @@ const CapEventCalendar = ({
         </div>
       </div>
       <MonthHeader displayMonths={displayMonths} />
-      {/* This is canvas, not to be changed: calculates dimensions */}
+      {/* This is needs to calculates dimensions for canavs & Do not add any elements as children */}
       <div
         style={{ width: "100%", height: "100%", position: "relative" }}
-        ref={ref}
+        ref={canvasContainerRef}
       >
         <canvas
           ref={canvas}
@@ -667,6 +675,7 @@ CapEventCalendar.defaultProps = {
   dayLabels: DAY_LABELS,
   monthLabels: MONTH_LABELS,
   canvasFont: `normal ${FONT_SIZE_S} ${FONT_FAMILY}`,
+  calendarGridLineLabel: "Calendar Grid Line",
 };
 
 export default CapEventCalendar;
