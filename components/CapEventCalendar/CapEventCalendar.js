@@ -360,9 +360,9 @@ const CapEventCalendar = ({
 
   const updatePopoverKnobPosition = ({ mouseX, mouseY } = {}) => {
     const popoverKnob = document.getElementById("event-calendar-popover-knob");
-    // offsetX - 4 to make "popover arrow" completely touch over "event" left
+    // offsetX - 6 to make "popover arrow" completely touch over "event" left
     // To avoid popover close - From mouse move from "event" to "popover content"
-    updatePosition({ mouseX, mouseY, knob: popoverKnob, offsetX: 4 });
+    updatePosition({ mouseX, mouseY, knob: popoverKnob, offsetX: 6 });
   };
 
   const getDayObject = () => {
