@@ -9,6 +9,7 @@
         justify-content: space-between;
         &__left{
             display: flex;
+            padding-top: 8px;
             .quarter-label{
                 width: 152px;
                 height: $CAP_SPACE_20;
@@ -25,6 +26,9 @@
                 color:grey;
                 cursor: not-allowed;
                 pointer-events: none;
+            }
+            .carousel-icon{
+                cursor: pointer;
             }
         }
         &__right{
@@ -66,6 +70,7 @@
         text-align: center;
         top: 0px;
         margin-bottom: 10px;
+        margin-top: 25px;
         &__label{
             width: 33.33%;
             height: $CAP_SPACE_20;

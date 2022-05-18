@@ -557,7 +557,7 @@ const CapEventCalendar = ({
     );
     if (values) {
       setCarouselDate(values[1]);
-      onQuarterChange(values[0]);
+      onQuarterChange(values[0], moment(values[1]).year());
       if (values[2]) showError(true);
       return values[0];
     }
@@ -593,17 +593,18 @@ const CapEventCalendar = ({
             <CapIcon
               type="chevron-left"
               style={{ cursor: "pointer" }}
-              className={classnames({ "disable-left": error })}
+              className={classnames({ "disable-left": error, "carousel-icon": true})}
               onClick={onClickQuarterLeft}
             />
             <CapIcon
               type="chevron-right"
-              style={{ cursor: "pointer" }}
+              className="carousel-icon"
               onClick={onClickQuarterRight}
             />
           </div>
           <div className="quarter-label">
             {allQuartersLabel[quarter - 1]}
+&nbsp;&nbsp;
             {moment(carouselDate).year()}
           </div>
         </div>
