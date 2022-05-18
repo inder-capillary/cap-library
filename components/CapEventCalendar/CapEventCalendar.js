@@ -149,10 +149,12 @@ const CapEventCalendar = ({
     togglePopover(false);
   };
 
-  useEffect(() => () => {
-    hidePopoverAndToolTip();
-  },
-  []);
+  useEffect(
+    () => () => {
+      hidePopoverAndToolTip();
+    },
+    []
+  );
 
   useEffect(() => {
     if (width > 0 && height > 0) {
