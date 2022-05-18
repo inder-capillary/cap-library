@@ -13,7 +13,7 @@ import {
 } from "./demoData";
 
 const PopoverContent = (event) => (
-  <div>
+  <div style={{ width: 180 }}>
     <div>{event.title}</div>
     {event.description && <p>{event.description}</p>}
     <span>

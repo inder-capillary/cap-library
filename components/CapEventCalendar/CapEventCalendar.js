@@ -98,6 +98,7 @@ const CapEventCalendar = ({
   const drawObject = useRef(null);
 
   const isTooltipVisible = useRef(null);
+  const isPopoverVisible = useRef(null);
   const currentHoverEvent = useRef(null);
   const totalEventRowsPerQuater = useRef(0);
 
@@ -123,9 +124,11 @@ const CapEventCalendar = ({
   }, [formattedEvents]);
 
   useEffect(() => {
-    window.addEventListener("resize", doResize, true);
+    window.addEventListener("mousemove", onWindowMouseMove, false);
+    window.addEventListener("resize", doResize, false);
     return () => {
       window.removeEventListener("resize", doResize);
+      window.removeEventListener("mousemove", onWindowMouseMove);
     };
   }, []);
 
@@ -141,10 +144,21 @@ const CapEventCalendar = ({
     }
   }, [width, height]);
 
+  const hidePopoverAndToolTip = () => {
+    toggleTooltip(false);
+    togglePopover(false);
+  };
+
+  useEffect(
+    () => () => {
+      hidePopoverAndToolTip();
+    },
+    []
+  );
+
   useEffect(() => {
     if (width > 0 && height > 0) {
-      toggleTooltip(false);
-      togglePopover(false);
+      hidePopoverAndToolTip();
       reDrawCanvas();
     }
   }, [width, height, formattedEvents, dayGrid]);
@@ -174,6 +188,24 @@ const CapEventCalendar = ({
   };
 
   const doResize = () => handleDimension();
+
+  const onWindowMouseMove = (event) => {
+    const canvasContainer = canvasContainerRef.current;
+    const moveX = event.clientX;
+    const moveY = event.clientY;
+    // Mouse x and y should be between canvas container co-ordinates
+    // If not tooltip and popover will be closed
+    if (
+      !(
+        moveX > canvasContainer.offsetLeft
+        && moveX < canvasContainer.offsetLeft + canvasContainer.clientWidth
+        && moveY > canvasContainer.offsetTop
+        && moveY < canvasContainer.offsetTop + canvasContainer.clientHeight
+      )
+    ) {
+      hidePopoverAndToolTip();
+    }
+  };
 
   const initDayObject = ({
     x: rectX,
@@ -268,43 +300,53 @@ const CapEventCalendar = ({
   };
 
   const toggleTooltip = (visible) => {
-    const knob = document.getElementById("event-calendar-tool-tip-knob");
-    ReactDom.unmountComponentAtNode(knob);
+    // Allow if visible and hide only if tooltip is already visible
+    if (visible || isTooltipVisible.current) {
+      const knob = document.getElementById("event-calendar-tool-tip-knob");
+      ReactDom.unmountComponentAtNode(knob);
 
-    if (visible) {
-      ReactDom.render(
-        <CapTooltip visible {...todayTooltipProps}>
-          <div />
-        </CapTooltip>,
-        knob
-      );
+      if (visible) {
+        ReactDom.render(
+          <CapTooltip visible {...todayTooltipProps}>
+            <div />
+          </CapTooltip>,
+          knob
+        );
+      }
+      isTooltipVisible.current = visible;
     }
-    isTooltipVisible.current = visible;
   };
 
   const togglePopover = (visible, popoverContentProps) => {
-    const knob = document.getElementById("event-calendar-popover-knob");
-    ReactDom.unmountComponentAtNode(knob);
-    const Component = popoverContent;
-    if (visible) {
-      ReactDom.render(
-        <CapPopover
-          visible
-          placement="left"
-          content={<Component {...popoverContentProps} />}
-        >
-          <div />
-        </CapPopover>,
-        knob
-      );
+    // Allow if visible and hide only if popover is already visible
+    if (visible || isPopoverVisible.current) {
+      const knob = document.getElementById("event-calendar-popover-knob");
+      ReactDom.unmountComponentAtNode(knob);
+      const Component = popoverContent;
+      if (visible) {
+        ReactDom.render(
+          <CapPopover
+            visible
+            placement="left"
+            content={<Component {...popoverContentProps} />}
+            overlayClassName="event-calendar-popover-overlay"
+            getPopupContainer={(trigger) => trigger.parentNode}
+          >
+            <div />
+          </CapPopover>,
+          knob
+        );
+      }
+
+      isPopoverVisible.current = visible;
     }
   };
 
-  const updatePosition = ({ mouseX, mouseY, knob }) => {
+  const updatePosition = ({ mouseX, mouseY, knob, offsetX = 0 }) => {
     const { style } = knob;
     if (mouseX) {
       style.display = "block";
-      style.left = `${mouseX}px`;
+      style.left = `${mouseX + offsetX}px`;
       style.top = `${mouseY}px`;
     } else {
       style.display = "none";
@@ -320,7 +362,9 @@ const CapEventCalendar = ({
 
   const updatePopoverKnobPosition = ({ mouseX, mouseY } = {}) => {
     const popoverKnob = document.getElementById("event-calendar-popover-knob");
-    updatePosition({ mouseX, mouseY, knob: popoverKnob });
+    // offsetX - 6 to make "popover arrow" completely touch over "event" left
+    // To avoid popover close - From mouse move from "event" to "popover content"
+    updatePosition({ mouseX, mouseY, knob: popoverKnob, offsetX: 6 });
   };
 
   const getDayObject = () => {
