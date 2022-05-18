@@ -70,6 +70,7 @@ const CapEventCalendar = ({
   eventStartYOffset,
   minCanvasHeight,
   canvasFont,
+  popoverPlacement,
 }) => {
   const [carouselDate, setCarouselDate] = useState(
     calendarDate || moment().format()
@@ -124,10 +125,12 @@ const CapEventCalendar = ({
   }, [formattedEvents]);
 
   useEffect(() => {
+    window.addEventListener("resize", doResize, true);
+    window.addEventListener("scroll", onWindowScroll, true);
     window.addEventListener("mousemove", onWindowMouseMove, false);
-    window.addEventListener("resize", doResize, false);
     return () => {
       window.removeEventListener("resize", doResize);
+      window.removeEventListener("scroll", onWindowScroll);
       window.removeEventListener("mousemove", onWindowMouseMove);
     };
   }, []);
@@ -189,18 +192,25 @@ const CapEventCalendar = ({
 
   const doResize = () => handleDimension();
 
+  const onWindowScroll = () => hidePopoverAndToolTip();
+
   const onWindowMouseMove = (event) => {
     const canvasContainer = canvasContainerRef.current;
     const moveX = event.clientX;
     const moveY = event.clientY;
     // Mouse x and y should be between canvas container co-ordinates
     // If not tooltip and popover will be closed
+    const { top, left } = canvasContainer.getBoundingClientRect();
+    const popoverContainer = document.getElementsByClassName(
+      "event-calendar-popover-overlay"
+    )?.[0];
     if (
       !(
-        moveX > canvasContainer.offsetLeft
-        && moveX < canvasContainer.offsetLeft + canvasContainer.clientWidth
-        && moveY > canvasContainer.offsetTop
-        && moveY < canvasContainer.offsetTop + canvasContainer.clientHeight
+        (moveX > left
+          && moveX < left + canvasContainer.clientWidth
+          && moveY > top
+          && moveY < top + canvasContainer.clientHeight)
+        || (popoverContainer && popoverContainer.contains(event.target))
       )
     ) {
       hidePopoverAndToolTip();
@@ -323,14 +333,16 @@ const CapEventCalendar = ({
       const knob = document.getElementById("event-calendar-popover-knob");
       ReactDom.unmountComponentAtNode(knob);
       const Component = popoverContent;
+      const body = document.getElementsByTagName("body")?.[0];
       if (visible) {
         ReactDom.render(
           <CapPopover
             visible
-            placement="left"
+            arrowPointAtCenter
+            placement={popoverPlacement}
             content={<Component {...popoverContentProps} />}
             overlayClassName="event-calendar-popover-overlay"
-            getPopupContainer={(trigger) => trigger.parentNode}
+            getPopupContainer={(trigger) => body || trigger}
           >
             <div />
           </CapPopover>,
@@ -704,6 +716,7 @@ CapEventCalendar.propTypes = {
   eventStartYOffset: PropTypes.number,
   minCanvasHeight: PropTypes.number,
   canvasFont: PropTypes.string,
+  popoverPlacement: PropTypes.string,
 };
 
 CapEventCalendar.defaultProps = {
@@ -720,6 +733,7 @@ CapEventCalendar.defaultProps = {
   monthLabels: MONTH_LABELS,
   canvasFont: `normal ${FONT_SIZE_S} ${FONT_FAMILY}`,
   calendarGridLineLabel: "Calendar Grid Line",
+  popoverPlacement: "leftTop",
 };
 
 export default CapEventCalendar;
