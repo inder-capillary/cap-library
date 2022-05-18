@@ -41,6 +41,7 @@ const CapMultiplePath = (props) => {
     pathList,
     setPathList,
     capBlockWidth,
+    continueAddPath,
     addPathDisabled,
     addPathDisabledMessage,
     isToggleEnabled,
@@ -122,6 +123,7 @@ const CapMultiplePath = (props) => {
    */
   const addPath = () => {
     if (addPathDisabled) return;
+    if (!continueAddPath()) return;
     const temp = {
       contents: defaultContents,
       pathName: null,
@@ -521,6 +523,7 @@ CapMultiplePath.propTypes = {
   pathList: PropTypes.array,
   setPathList: PropTypes.func,
   capBlockWidth: PropTypes.number,
+  continueAddPath: PropTypes.func,
   addPathDisabled: PropTypes.bool,
   addPathDisabledMessage: PropTypes.any,
   isToggleEnabled: PropTypes.bool,
@@ -543,6 +546,7 @@ CapMultiplePath.defaultProps = {
   addPathDisabled: false,
   capBlockWidth: 676,
   notUniqueMsg: "",
+  continueAddPath: () => true,
 };
 
 export default LocaleHoc(CapMultiplePath, { key: "CapMultiplePath" });
