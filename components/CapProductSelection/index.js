@@ -132,6 +132,11 @@ const CapProductSelection = ({
     setShowModal(false);
     setAttribute(intermediateValue);
     setIntermediateValue(null);
+    if (intermediateValue === SKU) {
+      setIsBrandSelected(false);
+      setIsCategorySelected(false);
+      setIsProductSelected(false);
+    }
     if (intermediateSubAttribute) {
       switch (intermediateSubAttribute) {
         case BRAND:

@@ -8,7 +8,7 @@ import CapIcon from "../CapIcon";
 import LocaleHoc from "../LocaleHoc";
 import CapLabel from "../CapLabel";
 import CapTruncateList from "../CapTruncateList";
-import { MULTI_SELECT, LIST, NUMBER, SKU } from "./constants";
+import { MULTI_SELECT, LIST, NUMBER, SKU, PRODUCT_ATTRIBUTE } from "./constants";
 import { StyledFlexWrapDiv, StyledCapLabel, SkuDownloadLink } from "./style";
 
 const { CapLabelInline } = CapLabel;
@@ -109,7 +109,11 @@ const CapConditionPreview = ({
         Array.isArray(operandLocal) && operandLocal?.forEach((id) => { selectedIds[id] = true; });
         const selectedListLocal = linkedFactTreeData?.reduce((acc, data) => {
           if (selectedIds[data.id]) {
-            acc.push(data.name || data.title);
+            acc.push(
+              linkedFact === PRODUCT_ATTRIBUTE
+                ? `${data.parentName}: ${data.title}`
+                : data.name || data.title
+            );
           }
           return acc;
         }, []);

@@ -21,4 +21,12 @@
             margin-right: $CAP_SPACE_04;
         }
     }
+
+    .ant-tag.cap-tag-v2 {
+        padding: $CAP_SPACE_06 $CAP_SPACE_12;
+
+        .anticon-close {
+            margin-left: $CAP_SPACE_08;
+        }
+    }
 }
