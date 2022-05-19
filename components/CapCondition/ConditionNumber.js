@@ -14,6 +14,7 @@ import { INPUT_EMPTY, SECOND_INPUT_SMALLER } from "./constants";
 
 const ConditionNumber = (props) => {
   const {
+    conditionExpressionOptions,
     conditionExpression,
     setConditionExpression,
     setConditionValidationError,
@@ -44,7 +45,7 @@ const ConditionNumber = (props) => {
   /**
    * Use operandsMapping to create list of objects for dropdown.
    */
-  const dropDown = Object.keys(operandsMapping).reduce((acc, cur) => {
+  const dropDown = Object.keys(conditionExpressionOptions || operandsMapping).reduce((acc, cur) => {
     acc.push({ label: operandsMapping[cur].text, value: cur, key: cur });
     return acc;
   }, []);
@@ -54,7 +55,8 @@ const ConditionNumber = (props) => {
    */
   useEffect(() => {
     if (!operator) {
-      handleOperatorChange('EQ');
+      const { value = '' } = dropDown?.[0];
+      if (value) handleOperatorChange(value);
     }
   }, []);
 
@@ -168,6 +170,7 @@ const ConditionNumber = (props) => {
   );
 };
 ConditionNumber.propTypes = {
+  conditionExpressionOptions: PropTypes.object,
   conditionExpression: PropTypes.any,
   setConditionExpression: PropTypes.func,
   setConditionValidationError: PropTypes.func,

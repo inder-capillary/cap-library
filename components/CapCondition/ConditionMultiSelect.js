@@ -4,7 +4,7 @@ import CapMultiSelect from "../CapMultiSelect";
 import { StyledFlexWrapDiv } from "./style";
 
 export const ConditionMultiSelect = (props) => {
-  const { treeData, conditionExpression, setConditionExpression, placeholder } = props;
+  const { treeData = [], conditionExpression, setConditionExpression, placeholder } = props;
 
   const handleOnSelect = (values) => {
     setConditionExpression({

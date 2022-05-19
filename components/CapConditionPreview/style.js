@@ -10,6 +10,15 @@ export const StyledFlexWrapDiv = styled.div`
   }
 `;
 
+export const SkuDownloadLink = styled.a`
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  & > .cap-icon-v2-download {
+    margin-right: 4px;
+  }
+`;
+
 export const StyledCapLabel = styled(CapLabel)`
   background-color: #ecece7;
   border-radius: 16px;

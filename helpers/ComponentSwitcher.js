@@ -86,6 +86,7 @@ import CapSelectFilterDoc from '../src/CapSelectFilterDoc';
 import CapStaticTemplatesDoc from '../src/CapStaticTemplatesDoc';
 import CapAppNotEnabledDoc from '../src/CapAppNotEnabledDoc';
 import CapStatusDoc from '../src/CapStatusDoc';
+import CapSKUUploaderDoc from '../src/CapSKUUploaderDoc';
 //imported for docs
 
 
@@ -263,6 +264,8 @@ class ComponentSwitcher extends Component {
         return <CapAppNotEnabledDoc />;
       case 'capStatus':
         return <CapStatusDoc />;
+      case 'capSKUUploader':
+        return <CapSKUUploaderDoc />;
         //components for docs
 
       default:

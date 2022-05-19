@@ -1,0 +1,24 @@
+@import '../styles/variables';
+
+.cap-sku-uploader {
+    .csv-fileipload-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .cap-icon-v2.cap-icon-v2-warning {
+        path{
+            fill: $CAP_RED;
+          }
+    }
+
+    .download-SKU-link {
+        display: flex;
+        align-items: center;
+        margin-left: $CAP_SPACE_08;
+
+        .cap-icon-v2-download {
+            margin-right: $CAP_SPACE_04;
+        }
+    }
+}

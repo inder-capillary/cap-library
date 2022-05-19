@@ -79,6 +79,7 @@ export const StyledCapTree = styled(CapTree)`
     }
     .ant-tree-child-tree {
       .ant-tree-node-content-wrapper {
+          position: relative;
           margin-left: 16px;
           padding-left: 0;
           width: 250px;
@@ -88,6 +89,11 @@ export const StyledCapTree = styled(CapTree)`
       }
       .ant-tree-title {
         margin-left: -12px;
+        .info-icon {
+          position: absolute;
+          right: 25px;
+          top: 14px;
+        }
       }
     }
   }

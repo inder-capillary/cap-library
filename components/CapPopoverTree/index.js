@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { Tree } from "antd";
+import { Tree, Icon, Tooltip } from "antd";
 import CapPopover from "../CapPopover";
 import CapInput from "../CapInput";
 import CapHeading from "../CapHeading";
@@ -90,7 +90,7 @@ export const CapPopoverTree = (props) => {
 
   const getTreeData = (treeData) => {
     const finalTreeData = treeData?.reduce((result, data) => {
-      const { title, key, icon, children = [] } = data;
+      const { title, key, icon, children = [], info } = data;
       if (title) {
         const itemName = title?.toLowerCase()?.trim();
         const searchValue = searchText?.toLowerCase()?.trim();
@@ -99,19 +99,26 @@ export const CapPopoverTree = (props) => {
         const afterString = title?.substr(searchIndex + searchValue?.length);
         const matchedSearch = title?.substr(searchIndex, searchValue?.length);
         const searchResult = (
-          <>
-            <StyledCapColumn>{beforeString}</StyledCapColumn>
-            <StyledCapColumn style={{ fontWeight: 500 }}>
-              {matchedSearch}
-            </StyledCapColumn>
-            <StyledCapColumn>{afterString}</StyledCapColumn>
-          </>
+            <>
+              <StyledCapColumn>{beforeString}</StyledCapColumn>
+              <StyledCapColumn style={{ fontWeight: 500 }}>
+                {matchedSearch}
+              </StyledCapColumn>
+              <StyledCapColumn>{afterString}</StyledCapColumn>
+            </>
         );
 
         const treeNodeProps = {
           title: (
             <StyledCapHeading className="tree-node-title">
               {searchIndex > -1 ? searchResult : title}
+              {info && (
+                <span className="info-tooltip">
+                  <Tooltip placement="right" title={info}>
+                    <Icon className="info-icon" type="info-circle-o" />
+                  </Tooltip>
+                </span>
+              )}
             </StyledCapHeading>
           ),
           key,

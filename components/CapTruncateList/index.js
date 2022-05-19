@@ -6,7 +6,7 @@ import CapRow from "../CapRow";
 import LocaleHoc from "../LocaleHoc";
 
 const CapTruncateList = (props) => {
-  const { list, showNumber, capLabelType, more: moreMsg } = props;
+  const { list, showNumber = 1, capLabelType, more: moreMsg, showTooltip } = props;
 
   const visibleList = list.slice(0, showNumber);
 
@@ -27,11 +27,19 @@ const CapTruncateList = (props) => {
       ))}
       {list.length > visibleList.length ? (
         <>
-          <CapTooltip title={list.slice(showNumber).join(", ")}>
-            <CapLabel type={capLabelType}>
-              {`+${list.length - visibleList.length} ${moreMsg}`}
-            </CapLabel>
-          </CapTooltip>
+          {
+            showTooltip ? (
+              <CapTooltip title={list.slice(showNumber).join(", ")}>
+                <CapLabel type={capLabelType}>
+                  {`+${list.length - visibleList.length} ${moreMsg}`}
+                </CapLabel>
+              </CapTooltip>
+            ) : (
+              <CapLabel type={capLabelType}>
+                {`+${list.length - visibleList.length} ${moreMsg}`}
+              </CapLabel>
+            )
+          }
         </>
       ) : null}
     </CapRow>
@@ -42,6 +50,7 @@ CapTruncateList.defaultProps = {
   list: [],
   showNumber: 1,
   capLabelType: "label1",
+  showTooltip: true,
 };
 
 CapTruncateList.propTypes = {
@@ -49,6 +58,7 @@ CapTruncateList.propTypes = {
   showNumber: PropTypes.number,
   capLabelType: PropTypes.string,
   more: PropTypes.string,
+  showTooltip: PropTypes.bool,
 };
 
 export default LocaleHoc(CapTruncateList, { key: "CapTruncateList" });

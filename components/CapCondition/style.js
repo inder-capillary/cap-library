@@ -5,6 +5,7 @@ export const StyledFlexWrapDiv = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  padding-left: 16px;
   & > * {
     margin: 6px 4px;
   }

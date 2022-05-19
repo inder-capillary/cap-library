@@ -1,0 +1,56 @@
+@import '../styles/_variables.scss';
+
+$popoverTree: cap-product-selection-v2;
+
+.ant-popover.#{$popoverTree} {
+  &.greyed {
+    .ant-popover-arrow {
+      border-top-color: $CAP_G09;
+      border-left-color:  $CAP_G09;
+    }
+    .ant-popover-inner {
+      background-color: $CAP_G09;
+    }
+  }
+  .ant-tree li ul {
+    padding-left: 30px;
+  }
+  .ant-popover-content {
+      width: 324px;
+      padding: 0;
+      min-height: 176px;
+      font-size: 14px;
+      line-height: 20px;
+      color: $CAP_G01;
+  }
+
+  .divider {
+      border-top: 1px solid $CAP_G07;
+  }
+  .empty-data-text {
+      text-align: center;
+      margin-top: 12px;
+      padding: 10px 0;
+  }
+  .ant-popover-inner-content {
+      padding: 0 4px 12px 4px;
+  }
+
+  .ant-tree-child-tree > li:first-child {
+    margin-top: 4px;
+  }
+
+  .ant-tree-treenode-switcher-open{
+    position: relative;
+    .info-tooltip {
+      position: absolute;
+      right: 10px;
+      top: 6px;
+    }
+  }
+  .tree-node-title {
+    .cap-radio-v2 .ant-radio-wrapper .title {
+        font-weight: normal !important;
+    }
+  }
+}
