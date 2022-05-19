@@ -189,6 +189,13 @@ const infoData = [
     type: "string",
     default: "normal 12px Roboto",
   },
+  {
+    key: 16,
+    property: "popoverPlacement",
+    description: "Placement for event popover",
+    type: "string",
+    default: "leftTop",
+  },
 ];
 
 const CapEventCalendarDoc = () => {
