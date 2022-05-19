@@ -45,6 +45,7 @@ const CapMultiplePath = (props) => {
     addPathDisabled,
     addPathDisabledMessage,
     isToggleEnabled,
+    isSinglePath,
     defaultContents,
     ContentsRenderer,
     /**Below intl fields are added in translations/en.js */
@@ -483,12 +484,12 @@ const CapMultiplePath = (props) => {
           <MultiplePathRowWrapper>
             {isToggleEnabled ? <TogglePositionIcons index={index} /> : null}
             {getPathComponent(index)}
-            {getEditOrDisplayPathName(index)}
+            {!isSinglePath && getEditOrDisplayPathName(index)}
           </MultiplePathRowWrapper>
           {index !== pathList.length - 1 ? getPathConnector(VERTICAL) : null}
         </CapRow>
       ))}
-      {getAddPathComponent()}
+      {!isSinglePath && getAddPathComponent()}
       {
         <CapModal
           visible={showDeleteConfirmation}
@@ -527,6 +528,7 @@ CapMultiplePath.propTypes = {
   addPathDisabled: PropTypes.bool,
   addPathDisabledMessage: PropTypes.any,
   isToggleEnabled: PropTypes.bool,
+  isSinglePath: PropTypes.bool,
   defaultContents: PropTypes.any,
   ContentsRenderer: PropTypes.any,
   /**Below intl fields are added in translations/en.js */
@@ -546,6 +548,7 @@ CapMultiplePath.defaultProps = {
   addPathDisabled: false,
   capBlockWidth: 676,
   notUniqueMsg: "",
+  isSinglePath: false,
   continueAddPath: () => true,
 };
 
