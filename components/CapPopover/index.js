@@ -11,12 +11,14 @@ import './_capPopover.scss';
 const clsPrefix = 'cap-popover-v2';
 
 function CapPopover(props) {
-  const { overlayClassName, ...rest } = props;
+  const { overlayClassName, children, ...rest } = props;
   return (
     <Popover
       overlayClassName={classNames(`${clsPrefix}`, overlayClassName)}
       {...rest}
-    />
+    >
+      {children}
+    </Popover>
   );
 }
 

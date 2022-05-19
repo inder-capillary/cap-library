@@ -29,6 +29,7 @@ import {
   ENTRY_TRIGGER,
   EXIT_TRIGGER,
   WAIT_TILL_EVENT,
+  DECISION_SPLIT,
   EMPTY_GRAPH_TEXT,
   PLACEHOLDER_NODE,
   END_NODE,
@@ -602,10 +603,9 @@ const CapDndGraph = (props) => {
           if (item.id === WAIT_TILL_EVENT) {
             nodes[placeholderNodeIndex].pathsInfo = getPathsInfo(WAIT_TILL_EVENT, toNodes);
           }
-
           if ((
             sourceId === getEntryTrigger().id
-                || nodes.find((node) => node.id === sourceId).props.blockType === WAIT_TILL_EVENT
+                || [WAIT_TILL_EVENT, DECISION_SPLIT].includes(nodes.find((node) => node.id === sourceId).props.blockType)
           )
               && nodes[sourceIndex]?.pathsInfo) {
             [oldToNode] = toNodes;

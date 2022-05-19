@@ -85,6 +85,7 @@ $multiSelect: cap-multi-tree-select-v2;
     max-height: 250px;
     overflow-y: auto;
     overflow-x: hidden;
+    padding-bottom: $CAP_SPACE_08;
     border-bottom: 1px solid #c2c2c2;
     li {
       padding-bottom: 0;
@@ -95,6 +96,7 @@ $multiSelect: cap-multi-tree-select-v2;
   }
   .ant-popover-inner-content {
     padding: 0;
+    padding-top: 1px;
     .search-input {
       .component-with-label {
         width: 100%;

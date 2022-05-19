@@ -1,5 +1,6 @@
 $capConditionNumber: cap-condition-number;
 $capConditionMultiSelect: cap-condition-multi-select;
+$capConditionMultiTreeSelect: cap-multi-tree-select-v2;
 
 .#{$capConditionNumber}{
   display: contents;
@@ -23,6 +24,16 @@ $capConditionMultiSelect: cap-condition-multi-select;
   .cap-multi-select-v2-selection {
     height: 32px;
   }
+}
+
+.cap-condition-popover-display{
+  margin: 0;
+  width: 190px !important;
+  height: 33px !important;
+}
+
+.cap-condition-popover-tree-multiselect {
+  width: 324px !important;
 }
 
 .cap-condition-wrapper {

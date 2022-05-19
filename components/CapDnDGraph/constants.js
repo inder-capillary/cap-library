@@ -5,6 +5,7 @@ export const GRAPH_LAYOUT_TYPE = 'dagre';
 export const GRAPH_DIRECTION = 'LR';
 export const GRAPH_ALIGNMENT = 'UL';
 export const ENTRY_TRIGGER = 'ENTRY_TRIGGER';
+export const DECISION_SPLIT = 'DECISION_SPLIT';
 export const EXIT_TRIGGER = 'EXIT_TRIGGER';
 export const WAIT_TILL_EVENT = 'WAIT_TILL_EVENT';
 export const EMPTY_GRAPH_TEXT = 'EMPTY_GRAPH_TEXT';

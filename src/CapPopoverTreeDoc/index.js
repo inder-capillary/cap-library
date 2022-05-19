@@ -2,7 +2,7 @@
 // * CapPopoverTreeDoc
 // */
 import React, { Component } from "react";
-import PropertyTable from '../../helpers/PropertyTable';
+import PropertyTable from "../../helpers/PropertyTable";
 import { CapPopoverTree, CapButton } from "../../components";
 import "./info.scss";
 
@@ -61,7 +61,6 @@ const treeData = [
       {
         title: "New store",
         key: "newStore",
-
       },
     ],
   },
@@ -71,7 +70,8 @@ const infoData = [
   {
     key: 1,
     property: "onVisibleChange",
-    description: "Callback executed when visibility of the CapPopoverTree is changed",
+    description:
+      "Callback executed when visibility of the CapPopoverTree is changed",
     type: "(visible) => void",
     default: "-",
   },
@@ -85,14 +85,16 @@ const infoData = [
   {
     key: 3,
     property: "trigger",
-    description: "CapPopoverTree trigger mode. Could be multiple by passing an array",
+    description:
+      "CapPopoverTree trigger mode. Could be multiple by passing an array",
     type: "hover | focus | click | contextMenu | Array<string>",
     default: "hover",
   },
   {
     key: 4,
     property: "placement",
-    description: "The position of the CapPopoverTree relative to the target, which can be one of top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom",
+    description:
+      "The position of the CapPopoverTree relative to the target, which can be one of top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom",
     type: "string",
     default: "rightBottom",
   },
@@ -106,7 +108,8 @@ const infoData = [
   {
     key: 6,
     property: "treeData",
-    description: "The treeNodes data Array, if set it then you need not to construct children TreeNode. (key should be unique across the whole array)",
+    description:
+      "The treeNodes data Array, if set it then you need not to construct children TreeNode. (key should be unique across the whole array)",
     type: "array<{ key, title, children, [disabled, selectable] }>",
     default: "-",
   },
@@ -127,28 +130,32 @@ const infoData = [
   {
     key: 10,
     property: "showIcon",
-    description: "  Shows the icon before a TreeNode's title. There is no default style; you must set a custom style for it if set to true",
+    description:
+      "  Shows the icon before a TreeNode's title. There is no default style; you must set a custom style for it if set to true",
     type: "boolean",
     default: "false",
   },
   {
     key: 11,
     property: "title",
-    description: "Customize icon. When you pass component, whose render will receive full TreeNode props as component props",
+    description:
+      "Customize icon. When you pass component, whose render will receive full TreeNode props as component props",
     type: "ReactNode | (props) => ReactNode",
     default: "-",
   },
   {
     key: 12,
     property: "key",
-    description: "Used with (default)ExpandedKeys / (default)CheckedKeys / (default)SelectedKeys. P.S.: It must be unique in all of treeNodes of the tree",
+    description:
+      "Used with (default)ExpandedKeys / (default)CheckedKeys / (default)SelectedKeys. P.S.: It must be unique in all of treeNodes of the tree",
     type: "string",
     default: "-",
   },
   {
     key: 13,
     property: "emptyDataMessage",
-    description: "This is used to display the message when treeData is empty or no search item found",
+    description:
+      "This is used to display the message when treeData is empty or no search item found",
     type: "string | ReactNode",
     default: "No data found",
   },
@@ -170,13 +177,14 @@ export default class CapPopoverTreeDoc extends Component {
     };
   }
 
-
   handleSelect = (selectedKey) => {
     this.setState({ selectedKey });
   };
 
   handleClick = () => {
-    this.setState( (prevState) => ({ popoverVisibility: !prevState?.popoverVisibility }));
+    this.setState((prevState) => ({
+      popoverVisibility: !prevState?.popoverVisibility,
+    }));
   };
 
   render() {
@@ -184,19 +192,25 @@ export default class CapPopoverTreeDoc extends Component {
     return (
       <div className="cap-popover-tree-info">
         <div className="cap-popover-tree-showcase">
-
           <CapPopoverTree
             treeData={treeData}
             onSelect={this.handleSelect}
-            selectedKey={selectedKey}
-            visible={popoverVisibility}
-          >
-            <CapButton onClick={this.handleClick}> Click here </CapButton>
-          </CapPopoverTree>
-
+            TriggerComponent={CapButton}
+            componentText="Add condition"
+            triggerProps={{
+              type: "flat",
+              isAddBtn: true,
+              className: "add-condition-button",
+            }}
+            isTriggerDisabled={false}
+            triggerDisabledText="disabled"
+            tooltipText="addCondition"
+            getPopupContainer={(triggerNode) => triggerNode?.parentNode}
+            className="popover-tree"
+          />
         </div>
         <PropertyTable data={infoData} />
-        <div style={{ marginTop: '24px' }}>
+        <div style={{ marginTop: "24px" }}>
           <b>NOTE: </b>
           This component is a combination and extended version of ant design
           <a href="https://ant.design/components/popover/#header"> Popover </a>
@@ -204,7 +218,8 @@ export default class CapPopoverTreeDoc extends Component {
           <a href="https://ant.design/components/tree/#header"> Tree </a>
 , and
           <a href="https://ant.design/components/input/#header"> Input </a>
-        component. Please refer their component for detailed explanation of component and supported props.
+          component. Please refer their component for detailed explanation of
+          component and supported props.
         </div>
       </div>
     );

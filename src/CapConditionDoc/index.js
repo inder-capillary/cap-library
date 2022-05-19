@@ -123,6 +123,8 @@ const CapConditionDoc = () => {
           setConditionExpression={setConditionExpression}
           conditionValidationError={conditionValidationError}
           setConditionValidationError={setConditionValidationError}
+          hasProductSelection
+
         />
       </div>
       <div className="cap-card-box-doc-showcase">

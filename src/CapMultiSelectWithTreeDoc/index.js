@@ -293,9 +293,9 @@ export default class CapMultiSelectWithTreeDoc extends Component { // eslint-dis
   constructor(props) {
     super(props);
     this.state = {
-      value: undefined,
-      value1: undefined,
-      value2: undefined,
+      value: [],
+      value1: [],
+      value2: [],
     };
   }
 

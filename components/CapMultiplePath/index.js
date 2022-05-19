@@ -41,9 +41,11 @@ const CapMultiplePath = (props) => {
     pathList,
     setPathList,
     capBlockWidth,
+    continueAddPath,
     addPathDisabled,
     addPathDisabledMessage,
     isToggleEnabled,
+    isSinglePath,
     defaultContents,
     ContentsRenderer,
     /**Below intl fields are added in translations/en.js */
@@ -122,6 +124,7 @@ const CapMultiplePath = (props) => {
    */
   const addPath = () => {
     if (addPathDisabled) return;
+    if (!continueAddPath()) return;
     const temp = {
       contents: defaultContents,
       pathName: null,
@@ -481,12 +484,12 @@ const CapMultiplePath = (props) => {
           <MultiplePathRowWrapper>
             {isToggleEnabled ? <TogglePositionIcons index={index} /> : null}
             {getPathComponent(index)}
-            {getEditOrDisplayPathName(index)}
+            {!isSinglePath && getEditOrDisplayPathName(index)}
           </MultiplePathRowWrapper>
           {index !== pathList.length - 1 ? getPathConnector(VERTICAL) : null}
         </CapRow>
       ))}
-      {getAddPathComponent()}
+      {!isSinglePath && getAddPathComponent()}
       {
         <CapModal
           visible={showDeleteConfirmation}
@@ -521,9 +524,11 @@ CapMultiplePath.propTypes = {
   pathList: PropTypes.array,
   setPathList: PropTypes.func,
   capBlockWidth: PropTypes.number,
+  continueAddPath: PropTypes.func,
   addPathDisabled: PropTypes.bool,
   addPathDisabledMessage: PropTypes.any,
   isToggleEnabled: PropTypes.bool,
+  isSinglePath: PropTypes.bool,
   defaultContents: PropTypes.any,
   ContentsRenderer: PropTypes.any,
   /**Below intl fields are added in translations/en.js */
@@ -543,6 +548,8 @@ CapMultiplePath.defaultProps = {
   addPathDisabled: false,
   capBlockWidth: 676,
   notUniqueMsg: "",
+  isSinglePath: false,
+  continueAddPath: () => true,
 };
 
 export default LocaleHoc(CapMultiplePath, { key: "CapMultiplePath" });

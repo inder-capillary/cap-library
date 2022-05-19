@@ -2,8 +2,8 @@ import React from "react";
 
 const SvgStore = (props) => (
   <svg
-    width="48px"
-    height="48px"
+    width="48"
+    height="48"
     viewBox="0 0 48 48"
     fill="currentColor"
     {...props}

@@ -87,6 +87,7 @@ import CapStaticTemplatesDoc from '../src/CapStaticTemplatesDoc';
 import CapAppNotEnabledDoc from '../src/CapAppNotEnabledDoc';
 import CapStatusDoc from '../src/CapStatusDoc';
 import CapEventCalendarDoc from '../src/CapEventCalendarDoc';
+import CapSKUUploaderDoc from '../src/CapSKUUploaderDoc';
 //imported for docs
 
 
@@ -266,7 +267,8 @@ class ComponentSwitcher extends Component {
         return <CapStatusDoc />;
       case 'capEventCalendar':
         return <CapEventCalendarDoc />;
-
+      case 'capSKUUploader':
+        return <CapSKUUploaderDoc />;
         //components for docs
 
       default:

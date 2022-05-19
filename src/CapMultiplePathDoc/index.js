@@ -65,6 +65,13 @@ const infoData = [
     type: "Number",
     default: "676",
   },
+  {
+    key: 9,
+    property: "continueAddPath",
+    description: "func to check allowing new paths",
+    type: "func",
+    default: "()=>true",
+  },
 ];
 const MarginDiv = styled.div`
   margin-top: 8px;
