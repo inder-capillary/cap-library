@@ -659,8 +659,7 @@ const CapEventCalendar = ({
             />
           </div>
           <div className="quarter-label">
-            {allQuartersLabel[quarter - 1]}
-            {/**&nbsp; stands for non breakable space, used commonly between strings */}
+            <span>{allQuartersLabel[quarter - 1]}</span>
             {moment(carouselDate).year()}
           </div>
         </div>

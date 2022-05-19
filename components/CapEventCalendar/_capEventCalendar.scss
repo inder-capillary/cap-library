@@ -21,6 +21,9 @@
                 line-height: 1.25;
                 letter-spacing: normal;
                 color: $FONT_COLOR_01;
+                span{
+                    margin-right: 10px;
+                }
             }
             .disable-left{
                 color:grey;
