@@ -387,7 +387,7 @@ const CapEventCalendar = ({
   };
 
   const getTodayRectObj = () => {
-    const today = moment().format(DATE_KEY_FORMAT);
+    const today = moment().set('year', moment(carouselDate).year()).format(DATE_KEY_FORMAT);
     return getDayObject()[today];
   };
 
