@@ -1,6 +1,6 @@
 {
   "name": "@capillarytech/cap-ui-library",
-  "version": "2.13.10",
+  "version": "2.13.12",
   "description": "Cap HOCs for capillary style guid and antd components",
   "main": "index.js",
   "author": "meharaj",
