@@ -231,6 +231,8 @@ const CapEventCalendarDoc = () => {
         dayLabels={dayLabels}
         allQuartersLabel={allQuartersLabel}
         monthLabels={monthLabels}
+        emptyState
+        onEmptyStateButtonClick={() => { alert("clicked create button"); }}
       />
       <PropertyTable data={infoData} />
     </div>
