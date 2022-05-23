@@ -63,6 +63,8 @@ const CapEventCalendar = ({
   emptyState,
   emptyStateTitle,
   emptyStateDescription,
+  emptyStateButtonLabel,
+  onEmptyStateButtonClick,
 }) => {
   const [carouselDate, setCarouselDate] = useState(
     calendarDate || moment().format()
@@ -152,11 +154,10 @@ const CapEventCalendar = ({
     illustrationImage: EmptyStateIllustrationForPromos,
     title: emptyStateTitle,
     hasAccess,
-    buttonClassName: 'empty-state-button',
     description: emptyStateDescription,
     descriptionPosition: "bottom",
-    buttonLabel: '', //prevents the required warning in the console
-    onClick: () => {}, //prevents the required warning in the console
+    buttonLabel: emptyStateButtonLabel, //prevents the required warning in the console
+    onClick: onEmptyStateButtonClick, //prevents the required warning in the console
   });
 
 
@@ -261,6 +262,7 @@ CapEventCalendar.defaultProps = {
   popoverPlacement: "leftTop",
   emptyStateTitle: "You have no events for this quarter",
   emptyStateDescription: "Please create an event to view it here",
+  emptyStateButtonLabel: "Create Event",
 };
 
 export default CapEventCalendar;
