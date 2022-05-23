@@ -38,3 +38,5 @@ export const MONTH_LABELS = [
   "November",
   "December",
 ];
+
+export const DATE_STRING_FORMAT = "DD-MM-YYYY";

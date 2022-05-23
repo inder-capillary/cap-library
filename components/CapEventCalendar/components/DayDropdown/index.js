@@ -7,9 +7,7 @@ import CapDropdown from "../../../CapDropdown";
 import { CAP_G01 } from "../../../styled/variables";
 
 const DayDropdown = ({ fetchDay, dayLabels, day }) => {
-  const handleMenuItemClick = (dayNum) => {
-    fetchDay(dayNum);
-  };
+  const handleMenuItemClick = (dayNum) => fetchDay(dayNum);
   const menu = (
     <CapMenu selectable>
       {dayLabels.map((label, index) => (

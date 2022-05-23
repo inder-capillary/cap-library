@@ -1,6 +1,6 @@
 import moment from "moment";
 import { forEach, some } from "lodash";
-import { MONTH_LABELS } from "./constants";
+import { DATE_STRING_FORMAT, MONTH_LABELS } from "./constants";
 
 export const getQuarterForDate = (date) => moment(date).quarter();
 
@@ -105,9 +105,9 @@ export const getDaysOfMonth = (date) => {
  * @returns
  */
 export const checkIfDateIsInRange = (date, start, end) => {
-  const _date = moment(date).format("DD-MM-YYYY");
-  const _start = moment(start).format("DD-MM-YYYY");
-  const _end = moment(end).format("DD-MM-YYYY");
+  const _date = moment(date).format(DATE_STRING_FORMAT);
+  const _start = moment(start).format(DATE_STRING_FORMAT);
+  const _end = moment(end).format(DATE_STRING_FORMAT);
   return moment(date).isBetween(start, end) || _date === _start || _date === _end;
 };
 
@@ -147,10 +147,10 @@ export const formatDataToSuitCanvas = (events) => {
               (rowItem) => checkIfDateIsInRange(eachEvent.start, rowItem.start, rowItem.end)
                                             || checkIfDateIsInRange(eachEvent.end, rowItem.start, rowItem.end));
             const isOnSameDateRange = some(lastEventRow, (rowItem) => {
-              const eventItemStart = moment(eachEvent.start, "DD-MM-YYYY");
-              const eventItemEnd = moment(eachEvent.end, "DD-MM-YYYY");
-              const rowItemStart = moment(rowItem.start, "DD-MM-YYYY");
-              const rowItemEnd = moment(rowItem.end, "DD-MM-YYYY");
+              const eventItemStart = moment(eachEvent.start, DATE_STRING_FORMAT);
+              const eventItemEnd = moment(eachEvent.end, DATE_STRING_FORMAT);
+              const rowItemStart = moment(rowItem.start, DATE_STRING_FORMAT);
+              const rowItemEnd = moment(rowItem.end, DATE_STRING_FORMAT);
               return (
                 eventItemStart.isSame(rowItemStart)
                                                 && eventItemEnd.isSame(rowItemEnd)
