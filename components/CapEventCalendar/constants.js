@@ -1,6 +1,6 @@
 export const DATE_KEY_FORMAT = "DD/MM/YYYY";
 
-export const QUATERS = {
+export const QUARTERS = {
   JFM: 1,
   AMJ: 2,
   JAS: 3,

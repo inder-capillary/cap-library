@@ -231,6 +231,7 @@ const CapEventCalendarDoc = () => {
         dayLabels={dayLabels}
         allQuartersLabel={allQuartersLabel}
         monthLabels={monthLabels}
+        emptyState
       />
       <PropertyTable data={infoData} />
     </div>
