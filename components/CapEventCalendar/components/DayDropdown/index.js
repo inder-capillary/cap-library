@@ -14,7 +14,7 @@ const DayDropdown = ({ fetchDay, dayLabels, day }) => {
     <CapMenu selectable>
       {dayLabels.map((label, index) => (
         <CapMenu.Item
-          key={`${label}-${index}`}
+          key={label}
           onClick={() => handleMenuItemClick(index)}
         >
           {label}

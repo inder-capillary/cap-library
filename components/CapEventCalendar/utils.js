@@ -1,11 +1,12 @@
 import moment from "moment";
 import { forEach, some } from "lodash";
+import { MONTH_LABELS } from "./constants";
 
 export const getQuarterForDate = (date) => moment(date).quarter();
 
 export const splitMonthsArrayToQuarterChunks = () => {
   const chunkSize = 3;
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const months = MONTH_LABELS;
   const chunks = [];
   for (let i = 0; i < months.length; i += chunkSize) {
     const chunk = months.slice(i, i + chunkSize);
