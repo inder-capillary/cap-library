@@ -70,7 +70,7 @@ const CalendarCanvas = ({
   }, []);
 
   useLayoutEffect(() => {
-    if (canvas) {
+    if (canvas?.current) {
       const context = canvas.current.getContext("2d");
       contextRef.current = context;
     }
@@ -78,8 +78,7 @@ const CalendarCanvas = ({
 
   useEffect(() => {
     if (width > 0 && height > 0) {
-      const context = contextRef.current;
-      context.scale(pixelRatio, pixelRatio);
+      contextRef.current.scale(pixelRatio, pixelRatio);
     }
   }, [width, height]);
 
@@ -129,9 +128,9 @@ const CalendarCanvas = ({
 
   //for all page actions like resize and scroll and mouse move, check if canvas container ref is present
   //this is needed to tackle empty state page resizing and navigation between quarters with empty states
-  const doResize = () => canvasContainerRef && canvasContainerRef.current && handleDimension();
+  const doResize = () => canvasContainerRef?.current && handleDimension();
 
-  const onWindowScroll = () => canvasContainerRef && canvasContainerRef.current && hidePopoverAndToolTip();
+  const onWindowScroll = () => canvasContainerRef?.current && hidePopoverAndToolTip();
 
   const onWindowMouseMove = (event) => {
     if (canvasContainerRef.current) {
