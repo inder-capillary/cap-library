@@ -5,10 +5,12 @@ const MonthHeader = ({displayMonths}) => (
   <div className="event-calendar__month-header">
     {
       displayMonths?.length
-        && displayMonths.map((month) => (
+        && displayMonths.map((month, index) => (
           <div
             className="event-calendar__month-header__label"
-            key={month}>
+            key={index + month}>
+            {' '}
+            {/**Adding index + month as key to make it more unique, prevents the console warning that duplicates exist */}
             {month.name}
           </div>
         ))
