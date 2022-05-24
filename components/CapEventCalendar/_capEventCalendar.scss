@@ -1,0 +1,114 @@
+
+@import "../styles/_variables.scss";
+
+.event-calendar{
+    height: 700px;
+    &__header{
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        &__left{
+            display: flex;
+            padding-top:  $CAP_SPACE_08;
+            .quarter-label{
+                width: 152px;
+                height: $CAP_SPACE_20;
+                margin: 2px 0 2px $CAP_SPACE_08;
+                font-size: $FONT_SIZE_L;
+                font-weight: $FONT_WEIGHT_MEDIUM;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.25;
+                letter-spacing: normal;
+                color: $FONT_COLOR_01;
+                span{
+                    margin-right: 10px;
+                }
+            }
+            .disable-left{
+                color:grey;
+                cursor: not-allowed;
+                pointer-events: none;
+            }
+            .carousel-icon{
+                cursor: pointer;
+            }
+        }
+        &__right{
+            .grid-label{
+                width: 111px;
+                height: $CAP_SPACE_20;
+                margin: 9px $CAP_SPACE_08 11px 0;
+                font-size: $FONT_SIZE_M;
+                font-weight: $FONT_WEIGHT_MEDIUM;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.43;
+                letter-spacing: normal;
+                color: $FONT_COLOR_01;
+            }
+        }
+        .ant-btn-flat{
+            width: 140px !important;
+            height: $CAP_SPACE_40 !important;
+            margin: 0 0 0 $CAP_SPACE_08 !important;
+            padding: $CAP_SPACE_08 !important;
+            border-radius: $CAP_SPACE_04 !important;
+            border: solid 1px $CAP_G06 !important;
+            color: $FONT_COLOR_01;
+            font-weight: normal;
+            .cap-button-v2-suffix{
+                position: absolute;
+                right: $CAP_SPACE_08;
+            }
+        } 
+        .flat-btn:hover{
+            background-color:  $CAP_WHITE!important;
+        }      
+    }
+    &__month-header{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+        top: 0;
+        margin-bottom: 10px;
+        margin-top: 25px;
+        &__label{
+            width: 33.33%;
+            height: $CAP_SPACE_20;
+            text-align: center;
+            color: $FONT_COLOR_01;
+            font-size:$FONT_SIZE_M ;
+            font-weight: $FONT_WEIGHT_MEDIUM;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.43;
+            letter-spacing: normal;
+        }
+    }
+}
+
+.ant-dropdown-placement-bottomCenter{
+    .ant-dropdown-menu-item{
+        height: $CAP_SPACE_40 !important;
+        padding: 9px $CAP_SPACE_08 11px $CAP_SPACE_16 !important;
+        background-color: $CAP_WHITE !important;
+        color: $FONT_COLOR_01 !important;
+        font-size: $FONT_SIZE_M;
+    }
+    .ant-dropdown-menu-item:hover{
+        background-color: $BG_02 !important;
+    }
+    .ant-dropdown-menu-item-selected{
+        background-color: $CAP_PALE_GREY !important;
+        border-left: 1px solid $FONT_COLOR_05 !important;
+        color: $FONT_COLOR_01 !important;
+    }
+    .ant-dropdown-menu-vertical{
+        width: 140px !important; 
+        margin-left: 35px !important;
+    }
+}
+
+
