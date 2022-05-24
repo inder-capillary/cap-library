@@ -173,7 +173,7 @@ const infoData = [
     property: "minCanvasHeight",
     description: "Minimum canvas height",
     type: "number",
-    default: 150,
+    default: 0,
   },
   {
     key: 16,

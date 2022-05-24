@@ -1,11 +1,21 @@
-import React, {useEffect, useState, useRef, useLayoutEffect, useMemo} from "react";
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  useLayoutEffect,
+  useMemo,
+} from "react";
 import ReactDom from "react-dom";
-import PropTypes from 'prop-types';
-import moment from 'moment';
+import PropTypes from "prop-types";
+import moment from "moment";
 import { getDaysOfMonth } from "../utils";
 import CapTooltip from "../../CapTooltip";
 import CapPopover from "../../CapPopover";
-import { FONT_COLOR_01, FONT_SIZE_S, FONT_FAMILY } from "../../styled/variables";
+import {
+  FONT_COLOR_01,
+  FONT_SIZE_S,
+  FONT_FAMILY,
+} from "../../styled/variables";
 import { DATE_KEY_FORMAT } from "../constants";
 import {
   drawHeadingText,
@@ -22,7 +32,6 @@ DefaultPopover.propTypes = {
   title: PropTypes.string,
 };
 
-
 const CalendarCanvas = ({
   displayMonths,
   dayGrid,
@@ -37,7 +46,8 @@ const CalendarCanvas = ({
   canvasFont,
   popoverPlacement,
   carouselDate,
-  popoverContent}) => {
+  popoverContent,
+}) => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const pixelRatio = window.devicePixelRatio;
@@ -96,7 +106,12 @@ const CalendarCanvas = ({
 
   useEffect(() => {
     //checking canvasContainerRef is defined to prevent client width undefined errors
-    if (width > 0 && height > 0 && canvasContainerRef && canvasContainerRef.current) {
+    if (
+      width > 0
+      && height > 0
+      && canvasContainerRef
+      && canvasContainerRef.current
+    ) {
       hidePopoverAndToolTip();
       reDrawCanvas();
     }
@@ -116,21 +131,30 @@ const CalendarCanvas = ({
   };
 
   const handleDimension = () => {
+    const minHeight = minCanvasHeight || canvasContainerRef.current.clientHeight;
     const { y: rectY } = getRectInitDimension();
     const estimatedHeight = rectY
       + eventStartYOffset
       + (eventHeight + eventRowGap) * totalEventRowsPerQuater.current;
     setWidth(canvasContainerRef.current.clientWidth);
-    setHeight(
-      estimatedHeight > minCanvasHeight ? estimatedHeight : minCanvasHeight
-    );
+    setHeight(estimatedHeight > minHeight ? estimatedHeight : minHeight);
   };
 
   //for all page actions like resize and scroll and mouse move, check if canvas container ref is present
   //this is needed to tackle empty state page resizing and navigation between quarters with empty states
   const doResize = () => canvasContainerRef?.current && handleDimension();
 
-  const onWindowScroll = () => canvasContainerRef?.current && hidePopoverAndToolTip();
+  const onWindowScroll = (event) => {
+    const popoverContainer = document.getElementsByClassName(
+      "event-calendar-popover-overlay"
+    )?.[0];
+    if (
+      canvasContainerRef?.current
+      && !(popoverContainer && popoverContainer.contains(event.target))
+    ) {
+      hidePopoverAndToolTip();
+    }
+  };
 
   const onWindowMouseMove = (event) => {
     if (canvasContainerRef.current) {
@@ -146,10 +170,10 @@ const CalendarCanvas = ({
       if (
         !(
           (moveX > left
-          && moveX < left + canvasContainer.clientWidth
-          && moveY > top
-          && moveY < top + canvasContainer.clientHeight)
-        || (popoverContainer && popoverContainer.contains(event.target))
+            && moveX < left + canvasContainer.clientWidth
+            && moveY > top
+            && moveY < top + canvasContainer.clientHeight)
+          || (popoverContainer && popoverContainer.contains(event.target))
         )
       ) {
         hidePopoverAndToolTip();
@@ -327,7 +351,9 @@ const CalendarCanvas = ({
   };
 
   const getTodayRectObj = () => {
-    const today = moment().set('year', moment(carouselDate).year()).format(DATE_KEY_FORMAT);
+    const today = moment()
+      .set("year", moment(carouselDate).year())
+      .format(DATE_KEY_FORMAT);
     return getDayObject()[today];
   };
 
@@ -542,14 +568,8 @@ const CalendarCanvas = ({
         height={displayHeight}
         onMouseMove={onMouseMove}
       />
-      <div
-        style={{ position: "absolute" }}
-        id="event-calendar-tool-tip-knob"
-      />
-      <div
-        style={{ position: "absolute" }}
-        id="event-calendar-popover-knob"
-      />
+      <div style={{ position: "absolute" }} id="event-calendar-tool-tip-knob" />
+      <div style={{ position: "absolute" }} id="event-calendar-popover-knob" />
     </div>
   );
 };
@@ -574,7 +594,7 @@ CalendarCanvas.defaultProps = {
   eventRowGap: 12,
   textPadding: 12,
   eventStartYOffset: 40,
-  minCanvasHeight: 150,
+  minCanvasHeight: 0,
   todayTooltipProps: { title: "Today" },
   canvasFont: `normal ${FONT_SIZE_S} ${FONT_FAMILY}`,
   popoverPlacement: "leftTop",

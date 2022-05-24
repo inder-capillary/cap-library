@@ -252,7 +252,7 @@ CapEventCalendar.defaultProps = {
   eventRowGap: 12,
   textPadding: 12,
   eventStartYOffset: 40,
-  minCanvasHeight: 150,
+  minCanvasHeight: 0,
   todayTooltipProps: { title: "Today" },
   allQuartersLabel: QUARTER_LABELS,
   dayLabels: DAY_LABELS,
