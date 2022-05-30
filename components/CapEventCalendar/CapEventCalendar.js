@@ -121,7 +121,7 @@ const CapEventCalendar = ({
     );
     if (values) {
       setCarouselDate(values[1]);
-      onQuarterChange(values[0], moment(values[1]).year());
+      onQuarterChange(values[0], moment(values[1]));
       if (values[2]) showError(true);
       return values[0];
     }
