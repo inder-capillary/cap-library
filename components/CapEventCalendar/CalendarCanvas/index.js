@@ -447,7 +447,7 @@ const CalendarCanvas = ({
         }
 
         if (startRect && endRect) {
-          const eventWidth = endRect.midX - startRect.midX;
+          const eventWidth = endRect.midX + endRect.width - startRect.midX;
           const isPointInRoundRectTextPath = drawRoundRectWithText({
             context,
             x: startRect.midX,
