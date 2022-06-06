@@ -38,6 +38,7 @@ import {
   DELETE,
   VIEW,
   SOURCE_COORDINATES,
+  SCHEDULE_BLOCK,
 } from './constants';
 
 import { CAP_G06 } from '../styled/variables';
@@ -80,7 +81,7 @@ const CapDndGraph = (props) => {
   });
 
   const blockNodes = useMemo(() => graphNodes.filter(
-    (node) => ![ENTRY_TRIGGER, EXIT_TRIGGER, END_NODE, PLACEHOLDER_NODE, EMPTY_GRAPH_TEXT].includes(node.type)
+    (node) => ![ENTRY_TRIGGER, EXIT_TRIGGER, END_NODE, PLACEHOLDER_NODE, EMPTY_GRAPH_TEXT, SCHEDULE_BLOCK].includes(node?.type)
   ),
   [graphNodes]);
 
@@ -399,20 +400,27 @@ const CapDndGraph = (props) => {
     const exitTrigger = graphNodes.find((node) => node.type === EXIT_TRIGGER);
     const emptyGraphTextNode = graphNodes.find((node) => node.type === EMPTY_GRAPH_TEXT);
     const placeholderNode = graphNodes.find((node) => node.type === PLACEHOLDER_NODE);// First placeholder node where we need to show text
+    const scheduleBlock = graphNodes.find((node) => node.type === SCHEDULE_BLOCK);
 
     const entryTriggerNode = graphRef.current.getCell(entryTrigger.id);
     const exitTriggerNode = graphRef.current.getCell(exitTrigger?.id);
     const emptyGraphText = emptyGraphTextNode && graphRef.current.getCell(emptyGraphTextNode.id);
     const nextNode = placeholderNode && graphRef.current.getCell(placeholderNode.id);
+    const scheduleBlockNode = scheduleBlock && graphRef.current.getCell(scheduleBlock.id);
 
     if (entryTriggerNode) {
       const entryTriggerBBox = entryTriggerNode.getBBox().bottomLeft;
       const entryTriggerTopBBox = entryTriggerNode.getBBox().topLeft;
 
-      if (exitTriggerNode) {
-        exitTriggerNode.position(entryTriggerBBox.x, entryTriggerBBox.y + 16);
-      }
       entryTriggerNode.position(entryTriggerTopBBox.x, entryTriggerTopBBox.y - 16);
+
+      if (entryTriggerNode && scheduleBlock) {
+        scheduleBlockNode.position(entryTriggerBBox.x, entryTriggerBBox.y + 16);
+      }
+      if (exitTriggerNode && scheduleBlock) {
+        const scheduleBlockBBox = scheduleBlockNode.getBBox().bottomLeft;
+        exitTriggerNode.position(scheduleBlockBBox.x, scheduleBlockBBox.y + 16);
+      }
     }
 
     if (emptyGraphText && nextNode) {
@@ -491,6 +499,7 @@ const CapDndGraph = (props) => {
     if (!blockNodes.length && getEntryTrigger().to.length === 1) {
       const entryTrigger = getEntryTrigger();
       const exitTrigger = graphNodes.find((node) => node.type === EXIT_TRIGGER);
+      const scheduleBlock = graphNodes.find((node) => node.type === SCHEDULE_BLOCK);
 
       const endNodeId = nanoid(10);
       const newSetNodes = [
@@ -546,6 +555,9 @@ const CapDndGraph = (props) => {
       }
       if (exitTrigger) {
         newSetNodes.splice(1, 0, exitTrigger);
+      }
+      if (scheduleBlock) {
+        newSetNodes.splice(1, 0, scheduleBlock);
       }
       previouslyFoundEdge.current = -1;
       setGraphNodes(newSetNodes);
