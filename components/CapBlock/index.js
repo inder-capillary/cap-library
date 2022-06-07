@@ -40,6 +40,7 @@ const CapBlock = (props) => {
           onClick={deleteCallback}
           withbackground
           size="s"
+          data-testid="delete-icon"
         />
       </CapTooltip>
     </CapColumn>
