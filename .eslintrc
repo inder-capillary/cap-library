@@ -1,6 +1,6 @@
 {
   "root": true,
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "extends": "airbnb",
   "env": {
     "browser": true,
@@ -10,6 +10,7 @@
     "jquery": true
   },
   "plugins": [
+    "@babel",
     "react",
     "jsx-a11y",
     "flowtype"
