@@ -226,6 +226,7 @@ const CapNavigation = (props) => {
           menuProps={{
             items: topbarMenuData,
             defaultSelectedKeys: topbarSelectedMenuData || [DEFAULT_MODULE],
+            selectedKeys: topbarSelectedMenuData || [DEFAULT_MODULE], //track consecutive menu item changes since default is set only for the first time
             onMenuItemClick: handleTopbarMenuChange,
           }}
           dropdownMenuProps={dropdownMenuProps}
