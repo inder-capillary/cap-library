@@ -7,24 +7,25 @@ import CapRow from "../CapRow";
 import LocaleHoc from "../LocaleHoc";
 
 const CapTruncateList = (props) => {
-  const { list, showNumber = 1, capLabelType, more: moreMsg, showTooltip, truncateToWidth } = props;
+  const {
+    list,
+    showNumber = 1,
+    capLabelType,
+    more: moreMsg,
+    showTooltip,
+    truncateToWidth,
+  } = props;
 
   const visibleList = list.slice(0, showNumber);
 
   return (
-    <CapRow
-      type="flex"
-      align="middle"
-      className={classNames({
-        'cap-truncate-list': true,
-      })}
-    >
+    <CapRow type="flex" align="middle" className="cap-truncate-list">
       {visibleList.map((item, index) => (
         <CapRow
           key={item}
           className={classNames({
-            'truncate-text': truncateToWidth,
-            'first-item-container': true,
+            "truncate-text": truncateToWidth,
+            "first-item-container": true,
           })}
         >
           {index ? ", " : null}
@@ -34,7 +35,7 @@ const CapTruncateList = (props) => {
               marginRight: "4px",
             }}
             className={classNames({
-              'truncate-text': truncateToWidth,
+              "truncate-text": truncateToWidth,
             })}
           >
             {item}
@@ -43,19 +44,17 @@ const CapTruncateList = (props) => {
       ))}
       {list.length > visibleList.length ? (
         <>
-          {
-            showTooltip ? (
-              <CapTooltip title={list.slice(showNumber).join(", ")}>
-                <CapLabel type={capLabelType}>
-                  {`+${list.length - visibleList.length} ${moreMsg}`}
-                </CapLabel>
-              </CapTooltip>
-            ) : (
+          {showTooltip ? (
+            <CapTooltip title={list.slice(showNumber).join(", ")}>
               <CapLabel type={capLabelType}>
                 {`+${list.length - visibleList.length} ${moreMsg}`}
               </CapLabel>
-            )
-          }
+            </CapTooltip>
+          ) : (
+            <CapLabel type={capLabelType}>
+              {`+${list.length - visibleList.length} ${moreMsg}`}
+            </CapLabel>
+          )}
         </>
       ) : null}
     </CapRow>
