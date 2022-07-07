@@ -30,7 +30,7 @@ export const StyledDiv = styled.div`
 
 export const SideBar = styled.div`
     width: 258px;
-    margin-right: ${CAP_SPACE_24};
+    margin-right: 17px;
     border: 1px solid ${CAP_G07};
 `;
 

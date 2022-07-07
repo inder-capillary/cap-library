@@ -216,7 +216,7 @@ function CapStaticTemplates(props) {
       const { value, label, key, color, panes = [] } = category;
       const structuredPanes = getAllPanes(panes);
       return (
-        <CapRow id={value} key={key} className="margin-t-20">
+        <CapRow id={value} key={key} className="margin-t-13">
           <CapLabel className="margin-l-8 margin-b-8" type="label4">
             {label}
           </CapLabel>

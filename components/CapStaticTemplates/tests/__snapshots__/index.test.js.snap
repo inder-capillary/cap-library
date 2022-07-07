@@ -589,13 +589,11 @@ line-height: ",
                   "componentStyle": ComponentStyle {
                     "componentId": "sc-kGXeez",
                     "isStatic": false,
-                    "lastClassName": "gTjYXn",
+                    "lastClassName": "eRJpkw",
                     "rules": Array [
                       "
     width: 258px;
-    margin-right: ",
-                      "1.714rem",
-                      ";
+    margin-right: 17px;
     border: 1px solid ",
                       "#dfe2e7",
                       ";
@@ -615,7 +613,7 @@ line-height: ",
               forwardedRef={null}
             >
               <div
-                className="sc-kGXeez gTjYXn"
+                className="sc-kGXeez eRJpkw"
               >
                 <styled.div
                   className="category-selector"
@@ -1331,17 +1329,17 @@ line-height: ",
                                   key="container"
                                 >
                                   <CapRow
-                                    className="margin-t-20"
+                                    className="margin-t-13"
                                     id="boostSales"
                                     key="boostSales"
                                   >
                                     <Row
-                                      className="cap-row-v2 margin-t-20"
+                                      className="cap-row-v2 margin-t-13"
                                       gutter={0}
                                       id="boostSales"
                                     >
                                       <div
-                                        className="ant-row cap-row-v2 margin-t-20"
+                                        className="ant-row cap-row-v2 margin-t-13"
                                         id="boostSales"
                                       >
                                         <styled.div
@@ -5091,13 +5089,11 @@ line-height: ",
                   "componentStyle": ComponentStyle {
                     "componentId": "sc-kGXeez",
                     "isStatic": false,
-                    "lastClassName": "gTjYXn",
+                    "lastClassName": "eRJpkw",
                     "rules": Array [
                       "
     width: 258px;
-    margin-right: ",
-                      "1.714rem",
-                      ";
+    margin-right: 17px;
     border: 1px solid ",
                       "#dfe2e7",
                       ";
@@ -5117,7 +5113,7 @@ line-height: ",
               forwardedRef={null}
             >
               <div
-                className="sc-kGXeez gTjYXn"
+                className="sc-kGXeez eRJpkw"
               >
                 <styled.div
                   className="category-selector"
@@ -5833,17 +5829,17 @@ line-height: ",
                                   key="container"
                                 >
                                   <CapRow
-                                    className="margin-t-20"
+                                    className="margin-t-13"
                                     id="boostSales"
                                     key="boostSales"
                                   >
                                     <Row
-                                      className="cap-row-v2 margin-t-20"
+                                      className="cap-row-v2 margin-t-13"
                                       gutter={0}
                                       id="boostSales"
                                     >
                                       <div
-                                        className="ant-row cap-row-v2 margin-t-20"
+                                        className="ant-row cap-row-v2 margin-t-13"
                                         id="boostSales"
                                       >
                                         <styled.div
@@ -9593,13 +9589,11 @@ line-height: ",
                   "componentStyle": ComponentStyle {
                     "componentId": "sc-kGXeez",
                     "isStatic": false,
-                    "lastClassName": "gTjYXn",
+                    "lastClassName": "eRJpkw",
                     "rules": Array [
                       "
     width: 258px;
-    margin-right: ",
-                      "1.714rem",
-                      ";
+    margin-right: 17px;
     border: 1px solid ",
                       "#dfe2e7",
                       ";
@@ -9619,7 +9613,7 @@ line-height: ",
               forwardedRef={null}
             >
               <div
-                className="sc-kGXeez gTjYXn"
+                className="sc-kGXeez eRJpkw"
               >
                 <styled.div
                   className="category-selector"
@@ -10335,17 +10329,17 @@ line-height: ",
                                   key="container"
                                 >
                                   <CapRow
-                                    className="margin-t-20"
+                                    className="margin-t-13"
                                     id="boostSales"
                                     key="boostSales"
                                   >
                                     <Row
-                                      className="cap-row-v2 margin-t-20"
+                                      className="cap-row-v2 margin-t-13"
                                       gutter={0}
                                       id="boostSales"
                                     >
                                       <div
-                                        className="ant-row cap-row-v2 margin-t-20"
+                                        className="ant-row cap-row-v2 margin-t-13"
                                         id="boostSales"
                                       >
                                         <styled.div
@@ -14096,13 +14090,11 @@ line-height: ",
                   "componentStyle": ComponentStyle {
                     "componentId": "sc-kGXeez",
                     "isStatic": false,
-                    "lastClassName": "gTjYXn",
+                    "lastClassName": "eRJpkw",
                     "rules": Array [
                       "
     width: 258px;
-    margin-right: ",
-                      "1.714rem",
-                      ";
+    margin-right: 17px;
     border: 1px solid ",
                       "#dfe2e7",
                       ";
@@ -14122,7 +14114,7 @@ line-height: ",
               forwardedRef={null}
             >
               <div
-                className="sc-kGXeez gTjYXn"
+                className="sc-kGXeez eRJpkw"
               >
                 <styled.div
                   className="category-selector"
@@ -16745,17 +16737,17 @@ line-height: ",
                                     </Row>
                                   </CapRow>
                                   <CapRow
-                                    className="margin-t-20"
+                                    className="margin-t-13"
                                     id="boostSales"
                                     key="boostSales"
                                   >
                                     <Row
-                                      className="cap-row-v2 margin-t-20"
+                                      className="cap-row-v2 margin-t-13"
                                       gutter={0}
                                       id="boostSales"
                                     >
                                       <div
-                                        className="ant-row cap-row-v2 margin-t-20"
+                                        className="ant-row cap-row-v2 margin-t-13"
                                         id="boostSales"
                                       >
                                         <styled.div
@@ -20525,13 +20517,11 @@ line-height: ",
                   "componentStyle": ComponentStyle {
                     "componentId": "sc-kGXeez",
                     "isStatic": false,
-                    "lastClassName": "gTjYXn",
+                    "lastClassName": "eRJpkw",
                     "rules": Array [
                       "
     width: 258px;
-    margin-right: ",
-                      "1.714rem",
-                      ";
+    margin-right: 17px;
     border: 1px solid ",
                       "#dfe2e7",
                       ";
@@ -20551,7 +20541,7 @@ line-height: ",
               forwardedRef={null}
             >
               <div
-                className="sc-kGXeez gTjYXn"
+                className="sc-kGXeez eRJpkw"
               >
                 <styled.div
                   className="category-selector"
@@ -21267,17 +21257,17 @@ line-height: ",
                                   key="container"
                                 >
                                   <CapRow
-                                    className="margin-t-20"
+                                    className="margin-t-13"
                                     id="boostSales"
                                     key="boostSales"
                                   >
                                     <Row
-                                      className="cap-row-v2 margin-t-20"
+                                      className="cap-row-v2 margin-t-13"
                                       gutter={0}
                                       id="boostSales"
                                     >
                                       <div
-                                        className="ant-row cap-row-v2 margin-t-20"
+                                        className="ant-row cap-row-v2 margin-t-13"
                                         id="boostSales"
                                       >
                                         <styled.div
@@ -25057,13 +25047,11 @@ line-height: ",
                   "componentStyle": ComponentStyle {
                     "componentId": "sc-kGXeez",
                     "isStatic": false,
-                    "lastClassName": "gTjYXn",
+                    "lastClassName": "eRJpkw",
                     "rules": Array [
                       "
     width: 258px;
-    margin-right: ",
-                      "1.714rem",
-                      ";
+    margin-right: 17px;
     border: 1px solid ",
                       "#dfe2e7",
                       ";
@@ -25083,7 +25071,7 @@ line-height: ",
               forwardedRef={null}
             >
               <div
-                className="sc-kGXeez gTjYXn"
+                className="sc-kGXeez eRJpkw"
               >
                 <styled.div
                   className="category-selector"
@@ -25799,17 +25787,17 @@ line-height: ",
                                   key="container"
                                 >
                                   <CapRow
-                                    className="margin-t-20"
+                                    className="margin-t-13"
                                     id="boostSales"
                                     key="boostSales"
                                   >
                                     <Row
-                                      className="cap-row-v2 margin-t-20"
+                                      className="cap-row-v2 margin-t-13"
                                       gutter={0}
                                       id="boostSales"
                                     >
                                       <div
-                                        className="ant-row cap-row-v2 margin-t-20"
+                                        className="ant-row cap-row-v2 margin-t-13"
                                         id="boostSales"
                                       >
                                         <styled.div
