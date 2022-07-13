@@ -211,6 +211,7 @@ const getSvgComponentFromType = (type) => {
     case 'rcs': return SvgIcons.Rcs;
     case 'wallet-background': return SvgIcons.WalletBackground;
     case 'alert-warning': return SvgIcons.AlertWarning;
+    case 'retry': return SvgIcons.Retry;
 
     default: return null;
   }

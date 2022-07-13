@@ -207,3 +207,4 @@ export { default as LoyaltyBackground } from "./Icons/LoyaltyBackground";
 export { default as Rcs } from "./Icons/Rcs";
 export { default as WalletBackground } from './Icons/WalletBackground';
 export {default as AlertWarning } from './Icons/AlertWarning';
+export {default as Retry } from './Icons/Retry';
