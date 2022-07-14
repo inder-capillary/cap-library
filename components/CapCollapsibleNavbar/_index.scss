@@ -181,7 +181,7 @@ $blue-bg-color: rgb(233, 240, 254);
       color: $white-background;
       min-height: 48px;
       .icon-container {
-        width: calc(#{$left-border-width} - 2px);
+        width: calc(#{$left-border-width} - 1px);
         padding: 8px 19px;
         margin: 2px;
         cursor: pointer;

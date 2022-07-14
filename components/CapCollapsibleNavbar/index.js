@@ -856,7 +856,7 @@ class CapCollapsibleNavbar extends React.Component {
         data-level={level}
         className={`leaf-item data-level-${level} ${
           firstLevel ? "first-level" : ""
-        }${selected ? STATE_SELECTED : ""}`}
+        } ${selected ? STATE_SELECTED : ""}`}
         key={item.value}
         onClick={() => this.leftNavClicked(STATE, { ...item, parent })}
       >
@@ -919,7 +919,7 @@ class CapCollapsibleNavbar extends React.Component {
             data-level={level}
             className={`leaf-item popover-trigger data-level-${level} ${
               !this.state.lowerLevelMenuCollapsed[menuKey] ? EXPANDED : ""
-            }${isSelected && isKeySelected ? STATE_SELECTED : ""}`}
+            } ${isSelected && isKeySelected ? STATE_SELECTED : ""}`}
             key={item.value}
           >
             <span className="text" title={item.label}>
@@ -1156,9 +1156,9 @@ class CapCollapsibleNavbar extends React.Component {
         id="cap-collapsible-navbar"
         className={`cap-collapsible-nav ${
           isCollapsed ? COLLAPSED : EXPANDED
-        }${switcherClicked ? CLICKED : HOVERED}${
+        } ${switcherClicked ? CLICKED : HOVERED} ${
           menuHovered ? "menu-hovered" : ""
-        }${className}`}
+        } ${className}`}
         onMouseOver={() => this.setMenuHovered(true)}
         onMouseLeave={() => this.setMenuHovered(false)}
         style={{ height: "100%" }}
