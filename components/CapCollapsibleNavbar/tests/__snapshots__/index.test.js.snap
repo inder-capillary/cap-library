@@ -6,10 +6,15 @@ exports[`<CapCollapsibleNavbar /> CapCollapsibleNavbar renders correctly 1`] = `
   id="cap-collapsible-navbar"
   onMouseLeave={[Function]}
   onMouseOver={[Function]}
+  style={
+    Object {
+      "height": "100%",
+    }
+  }
 >
   <div
     className="ant-row cap-row-v2 controls"
-    onMouseOut={[Function]}
+    onMouseLeave={[Function]}
     onMouseOver={[Function]}
     span={24}
   >
@@ -24,14 +29,8 @@ exports[`<CapCollapsibleNavbar /> CapCollapsibleNavbar renders correctly 1`] = `
         onMouseOver={[Function]}
       >
         <img
-          className="sc-htpNat kspKcS"
-          src={
-            Object {
-              "ReactComponent": [Function],
-              "__esModule": true,
-              "default": "chevron-left.svg",
-            }
-          }
+          className="CapCollapsibleNavbar__ChevronLeftIcon-sc-1gvfsi0-0 gpnot"
+          src="IMAGE_MOCK"
         />
       </div>
     </div>
@@ -48,18 +47,10 @@ exports[`<CapCollapsibleNavbar /> CapCollapsibleNavbar renders correctly 1`] = `
     >
       <div
         className="icon-container"
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
       >
         <img
-          className="sc-bxivhb hZvUOU"
-          src={
-            Object {
-              "ReactComponent": [Function],
-              "__esModule": true,
-              "default": "left-nav-add.svg",
-            }
-          }
+          className="CapCollapsibleNavbar__LeftNavAddIcon-sc-1gvfsi0-1 etFsIi"
+          src="IMAGE_MOCK"
         />
       </div>
     </div>
@@ -74,14 +65,8 @@ exports[`<CapCollapsibleNavbar /> CapCollapsibleNavbar renders correctly 1`] = `
         type="button"
       >
         <img
-          className="sc-bxivhb hZvUOU"
-          src={
-            Object {
-              "ReactComponent": [Function],
-              "__esModule": true,
-              "default": "left-nav-add-black.svg",
-            }
-          }
+          className="CapCollapsibleNavbar__LeftNavAddIcon-sc-1gvfsi0-1 etFsIi"
+          src="IMAGE_MOCK"
         />
         <span>
           Create New
@@ -95,39 +80,44 @@ exports[`<CapCollapsibleNavbar /> CapCollapsibleNavbar renders correctly 1`] = `
   >
     <div
       className="ant-col ant-col-24 cap-column-v2 icon-column"
+      style={
+        Object {
+          "height": "calc(100vh - 90px)",
+          "maxHeight": "calc(100vh - 90px)",
+        }
+      }
     >
       <div
-        className="icon-container"
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        style={Object {}}
+        className="icon-container state-selected"
       >
         <img
-          className="sc-ifAKCX iZeWMU"
-          src={
+          alt="user-segment-black"
+          className="CapCollapsibleNavbar__GenericNavIcon-sc-1gvfsi0-2 gXTk"
+          src="IMAGE_MOCK"
+          style={
             Object {
-              "ReactComponent": [Function],
-              "__esModule": true,
-              "default": "user-segment.svg",
+              "height": "20px",
+              "width": "20px",
             }
           }
-          style={Object {}}
         />
       </div>
+      <div
+        className="line"
+      />
     </div>
     <div
       className="ant-col ant-col-21 cap-column-v2 menu-item collapsed"
     >
       <div
-        className="ant-collapse ant-collapse-borderless ant-collapse-icon-position-right"
+        className="ant-collapse ant-collapse-borderless ant-collapse-icon-position-right data-level-0 state-selected"
         role="tablist"
       >
         <div
-          className="ant-collapse-item"
-          style={Object {}}
+          className="ant-collapse-item ant-collapse-item-active"
         >
           <div
-            aria-expanded="false"
+            aria-expanded="true"
             className="ant-collapse-header"
             onClick={[Function]}
             onKeyPress={[Function]}
@@ -135,15 +125,14 @@ exports[`<CapCollapsibleNavbar /> CapCollapsibleNavbar renders correctly 1`] = `
             tabIndex={0}
           >
             <img
-              className="sc-htpNat kspKcS ant-collapse-arrow"
-              src={
+              className="ant-collapse-arrow CapCollapsibleNavbar__ChevronLeftIcon-sc-1gvfsi0-0 gpnot"
+              src="IMAGE_MOCK"
+              style={
                 Object {
-                  "ReactComponent": [Function],
-                  "__esModule": true,
-                  "default": "chevron-down.svg",
+                  "marginTop": "-12px",
+                  "transform": "rotate(180deg)",
                 }
               }
-              style={Object {}}
             />
             <div
               onMouseOut={[Function]}
@@ -152,8 +141,61 @@ exports[`<CapCollapsibleNavbar /> CapCollapsibleNavbar renders correctly 1`] = `
               User segments
             </div>
           </div>
+          <div
+            className="ant-collapse-content ant-collapse-content-active"
+            role="tabpanel"
+          >
+            <div
+              className="ant-collapse-content-box"
+            >
+              <div
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                style={
+                  Object {
+                    "height": "calc(100vh - 140px)",
+                    "maxHeight": "calc(100vh - 140px)",
+                    "overflowY": "scroll",
+                  }
+                }
+              >
+                <div
+                  className="ant-collapse ant-collapse-borderless ant-collapse-icon-position-right data-level-1 "
+                  role="tablist"
+                >
+                  <div
+                    className="ant-collapse-item"
+                  >
+                    <div
+                      aria-expanded="false"
+                      className="ant-collapse-header"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      role="tab"
+                      tabIndex={0}
+                    >
+                      <img
+                        className="ant-collapse-arrow CapCollapsibleNavbar__ChevronLeftIcon-sc-1gvfsi0-0 gpnot"
+                        src="IMAGE_MOCK"
+                        style={Object {}}
+                      />
+                      <div
+                        onMouseOut={[Function]}
+                        onMouseOver={[Function]}
+                      >
+                        Status
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <div
+        className="line"
+      />
     </div>
   </div>
 </div>

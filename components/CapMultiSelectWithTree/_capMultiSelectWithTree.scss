@@ -37,6 +37,22 @@ $multiSelect: cap-multi-tree-select-v2;
   }
 }
 
+.#{$multiSelect}-items-selected {
+  line-height: 13px;
+  margin-bottom: 3px;
+  min-width: 74%;
+  text-align: center;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border: 1px solid rgb(234,33,58);
+  border-radius: 30px;
+  font-size: 10px;
+  background: rgb(234, 33, 58);
+  color: white;
+  margin-left: 8px;
+}
+
 .ant-popover.#{$multiSelect}-popover.select-all-disabled {
   .select-all-tree {
     padding-top: 0;
@@ -103,13 +119,13 @@ $multiSelect: cap-multi-tree-select-v2;
       }
       margin: $CAP_SPACE_16 $CAP_SPACE_16 0 $CAP_SPACE_16;
       .ant-input-affix-wrapper .ant-input-prefix {
-        left: 8px;
+        left: 20px;
         .cap-icon-v2 {
           font-size: 16px !important;
         }
       }
       .ant-input {
-        padding-left: 35px;
+        padding-left: 52px;
       }
     }
     .ant-input-affix-wrapper {
@@ -126,6 +142,9 @@ $multiSelect: cap-multi-tree-select-v2;
       span {
         cursor: pointer;
       }
+    }
+    .select-dropdown {
+      margin: 16px;
     }
   }
   .showing-spinner {

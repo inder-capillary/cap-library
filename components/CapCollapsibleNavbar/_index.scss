@@ -1,12 +1,13 @@
+$max-levels: 5;
 // widths
-$left-border-width: 40px;
+$left-border-width: 60px;
 $nav-content-width: 228px;
-$total-width: 268px;
+$total-width: 288px;
 
 // colors
 $text-color: rgb(9, 30, 66);
 $white-background: rgb(250, 251, 252);
-$pale-grey: rgb(223, 226, 231);
+$pale-grey: rgb(235, 236, 240);
 $blue-grey: rgb(151, 160, 175);
 $light-grey: rgb(244, 245, 247);
 $shadow-color: rgba(9, 30, 66, 0.25);
@@ -17,18 +18,25 @@ $blue-bg-color: rgb(233, 240, 254);
 .cap-collapsible-nav {
   position: fixed;
   left: 0;
-  z-index: 999;
+  z-index: 10;
   background: white;
-  border-left: $left-border-width solid $text-color;
+  border-left: $left-border-width solid $light-grey;
   box-shadow: 2px 0 5px -2px $shadow-color;
-  height: 100%;
+  height: 100vh;
   width: $total-width;
   &.expanded {
     transition: width 200ms ease;
-    .cap-row-v2.controls {
+    .cap-row-v2 {
+      &.controls {
+        .cap-column-v2.icon-column {
+          .switcher {
+            transition: margin 200ms ease;
+          }
+        }
+      }
       .cap-column-v2.icon-column {
-        .switcher {
-          transition: margin 200ms ease;
+        .icon-container {
+          width: calc(#{$left-border-width} - 2px);
         }
       }
     }
@@ -38,7 +46,7 @@ $blue-bg-color: rgb(233, 240, 254);
     .cap-row-v2.controls {
       .cap-column-v2.icon-column {
         .switcher {
-          margin-left: 13px;
+          margin-left: calc(#{$total-width} - 255px);
           padding: 0 1px;
           img {
             transform: rotate(180deg);
@@ -50,9 +58,16 @@ $blue-bg-color: rgb(233, 240, 254);
   .leaf-item {
     height: 40px;
     padding: 10px 16px;
+    .text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 96%;
+      display: inline-block;
+    }
     cursor: pointer;
     &:hover {
-      background: $light-grey;
+      background: $pale-grey;
     }
     &.popover-trigger {
       position: relative;
@@ -83,7 +98,19 @@ $blue-bg-color: rgb(233, 240, 254);
       color: $blue-color !important;
     }
     &.state-selected.first-level {
-      border-left: 2px solid $blue-color;
+      border-left: 2px solid $text-color;
+    }
+  }
+  @for $i from 0 through $max-levels {
+    div.ant-collapse.data-level-#{$i} {
+      .ant-collapse-item {
+        .ant-collapse-header {
+          padding-left: calc(#{$i} * 14px + 14px);
+        }
+      }
+    }
+    div.leaf-item.data-level-#{$i} {
+      padding-left: calc(#{$i} * 14px + 14px);
     }
   }
   .ant-collapse {
@@ -99,16 +126,14 @@ $blue-bg-color: rgb(233, 240, 254);
       .ant-collapse-content {
         border-radius: 0;
         .ant-collapse-content-box {
-          .leaf-item, .ant-collapse {
+          .leaf-item,
+          .ant-collapse {
             margin-top: 3px;
           }
         }
       }
-      &:hover, &.ant-collapse-item-active {
-        & > .ant-collapse-header {
-          background: $pale-grey;
-          border-left: 2px solid $blue-grey;
-        }
+      &:hover,
+      &.ant-collapse-item-active {
         .ant-collapse {
           .ant-collapse-header {
             border-left: none;
@@ -121,22 +146,17 @@ $blue-bg-color: rgb(233, 240, 254);
         }
       }
       .ant-collapse-content.ant-collapse-content-active {
-        padding-left: 14px;
         .ant-collapse-content-box {
           padding: 0;
         }
       }
     }
-    &.state-selected > .ant-collapse-item > .ant-collapse-header {
-      background: $blue-bg-color !important;
-      border-left: 2px solid $blue-color !important;
-      color: $blue-color !important;
-    }
   }
   .cap-row-v2 {
     display: flex;
-    margin-left: -$left-border-width;
+    margin-left: calc(-#{$left-border-width});
     .cap-column-v2 {
+      min-width: 0;
       display: flex;
     }
     .cap-column-v2.menu-item {
@@ -157,28 +177,23 @@ $blue-bg-color: rgb(233, 240, 254);
     .cap-column-v2.icon-column {
       flex: $left-border-width;
       flex-direction: column;
-      background: $text-color;
+      background: $light-grey;
       color: $white-background;
       min-height: 48px;
       .icon-container {
-        padding: 7px;
+        width: calc(#{$left-border-width} - 2px);
+        padding: 8px 19px;
         margin: 2px;
         cursor: pointer;
-        width: 36px;
         height: 37px;
-        border-radius: 10%;
-        &:hover {
-          color: $text-color;
-          background: radial-gradient(ellipse at center, $pale-grey 0%, $pale-grey 0%, $pale-grey 70%, $text-color 70%);
-        }
         &.state-selected {
-          background: $state-selected-color;
-          padding: 8px 7px;
+          border-right: 2px solid $text-color !important;
         }
       }
-    } 
+    }
   }
   .cap-row-v2.controls {
+    height: 28px;
     .cap-column-v2.icon-column {
       padding: 10px 0 10px 14px;
       .switcher {
@@ -186,15 +201,16 @@ $blue-bg-color: rgb(233, 240, 254);
         border: 1px solid $pale-grey;
         border-radius: 50%;
         cursor: pointer;
-        height: 28px;
-        width: 28px;
+        height: 24px;
+        width: 24px;
         background: $white-background;
-        padding: 0;
-        margin-left: 241px;
+        padding: 0 1px;
+        margin-left: calc(#{$total-width} - 28px);
         z-index: 100003;
         img {
-          height: 26px;
-          width: 26px;
+          height: 22px;
+          width: 22px;
+          transform: rotate(180deg);
         }
         &:hover {
           background: $blue-bg-color;
@@ -273,8 +289,35 @@ $blue-bg-color: rgb(233, 240, 254);
       padding: 10px 16px;
       cursor: pointer;
       &:hover {
-        background: $light-grey;
+        background: $pale-grey;
       }
     }
   }
+}
+.cap-collapsible-nav.expanded.clicked {
+  .switcher {
+    padding: 0 !important;
+    opacity: 0;
+    transition: all 0.3s ease;
+    img {
+      transform: none !important;
+    }
+  }
+  &.menu-hovered {
+    .switcher {
+      opacity: 1;
+    }
+  }
+  .controls:hover {
+    .switcher {
+      opacity: 1;
+    }
+  }
+}
+.line {
+  max-width: 100%;
+  height: 100%;
+  margin-left:10px;
+  border-bottom: 1px solid #dfe2e7;
+  margin-bottom: 10px;
 }

@@ -33,8 +33,8 @@ const states = [{
 
 const navigationConfig = {
   createNewStates,
-  states,
-  showSelectionTillLevel: 1,
+  sections: [{states}],
+  defaultSelectedKey: "segment.segmentStatus",
 };
 
 const messages = {
