@@ -131,6 +131,9 @@ $cap-custom-card: cap-custom-card;
 
     .ant-card-extra {
       margin-top: $CAP_SPACE_12;
+      position: absolute;
+      right: 8px;
+      top: -4px;
     }
   }
 }
