@@ -120,17 +120,14 @@ $cap-custom-card: cap-custom-card;
     padding: 0 16px;
   }
 
-  .ant-card-head-title{
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
   .ant-card-head-wrapper {
     align-items: flex-start;
 
     .ant-card-extra {
       margin-top: $CAP_SPACE_12;
+      position: absolute;
+      right: 8px;
+      top: -4px;
     }
   }
 }
