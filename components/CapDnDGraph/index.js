@@ -787,7 +787,7 @@ const CapDndGraph = (props) => {
   }, []);
 
   return (
-    <CapRow className="cap-graph-builder" style={{height: '100vh'}}>
+    <CapRow className="cap-graph-builder" style={{height: 'calc(100vh - 120px)'}}>
       <CapIconsSidebar {...sidebarProps} onDropOutsideCanvas={onDrop} isNodeDraggable={viewMode ? null : true} viewMode={viewMode} />
       <div
         id={dndGraphId}
