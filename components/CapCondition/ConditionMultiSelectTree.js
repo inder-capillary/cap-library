@@ -8,6 +8,7 @@ import {
   CONCEPT,
   ZONE,
 } from './constants';
+import ConditionStoreUploader from "./ConditionStoreUploader";
 
 
 export const ConditionMultiSelectTree = ({
@@ -20,6 +21,11 @@ export const ConditionMultiSelectTree = ({
   placeholder,
   isAsynchronous,
   showProductSelectionCriteria,
+  getEntityDetails,
+  uploadFailedError,
+  uploadLimitExceeded,
+  uploadReqLoader,
+  or,
 }) => {
   const prop = {};
   useEffect(() => {
@@ -64,7 +70,7 @@ export const ConditionMultiSelectTree = ({
       operator: value,
     }, fact);
   };
-
+  
   return (
     <>
       {
@@ -92,6 +98,16 @@ export const ConditionMultiSelectTree = ({
           handleOnSelect(value);
         }}
       />
+      {fact.toUpperCase() === STORE && (
+      <ConditionStoreUploader
+        handleOnSelect={handleOnSelect}
+        getEntityDetails={getEntityDetails}
+        uploadFailedError={uploadFailedError}
+        uploadLimitExceeded={uploadLimitExceeded}
+        uploadReqLoader={uploadReqLoader}
+        or={or}
+        />
+      )}
     </>
   );
 };
@@ -103,6 +119,11 @@ ConditionMultiSelectTree.propTypes = {
   setConditionExpression: PropTypes.func,
   placeholder: PropTypes.string,
   showProductSelectionCriteria: PropTypes.bool,
+  getEntityDetails: PropTypes.func,
+  uploadFailedError: PropTypes.string,
+  uploadLimitExceeded: PropTypes.string,
+  uploadReqLoader: PropTypes.string,
+  or: PropTypes.string,
 };
 
 export default ConditionMultiSelectTree;

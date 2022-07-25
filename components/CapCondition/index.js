@@ -65,6 +65,11 @@ const CapCondition = (props) => {
     additionalFieldsMsg,
     validateSkuIds,
     plusMinus,
+    getEntityDetails,
+    uploadFailedError,
+    uploadLimitExceeded,
+    uploadReqLoader,
+    or,
   } = props;
 
   /**
@@ -142,6 +147,11 @@ const CapCondition = (props) => {
             setConditionExpression={setConditionExpression}
             placeholder={addFieldPlaceholder || multiSelectPlaceholder}
             showProductSelectionCriteria={showProductSelectionCriteria}
+            getEntityDetails={getEntityDetails}
+            uploadFailedError={uploadFailedError}
+            uploadLimitExceeded={uploadLimitExceeded}
+            uploadReqLoader={uploadReqLoader}
+            or={or}
           />
         );
       case SKU:
@@ -286,6 +296,10 @@ CapCondition.propTypes = {
   plusMinus: PropTypes.string,
   inMsg: PropTypes.string,
   notInMsg: PropTypes.string,
+  uploadFailedError: PropTypes.string,
+  uploadLimitExceeded: PropTypes.string,
+  uploadReqLoader: PropTypes.string,
+  or: PropTypes.string,
 };
 
 export default LocaleHoc(CapCondition, { key: "CapCondition" });

@@ -95,6 +95,10 @@ export default {
     plusMinus: '+/-',
     inMsg: 'in',
     notInMsg: 'not in',
+    uploadFailedError: 'Upload failed',
+    uploadLimitExceeded: 'Please do not upload more than 1000 store codes',
+    uploadReqLoader: 'Uploading stores',
+    or: 'OR',
   },
 
   CapConditionPreview: {

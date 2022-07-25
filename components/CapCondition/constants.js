@@ -19,3 +19,6 @@ export const SKU = 'SKU';
 export const STORE = 'STORE';
 export const CONCEPT = 'CONCEPT';
 export const ZONE = 'ZONE';
+
+export const UPLOAD_FAIL = 'UPLOAD_FAIL';
+export const UPLOAD_LIMIT_EXCEEDED = 'UPLOAD_LIMIT_EXCEEDED';

@@ -9,6 +9,19 @@ export const StyledFlexWrapDiv = styled.div`
   & > * {
     margin: 6px 4px;
   }
+
+  .csv-fileipload-container {
+    display: flex;
+    align-items: center;
+    .buttonFileUpload {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .cap-multi-tree-select-v2-left-content {
+    max-width: 50% !important;
+  }
 `;
 
 export const StyledCapLabel = styled(CapLabel)`
