@@ -539,7 +539,7 @@ const CapDndGraph = (props) => {
       if (!isEmpty(entryTrigger.pathsInfo)) {
         newSetNodes[0].pathsInfo = {
           [newNodeId]: {
-            ...entryTrigger.pathsInfo[endNodeId],
+            ...entryTrigger.pathsInfo[entryTrigger.to[0]],
           },
         };
       }

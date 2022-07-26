@@ -48,6 +48,8 @@ const CapMultiplePath = (props) => {
     isSinglePath,
     defaultContents,
     ContentsRenderer,
+    allowDeletePath,
+    allowTogglePaths,
     /**Below intl fields are added in translations/en.js */
     notUniqueMsg,
     deleteButtonTextMsg,
@@ -141,7 +143,10 @@ const CapMultiplePath = (props) => {
   const deletePath = (index) => {
     const newPathList = cloneDeep(pathList);
     newPathList.splice(index, 1);
-    setPathList(newPathList);
+
+    if (allowDeletePath(index)) {
+      setPathList(newPathList);
+    }
   };
 
   /**
@@ -164,12 +169,16 @@ const CapMultiplePath = (props) => {
   const togglePosition = (btnType, index) => {
     if (btnType === ARROW_UP) {
       if (index === 0) return;
-      setPathList(swapArrayElements(index, index - 1, pathList));
+      if (allowTogglePaths([index - 1, index])) {
+        setPathList(swapArrayElements(index, index - 1, pathList));
+      }
       return;
     }
     if (btnType === ARROW_DOWN) {
       if (index === pathList.length - 1) return;
-      setPathList(swapArrayElements(index, index + 1, pathList));
+      if (allowTogglePaths([index, index + 1])) {
+        setPathList(swapArrayElements(index, index + 1, pathList));
+      }
     }
   };
 
@@ -550,6 +559,8 @@ CapMultiplePath.defaultProps = {
   notUniqueMsg: "",
   isSinglePath: false,
   continueAddPath: () => true,
+  allowDeletePath: () => true,
+  allowTogglePaths: () => true,
 };
 
 export default LocaleHoc(CapMultiplePath, { key: "CapMultiplePath" });

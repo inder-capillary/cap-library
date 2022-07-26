@@ -72,6 +72,21 @@ const infoData = [
     type: "func",
     default: "()=>true",
   },
+  {
+    key: 10,
+    property: "allowDeletePath",
+    description: "func to check allowing delete paths",
+    type: "func",
+    default: "()=>true",
+  },
+  {
+    key: 11,
+    property: "allowTogglePaths",
+    description: "func to check allowing toggle paths",
+    type: "func",
+    default: "()=>true",
+  },
+
 ];
 const MarginDiv = styled.div`
   margin-top: 8px;
