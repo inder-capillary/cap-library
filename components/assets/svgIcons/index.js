@@ -208,3 +208,8 @@ export { default as Rcs } from "./Icons/Rcs";
 export { default as WalletBackground } from './Icons/WalletBackground';
 export {default as AlertWarning } from './Icons/AlertWarning';
 export {default as Retry } from './Icons/Retry';
+export { default as CriticalWarning } from "./Icons/CriticalWarning";
+export { default as InProgress } from "./Icons/InProgress";
+export { default as Note } from "./Icons/Note";
+export { default as WarningCircleFilled } from "./Icons/WarningCircleFilled";
+export { default as WarningCircle } from "./Icons/WarningCircle";

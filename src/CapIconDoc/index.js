@@ -874,6 +874,26 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="retry" />
               <Text>retry</Text>
             </List>
+            <List>
+              <CapIcon type="critical-warning" />
+              <Text>critical-warning</Text>
+            </List>
+            <List>
+              <CapIcon type="in-progress" />
+              <Text>in-progress</Text>
+            </List>
+            <List>
+              <CapIcon type="note" />
+              <Text>note</Text>
+            </List>
+            <List>
+              <CapIcon type="warning-circle-filled" />
+              <Text>warning-circle-filled</Text>
+            </List>
+            <List>
+              <CapIcon type="warning-circle" />
+              <Text>warning-circle</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}

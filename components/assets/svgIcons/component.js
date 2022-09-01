@@ -212,6 +212,11 @@ const getSvgComponentFromType = (type) => {
     case 'wallet-background': return SvgIcons.WalletBackground;
     case 'alert-warning': return SvgIcons.AlertWarning;
     case 'retry': return SvgIcons.Retry;
+    case 'critical-warning': return SvgIcons.CriticalWarning;
+    case 'in-progress': return SvgIcons.InProgress;
+    case 'note': return SvgIcons.Note;
+    case 'warning-circle-filled': return SvgIcons.WarningCircleFilled;
+    case 'warning-circle': return SvgIcons.WarningCircle;
 
     default: return null;
   }
