@@ -217,6 +217,7 @@ const getSvgComponentFromType = (type) => {
     case 'note': return SvgIcons.Note;
     case 'warning-circle-filled': return SvgIcons.WarningCircleFilled;
     case 'warning-circle': return SvgIcons.WarningCircle;
+    case 'tick-outlined': return SvgIcons.TickOutlined;
 
     default: return null;
   }

@@ -894,6 +894,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="warning-circle" />
               <Text>warning-circle</Text>
             </List>
+            <List>
+              <CapIcon type="tick-outlined" />
+              <Text>tick-outlined</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}
