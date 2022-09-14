@@ -60,6 +60,7 @@ export const CAP_G17 = "#7F8185";
 export const CAP_G18 = "#dcdee2";
 
 export const CAP_WHITE = "#ffffff";
+export const CAP_BLACK = "#000000";
 
 export const CAP_COLOR_01 = '#dbefda';
 export const CAP_COLOR_02 = '#fee5d3';
