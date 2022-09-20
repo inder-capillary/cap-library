@@ -166,7 +166,7 @@ class CapMultiSelect extends React.Component {
 
   getSaveButton = () => {
     let selectButton = null;
-    const { appliedKeys, maxValuesToSelect, selectText, selectTooltipText = '', showSelectButtonToolTip = false } = this.props;
+    const { appliedKeys, maxValuesToSelect, selectText, selectTooltipText = '', showSelectButtonToolTip = false, selectTooltipPlacement, } = this.props;
     const { selectedKeys } = this.state;
     if (
       ((selectedKeys && selectedKeys.length > 0)
@@ -175,8 +175,10 @@ class CapMultiSelect extends React.Component {
       selectButton = <CapButton type="primary" onClick={this.applySelect}>{selectText}</CapButton>;
     } else if (showSelectButtonToolTip) {
       selectButton = (
-        <Tooltip placement="right" title={selectTooltipText}>
-          <CapButton disabled>{selectText}</CapButton>
+        <Tooltip placement={selectTooltipPlacement} title={selectTooltipText}>
+          <div className="button-disabled-tooltip-wrapper">
+            <CapButton disabled>{selectText}</CapButton>
+          </div>
         </Tooltip>
       );
     } else {
@@ -324,6 +326,7 @@ CapMultiSelect.defaultProps = {
   searchFocusOnMount: true,
   alwaysShowFocusOnSearch: true,
   showSelectAllText: true,
+  selectTooltipPlacement: "right",
 };
 
 CapMultiSelect.propTypes = {
@@ -353,6 +356,7 @@ CapMultiSelect.propTypes = {
   searchFocusOnMount: PropTypes.bool,
   alwaysShowFocusOnSearch: PropTypes.bool,
   showSelectAllText: PropTypes.bool,
+  selectTooltipPlacement: PropTypes.string,
 };
 
 export default LocaleHoc(CapMultiSelect, { key: 'CapMultiSelect' });
