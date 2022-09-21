@@ -13,29 +13,8 @@ const SvgNote = (props) => (
       fillRule="evenodd"
       clipRule="evenodd"
       d="M6.914 1a3 3 0 0 1 1.92.695L12.921 5.1A3 3 0 0 1 14 7.405V13c0 1.1-.9 2-2 2H3.99C2.89 15 2 14.1 2 13l.01-10c0-1.1.89-2 1.99-2h2.914ZM4 3v10h8V7H9a2 2 0 0 1-2-2V3H4Z"
-      fill="#fff"
+      fill="#5E6C84"
     />
-    <mask
-      id="note_svg__a"
-      style={{
-        maskType: "alpha",
-      }}
-      maskUnits="userSpaceOnUse"
-      x={2}
-      y={1}
-      width={12}
-      height={14}
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M6.914 1a3 3 0 0 1 1.92.695L12.921 5.1A3 3 0 0 1 14 7.405V13c0 1.1-.9 2-2 2H3.99C2.89 15 2 14.1 2 13l.01-10c0-1.1.89-2 1.99-2h2.914ZM4 3v10h8V7H9a2 2 0 0 1-2-2V3H4Z"
-        fill="#fff"
-      />
-    </mask>
-    <g mask="url(#note_svg__a)">
-      <path fill="#5E6C84" d="M0 0h16v16H0z" />
-    </g>
   </svg>
 );
 
