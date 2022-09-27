@@ -214,3 +214,5 @@ export { default as Note } from "./Icons/Note";
 export { default as WarningCircleFilled } from "./Icons/WarningCircleFilled";
 export { default as WarningCircle } from "./Icons/WarningCircle";
 export { default as TickOutlined } from "./Icons/TickOutlined";
+export { default as DraftFailed } from "./Icons/DraftFailed";
+export { default as DraftPartiallyFailed } from "./Icons/DraftPartiallyFailed";

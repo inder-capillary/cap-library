@@ -898,6 +898,14 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="tick-outlined" />
               <Text>tick-outlined</Text>
             </List>
+            <List>
+              <CapIcon type="draft-failed" />
+              <Text>draft-failed</Text>
+            </List>
+            <List>
+              <CapIcon type="draft-partially-failed" />
+              <Text>draft-partially-failed</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}
