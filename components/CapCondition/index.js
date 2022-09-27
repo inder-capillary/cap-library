@@ -65,6 +65,8 @@ const CapCondition = (props) => {
     additionalFieldsMsg,
     validateSkuIds,
     plusMinus,
+    shouldRemoveOperator,
+    removeOperatorsList,
     getEntityDetails,
     uploadFailedError,
     uploadLimitExceeded,
@@ -121,6 +123,8 @@ const CapCondition = (props) => {
             setConditionExpression={setConditionExpression}
             conditionValidationError={conditionValidationError}
             setConditionValidationError={setConditionValidationError}
+            shouldRemoveOperator={shouldRemoveOperator}
+            removeOperatorsList={removeOperatorsList}
           />
         );
       case MULTI_SELECT:
@@ -257,6 +261,8 @@ CapCondition.defaultProps = {
   conditionValidationError: 'false',
   setConditionValidationError: () => {},
   showProductSelectionCriteria: true,
+  shouldRemoveOperator: false,
+  removeOperatorsList: [],
 };
 
 CapCondition.propTypes = {
@@ -296,6 +302,8 @@ CapCondition.propTypes = {
   plusMinus: PropTypes.string,
   inMsg: PropTypes.string,
   notInMsg: PropTypes.string,
+  shouldRemoveOperator: PropTypes.bool,
+  removeOperatorsList: PropTypes.array,
   uploadFailedError: PropTypes.string,
   uploadLimitExceeded: PropTypes.string,
   uploadReqLoader: PropTypes.string,

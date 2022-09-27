@@ -26,6 +26,8 @@ const ConditionNumber = (props) => {
     inRangeMsg,
     notEqualMsg,
     andMsg,
+    shouldRemoveOperator,
+    removeOperatorsList,
   } = props;
   const { operator, operand } = conditionExpression;
 
@@ -41,6 +43,17 @@ const ConditionNumber = (props) => {
     IN_RANGE: { text: inRangeMsg, isList: true },
     NEQ: { text: notEqualMsg, isList: false },
   };
+
+  /**
+   * Below condition is to remove operators property from operandsMapping which are not required.
+   * Deleting directly from operandsMapping may cause issue in other modules which are using this component -
+   * It's used also to make backward compatible.
+  */
+  const REMOVED_OPERATORS = {};
+  if (shouldRemoveOperator) {
+      removeOperatorsList?.forEach( removeOperator => delete operandsMapping?.[removeOperator]);
+      REMOVED_OPERATORS.isList = false;
+  }
 
   /**
    * Use operandsMapping to create list of objects for dropdown.
@@ -88,7 +101,8 @@ const ConditionNumber = (props) => {
     const isValidNum = validateNonEmptyNumberHelper(value);
 
     const num = Number(value);
-    const {isList} = operandsMapping[operator];
+    // REMOVED_OPERATORS is used to make the isList prop available for deleted operators from operandsMapping.
+    const { isList } = operandsMapping[operator] || REMOVED_OPERATORS;
     if (!isList) {
       const newOperand = isValidNum ? num : null;
       setConditionExpression({...conditionExpression, operand: newOperand});
@@ -117,7 +131,8 @@ const ConditionNumber = (props) => {
   const getInputElements = () => {
     if (!operator) return null;
 
-    const {isList} = operandsMapping[operator];
+    // REMOVED_OPERATORS is used to make the isList prop available for deleted operators from operandsMapping.
+    const { isList } = operandsMapping[operator] || REMOVED_OPERATORS;
     switch (isList) {
       case false:
         return (
@@ -161,7 +176,7 @@ const ConditionNumber = (props) => {
       <CapSelect
         options={dropDown}
         value={operator}
-        style={{ width: "100px"}}
+        style={{ width: "150px"}}
         onChange={handleOperatorChange}
         size="medium"
       />
@@ -183,5 +198,7 @@ ConditionNumber.propTypes = {
   inRangeMsg: PropTypes.string,
   notEqualMsg: PropTypes.string,
   andMsg: PropTypes.string,
+  shouldRemoveOperator: PropTypes.bool,
+  removeOperatorsList: PropTypes.array,
 };
 export default LocaleHoc(ConditionNumber, { key: "CapCondition" });

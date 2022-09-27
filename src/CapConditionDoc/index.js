@@ -62,6 +62,22 @@ const infoData = [
     type: "func",
     default: "-",
   },
+  {
+    key: 9,
+    property: "shouldRemoveOperator",
+    description:
+      "Boolean value to remove operators",
+    type: "boolean",
+    default: "false",
+  },
+  {
+    key: 10,
+    property: "removeOperatorsList",
+    description:
+      "List of removable operators. eg: ['LTE', 'EQ']",
+    type: "array",
+    default: "[]",
+  },
 ];
 
 const couponsTreeData = [
@@ -124,7 +140,6 @@ const CapConditionDoc = () => {
           conditionValidationError={conditionValidationError}
           setConditionValidationError={setConditionValidationError}
           hasProductSelection
-
         />
       </div>
       <div className="cap-card-box-doc-showcase">
