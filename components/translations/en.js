@@ -99,6 +99,8 @@ export default {
     uploadLimitExceeded: 'Please do not upload more than 1000 store codes',
     uploadReqLoader: 'Uploading stores',
     or: 'OR',
+    search: 'Search',
+    searchWithExact: 'Search with exact keyword',
   },
 
   CapConditionPreview: {

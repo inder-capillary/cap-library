@@ -51,7 +51,7 @@ const ConditionNumber = (props) => {
   */
   const REMOVED_OPERATORS = {};
   if (shouldRemoveOperator) {
-      removeOperatorsList?.forEach( removeOperator => delete operandsMapping?.[removeOperator]);
+      removeOperatorsList?.forEach( (removeOperator) => delete operandsMapping?.[removeOperator]);
       REMOVED_OPERATORS.isList = false;
   }
 

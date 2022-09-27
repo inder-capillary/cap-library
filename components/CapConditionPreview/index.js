@@ -8,7 +8,7 @@ import CapIcon from "../CapIcon";
 import LocaleHoc from "../LocaleHoc";
 import CapLabel from "../CapLabel";
 import CapTruncateList from "../CapTruncateList";
-import { MULTI_SELECT, LIST, NUMBER, SKU, PRODUCT_ATTRIBUTE } from "./constants";
+import { MULTI_SELECT, LIST, NUMBER, SKU } from "./constants";
 import { StyledFlexWrapDiv, StyledCapLabel, SkuDownloadLink } from "./style";
 
 const { CapLabelInline } = CapLabel;
@@ -21,9 +21,6 @@ const CapConditionPreview = ({
   dstData,
   listData = null,
   additionalFields,
-  brand,
-  category,
-  attribute,
   isExcluded,
   conditionName,
   excludeMsg,
@@ -69,12 +66,6 @@ const CapConditionPreview = ({
     </>
   );
 
-  const treeData = {
-    BRAND: brand,
-    CATEGORY: category,
-    PRODUCT_ATTRIBUTE: attribute,
-  };
-
   //common function to handle csv downloads
   const downloadHandler = (event, data, downloadedFileName) => {
     event.target.setAttribute(
@@ -97,30 +88,10 @@ const CapConditionPreview = ({
 
   const OperandValues = ({ linkedFact, linkedDataType, linkedConditionExpression }) => {
     let dataTypeLocal = type;
-    let operandLocal = operand;
     let listDataLocal = listData;
     if (linkedFact) {
       dataTypeLocal = linkedDataType;
-      operandLocal = linkedConditionExpression?.operand;
-      if (linkedFact !== SKU) {
-        const linkedFactTreeData = treeData[linkedFact] || [];
-        const selectedIds = {};
-        // eslint-disable-next-line no-unused-expressions
-        Array.isArray(operandLocal) && operandLocal?.forEach((id) => { selectedIds[id] = true; });
-        const selectedListLocal = linkedFactTreeData?.reduce((acc, data) => {
-          if (selectedIds[data.id]) {
-            acc.push(
-              linkedFact === PRODUCT_ATTRIBUTE
-                ? `${data.parentName}: ${data.title}`
-                : data.name || data.title
-            );
-          }
-          return acc;
-        }, []);
-        listDataLocal = selectedListLocal;
-      } else {
-        listDataLocal = linkedConditionExpression?.operand || [];
-      }
+      listDataLocal = linkedConditionExpression?.operand || [];
     }
 
     switch (dataTypeLocal) {
@@ -251,9 +222,6 @@ CapConditionPreview.propTypes = {
   dstData: PropTypes.object,
   listData: PropTypes.array,
   additionalFields: PropTypes.object,
-  brand: PropTypes.array,
-  category: PropTypes.array,
-  attribute: PropTypes.array,
   /**Below fields are added in translations/en.js */
   includeMsg: PropTypes.string,
   excludeMsg: PropTypes.string,

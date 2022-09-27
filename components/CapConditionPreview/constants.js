@@ -4,3 +4,4 @@ export const NUMBER = 'NUMBER';
 export const PRODUCT_ATTRIBUTE = 'PRODUCT_ATTRIBUTE';
 
 export const SKU = 'SKU';
+export const CATEGORY = 'CATEGORY';

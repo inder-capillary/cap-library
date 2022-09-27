@@ -166,7 +166,7 @@ class CapMultiSelect extends React.Component {
 
   getSaveButton = () => {
     let selectButton = null;
-    const { appliedKeys, maxValuesToSelect, selectText, selectTooltipText = '', showSelectButtonToolTip = false, selectTooltipPlacement, } = this.props;
+    const { appliedKeys, maxValuesToSelect, selectText, selectTooltipText = '', showSelectButtonToolTip = false, selectTooltipPlacement } = this.props;
     const { selectedKeys } = this.state;
     if (
       ((selectedKeys && selectedKeys.length > 0)

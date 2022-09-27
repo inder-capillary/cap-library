@@ -24,8 +24,10 @@ import {
   MULTI_SELECT_TREE,
   OPERATORS,
   SKU,
+  CATEGORY,
+  PRODUCT_ATTRIBUTE,
+  EXTERNAL_SEARCH_ENABLED_ITEMS,
 } from "./constants";
-
 const { CapLabelInline } = CapLabel;
 
 const CapCondition = (props) => {
@@ -41,6 +43,7 @@ const CapCondition = (props) => {
     setCriteria,
     conditionValidationError,
     setConditionValidationError,
+    onSearch,
     hasProductSelection,
     additionalFields,
     handleSelectAdditionalCondition,
@@ -50,8 +53,14 @@ const CapCondition = (props) => {
     multiSelectPlaceholder,
     className,
     categoryTreeData,
+    searchedCategoryTreeData,
     brandTreeData,
     productTreeData,
+    searchedAttributeTreeData,
+    showProductSearchLoader,
+    allSearchedCatgeories,
+    allSearchedAttributes,
+    flattenedCategory,
     prefix,
     suffix,
     includeMsg,
@@ -72,6 +81,8 @@ const CapCondition = (props) => {
     uploadLimitExceeded,
     uploadReqLoader,
     or,
+    search: searchMsg,
+    searchWithExact: searchWithExactMsg,
   } = props;
 
   /**
@@ -87,6 +98,11 @@ const CapCondition = (props) => {
     BRAND: brandTreeData,
     CATEGORY: categoryTreeData,
     PRODUCT_ATTRIBUTE: productTreeData,
+  };
+
+  const searchedTreeDataMap = {
+    [CATEGORY]: searchedCategoryTreeData,
+    [PRODUCT_ATTRIBUTE]: searchedAttributeTreeData,
   };
 
 
@@ -110,6 +126,7 @@ const CapCondition = (props) => {
     const additionalConditionFactLocal = additionalConditionFact || fact;
     const additionalConditionFactTreeData = treeDataMap[additionalConditionFact] || [];
     const treeDataLocal = additionalConditionFactTreeData.length ? additionalConditionFactTreeData : treeData;
+    const isExternalSearch = EXTERNAL_SEARCH_ENABLED_ITEMS.includes(additionalConditionFact);
     if (!dataTypeLocal) return null;
     switch (dataTypeLocal) {
       /** if fact type is among DOUBLE,INTEGER and LONG - map it to ConditionNumber */
@@ -147,6 +164,7 @@ const CapCondition = (props) => {
             isAsynchronous={isAsynchronous}
             conditionExpressionOptions={additionalConditionConditionExpressionOptions}
             treeData={treeDataLocal}
+            searchedTreeData={searchedTreeDataMap[additionalConditionFact] || []}
             conditionExpression={additionalConditionConditionLocal}
             setConditionExpression={setConditionExpression}
             placeholder={addFieldPlaceholder || multiSelectPlaceholder}
@@ -155,7 +173,15 @@ const CapCondition = (props) => {
             uploadFailedError={uploadFailedError}
             uploadLimitExceeded={uploadLimitExceeded}
             uploadReqLoader={uploadReqLoader}
+            showProductSearchLoader={showProductSearchLoader[additionalConditionFact]}
             or={or}
+            onSearch={(searchText) => onSearch(additionalConditionFact, searchText)}
+            isExternalSearch={isExternalSearch}
+            searchMsg={searchMsg}
+            searchWithExactMsg={searchWithExactMsg}
+            allSearchedAttributes={allSearchedAttributes}
+            allSearchedCatgeories={allSearchedCatgeories}
+            flattenedCategory={flattenedCategory}
           />
         );
       case SKU:
@@ -283,14 +309,21 @@ CapCondition.propTypes = {
   multiSelectPlaceholder: PropTypes.string,
   additionalFields: PropTypes.array,
   categoryTreeData: PropTypes.array,
+  searchedCategoryTreeData: PropTypes.array,
+  searchedAttributeTreeData: PropTypes.array,
   brandTreeData: PropTypes.array,
   productTreeData: PropTypes.array,
+  showProductSearchLoader: PropTypes.bool,
   getEntities: PropTypes.func,
   handleSelectAdditionalCondition: PropTypes.func,
   hasProductSelection: PropTypes.bool,
   validateSkuIds: PropTypes.func,
   showProductSelectionCriteria: PropTypes.bool,
   isProductMandatory: PropTypes.bool,
+  onSearch: PropTypes.func,
+  allSearchedAttributes: PropTypes.array,
+  allSearchedCatgeories: PropTypes.array,
+  flattenedCategory: PropTypes.array,
   /**Below fields are added in translations/en.js */
   includeMsg: PropTypes.string,
   excludeMsg: PropTypes.string,
@@ -308,6 +341,8 @@ CapCondition.propTypes = {
   uploadLimitExceeded: PropTypes.string,
   uploadReqLoader: PropTypes.string,
   or: PropTypes.string,
+  search: PropTypes.string,
+  searchWithExact: PropTypes.string,
 };
 
 export default LocaleHoc(CapCondition, { key: "CapCondition" });

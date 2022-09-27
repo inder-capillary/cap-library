@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const SvgDraftfailed = props => (
+const SvgDraftfailed = (props) => (
   <svg
     width="1em"
     height="1em"
