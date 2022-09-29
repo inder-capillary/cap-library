@@ -213,7 +213,7 @@ export const CapPopoverTree = (props) => {
       />
       <CapRow>
         {!isTriggerDisabled ? (
-          <CapTooltip title={tooltipText}>
+          <CapTooltip title={tooltipText} overlayClassName="add-condition-tooltip">
             <TriggerComponent
               {...triggerProps}
               onClick={() => setShowPopover(true)}

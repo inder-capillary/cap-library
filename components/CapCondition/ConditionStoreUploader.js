@@ -6,14 +6,14 @@ import CapLabel from "../CapLabel";
 import { handleStoreCodeUpload } from "./helper";
 import { UPLOAD_LIMIT_EXCEEDED, UPLOAD_FAIL } from "./constants";
 
-export const ConditionStoreUploader = props => {
+export const ConditionStoreUploader = (props) => {
   const {
     handleOnSelect,
     getEntityDetails,
     uploadFailedError,
     uploadLimitExceeded,
     uploadReqLoader,
-    or
+    or,
   } = props;
 
   const [uploadError, setUploadError] = useState("");
@@ -28,7 +28,7 @@ export const ConditionStoreUploader = props => {
   }, [uploadedStores]);
 
   //handling different kind of errors while upload
-  const uploadErrorType = type => {
+  const uploadErrorType = (type) => {
     switch (type) {
       case UPLOAD_FAIL:
         setUploadError(uploadFailedError);
@@ -51,13 +51,12 @@ export const ConditionStoreUploader = props => {
       <CapSpin spinning={showLoader} tip={uploadReqLoader}>
         <CapCSVFileUploader
           sampleCsvFilePath={require("./storeCode.csv")}
-          onUpload={event =>
-            handleStoreCodeUpload(event, {
-              setUploadedStores,
-              setShowLoader,
-              uploadErrorType,
-              getEntityDetails
-            })
+          onUpload={(event) => handleStoreCodeUpload(event, {
+            setUploadedStores,
+            setShowLoader,
+            uploadErrorType,
+            getEntityDetails,
+          })
           }
           errorMessage={uploadError}
           onChipClose={removeUploadedStores}
@@ -73,6 +72,6 @@ ConditionStoreUploader.propTypes = {
   uploadFailedError: PropTypes.string.isRequired,
   uploadLimitExceeded: PropTypes.string.isRequired,
   uploadReqLoader: PropTypes.string.isRequired,
-  or: PropTypes.string.isRequired
+  or: PropTypes.string.isRequired,
 };
 export default ConditionStoreUploader;

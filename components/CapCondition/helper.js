@@ -33,11 +33,9 @@ export const handleStoreCodeUpload = (event, payload = {}) => {
         };
         setShowLoader(true);
         getEntityDetails(reqObjBody)
-          .then(resData => {
+          .then((resData) => {
             if (resData.status === 200) {
-              const newStores = resData.result.map(storeInfo =>
-                storeInfo.id.toString(),
-              );
+              const newStores = resData.result.map((storeInfo) => storeInfo.id.toString(), );
               setUploadedStores(newStores);
               setShowLoader(false);
             } else {

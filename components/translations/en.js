@@ -175,4 +175,10 @@ export default {
     invalidSKUFilename: 'invalidSKU.csv',
     uploadedMsg: 'uploaded',
   },
+  CapDndGraph: {
+    deleteBlockModalHeaderText: 'Delete block',
+    deleteBlockModalDescriptionText: 'Are you sure you want to delete this block?',
+    deleteButtonText: 'Delete',
+    cancelButtonText: 'Cancel',
+  },
 };

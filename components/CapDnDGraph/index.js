@@ -12,6 +12,7 @@ import { nanoid } from 'nanoid';
 import cloneDeep from 'lodash/cloneDeep';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
+import LocaleHoc from '../LocaleHoc';
 
 import CapIconsSidebar from '../CapDndGraphSidebar';
 import CapRow from '../CapRow';
@@ -19,6 +20,8 @@ import CapLabel from '../CapLabel';
 import GraphBlockNode from './GraphBlockNode';
 import CapIcon from '../CapIcon';
 import CapTooltip from '../CapTooltip';
+import CapModal from '../CapModal';
+import CapHeading from '../CapHeading';
 
 import {
   CUSTOM_EDGE,
@@ -41,7 +44,7 @@ import {
   SCHEDULE_BLOCK,
 } from './constants';
 
-import { CAP_G06 } from '../styled/variables';
+import { CAP_G06, CAP_PRIMARY } from '../styled/variables';
 import './index.scss';
 import CapBorderedBox from '../CapBorderedBox';
 import { recursivelyDeleteNodes } from './utils';
@@ -49,9 +52,10 @@ import { recursivelyDeleteNodes } from './utils';
 const endIconProps = {
   type: 'end',
   style: {
-    color: '#b3bac5',
+    color: CAP_PRIMARY.base,
     padding: '9px 0',
   },
+  textLabel: <CapLabel type="label2" className="margin-l-2">End</CapLabel>,
 };
 
 const CapDndGraph = (props) => {
@@ -79,6 +83,8 @@ const CapDndGraph = (props) => {
     nodes: [],
     edges: [],
   });
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [blockId, setBlockId] = useState(null);
 
   const blockNodes = useMemo(() => graphNodes.filter(
     (node) => ![ENTRY_TRIGGER, EXIT_TRIGGER, END_NODE, PLACEHOLDER_NODE, EMPTY_GRAPH_TEXT, SCHEDULE_BLOCK].includes(node?.type)
@@ -778,9 +784,48 @@ const CapDndGraph = (props) => {
     });
   }, []);
 
+  const handleOnClickModalDeleteBtn = () => {
+    deleteNodeHandler(blockId);
+    setShowConfirmationModal(false);
+  };
+
+  const handleOnCloseModal = () => {
+    setShowConfirmationModal(false);
+  };
+
+  const getDeleteBlockWarningModal = () => {
+    const {
+      deleteBlockModalHeaderText,
+      deleteBlockModalDescriptionText,
+      deleteButtonText,
+      cancelButtonText,
+    } = props || {};
+    return (
+      <CapModal
+        className="delete-block-modal"
+        title={
+          <>
+            <CapHeading type="h3">
+              {deleteBlockModalHeaderText}
+            </CapHeading>
+            <CapLabel className="margin-t-8" type="label9">
+              {deleteBlockModalDescriptionText}
+            </CapLabel>
+          </>
+        }
+        visible={showConfirmationModal}
+        onOk={handleOnClickModalDeleteBtn}
+        onCancel={handleOnCloseModal}
+        okText={deleteButtonText}
+        closeText={cancelButtonText}
+      />
+    );
+  };
+
   const onClickActionIcon = useCallback(({ blockId, actionType }) => {
     if (actionType === DELETE) {
-      deleteNodeHandler(blockId);
+      setShowConfirmationModal(true);
+      setBlockId(blockId);
     } else if ([SETTINGS, VIEW].includes(actionType)) {
       onClickConfigure(blockId);
     }
@@ -800,6 +845,7 @@ const CapDndGraph = (props) => {
           overflow: 'auto',
         }}
       />
+      {showConfirmationModal && getDeleteBlockWarningModal()}
     </CapRow>
   );
 };
@@ -814,4 +860,4 @@ CapDndGraph.defaultProps = {
   nodeTitleMapping: {},
 };
 
-export default CapDndGraph;
+export default LocaleHoc(CapDndGraph, { key: 'CapDndGraph' });

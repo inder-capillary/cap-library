@@ -11,3 +11,14 @@
     }
   }
 }
+.delete-block-modal {
+  .ant-modal-content {
+    margin-top: 130px;
+    .ant-modal-close{
+      margin-top: 8px;
+    }
+    .ant-modal-title {
+      margin-top: 10px;
+    }
+  }
+}
