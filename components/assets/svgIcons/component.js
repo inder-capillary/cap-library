@@ -220,6 +220,7 @@ const getSvgComponentFromType = (type) => {
     case 'tick-outlined': return SvgIcons.TickOutlined;
     case 'draft-failed': return SvgIcons.DraftFailed;
     case 'draft-partially-failed': return SvgIcons.DraftPartiallyFailed;
+    case 'forward-arrow': return SvgIcons.Forward;
 
     default: return null;
   }

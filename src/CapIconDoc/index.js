@@ -906,6 +906,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="draft-partially-failed" />
               <Text>draft-partially-failed</Text>
             </List>
+            <List>
+              <CapIcon type="forward-arrow" />
+              <Text>forward-arrow</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}
