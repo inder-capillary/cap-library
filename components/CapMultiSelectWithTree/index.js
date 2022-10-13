@@ -327,7 +327,7 @@ class CapMultiSelectWithTree extends React.Component {
     const clonedSelectedKeys = [...selectedKeys];
     const alreadySelectedKeys = [...this.state.selectedKeys];
     const { searchValue, externalSearchValue } = this.state;
-    const { treeData, searchKey, defaultKeys } = this.props;
+    const { treeData, searchKey, defaultKeys = [] } = this.props;
     const currentKey = info.node.props.eventKey;
     let updatedSelectedKeys;
     if (!searchValue && !externalSearchValue) {
