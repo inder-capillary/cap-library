@@ -327,7 +327,7 @@ class CapMultiSelectWithTree extends React.Component {
     const clonedSelectedKeys = [...selectedKeys];
     const alreadySelectedKeys = [...this.state.selectedKeys];
     const { searchValue, externalSearchValue } = this.state;
-    const { treeData, searchKey } = this.props;
+    const { treeData, searchKey, defaultKeys } = this.props;
     const currentKey = info.node.props.eventKey;
     let updatedSelectedKeys;
     if (!searchValue && !externalSearchValue) {
@@ -350,20 +350,20 @@ class CapMultiSelectWithTree extends React.Component {
             const allParents = getAllParents(allChildren, this.dataListObject);
             const finalSelectedKeys = difference(allChildren, allParents);
             updatedSelectedKeys = union(alreadySelectedKeys, finalSelectedKeys);
-            this.setState({ selectedKeys: updatedSelectedKeys });
+            this.setState({ selectedKeys: union(updatedSelectedKeys, defaultKeys) });
           } else {
             alreadySelectedKeys.push(currentKey);
             updatedSelectedKeys = alreadySelectedKeys;
-            this.setState({ selectedKeys: updatedSelectedKeys });
+            this.setState({ selectedKeys: union(updatedSelectedKeys, defaultKeys) });
           }
         } else if (parentKeys.length > 0) {
           const allChildren = getAllChildren(currentKey, this.dataListObject);
           finalSelectedKeys = difference(alreadySelectedKeys, allChildren);
           updatedSelectedKeys = finalSelectedKeys;
-          this.setState({ selectedKeys: updatedSelectedKeys });
+          this.setState({ selectedKeys: union(updatedSelectedKeys, defaultKeys) });
         } else {
           updatedSelectedKeys = without(alreadySelectedKeys, currentKey);
-          this.setState({ selectedKeys: updatedSelectedKeys });
+          this.setState({ selectedKeys: union(updatedSelectedKeys, defaultKeys) });
         }
       }
       return updatedSelectedKeys;
@@ -462,6 +462,7 @@ class CapMultiSelectWithTree extends React.Component {
                 "item-category": item.isCategory,
                 "not-category": !item.isCategory,
                 "parent-contains-info-icon": item.info,
+                "is-liability-owner": item.isLiabilityOwner,
               })}
               disableCheckbox={
                 enableSingleParentSelection
@@ -509,6 +510,7 @@ class CapMultiSelectWithTree extends React.Component {
             {...item}
             className={classNames("child-node", {
               "contains-info-icon": item.info,
+              "is-liability-owner": item.isLiabilityOwner,
             })}
             disableCheckbox={
               enableSingleParentSelection
@@ -665,6 +667,7 @@ class CapMultiSelectWithTree extends React.Component {
       searchedTreeData,
       showProductSearchLoader,
       appliedKeyObjects,
+      disableSearch,
     } = this.props;
     const {
       visible,
@@ -778,20 +781,22 @@ class CapMultiSelectWithTree extends React.Component {
               </div>
             ) : (
               <div>
-                <div className="search-input">
-                  <Search
-                    focusOnMount
-                    alwaysShowFocus
-                    value={isExternalSearch ? externalSearchValue : searchValue}
-                    onClear={this.clearSearch}
-                    placeholder={searchPlaceholder}
-                    onChange={
-                      enableDebouncedSearch
-                        ? this.onDebouncedSearch
-                        : this.onSearch
-                    }
-                  />
-                </div>
+                {!disableSearch && (
+                  <div className="search-input">
+                    <Search
+                      focusOnMount
+                      alwaysShowFocus
+                      value={isExternalSearch ? externalSearchValue : searchValue}
+                      onClear={this.clearSearch}
+                      placeholder={searchPlaceholder}
+                      onChange={
+                        enableDebouncedSearch
+                          ? this.onDebouncedSearch
+                          : this.onSearch
+                      }
+                    />
+                  </div>
+                )}
                 {externalSearchValue && showProductSearchLoader ? (
                   <div
                     className="showing-spinner"
@@ -1029,6 +1034,8 @@ CapMultiSelectWithTree.propTypes = {
   title: PropTypes.string,
   showSelectedFilterCount: PropTypes.bool,
   enableSingleParentSelection: PropTypes.bool,
+  defaultKeys: PropTypes.array,
+  disableSearch: PropTypes.bool,
 };
 
 export default LocaleHoc(CapMultiSelectWithTree, {
