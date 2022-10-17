@@ -18,7 +18,7 @@ const { info, warning, warn, close, destroy } = notification;
 const clsPrefix = 'cap-notification-v2';
 
 const BreakWordHeading = styled(CapHeading)`
-  word-break: break-all
+  word-break: break-word
 `;
 
 const openNotification = (props, type) => {
