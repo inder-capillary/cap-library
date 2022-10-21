@@ -17,6 +17,7 @@ import * as styledVars from "../styled/variables";
 import CapButton from "../CapButton";
 import CapInput from "../CapInput";
 import CapIcon from "../CapIcon";
+import CapTooltip from "../CapTooltip";
 import LocaleHoc from "../LocaleHoc";
 
 import "./_capMultiSelectWithTree.scss";
@@ -405,12 +406,14 @@ class CapMultiSelectWithTree extends React.Component {
     return updatedSelectedKeys;
   }
 
-  renderTreeNodes = (data, searchValue, searchKey, isMatching, parentKey) => {
+  renderTreeNodes = (data, searchValue, searchKey, isMatching, parentKey, currentCheckedKeys) => {
     const {
       showSelectedCountByParent,
       moreText,
       treeData,
       enableSingleParentSelection,
+      maxValuesToSelect,
+      disableParentCategorySelection,
     } = this.props;
     let selectedParentKey;
     for (let i = 0; i < treeData.length; i++) {
@@ -441,7 +444,8 @@ class CapMultiSelectWithTree extends React.Component {
           searchValue,
           searchKey,
           isParentMatching,
-          item.key !== "select-all-common" ? item.key : undefined
+          item.key !== "select-all-common" ? item.key : undefined,
+          currentCheckedKeys,
         );
         const childrenMap = {};
         let selectedCount = 0;
@@ -456,6 +460,7 @@ class CapMultiSelectWithTree extends React.Component {
         if (temp.length > 0) {
           acc.push(
             <TreeNode
+              checkable={!this.props.disableParentCategorySelection}
               key={item.key}
               dataRef={item}
               className={classNames(item.className, {
@@ -513,16 +518,28 @@ class CapMultiSelectWithTree extends React.Component {
               "is-liability-owner": item.isLiabilityOwner,
             })}
             disableCheckbox={
-              enableSingleParentSelection
+              (disableParentCategorySelection &&
+              currentCheckedKeys && 
+              currentCheckedKeys.length >= maxValuesToSelect && 
+              !(currentCheckedKeys.includes(item.key))) ||
+              (enableSingleParentSelection
               && parentKey
               && selectedParentKey
-              && selectedParentKey !== parentKey
+              && selectedParentKey !== parentKey)
             }
             title={(
               <div className="multi-select-title">
-                <div className="multi-select-main-title" title={item.title}>
-                  {item.title}
-                </div>
+                 {disableParentCategorySelection && currentCheckedKeys && currentCheckedKeys.length >= maxValuesToSelect &&
+                  !(currentCheckedKeys.includes(item.key))
+                 ?
+                 <CapTooltip overlayStyle={{ zIndex: 10003 }} mouseLeaveDelay={0.5} placement="bottom" title={this.props.disableCheckboxTooltipMessage}>
+                  <div className="multi-select-main-title" title={item.title}>
+                    {item.title}
+                  </div>
+                </CapTooltip>
+                :
+                <div className="multi-select-main-title" title={item.title}>{item.title}</div>
+                }
                 {item.info && (
                   <span className="info-tooltip">
                     <Tooltip placement="right" title={item.info}>
@@ -668,6 +685,7 @@ class CapMultiSelectWithTree extends React.Component {
       showProductSearchLoader,
       appliedKeyObjects,
       disableSearch,
+      disableParentCategorySelection,
     } = this.props;
     const {
       visible,
@@ -692,11 +710,6 @@ class CapMultiSelectWithTree extends React.Component {
     if (isExternalSearch) {
       treeDataWithSelectAll = externalSearchValue ? searchedTreeData : treeData;
     }
-    const treeNodes = this.renderTreeNodes(
-      treeDataWithSelectAll,
-      searchValue,
-      searchKey
-    );
     let triggerLeftContent = "";
     let triggerRightContent = "";
     if (appliedKeys && appliedKeys.length > 0) {
@@ -742,6 +755,14 @@ class CapMultiSelectWithTree extends React.Component {
       searchKey
     );
     currentCheckedKeys = intersection(currentCheckedKeys, currentValues);
+    const treeNodes = this.renderTreeNodes(
+      treeDataWithSelectAll,
+      searchValue,
+      searchKey,
+      null,
+      null,
+      currentCheckedKeys,
+    );
     const appliedKeyMap = {};
     let disableSelectFilterButton = true;
     appliedKeys.forEach((appliedKey) => {
@@ -847,7 +868,9 @@ class CapMultiSelectWithTree extends React.Component {
                     ) : (
                       <></>
                     )}
-                    {this.props.showSelect ? (
+                    {this.props.showSelect && <>
+                      {formattedKeys.length > 0
+                      ?
                       <CapButton
                         type="primary"
                         className="select-dropdown"
@@ -859,9 +882,24 @@ class CapMultiSelectWithTree extends React.Component {
                       >
                         {this.props.selectText}
                       </CapButton>
-                    ) : (
-                      <></>
-                    )}
+                      :
+                      <CapTooltip placement="bottom" title={this.props.disableSelectTooltipMessage}>
+                        <span className="button-disabled-tooltip-wrapper">
+                          <CapButton
+                            type="primary"
+                            className="select-dropdown"
+                            disabled={disableSelectFilterButton}
+                            onClick={() => {
+                              this.props.onSelect();
+                              this.hide();
+                            }}
+                          >
+                            {this.props.selectText}
+                          </CapButton>
+                        </span>
+                    </CapTooltip>
+                  }</>
+                }
                     {this.props.showClose ? (
                       <CapButton type="default" onClick={this.hide}>
                         {this.props.closeText}
@@ -918,13 +956,13 @@ class CapMultiSelectWithTree extends React.Component {
                       <span
                         style={{
                           fontSize: "12px",
-                          color: disableSelectFilterButton
-                            ? "#F34F56"
-                            : "#333333",
+                          // color: disableSelectFilterButton
+                          //   ? "#F34F56"
+                          //   : "#333333",
                         }}
                       >
-                        {`${selectedKeys
-                          && selectedKeys.length} ${selectedText}`}
+                        { disableParentCategorySelection ? `${formattedKeys &&
+                        formattedKeys.length}/${maxValuesToSelect} ${selectedText}`: `${formattedKeys && formattedKeys.length} ${selectedText}` }
                       </span>
                     </div>
                   </div>
@@ -1036,6 +1074,9 @@ CapMultiSelectWithTree.propTypes = {
   enableSingleParentSelection: PropTypes.bool,
   defaultKeys: PropTypes.array,
   disableSearch: PropTypes.bool,
+  disableParentCategorySelection: PropTypes.bool,
+  disableCheckboxTooltipMessage: PropTypes.string,
+  disableSelectTooltipMessage: PropTypes.string,
 };
 
 export default LocaleHoc(CapMultiSelectWithTree, {
