@@ -221,7 +221,7 @@ const getSvgComponentFromType = (type) => {
     case 'draft-failed': return SvgIcons.DraftFailed;
     case 'draft-partially-failed': return SvgIcons.DraftPartiallyFailed;
     case 'forward-arrow': return SvgIcons.Forward;
-
+    case 'ia-mascot': return SvgIcons.IaMascot;
     default: return null;
   }
 };

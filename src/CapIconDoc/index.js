@@ -910,6 +910,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="forward-arrow" />
               <Text>forward-arrow</Text>
             </List>
+            <List>
+              <CapIcon type="ia-mascot" />
+              <Text>IA Mascot</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}
