@@ -65,6 +65,7 @@ function CapStaticTemplates(props) {
     blankTemplateLabel,
     blankTemplateDescription,
     searchPlaceholderMsg,
+    showComingSoon = true,
   } = props;
 
   const [showModal, setShowModal] = useState(false);
@@ -169,15 +170,17 @@ function CapStaticTemplates(props) {
               )
             }
           />
-          {!isAvailable && !isBlankTemplate && (
-            <CapColoredTag
-              className="coming-soon-tag"
-              style={{ marginBottom: CAP_SPACE_12 }}
-              tagColor="#0065ff"
-            >
-              {comingSoonMsg}
-            </CapColoredTag>
-          )}
+          {showComingSoon
+            && (!isAvailable && !isBlankTemplate && (
+              <CapColoredTag
+                className="coming-soon-tag"
+                style={{ marginBottom: CAP_SPACE_12 }}
+                tagColor="#0065ff"
+              >
+                {comingSoonMsg}
+              </CapColoredTag>
+            )
+            )}
         </CapRow>
       ),
       value: key,
@@ -203,7 +206,7 @@ function CapStaticTemplates(props) {
           {description}
         </CapLabel>
       ),
-      radioCardClassName: isAvailable ? 'template-enabled' : 'template-disabled',
+      radioCardClassName: (isAvailable || !showComingSoon) ? 'template-enabled' : 'template-disabled',
       ...rest,
     };
   }
