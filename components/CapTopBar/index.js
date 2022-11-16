@@ -20,6 +20,7 @@ import { Select } from './Select';
 import './_capTopBar.scss';
 import { LogoBackground } from '../assets/icons';
 import * as styledVars from "../styled/variables";
+import CapDivider from '../CapDivider';
 
 const { Header } = Layout;
 
@@ -148,11 +149,12 @@ class CapTopBar extends React.Component {
     const { fixedProduct = false, productsList, selectedProduct, handleProductChange, title, ...rest } = drawerListProps;
     const { showDrawer } = this.state;
     return (
-      <div className={classNames(`${clsPrefix}-dimensions`)} style={{ borderRight: `1px solid ${styledVars.CAP_G07}`, marginRight: styledVars.CAP_SPACE_16 }}>
+    <>
+      <div className={classNames(`${clsPrefix}-dimensions`)} style={{ marginRight: '30px' }}>
         {fixedProduct
           ? <div><CapHeading type="h3" className={classNames(`${clsPrefix}-product-title`)}>{selectedProduct || ''}</CapHeading></div>
           : (
-            <div onClick={this.openDrawer} className={classNames(`${clsPrefix}-flexDisplay`)} style={{ alignItems: 'center', cursor: 'pointer' }}>
+            <div onClick={this.openDrawer} className={classNames(`${clsPrefix}-flexDisplay`, `${clsPrefix}-cursor-pointer`)}>
               <CapIcon type="more-applications" className={classNames(`${clsPrefix}-more-app`)}></CapIcon>
               <CapHeading type="h3" className={classNames(`${clsPrefix}-capitalize`)}>{selectedProduct || ''}</CapHeading>
             </div>
@@ -167,6 +169,8 @@ class CapTopBar extends React.Component {
             {...rest} />
         )}
       </div>
+      <CapDivider type="vertical" className="cap-top-bar-vertical" />
+    </>
     );
   }
 

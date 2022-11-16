@@ -119,13 +119,22 @@ $orgSelectPrefix: top-bar-select;
     border-bottom: 2px solid $CAP_G01;
   }
 }
-
+.ant-divider-vertical.cap-top-bar-vertical {
+  height: $CAP_SPACE_20;
+  margin-right: 15px;
+}
 .#{$clsPrefix}-topbarIcon {
-  margin: 0 0 0 $CAP_SPACE_32;
+  padding: $CAP_SPACE_12;
+  margin: 0 2px;
+}
+.#{$clsPrefix}-topbarIcon:hover {
+  background-color: $CAP_G08;
+  border-radius: $CAP_SPACE_24;
+  cursor: pointer;
 }
 .#{$clsPrefix}-user {
   @media screen and (min-width: 1260px) {
-    margin: 0 $CAP_SPACE_24 0 $CAP_SPACE_60;
+    margin: 0 $CAP_SPACE_24 0 $CAP_SPACE_44;
   }
   @media screen and (max-width: 1260px) {
     margin: 0 $CAP_SPACE_24 0 $CAP_SPACE_40;
@@ -141,6 +150,7 @@ $orgSelectPrefix: top-bar-select;
 .#{$orgSelectPrefix}-selected-icon {
   display: flex;
   align-items: center;
+  justify-content: center;
   position: relative;
   height: $CAP_SPACE_32;
   width: $CAP_SPACE_32;
@@ -259,12 +269,13 @@ $orgSelectPrefix: top-bar-select;
 .#{$clsPrefix}-flexDisplay {
   display: flex;
   flex-grow: 1;
+  align-items: center;
 }
 
 .#{$clsPrefix}-more-app {
   height: $CAP_SPACE_24;
   width: $CAP_SPACE_23;
-  margin: $CAP_SPACE_20 $CAP_SPACE_20 $CAP_SPACE_20 $CAP_SPACE_19;
+  margin: 17px 10px 17px 21px;
 }
 
 .#{$clsPrefix}-product-title {
@@ -272,6 +283,13 @@ $orgSelectPrefix: top-bar-select;
 }
 
 .#{$clsPrefix}-dimensions {
+  .top-bar-select-selection {
+    justify-content: unset;
+  }
+  .top-bar-select-arrow {
+    margin-left: $CAP_SPACE_20;
+    margin-right: unset;
+  }
   height: $CAP_SPACE_64;
   width: 240px;
 }
@@ -282,4 +300,7 @@ $orgSelectPrefix: top-bar-select;
 
 .#{$clsPrefix}-capitalize {
   text-transform: capitalize;
+}
+.#{$clsPrefix}-cursor-pointer {
+  cursor: pointer;
 }

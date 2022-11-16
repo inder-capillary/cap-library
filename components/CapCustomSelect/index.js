@@ -127,6 +127,7 @@ class CapCustomSelect extends React.Component {
       rowHeight = 40,
       virtualContainerStyle = {},
       placement = "bottomLeft",
+      getPopupContainer,
     } = this.props;
 
     const { visible, searchText } = this.state;
@@ -142,8 +143,7 @@ class CapCustomSelect extends React.Component {
       <Popover
         trigger="click"
         placement={placement}
-        // removing it for testing purpose, if styling issue occurs, uncomment it and check
-        // getPopupContainer={(trigger) => trigger.parentNode}
+        getPopupContainer={getPopupContainer}
         overlayClassName={classNames(`${clsPrefix}-popover`, popoverClassName)}
         overlayStyle={{ width: popwidth }}
         visible={visible}
@@ -244,6 +244,10 @@ class CapCustomSelect extends React.Component {
   }
 }
 
+CapCustomSelect.defaultProps = {
+  getPopupContainer: () => document.body,
+};
+
 CapCustomSelect.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.string,
@@ -270,6 +274,7 @@ CapCustomSelect.propTypes = {
   ]),
   virtualScrollWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   rowHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  getPopupContainer: PropTypes.func,
 };
 
 export default LocaleHoc(CapCustomSelect, { key: "CapCustomSelect" });
