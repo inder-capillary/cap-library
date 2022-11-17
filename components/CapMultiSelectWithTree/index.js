@@ -30,7 +30,7 @@ const clsPrefix = "cap-multi-tree-select-v2";
 
 function getObject(array, key, value) {
   let o;
-  array.some(function iter(a) {
+  array?.some(function iter(a) {
     if (String(a[key]) === String(value)) {
       o = a;
       return true;

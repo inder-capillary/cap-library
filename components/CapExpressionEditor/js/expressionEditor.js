@@ -1,5 +1,7 @@
 /* eslint-disable */ 
 import rangy from 'rangy';
+import $ from 'jquery';
+import 'jquery-migrate';
 
 $.fn.expredit = function (grammar, options) {
 	"use strict";
