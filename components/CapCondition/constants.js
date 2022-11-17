@@ -28,3 +28,9 @@ export const UPLOAD_FAIL = "UPLOAD_FAIL";
 export const UPLOAD_LIMIT_EXCEEDED = "UPLOAD_LIMIT_EXCEEDED";
 
 export const EXTERNAL_SEARCH_ENABLED_ITEMS = [CATEGORY, PRODUCT_ATTRIBUTE];
+
+export const STRING = "STRING";
+export const CONTAINS = "CONTAINS";
+export const STARTS_WITH = "STARTS_WITH";
+export const ENDS_WITH = "ENDS_WITH";
+export const EXACT = "EXACT";

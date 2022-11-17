@@ -1,6 +1,7 @@
 $capConditionNumber: cap-condition-number;
 $capConditionMultiSelect: cap-condition-multi-select;
 $capConditionMultiTreeSelect: cap-multi-tree-select-v2;
+$capConditionString: cap-condition-string;
 
 .#{$capConditionNumber}{
   display: contents;
@@ -41,5 +42,13 @@ $capConditionMultiTreeSelect: cap-multi-tree-select-v2;
     height: 44px;
     display: flex;
     align-items: center;
+  }
+}
+
+.#{$capConditionString}{
+  display: contents;
+  margin: 0;
+  input.ant-input {
+    height: 90%;
   }
 }

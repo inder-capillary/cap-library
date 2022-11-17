@@ -8,8 +8,9 @@ import CapIcon from "../CapIcon";
 import LocaleHoc from "../LocaleHoc";
 import CapLabel from "../CapLabel";
 import CapTruncateList from "../CapTruncateList";
-import { MULTI_SELECT, LIST, NUMBER, SKU } from "./constants";
+import { MULTI_SELECT, LIST, NUMBER, SKU, STRING } from "./constants";
 import { StyledFlexWrapDiv, StyledCapLabel, SkuDownloadLink } from "./style";
+import "./_capConditionPreview.scss";
 
 const { CapLabelInline } = CapLabel;
 
@@ -69,24 +70,24 @@ const CapConditionPreview = ({
   //common function to handle csv downloads
   const downloadHandler = (event, data, downloadedFileName) => {
     event.target.setAttribute(
-      'href',
-      `data:text/csv;charset=utf-8,${encodeURIComponent(data)}`,
+      "href",
+      `data:text/csv;charset=utf-8,${encodeURIComponent(data)}`
     );
-    event.target.setAttribute('download', downloadedFileName);
+    event.target.setAttribute("download", downloadedFileName);
   };
 
   const downloadSKUs = (event, list = []) => {
-    const csvArray = [
-      [
-        addedSKUsMsg,
-      ],
-    ];
+    const csvArray = [[addedSKUsMsg]];
     list.forEach((sku) => csvArray.push([sku]));
-    const csvContent = csvArray.map((e) => e.join(',')).join('\n');
+    const csvContent = csvArray.map((e) => e.join(",")).join("\n");
     downloadHandler(event, csvContent, skuFileName);
   };
 
-  const OperandValues = ({ linkedFact, linkedDataType, linkedConditionExpression }) => {
+  const OperandValues = ({
+    linkedFact,
+    linkedDataType,
+    linkedConditionExpression,
+  }) => {
     let dataTypeLocal = type;
     let listDataLocal = listData;
     if (linkedFact) {
@@ -103,32 +104,30 @@ const CapConditionPreview = ({
               {!listDataLocal && (
                 <CapIcon className="offer-icon" size="s" type="attachment" />
               )}
-              {
-                linkedFact === SKU ? (
-                  <>
-                    <CapTruncateList
-                      list={listDataLocal}
-                      showNumber={1}
-                      capLabelType="label4"
-                      showTooltip={false}
-                    />
-                    <SkuDownloadLink
-                      onClick={(e) => downloadSKUs(e, listDataLocal)}
-                    >
-                      <>
-                        <CapIcon type="download" size="s" />
-                        {uploadedMsg}
-                      </>
-                    </SkuDownloadLink>
-                  </>
-                ) : (
+              {linkedFact === SKU ? (
+                <>
                   <CapTruncateList
-                    list={listDataLocal || dstData.couponSeriesNames}
+                    list={listDataLocal}
                     showNumber={1}
                     capLabelType="label4"
+                    showTooltip={false}
                   />
-                )
-              }
+                  <SkuDownloadLink
+                    onClick={(e) => downloadSKUs(e, listDataLocal)}
+                  >
+                    <>
+                      <CapIcon type="download" size="s" />
+                      {uploadedMsg}
+                    </>
+                  </SkuDownloadLink>
+                </>
+              ) : (
+                <CapTruncateList
+                  list={listDataLocal || dstData.couponSeriesNames}
+                  showNumber={1}
+                  capLabelType="label4"
+                />
+              )}
             </CapRow>
           </>
         );
@@ -138,6 +137,20 @@ const CapConditionPreview = ({
           <>
             <ValuesPrefix />
             <CapLabelInline type="label16">{operand}</CapLabelInline>
+          </>
+        );
+      case STRING:
+        return (
+          <>
+            <CapLabelInline type="label18">
+              {(operator || "").toLowerCase().replace("_", " ")}
+            </CapLabelInline>
+            <CapLabelInline
+              type="label16"
+              className="cap-condition-preview-string"
+            >
+              {operand}
+            </CapLabelInline>
           </>
         );
       case LIST:
@@ -155,38 +168,35 @@ const CapConditionPreview = ({
   };
 
   const LabelType = ({ children }) => (
-    <CapLabelInline type="label18">
-      {children}
-    </CapLabelInline>
+    <CapLabelInline type="label18">{children}</CapLabelInline>
   );
 
   const getAdditionalConditions = () => Object.values(additionalFields || {})?.length > 0
     ? Object.values(additionalFields).map(
-      ({
-        description: linkedDescription,
-        factId: linkedFact,
-        expression: linkedConditionExpression,
-      }, index) => (
-              <>
-                {
-                  !index ? (
-                    <LabelType>{lineItemMsg}</LabelType>
-                  ) : (
-                    <LabelType>{andMsg}</LabelType>
-                  )
-                }
-                <StyledCapLabel type="label2">
-                  {linkedDescription}
-                </StyledCapLabel>
-                <CapLabelInline type="label18">
-                  {operandsMapping[linkedConditionExpression.operator]?.text}
-                </CapLabelInline>
-                <OperandValues
-                  linkedFact={linkedFact}
-                  linkedDataType={MULTI_SELECT}
-                  linkedConditionExpression={linkedConditionExpression}
-                />
-              </>
+      (
+        {
+          description: linkedDescription,
+          factId: linkedFact,
+          expression: linkedConditionExpression,
+        },
+        index
+      ) => (
+            <>
+              {!index ? (
+                <LabelType>{lineItemMsg}</LabelType>
+              ) : (
+                <LabelType>{andMsg}</LabelType>
+              )}
+              <StyledCapLabel type="label2">{linkedDescription}</StyledCapLabel>
+              <CapLabelInline type="label18">
+                {operandsMapping[linkedConditionExpression.operator]?.text}
+              </CapLabelInline>
+              <OperandValues
+                linkedFact={linkedFact}
+                linkedDataType={MULTI_SELECT}
+                linkedConditionExpression={linkedConditionExpression}
+              />
+            </>
       )
     )
     : null;
@@ -203,7 +213,9 @@ const CapConditionPreview = ({
           </CapLabelInline>
           <CapLabelInline type="label18">{whoseMsg}</CapLabelInline>
           <StyledCapLabel type="label2">{conditionName}</StyledCapLabel>
-          <CapLabelInline type="label18">{isMsg}</CapLabelInline>
+          {type !== STRING && (
+            <CapLabelInline type="label18">{isMsg}</CapLabelInline>
+          )}
           <OperandValues />
           {getAdditionalConditions()}
         </StyledFlexWrapDiv>

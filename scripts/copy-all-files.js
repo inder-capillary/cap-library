@@ -89,7 +89,7 @@ function createPackageFile() {
           "nanoid": "3.1.30",
           "semantic-ui-react": "0.68.3",
           "jquery": "3.5.1",
-          "jquery-migrate": "3.3.1"
+          "jquery-migrate": "3.3.1",
         },
       };
 

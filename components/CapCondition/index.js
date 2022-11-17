@@ -6,6 +6,7 @@ import CapSelect from "../CapSelect";
 import CapRow from "../CapRow";
 import CapLabel from "../CapLabel";
 import ConditionNumber from "./ConditionNumber";
+import ConditionString from "./ConditionString";
 import ConditionMultiSelect from "./ConditionMultiSelect";
 import ConditionMultiSelectTree from "./ConditionMultiSelectTree";
 import CapButton from "../CapButton";
@@ -20,6 +21,7 @@ import {
   DOUBLE,
   LONG,
   INTEGER,
+  STRING,
   MULTI_SELECT,
   MULTI_SELECT_TREE,
   OPERATORS,
@@ -142,6 +144,13 @@ const CapCondition = (props) => {
             setConditionValidationError={setConditionValidationError}
             shouldRemoveOperator={shouldRemoveOperator}
             removeOperatorsList={removeOperatorsList}
+          />
+        );
+      case STRING:
+        return (
+          <ConditionString
+            conditionExpression={conditionExpression}
+            setConditionExpression={setConditionExpression}
           />
         );
       case MULTI_SELECT:

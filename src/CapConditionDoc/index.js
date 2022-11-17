@@ -13,7 +13,7 @@ const infoData = [
   {
     key: 2,
     property: "dataType",
-    description: "fact dataType i.e. DOUBLE/LONG/INTEGER etc.",
+    description: "fact dataType i.e. DOUBLE/LONG/INTEGER/STRING etc.",
     type: "string",
     default: "-",
   },
@@ -125,6 +125,10 @@ const CapConditionDoc = () => {
   };
   const [conditionExpression, setConditionExpression] = useState(defaultState);
   const [conditionExpressionDst, setConditionExpressionDst] = useState(defaultState);
+  const [conditionExpressionString, setConditionExpressionString] = useState({
+    operator: 'CONTAINS',
+    operand: 'test',
+  });
   const [criteria, setCriteria] = useState(null);
   const [conditionValidationError, setConditionValidationError] = useState(null);
   return (
@@ -151,6 +155,18 @@ const CapConditionDoc = () => {
           setCriteria={setCriteria}
           conditionExpression={conditionExpressionDst}
           setConditionExpression={setConditionExpressionDst}
+          conditionValidationError={conditionValidationError}
+          setConditionValidationError={setConditionValidationError}
+        />
+      </div>
+      <div className="cap-card-box-doc-showcase">
+        <CapCondition
+          fact="Bill type of the transaction"
+          dataType="STRING"
+          criteria={criteria}
+          setCriteria={setCriteria}
+          conditionExpression={conditionExpressionString}
+          setConditionExpression={setConditionExpressionString}
           conditionValidationError={conditionValidationError}
           setConditionValidationError={setConditionValidationError}
         />
