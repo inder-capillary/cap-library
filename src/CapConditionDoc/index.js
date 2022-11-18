@@ -78,6 +78,21 @@ const infoData = [
     type: "array",
     default: "[]",
   },
+  {
+    key: 11,
+    property: "hasCustomerSegments",
+    description:
+      "Boolean value to show customer segments values",
+    type: "boolean",
+    default: "false",
+  },
+  {
+    key: 12,
+    property: "customerSegmentsTreeData",
+    description: "customer segments value data",
+    type: "array",
+    default: "[]",
+  },
 ];
 
 const couponsTreeData = [
@@ -98,6 +113,19 @@ const couponsTreeData = [
     key: '10004',
   },
 ];
+
+const customerSegmentsTreeData = [{
+  key: 'segment_3771',
+  id: 'segment_3771',
+  title: 'segmentautomationtest_1663676433195',
+  children: [
+    {
+      key: 'segment_3771-0',
+      id: 'segment_3771-0',
+      title: 'automationtestpartationtest',
+    },
+  ],
+}];
 
 const CapConditionDoc = () => {
   /**
@@ -169,6 +197,20 @@ const CapConditionDoc = () => {
           setConditionExpression={setConditionExpressionString}
           conditionValidationError={conditionValidationError}
           setConditionValidationError={setConditionValidationError}
+        />
+      </div>
+      <div className="cap-card-box-doc-showcase">
+        <CapCondition
+          fact="Customer's segments"
+          dataType="STRING"
+          criteria={criteria}
+          setCriteria={setCriteria}
+          conditionExpression={conditionExpressionDst}
+          setConditionExpression={setConditionExpressionDst}
+          conditionValidationError={conditionValidationError}
+          setConditionValidationError={setConditionValidationError}
+          hasCustomerSegments
+          customerSegmentsTreeData={customerSegmentsTreeData}
         />
       </div>
       <PropertyTable data={infoData} />

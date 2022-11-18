@@ -42,6 +42,7 @@ const CapConditionPreview = ({
   uploadedMsg,
   inMsg,
   notInMsg,
+  hasCustomerSegments = false,
 }) => {
   /**
    * operandsMapping, mapping for supported operands for numbers
@@ -59,7 +60,7 @@ const CapConditionPreview = ({
   };
   const ValuesPrefix = () => (
     <>
-      {operator ? (
+      {!hasCustomerSegments && operator ? (
         <CapLabelInline type="label18">
           {operandsMapping[operator].text}
         </CapLabelInline>
@@ -140,19 +141,22 @@ const CapConditionPreview = ({
           </>
         );
       case STRING:
-        return (
-          <>
-            <CapLabelInline type="label18">
-              {(operator || "").toLowerCase().replace("_", " ")}
-            </CapLabelInline>
-            <CapLabelInline
-              type="label16"
-              className="cap-condition-preview-string"
-            >
-              {operand}
-            </CapLabelInline>
-          </>
-        );
+        if(!hasCustomerSegments) {
+          return (
+            <>
+              <CapLabelInline type="label18">
+                {(operator || "").toLowerCase().replace("_", " ")}
+              </CapLabelInline>
+              <CapLabelInline
+                type="label16"
+                className="cap-condition-preview-string"
+              >
+                {operand}
+              </CapLabelInline>
+            </>
+          );
+        }
+        return null;
       case LIST:
         return (
           <>
@@ -173,30 +177,33 @@ const CapConditionPreview = ({
 
   const getAdditionalConditions = () => Object.values(additionalFields || {})?.length > 0
     ? Object.values(additionalFields).map(
-      (
-        {
-          description: linkedDescription,
-          factId: linkedFact,
-          expression: linkedConditionExpression,
-        },
-        index
-      ) => (
-            <>
-              {!index ? (
-                <LabelType>{lineItemMsg}</LabelType>
-              ) : (
-                <LabelType>{andMsg}</LabelType>
-              )}
-              <StyledCapLabel type="label2">{linkedDescription}</StyledCapLabel>
-              <CapLabelInline type="label18">
-                {operandsMapping[linkedConditionExpression.operator]?.text}
-              </CapLabelInline>
-              <OperandValues
-                linkedFact={linkedFact}
-                linkedDataType={MULTI_SELECT}
-                linkedConditionExpression={linkedConditionExpression}
-              />
-            </>
+      ({
+        description: linkedDescription,
+        factId: linkedFact,
+        expression: linkedConditionExpression,
+      }, index) => (
+              <>
+                {
+                  !hasCustomerSegments && (
+                    <LabelType>{ !index ? lineItemMsg : andMsg }</LabelType>
+                  )
+                }
+                {!hasCustomerSegments &&
+                  <StyledCapLabel type="label2">
+                    {linkedDescription}
+                  </StyledCapLabel>
+                }
+                {!hasCustomerSegments &&
+                  <CapLabelInline type="label18">
+                    {operandsMapping[linkedConditionExpression.operator]?.text}
+                  </CapLabelInline>
+                }
+                <OperandValues
+                  linkedFact={linkedFact}
+                  linkedDataType={MULTI_SELECT}
+                  linkedConditionExpression={linkedConditionExpression}
+                />
+              </>
       )
     )
     : null;
@@ -213,10 +220,10 @@ const CapConditionPreview = ({
           </CapLabelInline>
           <CapLabelInline type="label18">{whoseMsg}</CapLabelInline>
           <StyledCapLabel type="label2">{conditionName}</StyledCapLabel>
-          {type !== STRING && (
+          {(type !== STRING || hasCustomerSegments) && (
             <CapLabelInline type="label18">{isMsg}</CapLabelInline>
           )}
-          <OperandValues />
+          {!hasCustomerSegments && <OperandValues />}
           {getAdditionalConditions()}
         </StyledFlexWrapDiv>
       </CapColumn>
@@ -253,6 +260,7 @@ CapConditionPreview.propTypes = {
   uploadedMsg: PropTypes.string,
   inMsg: PropTypes.string,
   notInMsg: PropTypes.string,
+  hasCustomerSegments: PropTypes.bool,
 };
 
 export default LocaleHoc(CapConditionPreview, { key: "CapConditionPreview" });

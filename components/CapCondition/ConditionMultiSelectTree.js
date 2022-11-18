@@ -12,6 +12,7 @@ import {
   PRODUCT_ATTRIBUTE,
   BRAND,
   CATEGORY,
+  CUSTOMER_SEGMENT_FILTER,
 } from "./constants";
 import ConditionStoreUploader from "./ConditionStoreUploader";
 
@@ -113,38 +114,34 @@ export const ConditionMultiSelectTree = ({
       }
     }
 
-    // for the remaining selected ids, search in treeData
-    values?.forEach((value) => {
-      let foundItem = {
-        id: value,
-        title: value,
-      };
-
-      // check if id is present is previously searched items,
-      const oldObj = conditionExpression?.operand?.find(
-        (oldValue) => oldValue?.id === value
-      );
-      if (oldObj) {
-        foundItem = oldObj;
-      }
-      // if not present in previously selected items or in recent search response,
-      // search in treeData
-      else if (fact === PRODUCT_ATTRIBUTE) {
+    if (fact === CUSTOMER_SEGMENT_FILTER) {
+      // In this loop we're pushing the selected values to valuesWithChildIds as if we select the parent then we get the parent id only not the child ids.
+      const valuesWithChildIds = [];
+      let foundItem = {};
+      values?.forEach((value) => {
         const attributeId = value?.split("-")[0];
-
-        let treeDataObj = allSearchedAttributes?.find(
+        const treeDataObject = treeData?.find(
           (treeObj) => treeObj?.id === attributeId
         );
-        if (isEmpty(treeDataObj)) {
-          treeDataObj = treeData.find(
-            (treeObj) => treeObj?.id === attributeId
-          );
+        // If "-" isn't present in the selected value, eg: (parent: segment_280, child: segment_280-0) then it's a parent. We need to push the childs of it.
+        if (value?.indexOf('-') < 0) {
+          treeDataObject?.children?.forEach((child) => valuesWithChildIds.push(child.id));
+        } else {
+          valuesWithChildIds.push(value);
         }
+      });
+
+      // Looping through all the updated values to get the desired output
+      valuesWithChildIds?.forEach((value) => {
+        const attributeId = value?.split("-")[0];
+        const treeDataObject = treeData.find(
+          (treeObj) => treeObj?.id === attributeId
+        );
         const {
           children = [],
           id = '',
           title = '',
-        } = treeDataObj || {};
+        } = treeDataObject || {};
         const foundIndex = children?.findIndex(
           (attributeValue) => value === attributeValue?.id
         );
@@ -156,32 +153,78 @@ export const ConditionMultiSelectTree = ({
             title: `${title}: ${children[foundIndex]?.title}`,
           };
         }
-      } else {
-        //for category and brands
-        let treeDataObj = allSearchedCatgeories?.find(
-          (treeDataObj) => treeDataObj?.id === value
-        );
-
-        const treedataMap = {
-          [BRAND]: treeData,
-          [CATEGORY]: flattenedCategory,
+        if (!isEmpty(foundItem)) {
+          valuesWithLabel.push(foundItem);
+        }
+      });
+    } else {
+      // for the remaining selected ids, search in treeData
+      values?.forEach((value) => {
+        let foundItem = {
+          id: value,
+          title: value,
         };
 
-        if (isEmpty(treeDataObj)) {
-          treeDataObj = treedataMap[fact]?.find(
+        // check if id is present is previously searched items,
+        const oldObj = conditionExpression?.operand?.find(
+          (oldValue) => oldValue?.id === value
+        );
+        if (oldObj) {
+          foundItem = oldObj;
+        }
+        // if not present in previously selected items or in recent search response,
+        // search in treeData
+        else if (fact === PRODUCT_ATTRIBUTE) {
+          const attributeId = value?.split("-")[0];
+          let treeDataObj = allSearchedAttributes?.find(
+            (treeObj) => treeObj?.id === attributeId
+          );
+          if (isEmpty(treeDataObj)) {
+            treeDataObj = treeData.find(
+              (treeObj) => treeObj?.id === attributeId
+            );
+          }
+          const {
+            children = [],
+            id = '',
+            title = '',
+          } = treeDataObj || {};
+          const foundIndex = children?.findIndex(
+            (attributeValue) => value === attributeValue?.id
+          );
+          if (foundIndex > -1) {
+            foundItem = {
+              parentId: id,
+              parentTitle: title,
+              id: value,
+              title: `${title}: ${children[foundIndex]?.title}`,
+            };
+          }
+        } else {
+          //for category and brands
+          let treeDataObj = allSearchedCatgeories?.find(
             (treeDataObj) => treeDataObj?.id === value
           );
+
+          const treedataMap = {
+            [BRAND]: treeData,
+            [CATEGORY]: flattenedCategory,
+          };
+
+          if (isEmpty(treeDataObj)) {
+            treeDataObj = treedataMap[fact]?.find(
+              (treeDataObj) => treeDataObj?.id === value
+            );
+          }
+          const { id, key, title, name } = treeDataObj || {};
+          foundItem = {
+            id: key || id,
+            title: title || name || key,
+          };
         }
-        const { id, key, title, name } = treeDataObj || {};
-        foundItem = {
-          id: key || id,
-          title: title || name || key,
-        };
-      }
-
-      valuesWithLabel.push(foundItem);
-    });
-
+        valuesWithLabel.push(foundItem);
+      });
+    }
 
     setConditionExpression(
       {

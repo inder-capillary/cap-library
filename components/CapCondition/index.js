@@ -85,6 +85,8 @@ const CapCondition = (props) => {
     or,
     search: searchMsg,
     searchWithExact: searchWithExactMsg,
+    customerSegmentsTreeData,
+    hasCustomerSegments,
   } = props;
 
   /**
@@ -100,6 +102,7 @@ const CapCondition = (props) => {
     BRAND: brandTreeData,
     CATEGORY: categoryTreeData,
     PRODUCT_ATTRIBUTE: productTreeData,
+    CUSTOMER_SEGMENT_FILTER: customerSegmentsTreeData,
   };
 
   const searchedTreeDataMap = {
@@ -144,13 +147,6 @@ const CapCondition = (props) => {
             setConditionValidationError={setConditionValidationError}
             shouldRemoveOperator={shouldRemoveOperator}
             removeOperatorsList={removeOperatorsList}
-          />
-        );
-      case STRING:
-        return (
-          <ConditionString
-            conditionExpression={conditionExpression}
-            setConditionExpression={setConditionExpression}
           />
         );
       case MULTI_SELECT:
@@ -203,6 +199,16 @@ const CapCondition = (props) => {
             setConditionExpression={setConditionExpression}
             showProductSelectionCriteria={showProductSelectionCriteria}
           />);
+      case STRING:
+        if(!hasCustomerSegments) {
+          return (
+            <ConditionString
+              conditionExpression={conditionExpression}
+              setConditionExpression={setConditionExpression}
+            />
+          );
+        }
+        return null;
       default:
         return null;
     }
@@ -225,13 +231,11 @@ const CapCondition = (props) => {
     }, index) => (
       <>
         {
-          !index ? (
-            <LabelType>{lineItemMsg}</LabelType>
-          ) : (
-            <LabelType>{andMsg}</LabelType>
+          !hasCustomerSegments && (
+            <LabelType>{ !index ? lineItemMsg : andMsg }</LabelType>
           )
         }
-        <StyledCapLabel type="label2">{additionalConditionDescription}</StyledCapLabel>
+        {!hasCustomerSegments && <StyledCapLabel type="label2">{additionalConditionDescription}</StyledCapLabel>}
         {getOperatorsAndOperand(
           additionalConditionFact,
           additionalConditionDataType,
@@ -298,6 +302,8 @@ CapCondition.defaultProps = {
   showProductSelectionCriteria: true,
   shouldRemoveOperator: false,
   removeOperatorsList: [],
+  customerSegmentsTreeData: [],
+  hasCustomerSegments: false,
 };
 
 CapCondition.propTypes = {
@@ -352,6 +358,8 @@ CapCondition.propTypes = {
   or: PropTypes.string,
   search: PropTypes.string,
   searchWithExact: PropTypes.string,
+  customerSegmentsTreeData: PropTypes.array,
+  hasCustomerSegments: PropTypes.bool,
 };
 
 export default LocaleHoc(CapCondition, { key: "CapCondition" });
