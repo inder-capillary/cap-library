@@ -7,7 +7,6 @@
 
 import React from "react";
 import { findDOMNode } from "react-dom";
-import $ from 'jquery';
 import PropTypes from "prop-types";
 import { CapInput } from "../index";
 import fix from "./js/fixGrammar";
@@ -15,7 +14,7 @@ import defaultGrammar from "./js/grammar";
 import "./_expressionEditor.scss";
 
 //Require js plugins
-require('jquery-migrate');
+require("./js/jquery");
 require("./js/expressionEditor");
 
 const classNames = require("classnames");
