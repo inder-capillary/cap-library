@@ -64,12 +64,14 @@ class CapCustomSelect extends React.Component {
   };
 
   getItems = () => {
-    const { options, value, type } = this.props;
+    const { options, value, type, useValueForSearch } = this.props;
     const { searchText } = this.state;
     return options.reduce((acc, item) => {
       if (
-        (searchText === ""
-        || item.label.toLowerCase().indexOf(searchText.toLowerCase()) !== -1)
+        (searchText === "" || useValueForSearch
+          ? item.value.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
+          : item.label.toLowerCase().indexOf(searchText.toLowerCase())
+            !== -1)
         && !(type === TAG && value.includes(item.value))
       ) {
         acc.push(
@@ -128,6 +130,7 @@ class CapCustomSelect extends React.Component {
       virtualContainerStyle = {},
       placement = "bottomLeft",
       getPopupContainer,
+      useValueForSearch = false,
     } = this.props;
 
     const { visible, searchText } = this.state;
@@ -144,6 +147,7 @@ class CapCustomSelect extends React.Component {
         trigger="click"
         placement={placement}
         getPopupContainer={getPopupContainer}
+        useValueForSearch={useValueForSearch}
         overlayClassName={classNames(`${clsPrefix}-popover`, popoverClassName)}
         overlayStyle={{ width: popwidth }}
         visible={visible}
@@ -275,6 +279,7 @@ CapCustomSelect.propTypes = {
   virtualScrollWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   rowHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   getPopupContainer: PropTypes.func,
+  useValueForSearch: PropTypes.bool,
 };
 
 export default LocaleHoc(CapCustomSelect, { key: "CapCustomSelect" });
