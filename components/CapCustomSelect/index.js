@@ -63,15 +63,20 @@ class CapCustomSelect extends React.Component {
     event.stopPropagation();
   };
 
+  searchTerm = (searchText, item, useValueForSearch) => {
+    if (searchText === "") return true;
+    if (useValueForSearch && typeof item.value !== 'object') {
+      return item?.value?.toLowerCase()?.indexOf(searchText?.toLowerCase()) !== -1;
+    }
+    return (item?.label?.toLowerCase()?.indexOf(searchText?.toLowerCase()) !== -1);
+  }
+
   getItems = () => {
     const { options, value, type, useValueForSearch } = this.props;
     const { searchText } = this.state;
     return options.reduce((acc, item) => {
       if (
-        (searchText === "" || useValueForSearch
-          ? item.value.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
-          : item.label.toLowerCase().indexOf(searchText.toLowerCase())
-            !== -1)
+        this.searchTerm(searchText, item, useValueForSearch)
         && !(type === TAG && value.includes(item.value))
       ) {
         acc.push(
