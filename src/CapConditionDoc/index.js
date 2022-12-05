@@ -113,6 +113,14 @@ const couponsTreeData = [
     key: '10004',
   },
 ];
+export const customFieldsData = [
+  { key: "abc", id: "71", title: "abc" },
+  { key: "bcd", id: "72", title: "bcd" },
+  { key: "cde", id: "73", title: "cde" },
+  { key: "def", id: "74", title: "def" },
+  { key: "efg", id: "75", title: "efg" },
+  { key: "fgh", id: "76", title: "fgh" },
+];
 
 const customerSegmentsTreeData = [{
   key: 'segment_3771',
@@ -157,6 +165,7 @@ const CapConditionDoc = () => {
     operator: 'CONTAINS',
     operand: 'test',
   });
+  const [customFieldConditions, setCustomFieldConditions] = useState([]);
   const [criteria, setCriteria] = useState(null);
   const [conditionValidationError, setConditionValidationError] = useState(null);
   return (
@@ -211,6 +220,17 @@ const CapConditionDoc = () => {
           setConditionValidationError={setConditionValidationError}
           hasCustomerSegments
           customerSegmentsTreeData={customerSegmentsTreeData}
+        />
+      </div>
+      <div className="cap-card-box-doc-showcase">
+        <CapCondition
+          fact="custom field"
+          dataType="CUSTOM_FIELD"
+          criteria={criteria}
+          setCriteria={setCriteria}
+          treeData={customFieldsData}
+          customFieldConditions={customFieldConditions}
+          setCustomFieldConditions={setCustomFieldConditions}
         />
       </div>
       <PropertyTable data={infoData} />

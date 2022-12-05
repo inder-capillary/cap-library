@@ -20,8 +20,6 @@ import { StyledCapCard } from './style';
 
 const clsPrefix = "cap-product-selection-v2";
 
-const { TreeNode } = Tree;
-
 const CapProductSelection = ({
   treeData: treeDataProps,
   target,
@@ -293,9 +291,9 @@ const CapProductSelection = ({
         };
 
         result.push(
-          <TreeNode {...treeNodeProps}>
+          <Tree.TreeNode {...treeNodeProps}>
             {children?.length && getTreeData(children)}
-          </TreeNode>
+          </Tree.TreeNode>
         );
       }
       return result;

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import CapHeading from '../CapHeading';
 import ComponentWithLabelHOC from '../assets/HOCs/ComponentWithLabelHOC';
 
-const { TextArea: AntTextArea } = Input;
 
 
 const CharCount = styled.div`
@@ -18,7 +17,7 @@ const ErrorCount = styled.span`
     color: ${(props) => props.showError ? "#e83135" : "auto"}
 `;
 
-const StyledTextArea = styled(AntTextArea)`
+const StyledTextArea = styled(Input.TextArea)`
     resize: none;
 `;
 

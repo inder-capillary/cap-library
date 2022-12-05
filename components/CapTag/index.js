@@ -11,7 +11,6 @@ import './_capTag.scss';
 // import styled from 'styled-components';
 
 const clsPrefix = 'cap-tag-v2';
-const { CheckableTag } = Tag;
 
 function CapTag(props) {
   const { className, disabled, type, ...rest } = props;
@@ -24,6 +23,6 @@ CapTag.propTypes = {
 
 };
 
-CapTag.CheckableTag = CheckableTag;
+CapTag.CheckableTag = Tag.CheckableTag;
 
 export default CapTag;

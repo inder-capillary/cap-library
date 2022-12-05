@@ -1,6 +1,7 @@
 export const DOUBLE = "DOUBLE";
 export const LONG = "LONG";
 export const INTEGER = "INTEGER";
+export const CUSTOM_FIELD = "CUSTOM_FIELD";
 
 export const INCLUDE = "include";
 export const EXCLUDE = "exclude";

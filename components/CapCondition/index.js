@@ -29,7 +29,9 @@ import {
   CATEGORY,
   PRODUCT_ATTRIBUTE,
   EXTERNAL_SEARCH_ENABLED_ITEMS,
+  CUSTOM_FIELD
 } from "./constants";
+import ConditionCustomField from "./ConditionCustomField";
 const { CapLabelInline } = CapLabel;
 
 const CapCondition = (props) => {
@@ -87,6 +89,8 @@ const CapCondition = (props) => {
     searchWithExact: searchWithExactMsg,
     customerSegmentsTreeData,
     hasCustomerSegments,
+    customFieldConditions,
+    setCustomFieldConditions
   } = props;
 
   /**
@@ -209,6 +213,14 @@ const CapCondition = (props) => {
           );
         }
         return null;
+      case CUSTOM_FIELD:
+        return (
+          <ConditionCustomField
+              treeData={treeData}
+              customFieldConditions={customFieldConditions}
+              setCustomFieldConditions={setCustomFieldConditions}
+            /> 
+        );
       default:
         return null;
     }

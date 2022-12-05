@@ -24,7 +24,6 @@ import "./_capMultiSelectWithTree.scss";
 
 const { Search } = CapInput;
 
-const { TreeNode } = Tree;
 
 const clsPrefix = "cap-multi-tree-select-v2";
 
@@ -459,7 +458,7 @@ class CapMultiSelectWithTree extends React.Component {
         });
         if (temp.length > 0) {
           acc.push(
-            <TreeNode
+            <Tree.TreeNode
               checkable={!this.props.disableParentCategorySelection}
               key={item.key}
               dataRef={item}
@@ -500,7 +499,7 @@ class CapMultiSelectWithTree extends React.Component {
               )}
             >
               {temp}
-            </TreeNode>
+            </Tree.TreeNode>
           );
         }
         return acc;
@@ -511,7 +510,7 @@ class CapMultiSelectWithTree extends React.Component {
         || item[searchKey].toLowerCase().indexOf(searchValue.toLowerCase()) > -1
       ) {
         acc.push(
-          <TreeNode
+          <Tree.TreeNode
             {...item}
             className={classNames("child-node", {
               "contains-info-icon": item.info,

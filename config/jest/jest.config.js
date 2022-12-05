@@ -12,9 +12,11 @@ module.exports = {
   setupTestFrameworkScriptFile: '<rootDir>/config/jest/enzyme-setup.js',
   collectCoverageFrom: [
     '**/components/**/index.js',
+    '**/components/**/*.{js,jsx}',
     '**/components/*.{js,jsx}',
     '**/containers/**/index.js',
   ],
+  testEnvironment: 'jsdom',
   clearMocks: true,
   resetMocks: true,
   globals: {

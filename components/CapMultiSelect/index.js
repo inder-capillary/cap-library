@@ -18,7 +18,6 @@ const { Search } = CapInput;
 
 const clsPrefix = 'cap-multi-select-v2';
 
-const { TreeNode } = Tree;
 
 function getObject(array, key, value) {
   let o;
@@ -38,16 +37,16 @@ const renderTreeNodes = (data, searchValue, searchKey) => {
       const temp = renderTreeNodes(item.children, searchValue, searchKey);
       if (temp.length > 0) {
         acc.push(
-          <TreeNode title={item.title} key={item.key} dataRef={item} className={item.className}>
+          <Tree.TreeNode title={item.title} key={item.key} dataRef={item} className={item.className}>
             {temp}
-          </TreeNode>
+          </Tree.TreeNode>
         );
       }
       return acc;
     }
     if (!searchValue || item[searchKey].toLowerCase().indexOf(searchValue.toLowerCase()) > -1) {
       acc.push(
-        <TreeNode
+        <Tree.TreeNode
           {...item}
           className={classNames(item.className, { 'with-info-icon': item.info, 'no-info-icon': !item.info })}
           title={(
@@ -162,6 +161,11 @@ class CapMultiSelect extends React.Component {
       finalSelectedKeys = [];
     }
     this.setState({ selectedKeys: without(finalSelectedKeys, "select-all-common") });
+    //collapse the dropdown based on collapseOnCheck prop, behaviour used in custom field
+    if (this.props.collapseOnSelect){
+      this.setState({visible : false});
+      this.applySelect();
+    }
   }
 
   getSaveButton = () => {

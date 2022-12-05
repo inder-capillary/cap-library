@@ -106,6 +106,7 @@ export default {
     or: 'OR',
     search: 'Search',
     searchWithExact: 'Search with exact keyword',
+    customFieldsTag:'custom fields'
   },
 
   CapConditionPreview: {
