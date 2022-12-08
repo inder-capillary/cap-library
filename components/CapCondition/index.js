@@ -88,7 +88,7 @@ const CapCondition = (props) => {
     search: searchMsg,
     searchWithExact: searchWithExactMsg,
     customerSegmentsTreeData,
-    hasCustomerSegments,
+    hidePrimaryDTcondition,
     customFieldConditions,
     setCustomFieldConditions
   } = props;
@@ -204,7 +204,7 @@ const CapCondition = (props) => {
             showProductSelectionCriteria={showProductSelectionCriteria}
           />);
       case STRING:
-        if(!hasCustomerSegments) {
+        if(!hidePrimaryDTcondition) {
           return (
             <ConditionString
               conditionExpression={conditionExpression}
@@ -243,11 +243,11 @@ const CapCondition = (props) => {
     }, index) => (
       <>
         {
-          !hasCustomerSegments && (
+          !hidePrimaryDTcondition && (
             <LabelType>{ !index ? lineItemMsg : andMsg }</LabelType>
           )
         }
-        {!hasCustomerSegments && <StyledCapLabel type="label2">{additionalConditionDescription}</StyledCapLabel>}
+        {!hidePrimaryDTcondition && <StyledCapLabel type="label2">{additionalConditionDescription}</StyledCapLabel>}
         {getOperatorsAndOperand(
           additionalConditionFact,
           additionalConditionDataType,
@@ -315,7 +315,7 @@ CapCondition.defaultProps = {
   shouldRemoveOperator: false,
   removeOperatorsList: [],
   customerSegmentsTreeData: [],
-  hasCustomerSegments: false,
+  hidePrimaryDTcondition: false,
 };
 
 CapCondition.propTypes = {
@@ -371,7 +371,7 @@ CapCondition.propTypes = {
   search: PropTypes.string,
   searchWithExact: PropTypes.string,
   customerSegmentsTreeData: PropTypes.array,
-  hasCustomerSegments: PropTypes.bool,
+  hidePrimaryDTcondition: PropTypes.bool,
 };
 
 export default LocaleHoc(CapCondition, { key: "CapCondition" });
