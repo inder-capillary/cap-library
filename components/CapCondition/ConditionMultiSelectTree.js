@@ -13,6 +13,8 @@ import {
   BRAND,
   CATEGORY,
   CUSTOMER_SEGMENT_FILTER,
+  ZONE_FILTER,
+  CONCEPT_FILTER,
 } from "./constants";
 import ConditionStoreUploader from "./ConditionStoreUploader";
 
@@ -209,6 +211,8 @@ export const ConditionMultiSelectTree = ({
           const treedataMap = {
             [BRAND]: treeData,
             [CATEGORY]: flattenedCategory,
+            [CONCEPT_FILTER]: treeData,
+            [ZONE_FILTER]: treeData,
           };
 
           if (isEmpty(treeDataObj)) {

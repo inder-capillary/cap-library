@@ -88,7 +88,9 @@ const CapCondition = (props) => {
     search: searchMsg,
     searchWithExact: searchWithExactMsg,
     customerSegmentsTreeData,
-    hidePrimaryDTcondition,
+    conceptTreeData,
+    zoneTreeData,
+    hidePrimaryDTCondition,
     customFieldConditions,
     setCustomFieldConditions
   } = props;
@@ -107,6 +109,8 @@ const CapCondition = (props) => {
     CATEGORY: categoryTreeData,
     PRODUCT_ATTRIBUTE: productTreeData,
     CUSTOMER_SEGMENT_FILTER: customerSegmentsTreeData,
+    CONCEPT_FILTER: conceptTreeData,
+    ZONE_FILTER: zoneTreeData,
   };
 
   const searchedTreeDataMap = {
@@ -204,7 +208,7 @@ const CapCondition = (props) => {
             showProductSelectionCriteria={showProductSelectionCriteria}
           />);
       case STRING:
-        if(!hidePrimaryDTcondition) {
+        if(!hidePrimaryDTCondition) {
           return (
             <ConditionString
               conditionExpression={conditionExpression}
@@ -243,11 +247,11 @@ const CapCondition = (props) => {
     }, index) => (
       <>
         {
-          !hidePrimaryDTcondition && (
+          !hidePrimaryDTCondition && (
             <LabelType>{ !index ? lineItemMsg : andMsg }</LabelType>
           )
         }
-        {!hidePrimaryDTcondition && <StyledCapLabel type="label2">{additionalConditionDescription}</StyledCapLabel>}
+        {!hidePrimaryDTCondition && <StyledCapLabel type="label2">{additionalConditionDescription}</StyledCapLabel>}
         {getOperatorsAndOperand(
           additionalConditionFact,
           additionalConditionDataType,
@@ -315,7 +319,9 @@ CapCondition.defaultProps = {
   shouldRemoveOperator: false,
   removeOperatorsList: [],
   customerSegmentsTreeData: [],
-  hidePrimaryDTcondition: false,
+  conceptTreeData: [],
+  zoneTreeData: [],
+  hidePrimaryDTCondition: false,
 };
 
 CapCondition.propTypes = {
@@ -371,7 +377,9 @@ CapCondition.propTypes = {
   search: PropTypes.string,
   searchWithExact: PropTypes.string,
   customerSegmentsTreeData: PropTypes.array,
-  hidePrimaryDTcondition: PropTypes.bool,
+  hidePrimaryDTCondition: PropTypes.bool,
+  conceptTreeData: PropTypes.array,
+  zoneTreeData: PropTypes.array,
 };
 
 export default LocaleHoc(CapCondition, { key: "CapCondition" });

@@ -80,9 +80,9 @@ const infoData = [
   },
   {
     key: 11,
-    property: "hasCustomerSegments",
+    property: "hidePrimaryDTCondition",
     description:
-      "Boolean value to show customer segments values",
+      "Boolean value to hide primary data type related texts",
     type: "boolean",
     default: "false",
   },
@@ -90,6 +90,20 @@ const infoData = [
     key: 12,
     property: "customerSegmentsTreeData",
     description: "customer segments value data",
+    type: "array",
+    default: "[]",
+  },
+  {
+    key: 13,
+    property: "conceptTreeData",
+    description: "Store profile's concept data",
+    type: "array",
+    default: "[]",
+  },
+  {
+    key: 14,
+    property: "zoneTreeData",
+    description: "Store profile's zone data",
     type: "array",
     default: "[]",
   },
@@ -218,7 +232,7 @@ const CapConditionDoc = () => {
           setConditionExpression={setConditionExpressionDst}
           conditionValidationError={conditionValidationError}
           setConditionValidationError={setConditionValidationError}
-          hasCustomerSegments
+          hidePrimaryDTCondition
           customerSegmentsTreeData={customerSegmentsTreeData}
         />
       </div>

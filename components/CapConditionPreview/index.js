@@ -42,7 +42,7 @@ const CapConditionPreview = ({
   uploadedMsg,
   inMsg,
   notInMsg,
-  hasCustomerSegments = false,
+  hidePrimaryDTCondition = false,
 }) => {
   /**
    * operandsMapping, mapping for supported operands for numbers
@@ -60,7 +60,7 @@ const CapConditionPreview = ({
   };
   const ValuesPrefix = () => (
     <>
-      {!hasCustomerSegments && operator ? (
+      {!hidePrimaryDTCondition && operator ? (
         <CapLabelInline type="label18">
           {operandsMapping[operator].text}
         </CapLabelInline>
@@ -141,7 +141,7 @@ const CapConditionPreview = ({
           </>
         );
       case STRING:
-        if(!hasCustomerSegments) {
+        if(!hidePrimaryDTCondition) {
           return (
             <>
               <CapLabelInline type="label18">
@@ -184,16 +184,16 @@ const CapConditionPreview = ({
       }, index) => (
               <>
                 {
-                  !hasCustomerSegments && (
+                  !hidePrimaryDTCondition && (
                     <LabelType>{ !index ? lineItemMsg : andMsg }</LabelType>
                   )
                 }
-                {!hasCustomerSegments &&
+                {!hidePrimaryDTCondition &&
                   <StyledCapLabel type="label2">
                     {linkedDescription}
                   </StyledCapLabel>
                 }
-                {!hasCustomerSegments &&
+                {!hidePrimaryDTCondition &&
                   <CapLabelInline type="label18">
                     {operandsMapping[linkedConditionExpression.operator]?.text}
                   </CapLabelInline>
@@ -220,10 +220,10 @@ const CapConditionPreview = ({
           </CapLabelInline>
           <CapLabelInline type="label18">{whoseMsg}</CapLabelInline>
           <StyledCapLabel type="label2">{conditionName}</StyledCapLabel>
-          {(type !== STRING || hasCustomerSegments) && (
+          {(type !== STRING || hidePrimaryDTCondition) && (
             <CapLabelInline type="label18">{isMsg}</CapLabelInline>
           )}
-          {!hasCustomerSegments && <OperandValues />}
+          {!hidePrimaryDTCondition && <OperandValues />}
           {getAdditionalConditions()}
         </StyledFlexWrapDiv>
       </CapColumn>
@@ -260,7 +260,7 @@ CapConditionPreview.propTypes = {
   uploadedMsg: PropTypes.string,
   inMsg: PropTypes.string,
   notInMsg: PropTypes.string,
-  hasCustomerSegments: PropTypes.bool,
+  hidePrimaryDTCondition: PropTypes.bool,
 };
 
 export default LocaleHoc(CapConditionPreview, { key: "CapConditionPreview" });
