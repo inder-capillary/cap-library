@@ -16,8 +16,8 @@ import ComponentWithLabelHOC from '../assets/HOCs/ComponentWithLabelHOC';
 const clsPrefix = 'cap-select-v2';
 
 function CapSelect(props) {
-  const { componentClassName, dropdownClassName, options, propToBeMadeLabel, ...rest } = props;
-  const items = options.map((op) => <Select.Option {...op} label={op[propToBeMadeLabel] || op.label}>{op.label}</Select.Option>);
+  const { componentClassName, dropdownClassName, options, propToBeMadeLabel, getMenuOptionsProps, ...rest } = props;
+  const items = options.map((op) => <Select.Option {...op} label={op[propToBeMadeLabel] || op.label} {...getMenuOptionsProps(op)}>{op.label}</Select.Option>);
   return (
     <Select
       removeIcon={<CapIcon type="close" size="s" />}
@@ -33,6 +33,7 @@ function CapSelect(props) {
 
 CapSelect.defaultProps = {
   size: 'large',
+  getMenuOptionsProps: () => ({}),
 };
 
 CapSelect.propTypes = {
@@ -44,6 +45,7 @@ CapSelect.propTypes = {
   inductiveText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   options: PropTypes.array.isRequired,
   size: PropTypes.string,
+  getMenuOptionsProps: PropTypes.func,
 };
 
 const CapSelectFinal = ComponentWithLabelHOC(CapSelect);
