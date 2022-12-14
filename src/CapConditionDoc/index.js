@@ -80,9 +80,9 @@ const infoData = [
   },
   {
     key: 11,
-    property: "hidePrimaryDTCondition",
+    property: "hideNumberAndProductFields",
     description:
-      "Boolean value to hide primary data type related texts",
+      "Boolean value to hide number and product data type related texts",
     type: "boolean",
     default: "false",
   },
@@ -232,7 +232,7 @@ const CapConditionDoc = () => {
           setConditionExpression={setConditionExpressionDst}
           conditionValidationError={conditionValidationError}
           setConditionValidationError={setConditionValidationError}
-          hidePrimaryDTCondition
+          hideNumberAndProductFields
           customerSegmentsTreeData={customerSegmentsTreeData}
         />
       </div>

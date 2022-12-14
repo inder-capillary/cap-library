@@ -42,7 +42,7 @@ const CapConditionPreview = ({
   uploadedMsg,
   inMsg,
   notInMsg,
-  hidePrimaryDTCondition = false,
+  hideNumberAndProductFields = false, // This flag is to hide some fields for Store profile, Custom fields etc in journey context.
 }) => {
   /**
    * operandsMapping, mapping for supported operands for numbers
@@ -60,7 +60,7 @@ const CapConditionPreview = ({
   };
   const ValuesPrefix = () => (
     <>
-      {!hidePrimaryDTCondition && operator ? (
+      {!hideNumberAndProductFields && operator ? (
         <CapLabelInline type="label18">
           {operandsMapping[operator].text}
         </CapLabelInline>
@@ -141,7 +141,7 @@ const CapConditionPreview = ({
           </>
         );
       case STRING:
-        if(!hidePrimaryDTCondition) {
+        if(!hideNumberAndProductFields) {
           return (
             <>
               <CapLabelInline type="label18">
@@ -184,16 +184,16 @@ const CapConditionPreview = ({
       }, index) => (
               <>
                 {
-                  !hidePrimaryDTCondition && (
+                  !hideNumberAndProductFields && (
                     <LabelType>{ !index ? lineItemMsg : andMsg }</LabelType>
                   )
                 }
-                {!hidePrimaryDTCondition &&
+                {!hideNumberAndProductFields &&
                   <StyledCapLabel type="label2">
                     {linkedDescription}
                   </StyledCapLabel>
                 }
-                {!hidePrimaryDTCondition &&
+                {!hideNumberAndProductFields &&
                   <CapLabelInline type="label18">
                     {operandsMapping[linkedConditionExpression.operator]?.text}
                   </CapLabelInline>
@@ -220,10 +220,10 @@ const CapConditionPreview = ({
           </CapLabelInline>
           <CapLabelInline type="label18">{whoseMsg}</CapLabelInline>
           <StyledCapLabel type="label2">{conditionName}</StyledCapLabel>
-          {(type !== STRING || hidePrimaryDTCondition) && (
+          {(type !== STRING || hideNumberAndProductFields) && (
             <CapLabelInline type="label18">{isMsg}</CapLabelInline>
           )}
-          {!hidePrimaryDTCondition && <OperandValues />}
+          {!hideNumberAndProductFields && <OperandValues />}
           {getAdditionalConditions()}
         </StyledFlexWrapDiv>
       </CapColumn>
@@ -260,7 +260,7 @@ CapConditionPreview.propTypes = {
   uploadedMsg: PropTypes.string,
   inMsg: PropTypes.string,
   notInMsg: PropTypes.string,
-  hidePrimaryDTCondition: PropTypes.bool,
+  hideNumberAndProductFields: PropTypes.bool,
 };
 
 export default LocaleHoc(CapConditionPreview, { key: "CapConditionPreview" });

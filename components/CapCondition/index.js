@@ -90,7 +90,7 @@ const CapCondition = (props) => {
     customerSegmentsTreeData,
     conceptTreeData,
     zoneTreeData,
-    hidePrimaryDTCondition,
+    hideNumberAndProductFields, // This flag is to hide some fields for Store profile, Custom fields etc in journey context.
     customFieldConditions,
     setCustomFieldConditions
   } = props;
@@ -208,7 +208,7 @@ const CapCondition = (props) => {
             showProductSelectionCriteria={showProductSelectionCriteria}
           />);
       case STRING:
-        if(!hidePrimaryDTCondition) {
+        if(!hideNumberAndProductFields) {
           return (
             <ConditionString
               conditionExpression={conditionExpression}
@@ -247,11 +247,11 @@ const CapCondition = (props) => {
     }, index) => (
       <>
         {
-          !hidePrimaryDTCondition && (
+          !hideNumberAndProductFields && (
             <LabelType>{ !index ? lineItemMsg : andMsg }</LabelType>
           )
         }
-        {!hidePrimaryDTCondition && <StyledCapLabel type="label2">{additionalConditionDescription}</StyledCapLabel>}
+        {!hideNumberAndProductFields && <StyledCapLabel type="label2">{additionalConditionDescription}</StyledCapLabel>}
         {getOperatorsAndOperand(
           additionalConditionFact,
           additionalConditionDataType,
@@ -321,7 +321,7 @@ CapCondition.defaultProps = {
   customerSegmentsTreeData: [],
   conceptTreeData: [],
   zoneTreeData: [],
-  hidePrimaryDTCondition: false,
+  hideNumberAndProductFields: false,
 };
 
 CapCondition.propTypes = {
@@ -377,7 +377,7 @@ CapCondition.propTypes = {
   search: PropTypes.string,
   searchWithExact: PropTypes.string,
   customerSegmentsTreeData: PropTypes.array,
-  hidePrimaryDTCondition: PropTypes.bool,
+  hideNumberAndProductFields: PropTypes.bool,
   conceptTreeData: PropTypes.array,
   zoneTreeData: PropTypes.array,
 };
