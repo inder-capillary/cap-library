@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CapCondition from "../../components/CapCondition";
+import { CONTAINS } from "../../components/CapCondition/constants";
 import PropertyTable from "../../helpers/PropertyTable";
 
 const infoData = [
@@ -128,12 +129,12 @@ const couponsTreeData = [
   },
 ];
 export const customFieldsData = [
-  { key: "abc", id: "71", title: "abc" },
-  { key: "bcd", id: "72", title: "bcd" },
-  { key: "cde", id: "73", title: "cde" },
-  { key: "def", id: "74", title: "def" },
-  { key: "efg", id: "75", title: "efg" },
-  { key: "fgh", id: "76", title: "fgh" },
+  { label: "abc", value: "abc" },
+  { label: "bcd", value: "bcd" },
+  { label: "cde", value: "cde" },
+  { label: "def", value: "def" },
+  { label: "efg", value: "efg" },
+  { label: "fgh", value: "fgh" },
 ];
 
 const customerSegmentsTreeData = [{
@@ -179,7 +180,14 @@ const CapConditionDoc = () => {
     operator: 'CONTAINS',
     operand: 'test',
   });
-  const [customFieldConditions, setCustomFieldConditions] = useState([]);
+  const [customFieldConditions, setCustomFieldConditions] = useState(
+    {
+    key:null,
+    operator:CONTAINS,
+    operand:""
+    }
+  );
+  const [showCustomFieldDropDown, setShowCustomFieldDropDown] = useState(true);
   const [criteria, setCriteria] = useState(null);
   const [conditionValidationError, setConditionValidationError] = useState(null);
   return (
@@ -245,6 +253,9 @@ const CapConditionDoc = () => {
           treeData={customFieldsData}
           customFieldConditions={customFieldConditions}
           setCustomFieldConditions={setCustomFieldConditions}
+          multiSelectPlaceholder={"Select Custom Field"}
+          showCustomFieldDropDown={showCustomFieldDropDown}
+          setShowCustomFieldDropDown={setShowCustomFieldDropDown}
         />
       </div>
       <PropertyTable data={infoData} />

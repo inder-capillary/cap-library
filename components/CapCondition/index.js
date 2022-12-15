@@ -92,7 +92,9 @@ const CapCondition = (props) => {
     zoneTreeData,
     hideNumberAndProductFields, // This flag is to hide some fields for Store profile, Custom fields etc in journey context.
     customFieldConditions,
-    setCustomFieldConditions
+    setCustomFieldConditions,
+    showCustomFieldDropDown,
+    setShowCustomFieldDropDown
   } = props;
 
   /**
@@ -221,8 +223,11 @@ const CapCondition = (props) => {
         return (
           <ConditionCustomField
               treeData={treeData}
+              multiSelectPlaceholder={multiSelectPlaceholder}
               customFieldConditions={customFieldConditions}
               setCustomFieldConditions={setCustomFieldConditions}
+              showCustomFieldDropDown={showCustomFieldDropDown}
+              setShowCustomFieldDropDown={setShowCustomFieldDropDown}
             /> 
         );
       default:

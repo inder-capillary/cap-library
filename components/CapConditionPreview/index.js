@@ -8,7 +8,7 @@ import CapIcon from "../CapIcon";
 import LocaleHoc from "../LocaleHoc";
 import CapLabel from "../CapLabel";
 import CapTruncateList from "../CapTruncateList";
-import { MULTI_SELECT, LIST, NUMBER, SKU, STRING } from "./constants";
+import { MULTI_SELECT, LIST, NUMBER, SKU, STRING, CUSTOM_FIELD } from "./constants";
 import { StyledFlexWrapDiv, StyledCapLabel, SkuDownloadLink } from "./style";
 import "./_capConditionPreview.scss";
 
@@ -99,6 +99,13 @@ const CapConditionPreview = ({
     switch (dataTypeLocal) {
       case MULTI_SELECT: {
         return (
+          linkedFact === CUSTOM_FIELD ? 
+          <>
+            <StyledCapLabel type="label2">{listDataLocal[0]}</StyledCapLabel>
+            <CapLabelInline type="label18">{listDataLocal[1]?.toLowerCase().replace("_"," ")}</CapLabelInline>
+            <CapLabelInline type="label16">{listDataLocal[2]}</CapLabelInline>
+          </>
+          :
           <>
             {!linkedFact && <ValuesPrefix />}
             <CapRow type="flex" align="middle">
