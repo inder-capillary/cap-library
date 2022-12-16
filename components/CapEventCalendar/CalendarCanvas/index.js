@@ -345,8 +345,8 @@ const CalendarCanvas = ({
 
   const getDayObject = () => {
     const {
-      current: { day },
-    } = drawObject;
+      current: { day = {}} = {},
+    } = drawObject || {};
     return day;
   };
 
