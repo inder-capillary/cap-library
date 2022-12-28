@@ -15,6 +15,7 @@ import {
   CUSTOMER_SEGMENT_FILTER,
   ZONE_FILTER,
   CONCEPT_FILTER,
+  STORE_FILTER,
 } from "./constants";
 import ConditionStoreUploader from "./ConditionStoreUploader";
 
@@ -42,6 +43,7 @@ export const ConditionMultiSelectTree = ({
   isExternalSearch,
   searchMsg,
   searchWithExactMsg,
+  helpTextMsg,
 }) => {
   const prop = {};
   useEffect(() => {
@@ -101,7 +103,7 @@ export const ConditionMultiSelectTree = ({
           }
           return true;
         });
-      } else {
+      } else if (fact !== STORE_FILTER) {
         //for category and brands
         const foundIndex = values?.findIndex((value) => value === id);
         if (foundIndex > -1) {
@@ -213,6 +215,7 @@ export const ConditionMultiSelectTree = ({
             [CATEGORY]: flattenedCategory,
             [CONCEPT_FILTER]: treeData,
             [ZONE_FILTER]: treeData,
+            [STORE_FILTER]: isExternalSearch ? searchedTreeData : treeData,
           };
 
           if (isEmpty(treeDataObj)) {
@@ -255,8 +258,8 @@ export const ConditionMultiSelectTree = ({
       fact
     );
   };
-
-  const searchPlaceholder = isExternalSearch
+  const isStoreFilter = fact?.toUpperCase() === STORE_FILTER;
+  const searchPlaceholder = isExternalSearch && !isStoreFilter
     ? searchWithExactMsg
     : searchMsg;
 
@@ -290,6 +293,8 @@ export const ConditionMultiSelectTree = ({
         onSearch={onSearch}
         isExternalSearch={isExternalSearch}
         showProductSearchLoader={showProductSearchLoader}
+        helpTextMsg={helpTextMsg}
+        isStoreFilter={isStoreFilter}
       />
       {fact.toUpperCase() === STORE && (
         <ConditionStoreUploader
@@ -325,6 +330,7 @@ ConditionMultiSelectTree.propTypes = {
   allSearchedAttributes: PropTypes.array,
   allSearchedCatgeories: PropTypes.array,
   flattenedCategory: PropTypes.array,
+  helpTextMsg: PropTypes.object,
 };
 
 export default LocaleHoc(ConditionMultiSelectTree, {

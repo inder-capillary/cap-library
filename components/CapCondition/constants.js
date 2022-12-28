@@ -24,6 +24,7 @@ export const ZONE = "ZONE";
 export const CATEGORY = "CATEGORY";
 export const PRODUCT_ATTRIBUTE = "PRODUCT_ATTRIBUTE";
 export const BRAND = "BRAND";
+export const STORE_FILTER = 'STORE_FILTER';
 
 export const UPLOAD_FAIL = "UPLOAD_FAIL";
 export const UPLOAD_LIMIT_EXCEEDED = "UPLOAD_LIMIT_EXCEEDED";

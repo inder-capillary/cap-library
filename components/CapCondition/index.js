@@ -29,7 +29,8 @@ import {
   CATEGORY,
   PRODUCT_ATTRIBUTE,
   EXTERNAL_SEARCH_ENABLED_ITEMS,
-  CUSTOM_FIELD
+  CUSTOM_FIELD,
+  STORE_FILTER,
 } from "./constants";
 import ConditionCustomField from "./ConditionCustomField";
 const { CapLabelInline } = CapLabel;
@@ -90,11 +91,15 @@ const CapCondition = (props) => {
     customerSegmentsTreeData,
     conceptTreeData,
     zoneTreeData,
+    storeTreeData,
+    searchedStoreTreeData,
     hideNumberAndProductFields, // This flag is to hide some fields for Store profile, Custom fields etc in journey context.
     customFieldConditions,
     setCustomFieldConditions,
     showCustomFieldDropDown,
-    setShowCustomFieldDropDown
+    setShowCustomFieldDropDown,
+    helpTextMsg,
+    storeExternalSearchRequired,
   } = props;
 
   /**
@@ -113,11 +118,13 @@ const CapCondition = (props) => {
     CUSTOMER_SEGMENT_FILTER: customerSegmentsTreeData,
     CONCEPT_FILTER: conceptTreeData,
     ZONE_FILTER: zoneTreeData,
+    STORE_FILTER: storeTreeData,
   };
 
   const searchedTreeDataMap = {
     [CATEGORY]: searchedCategoryTreeData,
     [PRODUCT_ATTRIBUTE]: searchedAttributeTreeData,
+    [STORE_FILTER]: searchedStoreTreeData,
   };
 
 
@@ -141,7 +148,7 @@ const CapCondition = (props) => {
     const additionalConditionFactLocal = additionalConditionFact || fact;
     const additionalConditionFactTreeData = treeDataMap[additionalConditionFact] || [];
     const treeDataLocal = additionalConditionFactTreeData.length ? additionalConditionFactTreeData : treeData;
-    const isExternalSearch = EXTERNAL_SEARCH_ENABLED_ITEMS.includes(additionalConditionFact);
+    const isExternalSearch = EXTERNAL_SEARCH_ENABLED_ITEMS.includes(additionalConditionFact) || storeExternalSearchRequired;
     if (!dataTypeLocal) return null;
     switch (dataTypeLocal) {
       /** if fact type is among DOUBLE,INTEGER and LONG - map it to ConditionNumber */
@@ -197,6 +204,7 @@ const CapCondition = (props) => {
             allSearchedAttributes={allSearchedAttributes}
             allSearchedCatgeories={allSearchedCatgeories}
             flattenedCategory={flattenedCategory}
+            helpTextMsg={helpTextMsg}
           />
         );
       case SKU:
@@ -326,7 +334,10 @@ CapCondition.defaultProps = {
   customerSegmentsTreeData: [],
   conceptTreeData: [],
   zoneTreeData: [],
+  storeTreeData: [],
+  searchedStoreTreeData: [],
   hideNumberAndProductFields: false,
+  storeExternalSearchRequired: false,
 };
 
 CapCondition.propTypes = {
@@ -385,6 +396,10 @@ CapCondition.propTypes = {
   hideNumberAndProductFields: PropTypes.bool,
   conceptTreeData: PropTypes.array,
   zoneTreeData: PropTypes.array,
+  storeTreeData: PropTypes.array,
+  searchedStoreTreeData: PropTypes.array,
+  helpTextMsg: PropTypes.object,
+  storeExternalSearchRequired: PropTypes.bool,
 };
 
 export default LocaleHoc(CapCondition, { key: "CapCondition" });

@@ -18,6 +18,8 @@ import CapButton from "../CapButton";
 import CapInput from "../CapInput";
 import CapIcon from "../CapIcon";
 import CapTooltip from "../CapTooltip";
+import CapRow from "../CapRow";
+import CapHeader from "../CapHeader";
 import LocaleHoc from "../LocaleHoc";
 
 import "./_capMultiSelectWithTree.scss";
@@ -267,11 +269,14 @@ class CapMultiSelectWithTree extends React.Component {
       expandedKeysHandler,
       isExternalSearch,
       onSearch: onExternalSearchProp,
+      isStoreFilter = false,
     } = this.props;
     const { selectedKeys } = this.state;
     if (isExternalSearch) {
       this.setState({ externalSearchValue: searchValue });
-      onExternalSearchProp(searchValue);
+      if ((isStoreFilter && searchValue?.length > 2) || !isStoreFilter) {
+        onExternalSearchProp(searchValue);
+      }
       let expandedKeys = [];
       if (!searchValue) {
         expandedKeys = selectedKeys && selectedKeys.length > 0
@@ -651,6 +656,16 @@ class CapMultiSelectWithTree extends React.Component {
     this.onSearch(null, "");
   }
 
+  getStoreHelPTextMessage = (message, className) => (
+    <CapRow className={className}>
+      <CapHeader
+        title={message?.header}
+        description={message?.description}
+        size="regular"
+      />
+    </CapRow>
+  );
+
   render() {
     const {
       placeholder,
@@ -685,6 +700,8 @@ class CapMultiSelectWithTree extends React.Component {
       appliedKeyObjects,
       disableSearch,
       disableParentCategorySelection,
+      isStoreFilter = false,
+      helpTextMsg = {},
     } = this.props;
     const {
       visible,
@@ -711,7 +728,12 @@ class CapMultiSelectWithTree extends React.Component {
     }
     let triggerLeftContent = "";
     let triggerRightContent = "";
+    let selectedValuesTitles = '';
     if (appliedKeys && appliedKeys.length > 0) {
+       // Getting the titles of selected values to show on hover. Currently implemented for store filter
+       appliedKeyObjects?.forEach(value => {
+        selectedValuesTitles += `${value?.title},`
+       }) 
       if (!isExternalSearch && appliedKeys.length === this.allChildrenCount) {
         triggerLeftContent = "All selected";
       } else {
@@ -825,37 +847,44 @@ class CapMultiSelectWithTree extends React.Component {
                     <Spin />
                   </div>
                 ) : (
-                  <>
-                    {treeNodes && treeNodes.length > 0 && (
-                      <Tree
-                        checkable
-                        onCheck={(keys, info) => {
-                          const finalSelectedKeys = this.onCheck(keys, info);
-                          this.props.onChange
-                            && this.props.onChange(finalSelectedKeys, info);
-                        }}
-                        checkedKeys={currentCheckedKeys}
-                        selectedKeys={currentCheckedKeys}
-                        multiple
-                        onExpand={this.onExpand}
-                        expandedKeys={expandedKeys}
-                        autoExpandParent={autoExpandParent}
-                        {...newProps}
-                      >
-                        {treeNodes}
-                      </Tree>
+                  <>  {/* Currently this condition is for STORE_FILTER in journey context */}
+                      {(isStoreFilter && isExternalSearch && externalSearchValue?.length < 3) ? this.getStoreHelPTextMessage(helpTextMsg?.instructionMessage, classNames(`${clsPrefix}-no-results`)) :
+                      treeNodes && treeNodes.length > 0 && (
+                        <Tree
+                          checkable
+                          onCheck={(keys, info) => {
+                            const finalSelectedKeys = this.onCheck(keys, info);
+                            this.props.onChange
+                              && this.props.onChange(finalSelectedKeys, info);
+                          }}
+                          checkedKeys={currentCheckedKeys}
+                          selectedKeys={currentCheckedKeys}
+                          multiple
+                          onExpand={this.onExpand}
+                          expandedKeys={expandedKeys}
+                          autoExpandParent={autoExpandParent}
+                          {...newProps}
+                        >
+                          {treeNodes}
+                        </Tree>
                     )}
                     {!(treeNodes && treeNodes.length > 0) && (
                       <div className={classNames(`${clsPrefix}-no-results`)}>
-                        <CapIcon
-                          style={{ color: styledVars.CAP_G06 }}
-                          type="alert"
-                        />
-                        <div
-                          className={classNames(`${clsPrefix}-no-results-text`)}
-                        >
-                          {noResultsFoundText}
-                        </div>
+                        {/* Currently this condition is for STORE_FILTER in journey context */}
+                        {(isStoreFilter && (searchValue?.length > 2 || externalSearchValue.length > 2)) && this.getStoreHelPTextMessage(helpTextMsg?.infoMessage)}
+                        {!isStoreFilter &&
+                          <>
+                            <CapIcon
+                              style={{ color: styledVars.CAP_G06 }}
+                              type="alert"
+                            />
+                            <div
+                              className={classNames(`${clsPrefix}-no-results-text`)}
+                            >
+                              {noResultsFoundText}
+                            </div>
+                          </>
+                        }
                       </div>
                     )}
                     {this.props.showClearAll ? (
@@ -991,7 +1020,12 @@ class CapMultiSelectWithTree extends React.Component {
               })}
               title={triggerLeftContent}
             >
-              {title || triggerLeftContent || placeholder}
+            {isStoreFilter ? 
+              <CapTooltip placement="bottom" title={selectedValuesTitles}>
+                {title || triggerLeftContent || placeholder}
+              </CapTooltip> :
+              title || triggerLeftContent || placeholder
+            }
             </span>
             {showSelectedFilterCount ? (
               <span className="items-selected">
@@ -1005,7 +1039,12 @@ class CapMultiSelectWithTree extends React.Component {
               <></>
             )}
             <span style={{ display: "inline-flex", alignItems: "center" }}>
-              {title ? "" : triggerRightContent}
+            {isStoreFilter ?
+              <CapTooltip placement="bottom" title={selectedValuesTitles}>
+                {title ? "" : triggerRightContent}
+              </CapTooltip> : 
+              title ? "" : triggerRightContent
+            }
               {disabled ? (
                 <CapIcon
                   type="chevron-down"
