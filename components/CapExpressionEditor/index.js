@@ -7,6 +7,8 @@
 
 import React from "react";
 import { findDOMNode } from "react-dom";
+import $ from 'jquery';
+
 import PropTypes from "prop-types";
 import { CapInput } from "../index";
 import fix from "./js/fixGrammar";
@@ -14,7 +16,6 @@ import defaultGrammar from "./js/grammar";
 import "./_expressionEditor.scss";
 
 //Require js plugins
-require("./js/jquery");
 require("./js/expressionEditor");
 
 const classNames = require("classnames");
@@ -54,7 +55,7 @@ class CapExpressionEditor extends React.Component {
           typeSource,
           delims,
         })
-        .change(() => this.onChange());
+        .on("change", () => this.onChange());
 
       //If we are already passing the expression then trigger a onchange to keep the JSON updated in the state
       if (expression) {

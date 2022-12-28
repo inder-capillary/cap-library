@@ -1,5 +1,6 @@
-/* eslint-disable */ 
+/* eslint-disable */
 import rangy from 'rangy';
+import $ from 'jquery';
 
 $.fn.expredit = function (grammar, options) {
 	"use strict";
@@ -225,7 +226,7 @@ var parse = (function () {
         token.text = t.text || "";
         token.pos = t.pos;
         token.len = t.len;
-        
+
         if(e) {
 			token.error(e);
 		}
@@ -1095,7 +1096,7 @@ var io = {
 		editor = node.dom.closest(".expredit").eq(0);
 		if(!editor.is(":focus")) return;
 		
-		if(popup.size()) { io.removeBalloon(); }
+		if(popup.length) { io.removeBalloon(); }
 		
 		editor.find(".selected").removeClass("selected");
 		node.dom.addClass("selected");
@@ -1110,7 +1111,7 @@ var io = {
 			range = rangy.createRange();
 			range.collapseAfter(node.dom[0]);
 			rangy.getSelection().setSingleRange(range);
-			node.dom.keyup();
+			node.dom.trigger("keyup");
 		};
 		
 		var calltipHover = function (e) {
@@ -1132,8 +1133,8 @@ var io = {
 				
 				selection = $(".calltip.sel");
 				var callTipDiv = $(".calltips");
-				numTips = calltipEls.size();
-				if(selection.size()) {
+				numTips = calltipEls.length;
+				if(selection.length) {
 					if(e.which === UP) {
 						$(".balloon").removeClass('hide');
 						selection = calltipEls.eq(
@@ -1164,7 +1165,7 @@ var io = {
 						selection = calltipEls.eq(0);
 					}
 				}
-				if(selection.size()) {
+				if(selection.length) {
 					$(".calltip.sel").removeClass("sel");
 					selection.addClass("sel");
 				}
@@ -1243,11 +1244,11 @@ var io = {
 		if(show) {
 			popup.data("editor", editor);
 			editor.on("keydown.balloon", calltipKey);
-			popup.mousedown(function () {
-				editor.focus();
+			popup.on("mousedown", function () {
+				editor.trigger("focus");
 				ignoreBlur = true;
 			}).appendTo(document.body);
-			$(".calltip").mousemove(calltipHover).click(calltipClick);
+			$(".calltip").on("mousemove", calltipHover).on("click", calltipClick);
 		}
 		calltipEls = $(".calltip");
 		calltipEls.eq(0).addClass("sel");
@@ -1443,7 +1444,7 @@ protonode.toDom = function (pos) {
 			break;
 	}
 	
-	el.mousemove(function(e) {
+	el.on("mousemove", function(e) {
 		io.balloon(node);
 		e.stopPropagation();
 	});
@@ -1491,7 +1492,7 @@ return this.each(function () {
 			xedit.empty().append(tree.toDom());
 			//console.log(tree);
 			input.val(io.expr(xedit)).
-				data("json", tree.toJson("\n", "  ")).change();
+				data("json", tree.toJson("\n", "  ")).trigger("change");
 		}
 	};
 	
@@ -1549,7 +1550,7 @@ return this.each(function () {
 			"height": "auto",
 			"display": input.is(":visible")?"inline-block":"none",
 		}).
-		keyup(function (e) {
+		on("keyup",function (e) {
 			if(
 				onMissing && selectedNode != tree &&
 				(e.which == 8 || e.which == 46 ||
@@ -1564,14 +1565,14 @@ return this.each(function () {
 			if(!options.offline)
 				handleCursor();
 		}).
-		mouseup(function () {
+		on("mouseup", function () {
 			if(!options.offline)
 			{
 				cursor = io.getCursor(xedit[0]);
 				handleCursor();
 			}
 		}).
-		blur(handleBlur).
+		on("blur",handleBlur).
 		insertAfter(input);
 	
 	//TODO: Do it in a better way. Escaping the special characters.

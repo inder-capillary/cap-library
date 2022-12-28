@@ -88,6 +88,7 @@ function createPackageFile() {
           "cap-dagre": "0.8.6-pre",
           "nanoid": "3.1.30",
           "semantic-ui-react": "0.68.3",
+          "jquery": "3.6.0",
         },
       };
 
