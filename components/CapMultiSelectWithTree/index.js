@@ -671,7 +671,7 @@ class CapMultiSelectWithTree extends React.Component {
   getSelectedValuesTitles = (appliedKeyObjects) => {
     if (appliedKeyObjects?.length) {
       return (<CapRow className={classNames(`${clsPrefix}-store-tooltip-preview`)}>
-          {appliedKeyObjects?.map((value) => <CapLabel className="tooltip-title" type="label23">{value?.title}{','}</CapLabel>)}
+          {appliedKeyObjects?.map((value, index) => <CapLabel className="tooltip-title" type="label23">{value?.title}{index !== (appliedKeyObjects?.length -1) && ','}</CapLabel>)}
               </CapRow>
       )} else {<></>}
   };
