@@ -195,3 +195,12 @@ $multiSelect: cap-multi-tree-select-v2;
     font-size: 12px;
   }
 }
+
+.#{$multiSelect}-store-tooltip-preview {
+  min-width: 250px;
+  padding-bottom:$CAP_SPACE_08;
+  padding-left: $CAP_SPACE_04;
+  .tooltip-title {
+    padding: $CAP_SPACE_08 $CAP_SPACE_04 0px $CAP_SPACE_04;
+  }
+}

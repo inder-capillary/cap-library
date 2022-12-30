@@ -20,6 +20,7 @@ import CapIcon from "../CapIcon";
 import CapTooltip from "../CapTooltip";
 import CapRow from "../CapRow";
 import CapHeader from "../CapHeader";
+import CapLabel from "../CapLabel";
 import LocaleHoc from "../LocaleHoc";
 
 import "./_capMultiSelectWithTree.scss";
@@ -666,6 +667,15 @@ class CapMultiSelectWithTree extends React.Component {
     </CapRow>
   );
 
+  // Getting the titles of selected values to show on hover. Currently implemented for store filter
+  getSelectedValuesTitles = (appliedKeyObjects) => {
+    if (appliedKeyObjects?.length) {
+      return (<CapRow className={classNames(`${clsPrefix}-store-tooltip-preview`)}>
+          {appliedKeyObjects?.map((value) => <CapLabel className="tooltip-title" type="label23">{value?.title}{','}</CapLabel>)}
+              </CapRow>
+      )} else {<></>}
+  };
+
   render() {
     const {
       placeholder,
@@ -728,12 +738,7 @@ class CapMultiSelectWithTree extends React.Component {
     }
     let triggerLeftContent = "";
     let triggerRightContent = "";
-    let selectedValuesTitles = '';
     if (appliedKeys && appliedKeys.length > 0) {
-       // Getting the titles of selected values to show on hover. Currently implemented for store filter
-       appliedKeyObjects?.forEach(value => {
-        selectedValuesTitles += `${value?.title},`
-       }) 
       if (!isExternalSearch && appliedKeys.length === this.allChildrenCount) {
         triggerLeftContent = "All selected";
       } else {
@@ -1021,7 +1026,7 @@ class CapMultiSelectWithTree extends React.Component {
               title={triggerLeftContent}
             >
             {isStoreFilter ? 
-              <CapTooltip placement="bottom" title={selectedValuesTitles}>
+              <CapTooltip placement="bottom" title={this.getSelectedValuesTitles(appliedKeyObjects)}>
                 {title || triggerLeftContent || placeholder}
               </CapTooltip> :
               title || triggerLeftContent || placeholder
@@ -1040,7 +1045,7 @@ class CapMultiSelectWithTree extends React.Component {
             )}
             <span style={{ display: "inline-flex", alignItems: "center" }}>
             {isStoreFilter ?
-              <CapTooltip placement="bottom" title={selectedValuesTitles}>
+              <CapTooltip placement="bottom" title={this.getSelectedValuesTitles(appliedKeyObjects)}>
                 {title ? "" : triggerRightContent}
               </CapTooltip> : 
               title ? "" : triggerRightContent

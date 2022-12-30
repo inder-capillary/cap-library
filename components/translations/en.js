@@ -106,7 +106,8 @@ export default {
     or: 'OR',
     search: 'Search',
     searchWithExact: 'Search with exact keyword',
-    customFieldsTag:'custom fields'
+    customFieldsTag:'custom fields',
+    storeSearchMsg: 'Enter min. 3 characters to search',
   },
 
   CapConditionPreview: {

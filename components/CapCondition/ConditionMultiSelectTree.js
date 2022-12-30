@@ -44,6 +44,7 @@ export const ConditionMultiSelectTree = ({
   searchMsg,
   searchWithExactMsg,
   helpTextMsg,
+  storeSearchMsg,
 }) => {
   const prop = {};
   useEffect(() => {
@@ -259,9 +260,10 @@ export const ConditionMultiSelectTree = ({
     );
   };
   const isStoreFilter = fact?.toUpperCase() === STORE_FILTER;
-  const searchPlaceholder = isExternalSearch && !isStoreFilter
-    ? searchWithExactMsg
-    : searchMsg;
+  let searchPlaceholder = isExternalSearch ? searchWithExactMsg : searchMsg;
+  if (isExternalSearch && isStoreFilter) {
+    searchPlaceholder = storeSearchMsg;
+  }
 
   return (
     <>

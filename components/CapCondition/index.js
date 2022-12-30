@@ -100,6 +100,7 @@ const CapCondition = (props) => {
     setShowCustomFieldDropDown,
     helpTextMsg,
     storeExternalSearchRequired,
+    storeSearchMsg,
   } = props;
 
   /**
@@ -205,6 +206,7 @@ const CapCondition = (props) => {
             allSearchedCatgeories={allSearchedCatgeories}
             flattenedCategory={flattenedCategory}
             helpTextMsg={helpTextMsg}
+            storeSearchMsg={storeSearchMsg}
           />
         );
       case SKU:
