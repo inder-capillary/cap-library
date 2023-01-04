@@ -35,6 +35,7 @@ const ConditionCustomField = props => {
     <StyledFlexWrapDiv className="cap-condition-string">
       {showCustomFieldDropDown && <StyledFlexWrapDiv className="cap-condition-multi-select cap-label-custom-field">
         <CapCustomSelect
+          className="custom-field-condition"
           popoverClassName="cap-condition-popover"
           value={customFieldConditions?.key}
           options={treeData}

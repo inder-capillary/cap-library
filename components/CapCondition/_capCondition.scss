@@ -48,6 +48,9 @@ $capConditionString: cap-condition-string;
     align-items: center;
   }
 }
+.custom-field-condition{
+  height: 30px;
+}
 
 .#{$capConditionString}{
   display: contents;
