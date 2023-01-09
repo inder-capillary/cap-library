@@ -56,6 +56,24 @@ const headings = {
     'color': '#5e6c84',
     'line-height': '28px',
   },
+  h8: {
+    'font-size': '14px',
+    'font-weight': '400',
+    'color': '#091E42',
+    'line-height': '20px',
+  },
+  h9: {
+    'font-size': '14px',
+    'font-weight': '500',
+    'color': '#fff',
+    'line-height': '20px',
+  },
+  h10: {
+    'font-size': '12px',
+    'font-weight': '500',
+    'color': '#091E42',
+    'line-height': '16px',
+  },
   label1: {
     'color': '#5e6c84',
     'font-size': '12px',

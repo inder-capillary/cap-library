@@ -146,6 +146,54 @@ const labels = {
     'font-weight': 'normal',
     'line-height': 'normal',
   },
+  label24: {
+    'font-size': '14px',
+    'font-weight': '400',
+    'color': '#5e6c84',
+    'line-height': '20px',
+  },
+  label25: {
+    'font-size': '14px',
+    'font-weight': '500',
+    'color': '#5e6c84',
+    'line-height': '20px',
+  },
+  label26: {
+    'font-size': '10px',
+    'font-weight': '400',
+    'color': '#091E42',
+    'line-height': '12px',
+  },
+  label27: {
+    'font-size': '12px',
+    'font-weight': '500',
+    'color': '#2466EA',
+    'line-height': '16px',
+  },
+  label28: {
+    'font-size': '12px',
+    'font-weight': '500',
+    'color': '#FFF',
+    'line-height': '16px',
+  },
+  label29: {
+    'font-size': '10px',
+    'font-weight': '400',
+    'color': '#FFF',
+    'line-height': '12px',
+  },
+  label30: {
+    'font-size': '10px',
+    'font-weight': '400',
+    'color': '#FFF',
+    'line-height': '12px',
+  },
+  label31: {
+    'color': '#091E42',
+    'font-size': '12px',
+    'font-weight': '400',
+    'line-height': '16px',
+  },
 };
 
 const CapLabel = styled.div`
