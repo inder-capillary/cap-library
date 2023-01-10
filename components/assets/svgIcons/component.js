@@ -222,6 +222,8 @@ const getSvgComponentFromType = (type) => {
     case 'draft-partially-failed': return SvgIcons.DraftPartiallyFailed;
     case 'forward-arrow': return SvgIcons.Forward;
     case 'ia-mascot': return SvgIcons.IaMascot;
+    case 'timer-warning': return SvgIcons.TimerWarning;
+    case 'info-warning': return SvgIcons.InfoWarning;
     case 'restore-icon': return SvgIcons.RestoreIcon;
     default: return null;
   }

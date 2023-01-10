@@ -69,6 +69,7 @@ function createPackageFile() {
         bugs,
         homepage,
         "dependencies": {
+          "@capillarytech/cap-ui-utils": "1.4.10",
           "antd": "^3.13.2",
           "react-dom": "^16.8.1",
           "react": "^16.8.1",
@@ -84,7 +85,6 @@ function createPackageFile() {
           "react-dnd": "^11.1.3",
           "react-dnd-html5-backend": "^11.1.3",
           "react-datepicker": "4.2.0",
-          "react-dates": "^20.2.4",
           "cap-dagre": "0.8.6-pre",
           "nanoid": "3.1.30",
           "semantic-ui-react": "0.68.3",

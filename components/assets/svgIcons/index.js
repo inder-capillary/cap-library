@@ -218,4 +218,6 @@ export { default as DraftFailed } from "./Icons/DraftFailed";
 export { default as DraftPartiallyFailed } from "./Icons/DraftPartiallyFailed";
 export { default as Forward } from "./Icons/Forward";
 export { default as IaMascot } from './Icons/IaMascot';
+export { default as TimerWarning } from './Icons/TimerWarning';
+export { default as InfoWarning } from './Icons/InfoWarning';
 export { default as RestoreIcon } from "./Icons/Restore";
