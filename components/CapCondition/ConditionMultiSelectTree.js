@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { isEmpty } from "lodash";
+import isEmpty from 'lodash/isEmpty';
+import unionBy from 'lodash/unionBy';
 import LocaleHoc from "../LocaleHoc";
 import CapSelect from "../CapSelect";
 import CapMultiSelectWithTree from "../CapMultiSelectWithTree";
@@ -45,6 +46,7 @@ export const ConditionMultiSelectTree = ({
   searchWithExactMsg,
   helpTextMsg,
   storeSearchMsg,
+  allSearchedStoreValues,
 }) => {
   const prop = {};
   useEffect(() => {
@@ -216,7 +218,7 @@ export const ConditionMultiSelectTree = ({
             [CATEGORY]: flattenedCategory,
             [CONCEPT_FILTER]: treeData,
             [ZONE_FILTER]: treeData,
-            [STORE_FILTER]: isExternalSearch ? searchedTreeData : treeData,
+            [STORE_FILTER]: isExternalSearch ? unionBy(allSearchedStoreValues, searchedTreeData, 'id') : treeData,
           };
 
           if (isEmpty(treeDataObj)) {

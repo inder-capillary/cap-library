@@ -101,6 +101,7 @@ const CapCondition = (props) => {
     helpTextMsg,
     storeExternalSearchRequired,
     storeSearchMsg,
+    allSearchedStoreValues,
   } = props;
 
   /**
@@ -207,6 +208,7 @@ const CapCondition = (props) => {
             flattenedCategory={flattenedCategory}
             helpTextMsg={helpTextMsg}
             storeSearchMsg={storeSearchMsg}
+            allSearchedStoreValues={allSearchedStoreValues}
           />
         );
       case SKU:
@@ -338,6 +340,7 @@ CapCondition.defaultProps = {
   zoneTreeData: [],
   storeTreeData: [],
   searchedStoreTreeData: [],
+  allSearchedStoreValues: [],
   hideNumberAndProductFields: false,
   storeExternalSearchRequired: false,
 };
@@ -402,6 +405,8 @@ CapCondition.propTypes = {
   searchedStoreTreeData: PropTypes.array,
   helpTextMsg: PropTypes.object,
   storeExternalSearchRequired: PropTypes.bool,
+  storeSearchMsg: PropTypes.string,
+  allSearchedStoreValues: PropTypes.array,
 };
 
 export default LocaleHoc(CapCondition, { key: "CapCondition" });
