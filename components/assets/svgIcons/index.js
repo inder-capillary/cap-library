@@ -221,3 +221,4 @@ export { default as IaMascot } from './Icons/IaMascot';
 export { default as TimerWarning } from './Icons/TimerWarning';
 export { default as InfoWarning } from './Icons/InfoWarning';
 export { default as RestoreIcon } from "./Icons/Restore";
+export { default as JoinLink } from "./Icons/JoinLink";

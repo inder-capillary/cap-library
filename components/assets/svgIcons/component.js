@@ -225,6 +225,7 @@ const getSvgComponentFromType = (type) => {
     case 'timer-warning': return SvgIcons.TimerWarning;
     case 'info-warning': return SvgIcons.InfoWarning;
     case 'restore-icon': return SvgIcons.RestoreIcon;
+    case 'join-link': return SvgIcons.JoinLink;
     default: return null;
   }
 };

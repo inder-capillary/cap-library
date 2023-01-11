@@ -24,6 +24,7 @@ const GraphBlockNode = (props) => {
     userHistoryProps,
     error, // To hightlight block with error Icon.
     configureText,
+    joinBlockNameArray = [],
   } = props;
 
   let preview = nodePreview;
@@ -68,6 +69,7 @@ const GraphBlockNode = (props) => {
     <CapAdvancedIcon
       type={iconType}
       userHistoryProps={viewMode && userHistoryProps}
+      joinBlockNameArray={joinBlockNameArray}
       backgroundProps={{
         backgroundColor: color,
         opacity: isConfigured ? 1 : 0.5,
@@ -104,6 +106,7 @@ GraphBlockNode.propTypes = {
   configureText: PropTypes.string,
   viewMode: PropTypes.bool,
   userHistoryProps: PropTypes.object,
+  joinBlockNameArray: PropTypes.array,
   error: PropTypes.object,
 };
 

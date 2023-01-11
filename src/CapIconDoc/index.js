@@ -918,6 +918,10 @@ export default class CapIconDoc extends Component { // eslint-disable-line react
               <CapIcon type="restore-icon" />
               <Text>restore</Text>
             </List>
+            <List>
+              <CapIcon type="join-link" />
+              <Text>join-link</Text>
+            </List>
           </ul>
         </div>
         {`Used as:`}

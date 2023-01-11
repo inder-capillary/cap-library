@@ -20,3 +20,10 @@ export const COPY = 'copy';
 export const VIEW = 'view';
 
 export const SOURCE_COORDINATES = { x: 318, y: 56 };
+export const JOIN = 'JOIN';
+export const JOIN_NOTIFICATION_STYLE = {
+    minWidth: '514px',
+    position: 'absolute',
+    right: '0px',
+    top: '96px'
+};

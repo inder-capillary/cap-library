@@ -22,6 +22,7 @@ import CapIcon from '../CapIcon';
 import CapTooltip from '../CapTooltip';
 import CapModal from '../CapModal';
 import CapHeading from '../CapHeading';
+import CapNotification from '../CapNotification';
 
 import {
   CUSTOM_EDGE,
@@ -42,6 +43,8 @@ import {
   VIEW,
   SOURCE_COORDINATES,
   SCHEDULE_BLOCK,
+  JOIN,
+  JOIN_NOTIFICATION_STYLE,
 } from './constants';
 
 import { CAP_G06, CAP_PRIMARY } from '../styled/variables';
@@ -71,6 +74,16 @@ const CapDndGraph = (props) => {
     offset = 0,
     getPathsInfo,
     viewMode,
+    deleteBlockModalHeaderText,
+    deleteBlockModalDescriptionText,
+    yesDeleteButtonText,
+    noButtonText,
+    joinDropErrorText,
+    theText,
+    blockIsLinkedText,
+    blockText,
+    disconnectText,
+    areYouSureText,
   } = props;
 
   const graphRef = useRef(null);
@@ -400,6 +413,16 @@ const CapDndGraph = (props) => {
 
   const getEntryTrigger = () => graphNodes.find((node) => node.type === ENTRY_TRIGGER);
 
+  const getToNodeId = (endNode, endNodeId, endNodeIdSecondary, blockType) => {
+    if(blockType === JOIN){
+      return undefined;
+    }else{
+      if(!isEmpty(endNode)){
+        return [endNodeId, endNodeIdSecondary];
+      }
+      return [endNodeId];
+    }
+  };
   // Position of Exit Trigger and Empty Graph Text to be placed manually based on the requirement
   const positionNodesManually = () => {
     const entryTrigger = getEntryTrigger();
@@ -526,10 +549,13 @@ const CapDndGraph = (props) => {
             isMultiPath: item.isMultiPath,
             nodeTitle: nodeTitleMapping[item.id],
           },
-          to: !isEmpty(endNode) ? [endNodeId, endNodeIdSecondary] : [endNodeId],
+          to: getToNodeId(endNode, endNodeId, endNodeIdSecondary, item.id),
           type: BLOCK_NODE,
-        },
-        {
+        }
+      ];
+
+      if(item.id !== JOIN){
+        newSetNodes.push({
           from: newNodeId,
           id: endNodeId,
           component: CapIcon,
@@ -538,8 +564,8 @@ const CapDndGraph = (props) => {
             id: endNodeId,
           },
           type: END_NODE,
-        },
-      ];
+        })
+      }
 
       //change node id in pathsInfo
       if (!isEmpty(entryTrigger.pathsInfo)) {
@@ -573,9 +599,65 @@ const CapDndGraph = (props) => {
         let nodes = cloneDeep(prevNodes);
         const placeholderNodeIndex = nodes.findIndex((node) => node.type === PLACEHOLDER_NODE);
         if (placeholderNodeIndex !== -1) {
-          sourceId = nodes[placeholderNodeIndex].from;
-          const targetId = nodes[placeholderNodeIndex].to[0];
+          const placeHolderNode = nodes[placeholderNodeIndex];
+          sourceId = placeHolderNode.from;
           const sourceIndex = nodes.findIndex((node) => node.id === sourceId);
+          const sourceToArrayIndex = nodes[sourceIndex].to.findIndex((nodeId) => nodeId === placeHolderNode.id);
+          const targetId = placeHolderNode.to[0];
+          const targetIndex = nodes.findIndex(node => node.id === targetId);
+          const targetNode = nodes[targetIndex];
+          if (item.id === JOIN) {
+            if (targetNode.type === BLOCK_NODE) {
+               //not allowing JOIN to be placed in middle of journey
+               nodes.splice(placeholderNodeIndex, 1);
+               //updating JOIN source
+               nodes[sourceIndex] = {
+                  ...nodes[sourceIndex],
+                  toType: undefined,
+                  placeholderToIndex: undefined,
+                };
+               nodes[sourceIndex].to[sourceToArrayIndex] = targetId;
+               //displaying error when JOIN node is dropped in middle of journey
+               CapNotification.error({ 
+                  key: joinDropErrorText, 
+                  message: joinDropErrorText, 
+                  style: JOIN_NOTIFICATION_STYLE
+              });
+            } else if (targetNode.type === END_NODE) {
+              //adding JOIN to node array
+              nodes.splice(placeholderNodeIndex, 1, {
+                id: newNodeId,
+                component: GraphBlockNode,
+                props: {
+                  iconType: item.iconType,
+                  color: item.color,
+                  id: newNodeId,
+                  blockType: item.id,
+                  onClickActionIcon,
+                  isMultiPath: false,
+                  nodeTitle: nodeTitleMapping[item.id],
+                },
+                to: undefined,
+                from: nodes[sourceIndex].id,
+                type: BLOCK_NODE,
+              });
+              //updating JOIN source
+              nodes[sourceIndex] = {
+                ...nodes[sourceIndex],
+                toType: undefined,
+                placeholderToIndex: undefined,
+              };
+              nodes[sourceIndex].to[sourceToArrayIndex] = newNodeId;
+              if ((sourceId === getEntryTrigger().id || [WAIT_TILL_EVENT, DECISION_SPLIT].includes(nodes[sourceIndex].props.blockType)) && nodes[sourceIndex]?.pathsInfo) {
+                [oldToNode] = placeHolderNode.to;
+                nodes[sourceIndex].pathsInfo[newNodeId] = nodes[sourceIndex]?.pathsInfo[targetId];
+                delete nodes[sourceIndex].pathsInfo[targetId];
+              }
+              //removing END_NODE adter JOIN
+              nodes.splice(targetIndex, 1);
+              onDropNewNode({ blockId: newNodeId, blockType: item.id, oldToNode, sourceId });
+            }
+          } else{
           let from;
           nodes = nodes.map((node) => {
             from = '';
@@ -588,13 +670,11 @@ const CapDndGraph = (props) => {
             };
           });
 
-
-          let toNodes = nodes[placeholderNodeIndex].to;
+          let toNodes = placeHolderNode.to;
           if (item.isMultiPath) {
             toNodes = [...toNodes, endNodeIdSecondary];
             nodes.push(endNode);
           }
-          const toNodeIndex = nodes[sourceIndex].to.findIndex((nodeId) => nodeId === nodes[placeholderNodeIndex].id);
 
           nodes.splice(placeholderNodeIndex, 1, {
             id: newNodeId,
@@ -619,23 +699,20 @@ const CapDndGraph = (props) => {
           };
 
           if (item.id === WAIT_TILL_EVENT) {
-            nodes[placeholderNodeIndex].pathsInfo = getPathsInfo(WAIT_TILL_EVENT, toNodes);
+            placeHolderNode.pathsInfo = getPathsInfo(WAIT_TILL_EVENT, toNodes);
           }
-          if ((
-            sourceId === getEntryTrigger().id
-                || [WAIT_TILL_EVENT, DECISION_SPLIT].includes(nodes.find((node) => node.id === sourceId).props.blockType)
-          )
-              && nodes[sourceIndex]?.pathsInfo) {
+          if ((sourceId === getEntryTrigger().id || [WAIT_TILL_EVENT, DECISION_SPLIT].includes(nodes[sourceIndex].props.blockType)) && nodes[sourceIndex]?.pathsInfo) {
             [oldToNode] = toNodes;
             nodes[sourceIndex].pathsInfo[newNodeId] = nodes[sourceIndex]?.pathsInfo[toNodes[0]];
             delete nodes[sourceIndex].pathsInfo[toNodes[0]];
           }
 
-          if (toNodeIndex !== -1) {
-            nodes[sourceIndex].to[toNodeIndex] = newNodeId;
+          if (sourceToArrayIndex !== -1) {
+            nodes[sourceIndex].to[sourceToArrayIndex] = newNodeId;
           }
           onDropNewNode({ blockId: newNodeId, blockType: item.id, oldToNode, sourceId });
         }
+      }
         return nodes;
       });
       previouslyFoundEdge.current = -1;
@@ -736,6 +813,62 @@ const CapDndGraph = (props) => {
 
   const deleteNode = (nodesParam, blockId) => {
     let nodes = cloneDeep(nodesParam);
+
+    //JOIN specific start --- handling individual join/joined node delete
+    const blockName = nodes.find(node => node.id === blockId)?.props?.blockData?.name || '';
+    const linkedToJoinNodeId = [];
+    nodes = nodes.flatMap(node => {
+      const { blockType = "", isConfigured = false, blockData = {} } =
+        node?.props || {};
+      const { nextBlock: { pathBlockId = "" } = {} } = blockData;
+       //handling update of graphnodes of join block when joined block is deleted
+      if (blockType === JOIN && isConfigured && pathBlockId === blockId) {
+        const clonedNode = cloneDeep(node);
+        clonedNode.props.isConfigured = false;
+        clonedNode.props.nodeTitle = nodeTitleMapping.JOIN;
+        delete clonedNode.props.blockData.nextBlock;
+        delete clonedNode.props.nodePreview;
+        return clonedNode;
+      }
+      else if (blockType === JOIN && node?.id === blockId) {
+        //handling update of graphnodes of joined block when join block is deleted
+        if(isConfigured){
+          linkedToJoinNodeId.push(pathBlockId);
+        }
+        //adding END_NODE
+        const endNodeId = nanoid(10);
+        node.to = [endNodeId];
+        return [
+          node,
+          {
+            from: node?.id,
+            id: endNodeId,
+            component: CapIcon,
+            props: {
+              ...endIconProps,
+              id: endNodeId
+            },
+            type: END_NODE
+          }
+        ];
+      }
+      return node;
+    });
+    //handling update of graphnodes of joined block when join block is deleted
+    nodes = nodes.map(node => {
+      if (linkedToJoinNodeId.includes(node.id)) {
+        if (node.props.joinBlockNameArray.length === 1) {
+          delete node.props.joinBlockNameArray;
+        } else {
+          const joinBlockNameIndex = node.props.joinBlockNameArray.findIndex(
+            i => i === blockName,
+          );
+          node.props.joinBlockNameArray.splice(joinBlockNameIndex,1);
+        }        
+      }
+      return node;
+    });
+     //JOIN specific end
     const foundNode = nodes.find((node) => node.id === blockId);
     const { isMultiPath = false } = foundNode?.props || {};
     const secondaryNode = isMultiPath ? foundNode.to.length > 1 : false;
@@ -772,7 +905,73 @@ const CapDndGraph = (props) => {
       }
       return node;
     });
-    const filteredNodes = nodes.filter((node) => node && node.id !== blockId && !nodesToDelete[node.id]);
+    let filteredNodes = nodes.filter(
+      node => node && node.id !== blockId && !nodesToDelete[node.id]
+    );
+
+    //JOIN specific start --- handling recursive delete for join
+    if (Object.keys(nodesToDelete)?.length > 1) {
+      const joinDataObj = {};
+      const filteredNodesIds = [];
+      //computing joinDataObj object
+      nodes.forEach(node => {
+        const { blockType = "", isConfigured = false, blockData = {} } =
+          node?.props || {};
+        const {
+          name: joinName = "",
+          nextBlock: { pathBlockId = "" } = {}
+        } = blockData;
+        if (blockType === JOIN && isConfigured) {
+          joinDataObj[node.id] = [pathBlockId, joinName];
+        }
+      });
+      //computing filteredNodesIds array
+      filteredNodes.forEach(i => filteredNodesIds.push(i.id));
+
+      for (const joinId in joinDataObj) {
+        //join node got deleted but joined node did not get deleted, update joined node props
+        if (
+          !filteredNodesIds.includes(joinId) &&
+          filteredNodesIds.includes(joinDataObj[joinId][0])
+        ) {
+          filteredNodes = filteredNodes.map(node => {
+            if (node.id === joinDataObj[joinId][0]) {
+              //joined node was linked to only 1 join
+              if (node.props.joinBlockNameArray.length === 1) {
+                delete node.props.joinBlockNameArray;
+              }
+              //joined node was linked to only multiple join
+              else {
+                const joinBlockNameIndex = node.props.joinBlockNameArray.findIndex(
+                  i => i === joinDataObj[joinId][1]
+                );
+                node.props.joinBlockNameArray.splice(
+                  joinBlockNameIndex,
+                  1
+                );
+              }
+            }
+            return node;
+          });
+        }
+        //joined node got deleted but join node did not get deleted, update join node props
+        if (
+          filteredNodesIds.includes(joinId) &&
+          !filteredNodesIds.includes(joinDataObj[joinId][0])
+        ) {
+          filteredNodes = filteredNodes.map(node => {
+            if (node.id === joinId) {
+              node.props.isConfigured = false;
+              node.props.nodeTitle = nodeTitleMapping.JOIN;
+              delete node.props.blockData.nextBlock;
+              delete node.props.nodePreview;
+            }
+            return node;
+          });
+        }
+      }
+    }
+    //JOIN specific end
     return { nodes: filteredNodes, nodesToDelete, newToId: foundNode.type !== PLACEHOLDER_NODE ? foundNode.to[0] : null };
   };
 
@@ -793,31 +992,73 @@ const CapDndGraph = (props) => {
     setShowConfirmationModal(false);
   };
 
+  const renderBlockName = blockName => (
+    <CapLabel.CapLabelInline type="label4">{blockName}</CapLabel.CapLabelInline>
+  );
+
+  const getJoinDeleteDesc = (deletedNodeName, linkedNodeNameArray) => (
+    <CapRow className="join-row">
+      <CapLabel type="label2">
+        {theText} {renderBlockName(deletedNodeName)} {blockIsLinkedText} {renderBlockName(linkedNodeNameArray)} {blockText}
+      </CapLabel>
+      <CapLabel type="label2">{disconnectText}</CapLabel>
+      <CapLabel type="label2" className="margin-t-8">
+        {areYouSureText}
+      </CapLabel>
+    </CapRow>
+  );
+
+  const getDeleteDesc = () => {
+    let deleteDesc = (
+      <CapLabel className="margin-t-8" type="label2">
+        {deleteBlockModalDescriptionText}
+      </CapLabel>
+    );
+    const joinArr = graphNodes?.reduce((acc, node) => {
+      const { blockType = "", isConfigured = false, id = "", blockData = {} } =
+        node.props || {};
+      if (blockType === JOIN && isConfigured) {
+        const {
+          name = "",
+          nextBlock: { pathBlockId = "", pathName = "" } = {}
+        } = blockData;
+        acc.push([id, name, pathBlockId, pathName]);
+      }
+      return acc;
+    }, []);
+    //arr[0] = join block id, arr[1] = join block name, arr[2] = joined block id, arr[3] = joined block name
+    let deletedNodeName = '';
+    const linkedNodeNameArray = [];
+    joinArr.forEach(arr => {
+      if (arr[0] === blockId) {
+        deletedNodeName = arr[1];
+        linkedNodeNameArray.push(arr[3]);
+      } else if (arr[2] === blockId) {
+        deletedNodeName = arr[3];
+        linkedNodeNameArray.push(arr[1]);
+      }
+    });
+    if(linkedNodeNameArray.length > 0){
+      deleteDesc = getJoinDeleteDesc(deletedNodeName, linkedNodeNameArray.toString());
+    }
+    return deleteDesc;
+  };
+
   const getDeleteBlockWarningModal = () => {
-    const {
-      deleteBlockModalHeaderText,
-      deleteBlockModalDescriptionText,
-      deleteButtonText,
-      cancelButtonText,
-    } = props || {};
     return (
       <CapModal
         className="delete-block-modal"
         title={
           <>
-            <CapHeading type="h3">
-              {deleteBlockModalHeaderText}
-            </CapHeading>
-            <CapLabel className="margin-t-8" type="label9">
-              {deleteBlockModalDescriptionText}
-            </CapLabel>
+            <CapHeading type="h3">{deleteBlockModalHeaderText}</CapHeading>
+            {getDeleteDesc()}
           </>
         }
         visible={showConfirmationModal}
         onOk={handleOnClickModalDeleteBtn}
         onCancel={handleOnCloseModal}
-        okText={deleteButtonText}
-        closeText={cancelButtonText}
+        okText={yesDeleteButtonText}
+        closeText={noButtonText}
       />
     );
   };

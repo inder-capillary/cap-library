@@ -8,6 +8,8 @@ import {
 } from '../styled/variables';
 import CapIcon from '../CapIcon';
 import CapRow from '../CapRow';
+import CapLabel from '../CapLabel';
+import CapTooltip from "../CapTooltip";
 import {StyledDiv} from './styles';
 import './_capAdvancedIcon.scss';
 
@@ -48,6 +50,7 @@ const CapAdvancedIcon = (props) => {
     isDisabled,
     userHistoryProps,
     hasError,
+    joinBlockNameArray = [],
     ...rest
   } = props;
   const [actionIconsVisible, setActionIconsVisibility] = useState(false);
@@ -65,12 +68,35 @@ const CapAdvancedIcon = (props) => {
     setActionIconsVisibility(false);
   }, []);
 
+  const joinBlockNameArrayLength = joinBlockNameArray.length;
+  const getShowActionIcons = () => {
+    actionNodes.length ? showActionIcons() : undefined;
+    if (joinBlockNameArrayLength > 0) {
+      document.getElementById(props.id).style.transform = 'translateY(-10px)';
+    } 
+  }
+  const gethideActionIcons = () => {
+    actionNodes.length ? hideActionIcons() : undefined
+    if (joinBlockNameArrayLength > 0) {
+      document.getElementById(props.id).style.transform = 'translateY(0px)';
+    } 
+  }
   return (
     <>
+      {joinBlockNameArrayLength > 0 && (
+        <CapRow className="join-link-row" id={props.id}>
+          <CapIcon type="join-link" size="s" />
+          <CapTooltip title={joinBlockNameArray.join(", ")}>
+            <CapLabel type="label9" className="join-link-label">
+              {joinBlockNameArrayLength === 1 ? joinBlockNameArray : `${joinBlockNameArrayLength} joins`}
+            </CapLabel>
+          </CapTooltip>
+        </CapRow>
+      )}
       <CapRow className={`advanced-icon-container ${isDisabled ? 'item-disabled' : ''}`}>
         <StyledDiv
-          onMouseEnter={actionNodes.length ? showActionIcons : undefined}
-          onMouseLeave={actionNodes.length ? hideActionIcons : undefined}
+          onMouseEnter={getShowActionIcons}
+          onMouseLeave={gethideActionIcons}
           ref={dragRef}
           color={userHistoryProps?.color} //used to give box-shadow for userJourneyHistory
         >

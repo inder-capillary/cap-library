@@ -54,3 +54,16 @@
                 cursor: not-allowed;
             }
     }
+    .join-link-row{
+        margin-top: -16px;
+        display: flex;
+        width: fit-content;
+        margin-left: -8px;
+        .join-link-label{
+            max-width: 48px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-left: 6px;
+        }
+    }

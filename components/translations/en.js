@@ -185,7 +185,13 @@ export default {
   CapDndGraph: {
     deleteBlockModalHeaderText: 'Delete block',
     deleteBlockModalDescriptionText: 'Are you sure you want to delete this block?',
-    deleteButtonText: 'Delete',
-    cancelButtonText: 'Cancel',
+    yesDeleteButtonText: 'Yes, delete',
+    noButtonText: 'No',
+    joinDropErrorText: 'The join block needs to be added toward the end of a journey',
+    theText: 'The',
+    blockIsLinkedText: 'block is linked to the',
+    blockText: 'block.',
+    disconnectText: 'Deleting this block will disconnect the join.',
+    areYouSureText: 'Are you sure?',
   },
 };
