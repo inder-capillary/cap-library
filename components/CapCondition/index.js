@@ -197,7 +197,7 @@ const CapCondition = (props) => {
             uploadFailedError={uploadFailedError}
             uploadLimitExceeded={uploadLimitExceeded}
             uploadReqLoader={uploadReqLoader}
-            showProductSearchLoader={showProductSearchLoader[additionalConditionFact]}
+            showProductSearchLoader={showProductSearchLoader?.[additionalConditionFact]}
             or={or}
             onSearch={(searchText) => onSearch(additionalConditionFact, searchText)}
             isExternalSearch={isExternalSearch}

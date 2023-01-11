@@ -64,6 +64,17 @@ function createPackageFile() {
         "module": './index.es.js',
         'jsnext:main': './index.es.js',
         keywords,
+        "sideEffects": [
+          "*.css",
+          "*.scss",
+          "*/translations/*",
+          "*/styles/*",
+          "*/styled/*",
+          "*/LocaleHoc/*",
+          "react-dates/initialize",
+          "@antv/x6-react-shape",
+          "jquery"
+        ],
         repository,
         license,
         bugs,

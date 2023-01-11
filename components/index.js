@@ -100,6 +100,7 @@ export { default as CapStatus } from './CapStatus';
 export { default as CapConditionPreview } from './CapConditionPreview';
 export { default as CapTruncateList } from './CapTruncateList';
 export { default as CapCalendar} from './CapEventCalendar';
+export { default as CapSKUUploader} from './CapSKUUploader';
 export { default as CapNotificationDropdown } from './CapNotificationDropdown';
 
 //export components

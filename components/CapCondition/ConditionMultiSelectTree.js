@@ -222,9 +222,20 @@ export const ConditionMultiSelectTree = ({
           };
 
           if (isEmpty(treeDataObj)) {
+            //This is done as the value of 'fact' differs in adiona and giftCards.
+            const factMap = {
+              'Zone': ZONE_FILTER,
+              'Concept': CONCEPT_FILTER,
+              'Store': STORE_FILTER,
+            };
+            fact = factMap[fact] || fact;
             treeDataObj = treedataMap[fact]?.find(
               (treeDataObj) => treeDataObj?.id === value
             );
+            // If we do not have a flattenedCategory if we do not find nested selection.
+            if(fact===CATEGORY && !flattenedCategory &&  !treeDataObj ){
+              treeDataObj = {id: value, title: value}
+            }
           }
           const { id, key, title, name } = treeDataObj || {};
           foundItem = {
