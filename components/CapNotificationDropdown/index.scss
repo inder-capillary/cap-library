@@ -1,11 +1,18 @@
 @import '../styles/_variables.scss';
-.notification-dropdown {
+.ant-menu.ant-menu-vertical.notification-dropdown {
+  border-right: none;
+  .ant-menu-item {
+    height: unset;
+    margin: 0px;
+  }
+}
+.ant-menu.notification-dropdown {
   max-height: 60vh !important; 
   width: 440px;
   border: 1px solid $CAP_G12;
   border-bottom: none;
   .ant-menu-item {
-    height: unset;
+    height: unset !important;
   }
   .notification-menu-class {
     margin: 0px !important;
@@ -117,5 +124,6 @@
     color: $FONT_COLOR_02;
     font-weight: 500;
     margin-left: 132px;
+    text-align: center;
   }
 }
