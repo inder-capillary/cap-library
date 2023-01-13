@@ -78,6 +78,7 @@ function createPackageFile() {
         repository,
         license,
         bugs,
+        files: ["*","!*.test.js","!*mockdata*","!*mockData*","!*__snapshots__*"],
         homepage,
         "dependencies": {
           "@capillarytech/cap-ui-utils": "1.4.10",
