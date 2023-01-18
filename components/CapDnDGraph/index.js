@@ -50,7 +50,11 @@ import {
 import { CAP_G06, CAP_PRIMARY } from '../styled/variables';
 import './index.scss';
 import CapBorderedBox from '../CapBorderedBox';
-import { recursivelyDeleteNodes } from './utils';
+import {
+  recursivelyDeleteNodes,
+  computeJoinGraphNodesData,
+  updateJoinOrJoinedGraphNodeProp,
+} from "./utils";
 
 const endIconProps = {
   type: 'end',
@@ -909,70 +913,17 @@ const CapDndGraph = (props) => {
       node => node && node.id !== blockId && !nodesToDelete[node.id]
     );
 
-    //JOIN specific start --- handling recursive delete for join
-    if (Object.keys(nodesToDelete)?.length > 1) {
-      const joinDataObj = {};
-      const filteredNodesIds = [];
-      //computing joinDataObj object
-      nodes.forEach(node => {
-        const { blockType = "", isConfigured = false, blockData = {} } =
-          node?.props || {};
-        const {
-          name: joinName = "",
-          nextBlock: { pathBlockId = "" } = {}
-        } = blockData;
-        if (blockType === JOIN && isConfigured) {
-          joinDataObj[node.id] = [pathBlockId, joinName];
-        }
-      });
-      //computing filteredNodesIds array
-      filteredNodes.forEach(i => filteredNodesIds.push(i.id));
-
-      for (const joinId in joinDataObj) {
-        //join node got deleted but joined node did not get deleted, update joined node props
-        if (
-          !filteredNodesIds.includes(joinId) &&
-          filteredNodesIds.includes(joinDataObj[joinId][0])
-        ) {
-          filteredNodes = filteredNodes.map(node => {
-            if (node.id === joinDataObj[joinId][0]) {
-              //joined node was linked to only 1 join
-              if (node.props.joinBlockNameArray.length === 1) {
-                delete node.props.joinBlockNameArray;
-              }
-              //joined node was linked to only multiple join
-              else {
-                const joinBlockNameIndex = node.props.joinBlockNameArray.findIndex(
-                  i => i === joinDataObj[joinId][1]
-                );
-                node.props.joinBlockNameArray.splice(
-                  joinBlockNameIndex,
-                  1
-                );
-              }
-            }
-            return node;
-          });
-        }
-        //joined node got deleted but join node did not get deleted, update join node props
-        if (
-          filteredNodesIds.includes(joinId) &&
-          !filteredNodesIds.includes(joinDataObj[joinId][0])
-        ) {
-          filteredNodes = filteredNodes.map(node => {
-            if (node.id === joinId) {
-              node.props.isConfigured = false;
-              node.props.nodeTitle = nodeTitleMapping.JOIN;
-              delete node.props.blockData.nextBlock;
-              delete node.props.nodePreview;
-            }
-            return node;
-          });
-        }
-      }
-    }
-    //JOIN specific end
-    return { nodes: filteredNodes, nodesToDelete, newToId: foundNode.type !== PLACEHOLDER_NODE ? foundNode.to[0] : null };
+    return {
+      nodes:
+        Object.keys(nodesToDelete)?.length > 1
+          ? updateJoinOrJoinedGraphNodeProp(
+              filteredNodes,
+              computeJoinGraphNodesData(nodes)
+            )
+          : filteredNodes,
+      nodesToDelete,
+      newToId: foundNode.type !== PLACEHOLDER_NODE ? foundNode.to[0] : null,
+    };
   };
 
   const deleteNodeHandler = useCallback((blockId) => {
